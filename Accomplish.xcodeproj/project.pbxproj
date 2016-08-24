@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C7105EBD1D6CA8260096A1A3 /* UIView+Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EBC1D6CA8260096A1A3 /* UIView+Corner.swift */; };
+		C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C7105F8F1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F911D6CD52F0096A1A3 /* Task.swift */; };
@@ -71,7 +71,6 @@
 		C77193E01D6DDB7100437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77193BC1D6DDB7100437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */; };
 		C77193E11D6DDB7100437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77193BD1D6DDB7100437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */; };
 		C77193F21D6DDB8D00437560 /* GPUImage.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77193BF1D6DDB7100437560 /* GPUImage.framework.dSYM */; };
-		C77193F41D6DDFF100437560 /* UIView+ScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F31D6DDFF100437560 /* UIView+ScreenShot.swift */; };
 		C77193F61D6DE9C000437560 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
@@ -125,7 +124,7 @@
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C7105EA51D6C7AD60096A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7105EBC1D6CA8260096A1A3 /* UIView+Corner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Corner.swift"; path = "Accomplish/Extension/UIView+Corner.swift"; sourceTree = "<group>"; };
+		C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Convenient.swift"; path = "Accomplish/Extension/UIView+Convenient.swift"; sourceTree = "<group>"; };
 		C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Accomplish-Bridging-Header.h"; sourceTree = "<group>"; };
 		C7105F8D1D6CCDB00096A1A3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C7105F911D6CD52F0096A1A3 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -221,7 +220,6 @@
 		C77193CB1D6DDB7100437560 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
 		C77193CC1D6DDB7100437560 /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YYText.framework; sourceTree = "<group>"; };
 		C77193CD1D6DDB7100437560 /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = YYText.framework.dSYM; sourceTree = "<group>"; };
-		C77193F31D6DDFF100437560 /* UIView+ScreenShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ScreenShot.swift"; sourceTree = "<group>"; };
 		C77193F51D6DE9C000437560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -267,8 +265,7 @@
 		C7105EBB1D6CA7D90096A1A3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C7105EBC1D6CA8260096A1A3 /* UIView+Corner.swift */,
-				C77193F31D6DDFF100437560 /* UIView+ScreenShot.swift */,
+				C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */,
 			);
 			name = Extension;
 			path = ..;
@@ -637,7 +634,6 @@
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C771924B1D6CEE4E00437560 /* TaskTableViewCell.swift in Sources */,
-				C77193F41D6DDFF100437560 /* UIView+ScreenShot.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
@@ -653,7 +649,7 @@
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
-				C7105EBD1D6CA8260096A1A3 /* UIView+Corner.swift in Sources */,
+				C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,

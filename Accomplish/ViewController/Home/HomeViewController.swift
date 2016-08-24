@@ -29,12 +29,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         
         self.configMainUI()
-        
-        self.initialControl()
-        self.configLabel()
+        self.initializeControl()
         self.configMainButton()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,7 +85,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.calendarButton.setImage(calendarImage, forState: .Normal)
     }
     
-    private func initialControl() {
+    private func initializeControl() {
+        self.cardView.addShadow()
+        self.newTaskButton.addShadow()
         self.cardView.layer.cornerRadius = 9
         
         if #available(iOS 9, *) {
@@ -100,13 +99,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.statusSegment.addTarget(self, action: Selector(self.segmentValueChange(self.statusSegment)), forControlEvents: .ValueChanged)
         
         taskTableView.registerNib(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
-    }
-    
-    private func configLabel() {
+        
         self.currentDateLabel.text = NSDate().formattedDateWithStyle(.MediumStyle)
         self.emptyHintLabel.text = Localized("emptyTask")
     }
-    
+
     private func showEmptyHint(show: Bool) {
         self.emptyHintLabel.hidden = !show
         self.emptyCoffeeLabel.hidden = !show
@@ -114,7 +111,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func configMainButton() {
         self.settingButton.layer.cornerRadius = 16
-        
         self.newTaskButton.layer.cornerRadius = 35
         
         self.newTaskButton.addTarget(self, action:  #selector(self.newTask), forControlEvents: .TouchUpInside)

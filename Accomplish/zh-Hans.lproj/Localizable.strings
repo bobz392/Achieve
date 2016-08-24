@@ -12,8 +12,14 @@
 
 "newTask"="添加新任务";
 "cancel"="取消";
+"done"="完成";
 "customTask"="新任务";
 "dependTask"="关联任务";
 "systemTask"="系统任务";
 
 "goingDo"="准备做点什么呢?";
+"priority"="优先级";
+
+"high"="高";
+"normal"="普通";
+"low"="低";

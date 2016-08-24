@@ -12,8 +12,14 @@
 
 "newTask"="Add task";
 "cancel"="Cancel";
+"done"="Done";
 "customTask"="Custom task";
 "dependTask"="Associated task";
 "systemTask"="System task";
 
 "goingDo"="What are you going to do?";
+"priority"="Priority";
+
+"high"="High";
+"normal"="Normal";
+"low"="Low";

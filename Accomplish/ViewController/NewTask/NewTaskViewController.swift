@@ -109,7 +109,6 @@ class NewTaskViewController: UIViewController {
         filter.useNextFrameForImageCapture()
         imagePicture.processImage()
         
-        
         self.view.frame = p.view.frame
         p.view.addSubview(self.view)
         
@@ -155,7 +154,8 @@ class NewTaskViewController: UIViewController {
     }
     
     func dissmiss(tap: UITapGestureRecognizer) {
-        if (!CGRectContainsPoint(self.cardView.frame, tap.locationInView(self.view))) {
+        if (!CGRectContainsPoint(self.cardView.frame, tap.locationInView(self.view))
+            && !CGRectContainsPoint(self.toolView.frame, tap.locationInView(self.view))) {
             self.removeFromParentViewController()
         }
     }

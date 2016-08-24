@@ -18,10 +18,13 @@ let kPriorityLow: Int = 0
 let kPriorityNormal: Int = 1
 let kPriorityHigh: Int = 2
 
+let uuidFormat: String = "yyMMddHHmmssZ"
+let createdDateFormat: String = "yyyy.MM.dd"
+
 class Task: Object {
     dynamic var uuid = ""
-    dynamic var title = ""
-    dynamic var content = ""
+    dynamic var taskToDo = ""
+    dynamic var taskNote = ""
     dynamic var status = 0
     dynamic var priority = 1
     dynamic var createdFormattedDate: String = ""
@@ -32,9 +35,9 @@ class Task: Object {
         return "uuid"
     }
     
-    func config() {
+    func createDefaultTask() {
         let now = NSDate()
-        createdFormattedDate = now.formattedDateWithFormat("yyyy.MM.dd")
-        uuid = now.formattedDateWithFormat("yyMMddHHmmssZ")
+        createdFormattedDate = now.formattedDateWithFormat(createdDateFormat)
+        uuid = now.formattedDateWithFormat(uuidFormat)
     }
 }

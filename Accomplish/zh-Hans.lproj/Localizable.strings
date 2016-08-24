@@ -1,0 +1,19 @@
+/* 
+	Localizable.strings
+	aire3S
+
+	Created by Alec on 5/3/13.
+	Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+*/
+
+"progess"="进行中";
+"completed"="已完成";
+"emptyTask"="没有新任务，放松一下 :)";
+
+"newTask"="添加新任务";
+"cancel"="取消";
+"customTask"="新任务";
+"dependTask"="关联任务";
+"systemTask"="系统任务";
+
+"goingDo"="准备做点什么呢?";

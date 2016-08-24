@@ -1,0 +1,19 @@
+/* 
+	Localizable.strings
+	aire3S
+
+	Created by Alec on 5/3/13.
+	Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+*/
+
+"progess"="In progress";
+"completed"="Completed";
+"emptyTask"="No new task, Enjoy the day :)";
+
+"newTask"="Add task";
+"cancel"="Cancel";
+"customTask"="Custom task";
+"dependTask"="Associated task";
+"systemTask"="System task";
+
+"goingDo"="What are you going to do?";

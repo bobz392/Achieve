@@ -72,6 +72,9 @@
 		C77193E11D6DDB7100437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77193BD1D6DDB7100437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */; };
 		C77193F21D6DDB8D00437560 /* GPUImage.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77193BF1D6DDB7100437560 /* GPUImage.framework.dSYM */; };
 		C77193F61D6DE9C000437560 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
+		C77193F81D6E488F00437560 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F71D6E488F00437560 /* UserDefault.swift */; };
+		C77193FB1D6E5A1400437560 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F91D6E5A1400437560 /* ScheduleViewController.swift */; };
+		C77193FC1D6E5A1400437560 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -221,6 +224,9 @@
 		C77193CC1D6DDB7100437560 /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YYText.framework; sourceTree = "<group>"; };
 		C77193CD1D6DDB7100437560 /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = YYText.framework.dSYM; sourceTree = "<group>"; };
 		C77193F51D6DE9C000437560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C77193F71D6E488F00437560 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		C77193F91D6E5A1400437560 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 				C77192971D6D18BF00437560 /* CommonCode.swift */,
 				C77192991D6DB27A00437560 /* KeyboardManager.swift */,
 				C77193F51D6DE9C000437560 /* Constants.swift */,
+				C77193F71D6E488F00437560 /* UserDefault.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -375,6 +382,8 @@
 			children = (
 				C771924D1D6CEE6800437560 /* NewTaskViewController.swift */,
 				C771924E1D6CEE6800437560 /* NewTaskViewController.xib */,
+				C77193F91D6E5A1400437560 /* ScheduleViewController.swift */,
+				C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */,
 			);
 			path = NewTask;
 			sourceTree = "<group>";
@@ -577,6 +586,7 @@
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C771924C1D6CEE4E00437560 /* TaskTableViewCell.xib in Resources */,
 				C77193DE1D6DDB7100437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */,
+				C77193FC1D6E5A1400437560 /* ScheduleViewController.xib in Resources */,
 				C77193D11D6DDB7100437560 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */,
 				C77193D21D6DDB7100437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
@@ -642,10 +652,12 @@
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
+				C77193FB1D6E5A1400437560 /* ScheduleViewController.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
+				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,

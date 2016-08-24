@@ -87,11 +87,21 @@ class NewTaskViewController: UIViewController {
             }
         }
         
-        doneButton.addTarget(self, action: #selector(self.done), forControlEvents: .TouchUpInside)
+        doneButton.addTarget(self, action: #selector(self.doneAction), forControlEvents: .TouchUpInside)
+        clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
     }
     
-    func done() {
+    // MARK: - actions
+    func doneAction() {
         self.removeFromParentViewController()
+    }
+    
+    func scheduleAction() {
+        let scheduleVC = ScheduleViewController()
+        let nav = UINavigationController(rootViewController: scheduleVC)
+        self.parentViewController?.presentViewController(nav, animated: true, completion: { 
+            
+        })
     }
     
     // MARK: - parent view controller
@@ -132,7 +142,7 @@ class NewTaskViewController: UIViewController {
         
         self.renderImageView.alpha = 0
         self.cardView.alpha = 0
-        self.cardView.layer.cornerRadius = 9
+        self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
             self.renderImageView.alpha = 1

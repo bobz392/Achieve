@@ -47,9 +47,9 @@ class TaskTableViewCell: UITableViewCell {
         let colors = Colors()
         
         switch task.priority {
-        case kPriorityLow:
+        case kTaskPriorityLow:
             self.priorityView.backgroundColor = colors.priorityLowColor
-        case kPriorityNormal:
+        case kTaskPriorityNormal:
             self.priorityView.backgroundColor = colors.priorityNormalColor
         default:
             self.priorityView.backgroundColor = colors.priorityHighColor

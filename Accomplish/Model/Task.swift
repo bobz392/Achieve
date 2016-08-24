@@ -14,9 +14,13 @@ let kTaskFinish: Int = 1
 let kTaskPostpone: Int = 2
 let kTaskFailure: Int = 3
 
-let kPriorityLow: Int = 0
-let kPriorityNormal: Int = 1
-let kPriorityHigh: Int = 2
+let kTaskPriorityLow: Int = 0
+let kTaskPriorityNormal: Int = 1
+let kTaskPriorityHigh: Int = 2
+
+let kCustomTaskType: Int = 0
+let kSystemTaskType: Int = 1
+let kAssociatTaskType: Int = 2
 
 let uuidFormat: String = "yyMMddHHmmssZ"
 let createdDateFormat: String = "yyyy.MM.dd"
@@ -25,19 +29,28 @@ class Task: Object {
     dynamic var uuid = ""
     dynamic var taskToDo = ""
     dynamic var taskNote = ""
-    dynamic var status = 0
-    dynamic var priority = 1
+    dynamic var status = kTaskRunning
+    dynamic var taskType = kCustomTaskType
+    dynamic var priority = kTaskPriorityNormal
     dynamic var createdFormattedDate: String = ""
-    dynamic var startedDate: NSDate?
+    dynamic var notifyDate: NSDate?
     dynamic var finishedDate: NSDate?
-
+    
     override class func primaryKey() -> String? {
         return "uuid"
     }
     
-    func createDefaultTask() {
-        let now = NSDate()
-        createdFormattedDate = now.formattedDateWithFormat(createdDateFormat)
-        uuid = now.formattedDateWithFormat(uuidFormat)
+    func createDefaultTask(taskToDo: String, taskNote: String, createdDate: NSDate?) {
+        if let date = createdDate {
+            self.createdFormattedDate = date.formattedDateWithFormat(createdDateFormat)
+            self.uuid = date.formattedDateWithFormat(uuidFormat)
+        } else {
+            let now = NSDate()
+            self.createdFormattedDate = now.formattedDateWithFormat(createdDateFormat)
+            self.uuid = now.formattedDateWithFormat(uuidFormat)
+        }
+        
+        self.taskNote = taskNote
+        self.taskToDo = taskToDo
     }
 }

@@ -31,4 +31,14 @@ extension UIView {
         self.layer.shadowRadius = 3
         self.layer.shadowOffset = CGSize(width: 3, height: 3)
     }
+    
+    func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath:"cornerRadius")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        self.layer.addAnimation(animation, forKey: "cornerRadius")
+        self.layer.cornerRadius = to
+    }
 }

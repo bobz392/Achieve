@@ -8,7 +8,9 @@
 
 import UIKit
 
-class KeyboardManager {
+final class KeyboardManager {
+    
+    static let sharedManager = KeyboardManager()
     
     static var keyboardHeight: CGFloat = 0
     static var duration: Double = 0
@@ -31,11 +33,8 @@ class KeyboardManager {
         }
     }
     
-    deinit {
-        print("keyboard manager deinit and quit notification")
-    }
-    
     func closeNotification() {
+        print("keyboard manager remove notification and handle")
         keyboardShowHandler = nil
         keyboardHideHandler = nil
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -45,7 +44,7 @@ class KeyboardManager {
         if let userInfo = notification.userInfo,
             let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
             let durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue {
-            print("change frame height to \(frameValue.height)")
+//            print("change frame height to \(frameValue.height)")
             KeyboardManager.keyboardHeight = frameValue.height
             KeyboardManager.duration = durationValue
             KeyboardManager.keyboardShow = false

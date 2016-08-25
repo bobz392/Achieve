@@ -24,15 +24,21 @@ class NewTaskViewController: UIViewController {
     
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
-    
-    
-    private let keyboardManager = KeyboardManager()
+
     private let cardViewHeight: CGFloat = 194
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (toolView.alpha != 0) {
+            titleTextField.becomeFirstResponder()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,16 +78,16 @@ class NewTaskViewController: UIViewController {
         self.prioritySegmental.setTitle(Localized("normal"), forSegmentAtIndex: 1)
         self.prioritySegmental.setTitle(Localized("high"), forSegmentAtIndex: 2)
         
-        keyboardManager.keyboardShowHandler = { [unowned self] in
+        KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
-            UIView.animateWithDuration(kNormalAnimationDuration, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: {
+            UIView.animateWithDuration(kNormalAnimationDuration, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
             }) { [unowned self] (finish) in
                 self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
                 self.toolView.alpha = 1
-                UIView.animateWithDuration(0.25, animations: {
+                UIView.animateWithDuration(0.25, animations: { [unowned self] in
                     self.toolView.layoutIfNeeded()
                 })
             }
@@ -153,7 +159,7 @@ class NewTaskViewController: UIViewController {
     }
     
     override func removeFromParentViewController() {
-        keyboardManager.closeNotification()
+        KeyboardManager.sharedManager.closeNotification()
         UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
             self.renderImageView.alpha = 0
             self.cardView.alpha = 0

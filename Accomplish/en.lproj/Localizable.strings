@@ -7,8 +7,10 @@
 */
 
 "progess"="In progress";
+"finished"="Finished";
 "completed"="Completed";
 "emptyTask"="No new task, Enjoy the day :)";
+"emptyFinishTask"="No finshed task";
 
 "newTask"="Add task";
 "cancel"="Cancel";

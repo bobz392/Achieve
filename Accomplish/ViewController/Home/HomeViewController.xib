@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="addTaskBottomConstraint" destination="EVT-hE-xSd" id="kRC-8U-H1Y"/>
                 <outlet property="addTaskHeightConstraint" destination="rIm-M6-Y2z" id="goD-cs-2sG"/>
                 <outlet property="addTaskWidthConstraint" destination="5lo-Fz-afW" id="DKl-fc-T8t"/>
                 <outlet property="calendarButton" destination="Cd5-mt-tzm" id="cbw-cy-vqr"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,8 +25,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var emptyHintLabel: UILabel!
     @IBOutlet weak var emptyCoffeeLabel: UILabel!
     
-    private var finishTasks = [Task]()
-    private var progessTasks = [Task]()
+    private var finishTasks: Results<Task>?
+    private var runningTasks: Results<Task>?
     
     private var isFullScreenSize = false
     
@@ -35,10 +36,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         
         isFullScreenSize = UserDefault().readBool(kIsFullScreenSizeKey)
-
+        
         self.configMainUI()
         self.initializeControl()
         self.configMainButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        finishTasks = RealmManager.shareManager.queryTodayTaskList(true)
+        runningTasks = RealmManager.shareManager.queryTodayTaskList(false)
+        self.taskTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,6 +119,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initializeControl() {
+        self.taskTableView.tableFooterView = UIView()
+        
         self.cardView.addShadow()
         self.newTaskButton.addShadow()
         self.settingButton.addShadow()
@@ -122,8 +133,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         self.statusSegment.setTitle(Localized("progess"), forSegmentAtIndex: 0)
-        self.statusSegment.setTitle(Localized("completed"), forSegmentAtIndex: 1)
-        self.statusSegment.addTarget(self, action: Selector(self.segmentValueChangeAction(self.statusSegment)), forControlEvents: .ValueChanged)
+        self.statusSegment.setTitle(Localized("finished"), forSegmentAtIndex: 1)
+        self.statusSegment.addTarget(self, action: #selector(self.segmentValueChangeAction(_:)), forControlEvents: .ValueChanged)
         
         taskTableView.registerNib(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
@@ -133,12 +144,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), forControlEvents: .TouchUpInside)
         self.newTaskButton.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), forControlEvents: .TouchDown)
         self.newTaskButton.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), forControlEvents: .TouchUpOutside)
+        
+        self.calendarButton.addTarget(self, action: #selector(self.calendarAction), forControlEvents: .TouchUpInside)
+        
         self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
     }
     
     private func showEmptyHint(show: Bool) {
         self.emptyHintLabel.hidden = !show
         self.emptyCoffeeLabel.hidden = !show
+        
+        if self.inRunningTasksTable() {
+            self.emptyHintLabel.text = Localized("emptyTask")
+        } else {
+            self.emptyHintLabel.text = Localized("emptyFinishTask")
+        }
     }
     
     private func configMainButton() {
@@ -154,14 +174,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         doSwitchScreen(true)
     }
     
+    func calendarAction() {
+        print(finishTasks?.count)
+        print(runningTasks?.count)
+    }
+    
     private func doSwitchScreen(animation: Bool) {
         if !isFullScreenSize {
             self.cardViewLeftConstraint.constant = 20
             self.cardViewRightConstraint.constant = 20
-            self.addTaskWidthConstraint.constant = 70
-            self.addTaskHeightConstraint.constant = 70
             self.cardViewBottomConstraint.constant = 20
             self.cardViewTopConstraint.constant = 70
+            self.addTaskWidthConstraint.constant = 70
+            self.addTaskHeightConstraint.constant = 70
+            self.addTaskBottomConstraint.constant = 15
             if (animation) {
                 self.newTaskButton.addCornerRadiusAnimation(16, to: 35, duration: kNormalAnimationDuration)
                 UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
@@ -175,10 +201,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             self.cardViewLeftConstraint.constant = 5
             self.cardViewRightConstraint.constant = 5
-            self.addTaskWidthConstraint.constant = 32
-            self.addTaskHeightConstraint.constant = 32
             self.cardViewBottomConstraint.constant = 10
             self.cardViewTopConstraint.constant = 35
+            self.addTaskWidthConstraint.constant = 32
+            self.addTaskHeightConstraint.constant = 32
+            self.addTaskBottomConstraint.constant = 10
             if (animation) {
                 self.newTaskButton.addCornerRadiusAnimation(35, to: 16, duration: kNormalAnimationDuration)
                 UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
@@ -244,14 +271,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - table view
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-//        if (self.statusSegment.selectedSegmentIndex == 0) {
-//            showEmptyHint(progessTasks.count <= 0)
-//            return progessTasks.count
-//        } else {
-//            showEmptyHint(finishTasks.count <= 0)
-//            return finishTasks.count
-//        }
+        if self.inRunningTasksTable() {
+            showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
+            return self.runningTasks?.count ?? 0
+        } else {
+            showEmptyHint(self.finishTasks?.count ?? 0 <= 0)
+            return self.finishTasks?.count ?? 0
+        }
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -265,15 +291,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TaskTableViewCell.reuseId, forIndexPath: indexPath) as! TaskTableViewCell
         
-        cell.configCellUse(Task())
+        var task: Task?
+        if self.inRunningTasksTable() {
+            task = self.runningTasks?[indexPath.row]
+        } else {
+            task = self.finishTasks?[indexPath.row]
+        }
         
+        if let t = task {
+            cell.configCellUse(t)
+        }
         return cell
+    }
+    
+    private func inRunningTasksTable() -> Bool {
+        return self.statusSegment.selectedSegmentIndex == 0
     }
     
     @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     

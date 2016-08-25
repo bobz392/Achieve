@@ -34,7 +34,7 @@ final class KeyboardManager {
     }
     
     func closeNotification() {
-        print("keyboard manager remove notification and handle")
+        print("keyboard manager remove and handle")
         keyboardShowHandler = nil
         keyboardHideHandler = nil
     }

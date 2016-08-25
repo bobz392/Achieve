@@ -9,7 +9,7 @@
 import UIKit
 import GPUImage
 
-class NewTaskViewController: UIViewController {
+class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var renderImageView: UIImageView!
@@ -20,7 +20,6 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var clockButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
@@ -36,7 +35,7 @@ class NewTaskViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (toolView.alpha != 0) {
+        if (toolView.alpha == 1) {
             titleTextField.becomeFirstResponder()
         }
     }
@@ -57,7 +56,7 @@ class NewTaskViewController: UIViewController {
         self.prioritySegmental.tintColor = colors.mainGreenColor
         self.priorityLabel.textColor = colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
-        self.doneButton.tintColor = colors.mainGreenColor
+        self.cancelButton.tintColor = colors.mainGreenColor
         
         let clockIcon = FAKFontAwesome.clockOIconWithSize(22)
         clockIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -73,7 +72,7 @@ class NewTaskViewController: UIViewController {
         self.priorityCardView.layer.borderWidth = 0.5
         
         self.titleTextField.placeholder = Localized("goingDo")
-        self.doneButton.setTitle(Localized("done"), forState: .Normal)
+        self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
         
         self.priorityLabel.text = Localized("priority")
         
@@ -98,28 +97,12 @@ class NewTaskViewController: UIViewController {
             }
         }
         
-        doneButton.addTarget(self, action: #selector(self.doneAction), forControlEvents: .TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
     }
     
-//    private func startFloating() {
-//        let center = self.cardView.center
-//        UIView.animateWithDuration(2, delay: 0, options: [.Repeat, .CurveEaseInOut, .Autoreverse], animations: {
-//            let xn: CGFloat = (arc4random_uniform(100) % 2) == 0 ? 1 : -1
-//            let yn: CGFloat = (arc4random_uniform(100) % 2) == 0 ? 1 : -1
-//            
-//            let x = CGFloat(arc4random_uniform(10)) * xn
-//            let y = CGFloat(arc4random_uniform(10)) * yn
-//            let final = CGPoint(x: center.x + x, y: center.y + y)
-//            
-//            self.cardView.center = final
-//        }) { (finish) in
-//            
-//        }
-//    }
-    
     // MARK: - actions
-    func doneAction() {
+    func cancelAction() {
         self.removeFromParentViewController()
     }
     
@@ -129,6 +112,33 @@ class NewTaskViewController: UIViewController {
         self.parentViewController?.presentViewController(nav, animated: true, completion: {
             
         })
+    }
+    
+    func dissmissAction(tap: UITapGestureRecognizer) {
+        if (!CGRectContainsPoint(self.cardView.frame, tap.locationInView(self.view))
+            && !CGRectContainsPoint(self.toolView.frame, tap.locationInView(self.view))) {
+            self.removeFromParentViewController()
+        }
+    }
+    
+    // MARK: - logic
+    func saveNewTask(title: String) {
+        let task = Task()
+        let priority = prioritySegmental.selectedSegmentIndex
+        task.createDefaultTask(title, priority:  priority, createdDate: nil)
+        
+        RealmManager.shareManager.createTask(task)
+        self.cancelAction()
+    }
+    
+    // MARK: - textfield
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        guard let title = textField.text else {
+            return true
+        }
+        
+        saveNewTask(title)
+        return true
     }
     
     // MARK: - parent view controller
@@ -153,7 +163,7 @@ class NewTaskViewController: UIViewController {
         
         self.renderImageView.image = filter.imageFromCurrentFramebuffer()
         
-        let tapDissmiss = UITapGestureRecognizer(target: self, action: #selector(self.dissmiss(_:)))
+        let tapDissmiss = UITapGestureRecognizer(target: self, action: #selector(self.dissmissAction(_:)))
         self.view.addGestureRecognizer(tapDissmiss)
         
         self.configMainUI()
@@ -186,13 +196,6 @@ class NewTaskViewController: UIViewController {
         }) { [unowned self] (finish) in
             self.titleTextField.resignFirstResponder()
             self.view.removeFromSuperview()
-        }
-    }
-    
-    func dissmiss(tap: UITapGestureRecognizer) {
-        if (!CGRectContainsPoint(self.cardView.frame, tap.locationInView(self.view))
-            && !CGRectContainsPoint(self.toolView.frame, tap.locationInView(self.view))) {
-            self.removeFromParentViewController()
         }
     }
 }

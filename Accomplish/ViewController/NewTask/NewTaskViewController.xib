@@ -7,10 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTaskViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="cancelButton" destination="VmR-Dd-PUz" id="BM1-pO-XCy"/>
                 <outlet property="cardView" destination="z3E-3R-jYr" id="oCd-EH-4Bc"/>
                 <outlet property="cardViewTopConstraint" destination="wrT-z0-jiS" id="gkr-Bx-dic"/>
                 <outlet property="clockButton" destination="KD9-lQ-lgC" id="lLf-x6-nH4"/>
-                <outlet property="doneButton" destination="VmR-Dd-PUz" id="p4Z-sI-2KA"/>
                 <outlet property="priorityCardView" destination="xOP-iq-T7t" id="CQU-gG-WS9"/>
                 <outlet property="priorityLabel" destination="tts-aO-sIm" id="Sba-oT-DBa"/>
                 <outlet property="prioritySegmental" destination="smr-3j-ASd" id="RJJ-rt-5iH"/>
@@ -40,6 +40,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="gip-Zc-0FR"/>
+                            </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOP-iq-T7t">
                             <rect key="frame" x="10" y="64" width="540" height="75"/>
@@ -96,11 +99,6 @@
                             </constraints>
                             <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSn-wh-vcn">
-                            <rect key="frame" x="62" y="6" width="32" height="32"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmR-Dd-PUz">
                             <rect key="frame" x="534" y="7" width="46" height="30"/>
                             <state key="normal" title="Button"/>
@@ -109,14 +107,10 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="leading" secondItem="Vdp-Ws-MLD" secondAttribute="leading" constant="10" id="9wa-Dx-BRD"/>
-                        <constraint firstItem="VmR-Dd-PUz" firstAttribute="centerY" secondItem="iSn-wh-vcn" secondAttribute="centerY" id="EgB-F6-aJX"/>
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="centerY" secondItem="Vdp-Ws-MLD" secondAttribute="centerY" id="Oyo-v3-82R"/>
-                        <constraint firstItem="iSn-wh-vcn" firstAttribute="height" secondItem="KD9-lQ-lgC" secondAttribute="height" id="TcH-bi-CKI"/>
-                        <constraint firstItem="iSn-wh-vcn" firstAttribute="leading" secondItem="KD9-lQ-lgC" secondAttribute="trailing" constant="20" id="aFY-ab-2BC"/>
                         <constraint firstAttribute="height" constant="44" id="fJv-3r-lhi"/>
-                        <constraint firstItem="iSn-wh-vcn" firstAttribute="width" secondItem="KD9-lQ-lgC" secondAttribute="width" id="hSE-YB-d0n"/>
                         <constraint firstAttribute="trailing" secondItem="VmR-Dd-PUz" secondAttribute="trailing" constant="20" id="jTw-R9-paw"/>
-                        <constraint firstItem="iSn-wh-vcn" firstAttribute="centerY" secondItem="KD9-lQ-lgC" secondAttribute="centerY" id="swc-8q-BSZ"/>
+                        <constraint firstItem="VmR-Dd-PUz" firstAttribute="centerY" secondItem="Vdp-Ws-MLD" secondAttribute="centerY" id="rtI-FB-iOH"/>
                     </constraints>
                 </view>
             </subviews>

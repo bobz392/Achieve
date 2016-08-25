@@ -7,8 +7,10 @@
 */
 
 "progess"="进行中";
+"finished"="已结束";
 "completed"="已完成";
 "emptyTask"="没有新任务，放松一下 :)";
+"emptyFinishTask"="没有已经结束的任务";
 
 "newTask"="添加新任务";
 "cancel"="取消";

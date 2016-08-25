@@ -37,7 +37,6 @@ final class KeyboardManager {
         print("keyboard manager remove notification and handle")
         keyboardShowHandler = nil
         keyboardHideHandler = nil
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     private func handleKeyboardShow(notification: NSNotification) {

@@ -35,6 +35,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         
         isFullScreenSize = UserDefault().readBool(kIsFullScreenSizeKey)
+
         self.configMainUI()
         self.initializeControl()
         self.configMainButton()
@@ -191,8 +192,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         configFullSizeButton(Colors())
-        isFullScreenSize = !isFullScreenSize
         UserDefault().write(kIsFullScreenSizeKey, value: isFullScreenSize)
+        isFullScreenSize = !isFullScreenSize
     }
     
     func newTaskAction() {

@@ -24,7 +24,7 @@ class NewTaskViewController: UIViewController {
     
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
-
+    
     private let cardViewHeight: CGFloat = 194
     
     override func viewDidLoad() {
@@ -44,6 +44,10 @@ class NewTaskViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        print("deinit")
     }
     
     private func configMainUI() {
@@ -79,6 +83,7 @@ class NewTaskViewController: UIViewController {
         self.prioritySegmental.setTitle(Localized("high"), forSegmentAtIndex: 2)
         
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+            KeyboardManager.sharedManager.closeNotification()
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
@@ -97,6 +102,22 @@ class NewTaskViewController: UIViewController {
         clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
     }
     
+//    private func startFloating() {
+//        let center = self.cardView.center
+//        UIView.animateWithDuration(2, delay: 0, options: [.Repeat, .CurveEaseInOut, .Autoreverse], animations: {
+//            let xn: CGFloat = (arc4random_uniform(100) % 2) == 0 ? 1 : -1
+//            let yn: CGFloat = (arc4random_uniform(100) % 2) == 0 ? 1 : -1
+//            
+//            let x = CGFloat(arc4random_uniform(10)) * xn
+//            let y = CGFloat(arc4random_uniform(10)) * yn
+//            let final = CGPoint(x: center.x + x, y: center.y + y)
+//            
+//            self.cardView.center = final
+//        }) { (finish) in
+//            
+//        }
+//    }
+    
     // MARK: - actions
     func doneAction() {
         self.removeFromParentViewController()
@@ -105,7 +126,7 @@ class NewTaskViewController: UIViewController {
     func scheduleAction() {
         let scheduleVC = ScheduleViewController()
         let nav = UINavigationController(rootViewController: scheduleVC)
-        self.parentViewController?.presentViewController(nav, animated: true, completion: { 
+        self.parentViewController?.presentViewController(nav, animated: true, completion: {
             
         })
     }
@@ -159,7 +180,6 @@ class NewTaskViewController: UIViewController {
     }
     
     override func removeFromParentViewController() {
-        KeyboardManager.sharedManager.closeNotification()
         UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
             self.renderImageView.alpha = 0
             self.cardView.alpha = 0

@@ -24,6 +24,7 @@ let kAssociatTaskType: Int = 2
 
 let uuidFormat: String = "yyMMddHHmmssZ"
 let createdDateFormat: String = "yyyy.MM.dd"
+let timeDateFormat: String = "hh: mm a"
 
 class Task: Object {
     dynamic var uuid = ""

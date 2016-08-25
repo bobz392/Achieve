@@ -13,7 +13,7 @@ class RealmManager {
     private let realm = try! Realm()
     
     static let shareManager = RealmManager()
-    
+
     func createTask(task: Task) {
         try! realm.write {
             realm.add(task)
@@ -28,5 +28,18 @@ class RealmManager {
             .filter("createdFormattedDate = \(queryDate) AND status \(finished ? "!=" : "==") \(kTaskRunning)")
         
         return tasks
+    }
+    
+    func updateTaskStatus(task: Task, status: Int) {
+        try! realm.write({ 
+            task.status = status
+            if status == kTaskFinish {
+                task.finishedDate = NSDate()
+            } else if status == kTaskRunning {
+                task.finishedDate = nil
+            } else {
+
+            }
+        })
     }
 }

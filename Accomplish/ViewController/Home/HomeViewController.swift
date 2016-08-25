@@ -28,6 +28,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var finishTasks: Results<Task>?
     private var runningTasks: Results<Task>?
     
+    private var finishToken: RealmSwift.NotificationToken?
+    private var runningToken: RealmSwift.NotificationToken?
+    
     private var isFullScreenSize = false
     
     override func viewDidLoad() {
@@ -40,14 +43,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.configMainUI()
         self.initializeControl()
         self.configMainButton()
+        
+        self.finishTasks = RealmManager.shareManager.queryTodayTaskList(true)
+        self.runningTasks = RealmManager.shareManager.queryTodayTaskList(false)
+        self.realmNoticationToken()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        finishTasks = RealmManager.shareManager.queryTodayTaskList(true)
-        runningTasks = RealmManager.shareManager.queryTodayTaskList(false)
-        self.taskTableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    deinit {
+        finishToken?.stop()
+        runningToken?.stop()
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,6 +186,80 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         doSwitchScreen(false)
     }
     
+    private func realmNoticationToken() {
+        finishToken = finishTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+            if self.statusSegment.selectedSegmentIndex == 0 {
+                return
+            }
+            switch changes {
+            case .Initial:
+                self.taskTableView.reloadData()
+                
+            case .Update(_, let deletions, let insertions, let modifications):
+                self.taskTableView.beginUpdates()
+                if insertions.count > 0 {
+                    self.taskTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+                }
+                
+                if modifications.count > 0 {
+                    self.taskTableView.reloadRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+                }
+                
+                if deletions.count > 0 {
+                    self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
+                        withRowAnimation: .Automatic)
+                    
+                    dispatch_delay(0.25, closure: { [unowned self] in
+                        self.taskTableView.reloadData()
+                        })
+                }
+                
+                self.taskTableView.endUpdates()
+
+            case .Error(let error):
+                print(error)
+                break
+            }
+            })
+        
+        runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+            if self.statusSegment.selectedSegmentIndex == 1 {
+                return
+            }
+            switch changes {
+            case .Initial:
+                self.taskTableView.reloadData()
+                
+            case .Update(_, let deletions, let insertions, let modifications):
+                self.taskTableView.beginUpdates()
+                if insertions.count > 0 {
+                    self.taskTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+                }
+                
+                if modifications.count > 0 {
+                    self.taskTableView.reloadRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+                }
+                
+                if deletions.count > 0 {
+                    self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
+                        withRowAnimation: .Automatic)
+                    
+                    dispatch_delay(0.25, closure: { [unowned self] in
+                        self.taskTableView.reloadData()
+                        })
+                }
+                self.taskTableView.endUpdates()
+                
+                
+                
+            case .Error(let error):
+                print(error)
+                break
+            }
+            })
+        
+    }
+    
     // MARK: - actions
     func switchScreenAction() {
         doSwitchScreen(true)
@@ -177,6 +268,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func calendarAction() {
         print(finishTasks?.count)
         print(runningTasks?.count)
+        
+        print(finishTasks?.first)
+        print(runningTasks?.first)
     }
     
     private func doSwitchScreen(animation: Bool) {
@@ -269,6 +363,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.taskTableView.reloadData()
     }
     
+    func markTaskFinish(btn: UIButton) {
+        guard let task = self.runningTasks?[btn.tag] else {
+            return
+        }
+        RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+    }
+    
+    func markTaskRunning(btn: UIButton) {
+        guard let task = self.finishTasks?[btn.tag] else {
+            return
+        }
+        RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
+    }
+    
     // MARK: - table view
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
@@ -290,12 +398,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TaskTableViewCell.reuseId, forIndexPath: indexPath) as! TaskTableViewCell
+        cell.taskStatusButton.tag = indexPath.row
+        cell.taskStatusButton.removeTarget(self, action: #selector(self.markTaskFinish(_:)), forControlEvents: .TouchUpInside)
+        cell.taskStatusButton.removeTarget(self, action: #selector(self.markTaskRunning(_:)), forControlEvents: .TouchUpInside)
         
         var task: Task?
         if self.inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
+            
+            cell.taskStatusButton.addTarget(self, action: #selector(self.markTaskFinish(_:)), forControlEvents: .TouchUpInside)
         } else {
             task = self.finishTasks?[indexPath.row]
+            cell.taskStatusButton.addTarget(self, action: #selector(self.markTaskRunning(_:)), forControlEvents: .TouchUpInside)
         }
         
         if let t = task {
@@ -315,7 +429,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
-    
-    
-    
 }

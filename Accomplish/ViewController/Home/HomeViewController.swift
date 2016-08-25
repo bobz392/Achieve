@@ -52,10 +52,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - ui config
     private func configMainUI() {
         let colors = Colors()
-        
-        self.taskTableView.backgroundColor = colors.cloudColor
         self.currentDateLabel.textColor = colors.cloudColor
-        
+        self.taskTableView.backgroundColor = colors.cloudColor
         self.taskTableView.separatorColor = colors.separatorColor
         self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor

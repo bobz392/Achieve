@@ -35,6 +35,8 @@ class TaskTableViewCell: UITableViewCell {
         icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let image = icon.imageWithSize(CGSize(width: 20, height: 25))
         self.ellipsisButton.setImage(image, forState: .Normal)
+        
+        self.layoutMargins = UIEdgeInsetsZero
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

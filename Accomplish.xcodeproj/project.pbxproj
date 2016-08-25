@@ -58,7 +58,6 @@
 		C77193FB1D6E5A1400437560 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F91D6E5A1400437560 /* ScheduleViewController.swift */; };
 		C77193FC1D6E5A1400437560 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */; };
 		C771942D1D6F391500437560 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771942C1D6F391500437560 /* RealmManager.swift */; };
-		C77194311D6F975200437560 /* Range+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194301D6F975200437560 /* Range+Array.swift */; };
 		C77194601D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194341D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */; };
 		C77194611D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194351D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */; };
 		C77194621D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194361D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */; };
@@ -203,7 +202,6 @@
 		C77193F91D6E5A1400437560 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		C771942C1D6F391500437560 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		C77194301D6F975200437560 /* Range+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+Array.swift"; sourceTree = "<group>"; };
 		C77194341D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap"; sourceTree = "<group>"; };
 		C77194351D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap"; sourceTree = "<group>"; };
 		C77194361D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap"; sourceTree = "<group>"; };
@@ -293,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */,
-				C77194301D6F975200437560 /* Range+Array.swift */,
 			);
 			name = Extension;
 			path = ..;
@@ -695,7 +692,6 @@
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
-				C77194311D6F975200437560 /* Range+Array.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,

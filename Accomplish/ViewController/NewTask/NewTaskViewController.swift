@@ -161,7 +161,6 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         p.view.addSubview(self.view)
         
         self.cardViewTopConstraint.constant = (p.view.frame.height - cardViewHeight) * 0.5
-        
         self.renderImageView.image = filter.imageFromCurrentFramebuffer()
         
         let tapDissmiss = UITapGestureRecognizer(target: self, action: #selector(self.dissmissAction(_:)))

@@ -41,4 +41,9 @@ extension UIView {
         self.layer.addAnimation(animation, forKey: "cornerRadius")
         self.layer.cornerRadius = to
     }
+    
+    func buttonColor(colors: Colors) {
+        self.tintColor = colors.mainGreenColor
+        self.backgroundColor = colors.cloudColor
+    }
 }

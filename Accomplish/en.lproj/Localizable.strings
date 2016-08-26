@@ -25,3 +25,5 @@
 "high"="High";
 "normal"="Normal";
 "low"="Low";
+
+"callAction"="Call ";

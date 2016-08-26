@@ -86,18 +86,12 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.view.backgroundColor = colors.mainGreenColor
         
         self.statusSegment.tintColor = colors.mainGreenColor
-        
         self.emptyHintLabel.textColor = colors.secondaryTextColor
         
-        self.settingButton.tintColor = colors.mainGreenColor
-        self.settingButton.backgroundColor = colors.cloudColor
-        
-        self.newTaskButton.tintColor = colors.mainGreenColor
-        self.newTaskButton.backgroundColor = colors.cloudColor
-        self.calendarButton.tintColor = colors.mainTextColor
-        self.calendarButton.backgroundColor = colors.cloudColor
-        self.fullScreenButton.tintColor = colors.mainGreenColor
-        self.fullScreenButton.backgroundColor = colors.cloudColor
+        self.settingButton.buttonColor(colors)
+        self.newTaskButton.buttonColor(colors)
+        self.calendarButton.buttonColor(colors)
+        self.fullScreenButton.buttonColor(colors)
         
         let coffeeIcon = FAKFontAwesome.coffeeIconWithSize(60)
         coffeeIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -211,11 +205,16 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                     
                     dispatch_delay(0.25, closure: { [unowned self] in
                         self.taskTableView.reloadData()
+                        //                        if let deleteIndex = deletions.last,
+                        //                            let count = self.finishTasks?.count
+                        //                            where deleteIndex < count {
+                        //                            self.taskTableView.reloadRowsAtIndexPaths(Array(deleteIndex...count - 1).map{ NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .None)
+                        //                        }
                         })
                 }
                 
                 self.taskTableView.endUpdates()
-
+                
             case .Error(let error):
                 print(error)
                 break
@@ -245,6 +244,11 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                         withRowAnimation: .Automatic)
                     
                     dispatch_delay(0.25, closure: { [unowned self] in
+                        //                        if let deleteIndex = deletions.last,
+                        //                            let count = self.runningTasks?.count
+                        //                            where deleteIndex < count {
+                        //                            self.taskTableView.reloadRowsAtIndexPaths(Array(deleteIndex...count - 1).map{ NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .None)
+                        //                        }
                         self.taskTableView.reloadData()
                         })
                 }
@@ -318,28 +322,12 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func newTaskAction() {
-        let alertController = UIAlertController(title: Localized("newTask"), message: nil, preferredStyle: .ActionSheet)
-        let customAction = UIAlertAction(title: Localized("customTask"), style: .Destructive) { [unowned self] (action) in
-            let vc = NewTaskViewController()
-            self.addChildViewController(vc)
-            vc.didMoveToParentViewController(self)
+        let newTaskVC = NewTaskViewController()
+        self.addChildViewController(newTaskVC)
+        newTaskVC.didMoveToParentViewController(self)
+        dispatch_delay(0.25) { [unowned self] in
+            self.newTaskButton.transform = CGAffineTransformMakeScale(1, 1)
         }
-        alertController.addAction(customAction)
-        
-        let systemAction = UIAlertAction(title: Localized("systemTask"), style: .Destructive) { (action) in
-            
-        }
-        alertController.addAction(systemAction)
-        
-        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .Cancel) { (action) in
-            
-        }
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true) {
-            
-        }
-        buttonAnimationEndAction(newTaskButton)
     }
     
     func buttonAnimationStartAction(btn: UIButton) {

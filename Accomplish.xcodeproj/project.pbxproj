@@ -84,6 +84,21 @@
 		C771948D1D6FA4F500437560 /* ChartsRealm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C771944A1D6FA46500437560 /* ChartsRealm.framework.dSYM */; };
 		C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194911D6FCFC200437560 /* BaseViewController.swift */; };
 		C77194941D6FD5E600437560 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194931D6FD5E600437560 /* Trigger.swift */; };
+		C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194951D6FE96A00437560 /* AssociateViewController.swift */; };
+		C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194961D6FE96A00437560 /* AssociateViewController.xib */; };
+		C771949C1D6FEA1000437560 /* TriggerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771949A1D6FEA1000437560 /* TriggerTableViewCell.swift */; };
+		C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771949B1D6FEA1000437560 /* TriggerTableViewCell.xib */; };
+		C77194A01D6FEB0B00437560 /* SystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771949E1D6FEB0B00437560 /* SystemViewController.swift */; };
+		C77194A11D6FEB0B00437560 /* SystemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771949F1D6FEB0B00437560 /* SystemViewController.xib */; };
+		C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194A21D6FF14200437560 /* AddressBookViewController.swift */; };
+		C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194A31D6FF14200437560 /* AddressBookViewController.xib */; };
+		C77194A71D6FF16700437560 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194A61D6FF16700437560 /* AddressBook.framework */; };
+		C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AA1D6FF1A200437560 /* AddressBook.swift */; };
+		C77194AD1D6FF1E000437560 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AC1D6FF1E000437560 /* String+Convenient.swift */; };
+		C77194AE1D6FF25D00437560 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194A81D6FF17400437560 /* MessageUI.framework */; };
+		C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */; };
+		C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194B61D6FF35000437560 /* AddressBookTableViewCell.xib */; };
+		C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194B81D6FF3E600437560 /* libicucore.tbd */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -250,6 +265,23 @@
 		C771945F1D6FA46500437560 /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = YYText.framework.dSYM; sourceTree = "<group>"; };
 		C77194911D6FCFC200437560 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C77194931D6FD5E600437560 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
+		C77194951D6FE96A00437560 /* AssociateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociateViewController.swift; sourceTree = "<group>"; };
+		C77194961D6FE96A00437560 /* AssociateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssociateViewController.xib; sourceTree = "<group>"; };
+		C771949A1D6FEA1000437560 /* TriggerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriggerTableViewCell.swift; sourceTree = "<group>"; };
+		C771949B1D6FEA1000437560 /* TriggerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TriggerTableViewCell.xib; sourceTree = "<group>"; };
+		C771949E1D6FEB0B00437560 /* SystemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemViewController.swift; sourceTree = "<group>"; };
+		C771949F1D6FEB0B00437560 /* SystemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemViewController.xib; sourceTree = "<group>"; };
+		C77194A21D6FF14200437560 /* AddressBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
+		C77194A31D6FF14200437560 /* AddressBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
+		C77194A61D6FF16700437560 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		C77194A81D6FF17400437560 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C77194AA1D6FF1A200437560 /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
+		C77194AC1D6FF1E000437560 /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
+		C77194AF1D6FF26700437560 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C77194B21D6FF28300437560 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookTableViewCell.swift; sourceTree = "<group>"; };
+		C77194B61D6FF35000437560 /* AddressBookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressBookTableViewCell.xib; sourceTree = "<group>"; };
+		C77194B81D6FF3E600437560 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -268,6 +300,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
+				C77194AE1D6FF25D00437560 /* MessageUI.framework in Frameworks */,
+				C77194A71D6FF16700437560 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +312,11 @@
 		C7105E9C1D6C7AD60096A1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C77194B81D6FF3E600437560 /* libicucore.tbd */,
+				C77194B21D6FF28300437560 /* Security.framework */,
+				C77194AF1D6FF26700437560 /* libz.tbd */,
+				C77194A81D6FF17400437560 /* MessageUI.framework */,
+				C77194A61D6FF16700437560 /* AddressBook.framework */,
 				C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -295,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */,
+				C77194AC1D6FF1E000437560 /* String+Convenient.swift */,
 			);
 			name = Extension;
 			path = ..;
@@ -309,6 +350,7 @@
 				C77193F51D6DE9C000437560 /* Constants.swift */,
 				C77193F71D6E488F00437560 /* UserDefault.swift */,
 				C771942C1D6F391500437560 /* RealmManager.swift */,
+				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -406,10 +448,17 @@
 		C77192481D6CEE4E00437560 /* NewTask */ = {
 			isa = PBXGroup;
 			children = (
+				C77194991D6FE9F100437560 /* Cell */,
 				C771924D1D6CEE6800437560 /* NewTaskViewController.swift */,
 				C771924E1D6CEE6800437560 /* NewTaskViewController.xib */,
 				C77193F91D6E5A1400437560 /* ScheduleViewController.swift */,
 				C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */,
+				C77194951D6FE96A00437560 /* AssociateViewController.swift */,
+				C77194961D6FE96A00437560 /* AssociateViewController.xib */,
+				C771949E1D6FEB0B00437560 /* SystemViewController.swift */,
+				C771949F1D6FEB0B00437560 /* SystemViewController.xib */,
+				C77194A21D6FF14200437560 /* AddressBookViewController.swift */,
+				C77194A31D6FF14200437560 /* AddressBookViewController.xib */,
 			);
 			path = NewTask;
 			sourceTree = "<group>";
@@ -464,6 +513,17 @@
 			);
 			name = iOS;
 			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		C77194991D6FE9F100437560 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C771949A1D6FEA1000437560 /* TriggerTableViewCell.swift */,
+				C771949B1D6FEA1000437560 /* TriggerTableViewCell.xib */,
+				C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */,
+				C77194B61D6FF35000437560 /* AddressBookTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C7860E341D6C23FF000281FA = {
@@ -600,15 +660,18 @@
 				C771946B1D6FA46500437560 /* 7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap in Resources */,
 				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
 				C77194691D6FA46500437560 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap in Resources */,
+				C77194A11D6FEB0B00437560 /* SystemViewController.xib in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
 				C77194661D6FA46500437560 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */,
 				C77194681D6FA46500437560 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */,
 				C77194611D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */,
+				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
 				C771946A1D6FA46500437560 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */,
 				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
 				C77194791D6FA46500437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
+				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
 				C77194771D6FA46500437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C771947A1D6FA46500437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */,
@@ -624,6 +687,8 @@
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
 				C77194651D6FA46500437560 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */,
 				C77194641D6FA46500437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
+				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
+				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C77194781D6FA46500437560 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap in Resources */,
 				C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */,
 				C77194601D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */,
@@ -679,6 +744,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */,
 				C77193F61D6DE9C000437560 /* Constants.swift in Sources */,
 				C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
@@ -687,21 +753,27 @@
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
+				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
+				C77194AD1D6FF1E000437560 /* String+Convenient.swift in Sources */,
+				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
 				C77193FB1D6E5A1400437560 /* ScheduleViewController.swift in Sources */,
+				C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */,
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C771942D1D6F391500437560 /* RealmManager.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
+				C771949C1D6FEA1000437560 /* TriggerTableViewCell.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
+				C77194A01D6FEB0B00437560 /* SystemViewController.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */,

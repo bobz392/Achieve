@@ -326,15 +326,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         alertController.addAction(customAction)
         
-        let systemAction = UIAlertAction(title: Localized("dependTask"), style: .Destructive) { (action) in
+        let systemAction = UIAlertAction(title: Localized("systemTask"), style: .Destructive) { (action) in
             
         }
         alertController.addAction(systemAction)
-        
-        let dependAction = UIAlertAction(title: Localized("systemTask"), style: .Destructive) { (action) in
-            
-        }
-        alertController.addAction(dependAction)
         
         let cancelAction = UIAlertAction(title: Localized("cancel"), style: .Cancel) { (action) in
             

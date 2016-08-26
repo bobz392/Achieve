@@ -11,5 +11,6 @@
 
 #import "FontAwesomeKit.h"
 #import "DateTools.h"
+#import <CommonCrypto/CommonDigest.h>
 
 #endif /* Accomplish_Bridging_Header_h */

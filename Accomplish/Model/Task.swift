@@ -37,14 +37,14 @@ class Task: Object {
     dynamic var createdDate: NSDate?
     dynamic var notifyDate: NSDate?
     dynamic var finishedDate: NSDate?
+    dynamic var taskRepeat: Int8 = 0
     
     override class func primaryKey() -> String? {
         return "uuid"
     }
     
-    func createDefaultTask(taskToDo: String, priority: Int = kTaskPriorityNormal, createdDate: NSDate?) {
-        if let date = createdDate {
-            self.createdDate = date
+    func createDefaultTask(taskToDo: String, priority: Int = kTaskPriorityNormal) {
+        if let date = self.createdDate {
             self.createdFormattedDate = date.formattedDateWithFormat(createdDateFormat)
             self.uuid = date.formattedDateWithFormat(uuidFormat)
         } else {

@@ -10,6 +10,8 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
     
+    weak var taskDateDelegate: NewTaskDateDelegate? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

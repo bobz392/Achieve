@@ -9,7 +9,7 @@
 import UIKit
 import GPUImage
 
-class NewTaskViewController: UIViewController, UITextFieldDelegate {
+class NewTaskViewController: UIViewController, UITextFieldDelegate, NewTaskDateDelegate {
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var renderImageView: UIImageView!
@@ -25,6 +25,8 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
     
     private let cardViewHeight: CGFloat = 194
+    
+    private let task = Task()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +110,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     func scheduleAction() {
         let scheduleVC = ScheduleViewController()
+        
         let nav = UINavigationController(rootViewController: scheduleVC)
         self.parentViewController?.presentViewController(nav, animated: true, completion: {
             
@@ -123,9 +126,8 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - logic
     func saveNewTask(title: String) {
-        let task = Task()
         let priority = prioritySegmental.selectedSegmentIndex
-        task.createDefaultTask(title, priority:  priority, createdDate: nil)
+        task.createDefaultTask(title, priority:  priority)
         
         RealmManager.shareManager.createTask(task)
         self.cancelAction()
@@ -198,5 +200,15 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
             self.view.removeFromSuperview()
         }
     }
+    
+    // MARK: - NewTaskDateDelegate
+    
+    func notifyTaskDate(date: NSDate) {
+        task.notifyDate = date
+    }
 }
 
+
+protocol NewTaskDateDelegate: NSObjectProtocol {
+    func notifyTaskDate(date: NSDate)
+}

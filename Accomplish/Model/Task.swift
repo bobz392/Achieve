@@ -32,12 +32,15 @@ class Task: Object {
     dynamic var taskNote = ""
     dynamic var status = kTaskRunning
     dynamic var taskType = kCustomTaskType
+    dynamic var taskRepeat: Int8 = 0
     dynamic var priority = kTaskPriorityNormal
     dynamic var createdFormattedDate: String = ""
     dynamic var createdDate: NSDate?
     dynamic var notifyDate: NSDate?
     dynamic var finishedDate: NSDate?
-    dynamic var taskRepeat: Int8 = 0
+    
+    dynamic var hasTrigger: Bool = false
+    dynamic var trigger: Trigger?
     
     override class func primaryKey() -> String? {
         return "uuid"

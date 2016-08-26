@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var cardView: UIView!
     
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - ui config
-    private func configMainUI() {
+    override func configMainUI() {
         let colors = Colors()
         self.currentDateLabel.textColor = colors.cloudColor
         self.taskTableView.backgroundColor = colors.cloudColor

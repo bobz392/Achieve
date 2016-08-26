@@ -8,18 +8,25 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController {
+class ScheduleViewController: BaseViewController {
     
     weak var taskDateDelegate: NewTaskDateDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .Plain, target: self, action: #selector(back))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.back))
+        self.view.addGestureRecognizer(tap)
     }
-
+    
+    override func configMainUI() {
+        let colors = Colors()
+        
+        self.view.backgroundColor = colors.mainGreenColor
+    }
+    
     func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

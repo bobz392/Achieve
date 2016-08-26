@@ -9,7 +9,7 @@
 import UIKit
 import GPUImage
 
-class NewTaskViewController: UIViewController, UITextFieldDelegate, NewTaskDateDelegate {
+class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDateDelegate {
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var renderImageView: UIImageView!
@@ -51,7 +51,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, NewTaskDateD
         print("deinit")
     }
     
-    private func configMainUI() {
+    override func configMainUI() {
         let colors = Colors()
         self.cardView.backgroundColor = colors.cloudColor
         self.titleTextField.tintColor = colors.mainGreenColor
@@ -110,9 +110,8 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate, NewTaskDateD
     
     func scheduleAction() {
         let scheduleVC = ScheduleViewController()
-        
-        let nav = UINavigationController(rootViewController: scheduleVC)
-        self.parentViewController?.presentViewController(nav, animated: true, completion: {
+        scheduleVC.taskDateDelegate = self
+        self.parentViewController?.presentViewController(scheduleVC, animated: true, completion: {
             
         })
     }

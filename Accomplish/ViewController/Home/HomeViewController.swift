@@ -322,9 +322,28 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func newTaskAction() {
-        let newTaskVC = NewTaskViewController()
-        self.addChildViewController(newTaskVC)
-        newTaskVC.didMoveToParentViewController(self)
+        let alertController = UIAlertController(title: Localized("newTask"), message: nil, preferredStyle: .ActionSheet)
+        let customAction = UIAlertAction(title: Localized("customTask"), style: .Destructive) { [unowned self] (action) in
+            let vc = NewTaskViewController()
+            self.addChildViewController(vc)
+            vc.didMoveToParentViewController(self)
+        }
+        alertController.addAction(customAction)
+        
+        let systemAction = UIAlertAction(title: Localized("systemTask"), style: .Destructive) { (action) in
+            let systemVC = SystemTaskViewController()
+            self.presentViewController(systemVC, animated: true, completion: { })
+        }
+        alertController.addAction(systemAction)
+        
+        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .Cancel) { (action) in }
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) { }
+        
+//        let newTaskVC = NewTaskViewController()
+//        self.addChildViewController(newTaskVC)
+//        newTaskVC.didMoveToParentViewController(self)
         dispatch_delay(0.25) { [unowned self] in
             self.newTaskButton.transform = CGAffineTransformMakeScale(1, 1)
         }

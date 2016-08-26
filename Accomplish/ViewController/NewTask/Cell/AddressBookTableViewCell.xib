@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="AddressBookTableViewCell" customModule="Accomplish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-tH-Nfo">
+                        <rect key="frame" x="16" y="11" width="38" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="vUh-mo-Z1E"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmb-Vx-efq">
+                        <rect key="frame" x="16" y="34" width="36" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="MBU-gz-S81"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5z8-fc-OtZ">
+                        <rect key="frame" x="271" y="23" width="47" height="26"/>
+                        <color key="backgroundColor" red="0.80023035340000004" green="0.9466013673" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="Kv2-ag-ImR"/>
+                            <constraint firstAttribute="width" constant="47" id="o8n-qz-9Hg"/>
+                        </constraints>
+                        <state key="highlighted" image="add_recent_select_icon"/>
+                        <connections>
+                            <action selector="inviteTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jcF-0h-Xll"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="A0j-tH-Nfo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2r6-yj-UR7"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qmb-Vx-efq" secondAttribute="trailing" constant="80" id="8fU-84-EUj"/>
+                    <constraint firstItem="A0j-tH-Nfo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Gvs-uD-AsC"/>
+                    <constraint firstItem="qmb-Vx-efq" firstAttribute="top" secondItem="A0j-tH-Nfo" secondAttribute="bottom" constant="2" id="OsA-Vf-7LS"/>
+                    <constraint firstItem="qmb-Vx-efq" firstAttribute="leading" secondItem="A0j-tH-Nfo" secondAttribute="leading" id="QEG-al-gUU"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A0j-tH-Nfo" secondAttribute="trailing" constant="80" id="lgz-Dc-5ma"/>
+                    <constraint firstItem="5z8-fc-OtZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vye-L6-4yx"/>
+                    <constraint firstAttribute="trailing" secondItem="5z8-fc-OtZ" secondAttribute="trailing" constant="2" id="xvE-8r-kO3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="inviteButton" destination="5z8-fc-OtZ" id="tvD-sS-fJa"/>
+                <outlet property="nameLabel" destination="A0j-tH-Nfo" id="jKj-Ed-pUU"/>
+                <outlet property="phoneNumberLabel" destination="qmb-Vx-efq" id="awA-0A-dvS"/>
+            </connections>
+            <point key="canvasLocation" x="303" y="400"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add_recent_select_icon" width="92" height="50"/>
+    </resources>
+</document>

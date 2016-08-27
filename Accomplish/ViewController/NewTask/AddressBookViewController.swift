@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MessageUI
 import SVProgressHUD
 
 private typealias Indexes = [String]
@@ -154,9 +153,6 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         if let person = person {
             cell.nameLabel.text = person.name.fullName
             cell.phoneNumberLabel.text = person.phoneNumbers.first?.displayName ?? ""
-            cell.invitationHandler = {
-                self.invite(person: person)
-            }
         }
         
         return cell
@@ -288,43 +284,6 @@ extension AddressBookViewController {
         }
         
         return (indexes, data)
-    }
-    
-}
-
-extension AddressBookViewController: MFMessageComposeViewControllerDelegate {
-    
-    private func invite(person person: AddressBook.Person) {
-        
-        guard MFMessageComposeViewController.canSendText() else {
-            SVProgressHUD.showWithStatus("无法发送短信")
-            return
-        }
-        
-        guard let phoneNumberString = person.phoneNumbers.first?.phoneNumberString else {
-            SVProgressHUD.showWithStatus("无法添加该联系人")
-            return
-        }
-        
-        let messageComposer = MFMessageComposeViewController()
-        messageComposer.recipients = [phoneNumberString]
-        //    messageComposer.body = shareInfo.makeBodyText(username: delegate.name ?? "", html: false)
-        messageComposer.messageComposeDelegate = self
-        
-        navigationController?.presentViewController(messageComposer, animated: true, completion: nil)
-    }
-    
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
-        
-        if result == MessageComposeResultFailed {
-            SVProgressHUD.showWithStatus("邀请失败")
-        }
-        
-        if result == MessageComposeResultCancelled {
-            SVProgressHUD.showWithStatus("邀请已取消")
-        }
-        
-        navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

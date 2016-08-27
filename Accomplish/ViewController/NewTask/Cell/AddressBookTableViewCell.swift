@@ -13,7 +13,6 @@ final class AddressBookTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var phoneNumberLabel: UILabel!
     
-    var invitationHandler: dispatch_block_t?
     
     static var reuseId: String {
         return "AddressBookTableViewCell"
@@ -27,14 +26,6 @@ final class AddressBookTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         selectionStyle = .None
-    }
-    
-}
-
-extension AddressBookTableViewCell {
-    
-    @IBAction func inviteTapped() {
-        invitationHandler?()
     }
     
 }

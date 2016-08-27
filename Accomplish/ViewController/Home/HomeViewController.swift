@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseViewController {
     
     @IBOutlet weak var cardView: UIView!
     
@@ -341,6 +341,16 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
     }
     
+    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - table view
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
@@ -385,12 +395,4 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     private func inRunningTasksTable() -> Bool {
         return self.statusSegment.selectedSegmentIndex == 0
     }
-    
-    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
 }

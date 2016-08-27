@@ -28,4 +28,5 @@
 "low"="Low";
 
 "selectAction"="Select an action";
-"callAction"="Call "; 
+"callAction"="Call ";
+"sendMessage"="Send Message To";

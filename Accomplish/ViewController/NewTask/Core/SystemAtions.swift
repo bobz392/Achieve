@@ -30,6 +30,8 @@ enum SystemActionType: Int {
         switch self {
         case .PhoneCall:
             return Localized("callAction")
+        case .MessageTo:
+            return Localized("sendMessage")
         default:
             return ""
         }
@@ -46,24 +48,35 @@ enum SystemActionType: Int {
     }
     
     func actionBlockWithType() -> ActionBlock? {
+        let urlScheme: String
         switch self {
         case .PhoneCall:
-            return { (string) -> Void in
-                guard let url = NSURL(string: "tel:\(string)") else {
-                    return
-                }
-                let application = UIApplication.sharedApplication()
-                guard application.canOpenURL(url) == true else {
-                    debugPrint("can not call")
-                    return
-                }
-                
-                application.openURL(url)
+            urlScheme = "tel:"
+            
+        case .MessageTo:
+            urlScheme = "sms:"
+            
+        case .FaceTime:
+            urlScheme = "facetime://"
+        
+        case .MailTo:
+            urlScheme = "mailto:"
+        }
+        
+        return { (string) -> Void in
+            let checkString = string.stringByReplacingOccurrencesOfString(" ", withString: "")
+            guard let url = NSURL(string: "\(urlScheme)\(checkString)") else {
+                return
+            }
+            let application = UIApplication.sharedApplication()
+            guard application.canOpenURL(url) == true else {
+                debugPrint("can not call")
+                return
             }
             
-        default:
-            return nil
+            application.openURL(url)
         }
+        
     }
 }
 
@@ -75,15 +88,39 @@ enum ActionFeaturePresent {
     case AddressBook
 }
 
-//func configWithIcon(iconString: String) {
-//    self.actionButton.layer.cornerRadius =  (UIScreen.mainScreen().bounds.width / 5 - 15) * 0.5
-//    let colors = Colors()
-//    let icon = try? FAKFontAwesome(identifier: iconString, size: 20)
-//    icon?.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-//    actionButton.setImage(icon?.imageWithSize(CGSize(width: 20, height: 20)), forState: .Normal)
-//}
+//extension AddressBookViewController: MFMessageComposeViewControllerDelegate {
 //
-//func configWithString(string: String) {
-//    self.actionButton.layer.cornerRadius =  self.actionButton.bounds.width * 0.5
-//    actionButton.setTitle(string, forState: .Normal)
+//    private func invite(person person: AddressBook.Person) {
+//
+//        guard MFMessageComposeViewController.canSendText() else {
+//            SVProgressHUD.showWithStatus("无法发送短信")
+//            return
+//        }
+//
+//        guard let phoneNumberString = person.phoneNumbers.first?.phoneNumberString else {
+//            SVProgressHUD.showWithStatus("无法添加该联系人")
+//            return
+//        }
+//
+//        let messageComposer = MFMessageComposeViewController()
+//        messageComposer.recipients = [phoneNumberString]
+//        //    messageComposer.body = shareInfo.makeBodyText(username: delegate.name ?? "", html: false)
+//        messageComposer.messageComposeDelegate = self
+//
+//        navigationController?.presentViewController(messageComposer, animated: true, completion: nil)
+//    }
+//
+//    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+//
+//        if result == MessageComposeResultFailed {
+//            SVProgressHUD.showWithStatus("邀请失败")
+//        }
+//
+//        if result == MessageComposeResultCancelled {
+//            SVProgressHUD.showWithStatus("邀请已取消")
+//        }
+//
+//        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+//    }
+//
 //}

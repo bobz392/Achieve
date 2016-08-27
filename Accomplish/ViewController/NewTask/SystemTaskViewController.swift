@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, TaskActionDataDelegate {
+class SystemTaskViewController: BaseViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var toolView: UIView!
@@ -71,15 +71,19 @@ class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITable
     func cancelAction() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+}
+
+// MARK: - table view
+extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - table view
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actionBuilder.allActions.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(SystemTaskTableViewCell.reuseId, forIndexPath: indexPath) as! SystemTaskTableViewCell
-        cell.iconImage.image = UIImage(named: "app_phone")
+        let action = actionBuilder.allActions[indexPath.row]
+        cell.iconImage.image = UIImage(named: action.actionImage)
         
         return cell
     }
@@ -89,7 +93,7 @@ class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("\(actionBuilder.allActions[indexPath.row].type)")
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedActionType = actionBuilder.allActions[indexPath.row].type
         guard let present = selectedActionType?.actionPresent() else { return }
         
@@ -100,8 +104,11 @@ class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITable
             self.navigationController?.pushViewController(addressVC, animated: true)
         }
     }
+}
+
+// MARK: - TaskActionDataDelegate
+extension SystemTaskViewController: TaskActionDataDelegate {
     
-    // MARK: - TaskActionDataDelegate
     // such as name = zhoubo info = 18827420512
     // taskToText = 1$$zhoubo$$18827420512
     // show = call zhoubo

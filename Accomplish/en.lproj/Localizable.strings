@@ -14,13 +14,13 @@
 
 "noPermission"="No access permission";
 "abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";
-"needABPermission"="Need permission to access Address Book"
+"needABPermission"="Need permission to access Address Book";
 
 "newTask"="Add task";
 "cancel"="Cancel";
 "permit"="Allow";
 "reject"="Reject";
-"save"="save";
+"save"="Save";
 "ok"="Ok";
 "done"="Done";
 "customTask"="Custom task";
@@ -36,7 +36,7 @@
 
 "selectAction"="Select built-in action";
 "callAction"="Call ";
-"sendMessageAction"="Send Message To";
+"sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";
 "mailAction"="Send mail to ";
 

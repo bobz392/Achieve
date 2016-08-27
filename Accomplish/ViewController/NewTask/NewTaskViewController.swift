@@ -9,7 +9,7 @@
 import UIKit
 import GPUImage
 
-class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDataDelegate {
+class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var renderImageView: UIImageView!
     @IBOutlet weak var cardView: UIView!
@@ -170,7 +170,13 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         return true
     }
     
-    // MARK: - parent view controller
+    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
+}
+
+// MARK: - parent view controller
+extension NewTaskViewController {
+    
     override func willMoveToParentViewController(parent: UIViewController?) {
         super.willMoveToParentViewController(parent)
         guard let p = parent else {
@@ -223,7 +229,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
             self.view.removeFromSuperview()
         }
     }
-    
+}
+
+extension NewTaskViewController: NewTaskDataDelegate {
     // MARK: - NewTaskDateDelegate
     
     func notifyTaskDate(date: NSDate) {
@@ -243,9 +251,6 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         
         self.saveButton.hidden = false
     }
-    
-    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
 }
 
 

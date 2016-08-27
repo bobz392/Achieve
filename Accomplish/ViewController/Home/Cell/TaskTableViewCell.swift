@@ -24,6 +24,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskTitleLabel: UILabel!
     
     var systemAction: SystemActionContent? = nil
+    var task: Task?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +47,8 @@ class TaskTableViewCell: UITableViewCell {
         
         self.taskStatusButton.tintColor = colors.mainGreenColor
         self.taskStatusButton.backgroundColor = colors.cloudColor
+        
+        self.taskStatusButton.addTarget(self, action: #selector(self.markTast(_:)), forControlEvents: .TouchUpInside)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -55,6 +58,7 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     func configCellUse(task: Task) {
+        self.task = task
         let colors = Colors()
         
         switch task.priority {
@@ -134,5 +138,14 @@ class TaskTableViewCell: UITableViewCell {
         guard let action = systemAction else { return }
         let block = action.type.actionBlockWithType()
         block?(actionString: action.info)
+    }
+    
+    func markTast(btn: UIButton) {
+        guard let task = self.task else { return }
+        if task.status == kTaskFinish {
+            RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
+        } else {
+            RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+        }
     }
 }

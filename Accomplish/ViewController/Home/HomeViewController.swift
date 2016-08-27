@@ -198,15 +198,6 @@ class HomeViewController: BaseViewController {
                 if deletions.count > 0 {
                     self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
                         withRowAnimation: .Automatic)
-                    
-                    dispatch_delay(0.25, closure: { [unowned self] in
-                        self.taskTableView.reloadData()
-                        //                        if let deleteIndex = deletions.last,
-                        //                            let count = self.finishTasks?.count
-                        //                            where deleteIndex < count {
-                        //                            self.taskTableView.reloadRowsAtIndexPaths(Array(deleteIndex...count - 1).map{ NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .None)
-                        //                        }
-                        })
                 }
                 
                 self.taskTableView.endUpdates()
@@ -238,19 +229,8 @@ class HomeViewController: BaseViewController {
                 if deletions.count > 0 {
                     self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
                         withRowAnimation: .Automatic)
-                    
-                    dispatch_delay(0.25, closure: { [unowned self] in
-                        //                        if let deleteIndex = deletions.last,
-                        //                            let count = self.runningTasks?.count
-                        //                            where deleteIndex < count {
-                        //                            self.taskTableView.reloadRowsAtIndexPaths(Array(deleteIndex...count - 1).map{ NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .None)
-                        //                        }
-                        self.taskTableView.reloadData()
-                        })
                 }
                 self.taskTableView.endUpdates()
-                
-                
                 
             case .Error(let error):
                 print(error)
@@ -327,20 +307,6 @@ class HomeViewController: BaseViewController {
         self.taskTableView.reloadData()
     }
     
-    func markTaskFinish(btn: UIButton) {
-        guard let task = self.runningTasks?[btn.tag] else {
-            return
-        }
-        RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
-    }
-    
-    func markTaskRunning(btn: UIButton) {
-        guard let task = self.finishTasks?[btn.tag] else {
-            return
-        }
-        RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
-    }
-    
     @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
@@ -372,18 +338,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TaskTableViewCell.reuseId, forIndexPath: indexPath) as! TaskTableViewCell
-        cell.taskStatusButton.tag = indexPath.row
-        cell.taskStatusButton.removeTarget(self, action: #selector(self.markTaskFinish(_:)), forControlEvents: .TouchUpInside)
-        cell.taskStatusButton.removeTarget(self, action: #selector(self.markTaskRunning(_:)), forControlEvents: .TouchUpInside)
         
         var task: Task?
         if self.inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
-            
-            cell.taskStatusButton.addTarget(self, action: #selector(self.markTaskFinish(_:)), forControlEvents: .TouchUpInside)
         } else {
-            task = self.finishTasks?[indexPath.row]
-            cell.taskStatusButton.addTarget(self, action: #selector(self.markTaskRunning(_:)), forControlEvents: .TouchUpInside)
+            task = self.finishTasks?[indexPath.row]   
         }
         
         if let t = task {

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseCardViewController" customModule="Accomplish" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSF-t9-hCG">
+                    <rect key="frame" x="20" y="34" width="54" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rw-Pq-KOI" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
+                    <rect key="frame" x="270" y="525" width="60" height="60"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Q2P-k0-lP7"/>
+                        <constraint firstAttribute="width" constant="60" id="c7e-X6-rcc"/>
+                    </constraints>
+                    <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ct-c1-I28">
+                    <rect key="frame" x="20" y="70" width="560" height="435"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3Ct-c1-I28" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="9Z2-lm-beC"/>
+                <constraint firstItem="3Ct-c1-I28" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="BWM-1c-sbT"/>
+                <constraint firstAttribute="trailing" secondItem="3Ct-c1-I28" secondAttribute="trailing" constant="20" id="Chk-H6-MuG"/>
+                <constraint firstAttribute="bottom" secondItem="6Rw-Pq-KOI" secondAttribute="bottom" constant="15" id="NBJ-Nx-daB"/>
+                <constraint firstItem="3Ct-c1-I28" firstAttribute="top" secondItem="mSF-t9-hCG" secondAttribute="bottom" constant="10" id="TNb-56-lwE"/>
+                <constraint firstItem="mSF-t9-hCG" firstAttribute="leading" secondItem="3Ct-c1-I28" secondAttribute="leading" id="djx-Sw-EJ0"/>
+                <constraint firstItem="6Rw-Pq-KOI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dlL-Xm-jGs"/>
+                <constraint firstItem="6Rw-Pq-KOI" firstAttribute="top" secondItem="3Ct-c1-I28" secondAttribute="bottom" constant="20" id="xfS-qE-avc"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

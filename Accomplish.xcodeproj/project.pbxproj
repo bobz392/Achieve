@@ -106,6 +106,8 @@
 		C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194D01D710A8900437560 /* TaskStringManager.swift */; };
 		C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195761D71530100437560 /* SystemActionBuilder.swift */; };
 		C77195791D71D0F800437560 /* Subtask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195781D71D0F800437560 /* Subtask.swift */; };
+		C771957C1D71ED6400437560 /* BaseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771957A1D71ED6400437560 /* BaseCardViewController.swift */; };
+		C771957D1D71ED6400437560 /* BaseCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771957B1D71ED6400437560 /* BaseCardViewController.xib */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -297,6 +299,8 @@
 		C77194D01D710A8900437560 /* TaskStringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStringManager.swift; sourceTree = "<group>"; };
 		C77195761D71530100437560 /* SystemActionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionBuilder.swift; sourceTree = "<group>"; };
 		C77195781D71D0F800437560 /* Subtask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subtask.swift; sourceTree = "<group>"; };
+		C771957A1D71ED6400437560 /* BaseCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCardViewController.swift; sourceTree = "<group>"; };
+		C771957B1D71ED6400437560 /* BaseCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseCardViewController.xib; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -465,6 +469,8 @@
 		C77192481D6CEE4E00437560 /* NewTask */ = {
 			isa = PBXGroup;
 			children = (
+				C771957A1D71ED6400437560 /* BaseCardViewController.swift */,
+				C771957B1D71ED6400437560 /* BaseCardViewController.xib */,
 				C77194CD1D710A7600437560 /* Core */,
 				C77194991D6FE9F100437560 /* Cell */,
 				C771924D1D6CEE6800437560 /* NewTaskViewController.swift */,
@@ -736,6 +742,7 @@
 				C77194711D6FA46500437560 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap in Resources */,
 				C77194701D6FA46500437560 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */,
 				C77194721D6FA46500437560 /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap in Resources */,
+				C771957D1D71ED6400437560 /* BaseCardViewController.xib in Resources */,
 				C771947B1D6FA46500437560 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap in Resources */,
 				C77194621D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */,
 			);
@@ -795,6 +802,7 @@
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
+				C771957C1D71ED6400437560 /* BaseCardViewController.swift in Sources */,
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,

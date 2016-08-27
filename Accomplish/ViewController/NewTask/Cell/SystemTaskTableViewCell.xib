@@ -21,11 +21,8 @@
                             <constraint firstAttribute="width" constant="40" id="kQ3-Pc-rbW"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="asdasdsdskfjsadfjsdajflksjdaflkjsadlkfjklsdajfklsdjaflkjsdalkfjsldkafjlksajdflk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhq-7z-xas">
-                        <rect key="frame" x="60" y="20" width="245" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="hMf-Sj-Miw"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="asdasdsdskfjsadfjsdajflksjdaflkjsadlkfjklsdajfklsdjaflkjsdalkfjsldkafjlksajdflk" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhq-7z-xas">
+                        <rect key="frame" x="60" y="13.5" width="245" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>

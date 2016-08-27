@@ -24,7 +24,7 @@
 "dependTask"="Associated task";
 "systemTask"="System task";
 
-"goingDo"="What are you going to do?";
+"goingDo"="What would you like to do?";
 "priority"="Priority";
 
 "high"="High";
@@ -36,11 +36,11 @@
 "sendMessageAction"="Send Message To";
 "faceTimeAction"="Face Time to ";
 "mailAction"="Send mail to ";
-"addSubtaskAction"="Add a task with subtask";
 
-"addPhoneCall"="create a phone call action";
-"addMessage"="create a send message action";
-"addFaceTime"="create a Face Time action";
-"addMail"="create a mail action";
+"addPhoneCall"="Create a phone call action";
+"addMessage"="Create a message action";
+"addFaceTime"="Create a Face Time action";
+"addMail"="Create a mail action";
+"addSubtask"="Add a task with subtask";
 
 "addressBook"="Address Book"; 

@@ -108,6 +108,8 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
             let addressVC = AddressBookViewController.loadFromNib(readPhoneType: false)
             addressVC.delegate = self
             self.navigationController?.pushViewController(addressVC, animated: true)
+    
+        case .KeyValue:
             
         default:
             print("s")

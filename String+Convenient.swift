@@ -29,6 +29,63 @@ extension String {
         
         return result
     }
+}
+
+// Range 
+extension String {
+    func subRange(start: Int, end: Int) -> Range<Index> {
+        let startIndex = self.startIndex.advancedBy(start)
+        let endIndex = self.startIndex.advancedBy(end)
+        return Range(startIndex ..< endIndex)
+    }
+    
+    func index(position: Int) -> Index {
+        return self.startIndex.advancedBy(position)
+    }
+    
+    mutating func replace(range: NSRange, replacement: String) {
+        let startIndex = self.startIndex.advancedBy(range.location)
+        let endIndex = self.startIndex.advancedBy(range.location + range.length)
+        let newRange = Range(startIndex ..< endIndex)
+        replaceRange(newRange, with: replacement)
+        
+    }
+}
+
+// Subscript
+extension String {
+    subscript (r: Range<Int>) -> String {
+        get {
+            let startIndex = self.startIndex.advancedBy(r.startIndex)
+            let endIndex = self.startIndex.advancedBy(r.endIndex)
+            
+            return self[Range(startIndex ..< endIndex)]
+        }
+    }
+    
+    subscript (r: NSRange) -> String {
+        get {
+            let startIndex = self.startIndex.advancedBy(r.location)
+            let endIndex = self.startIndex.advancedBy(r.length + r.location)
+            return self[Range(startIndex ..< endIndex)]
+        }
+    }
+    
+    subscript (p: Int) -> String {
+        get {
+            let startIndex = self.startIndex.advancedBy(p)
+            let endIndex = self.startIndex.advancedBy(p + 1)
+            
+            return self[Range(startIndex ..< endIndex)]
+        }
+    }
+    
+    subscript (i: Index) -> String {
+        get {
+            return self[Range(i.advancedBy(-1) ..< i)]
+        }
+    }
+    
     
 }
 

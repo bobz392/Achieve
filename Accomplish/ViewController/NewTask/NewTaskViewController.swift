@@ -9,9 +9,8 @@
 import UIKit
 import GPUImage
 
-class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDateDelegate {
+class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDataDelegate {
     
-    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var renderImageView: UIImageView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -19,10 +18,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
     @IBOutlet weak var prioritySegmental: UISegmentedControl!
     @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var clockButton: UIButton!
+    @IBOutlet weak var systemButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    
     @IBOutlet weak var toolView: UIView!
-    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
     
     private let cardViewHeight: CGFloat = 194
     
@@ -64,6 +62,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         clockIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let clockImage = clockIcon.imageWithSize(CGSize(width: 32, height: 32))
         self.clockButton.setImage(clockImage, forState: .Normal)
+        
+        let systemIcon = FAKFontAwesome.thListIconWithSize(20)
+        systemIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+        let systemImage = systemIcon.imageWithSize(CGSize(width: 32, height: 32))
+        self.systemButton.setImage(systemImage, forState: .Normal)
     }
     
     private func initializeControl() {
@@ -83,8 +86,17 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         self.prioritySegmental.setTitle(Localized("normal"), forSegmentAtIndex: 1)
         self.prioritySegmental.setTitle(Localized("high"), forSegmentAtIndex: 2)
         
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
+        self.systemButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
+        
+        self.keyboardAction()
+    }
+    
+    // MARK: - actions
+    private func keyboardAction() {
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
-            KeyboardManager.sharedManager.closeNotification()
+            KeyboardManager.sharedManager.keyboardShowHandler = nil
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
@@ -95,15 +107,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
                 self.toolView.alpha = 1
                 UIView.animateWithDuration(0.25, animations: { [unowned self] in
                     self.toolView.layoutIfNeeded()
-                })
+                    })
             }
         }
-        
-        cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
-        clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
     }
     
-    // MARK: - actions
     func cancelAction() {
         self.removeFromParentViewController()
     }
@@ -116,11 +124,15 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         })
     }
     
-    func dissmissAction(tap: UITapGestureRecognizer) {
-        if (!CGRectContainsPoint(self.cardView.frame, tap.locationInView(self.view))
-            && !CGRectContainsPoint(self.toolView.frame, tap.locationInView(self.view))) {
-            self.removeFromParentViewController()
-        }
+    func systemAction() {
+        let systemVC = SystemTaskViewController()
+        let nav = UINavigationController(rootViewController: systemVC)
+        nav.view.backgroundColor = Colors().mainGreenColor
+        nav.navigationBarHidden = true
+        systemVC.newTaskDelegate = self
+        self.parentViewController?.presentViewController(nav, animated: true, completion: { 
+            
+        })
     }
     
     // MARK: - logic
@@ -163,9 +175,6 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         self.cardViewTopConstraint.constant = (p.view.frame.height - cardViewHeight) * 0.5
         self.renderImageView.image = filter.imageFromCurrentFramebuffer()
         
-        let tapDissmiss = UITapGestureRecognizer(target: self, action: #selector(self.dissmissAction(_:)))
-        self.view.addGestureRecognizer(tapDissmiss)
-        
         self.configMainUI()
         self.initializeControl()
     }
@@ -204,9 +213,24 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
     func notifyTaskDate(date: NSDate) {
         task.notifyDate = date
     }
+    
+    func toDoForSystemTask(text: String, taskToDoText: String) {
+        self.titleTextField.text = text
+        self.titleTextField.enabled = false
+        
+        self.task.taskToDo = taskToDoText
+        self.task.taskType = kSystemTaskType
+        
+        self.toolViewBottomConstraint.constant = 0
+        self.cardViewTopConstraint.constant = (self.view.frame.height - self.cardViewHeight) * 0.5
+    }
+    
+    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
 }
 
 
-protocol NewTaskDateDelegate: NSObjectProtocol {
+protocol NewTaskDataDelegate: NSObjectProtocol {
     func notifyTaskDate(date: NSDate)
+    func toDoForSystemTask(text: String, taskToDoText: String)
 }

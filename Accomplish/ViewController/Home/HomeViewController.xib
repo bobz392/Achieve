@@ -53,7 +53,7 @@
                             <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLB-12-feP">
-                            <rect key="frame" x="0.0" y="39" width="560" height="379"/>
+                            <rect key="frame" x="0.0" y="39" width="560" height="376"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             <inset key="separatorInset" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -89,18 +89,12 @@
                         <constraint firstAttribute="trailing" secondItem="QLB-12-feP" secondAttribute="trailing" id="Ss3-yq-mhn"/>
                         <constraint firstItem="wMw-BY-nu3" firstAttribute="top" secondItem="CK5-4d-7UC" secondAttribute="bottom" constant="10" id="V9o-4S-Ehd"/>
                         <constraint firstItem="wMw-BY-nu3" firstAttribute="centerX" secondItem="AHa-FE-BbB" secondAttribute="centerX" id="Vg3-LN-2Uf"/>
-                        <constraint firstItem="AWa-YR-lxF" firstAttribute="top" secondItem="AHa-FE-BbB" secondAttribute="top" constant="4" id="dL6-lY-vno"/>
                         <constraint firstItem="QLB-12-feP" firstAttribute="top" secondItem="AWa-YR-lxF" secondAttribute="bottom" constant="5" id="n2u-Fk-cc9"/>
                         <constraint firstItem="CK5-4d-7UC" firstAttribute="centerX" secondItem="wMw-BY-nu3" secondAttribute="centerX" id="rHV-TW-1EW"/>
-                        <constraint firstAttribute="bottom" secondItem="QLB-12-feP" secondAttribute="bottom" constant="7" id="vZz-Nb-H0n"/>
+                        <constraint firstAttribute="bottom" secondItem="QLB-12-feP" secondAttribute="bottom" constant="10" id="vZz-Nb-H0n"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="dL6-lY-vno"/>
-                        </mask>
-                    </variation>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52C-5O-sGk">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52C-5O-sGk" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
                     <rect key="frame" x="265" y="515" width="70" height="70"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

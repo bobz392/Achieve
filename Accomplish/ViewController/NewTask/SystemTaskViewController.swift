@@ -8,13 +8,17 @@
 
 import UIKit
 
-class SystemTaskViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, TaskActionDataDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var toolView: UIView!
+    @IBOutlet weak var taskTableView: UITableView!
+    @IBOutlet weak var cancelButton: UIButton!
     
-    @IBOutlet weak var systemCollectionView: UICollectionView!
-    @IBOutlet weak var collectionHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var doneButton: UIButton!
+    weak var newTaskDelegate: NewTaskDataDelegate? = nil
+    
+    private let actionBuilder = ActionBuilder()
+    private var selectedActionType: SystemActionType? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,66 +36,83 @@ class SystemTaskViewController: BaseViewController, UICollectionViewDelegate, UI
     
     override func configMainUI() {
         let colors = Colors()
-        self.view.backgroundColor = colors.mainGreenColor
-        self.systemCollectionView.backgroundColor = colors.mainGreenColor
         
+        self.titleLabel.textColor = colors.cloudColor
+        
+        self.taskTableView.backgroundColor = colors.cloudColor
+        self.taskTableView.separatorColor = colors.separatorColor
         self.toolView.backgroundColor = colors.cloudColor
-        self.toolView.addShadow()
+        self.view.backgroundColor = colors.mainGreenColor
+        
+        self.cancelButton.buttonColor(colors)
+        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(40)
+        cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+        self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
     }
     
     private func initControl() {
-        self.systemCollectionView.registerNib(SystemActionCollectionViewCell.nib, forCellWithReuseIdentifier: SystemActionCollectionViewCell.reuseId)
+        if #available(iOS 9, *) {
+            self.taskTableView.cellLayoutMarginsFollowReadableWidth = false
+        }
+        self.taskTableView.tableFooterView = UIView()
+        self.taskTableView.registerNib(SystemTaskTableViewCell.nib, forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.scrollDirection = .Vertical
-        let screenWidth = UIScreen.mainScreen().bounds.width
-        let width = screenWidth / 5 - 5
-        layout.itemSize = CGSize(width: width, height: width)
+        self.cancelButton.addShadow()
+        self.cancelButton.layer.cornerRadius = 30
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
-        self.collectionHeightConstraint.constant = width * 3 + 10
-        self.systemCollectionView.collectionViewLayout = layout
+        self.toolView.addShadow()
+        self.toolView.layer.cornerRadius = kCardViewCornerRadius
+        
+        self.titleLabel.text = Localized("selectAction")
     }
     
     // MARK: - action
-    func selectAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .LayoutSubviews, animations: {
-            btn.transform = CGAffineTransformMakeScale(1, 1)
-        }) { (finish) in }
+    func cancelAction() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func buttonAnimationStartAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .CurveEaseInOut, animations: {
-            btn.transform = CGAffineTransformScale(btn.transform, 0.8, 0.8)
-        }) { (finish) in }
+    // MARK: - table view
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return actionBuilder.allActions.count
     }
     
-    func buttonAnimationEndAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .LayoutSubviews, animations: {
-            btn.transform = CGAffineTransformMakeScale(1, 1)
-        }) { (finish) in }
-    }
-    
-    // MARK: - colletion view
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SystemActionCollectionViewCell.reuseId, forIndexPath: indexPath) as! SystemActionCollectionViewCell
-        
-        if indexPath.row % 2 == 0 {
-            cell.configWithIcon("fa-phone")
-        } else {
-            cell.configWithIcon("fa-video-camera")
-        }
-        
-        cell.actionButton.addTarget(self, action: #selector(self.selectAction(_:)), forControlEvents: .TouchUpInside)
-        cell.actionButton.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), forControlEvents: .TouchDown)
-        cell.actionButton.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), forControlEvents: .TouchUpOutside)
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(SystemTaskTableViewCell.reuseId, forIndexPath: indexPath) as! SystemTaskTableViewCell
+        cell.iconImage.image = UIImage(named: "app_phone")
         
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return SystemTaskTableViewCell.rowHeight
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("\(actionBuilder.allActions[indexPath.row].type)")
+        selectedActionType = actionBuilder.allActions[indexPath.row].type
+        guard let present = selectedActionType?.actionPresent() else { return }
+        
+        switch present {
+        case .AddressBook:
+            let addressVC = AddressBookViewController()
+            addressVC.delegate = self
+            self.navigationController?.pushViewController(addressVC, animated: true)
+        }
+    }
+    
+    // MARK: - TaskActionDataDelegate
+    // such as name = zhoubo info = 18827420512
+    // taskToText = 1$$zhoubo$$18827420512
+    // show = call zhoubo
+    func actionData(name: String, info: String) {
+        guard let type = selectedActionType else { return }
+        let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: info)
+        newTaskDelegate?.toDoForSystemTask(type.ationNameWithType() + name, taskToDoText: taskToText)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+protocol TaskActionDataDelegate: NSObjectProtocol {
+    func actionData(name: String, info: String)
 }

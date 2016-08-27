@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import YYText
+import SnapKit
 
 class TaskTableViewCell: UITableViewCell {
     
@@ -14,11 +16,12 @@ class TaskTableViewCell: UITableViewCell {
     static let reuseId = "taskTableViewCell"
     static let rowHeight: CGFloat = 65
     
-    @IBOutlet weak var ellipsisButton: UIButton!
+    @IBOutlet weak var taskInfoButton: UIButton!
+    @IBOutlet weak var taskSettingButton: UIButton!
     @IBOutlet weak var taskStatusButton: UIButton!
     @IBOutlet weak var priorityView: UIView!
-    @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var taskDateLabel: UILabel!
+    @IBOutlet weak var taskTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,20 +29,27 @@ class TaskTableViewCell: UITableViewCell {
         
         let colors = Colors()
         self.contentView.backgroundColor = colors.cloudColor
+        self.layoutMargins = UIEdgeInsetsZero
+        
         self.taskTitleLabel.textColor = colors.mainTextColor
+        
         self.taskDateLabel.textColor = colors.secondaryTextColor
         
-        self.ellipsisButton.tintColor = colors.mainGreenColor
-        self.ellipsisButton.backgroundColor = colors.cloudColor
+        self.taskSettingButton.tintColor = colors.mainGreenColor
+        self.taskSettingButton.backgroundColor = colors.cloudColor
         let icon = FAKFontAwesome.ellipsisVIconWithSize(18)
         icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let image = icon.imageWithSize(CGSize(width: 20, height: 25))
-        self.ellipsisButton.setImage(image, forState: .Normal)
+        self.taskSettingButton.setImage(image, forState: .Normal)
         
         self.taskStatusButton.tintColor = colors.mainGreenColor
         self.taskStatusButton.backgroundColor = colors.cloudColor
         
-        self.layoutMargins = UIEdgeInsetsZero
+//        self.taskTitleLabel.snp_makeConstraints { (make) in
+//            make.leading.equalTo(self.taskStatusButton.snp_trailing).offset(5)
+//            make.trailing.greaterThanOrEqualTo(self.taskSettingButton.snp_leading).offset(5)
+//            make.top.equalTo(self.contentView).offset(10)
+//        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -67,6 +77,7 @@ class TaskTableViewCell: UITableViewCell {
             
         case kTaskRunning:
             self.taskTitleLabel.attributedText = NSAttributedString(string: task.taskToDo)
+            
             let squareIcon = FAKFontAwesome.squareOIconWithSize(20)
             squareIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let squareImage = squareIcon.imageWithSize(CGSize(width: 20, height: 20))
@@ -87,6 +98,7 @@ class TaskTableViewCell: UITableViewCell {
                 NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
                 NSStrikethroughColorAttributeName: colors.secondaryTextColor,
                 ])
+            
             let squareCheckIcon = FAKFontAwesome.checkSquareOIconWithSize(20)
             squareCheckIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let squareCheckImage = squareCheckIcon.imageWithSize(CGSize(width: 20, height: 20))

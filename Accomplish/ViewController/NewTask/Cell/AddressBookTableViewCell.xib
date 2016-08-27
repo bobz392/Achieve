@@ -32,18 +32,6 @@
                         <color key="textColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5z8-fc-OtZ">
-                        <rect key="frame" x="271" y="23" width="47" height="26"/>
-                        <color key="backgroundColor" red="0.80023035340000004" green="0.9466013673" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="26" id="Kv2-ag-ImR"/>
-                            <constraint firstAttribute="width" constant="47" id="o8n-qz-9Hg"/>
-                        </constraints>
-                        <state key="highlighted" image="add_recent_select_icon"/>
-                        <connections>
-                            <action selector="inviteTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jcF-0h-Xll"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="A0j-tH-Nfo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2r6-yj-UR7"/>
@@ -52,19 +40,13 @@
                     <constraint firstItem="qmb-Vx-efq" firstAttribute="top" secondItem="A0j-tH-Nfo" secondAttribute="bottom" constant="2" id="OsA-Vf-7LS"/>
                     <constraint firstItem="qmb-Vx-efq" firstAttribute="leading" secondItem="A0j-tH-Nfo" secondAttribute="leading" id="QEG-al-gUU"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A0j-tH-Nfo" secondAttribute="trailing" constant="80" id="lgz-Dc-5ma"/>
-                    <constraint firstItem="5z8-fc-OtZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vye-L6-4yx"/>
-                    <constraint firstAttribute="trailing" secondItem="5z8-fc-OtZ" secondAttribute="trailing" constant="2" id="xvE-8r-kO3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="inviteButton" destination="5z8-fc-OtZ" id="tvD-sS-fJa"/>
                 <outlet property="nameLabel" destination="A0j-tH-Nfo" id="jKj-Ed-pUU"/>
                 <outlet property="phoneNumberLabel" destination="qmb-Vx-efq" id="awA-0A-dvS"/>
             </connections>
             <point key="canvasLocation" x="303" y="400"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="add_recent_select_icon" width="92" height="50"/>
-    </resources>
 </document>

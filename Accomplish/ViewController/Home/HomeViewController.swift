@@ -99,8 +99,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         let cogIcon = FAKFontAwesome.cogIconWithSize(20)
         cogIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let cogImage = cogIcon.imageWithSize(CGSize(width: 20, height: 20))
-        self.settingButton.setImage(cogImage, forState: .Normal)
+        self.settingButton.setAttributedTitle(cogIcon.attributedString(), forState: .Normal)
         
         let newIcon = FAKFontAwesome.plusIconWithSize(50)
         newIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -109,8 +108,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         let calendarIcon = FAKFontAwesome.calendarIconWithSize(20)
         calendarIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let calendarImage = calendarIcon.imageWithSize(CGSize(width: 20, height: 20))
-        self.calendarButton.setImage(calendarImage, forState: .Normal)
+        self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
         
         self.configFullSizeButton(colors)
     }
@@ -153,8 +151,6 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.emptyHintLabel.text = Localized("emptyTask")
         
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), forControlEvents: .TouchUpInside)
-        self.newTaskButton.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), forControlEvents: .TouchDown)
-        self.newTaskButton.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), forControlEvents: .TouchUpOutside)
         
         self.calendarButton.addTarget(self, action: #selector(self.calendarAction), forControlEvents: .TouchUpInside)
         
@@ -322,43 +318,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func newTaskAction() {
-        let alertController = UIAlertController(title: Localized("newTask"), message: nil, preferredStyle: .ActionSheet)
-        let customAction = UIAlertAction(title: Localized("customTask"), style: .Destructive) { [unowned self] (action) in
-            let vc = NewTaskViewController()
-            self.addChildViewController(vc)
-            vc.didMoveToParentViewController(self)
-        }
-        alertController.addAction(customAction)
-        
-        let systemAction = UIAlertAction(title: Localized("systemTask"), style: .Destructive) { (action) in
-            let systemVC = SystemTaskViewController()
-            self.presentViewController(systemVC, animated: true, completion: { })
-        }
-        alertController.addAction(systemAction)
-        
-        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .Cancel) { (action) in }
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true) { }
-        
-//        let newTaskVC = NewTaskViewController()
-//        self.addChildViewController(newTaskVC)
-//        newTaskVC.didMoveToParentViewController(self)
-        dispatch_delay(0.25) { [unowned self] in
-            self.newTaskButton.transform = CGAffineTransformMakeScale(1, 1)
-        }
-    }
-    
-    func buttonAnimationStartAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .CurveEaseInOut, animations: {
-            btn.transform = CGAffineTransformScale(btn.transform, 0.8, 0.8)
-        }) { (finish) in }
-    }
-    
-    func buttonAnimationEndAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .LayoutSubviews, animations: {
-            btn.transform = CGAffineTransformMakeScale(1, 1)
-        }) { (finish) in }
+        let newTaskVC = NewTaskViewController()
+        self.addChildViewController(newTaskVC)
+        newTaskVC.didMoveToParentViewController(self)
     }
     
     func segmentValueChangeAction(seg: UISegmentedControl) {

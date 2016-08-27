@@ -26,4 +26,5 @@
 "normal"="Normal";
 "low"="Low";
 
-"callAction"="Call ";
+"selectAction"="Select an action";
+"callAction"="Call "; 

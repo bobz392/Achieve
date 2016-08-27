@@ -30,11 +30,11 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdasdsdskfjsadfjsdajflksjdaflkjsadlkfjklsdajfklsdjaflkjsdalkfjsldkafjlksajdflk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG9-rB-pjb">
-                        <rect key="frame" x="50" y="10" width="235" height="25"/>
+                        <rect key="frame" x="50" y="10" width="230" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="rMb-Oy-7qD"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -52,13 +52,17 @@
                         </constraints>
                         <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-Re-QZp">
+                        <rect key="frame" x="285" y="8" width="0.0" height="30"/>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" secondItem="TnC-Re-QZp" secondAttribute="trailing" constant="5" id="3QM-gE-0Oe"/>
                     <constraint firstItem="AiK-42-CC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8Fu-el-2X3"/>
-                    <constraint firstItem="j4a-ig-DCb" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="leading" id="8iM-Q5-V4S"/>
                     <constraint firstItem="ZQw-Bj-5fl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="GSY-eW-aKB"/>
-                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="trailing" constant="5" id="Nzw-dS-Rwh"/>
+                    <constraint firstItem="TnC-Re-QZp" firstAttribute="centerY" secondItem="fG9-rB-pjb" secondAttribute="centerY" id="GVT-Ln-Wcn"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" constant="10" id="PeF-gX-t7N"/>
+                    <constraint firstItem="TnC-Re-QZp" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="trailing" constant="5" id="TVw-bk-sGZ"/>
                     <constraint firstAttribute="bottom" secondItem="j4a-ig-DCb" secondAttribute="bottom" constant="10" id="etb-8p-YSs"/>
                     <constraint firstItem="AiK-42-CC7" firstAttribute="leading" secondItem="nRC-r3-d8A" secondAttribute="trailing" id="f5P-ax-VS2"/>
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jfR-cN-6yC"/>
@@ -66,6 +70,7 @@
                     <constraint firstAttribute="bottom" secondItem="nRC-r3-d8A" secondAttribute="bottom" id="lVJ-ua-SB1"/>
                     <constraint firstAttribute="bottom" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" constant="5" id="lvV-Wz-e8P"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n0X-1M-TZ3"/>
+                    <constraint firstItem="j4a-ig-DCb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="oBG-6j-IVj"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uO9-Xl-xK0"/>
                     <constraint firstAttribute="trailing" secondItem="ZQw-Bj-5fl" secondAttribute="trailing" constant="5" id="x4M-Bk-DSD"/>
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="x80-JV-5NI"/>
@@ -78,13 +83,14 @@
             </tableViewCellContentView>
             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
             <connections>
-                <outlet property="ellipsisButton" destination="ZQw-Bj-5fl" id="OL7-2g-eRW"/>
                 <outlet property="priorityView" destination="nRC-r3-d8A" id="4q3-8l-HWg"/>
                 <outlet property="taskDateLabel" destination="j4a-ig-DCb" id="tdA-3a-lzh"/>
+                <outlet property="taskInfoButton" destination="TnC-Re-QZp" id="fui-Az-tQy"/>
+                <outlet property="taskSettingButton" destination="ZQw-Bj-5fl" id="3Dn-3w-Ghk"/>
                 <outlet property="taskStatusButton" destination="AiK-42-CC7" id="zPA-rx-Qy2"/>
-                <outlet property="taskTitleLabel" destination="fG9-rB-pjb" id="YFG-UA-DOw"/>
+                <outlet property="taskTitleLabel" destination="fG9-rB-pjb" id="fc8-eb-qFC"/>
             </connections>
-            <point key="canvasLocation" x="208" y="525.5"/>
+            <point key="canvasLocation" x="305" y="322.5"/>
         </tableViewCell>
     </objects>
 </document>

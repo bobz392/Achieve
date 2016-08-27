@@ -15,6 +15,7 @@
                 <outlet property="priorityLabel" destination="tts-aO-sIm" id="Sba-oT-DBa"/>
                 <outlet property="prioritySegmental" destination="smr-3j-ASd" id="RJJ-rt-5iH"/>
                 <outlet property="renderImageView" destination="wIO-de-9hY" id="y1M-Y8-DRF"/>
+                <outlet property="systemButton" destination="acP-FL-DWg" id="rCY-bf-PhP"/>
                 <outlet property="titleTextField" destination="AfU-bi-nwY" id="7xc-TX-cR3"/>
                 <outlet property="toolView" destination="Vdp-Ws-MLD" id="7t8-T4-3mi"/>
                 <outlet property="toolViewBottomConstraint" destination="uWk-mr-yJk" id="wwR-wW-4Sj"/>
@@ -103,6 +104,15 @@
                             <rect key="frame" x="534" y="7" width="46" height="30"/>
                             <state key="normal" title="Button"/>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acP-FL-DWg">
+                            <rect key="frame" x="62" y="6" width="32" height="32"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="mux-Ic-Opf"/>
+                                <constraint firstAttribute="width" constant="32" id="vnP-98-XRP"/>
+                            </constraints>
+                            <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -110,7 +120,9 @@
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="centerY" secondItem="Vdp-Ws-MLD" secondAttribute="centerY" id="Oyo-v3-82R"/>
                         <constraint firstAttribute="height" constant="44" id="fJv-3r-lhi"/>
                         <constraint firstAttribute="trailing" secondItem="VmR-Dd-PUz" secondAttribute="trailing" constant="20" id="jTw-R9-paw"/>
+                        <constraint firstItem="acP-FL-DWg" firstAttribute="leading" secondItem="KD9-lQ-lgC" secondAttribute="trailing" constant="20" id="nWw-pJ-vFV"/>
                         <constraint firstItem="VmR-Dd-PUz" firstAttribute="centerY" secondItem="Vdp-Ws-MLD" secondAttribute="centerY" id="rtI-FB-iOH"/>
+                        <constraint firstItem="acP-FL-DWg" firstAttribute="centerY" secondItem="KD9-lQ-lgC" secondAttribute="centerY" id="uTM-aY-kCh"/>
                     </constraints>
                 </view>
             </subviews>

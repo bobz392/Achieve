@@ -27,6 +27,8 @@ class SystemTaskViewController: BaseViewController {
         
         configMainUI()
         initControl()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,15 +102,19 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch present {
         case .AddressBook:
-            let addressVC = AddressBookViewController.loadFromNib(readPhoneType: true)
-            addressVC.delegate = self
-            self.navigationController?.pushViewController(addressVC, animated: true)
+            AddressBook.requestAccess {[unowned self] (finish) in
+                let addressVC = AddressBookViewController.loadFromNib(readPhoneType: true)
+                addressVC.delegate = self
+                self.navigationController?.pushViewController(addressVC, animated: true)
+            }
             
         case .AddressBookEmail:
-            let addressVC = AddressBookViewController.loadFromNib(readPhoneType: false)
-            addressVC.delegate = self
-            self.navigationController?.pushViewController(addressVC, animated: true)
-    
+            AddressBook.requestAccess {[unowned self] (finish) in
+                let addressVC = AddressBookViewController.loadFromNib(readPhoneType: false)
+                addressVC.delegate = self
+                self.navigationController?.pushViewController(addressVC, animated: true)
+            }
+            
         case .KeyValue:
             break
             

@@ -45,19 +45,23 @@ final class AddressBookViewController: BaseViewController {
         
         config(tableView: tableView)
         
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         SVProgressHUD.show()
-        AddressBook.requestAccess {[unowned self] (finish) in
-            AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType,
-                completion: { [unowned self] people in
-                    dispatch_async(self.indexingQueue) {
-                        (self.indexes, self.data) = self.processPeople(people)
-                        dispatch_async(dispatch_get_main_queue()) {
-                            SVProgressHUD.dismiss()
-                            self.tableView.reloadData()
-                        }
-                    }
-                })
-        }
+        
+        AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
+            dispatch_async(self.indexingQueue) {
+                (self.indexes, self.data) = self.processPeople(people)
+                dispatch_async(dispatch_get_main_queue()) {
+                    SVProgressHUD.dismiss()
+                    self.tableView.reloadData()
+                }
+            }
+            })
     }
     
     private func config(tableView tableView: UITableView?) {

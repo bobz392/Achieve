@@ -8,44 +8,19 @@
 
 import Foundation
 
-struct SystemAction {
+/**
+ ** action 的内容数据
+ **/
+struct SystemActionContent {
     let type: SystemActionType
-    let iconString: String
-}
-
-struct ActionBuilder {
-    
-    typealias ActionBlock = (actionString: String) -> Void
-    
-    let allActions = [
-        SystemAction(type: .PhoneCall, iconString: "fa-phone"),
-        SystemAction(type: .MessageTo, iconString: "fa-phone"),
-        SystemAction(type: .FaceTime, iconString: "fa-video-camera"),
-        SystemAction(type: .MailTo, iconString: "fa-envelope-o"),
-    ]
-    
-    
-    func actionBlockWithType(type: SystemActionType) -> ActionBlock? {
-        switch type {
-        case .PhoneCall:
-            return { (string) -> Void in
-                guard let url = NSURL(string: "tel:\(string)") else {
-                    return
-                }
-                
-                UIApplication.sharedApplication().openURL(url)
-            }
-            
-            
-        default:
-            return nil
-        }
-    }
-    
-    
+    let name: String
+    let info: String
 }
 
 enum SystemActionType: Int {
+    
+    typealias ActionBlock = (actionString: String) -> Void
+    
     case PhoneCall
     case MessageTo
     case FaceTime
@@ -60,7 +35,7 @@ enum SystemActionType: Int {
         }
     }
     
-    func actionPresent() -> ActionPresent {
+    func actionPresent() -> ActionFeaturePresent {
         switch self {
         case .PhoneCall, .MessageTo, .FaceTime:
             return .AddressBook
@@ -69,13 +44,36 @@ enum SystemActionType: Int {
             return .AddressBook
         }
     }
+    
+    func actionBlockWithType() -> ActionBlock? {
+        switch self {
+        case .PhoneCall:
+            return { (string) -> Void in
+                guard let url = NSURL(string: "tel:\(string)") else {
+                    return
+                }
+                let application = UIApplication.sharedApplication()
+                guard application.canOpenURL(url) == true else {
+                    debugPrint("can not call")
+                    return
+                }
+                
+                application.openURL(url)
+            }
+            
+        default:
+            return nil
+        }
+    }
 }
 
-enum ActionPresent {
+/**
+ ** action 对应的功能展现
+ ** such 从 address book 中取回数据
+ **/
+enum ActionFeaturePresent {
     case AddressBook
 }
-
-
 
 //func configWithIcon(iconString: String) {
 //    self.actionButton.layer.cornerRadius =  (UIScreen.mainScreen().bounds.width / 5 - 15) * 0.5

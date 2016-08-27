@@ -14,6 +14,7 @@
 
 "newTask"="添加新任务";
 "cancel"="取消";
+"save"="保存";
 "done"="完成";
 "customTask"="新任务";
 "dependTask"="关联任务";

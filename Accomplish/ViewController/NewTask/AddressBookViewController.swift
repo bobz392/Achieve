@@ -132,7 +132,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         if let person = person {
-            delegate?.actionData(person.name.fullName, info: person.phoneNumbers.first?.displayName ?? "")
+            delegate?.actionData(person.name.fullName, info: person.phoneNumbers.first?.phoneNumberString ?? "")
             self.navigationController?.popViewControllerAnimated(true)
         }
     }

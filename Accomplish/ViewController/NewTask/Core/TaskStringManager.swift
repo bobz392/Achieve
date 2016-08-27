@@ -22,42 +22,19 @@ struct TaskStringManager {
         return "\(type)$$\(name)$$\(info)"
     }
     
-    func parseTaskText(text: String) -> NSMutableAttributedString {
-        let taskTitleText = NSMutableAttributedString()
-        
+    func parseTaskText(text: String) -> SystemActionContent? {
         let results = text.componentsSeparatedByString(kSpliteTaskIdentity)
         guard results.count == 3 else {
             fatalError("format error in text = \(text)")
         }
         
-        let type = Int(results[0]) ?? 0
+        guard let type = Int(results[0]) else { return nil }
         let showString = results[1] ?? ""
-        let taskActionString = results[2] ?? ""
+        let infoString = results[2] ?? ""
         
-        guard let actionType = SystemActionType(rawValue: type) else {
-            return NSMutableAttributedString(string: "")
-        }
+        guard let actionType = SystemActionType(rawValue: type) else { return nil }
         
-        let colors = Colors()
-        
-        let actionTitle = actionType.ationNameWithType()
-        let actionTitleActtributedString = createNormalText(actionTitle, colors: colors)
-        taskTitleText.appendAttributedString(actionTitleActtributedString)
-        
-        let linkAttachment = NSMutableAttributedString(string: "\(showString)")
-        let highlight = YYTextHighlight()
-        highlight.tapAction = { (view, text, range, rect) -> Void in
-            print("tap link \(taskActionString)")
-            //            let notification = NSNotification(name: isAt ? kOpenTapAtNotification : kOpenTapLinkNotification, object: item.actionString)
-            //            NSNotificationCenter.defaultCenter().postNotification(notification)
-        }
-        
-        linkAttachment
-            .yy_setTextHighlight(highlight, range: NSRange(location: 0, length: linkAttachment.length))
-        linkAttachment.yy_font = UIFont.systemFontOfSize(kTaskTitleFontSize)
-        linkAttachment.yy_color = colors.linkTextColor
-        
-        return taskTitleText
+        return SystemActionContent(type: actionType, name: showString, info: infoString)
     }
     
     private func createNormalText(text: String, colors: Colors)

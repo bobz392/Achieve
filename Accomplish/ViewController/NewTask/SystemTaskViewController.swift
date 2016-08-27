@@ -17,7 +17,7 @@ class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITable
     
     weak var newTaskDelegate: NewTaskDataDelegate? = nil
     
-    private let actionBuilder = ActionBuilder()
+    private let actionBuilder = SystemActionBuilder()
     private var selectedActionType: SystemActionType? = nil
     
     override func viewDidLoad() {
@@ -108,7 +108,18 @@ class SystemTaskViewController: BaseViewController, UITableViewDelegate, UITable
     func actionData(name: String, info: String) {
         guard let type = selectedActionType else { return }
         let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: info)
-        newTaskDelegate?.toDoForSystemTask(type.ationNameWithType() + name, taskToDoText: taskToText)
+        
+        let attrText = NSMutableAttributedString()
+        attrText.appendAttributedString(
+            NSAttributedString(string: type.ationNameWithType(), attributes:[
+                NSForegroundColorAttributeName: Colors().mainTextColor
+                ]))
+        let nameAttrText = NSAttributedString(string: name, attributes: [
+            NSForegroundColorAttributeName: Colors().linkTextColor
+            ])
+        
+        attrText.appendAttributedString(nameAttrText)
+        newTaskDelegate?.toDoForSystemTask(attrText, taskToDoText: taskToText)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

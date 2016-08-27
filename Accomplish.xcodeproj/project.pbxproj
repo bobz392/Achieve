@@ -104,6 +104,7 @@
 		C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194CB1D70FADD00437560 /* AwesomeButton.swift */; };
 		C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194CE1D710A8300437560 /* SystemAtions.swift */; };
 		C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194D01D710A8900437560 /* TaskStringManager.swift */; };
+		C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195761D71530100437560 /* SystemActionBuilder.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -293,6 +294,7 @@
 		C77194CB1D70FADD00437560 /* AwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeButton.swift; sourceTree = "<group>"; };
 		C77194CE1D710A8300437560 /* SystemAtions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemAtions.swift; sourceTree = "<group>"; };
 		C77194D01D710A8900437560 /* TaskStringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStringManager.swift; sourceTree = "<group>"; };
+		C77195761D71530100437560 /* SystemActionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionBuilder.swift; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 			children = (
 				C77194CE1D710A8300437560 /* SystemAtions.swift */,
 				C77194D01D710A8900437560 /* TaskStringManager.swift */,
+				C77195761D71530100437560 /* SystemActionBuilder.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
+				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,

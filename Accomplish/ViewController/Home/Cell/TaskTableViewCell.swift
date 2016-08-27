@@ -23,6 +23,8 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
     
+    var systemAction: SystemActionContent? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,24 +34,18 @@ class TaskTableViewCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsetsZero
         
         self.taskTitleLabel.textColor = colors.mainTextColor
-        
+        self.taskInfoButton.tintColor = colors.linkTextColor
+        self.taskInfoButton.addTarget(self, action: #selector(self.infoAction), forControlEvents: .TouchUpInside)
         self.taskDateLabel.textColor = colors.secondaryTextColor
         
         self.taskSettingButton.tintColor = colors.mainGreenColor
         self.taskSettingButton.backgroundColor = colors.cloudColor
         let icon = FAKFontAwesome.ellipsisVIconWithSize(18)
         icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let image = icon.imageWithSize(CGSize(width: 20, height: 25))
-        self.taskSettingButton.setImage(image, forState: .Normal)
+        self.taskSettingButton.setAttributedTitle(icon.attributedString(), forState: .Normal)
         
         self.taskStatusButton.tintColor = colors.mainGreenColor
         self.taskStatusButton.backgroundColor = colors.cloudColor
-        
-//        self.taskTitleLabel.snp_makeConstraints { (make) in
-//            make.leading.equalTo(self.taskStatusButton.snp_trailing).offset(5)
-//            make.trailing.greaterThanOrEqualTo(self.taskSettingButton.snp_leading).offset(5)
-//            make.top.equalTo(self.contentView).offset(10)
-//        }
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -62,7 +58,6 @@ class TaskTableViewCell: UITableViewCell {
         let colors = Colors()
         
         switch task.priority {
-            
         case kTaskPriorityLow:
             self.priorityView.backgroundColor = colors.priorityLowColor
             
@@ -73,10 +68,23 @@ class TaskTableViewCell: UITableViewCell {
             self.priorityView.backgroundColor = colors.priorityHighColor
         }
         
-        switch task.status {
+        var taskTitle: NSMutableAttributedString
+        switch task.taskType {
+        case kSystemTaskType:
+            systemAction = TaskStringManager().parseTaskText(task.taskToDo)
+            taskTitle = NSMutableAttributedString(string: systemAction?.type.ationNameWithType() ?? "")
+            self.taskInfoButton.enabled = true
+            self.taskInfoButton.setTitle(systemAction?.name, forState: .Normal)
             
+        default:
+            self.taskInfoButton.enabled = false
+            self.taskInfoButton.setTitle(nil, forState: .Normal)
+            taskTitle = NSMutableAttributedString(string: task.taskToDo)
+        }
+        
+        switch task.status {
         case kTaskRunning:
-            self.taskTitleLabel.attributedText = NSAttributedString(string: task.taskToDo)
+            self.taskTitleLabel.attributedText = taskTitle
             
             let squareIcon = FAKFontAwesome.squareOIconWithSize(20)
             squareIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -93,11 +101,14 @@ class TaskTableViewCell: UITableViewCell {
             }
             
         case kTaskFinish:
-            self.taskTitleLabel.attributedText = NSAttributedString(string: task.taskToDo, attributes: [
-                NSForegroundColorAttributeName: colors.secondaryTextColor,
-                NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-                NSStrikethroughColorAttributeName: colors.secondaryTextColor,
-                ])
+            taskTitle.addAttributes(
+                [
+                    NSForegroundColorAttributeName: colors.secondaryTextColor,
+                    NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+                    NSStrikethroughColorAttributeName: colors.secondaryTextColor,
+                ], range: NSMakeRange(0, taskTitle.length))
+            
+            self.taskTitleLabel.attributedText = taskTitle
             
             let squareCheckIcon = FAKFontAwesome.checkSquareOIconWithSize(20)
             squareCheckIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -119,4 +130,9 @@ class TaskTableViewCell: UITableViewCell {
         }
     }
     
+    func infoAction() {
+        guard let action = systemAction else { return }
+        let block = action.type.actionBlockWithType()
+        block?(actionString: action.info)
+    }
 }

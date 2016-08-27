@@ -14,6 +14,7 @@
 
 "newTask"="Add task";
 "cancel"="Cancel";
+"save"="save";
 "done"="Done";
 "customTask"="Custom task";
 "dependTask"="Associated task";

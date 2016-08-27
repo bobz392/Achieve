@@ -29,8 +29,8 @@
                             <constraint firstAttribute="width" constant="5" id="b4q-WD-cRI"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdasdsdskfjsadfjsdajflksjdaflkjsadlkfjklsdajfklsdjaflkjsdalkfjsldkafjlksajdflk" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG9-rB-pjb">
-                        <rect key="frame" x="50" y="10" width="230" height="25"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="call" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG9-rB-pjb">
+                        <rect key="frame" x="50" y="10" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="rMb-Oy-7qD"/>
                         </constraints>
@@ -52,17 +52,20 @@
                         </constraints>
                         <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-Re-QZp">
-                        <rect key="frame" x="285" y="8" width="0.0" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-Re-QZp">
+                        <rect key="frame" x="80" y="10.5" width="30" height="25"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <state key="normal" title="bob"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" secondItem="TnC-Re-QZp" secondAttribute="trailing" constant="5" id="3QM-gE-0Oe"/>
+                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TnC-Re-QZp" secondAttribute="trailing" constant="5" id="3QM-gE-0Oe"/>
                     <constraint firstItem="AiK-42-CC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8Fu-el-2X3"/>
                     <constraint firstItem="ZQw-Bj-5fl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="GSY-eW-aKB"/>
                     <constraint firstItem="TnC-Re-QZp" firstAttribute="centerY" secondItem="fG9-rB-pjb" secondAttribute="centerY" id="GVT-Ln-Wcn"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" constant="10" id="PeF-gX-t7N"/>
                     <constraint firstItem="TnC-Re-QZp" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="trailing" constant="5" id="TVw-bk-sGZ"/>
+                    <constraint firstItem="TnC-Re-QZp" firstAttribute="height" secondItem="fG9-rB-pjb" secondAttribute="height" id="etB-se-xiy"/>
                     <constraint firstAttribute="bottom" secondItem="j4a-ig-DCb" secondAttribute="bottom" constant="10" id="etb-8p-YSs"/>
                     <constraint firstItem="AiK-42-CC7" firstAttribute="leading" secondItem="nRC-r3-d8A" secondAttribute="trailing" id="f5P-ax-VS2"/>
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jfR-cN-6yC"/>

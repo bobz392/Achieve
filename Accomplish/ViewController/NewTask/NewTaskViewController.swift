@@ -20,6 +20,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
     @IBOutlet weak var clockButton: UIButton!
     @IBOutlet weak var systemButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var toolView: UIView!
     
     private let cardViewHeight: CGFloat = 194
@@ -57,6 +58,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         self.priorityLabel.textColor = colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
         self.cancelButton.tintColor = colors.mainGreenColor
+        self.saveButton.tintColor = colors.mainGreenColor
         
         let clockIcon = FAKFontAwesome.clockOIconWithSize(22)
         clockIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -78,6 +80,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         
         self.titleTextField.placeholder = Localized("goingDo")
         self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
+        self.saveButton.setTitle(Localized("save"), forState: .Normal)
         
         self.priorityLabel.text = Localized("priority")
         
@@ -89,6 +92,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         self.clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
         self.systemButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
+        self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
         
         self.keyboardAction()
     }
@@ -116,6 +120,18 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         self.removeFromParentViewController()
     }
     
+    func saveAction() {
+        if task.taskToDo.characters.count > 0 {
+            self.saveNewTask(task.taskToDo)
+            return
+        } else {
+            guard let title = titleTextField.text else {
+                return
+            }
+            self.saveNewTask(title)
+        }
+    }
+    
     func scheduleAction() {
         let scheduleVC = ScheduleViewController()
         scheduleVC.taskDateDelegate = self
@@ -130,15 +146,15 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         nav.view.backgroundColor = Colors().mainGreenColor
         nav.navigationBarHidden = true
         systemVC.newTaskDelegate = self
-        self.parentViewController?.presentViewController(nav, animated: true, completion: { 
+        self.parentViewController?.presentViewController(nav, animated: true, completion: {
             
         })
     }
     
     // MARK: - logic
-    func saveNewTask(title: String) {
+    func saveNewTask(taskToDo: String) {
         let priority = prioritySegmental.selectedSegmentIndex
-        task.createDefaultTask(title, priority:  priority)
+        task.createDefaultTask(taskToDo, priority:  priority)
         
         RealmManager.shareManager.createTask(task)
         self.cancelAction()
@@ -214,15 +230,18 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         task.notifyDate = date
     }
     
-    func toDoForSystemTask(text: String, taskToDoText: String) {
-        self.titleTextField.text = text
+    func toDoForSystemTask(text: NSAttributedString, taskToDoText: String) {
+        self.titleTextField.attributedText = text
         self.titleTextField.enabled = false
+        self.systemButton.hidden = true
         
         self.task.taskToDo = taskToDoText
         self.task.taskType = kSystemTaskType
         
         self.toolViewBottomConstraint.constant = 0
         self.cardViewTopConstraint.constant = (self.view.frame.height - self.cardViewHeight) * 0.5
+        
+        self.saveButton.hidden = false
     }
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
@@ -232,5 +251,5 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
 
 protocol NewTaskDataDelegate: NSObjectProtocol {
     func notifyTaskDate(date: NSDate)
-    func toDoForSystemTask(text: String, taskToDoText: String)
+    func toDoForSystemTask(text: NSAttributedString, taskToDoText: String)
 }

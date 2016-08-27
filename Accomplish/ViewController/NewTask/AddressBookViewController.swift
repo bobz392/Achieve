@@ -14,15 +14,20 @@ private typealias IndexedData = [String : [AddressBook.Person]]
 
 private let AddressBookMiscIndexKey = "#"
 
-final class AddressBookViewController: UIViewController {
+final class AddressBookViewController: BaseViewController {
     
-    @IBOutlet var searchBarTopConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
+    var readPhoneType = true
     weak var delegate: TaskActionDataDelegate? = nil
     
-    class func loadFromNib() -> AddressBookViewController {
-        return AddressBookViewController(nibName: "AddressBookViewController", bundle: nil)
+    class func loadFromNib(readPhoneType readPhoneType: Bool) -> AddressBookViewController {
+        let address = AddressBookViewController(nibName: "AddressBookViewController", bundle: nil)
+        address.readPhoneType = readPhoneType
+        return address
     }
     
     private var indexingQueue = dispatch_queue_create("com.shimo.AddressBook.indexing", DISPATCH_QUEUE_SERIAL)
@@ -35,103 +40,97 @@ final class AddressBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "通讯录"
-        
-        edgesForExtendedLayout = .None
+        configMainUI()
+        initControl()
         
         config(tableView: tableView)
-        config(tableView: searchDisplayController?.searchResultsTableView)
         
         SVProgressHUD.show()
-        AddressBook.requestAccess { (finish) in
-            AddressBook.fetchAllPeopleInAddressBook { people in
-                dispatch_async(self.indexingQueue) {
-                    (self.indexes, self.data) = self.processPeople(people)
-                    dispatch_async(dispatch_get_main_queue()) {
-                        
-                        SVProgressHUD.dismiss()
-                        
-                        self.tableView.reloadData()
+        AddressBook.requestAccess {[unowned self] (finish) in
+            AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType,
+                completion: { [unowned self] people in
+                    dispatch_async(self.indexingQueue) {
+                        (self.indexes, self.data) = self.processPeople(people)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            SVProgressHUD.dismiss()
+                            self.tableView.reloadData()
+                        }
                     }
-                }
-            }
-            
+                })
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBarHidden = false
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.navigationBarHidden = true
-    }
-    
     private func config(tableView tableView: UITableView?) {
-        let colorValue: CGFloat = 68 / 255
-        let sectionIndexColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
-        tableView?.sectionIndexColor = sectionIndexColor
-        
-        tableView?.sectionIndexBackgroundColor = UIColor.clearColor()
+        let colors = Colors()
+        tableView?.sectionIndexColor = colors.mainTextColor
+        tableView?.sectionIndexBackgroundColor = colors.cloudColor
         tableView?.registerNib(AddressBookTableViewCell.nib, forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
         tableView?.separatorStyle = .None
     }
     
+    
+    override func configMainUI() {
+        let colors = Colors()
+        
+        self.titleLabel.textColor = colors.cloudColor
+        
+        self.tableView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = colors.cloudColor
+        self.view.backgroundColor = colors.mainGreenColor
+        
+        self.cancelButton.buttonColor(colors)
+        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(40)
+        cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+        self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
+    }
+    
+    private func initControl() {
+        self.cancelButton.addShadow()
+        self.cancelButton.layer.cornerRadius = 30
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        
+        self.cardView.addShadow()
+        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+        
+        self.titleLabel.text = Localized("addressBook")
+    }
+    
+    // MARK: - action
+    func cancelAction() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
 
 extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    private func isSearchResultTableView(tableView: UITableView) -> Bool {
-        return tableView === searchDisplayController?.searchResultsTableView
-    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 65
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if isSearchResultTableView(tableView) {
-            return 0
-        } else {
-            return 25
-        }
+        return 25
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if isSearchResultTableView(tableView) {
-            return 1
-        } else {
-            return indexes.count
-        }
+        return indexes.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearchResultTableView(tableView) {
-            return searchResult.count
-        } else {
-            let index = indexes[section]
-            return data[index]?.count ?? 0
-        }
+        let index = indexes[section]
+        return data[index]?.count ?? 0
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let index = indexes[indexPath.section]
-        let person: AddressBook.Person?
         
-        if isSearchResultTableView(tableView) {
-            person = searchResult[indexPath.row]
-        } else {
-            person = data[index]?[indexPath.row]
-        }
-        
-        if let person = person {
-            delegate?.actionData(person.name.fullName, info: person.phoneNumbers.first?.phoneNumberString ?? "")
+        if let person = data[index]?[indexPath.row] {
+            if readPhoneType {
+                delegate?.actionData(person.name.fullName, info: person.phoneNumbers.first?.phoneNumberString ?? "")
+            } else {
+                delegate?.actionData(person.name.fullName, info: person.mails.first ?? "")
+            }
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
@@ -142,17 +141,15 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         let index = indexes[indexPath.section]
-        let person: AddressBook.Person?
         
-        if isSearchResultTableView(tableView) {
-            person = searchResult[indexPath.row]
-        } else {
-            person = data[index]?[indexPath.row]
-        }
-        
-        if let person = person {
-            cell.nameLabel.text = person.name.fullName
-            cell.phoneNumberLabel.text = person.phoneNumbers.first?.displayName ?? ""
+        if let person = data[index]?[indexPath.row] {
+            if readPhoneType {
+                cell.nameLabel.text = person.name.fullName
+                cell.phoneNumberLabel.text = person.phoneNumbers.first?.displayName ?? ""
+            } else {
+                cell.nameLabel.text = person.name.fullName
+                cell.phoneNumberLabel.text = person.mails.first ?? ""
+            }
         }
         
         return cell
@@ -160,15 +157,15 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 25))
-        let bgColorValue: CGFloat = 241 / 255
-        view.backgroundColor = UIColor(red: bgColorValue, green: bgColorValue, blue: bgColorValue, alpha: 1)
+        
+        let colors = Colors()
+        view.backgroundColor = colors.cloudColor
         
         let margin: CGFloat = 16
         let titleLabel = UILabel(frame: CGRect(x: margin, y: 0, width: view.bounds.width - margin, height: view.bounds.height))
         titleLabel.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         titleLabel.font = UIFont.systemFontOfSize(12)
-        let textColorValue: CGFloat = 184 / 255
-        titleLabel.textColor = UIColor(red: textColorValue, green: textColorValue, blue: textColorValue, alpha: 1)
+        titleLabel.textColor = colors.secondaryTextColor
         titleLabel.text = indexes[section]
         view.addSubview(titleLabel)
         
@@ -176,54 +173,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        if isSearchResultTableView(tableView) {
-            return [""]
-        } else {
-            return indexes
-        }
-    }
-    
-}
-
-extension AddressBookViewController: UISearchDisplayDelegate {
-    
-    func searchDisplayControllerWillBeginSearch(controller: UISearchDisplayController) {
-        //    setStatusBarDark()
-    }
-    
-    func searchDisplayControllerWillEndSearch(controller: UISearchDisplayController) {
-        //    setStatusBarLight()
-    }
-    
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
-        
-        guard let keyword = searchString else {
-            searchResult = []
-            return true
-        }
-        
-        // 在索引线程搜索
-        dispatch_async(indexingQueue) {
-            var result = Array<AddressBook.Person>()
-            for index in self.indexes {
-                if let data = self.data[index] {
-                    for person in data {
-                        if person.name.fullName.containsString(keyword) ||
-                            person.name.uppercaseStrippedLatinFullName.containsString(keyword.uppercaseString) {
-                            result.append(person)
-                        }
-                    }
-                }
-            }
-            
-            // 切回主线程 reload
-            dispatch_async(dispatch_get_main_queue()) {
-                self.searchResult = result
-                self.searchDisplayController?.searchResultsTableView.reloadData()
-            }
-        }
-        
-        return false
+        return indexes
     }
     
 }
@@ -257,13 +207,23 @@ extension AddressBookViewController {
                 data[key] = Array<AddressBook.Person>()
             }
             
-            var peopleWithSinglePhoneNumber = Array<AddressBook.Person>()
-            for phoneNumber in person.phoneNumbers {
-                let singlePhoneNumberPerson = AddressBook.Person(name: person.name, phoneNumbers: [phoneNumber])
-                peopleWithSinglePhoneNumber.append(singlePhoneNumberPerson)
+            if readPhoneType {
+                var peopleWithSinglePhoneNumber = Array<AddressBook.Person>()
+                for phoneNumber in person.phoneNumbers {
+                    let singlePhoneNumberPerson = AddressBook.Person(name: person.name, phoneNumbers: [phoneNumber], mails: person.mails)
+                    peopleWithSinglePhoneNumber.append(singlePhoneNumberPerson)
+                }
+                
+                data[key] = data[key]! + peopleWithSinglePhoneNumber
+            } else {
+                var peopleWithSignleMailAddress = Array<AddressBook.Person>()
+                for mail in person.mails {
+                    let singleMailPerson = AddressBook.Person(name: person.name, phoneNumbers: person.phoneNumbers, mails: [mail])
+                    peopleWithSignleMailAddress.append(singleMailPerson)
+                }
+                
+                data[key] = data[key]! + peopleWithSignleMailAddress
             }
-            
-            data[key] = data[key]! + peopleWithSinglePhoneNumber
         }
         
         for (key, value) in data {
@@ -285,15 +245,4 @@ extension AddressBookViewController {
         
         return (indexes, data)
     }
-    
-}
-
-// MARK: - UIKit Bug Workaround
-
-extension AddressBookViewController {
-    
-    func searchDisplayController(controller: UISearchDisplayController, willShowSearchResultsTableView tableView: UITableView) {
-        controller.searchResultsTableView.contentInset = UIEdgeInsetsZero
-    }
-    
 }

@@ -84,6 +84,7 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(SystemTaskTableViewCell.reuseId, forIndexPath: indexPath) as! SystemTaskTableViewCell
         let action = actionBuilder.allActions[indexPath.row]
         cell.iconImage.image = UIImage(named: action.actionImage)
+        cell.taskTitle.text = Localized(action.hintString)
         
         return cell
     }
@@ -99,9 +100,17 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch present {
         case .AddressBook:
-            let addressVC = AddressBookViewController()
+            let addressVC = AddressBookViewController.loadFromNib(readPhoneType: true)
             addressVC.delegate = self
             self.navigationController?.pushViewController(addressVC, animated: true)
+            
+        case .AddressBookEmail:
+            let addressVC = AddressBookViewController.loadFromNib(readPhoneType: false)
+            addressVC.delegate = self
+            self.navigationController?.pushViewController(addressVC, animated: true)
+            
+        default:
+            print("s")
         }
     }
 }

@@ -15,14 +15,17 @@ import Foundation
 struct SystemAction {
     let type: SystemActionType
     let actionImage: String
+    let hintString: String
 }
 
 struct SystemActionBuilder {
+    
     let allActions = [
-        SystemAction(type: .PhoneCall, actionImage: "app_phone"),
-        SystemAction(type: .MessageTo, actionImage: "app_imessage"),
-        SystemAction(type: .FaceTime, actionImage: "app_facetime"),
-        SystemAction(type: .MailTo, actionImage: "app_mail"),
+        SystemAction(type: .PhoneCall, actionImage: "app_phone", hintString: "addPhoneCall"),
+        SystemAction(type: .MessageTo, actionImage: "app_imessage", hintString: "addMessage"),
+        SystemAction(type: .FaceTime, actionImage: "app_facetime", hintString: "addFaceTime"),
+        SystemAction(type: .MailTo, actionImage: "app_mail", hintString: "addMail"),
+        SystemAction(type: .Subtask, actionImage: "app_subtask", hintString: "addSubtask"),
         ]
- 
+    
 }

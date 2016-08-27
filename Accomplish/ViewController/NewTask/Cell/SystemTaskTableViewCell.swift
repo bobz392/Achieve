@@ -16,7 +16,6 @@ class SystemTaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +23,6 @@ class SystemTaskTableViewCell: UITableViewCell {
         
         let colors = Colors()
         self.contentView.backgroundColor = colors.cloudColor
-        self.layoutMargins = UIEdgeInsetsZero
         self.taskTitle.textColor = colors.mainTextColor
     }
 

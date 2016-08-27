@@ -25,15 +25,20 @@ enum SystemActionType: Int {
     case MessageTo
     case FaceTime
     case MailTo
+    case Subtask
     
     func ationNameWithType() -> String {
         switch self {
         case .PhoneCall:
             return Localized("callAction")
         case .MessageTo:
-            return Localized("sendMessage")
-        default:
-            return ""
+            return Localized("sendMessageAction")
+        case .FaceTime:
+            return Localized("faceTimeAction")
+        case .MailTo:
+            return Localized("mailAction")
+        case .Subtask:
+            return Localized("")
         }
     }
     
@@ -41,9 +46,12 @@ enum SystemActionType: Int {
         switch self {
         case .PhoneCall, .MessageTo, .FaceTime:
             return .AddressBook
-            
-        default:
-            return .AddressBook
+        
+        case .MailTo:
+            return .AddressBookEmail
+        
+        case .Subtask:
+            return .KeyValue
         }
     }
     
@@ -58,9 +66,12 @@ enum SystemActionType: Int {
             
         case .FaceTime:
             urlScheme = "facetime://"
-        
+            
         case .MailTo:
             urlScheme = "mailto:"
+            
+        case .Subtask:
+            return nil
         }
         
         return { (string) -> Void in
@@ -86,6 +97,8 @@ enum SystemActionType: Int {
  **/
 enum ActionFeaturePresent {
     case AddressBook
+    case AddressBookEmail
+    case KeyValue
 }
 
 //extension AddressBookViewController: MFMessageComposeViewControllerDelegate {

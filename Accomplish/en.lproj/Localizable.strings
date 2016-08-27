@@ -12,9 +12,13 @@
 "emptyTask"="No new task, Enjoy the day :)";
 "emptyFinishTask"="No finshed task";
 
+"noPermission"="No access permission";
+"abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";
+
 "newTask"="Add task";
 "cancel"="Cancel";
 "save"="save";
+"ok"="Ok";
 "done"="Done";
 "customTask"="Custom task";
 "dependTask"="Associated task";
@@ -27,6 +31,16 @@
 "normal"="Normal";
 "low"="Low";
 
-"selectAction"="Select an action";
+"selectAction"="Select built-in action";
 "callAction"="Call ";
-"sendMessage"="Send Message To";
+"sendMessageAction"="Send Message To";
+"faceTimeAction"="Face Time to ";
+"mailAction"="Send mail to ";
+"addSubtaskAction"="Add a task with subtask";
+
+"addPhoneCall"="create a phone call action";
+"addMessage"="create a send message action";
+"addFaceTime"="create a Face Time action";
+"addMail"="create a mail action";
+
+"addressBook"="Address Book"; 

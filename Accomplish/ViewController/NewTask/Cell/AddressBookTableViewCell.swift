@@ -13,7 +13,6 @@ final class AddressBookTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var phoneNumberLabel: UILabel!
     
-    
     static var reuseId: String {
         return "AddressBookTableViewCell"
     }
@@ -26,6 +25,7 @@ final class AddressBookTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         selectionStyle = .None
+        self.contentView.backgroundColor = Colors().cloudColor
     }
     
 }

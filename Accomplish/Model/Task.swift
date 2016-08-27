@@ -21,6 +21,7 @@ let kTaskPriorityHigh: Int = 2
 let kCustomTaskType: Int = 0
 let kSystemTaskType: Int = 1
 let kAssociatTaskType: Int = 2
+let kSubtaskType: Int = 3
 
 let uuidFormat: String = "yyMMddHHmmssZ"
 let createdDateFormat: String = "yyyy.MM.dd"
@@ -39,8 +40,9 @@ class Task: Object {
     dynamic var notifyDate: NSDate?
     dynamic var finishedDate: NSDate?
     
-    dynamic var hasTrigger: Bool = false
     dynamic var trigger: Trigger?
+    
+    dynamic var subTaskCount: Int = 0
     
     override class func primaryKey() -> String? {
         return "uuid"

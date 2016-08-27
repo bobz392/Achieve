@@ -26,16 +26,16 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="hMf-Sj-Miw"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="zhq-7z-xas" secondAttribute="trailing" constant="15" id="LVe-Le-h4j"/>
+                    <constraint firstItem="zhq-7z-xas" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cxo-Y6-eXD"/>
                     <constraint firstItem="0NP-Hv-JGL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dLw-C0-PKC"/>
                     <constraint firstItem="zhq-7z-xas" firstAttribute="leading" secondItem="0NP-Hv-JGL" secondAttribute="trailing" constant="10" id="e7d-nR-dWK"/>
-                    <constraint firstItem="zhq-7z-xas" firstAttribute="centerY" secondItem="0NP-Hv-JGL" secondAttribute="centerY" id="fqs-e9-Kp1"/>
                     <constraint firstItem="0NP-Hv-JGL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="thU-5h-gMl"/>
                 </constraints>
             </tableViewCellContentView>

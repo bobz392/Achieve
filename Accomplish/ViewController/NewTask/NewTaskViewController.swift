@@ -65,7 +65,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate, NewTaskDat
         let clockImage = clockIcon.imageWithSize(CGSize(width: 32, height: 32))
         self.clockButton.setImage(clockImage, forState: .Normal)
         
-        let systemIcon = FAKFontAwesome.thListIconWithSize(20)
+        let systemIcon = FAKFontAwesome.archiveIconWithSize(20)
         systemIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let systemImage = systemIcon.imageWithSize(CGSize(width: 32, height: 32))
         self.systemButton.setImage(systemImage, forState: .Normal)

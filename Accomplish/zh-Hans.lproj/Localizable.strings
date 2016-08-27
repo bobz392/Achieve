@@ -12,9 +12,13 @@
 "emptyTask"="没有新任务，放松一下 :)";
 "emptyFinishTask"="没有已经结束的任务";
 
+"noPermission"="没有权限";
+"abPermission"="目前没有读取通讯录的权限，该权限可以在“系统设置 > 隐私 > 联系人”中开启";
+
 "newTask"="添加新任务";
 "cancel"="取消";
 "save"="保存";
+"ok"="知道了";
 "done"="完成";
 "customTask"="新任务";
 "dependTask"="关联任务";
@@ -27,6 +31,16 @@
 "normal"="普通";
 "low"="低";
 
-"selectAction"="选择动作";
-"callAction"="拨号给 ";
-"sendMessage"="发短讯给 ";
+"selectAction"="选择内置动作";
+"callAction"="打电话给 ";
+"sendMessageAction"="发短讯给 ";
+"faceTimeAction"="Face Time给 ";
+"mailAction"="发邮件给 ";
+
+"addPhoneCall"="添加一个拨号动作";
+"addMessage"="添加一个短信动作";
+"addFaceTime"="添加一个Face Time动作";
+"addMail"="添加一个发送邮件动作";
+"addSubtask"="添加一个有子任务的任务";
+
+"addressBook"="通讯录";

@@ -5,8 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BaseCardViewController" customModule="Accomplish" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KVTaskViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="cancelButton" destination="6Rw-Pq-KOI" id="68S-NG-JAQ"/>
+                <outlet property="cardView" destination="3Ct-c1-I28" id="bUG-6m-djO"/>
+                <outlet property="titleLabel" destination="mSF-t9-hCG" id="cxd-cE-bg8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

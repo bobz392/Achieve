@@ -82,10 +82,9 @@ extension AddressBook {
     struct Constants {
         struct Fake
         {
-            static let title = "需要通讯录权限"
-            static let message = "需要获得通讯录的读取权限以邀请通讯录中的联系人。"
-            static let grant = "允许"
-            static let cancel = "拒绝"
+            static let title = Localized("needABPermission")
+            static let grant = Localized("permit")
+            static let cancel = Localized("Reject")
         }
         
         struct Real {
@@ -223,7 +222,7 @@ extension AddressBook {
             }
             
             let alertView = UIAlertView(title: Constants.Fake.title,
-                                        message: Constants.Fake.message,
+                                        message: "",
                                         delegate: AddressBookAlertViewDelegate,
                                         cancelButtonTitle: Constants.Fake.cancel,
                                         otherButtonTitles: Constants.Fake.grant)

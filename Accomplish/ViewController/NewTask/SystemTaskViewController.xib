@@ -8,9 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SystemTaskViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="vwk-eW-bnW" id="S2z-Cs-cYk"/>
+                <outlet property="cardView" destination="OZG-IO-9fD" id="lJE-6v-fZY"/>
                 <outlet property="taskTableView" destination="UU1-vT-6E4" id="fWb-Ij-5La"/>
                 <outlet property="titleLabel" destination="Frx-hF-A2q" id="TgF-Xo-0dD"/>
-                <outlet property="toolView" destination="OZG-IO-9fD" id="y1s-X0-L5v"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -14,9 +14,12 @@
 
 "noPermission"="No access permission";
 "abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";
+"needABPermission"="Need permission to access Address Book"
 
 "newTask"="Add task";
 "cancel"="Cancel";
+"permit"="Allow";
+"reject"="Reject";
 "save"="save";
 "ok"="Ok";
 "done"="Done";

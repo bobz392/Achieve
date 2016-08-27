@@ -86,8 +86,7 @@ enum SystemActionType: Int {
             }
             
             application.openURL(url)
-        }
-        
+        }        
     }
 }
 

@@ -11,7 +11,7 @@ import UIKit
 class SystemTaskViewController: BaseViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var toolView: UIView!
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -41,7 +41,7 @@ class SystemTaskViewController: BaseViewController {
         
         self.taskTableView.backgroundColor = colors.cloudColor
         self.taskTableView.separatorColor = colors.separatorColor
-        self.toolView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)
@@ -61,8 +61,8 @@ class SystemTaskViewController: BaseViewController {
         self.cancelButton.layer.cornerRadius = 30
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
-        self.toolView.addShadow()
-        self.toolView.layer.cornerRadius = kCardViewCornerRadius
+        self.cardView.addShadow()
+        self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleLabel.text = Localized("selectAction")
     }
@@ -110,9 +110,10 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(addressVC, animated: true)
     
         case .KeyValue:
+            break
             
         default:
-            print("s")
+            break
         }
     }
 }

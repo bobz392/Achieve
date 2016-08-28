@@ -20,12 +20,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZG-IO-9fD">
-                    <rect key="frame" x="20" y="70" width="560" height="435"/>
+                    <rect key="frame" x="5" y="70" width="590" height="435"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UU1-vT-6E4">
-                            <rect key="frame" x="0.0" y="10" width="560" height="415"/>
+                            <rect key="frame" x="0.0" y="10" width="590" height="415"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Qnh-If-L6e"/>
@@ -53,7 +53,7 @@
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frx-hF-A2q">
-                    <rect key="frame" x="20" y="34" width="54" height="26"/>
+                    <rect key="frame" x="5" y="34" width="54" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -61,14 +61,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Frx-hF-A2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="DOa-xe-LjX"/>
                 <constraint firstItem="vwk-eW-bnW" firstAttribute="top" secondItem="OZG-IO-9fD" secondAttribute="bottom" constant="20" id="OI2-Mh-5A0"/>
                 <constraint firstItem="OZG-IO-9fD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="QPL-9l-u6R"/>
-                <constraint firstAttribute="trailing" secondItem="OZG-IO-9fD" secondAttribute="trailing" constant="20" id="Yg0-Xl-96N"/>
+                <constraint firstAttribute="trailing" secondItem="OZG-IO-9fD" secondAttribute="trailing" constant="5" id="Yg0-Xl-96N"/>
                 <constraint firstItem="vwk-eW-bnW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zna-yP-5qS"/>
                 <constraint firstAttribute="bottom" secondItem="vwk-eW-bnW" secondAttribute="bottom" constant="15" id="czk-tW-bb2"/>
-                <constraint firstItem="OZG-IO-9fD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="gef-oA-Mxd"/>
+                <constraint firstItem="OZG-IO-9fD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="gef-oA-Mxd"/>
                 <constraint firstItem="OZG-IO-9fD" firstAttribute="top" secondItem="Frx-hF-A2q" secondAttribute="bottom" constant="10" id="h2d-ed-PMm"/>
+                <constraint firstItem="Frx-hF-A2q" firstAttribute="leading" secondItem="OZG-IO-9fD" secondAttribute="leading" id="n3K-jZ-Og1"/>
             </constraints>
         </view>
     </objects>

@@ -18,6 +18,8 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.configMainUI), name: kThemeNeedRefreshNotification, object: nil)
+        
+        self.edgesForExtendedLayout = .None
     }
     
     override func didReceiveMemoryWarning() {

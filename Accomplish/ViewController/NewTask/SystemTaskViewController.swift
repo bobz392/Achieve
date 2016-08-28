@@ -115,7 +115,9 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
-        case .KeyValue:
+        case .CreateTask:
+            let task = KVTaskViewController()
+            self.navigationController?.pushViewController(task, animated: true)
             break
             
         default:

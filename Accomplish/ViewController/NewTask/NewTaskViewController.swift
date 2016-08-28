@@ -12,6 +12,7 @@ import GPUImage
 class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var renderImageView: UIImageView!
+    @IBOutlet weak var titleCardView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priorityCardView: UIView!
@@ -54,6 +55,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         let colors = Colors()
         self.cardView.backgroundColor = colors.cloudColor
         self.titleTextField.tintColor = colors.mainGreenColor
+        
         self.prioritySegmental.tintColor = colors.mainGreenColor
         self.priorityLabel.textColor = colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
@@ -74,9 +76,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     private func initializeControl() {
         self.cardView.addShadow()
         
+        self.titleCardView.layer.cornerRadius = 6.0
+        self.titleCardView.addSmallShadow()
+        
         self.priorityCardView.layer.cornerRadius = 6.0
-        self.priorityCardView.layer.borderColor = UIColor(red:0.78, green:0.78, blue:0.78, alpha:1.00).CGColor
-        self.priorityCardView.layer.borderWidth = 0.5
+        self.priorityCardView.addSmallShadow()
         
         self.titleTextField.placeholder = Localized("goingDo")
         self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)

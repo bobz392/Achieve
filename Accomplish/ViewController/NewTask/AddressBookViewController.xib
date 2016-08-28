@@ -20,16 +20,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urb-s8-1j0">
-                    <rect key="frame" x="20" y="34" width="54" height="26"/>
+                    <rect key="frame" x="5" y="34" width="54" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PF-cd-rM5">
-                    <rect key="frame" x="20" y="70" width="560" height="435"/>
+                    <rect key="frame" x="5" y="70" width="590" height="435"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H1S-6B-2SH">
-                            <rect key="frame" x="0.0" y="10" width="560" height="415"/>
+                            <rect key="frame" x="0.0" y="10" width="590" height="415"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Wyx-kB-2g4"/>
@@ -60,12 +60,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="XUI-u8-Ctq" secondAttribute="bottom" constant="15" id="2I3-YS-B8P"/>
-                <constraint firstAttribute="trailing" secondItem="3PF-cd-rM5" secondAttribute="trailing" constant="20" id="8gC-0e-dVS"/>
-                <constraint firstItem="3PF-cd-rM5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="EMn-rS-sq6"/>
+                <constraint firstAttribute="trailing" secondItem="3PF-cd-rM5" secondAttribute="trailing" constant="5" id="8gC-0e-dVS"/>
+                <constraint firstItem="3PF-cd-rM5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="EMn-rS-sq6"/>
                 <constraint firstItem="3PF-cd-rM5" firstAttribute="top" secondItem="urb-s8-1j0" secondAttribute="bottom" constant="10" id="K3O-U9-j8n"/>
                 <constraint firstItem="XUI-u8-Ctq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ncn-Wi-QHh"/>
                 <constraint firstItem="3PF-cd-rM5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="PsM-ss-4vd"/>
-                <constraint firstItem="urb-s8-1j0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eBy-Al-775"/>
+                <constraint firstItem="urb-s8-1j0" firstAttribute="leading" secondItem="H1S-6B-2SH" secondAttribute="leading" id="qnO-OB-xYl"/>
                 <constraint firstItem="XUI-u8-Ctq" firstAttribute="top" secondItem="3PF-cd-rM5" secondAttribute="bottom" constant="20" id="sxE-fo-Scl"/>
             </constraints>
             <point key="canvasLocation" x="312" y="110"/>

@@ -31,6 +31,7 @@ class TaskTableViewCell: UITableViewCell {
         // Initialization code
         
         let colors = Colors()
+        self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsetsZero
         

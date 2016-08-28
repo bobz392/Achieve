@@ -51,7 +51,7 @@ enum SystemActionType: Int {
             return .AddressBookEmail
         
         case .Subtask:
-            return .KeyValue
+            return .CreateTask
         }
     }
     
@@ -97,5 +97,5 @@ enum SystemActionType: Int {
 enum ActionFeaturePresent {
     case AddressBook
     case AddressBookEmail
-    case KeyValue
+    case CreateTask
 }

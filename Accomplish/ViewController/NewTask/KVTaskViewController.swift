@@ -55,6 +55,6 @@ class KVTaskViewController: BaseViewController {
 
     // MARK: - action
     func cancelAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

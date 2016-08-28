@@ -34,7 +34,7 @@
 "normal"="Normal";
 "low"="Low";
 
-"selectAction"="Select built-in action";
+"selectAction"="Built-in actions";
 "callAction"="Call ";
 "sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";

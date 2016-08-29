@@ -179,6 +179,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             let realm = try! Realm()
             realm.beginWrite()
             for (index, sub) in subTasks.enumerate() {
+                guard sub.characters.count > 0 else { continue }
                 let subtask = Subtask()
                 subtask.rootUUID = taskUUID
                 let createdDate = now.dateByAddingSeconds(index)

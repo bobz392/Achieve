@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SystemTaskViewController: BaseViewController {
     
@@ -30,7 +31,7 @@ class SystemTaskViewController: BaseViewController {
         initControl()
         
         self.navigationController?.delegate = self
-//        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        //        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,26 +100,26 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        selectedActionType = actionBuilder.allActions[indexPath.row].type
+        let actionType = actionBuilder.allActions[indexPath.row].type
+        selectedActionType = actionType
         guard let present = selectedActionType?.actionPresent() else { return }
         
         switch present {
         case .AddressBook:
             AddressBook.requestAccess {[unowned self] (finish) in
-                let addressVC = AddressBookViewController.loadFromNib(readPhoneType: true)
-                addressVC.delegate = self
+                let addressVC = AddressBookViewController.loadFromNib(true, delegate: self)
+                
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
         case .AddressBookEmail:
             AddressBook.requestAccess {[unowned self] (finish) in
-                let addressVC = AddressBookViewController.loadFromNib(readPhoneType: false)
-                addressVC.delegate = self
+                let addressVC = AddressBookViewController.loadFromNib(false, delegate: self)
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
-        case .CreateTask:
-            let task = KVTaskViewController()
+        case .CreateSubtasks:
+            let task = KVTaskViewController(actionType: actionType, delegate: self)
             self.navigationController?.pushViewController(task, animated: true)
             break
             
@@ -144,22 +145,60 @@ extension SystemTaskViewController: TaskActionDataDelegate {
     // show = call zhoubo
     func actionData(name: String, info: String) {
         guard let type = selectedActionType else { return }
-        let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: info)
-        
+        // 返回task 信息
+        let task = Task()
+        task.taskType = kSystemTaskType
+        // 用于 text field 显示用
         let attrText = NSMutableAttributedString()
-        attrText.appendAttributedString(
-            NSAttributedString(string: type.ationNameWithType(), attributes:[
-                NSForegroundColorAttributeName: Colors().mainTextColor
-                ]))
-        let nameAttrText = NSAttributedString(string: name, attributes: [
-            NSForegroundColorAttributeName: Colors().linkTextColor
-            ])
         
-        attrText.appendAttributedString(nameAttrText)
-        newTaskDelegate?.toDoForSystemTask(attrText, taskToDoText: taskToText)
+        switch type.actionPresent() {
+        case .AddressBook, .AddressBookEmail:
+            let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: info)
+            task.taskToDo = taskToText
+            
+            attrText.appendAttributedString(
+                NSAttributedString(string: type.ationNameWithType(), attributes:[
+                    NSForegroundColorAttributeName: Colors().mainTextColor
+                    ]))
+            let nameAttrText = NSAttributedString(string: name, attributes: [
+                NSForegroundColorAttributeName: Colors().linkTextColor
+                ])
+            
+            attrText.appendAttributedString(nameAttrText)
+            
+        case .CreateSubtasks:
+            let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: nil)
+            task.taskToDo = taskToText.componentsSeparatedByString(kSpliteTaskIdentity).last ?? ""
+            
+            let subTasks = info.componentsSeparatedByString("\n")
+            task.subTaskCount = subTasks.count
+            let now = NSDate()
+            task.createdDate = now
+            let taskUUID = now.createTaskUUID()
+            
+            let realm = try! Realm()
+            realm.beginWrite()
+            for (index, sub) in subTasks.enumerate() {
+                let subtask = Subtask()
+                subtask.rootUUID = taskUUID
+                let createdDate = now.dateByAddingSeconds(index)
+                subtask.createdDate = createdDate
+                subtask.taskToDo = sub
+                subtask.uuid = createdDate.createTaskUUID()
+            }
+            try! realm.commitWrite()
+            
+            let nameAttrText = NSAttributedString(string: name)
+            attrText.appendAttributedString(nameAttrText)
+            
+        default:
+            return
+        }
+        
+        newTaskDelegate?.toDoForSystemTask(attrText, task: task)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-}
+ }
 
 protocol TaskActionDataDelegate: NSObjectProtocol {
     func actionData(name: String, info: String)

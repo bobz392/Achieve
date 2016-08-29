@@ -44,6 +44,12 @@
 "addMessage"="Create a message action";
 "addFaceTime"="Create a Face Time action";
 "addMail"="Create a mail action";
-"addSubtask"="Add a task with subtask";
 
-"addressBook"="Address Book"; 
+"addSubtask"="Add a task with subtask";
+"subtaskTitle"="Enter your task name";
+"subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
+
+"addressBook"="Address Book";
+
+
+"errorInfos"="Please perfect information";

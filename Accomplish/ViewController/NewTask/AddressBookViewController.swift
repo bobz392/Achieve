@@ -24,9 +24,10 @@ final class AddressBookViewController: BaseViewController {
     var readPhoneType = true
     weak var delegate: TaskActionDataDelegate? = nil
     
-    class func loadFromNib(readPhoneType readPhoneType: Bool) -> AddressBookViewController {
+    class func loadFromNib(readPhoneType: Bool, delegate: TaskActionDataDelegate) -> AddressBookViewController {
         let address = AddressBookViewController(nibName: "AddressBookViewController", bundle: nil)
         address.readPhoneType = readPhoneType
+        address.delegate = delegate
         return address
     }
     
@@ -35,8 +36,6 @@ final class AddressBookViewController: BaseViewController {
     private var indexes: Indexes = []
     private var data: IndexedData = [:]
     
-    private var searchResult: [AddressBook.Person] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,8 +43,6 @@ final class AddressBookViewController: BaseViewController {
         initControl()
         
         config(tableView: tableView)
-        
-//        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewDidAppear(animated: Bool) {

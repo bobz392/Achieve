@@ -76,10 +76,16 @@ class TaskTableViewCell: UITableViewCell {
         var taskTitle: NSMutableAttributedString
         switch task.taskType {
         case kSystemTaskType:
-            systemAction = TaskStringManager().parseTaskText(task.taskToDo)
-            taskTitle = NSMutableAttributedString(string: systemAction?.type.ationNameWithType() ?? "")
-            self.taskInfoButton.enabled = true
-            self.taskInfoButton.setTitle(systemAction?.name, forState: .Normal)
+            if let action = TaskStringManager().parseTaskText(task.taskToDo) {
+                systemAction = action
+                taskTitle = NSMutableAttributedString(string: systemAction?.type.ationNameWithType() ?? "")
+                self.taskInfoButton.enabled = true
+                self.taskInfoButton.setTitle(systemAction?.name, forState: .Normal)
+            } else {
+                self.taskInfoButton.enabled = false
+                self.taskInfoButton.setTitle(nil, forState: .Normal)
+                taskTitle = NSMutableAttributedString(string: task.taskToDo)
+            }
             
         default:
             self.taskInfoButton.enabled = false

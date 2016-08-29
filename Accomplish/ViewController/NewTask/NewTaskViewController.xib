@@ -100,7 +100,7 @@
                         <constraint firstItem="L1X-lI-ffW" firstAttribute="trailing" secondItem="xOP-iq-T7t" secondAttribute="trailing" id="vth-CJ-Usl"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-Ws-MLD">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-Ws-MLD">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-lQ-lgC">

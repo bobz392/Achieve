@@ -16,12 +16,12 @@ final class KeyboardManager {
     static var duration: Double = 0
     static var keyboardShow: Bool = false
     
-    var keyboardShowHandler: (() -> Void)?
+    var keyboardShowHandler: ( () -> Void)?
     var keyboardHideHandler: (() -> Void)?
     
     init() {
         NSNotificationCenter.defaultCenter().addObserverForName(
-            UIKeyboardWillShowNotification, object: nil,
+            UIKeyboardWillChangeFrameNotification, object: nil,
             queue: NSOperationQueue.mainQueue()) { notification in
                 self.handleKeyboardShow(notification)
         }
@@ -43,11 +43,13 @@ final class KeyboardManager {
         if let userInfo = notification.userInfo,
             let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
             let durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue {
-//            print("change frame height to \(frameValue.height)")
-            KeyboardManager.keyboardHeight = frameValue.height
-            KeyboardManager.duration = durationValue
-            KeyboardManager.keyboardShow = false
-            keyboardShowHandler?()
+            //            print("change frame height to \(frameValue.height)")
+            if frameValue.height > 0 {
+                KeyboardManager.keyboardHeight = frameValue.height
+                KeyboardManager.duration = durationValue
+                KeyboardManager.keyboardShow = false
+                keyboardShowHandler?()
+            }
         }
     }
     

@@ -44,6 +44,12 @@
 "addMessage"="添加一个短信动作";
 "addFaceTime"="添加一个Face Time动作";
 "addMail"="添加一个发送邮件动作";
+
 "addSubtask"="添加一个有子任务的任务";
+"subtaskTitle"="输入您的任务名";
+"subtaskInfo"="输入您的多个子任务，子任务之间以回车分隔";
 
 "addressBook"="通讯录";
+
+
+"errorInfos"="请完善信息";

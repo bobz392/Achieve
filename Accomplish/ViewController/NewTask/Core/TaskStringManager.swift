@@ -18,23 +18,27 @@ let kSpliteTaskIdentity = "$$"
 
 struct TaskStringManager {
     
-    func createTaskText(type: Int, name: String, info: String) -> String {
-        return "\(type)$$\(name)$$\(info)"
+    func createTaskText(type: Int, name: String, info: String?) -> String {
+        if let info = info {
+            return "\(type)$$\(name)$$\(info)"
+        } else {
+            return "\(type)$$\(name)"
+        }
     }
     
     func parseTaskText(text: String) -> SystemActionContent? {
         let results = text.componentsSeparatedByString(kSpliteTaskIdentity)
-        guard results.count == 3 else {
-            fatalError("format error in text = \(text)")
+        if results.count == 3 {
+            guard let type = Int(results[0]) else { return nil }
+            let showString = results[1] ?? ""
+            let infoString = results[2] ?? ""
+            
+            guard let actionType = SystemActionType(rawValue: type) else { return nil }
+            
+            return SystemActionContent(type: actionType, name: showString, info: infoString)
+        } else {
+            return nil
         }
-        
-        guard let type = Int(results[0]) else { return nil }
-        let showString = results[1] ?? ""
-        let infoString = results[2] ?? ""
-        
-        guard let actionType = SystemActionType(rawValue: type) else { return nil }
-        
-        return SystemActionContent(type: actionType, name: showString, info: infoString)
     }
     
     private func createNormalText(text: String, colors: Colors)

@@ -37,9 +37,16 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.keyboardAction()
         if (toolView.alpha == 1) {
             titleTextField.becomeFirstResponder()
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        KeyboardManager.sharedManager.closeNotification()
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,8 +83,6 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     private func initializeControl() {
         self.cardView.addShadow()
         
-        self.toolView.alpha = 0
-        
         self.titleCardView.layer.cornerRadius = 6.0
         self.titleCardView.addSmallShadow()
         
@@ -99,18 +104,15 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
         self.systemButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
-        
-        self.keyboardAction()
     }
     
     // MARK: - actions
     private func keyboardAction() {
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
-            KeyboardManager.sharedManager.keyboardShowHandler = nil
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
-            UIView.animateWithDuration(kNormalAnimationDuration, delay: 0.2, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
+            UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
             }) { [unowned self] (finish) in
                 self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
@@ -230,11 +232,11 @@ extension NewTaskViewController {
     }
     
     override func removeFromParentViewController() {
+        self.titleTextField.resignFirstResponder()
+        self.toolView.hidden = true
         UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
-            self.renderImageView.alpha = 0
-            self.cardView.alpha = 0
+            self.view.alpha = 0
         }) { [unowned self] (finish) in
-            self.titleTextField.resignFirstResponder()
             self.view.removeFromSuperview()
         }
     }
@@ -247,13 +249,15 @@ extension NewTaskViewController: NewTaskDataDelegate {
         task.notifyDate = date
     }
     
-    func toDoForSystemTask(text: NSAttributedString, taskToDoText: String) {
+    func toDoForSystemTask(text: NSAttributedString, task: Task) {
         self.titleTextField.attributedText = text
         self.titleTextField.enabled = false
         self.systemButton.hidden = true
         
-        self.task.taskToDo = taskToDoText
-        self.task.taskType = kSystemTaskType
+        self.task.taskToDo = task.taskToDo
+        self.task.taskType = task.taskType
+        self.task.createdDate = task.createdDate
+        self.task.subTaskCount = task.subTaskCount
         
         self.toolViewBottomConstraint.constant = 0
         self.cardViewTopConstraint.constant = (self.view.frame.height - self.cardViewHeight) * 0.5
@@ -265,5 +269,6 @@ extension NewTaskViewController: NewTaskDataDelegate {
 
 protocol NewTaskDataDelegate: NSObjectProtocol {
     func notifyTaskDate(date: NSDate)
-    func toDoForSystemTask(text: NSAttributedString, taskToDoText: String)
+    // 设置当前的 text 和 taskToDoTask
+    func toDoForSystemTask(text: NSAttributedString, task: Task)
 }

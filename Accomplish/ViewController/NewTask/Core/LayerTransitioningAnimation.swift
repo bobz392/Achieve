@@ -43,12 +43,12 @@ class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewC
             toView.center = temporaryPoint
             UIView.animateWithDuration(self.animationDuration * 0.7, animations: {
                 fromView.transform = CGAffineTransformMakeScale(0.8, 0.8)
-                fromView.alpha = 0.3
+                fromView.alpha = 0
                 }, completion: nil)
             
-            UIView.animateWithDuration(self.animationDuration, delay: self.animationDuration / 8.0, options: .CurveEaseInOut, animations: {
+            UIView.animateWithDuration(self.animationDuration * 0.7, delay: self.animationDuration * 0.3, options: .CurveEaseInOut, animations: {
                 toView.center = centerPoint
-                fromView.alpha = 0
+                
                 }, completion: { (finish) in
                     transitionContext.completeTransition(true)
                     fromView.removeFromSuperview()

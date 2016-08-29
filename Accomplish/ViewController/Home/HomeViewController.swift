@@ -74,10 +74,6 @@ class HomeViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
-    
     // MARK: - ui config
     override func configMainUI() {
         let colors = Colors()

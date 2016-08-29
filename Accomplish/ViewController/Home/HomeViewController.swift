@@ -10,16 +10,13 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: BaseViewController {
-    
+    // MARK: - props
     @IBOutlet weak var cardView: UIView!
-    
     @IBOutlet weak var statusSegment: UISegmentedControl!
-    
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var newTaskButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var fullScreenButton: UIButton!
-    
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var emptyHintLabel: UILabel!
@@ -32,7 +29,8 @@ class HomeViewController: BaseViewController {
     private var runningToken: RealmSwift.NotificationToken?
     
     private var isFullScreenSize = false
-    
+    private var selectedIndex: NSIndexPath? = nil
+    // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +54,10 @@ class HomeViewController: BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        guard let indexPath = self.selectedIndex else { return }
+        self.taskTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.selectedIndex = nil
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -316,8 +318,9 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
 }
 
+// MARK: - table view
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - table view
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
             showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
@@ -334,6 +337,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return TaskTableViewCell.rowHeight
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath
+        
+        let vc = ScheduleViewController()
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

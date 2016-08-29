@@ -104,6 +104,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.clockButton.addTarget(self, action: #selector(self.scheduleAction), forControlEvents: .TouchUpInside)
         self.systemButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dissmiss(_:)))
+        self.view.addGestureRecognizer(tap)
     }
     
     // MARK: - actions
@@ -179,6 +182,13 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         saveNewTask(text)
         return true
+    }
+    
+    func dissmiss(tap: UITapGestureRecognizer) {
+        if (!CGRectContainsPoint(self.cardView.frame, tap.locationInView(self.view))
+            && !CGRectContainsPoint(self.toolView.frame, tap.locationInView(self.view))) {
+            self.removeFromParentViewController()
+        }
     }
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!

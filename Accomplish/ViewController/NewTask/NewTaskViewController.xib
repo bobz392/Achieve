@@ -104,37 +104,40 @@
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-lQ-lgC">
-                            <rect key="frame" x="10" y="6" width="32" height="32"/>
+                            <rect key="frame" x="10" y="0.0" width="32" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="C2E-fh-J9S"/>
-                                <constraint firstAttribute="height" constant="32" id="a8d-9c-doF"/>
                             </constraints>
                             <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmR-Dd-PUz">
-                            <rect key="frame" x="535" y="7" width="45" height="30"/>
-                            <state key="normal" title="cancel"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acP-FL-DWg">
-                            <rect key="frame" x="62" y="6" width="32" height="32"/>
+                            <rect key="frame" x="62" y="0.0" width="32" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="32" id="mux-Ic-Opf"/>
                                 <constraint firstAttribute="width" constant="32" id="vnP-98-XRP"/>
                             </constraints>
                             <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHz-Dk-6DR">
-                            <rect key="frame" x="485" y="7" width="30" height="30"/>
+                            <rect key="frame" x="485" y="0.0" width="30" height="44"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmR-Dd-PUz">
+                            <rect key="frame" x="535" y="0.0" width="45" height="44"/>
+                            <state key="normal" title="cancel"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="leading" secondItem="Vdp-Ws-MLD" secondAttribute="leading" constant="10" id="9wa-Dx-BRD"/>
+                        <constraint firstItem="VmR-Dd-PUz" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" id="ERJ-Tj-tyq"/>
+                        <constraint firstAttribute="bottom" secondItem="KD9-lQ-lgC" secondAttribute="bottom" id="LRK-qC-Nni"/>
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="centerY" secondItem="Vdp-Ws-MLD" secondAttribute="centerY" id="Oyo-v3-82R"/>
+                        <constraint firstAttribute="bottom" secondItem="VmR-Dd-PUz" secondAttribute="bottom" id="PRN-mn-1mk"/>
+                        <constraint firstItem="iHz-Dk-6DR" firstAttribute="height" secondItem="VmR-Dd-PUz" secondAttribute="height" id="SHU-n7-w8N"/>
+                        <constraint firstItem="acP-FL-DWg" firstAttribute="height" secondItem="KD9-lQ-lgC" secondAttribute="height" id="UH9-r4-b1j"/>
                         <constraint firstItem="iHz-Dk-6DR" firstAttribute="centerY" secondItem="VmR-Dd-PUz" secondAttribute="centerY" id="Vr4-86-TVh"/>
-                        <constraint firstItem="iHz-Dk-6DR" firstAttribute="height" secondItem="VmR-Dd-PUz" secondAttribute="height" id="cWq-m3-KLv"/>
+                        <constraint firstItem="KD9-lQ-lgC" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" id="WJu-h5-tFg"/>
                         <constraint firstAttribute="height" constant="44" id="fJv-3r-lhi"/>
                         <constraint firstAttribute="trailing" secondItem="VmR-Dd-PUz" secondAttribute="trailing" constant="20" id="jTw-R9-paw"/>
                         <constraint firstItem="acP-FL-DWg" firstAttribute="leading" secondItem="KD9-lQ-lgC" secondAttribute="trailing" constant="20" id="nWw-pJ-vFV"/>

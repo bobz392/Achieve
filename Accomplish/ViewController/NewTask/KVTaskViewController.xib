@@ -105,9 +105,9 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="bME-ae-lhf" firstAttribute="centerY" secondItem="8KS-tk-E5f" secondAttribute="centerY" id="1e1-9f-pTf"/>
+                        <constraint firstItem="ae9-8T-oO4" firstAttribute="height" secondItem="bME-ae-lhf" secondAttribute="height" id="2qa-8r-oJK"/>
                         <constraint firstItem="ae9-8T-oO4" firstAttribute="centerY" secondItem="bME-ae-lhf" secondAttribute="centerY" id="Chc-k0-vXC"/>
                         <constraint firstItem="bME-ae-lhf" firstAttribute="leading" secondItem="ae9-8T-oO4" secondAttribute="trailing" constant="20" id="HzG-kU-5ef"/>
-                        <constraint firstItem="ae9-8T-oO4" firstAttribute="height" secondItem="bME-ae-lhf" secondAttribute="height" id="Krn-N8-D9U"/>
                         <constraint firstAttribute="trailing" secondItem="bME-ae-lhf" secondAttribute="trailing" constant="20" id="TNl-O1-035"/>
                         <constraint firstAttribute="height" constant="44" id="lu0-mD-k8n"/>
                     </constraints>

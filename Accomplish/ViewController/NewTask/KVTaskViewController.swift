@@ -14,6 +14,9 @@ class KVTaskViewController: BaseViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var titleCardView: UIView!
+    @IBOutlet weak var valueCardView: UIView!
+    @IBOutlet weak var valueTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +54,12 @@ class KVTaskViewController: BaseViewController {
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleLabel.text = Localized("selectAction")
+        
+        self.titleCardView.layer.cornerRadius = 6.0
+        self.titleCardView.addSmallShadow()
+        
+        self.valueCardView.layer.cornerRadius = 6.0
+        self.valueCardView.addSmallShadow()
     }
 
     // MARK: - action

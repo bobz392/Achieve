@@ -20,7 +20,7 @@
 "cancel"="Cancel";
 "permit"="Allow";
 "reject"="Reject";
-"save"="Save";
+"save"="Add";
 "ok"="Ok";
 "done"="Done";
 "customTask"="Custom task";
@@ -34,7 +34,7 @@
 "normal"="Normal";
 "low"="Low";
 
-"selectAction"="Built-in actions";
+"selectAction"="Built-in Action";
 "callAction"="Call ";
 "sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";

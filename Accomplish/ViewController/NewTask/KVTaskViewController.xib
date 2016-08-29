@@ -9,7 +9,10 @@
             <connections>
                 <outlet property="cancelButton" destination="6Rw-Pq-KOI" id="68S-NG-JAQ"/>
                 <outlet property="cardView" destination="3Ct-c1-I28" id="bUG-6m-djO"/>
+                <outlet property="titleCardView" destination="I81-o6-Sut" id="ZZp-dy-diD"/>
                 <outlet property="titleLabel" destination="mSF-t9-hCG" id="cxd-cE-bg8"/>
+                <outlet property="valueCardView" destination="Edt-Mw-kGs" id="5JT-Xf-lsb"/>
+                <outlet property="valueTextView" destination="BTf-Eg-F1c" id="0sh-qM-9Jo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -58,18 +61,41 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edt-Mw-kGs">
                             <rect key="frame" x="10" y="62" width="570" height="100"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BTf-Eg-F1c">
+                                    <rect key="frame" x="5" y="0.0" width="560" height="100"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="BTf-Eg-F1c" secondAttribute="trailing" constant="5" id="6DV-gC-Eva"/>
+                                <constraint firstItem="BTf-Eg-F1c" firstAttribute="leading" secondItem="Edt-Mw-kGs" secondAttribute="leading" constant="5" id="IKW-Fh-HGz"/>
+                                <constraint firstItem="BTf-Eg-F1c" firstAttribute="top" secondItem="Edt-Mw-kGs" secondAttribute="top" id="cCh-o5-76S"/>
+                                <constraint firstAttribute="bottom" secondItem="BTf-Eg-F1c" secondAttribute="bottom" id="gDp-eo-MFX"/>
                                 <constraint firstAttribute="height" constant="100" id="qmw-Ne-uZc"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjO-cy-d3d">
+                            <rect key="frame" x="10" y="54" width="570" height="1"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="mLY-Fn-fPD"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="fjO-cy-d3d" firstAttribute="trailing" secondItem="I81-o6-Sut" secondAttribute="trailing" id="40e-Ai-E0J"/>
+                        <constraint firstItem="fjO-cy-d3d" firstAttribute="top" secondItem="I81-o6-Sut" secondAttribute="bottom" id="CJX-Bd-gWS"/>
                         <constraint firstItem="I81-o6-Sut" firstAttribute="leading" secondItem="3Ct-c1-I28" secondAttribute="leading" constant="10" id="HYQ-ES-c3g"/>
                         <constraint firstItem="Edt-Mw-kGs" firstAttribute="top" secondItem="I81-o6-Sut" secondAttribute="bottom" constant="8" id="RaN-mP-P54"/>
                         <constraint firstItem="Edt-Mw-kGs" firstAttribute="leading" secondItem="I81-o6-Sut" secondAttribute="leading" id="X2t-1q-8fh"/>
                         <constraint firstAttribute="trailing" secondItem="I81-o6-Sut" secondAttribute="trailing" constant="10" id="eh8-wY-FzQ"/>
+                        <constraint firstItem="fjO-cy-d3d" firstAttribute="leading" secondItem="I81-o6-Sut" secondAttribute="leading" id="ivQ-G8-wMe"/>
                         <constraint firstItem="I81-o6-Sut" firstAttribute="top" secondItem="3Ct-c1-I28" secondAttribute="top" constant="10" id="nRb-rg-Fzq"/>
                         <constraint firstItem="Edt-Mw-kGs" firstAttribute="trailing" secondItem="I81-o6-Sut" secondAttribute="trailing" id="qLl-FA-IG9"/>
                     </constraints>

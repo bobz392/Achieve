@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */; };
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */; };
@@ -158,6 +159,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerTransitioningAnimation.swift; sourceTree = "<group>"; };
 		C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccomplishToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				C77194D01D710A8900437560 /* TaskStringManager.swift */,
 				C77194CE1D710A8300437560 /* SystemAtions.swift */,
 				C77195761D71530100437560 /* SystemActionBuilder.swift */,
+				C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */,
+				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,

@@ -45,7 +45,7 @@ final class AddressBookViewController: BaseViewController {
         
         config(tableView: tableView)
         
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewDidAppear(animated: Bool) {

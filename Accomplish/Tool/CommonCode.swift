@@ -8,10 +8,12 @@
 
 import Foundation
 
+/**
+ ** 本地化
+ **/
 func Localized(key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
-
 
 /**
  延迟若干秒。
@@ -33,3 +35,8 @@ func dispatch_global_async(closure: () -> Void) {
         closure()
     }
 }
+
+/**
+ ** screen
+ **/
+let screenBounds = UIScreen.mainScreen().bounds

@@ -276,7 +276,7 @@ class HomeViewController: BaseViewController {
             self.cardViewLeftConstraint.constant = 5
             self.cardViewRightConstraint.constant = 5
             self.cardViewBottomConstraint.constant = 10
-            self.cardViewTopConstraint.constant = 35
+            self.cardViewTopConstraint.constant = 25
             self.addTaskWidthConstraint.constant = 32
             self.addTaskHeightConstraint.constant = 32
             self.addTaskBottomConstraint.constant = 10

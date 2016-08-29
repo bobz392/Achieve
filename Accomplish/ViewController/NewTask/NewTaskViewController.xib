@@ -42,7 +42,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3BC-4a-wUV">
                                     <rect key="frame" x="5" y="0.0" width="560" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="Gh7-5d-0eE"/>
                                     </connections>

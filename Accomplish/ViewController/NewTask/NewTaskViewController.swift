@@ -157,6 +157,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: - logic
     func saveNewTask(taskToDo: String) {
+        guard taskToDo.characters.count > 0 else {
+            return
+        }
         let priority = prioritySegmental.selectedSegmentIndex
         task.createDefaultTask(taskToDo, priority:  priority)
         
@@ -166,11 +169,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: - textfield
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        guard let title = textField.text else {
+        guard let text = textField.text else {
             return true
         }
         
-        saveNewTask(title)
+        saveNewTask(text)
         return true
     }
     

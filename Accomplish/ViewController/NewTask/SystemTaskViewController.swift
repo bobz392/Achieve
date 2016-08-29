@@ -17,6 +17,7 @@ class SystemTaskViewController: BaseViewController {
     
     weak var newTaskDelegate: NewTaskDataDelegate? = nil
     
+    private let animation = LayerTransitioningAnimation()
     private let actionBuilder = SystemActionBuilder()
     private var selectedActionType: SystemActionType? = nil
     
@@ -28,7 +29,8 @@ class SystemTaskViewController: BaseViewController {
         configMainUI()
         initControl()
         
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.navigationController?.delegate = self
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -123,6 +125,14 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
+    }
+}
+
+extension SystemTaskViewController: UINavigationControllerDelegate {
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        animation.reverse = operation == UINavigationControllerOperation.Pop
+        return animation
     }
 }
 

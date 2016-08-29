@@ -11,12 +11,19 @@ import UIKit
 // key value type system action
 class KVTaskViewController: BaseViewController {
 
-    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
+    
     @IBOutlet weak var titleCardView: UIView!
-    @IBOutlet weak var valueCardView: UIView!
-    @IBOutlet weak var valueTextView: UITextView!
+    
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var contentTextView: UITextView!
+    
+    @IBOutlet weak var toolView: UIView!
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +46,12 @@ class KVTaskViewController: BaseViewController {
         self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
-        self.cancelButton.buttonColor(colors)
-        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(40)
-        cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
+        lineView.backgroundColor = colors.cloudColor
+        titleTextField.tintColor = colors.mainGreenColor
+        titleTextField.textColor = colors.mainTextColor
     }
     
     private func initControl() {
-        self.cancelButton.addShadow()
-        self.cancelButton.layer.cornerRadius = 30
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
-        
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
@@ -57,9 +59,6 @@ class KVTaskViewController: BaseViewController {
         
         self.titleCardView.layer.cornerRadius = 6.0
         self.titleCardView.addSmallShadow()
-        
-        self.valueCardView.layer.cornerRadius = 6.0
-        self.valueCardView.addSmallShadow()
     }
 
     // MARK: - action

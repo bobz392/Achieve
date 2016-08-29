@@ -72,7 +72,6 @@ final class AddressBookViewController: BaseViewController {
         tableView?.separatorStyle = .None
     }
     
-    
     override func configMainUI() {
         let colors = Colors()
         

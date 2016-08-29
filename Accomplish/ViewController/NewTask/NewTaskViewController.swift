@@ -76,6 +76,8 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     private func initializeControl() {
         self.cardView.addShadow()
         
+        self.toolView.alpha = 0
+        
         self.titleCardView.layer.cornerRadius = 6.0
         self.titleCardView.addSmallShadow()
         

@@ -24,6 +24,12 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var toolView: UIView!
     
+    @IBOutlet weak var dateToolView: UIView!
+    @IBOutlet weak var dateToolLineView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var cancelDateButton: UIButton!
+    @IBOutlet weak var setDateButton: UIButton!
+    
     private let cardViewHeight: CGFloat = 194
     
     private let task = Task()
@@ -67,13 +73,19 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.prioritySegmental.tintColor = colors.mainGreenColor
         self.priorityLabel.textColor = colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
+        self.dateToolLineView.backgroundColor = colors.separatorColor
+        self.dateToolView.backgroundColor = colors.cloudColor
+        self.datePicker.backgroundColor = colors.cloudColor
+        
         self.cancelButton.tintColor = colors.mainGreenColor
         self.saveButton.tintColor = colors.mainGreenColor
+        self.setDateButton.tintColor = colors.mainGreenColor
+        self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        let clockIcon = FAKFontAwesome.clockOIconWithSize(22)
-        clockIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+        let clockIcon = try! FAKFontAwesome(identifier: "fa-clock-o", size: 22)
         let clockImage = clockIcon.imageWithSize(CGSize(width: 32, height: 32))
         self.clockButton.setImage(clockImage, forState: .Normal)
+        self.clockButton.tintColor = colors.secondaryTextColor
         
         let systemIcon = FAKFontAwesome.archiveIconWithSize(20)
         systemIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -90,8 +102,16 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.priorityCardView.layer.cornerRadius = 6.0
         self.priorityCardView.addSmallShadow()
         
+        self.dateToolView.hidden = true
+        self.datePicker.hidden = true
+        self.datePicker.datePickerMode = .Date
+        self.datePicker.minimumDate = NSDate()
+        
         self.titleTextField.placeholder = Localized("goingDo")
         self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
+        
+        self.cancelDateButton.setTitle(Localized("removeDate"), forState: .Normal)
+        self.setDateButton.setTitle(Localized("setCreateDate"), forState: .Normal)
         self.saveButton.setTitle(Localized("save"), forState: .Normal)
         
         self.priorityLabel.text = Localized("priority")
@@ -106,6 +126,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.systemButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
         
+        self.cancelDateButton.addTarget(self, action: #selector(self.cancelScheduleAction), forControlEvents: .TouchUpInside)
+        self.setDateButton.addTarget(self, action: #selector(self.saveScheduleAction), forControlEvents: .TouchUpInside)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dissmiss(_:)))
         self.view.addGestureRecognizer(tap)
     }
@@ -115,6 +138,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
+            self.datePickerHeightConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
@@ -145,7 +169,27 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func scheduleAction() {
-      
+        KeyboardManager.sharedManager.closeNotification()
+        self.titleTextField.resignFirstResponder()
+        
+        self.dateToolView.hidden = false
+        self.datePicker.hidden = false
+    }
+    
+    func cancelScheduleAction() {
+        self.datePicker.hidden = true
+        self.dateToolView.hidden = true
+        self.titleTextField.becomeFirstResponder()
+        
+        self.keyboardAction()
+    }
+    
+    func saveScheduleAction() {
+        let selectedDate = self.datePicker.date
+        task.createdDate = selectedDate
+        
+        self.clockButton.tintColor = Colors().mainGreenColor
+        cancelScheduleAction()
     }
     
     func systemAction() {
@@ -212,6 +256,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
 }
 
 // MARK: - parent view controller

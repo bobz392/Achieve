@@ -29,6 +29,8 @@
 
 "goingDo"="What would you like to do?";
 "priority"="Priority";
+"removeDate"="Remove";
+"setCreateDate"="Set from date";
 
 "high"="High";
 "normal"="Normal";

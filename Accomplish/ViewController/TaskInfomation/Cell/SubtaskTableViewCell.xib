@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subtaskTableViewCell" id="KGk-i7-Jjw" customClass="SubtaskTableViewCell" customModule="Accomplish" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8z-xv-pN7">
+                        <rect key="frame" x="0.0" y="6" width="52" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="cMv-8x-gR5"/>
+                            <constraint firstAttribute="width" constant="52" id="daV-LQ-0kX"/>
+                        </constraints>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5i-Dm-emu">
+                        <rect key="frame" x="268" y="0.0" width="52" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="52" id="Ymj-fd-xdv"/>
+                        </constraints>
+                    </button>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z6P-vq-Ywu">
+                        <rect key="frame" x="52" y="0.0" width="216" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="GOl-Xe-OpJ"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="U5i-Dm-emu" secondAttribute="bottom" id="9Lf-v3-A2h"/>
+                    <constraint firstItem="Z6P-vq-Ywu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CZq-YJ-7oJ"/>
+                    <constraint firstItem="L8z-xv-pN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="I6p-3o-x32"/>
+                    <constraint firstAttribute="trailing" secondItem="U5i-Dm-emu" secondAttribute="trailing" id="Ubs-eO-Kjy"/>
+                    <constraint firstItem="U5i-Dm-emu" firstAttribute="leading" secondItem="Z6P-vq-Ywu" secondAttribute="trailing" id="V5H-q5-vMY"/>
+                    <constraint firstAttribute="bottom" secondItem="Z6P-vq-Ywu" secondAttribute="bottom" id="fWr-C9-Aha"/>
+                    <constraint firstItem="L8z-xv-pN7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kU7-5R-71g"/>
+                    <constraint firstItem="U5i-Dm-emu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mqN-gR-XrD"/>
+                    <constraint firstItem="Z6P-vq-Ywu" firstAttribute="leading" secondItem="L8z-xv-pN7" secondAttribute="trailing" id="rGE-qX-lmZ"/>
+                </constraints>
+                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="iconButton" destination="L8z-xv-pN7" id="ktE-Cy-YAM"/>
+                <outlet property="subtaskTextField" destination="Z6P-vq-Ywu" id="fF2-n9-I0b"/>
+                <outlet property="trashButton" destination="U5i-Dm-emu" id="YFT-3y-0bS"/>
+            </connections>
+            <point key="canvasLocation" x="310" y="304"/>
+        </tableViewCell>
+    </objects>
+</document>

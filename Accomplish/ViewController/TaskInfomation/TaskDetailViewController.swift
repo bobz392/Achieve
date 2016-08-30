@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import RealmSwift
+
+let SubtaskIconCalendar = "fa-calendar-plus-o"
+let SubtaskIconBell = "fa-bell-o"
+let SubtaskIconRepeat = "fa-repeat"
+let SubtaskIconAdd = "fa-plus"
+let SubtaskIconNote = "fa-pencil-square-o"
+let SubtaskIconSquare = "fa-square-o"
+let SubtaskIconChecked = "fa-check-square-o"
 
 class TaskDetailViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
+    
+    private var iconList = [SubtaskIconCalendar, SubtaskIconBell, SubtaskIconRepeat, SubtaskIconAdd, SubtaskIconNote]
+    private let subtaskStartIndex = 3
     
     var task: Task
+    private var subtasks: Results<Subtask>?
+    private var subtasksToken: RealmSwift.NotificationToken?
     
     init(task: Task) {
         self.task = task
@@ -40,10 +55,16 @@ class TaskDetailViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        subtasksToken?.stop()
+        KeyboardManager.sharedManager.closeNotification()
+    }
+    
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleTextField.textColor = colors.cloudColor
+        self.titleTextField.tintColor = colors.cloudColor
         
         self.detailTableView.backgroundColor = colors.cloudColor
         self.detailTableView.separatorColor = colors.separatorColor
@@ -55,14 +76,12 @@ class TaskDetailViewController: BaseViewController {
         let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(40)
         cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
+        
     }
     
     private func initializeControl() {
-        if #available(iOS 9, *) {
-            self.detailTableView.cellLayoutMarginsFollowReadableWidth = false
-        }
-        self.detailTableView.tableFooterView = UIView()
-        self.detailTableView.registerNib(SystemTaskTableViewCell.nib, forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
+        self.initializeTableView()
+        self.keyboardAction()
         
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = 30
@@ -71,20 +90,156 @@ class TaskDetailViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-        self.titleLabel.text = task.getNormalDisplayTitle()
+        self.titleTextField.text = task.getNormalDisplayTitle()
     }
     
+    // MARK: - actions
     func cancelAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    private func keyboardAction() {
+        KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+            self.detailTableViewBottomConstraint.constant =
+                KeyboardManager.keyboardHeight - 90
+            
+            UIView.animateWithDuration(KeyboardManager.duration, animations: {
+                self.detailTableView.layoutIfNeeded()
+            })
+            }
+        
+        KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
+            self.detailTableViewBottomConstraint.constant = 10
+            UIView.animateWithDuration(KeyboardManager.duration, animations: { 
+                self.detailTableView.layoutIfNeeded()
+            })
+        }
+    }
+    
+    private func realmNoticationToken() {
+        subtasksToken = subtasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .Initial:
+                self.detailTableView.reloadRowsAtIndexPaths(Array(self.subtaskStartIndex..<self.iconList.count - 1).map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+                
+            case .Update(_, let deletions, let insertions, let modifications):
+                self.detailTableView.beginUpdates()
+                if insertions.count > 0 {
+                    for index in insertions {
+                        self.iconList.insert(SubtaskIconSquare, atIndex: index + self.subtaskStartIndex)
+                    }
+                    
+                    self.detailTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0 + self.subtaskStartIndex, inSection: 0) }, withRowAnimation: .Automatic)
+                }
+                
+                if modifications.count > 0 {
+                    for index in modifications {
+                        guard let subtask = self.subtasks?[index] else { continue }
+                        self.iconList.removeAtIndex(index + self.subtaskStartIndex)
+                        let element = subtask.finishedDate == nil ? SubtaskIconSquare : SubtaskIconChecked
+                        self.iconList.insert(element, atIndex: index + self.subtaskStartIndex)
+                    }
+
+                    self.detailTableView.reloadRowsAtIndexPaths(modifications.map { NSIndexPath(forRow: $0 + self.subtaskStartIndex, inSection: 0) }, withRowAnimation: .Automatic)
+                }
+                
+                if deletions.count > 0 {
+                    for index in deletions {
+                        self.iconList.removeAtIndex(index + self.subtaskStartIndex)
+                    }
+                    self.detailTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0 + self.subtaskStartIndex, inSection: 0) },
+                        withRowAnimation: .Automatic)
+                }
+                
+                self.detailTableView.endUpdates()
+                
+            case .Error(let error):
+                print(error)
+                break
+            }
+            })
+    }
 }
 
+extension TaskDetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if let title = textField.text {
+            if !title.isEmpty {
+                RealmManager.shareManager.updateObject({ 
+                    self.task.taskToDo = title
+                })
+            }
+        }
+        
+        return textField.resignFirstResponder()
+    }
+}
+
+// MARK: - table view
 extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    private func initializeTableView() {
+        let sts = RealmManager.shareManager.querySubtask(task.uuid)
+        self.subtasks = sts
+        for index in 0..<sts.count {
+            if sts[index].finishedDate == nil {
+                iconList.insert(SubtaskIconSquare, atIndex: self.subtaskStartIndex + index)
+            } else {
+                iconList.insert(SubtaskIconChecked, atIndex: self.subtaskStartIndex + index)
+            }
+        }
+        realmNoticationToken()
+        if #available(iOS 9, *) {
+            self.detailTableView.cellLayoutMarginsFollowReadableWidth = false
+        }
+        
+        self.detailTableView.tableFooterView = UIView()
+        self.detailTableView.registerNib(TaskDateTableViewCell.nib, forCellReuseIdentifier: TaskDateTableViewCell.reuseId)
+        self.detailTableView.registerNib(SubtaskTableViewCell.nib, forCellReuseIdentifier: SubtaskTableViewCell.reuseId)
+        self.detailTableView.registerNib(TaskNoteTableViewCell.nib, forCellReuseIdentifier: TaskNoteTableViewCell.reuseId)
+        
+    }
+    // 1 set time
+    // 2 notify time
+    // 3 notify repeat
+    // 4 subtask
+    // 5 note
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4 + (task.subTaskCount > 0 ? task.subTaskCount - 1 : 0)
+        return iconList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if indexPath.row < subtaskStartIndex {
+            let cell = tableView.dequeueReusableCellWithIdentifier(TaskDateTableViewCell.reuseId, forIndexPath: indexPath) as! TaskDateTableViewCell
+            cell.configCell(task, iconString: iconList[indexPath.row])
+            
+            return cell
+        } else if indexPath.row == iconList.count - 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(TaskNoteTableViewCell.reuseId, forIndexPath: indexPath) as! TaskNoteTableViewCell
+            cell.configCell(task)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(SubtaskTableViewCell.reuseId, forIndexPath: indexPath) as! SubtaskTableViewCell
+            let row = indexPath.row
+            if iconList[row] == SubtaskIconAdd {
+                cell.configCell(task, subtask: nil, iconString: SubtaskIconAdd)
+            } else {
+                cell.configCell(task, subtask: self.subtasks?[row - subtaskStartIndex], iconString: iconList[indexPath.row])
+            }
+            return cell
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row < subtaskStartIndex {
+            return TaskDateTableViewCell.rowHeight
+        } else if indexPath.row == iconList.count - 1 {
+            return TaskNoteTableViewCell.rowHeight
+        } else {
+            return SubtaskTableViewCell.rowHeight
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

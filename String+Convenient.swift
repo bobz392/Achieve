@@ -30,7 +30,26 @@ extension String {
     }
 }
 
-// Range 
+// counting
+extension String {
+    func isEmpty() -> Bool {
+        return self.characters.count <= 0
+    }
+}
+
+// attribution
+extension String {
+    func addStrikethrough() -> NSAttributedString {
+        let colors = Colors()
+        return NSAttributedString(string: self, attributes: [
+            NSForegroundColorAttributeName: colors.secondaryTextColor,
+            NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+            NSStrikethroughColorAttributeName: colors.secondaryTextColor,
+            ])
+    }
+}
+
+// Range
 extension String {
     func subRange(start: Int, end: Int) -> Range<Index> {
         let startIndex = self.startIndex.advancedBy(start)

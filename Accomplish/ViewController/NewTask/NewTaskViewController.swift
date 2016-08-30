@@ -27,6 +27,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     private let cardViewHeight: CGFloat = 194
     
     private let task = Task()
+    private var subtaskString: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,11 +145,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func scheduleAction() {
-        let scheduleVC = ScheduleViewController()
-        scheduleVC.taskDateDelegate = self
-        self.parentViewController?.presentViewController(scheduleVC, animated: true, completion: {
-            
-        })
+      
     }
     
     func systemAction() {
@@ -157,9 +154,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         nav.view.backgroundColor = Colors().mainGreenColor
         nav.navigationBarHidden = true
         systemVC.newTaskDelegate = self
-        self.parentViewController?.presentViewController(nav, animated: true, completion: {
-            
-        })
+        self.parentViewController?.presentViewController(nav, animated: true, completion: { })
     }
     
     // MARK: - logic
@@ -170,8 +165,32 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         let priority = prioritySegmental.selectedSegmentIndex
         task.createDefaultTask(taskToDo, priority:  priority)
         
-        RealmManager.shareManager.createTask(task)
+        saveSubtasks()
+        RealmManager.shareManager.writeObject(task)
+        
         self.cancelAction()
+    }
+    
+    private func saveSubtasks() {
+        guard let subtaskString = self.subtaskString else { return }
+        let subTasks = subtaskString.componentsSeparatedByString("\n")
+        task.subTaskCount = subTasks.count
+        let now = NSDate()
+        task.createdDate = now
+        let taskUUID = now.createTaskUUID()
+        
+        let tasks = subTasks.enumerate().flatMap({ (index: Int, sub: String) -> Subtask? in
+            guard sub.characters.count > 0 else { return nil }
+            let subtask = Subtask()
+            subtask.rootUUID = taskUUID
+            let createdDate = now.dateByAddingSeconds(index)
+            subtask.createdDate = createdDate
+            subtask.taskToDo = sub
+            subtask.uuid = createdDate.createTaskUUID()
+            return subtask
+            
+        })
+        RealmManager.shareManager.writeObjects(tasks)
     }
     
     // MARK: - textfield
@@ -263,6 +282,7 @@ extension NewTaskViewController: NewTaskDataDelegate {
         self.titleTextField.attributedText = text
         self.titleTextField.enabled = false
         self.systemButton.hidden = true
+        self.saveButton.hidden = false
         
         self.task.taskToDo = task.taskToDo
         self.task.taskType = task.taskType
@@ -271,8 +291,11 @@ extension NewTaskViewController: NewTaskDataDelegate {
         
         self.toolViewBottomConstraint.constant = 0
         self.cardViewTopConstraint.constant = (self.view.frame.height - self.cardViewHeight) * 0.5
-        
-        self.saveButton.hidden = false
+    }
+    
+    func toDoForSystemSubtask(text: NSAttributedString, task: Task, subtasks: String) {
+        self.toDoForSystemTask(text, task: task)
+        self.subtaskString = subtasks
     }
 }
 
@@ -281,4 +304,5 @@ protocol NewTaskDataDelegate: NSObjectProtocol {
     func notifyTaskDate(date: NSDate)
     // 设置当前的 text 和 taskToDoTask
     func toDoForSystemTask(text: NSAttributedString, task: Task)
+    func toDoForSystemSubtask(text: NSAttributedString, task: Task, subtasks: String)
 }

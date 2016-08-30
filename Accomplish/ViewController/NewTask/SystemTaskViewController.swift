@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SystemTaskViewController: BaseViewController {
     
@@ -131,7 +130,7 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UINavigationControllerDelegate
 extension SystemTaskViewController: UINavigationControllerDelegate {
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? { 
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         animation.reverse = operation == UINavigationControllerOperation.Pop
         return animation
     }
@@ -165,41 +164,23 @@ extension SystemTaskViewController: TaskActionDataDelegate {
                 ])
             
             attrText.appendAttributedString(nameAttrText)
+            newTaskDelegate?.toDoForSystemTask(attrText, task: task)
             
         case .CreateSubtasks:
             let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: nil)
             task.taskToDo = taskToText.componentsSeparatedByString(kSpliteTaskIdentity).last ?? ""
             
-            let subTasks = info.componentsSeparatedByString("\n")
-            task.subTaskCount = subTasks.count
-            let now = NSDate()
-            task.createdDate = now
-            let taskUUID = now.createTaskUUID()
-            
-            let realm = try! Realm()
-            realm.beginWrite()
-            for (index, sub) in subTasks.enumerate() {
-                guard sub.characters.count > 0 else { continue }
-                let subtask = Subtask()
-                subtask.rootUUID = taskUUID
-                let createdDate = now.dateByAddingSeconds(index)
-                subtask.createdDate = createdDate
-                subtask.taskToDo = sub
-                subtask.uuid = createdDate.createTaskUUID()
-            }
-            try! realm.commitWrite()
-            
             let nameAttrText = NSAttributedString(string: name)
             attrText.appendAttributedString(nameAttrText)
+            newTaskDelegate?.toDoForSystemSubtask(attrText, task: task, subtasks: info)
             
         default:
             return
         }
         
-        newTaskDelegate?.toDoForSystemTask(attrText, task: task)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
- }
+}
 
 protocol TaskActionDataDelegate: NSObjectProtocol {
     func actionData(name: String, info: String)

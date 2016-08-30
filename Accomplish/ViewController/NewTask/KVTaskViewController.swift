@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
-import YYText
 
 // key value type system action
 class KVTaskViewController: BaseViewController {
@@ -22,7 +20,8 @@ class KVTaskViewController: BaseViewController {
     
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentTextView: YYTextView!
+    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -54,6 +53,7 @@ class KVTaskViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+            KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animateWithDuration(KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: {
@@ -91,6 +91,7 @@ class KVTaskViewController: BaseViewController {
         self.titleTextField.textColor = colors.mainTextColor
         self.contentTextView.tintColor = colors.mainGreenColor
         self.contentTextView.textColor = colors.mainTextColor
+        self.placeholderLabel.textColor = colors.secondaryTextColor
         
         self.cancelButton.tintColor = colors.mainGreenColor
         self.saveButton.tintColor = colors.mainGreenColor
@@ -103,7 +104,7 @@ class KVTaskViewController: BaseViewController {
         self.titleLabel.text = Localized(actionType.ationNameWithType())
         if let hint = actionType.hintNameWithType() {
             self.titleTextField.placeholder = Localized(hint.0)
-            self.contentTextView.placeholderText = Localized(hint.1)
+            self.placeholderLabel.text = Localized(hint.1)
         }
         
         self.titleCardView.layer.cornerRadius = 6.0
@@ -123,8 +124,8 @@ class KVTaskViewController: BaseViewController {
     }
     
     func saveAction() {
-        guard let title = titleTextField.text,
-            let content = contentTextView.text else { return }
+        guard let title = self.titleTextField.text,
+            let content = self.contentTextView.text else { return }
         if title.characters.count > 0 && content.characters.count > 0 {
             self.view.endEditing(true)
             dispatch_delay(0.25, closure: { [unowned self] in
@@ -132,13 +133,22 @@ class KVTaskViewController: BaseViewController {
                 self.navigationController?.popViewControllerAnimated(true)
             })
         } else {
-            SVProgressHUD.showErrorWithStatus(Localized("errorInfos"))
+//            SVProgressHUD.showErrorWithStatus(Localized("errorInfos"))
+            HUD.sharedHUD.showHUD(self.view)
         }
+    }
+}
+
+extension KVTaskViewController: UITextViewDelegate {
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        self.placeholderLabel.hidden = range.location + text.characters.count > 0
+        return true
     }
 }
 
 extension KVTaskViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        return contentTextView.becomeFirstResponder()
+        self.contentTextView.becomeFirstResponder()
+        return false
     }
 }

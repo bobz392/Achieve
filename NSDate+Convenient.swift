@@ -8,6 +8,9 @@
 
 import Foundation
 
+let uuidFormat: String = "yyMMddHHmmssZ"
+let createdDateFormat: String = "yyyy.MM.dd"
+let timeDateFormat: String = "hh: mm a"
 
 // TASK
 extension NSDate {

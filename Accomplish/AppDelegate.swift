@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         configRealm()
         
+        HUD.sharedHUD.config()
+        
         return true
     }
     

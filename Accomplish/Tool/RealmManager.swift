@@ -10,14 +10,47 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
+    typealias RealmBlock = () -> Void
+    
     private let realm = try! Realm()
     
     static let shareManager = RealmManager()
 
-    func createTask(task: Task) {
+    func writeObject(object: Object) {
         try! realm.write {
-            realm.add(task)
+            realm.add(object)
         }
+    }
+    
+    func deleteObject(object: Object) {
+        try! realm.write {
+            realm.delete(object)
+        }
+    }
+    
+    func updateObject(updateBlock: RealmBlock) {
+        try! realm.write({ 
+            updateBlock()
+        })
+    }
+    
+    func begin() {
+        realm.beginWrite()
+    }
+    
+    func commit() {
+        try! realm.commitWrite()
+    }
+    
+    func writeObjects(objects: [Object]) {
+        realm.beginWrite()
+        realm.add(objects)
+        try! realm.commitWrite()
+    }
+    
+    func queryAll(clz: AnyClass) {
+        let result = realm.objects(clz as! Object.Type)
+        print(result)
     }
     
     func queryTodayTaskList(finished: Bool) -> Results<Task> {
@@ -26,15 +59,25 @@ class RealmManager {
         let tasks = realm
             .objects(Task.self)
             .filter("createdFormattedDate = \(queryDate) AND status \(finished ? "!=" : "==") \(kTaskRunning)")
+            .sorted("createdDate")
         
         return tasks
+    }
+    
+    func querySubtask(rootUUID: String) -> Results<Subtask> {
+        return realm.objects(Subtask.self).filter("rootUUID = '\(rootUUID)'").sorted("createdDate")
     }
     
     func updateTaskStatus(task: Task, status: Int) {
         try! realm.write({ 
             task.status = status
             if status == kTaskFinish {
-                task.finishedDate = NSDate()
+                let now = NSDate()
+                let subtasks = querySubtask(task.uuid)
+                for subtask in subtasks {
+                    subtask.finishedDate = now
+                }
+                task.finishedDate = now
             } else if status == kTaskRunning {
                 task.finishedDate = nil
             } else {

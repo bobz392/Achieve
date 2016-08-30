@@ -45,11 +45,16 @@
 "addFaceTime"="Create a Face Time action";
 "addMail"="Create a mail action";
 
-"addSubtask"="Add a task with subtask";
+"addSubtask"="Create a task with subtask";
 "subtaskTitle"="Enter your task name";
 "subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
+"detailPostponeTomorrow"="Postponed to tomorrow if not completed today";
+"detailIncomplete"="Marked as incomplete if not completed today";
+"detailNotifyTime"="Task reminder";
+"repeat"="Repeat";
+"taskNote"="Add a note";
+"detailAddSubtask"="Add a subtask";
 
 "addressBook"="Address Book";
-
 
 "errorInfos"="Please perfect information";

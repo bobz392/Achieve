@@ -59,6 +59,7 @@ class HomeViewController: BaseViewController {
         
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.taskTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         self.selectedIndex = nil
     }
     
@@ -248,11 +249,8 @@ class HomeViewController: BaseViewController {
     }
     
     func calendarAction() {
-        print(finishTasks?.count)
-        print(runningTasks?.count)
-        
-        print(finishTasks?.first)
-        print(runningTasks?.first)
+        print(runningTasks)
+        print(RealmManager.shareManager.queryAll(Subtask.self))
     }
     
     private func doSwitchScreen(animation: Bool) {
@@ -362,7 +360,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if self.inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
         } else {
-            task = self.finishTasks?[indexPath.row]   
+            task = self.finishTasks?[indexPath.row]
         }
         
         if let t = task {

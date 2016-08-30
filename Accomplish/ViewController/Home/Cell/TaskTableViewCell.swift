@@ -46,7 +46,6 @@ class TaskTableViewCell: UITableViewCell {
         icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.taskSettingButton.setAttributedTitle(icon.attributedString(), forState: .Normal)
         
-        self.taskStatusButton.tintColor = colors.mainGreenColor
         self.taskStatusButton.backgroundColor = colors.cloudColor
         
         self.taskStatusButton.addTarget(self, action: #selector(self.markTast(_:)), forControlEvents: .TouchUpInside)
@@ -75,34 +74,35 @@ class TaskTableViewCell: UITableViewCell {
             self.priorityView.backgroundColor = colors.priorityHighColor
         }
         
-        var taskTitle: NSMutableAttributedString
+        var taskTitle: String
         switch task.taskType {
         case kSystemTaskType:
             if let action = TaskStringManager().parseTaskText(task.taskToDo) {
                 systemAction = action
-                taskTitle = NSMutableAttributedString(string: systemAction?.type.ationNameWithType() ?? "")
+                taskTitle = systemAction?.type.ationNameWithType() ?? ""
                 self.taskInfoButton.enabled = true
                 self.taskInfoButton.setTitle(systemAction?.name, forState: .Normal)
             } else {
                 self.taskInfoButton.enabled = false
                 self.taskInfoButton.setTitle(nil, forState: .Normal)
-                taskTitle = NSMutableAttributedString(string: task.taskToDo)
+                taskTitle = task.taskToDo
             }
             
         default:
             self.taskInfoButton.enabled = false
             self.taskInfoButton.setTitle(nil, forState: .Normal)
-            taskTitle = NSMutableAttributedString(string: task.taskToDo)
+            taskTitle = task.taskToDo
         }
         
         switch task.status {
         case kTaskRunning:
-            self.taskTitleLabel.attributedText = taskTitle
+            self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
             
             let squareIcon = FAKFontAwesome.squareOIconWithSize(20)
             squareIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let squareImage = squareIcon.imageWithSize(CGSize(width: 20, height: 20))
             self.taskStatusButton.setImage(squareImage, forState: .Normal)
+            self.taskStatusButton.tintColor = colors.mainGreenColor
             
             if let create = task.createdDate {
                 let now = NSDate()
@@ -114,28 +114,17 @@ class TaskTableViewCell: UITableViewCell {
             }
             
         case kTaskFinish:
-            taskTitle.addAttributes(
-                [
-                    NSForegroundColorAttributeName: colors.secondaryTextColor,
-                    NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-                    NSStrikethroughColorAttributeName: colors.secondaryTextColor,
-                ], range: NSMakeRange(0, taskTitle.length))
-            
-            self.taskTitleLabel.attributedText = taskTitle
+            self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
             
             let squareCheckIcon = FAKFontAwesome.checkSquareOIconWithSize(20)
-            squareCheckIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let squareCheckImage = squareCheckIcon.imageWithSize(CGSize(width: 20, height: 20))
             self.taskStatusButton.setImage(squareCheckImage, forState: .Normal)
+            self.taskStatusButton.tintColor = colors.secondaryTextColor
             self.taskDateLabel.text =
                 task.finishedDate?.formattedDateWithFormat(timeDateFormat)
             
         default:
-            self.taskTitleLabel.attributedText = NSAttributedString(string: task.taskToDo, attributes: [
-                NSForegroundColorAttributeName: colors.secondaryTextColor,
-                NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-                NSStrikethroughColorAttributeName: colors.secondaryTextColor,
-                ])
+            self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
             let icon = FAKFontAwesome.timesIconWithSize(20)
             icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let image = icon.imageWithSize(CGSize(width: 20, height: 20))

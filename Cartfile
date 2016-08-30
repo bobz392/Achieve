@@ -3,6 +3,5 @@ github "SnapKit/SnapKit" >= 0.15.0
 github "ibireme/YYText"
 github "realm/realm-cocoa"
 github "Alamofire/Alamofire" ~> 3.3
-github "SVProgressHUD/SVProgressHUD"
 github "BradLarson/GPUImage"
-github "danielgindi/Charts" == 2.2.5
+github "SVProgressHUD/SVProgressHUD"

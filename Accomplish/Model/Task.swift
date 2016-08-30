@@ -23,10 +23,6 @@ let kSystemTaskType: Int = 1
 let kAssociatTaskType: Int = 2
 let kSubtaskType: Int = 3
 
-let uuidFormat: String = "yyMMddHHmmssZ"
-let createdDateFormat: String = "yyyy.MM.dd"
-let timeDateFormat: String = "hh: mm a"
-
 class Task: Object {
     dynamic var uuid = ""
     dynamic var taskToDo = ""
@@ -39,6 +35,7 @@ class Task: Object {
     dynamic var createdDate: NSDate?
     dynamic var notifyDate: NSDate?
     dynamic var finishedDate: NSDate?
+    dynamic var canPostpone: Bool = false
     
     dynamic var trigger: Trigger?
     

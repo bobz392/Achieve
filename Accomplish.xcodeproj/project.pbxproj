@@ -49,44 +49,9 @@
 		C77192951D6CFE0700437560 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C77192981D6D18BF00437560 /* CommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192971D6D18BF00437560 /* CommonCode.swift */; };
 		C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192991D6DB27A00437560 /* KeyboardManager.swift */; };
-		C77192E91D6DC3C100437560 /* Alamofire.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192AE1D6DC3A200437560 /* Alamofire.framework.dSYM */; };
-		C77192EB1D6DC3C100437560 /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192B81D6DC3A200437560 /* PlaygroundFrameworkWrapper.framework.dSYM */; };
-		C77192EC1D6DC3C100437560 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192BA1D6DC3A200437560 /* Realm.framework.dSYM */; };
-		C77192ED1D6DC3C100437560 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192BC1D6DC3A200437560 /* RealmSwift.framework.dSYM */; };
-		C77192EE1D6DC3C100437560 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192BE1D6DC3A200437560 /* SnapKit.framework.dSYM */; };
-		C77192EF1D6DC3C100437560 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192C01D6DC3A200437560 /* SVProgressHUD.framework.dSYM */; };
-		C77192F01D6DC3C100437560 /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192C21D6DC3A200437560 /* SwiftyJSON.framework.dSYM */; };
-		C77192F11D6DC3C100437560 /* YYText.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77192C41D6DC3A200437560 /* YYText.framework.dSYM */; };
-		C77193F21D6DDB8D00437560 /* GPUImage.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77193BF1D6DDB7100437560 /* GPUImage.framework.dSYM */; };
 		C77193F61D6DE9C000437560 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
 		C77193F81D6E488F00437560 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F71D6E488F00437560 /* UserDefault.swift */; };
-		C77193FB1D6E5A1400437560 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F91D6E5A1400437560 /* ScheduleViewController.swift */; };
-		C77193FC1D6E5A1400437560 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */; };
 		C771942D1D6F391500437560 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771942C1D6F391500437560 /* RealmManager.swift */; };
-		C77194601D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194341D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */; };
-		C77194611D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194351D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */; };
-		C77194621D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194361D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */; };
-		C77194631D6FA46500437560 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194371D6FA46500437560 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */; };
-		C77194641D6FA46500437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194381D6FA46500437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */; };
-		C77194651D6FA46500437560 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194391D6FA46500437560 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap */; };
-		C77194661D6FA46500437560 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771943A1D6FA46500437560 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap */; };
-		C77194671D6FA46500437560 /* 3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771943B1D6FA46500437560 /* 3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap */; };
-		C77194681D6FA46500437560 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771943C1D6FA46500437560 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap */; };
-		C77194691D6FA46500437560 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771943D1D6FA46500437560 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap */; };
-		C771946A1D6FA46500437560 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771943E1D6FA46500437560 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap */; };
-		C771946B1D6FA46500437560 /* 7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771943F1D6FA46500437560 /* 7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap */; };
-		C771946C1D6FA46500437560 /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194401D6FA46500437560 /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap */; };
-		C771946D1D6FA46500437560 /* A9068A2B-76B7-3539-B4D7-D4456BDB55A1.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194411D6FA46500437560 /* A9068A2B-76B7-3539-B4D7-D4456BDB55A1.bcsymbolmap */; };
-		C77194701D6FA46500437560 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194441D6FA46500437560 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap */; };
-		C77194711D6FA46500437560 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194451D6FA46500437560 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap */; };
-		C77194721D6FA46500437560 /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77194461D6FA46500437560 /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap */; };
-		C77194771D6FA46500437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771944B1D6FA46500437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap */; };
-		C77194781D6FA46500437560 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771944C1D6FA46500437560 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap */; };
-		C77194791D6FA46500437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771944D1D6FA46500437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */; };
-		C771947A1D6FA46500437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771944E1D6FA46500437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */; };
-		C771947B1D6FA46500437560 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C771944F1D6FA46500437560 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap */; };
-		C771948C1D6FA4F500437560 /* Charts.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77194481D6FA46500437560 /* Charts.framework.dSYM */; };
-		C771948D1D6FA4F500437560 /* ChartsRealm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C771944A1D6FA46500437560 /* ChartsRealm.framework.dSYM */; };
 		C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194911D6FCFC200437560 /* BaseViewController.swift */; };
 		C77194941D6FD5E600437560 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194931D6FD5E600437560 /* Trigger.swift */; };
 		C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194951D6FE96A00437560 /* AssociateViewController.swift */; };
@@ -97,10 +62,8 @@
 		C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771949F1D6FEB0B00437560 /* SystemTaskViewController.xib */; };
 		C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194A21D6FF14200437560 /* AddressBookViewController.swift */; };
 		C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194A31D6FF14200437560 /* AddressBookViewController.xib */; };
-		C77194A71D6FF16700437560 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194A61D6FF16700437560 /* AddressBook.framework */; };
 		C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AA1D6FF1A200437560 /* AddressBook.swift */; };
 		C77194AD1D6FF1E000437560 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AC1D6FF1E000437560 /* String+Convenient.swift */; };
-		C77194AE1D6FF25D00437560 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194A81D6FF17400437560 /* MessageUI.framework */; };
 		C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */; };
 		C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194B61D6FF35000437560 /* AddressBookTableViewCell.xib */; };
 		C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194B81D6FF3E600437560 /* libicucore.tbd */; };
@@ -117,6 +80,38 @@
 		C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771957B1D71ED6400437560 /* KVTaskViewController.xib */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
+		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
+		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
+		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
+		C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */; };
+		C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA50B1D75C78C0054154C /* HUD.swift */; };
+		C7DDA5841D75DC080054154C /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5601D75DC080054154C /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */; };
+		C7DDA5851D75DC080054154C /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5611D75DC080054154C /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */; };
+		C7DDA5861D75DC080054154C /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5621D75DC080054154C /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */; };
+		C7DDA5871D75DC080054154C /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5631D75DC080054154C /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */; };
+		C7DDA5881D75DC080054154C /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5641D75DC080054154C /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */; };
+		C7DDA5891D75DC080054154C /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5651D75DC080054154C /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap */; };
+		C7DDA58A1D75DC080054154C /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5661D75DC080054154C /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap */; };
+		C7DDA58B1D75DC080054154C /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5671D75DC080054154C /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap */; };
+		C7DDA58C1D75DC080054154C /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5681D75DC080054154C /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap */; };
+		C7DDA58D1D75DC080054154C /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5691D75DC080054154C /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap */; };
+		C7DDA58E1D75DC080054154C /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA56A1D75DC080054154C /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap */; };
+		C7DDA58F1D75DC080054154C /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA56B1D75DC080054154C /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap */; };
+		C7DDA5921D75DC080054154C /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA56E1D75DC080054154C /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap */; };
+		C7DDA5931D75DC080054154C /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA56F1D75DC080054154C /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap */; };
+		C7DDA5941D75DC080054154C /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5701D75DC080054154C /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap */; };
+		C7DDA5951D75DC080054154C /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5711D75DC080054154C /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap */; };
+		C7DDA5961D75DC080054154C /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5721D75DC080054154C /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */; };
+		C7DDA5971D75DC080054154C /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5731D75DC080054154C /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */; };
+		C7DDA5A81D75DC1C0054154C /* Alamofire.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA56D1D75DC080054154C /* Alamofire.framework.dSYM */; };
+		C7DDA5A91D75DC1C0054154C /* GPUImage.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5751D75DC080054154C /* GPUImage.framework.dSYM */; };
+		C7DDA5AA1D75DC1C0054154C /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5771D75DC080054154C /* PlaygroundFrameworkWrapper.framework.dSYM */; };
+		C7DDA5AB1D75DC1C0054154C /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5791D75DC080054154C /* Realm.framework.dSYM */; };
+		C7DDA5AC1D75DC1C0054154C /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA57B1D75DC080054154C /* RealmSwift.framework.dSYM */; };
+		C7DDA5AD1D75DC1C0054154C /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA57D1D75DC080054154C /* SnapKit.framework.dSYM */; };
+		C7DDA5AE1D75DC1C0054154C /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA57F1D75DC080054154C /* SVProgressHUD.framework.dSYM */; };
+		C7DDA5AF1D75DC1C0054154C /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5811D75DC080054154C /* SwiftyJSON.framework.dSYM */; };
+		C7DDA5B01D75DC1C0054154C /* YYText.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5831D75DC080054154C /* YYText.framework.dSYM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,21 +138,19 @@
 		};
 		C7105F751D6CB54F0096A1A3 /* Copy Carthage dSYMs */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				C771948C1D6FA4F500437560 /* Charts.framework.dSYM in Copy Carthage dSYMs */,
-				C771948D1D6FA4F500437560 /* ChartsRealm.framework.dSYM in Copy Carthage dSYMs */,
-				C77193F21D6DDB8D00437560 /* GPUImage.framework.dSYM in Copy Carthage dSYMs */,
-				C77192E91D6DC3C100437560 /* Alamofire.framework.dSYM in Copy Carthage dSYMs */,
-				C77192EB1D6DC3C100437560 /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */,
-				C77192EC1D6DC3C100437560 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
-				C77192ED1D6DC3C100437560 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
-				C77192EE1D6DC3C100437560 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
-				C77192EF1D6DC3C100437560 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
-				C77192F01D6DC3C100437560 /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */,
-				C77192F11D6DC3C100437560 /* YYText.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5A81D75DC1C0054154C /* Alamofire.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5A91D75DC1C0054154C /* GPUImage.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5AA1D75DC1C0054154C /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5AB1D75DC1C0054154C /* Realm.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5AC1D75DC1C0054154C /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5AD1D75DC1C0054154C /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5AE1D75DC1C0054154C /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5AF1D75DC1C0054154C /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */,
+				C7DDA5B01D75DC1C0054154C /* YYText.framework.dSYM in Copy Carthage dSYMs */,
 			);
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,64 +219,9 @@
 		C77192961D6CFE1200437560 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C77192971D6D18BF00437560 /* CommonCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCode.swift; sourceTree = "<group>"; };
 		C77192991D6DB27A00437560 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
-		C77192AE1D6DC3A200437560 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192B81D6DC3A200437560 /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = PlaygroundFrameworkWrapper.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192BA1D6DC3A200437560 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192BC1D6DC3A200437560 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/RealmSwift.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192BE1D6DC3A200437560 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SnapKit.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/SnapKit.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192C01D6DC3A200437560 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SVProgressHUD.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/SVProgressHUD.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192C21D6DC3A200437560 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyJSON.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/SwiftyJSON.framework.dSYM; sourceTree = "<absolute>"; };
-		C77192C41D6DC3A200437560 /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = YYText.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/YYText.framework.dSYM; sourceTree = "<absolute>"; };
-		C77193BF1D6DDB7100437560 /* GPUImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = GPUImage.framework.dSYM; path = /Users/zhoubobo/Desktop/Accomplish/Carthage/Build/iOS/GPUImage.framework.dSYM; sourceTree = "<absolute>"; };
 		C77193F51D6DE9C000437560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C77193F71D6E488F00437560 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
-		C77193F91D6E5A1400437560 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
-		C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
 		C771942C1D6F391500437560 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		C77194341D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194351D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194361D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194371D6FA46500437560 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194381D6FA46500437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194391D6FA46500437560 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap"; sourceTree = "<group>"; };
-		C771943A1D6FA46500437560 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap"; sourceTree = "<group>"; };
-		C771943B1D6FA46500437560 /* 3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap"; sourceTree = "<group>"; };
-		C771943C1D6FA46500437560 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap"; sourceTree = "<group>"; };
-		C771943D1D6FA46500437560 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap"; sourceTree = "<group>"; };
-		C771943E1D6FA46500437560 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap"; sourceTree = "<group>"; };
-		C771943F1D6FA46500437560 /* 7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194401D6FA46500437560 /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194411D6FA46500437560 /* A9068A2B-76B7-3539-B4D7-D4456BDB55A1.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A9068A2B-76B7-3539-B4D7-D4456BDB55A1.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194421D6FA46500437560 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
-		C77194431D6FA46500437560 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
-		C77194441D6FA46500437560 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194451D6FA46500437560 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194461D6FA46500437560 /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194471D6FA46500437560 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
-		C77194481D6FA46500437560 /* Charts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Charts.framework.dSYM; sourceTree = "<group>"; };
-		C77194491D6FA46500437560 /* ChartsRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChartsRealm.framework; sourceTree = "<group>"; };
-		C771944A1D6FA46500437560 /* ChartsRealm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = ChartsRealm.framework.dSYM; sourceTree = "<group>"; };
-		C771944B1D6FA46500437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap"; sourceTree = "<group>"; };
-		C771944C1D6FA46500437560 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap"; sourceTree = "<group>"; };
-		C771944D1D6FA46500437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap"; sourceTree = "<group>"; };
-		C771944E1D6FA46500437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap"; sourceTree = "<group>"; };
-		C771944F1D6FA46500437560 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap"; sourceTree = "<group>"; };
-		C77194501D6FA46500437560 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
-		C77194511D6FA46500437560 /* GPUImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = GPUImage.framework.dSYM; sourceTree = "<group>"; };
-		C77194521D6FA46500437560 /* PlaygroundFrameworkWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlaygroundFrameworkWrapper.framework; sourceTree = "<group>"; };
-		C77194531D6FA46500437560 /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<group>"; };
-		C77194541D6FA46500437560 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		C77194551D6FA46500437560 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
-		C77194561D6FA46500437560 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		C77194571D6FA46500437560 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RealmSwift.framework.dSYM; sourceTree = "<group>"; };
-		C77194581D6FA46500437560 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
-		C77194591D6FA46500437560 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
-		C771945A1D6FA46500437560 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
-		C771945B1D6FA46500437560 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
-		C771945C1D6FA46500437560 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
-		C771945D1D6FA46500437560 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
-		C771945E1D6FA46500437560 /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YYText.framework; sourceTree = "<group>"; };
-		C771945F1D6FA46500437560 /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = YYText.framework.dSYM; sourceTree = "<group>"; };
 		C77194911D6FCFC200437560 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C77194931D6FD5E600437560 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		C77194951D6FE96A00437560 /* AssociateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociateViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +257,47 @@
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7860E4C1D6C23FF000281FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
+		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
+		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
+		C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskNoteTableViewCell.xib; sourceTree = "<group>"; };
+		C7DDA50B1D75C78C0054154C /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		C7DDA5601D75DC080054154C /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5611D75DC080054154C /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5621D75DC080054154C /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5631D75DC080054154C /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5641D75DC080054154C /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5651D75DC080054154C /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5661D75DC080054154C /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5671D75DC080054154C /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5681D75DC080054154C /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5691D75DC080054154C /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA56A1D75DC080054154C /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA56B1D75DC080054154C /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA56C1D75DC080054154C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		C7DDA56D1D75DC080054154C /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA56E1D75DC080054154C /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA56F1D75DC080054154C /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5701D75DC080054154C /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5711D75DC080054154C /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5721D75DC080054154C /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5731D75DC080054154C /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap"; sourceTree = "<group>"; };
+		C7DDA5741D75DC080054154C /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		C7DDA5751D75DC080054154C /* GPUImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = GPUImage.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA5761D75DC080054154C /* PlaygroundFrameworkWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlaygroundFrameworkWrapper.framework; sourceTree = "<group>"; };
+		C7DDA5771D75DC080054154C /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA5781D75DC080054154C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		C7DDA5791D75DC080054154C /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA57A1D75DC080054154C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		C7DDA57B1D75DC080054154C /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RealmSwift.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA57C1D75DC080054154C /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
+		C7DDA57D1D75DC080054154C /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA57E1D75DC080054154C /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
+		C7DDA57F1D75DC080054154C /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA5801D75DC080054154C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		C7DDA5811D75DC080054154C /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA5821D75DC080054154C /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YYText.framework; sourceTree = "<group>"; };
+		C7DDA5831D75DC080054154C /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = YYText.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,8 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
-				C77194AE1D6FF25D00437560 /* MessageUI.framework in Frameworks */,
-				C77194A71D6FF16700437560 /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +364,7 @@
 				C771942C1D6F391500437560 /* RealmManager.swift */,
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
 				C77194CB1D70FADD00437560 /* AwesomeButton.swift */,
+				C7DDA50B1D75C78C0054154C /* HUD.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -476,6 +454,10 @@
 			children = (
 				C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */,
 				C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */,
+				C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */,
+				C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */,
+				C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */,
+				C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -514,64 +496,10 @@
 				C77194A31D6FF14200437560 /* AddressBookViewController.xib */,
 				C771957A1D71ED6400437560 /* KVTaskViewController.swift */,
 				C771957B1D71ED6400437560 /* KVTaskViewController.xib */,
-				C77193F91D6E5A1400437560 /* ScheduleViewController.swift */,
-				C77193FA1D6E5A1400437560 /* ScheduleViewController.xib */,
 				C77194951D6FE96A00437560 /* AssociateViewController.swift */,
 				C77194961D6FE96A00437560 /* AssociateViewController.xib */,
 			);
 			path = NewTask;
-			sourceTree = "<group>";
-		};
-		C77194331D6FA46500437560 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C77194341D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */,
-				C77194351D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */,
-				C77194361D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */,
-				C77194371D6FA46500437560 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */,
-				C77194381D6FA46500437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */,
-				C77194391D6FA46500437560 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap */,
-				C771943A1D6FA46500437560 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap */,
-				C771943B1D6FA46500437560 /* 3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap */,
-				C771943C1D6FA46500437560 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap */,
-				C771943D1D6FA46500437560 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap */,
-				C771943E1D6FA46500437560 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap */,
-				C771943F1D6FA46500437560 /* 7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap */,
-				C77194401D6FA46500437560 /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap */,
-				C77194411D6FA46500437560 /* A9068A2B-76B7-3539-B4D7-D4456BDB55A1.bcsymbolmap */,
-				C77194421D6FA46500437560 /* Alamofire.framework */,
-				C77194431D6FA46500437560 /* Alamofire.framework.dSYM */,
-				C77194441D6FA46500437560 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap */,
-				C77194451D6FA46500437560 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap */,
-				C77194461D6FA46500437560 /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap */,
-				C77194471D6FA46500437560 /* Charts.framework */,
-				C77194481D6FA46500437560 /* Charts.framework.dSYM */,
-				C77194491D6FA46500437560 /* ChartsRealm.framework */,
-				C771944A1D6FA46500437560 /* ChartsRealm.framework.dSYM */,
-				C771944B1D6FA46500437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap */,
-				C771944C1D6FA46500437560 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap */,
-				C771944D1D6FA46500437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */,
-				C771944E1D6FA46500437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */,
-				C771944F1D6FA46500437560 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap */,
-				C77194501D6FA46500437560 /* GPUImage.framework */,
-				C77194511D6FA46500437560 /* GPUImage.framework.dSYM */,
-				C77194521D6FA46500437560 /* PlaygroundFrameworkWrapper.framework */,
-				C77194531D6FA46500437560 /* PlaygroundFrameworkWrapper.framework.dSYM */,
-				C77194541D6FA46500437560 /* Realm.framework */,
-				C77194551D6FA46500437560 /* Realm.framework.dSYM */,
-				C77194561D6FA46500437560 /* RealmSwift.framework */,
-				C77194571D6FA46500437560 /* RealmSwift.framework.dSYM */,
-				C77194581D6FA46500437560 /* SnapKit.framework */,
-				C77194591D6FA46500437560 /* SnapKit.framework.dSYM */,
-				C771945A1D6FA46500437560 /* SVProgressHUD.framework */,
-				C771945B1D6FA46500437560 /* SVProgressHUD.framework.dSYM */,
-				C771945C1D6FA46500437560 /* SwiftyJSON.framework */,
-				C771945D1D6FA46500437560 /* SwiftyJSON.framework.dSYM */,
-				C771945E1D6FA46500437560 /* YYText.framework */,
-				C771945F1D6FA46500437560 /* YYText.framework.dSYM */,
-			);
-			name = iOS;
-			path = Carthage/Build/iOS;
 			sourceTree = "<group>";
 		};
 		C77194991D6FE9F100437560 /* Cell */ = {
@@ -611,7 +539,7 @@
 		C7860E341D6C23FF000281FA = {
 			isa = PBXGroup;
 			children = (
-				C77194331D6FA46500437560 /* iOS */,
+				C7DDA55F1D75DC080054154C /* iOS */,
 				C7860E3F1D6C23FF000281FA /* Accomplish */,
 				C7105E9F1D6C7AD60096A1A3 /* AccomplishToday */,
 				C7105E9C1D6C7AD60096A1A3 /* Frameworks */,
@@ -645,6 +573,50 @@
 				C77192931D6CFE0700437560 /* Localizable.strings */,
 			);
 			path = Accomplish;
+			sourceTree = "<group>";
+		};
+		C7DDA55F1D75DC080054154C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDA5601D75DC080054154C /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap */,
+				C7DDA5611D75DC080054154C /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */,
+				C7DDA5621D75DC080054154C /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap */,
+				C7DDA5631D75DC080054154C /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */,
+				C7DDA5641D75DC080054154C /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */,
+				C7DDA5651D75DC080054154C /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap */,
+				C7DDA5661D75DC080054154C /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap */,
+				C7DDA5671D75DC080054154C /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap */,
+				C7DDA5681D75DC080054154C /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap */,
+				C7DDA5691D75DC080054154C /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap */,
+				C7DDA56A1D75DC080054154C /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap */,
+				C7DDA56B1D75DC080054154C /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap */,
+				C7DDA56C1D75DC080054154C /* Alamofire.framework */,
+				C7DDA56D1D75DC080054154C /* Alamofire.framework.dSYM */,
+				C7DDA56E1D75DC080054154C /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap */,
+				C7DDA56F1D75DC080054154C /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap */,
+				C7DDA5701D75DC080054154C /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap */,
+				C7DDA5711D75DC080054154C /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap */,
+				C7DDA5721D75DC080054154C /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap */,
+				C7DDA5731D75DC080054154C /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap */,
+				C7DDA5741D75DC080054154C /* GPUImage.framework */,
+				C7DDA5751D75DC080054154C /* GPUImage.framework.dSYM */,
+				C7DDA5761D75DC080054154C /* PlaygroundFrameworkWrapper.framework */,
+				C7DDA5771D75DC080054154C /* PlaygroundFrameworkWrapper.framework.dSYM */,
+				C7DDA5781D75DC080054154C /* Realm.framework */,
+				C7DDA5791D75DC080054154C /* Realm.framework.dSYM */,
+				C7DDA57A1D75DC080054154C /* RealmSwift.framework */,
+				C7DDA57B1D75DC080054154C /* RealmSwift.framework.dSYM */,
+				C7DDA57C1D75DC080054154C /* SnapKit.framework */,
+				C7DDA57D1D75DC080054154C /* SnapKit.framework.dSYM */,
+				C7DDA57E1D75DC080054154C /* SVProgressHUD.framework */,
+				C7DDA57F1D75DC080054154C /* SVProgressHUD.framework.dSYM */,
+				C7DDA5801D75DC080054154C /* SwiftyJSON.framework */,
+				C7DDA5811D75DC080054154C /* SwiftyJSON.framework.dSYM */,
+				C7DDA5821D75DC080054154C /* YYText.framework */,
+				C7DDA5831D75DC080054154C /* YYText.framework.dSYM */,
+			);
+			name = iOS;
+			path = Carthage/Build/iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -739,51 +711,48 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C771946B1D6FA46500437560 /* 7454945D-2A94-3FA5-AB9B-09415D400F3D.bcsymbolmap in Resources */,
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
+				C7DDA58E1D75DC080054154C /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap in Resources */,
+				C7DDA5931D75DC080054154C /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap in Resources */,
 				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
-				C77194691D6FA46500437560 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
-				C77194661D6FA46500437560 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */,
-				C77194681D6FA46500437560 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */,
-				C77194611D6FA46500437560 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */,
+				C7DDA5961D75DC080054154C /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */,
+				C7DDA5951D75DC080054154C /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap in Resources */,
+				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
 				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
-				C771946A1D6FA46500437560 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */,
 				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
-				C77194791D6FA46500437560 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
+				C7DDA5941D75DC080054154C /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */,
 				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
-				C77194771D6FA46500437560 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */,
+				C7DDA5921D75DC080054154C /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
-				C771947A1D6FA46500437560 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */,
+				C7DDA58D1D75DC080054154C /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap in Resources */,
+				C7DDA5971D75DC080054154C /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */,
 				C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */,
+				C7DDA5871D75DC080054154C /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */,
+				C7DDA58F1D75DC080054154C /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
+				C7DDA58B1D75DC080054154C /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */,
+				C7DDA5891D75DC080054154C /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */,
+				C7DDA5881D75DC080054154C /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
-				C77194631D6FA46500437560 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */,
-				C77194671D6FA46500437560 /* 3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap in Resources */,
-				C771946C1D6FA46500437560 /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap in Resources */,
-				C771946D1D6FA46500437560 /* A9068A2B-76B7-3539-B4D7-D4456BDB55A1.bcsymbolmap in Resources */,
-				C77193FC1D6E5A1400437560 /* ScheduleViewController.xib in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
-				C77194651D6FA46500437560 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */,
-				C77194641D6FA46500437560 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
+				C7DDA58C1D75DC080054154C /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */,
+				C7DDA5861D75DC080054154C /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
-				C77194781D6FA46500437560 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
 				C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */,
-				C77194601D6FA46500437560 /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */,
 				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
-				C77194711D6FA46500437560 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap in Resources */,
-				C77194701D6FA46500437560 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */,
-				C77194721D6FA46500437560 /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap in Resources */,
+				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
+				C7DDA5851D75DC080054154C /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */,
+				C7DDA5841D75DC080054154C /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
-				C771947B1D6FA46500437560 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap in Resources */,
-				C77194621D6FA46500437560 /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */,
+				C7DDA58A1D75DC080054154C /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,8 +773,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GPUImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ChartsRealm.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -849,11 +816,12 @@
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
+				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
+				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
 				C77194AD1D6FF1E000437560 /* String+Convenient.swift in Sources */,
 				C71D58721D747E2600E76E91 /* NSDate+Convenient.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
-				C77193FB1D6E5A1400437560 /* ScheduleViewController.swift in Sources */,
 				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,
@@ -876,6 +844,7 @@
 				C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
+				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
 			);

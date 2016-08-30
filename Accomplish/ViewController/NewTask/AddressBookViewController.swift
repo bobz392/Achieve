@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+
 
 private typealias Indexes = [String]
 private typealias IndexedData = [String : [AddressBook.Person]]
@@ -48,13 +48,13 @@ final class AddressBookViewController: BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        SVProgressHUD.show()
+        HUD.sharedHUD.showHUD(self.view)
         
         AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
             dispatch_async(self.indexingQueue) {
                 (self.indexes, self.data) = self.processPeople(people)
                 dispatch_async(dispatch_get_main_queue()) {
-                    SVProgressHUD.dismiss()
+//                    SVProgressHUD.dismiss()
                     self.tableView.reloadData()
                 }
             }

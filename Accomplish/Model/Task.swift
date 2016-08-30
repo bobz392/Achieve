@@ -62,4 +62,19 @@ class Task: Object {
         self.priority = priority
         self.taskToDo = taskToDo
     }
+    
+    func getNormalDisplayTitle() -> String {
+        switch self.taskType {
+        case kSystemTaskType:
+            if let action = TaskStringManager().parseTaskText(self.taskToDo) {
+                return  action.type.ationNameWithType() ?? "" + action.name
+            } else {
+                return self.taskToDo
+            }
+            
+        default:
+            return self.taskToDo
+        }
+
+    }
 }

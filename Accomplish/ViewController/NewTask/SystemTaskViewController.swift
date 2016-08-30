@@ -129,9 +129,9 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - UINavigationControllerDelegate
 extension SystemTaskViewController: UINavigationControllerDelegate {
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? { 
         animation.reverse = operation == UINavigationControllerOperation.Pop
         return animation
     }

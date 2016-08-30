@@ -20,4 +20,8 @@ class AssociateViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    private func initializeControl() {
+        
+    }
 }

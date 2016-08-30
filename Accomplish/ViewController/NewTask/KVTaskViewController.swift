@@ -47,7 +47,7 @@ class KVTaskViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         configMainUI()
-        initControl()
+        initializeControl()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -96,7 +96,7 @@ class KVTaskViewController: BaseViewController {
         self.saveButton.tintColor = colors.mainGreenColor
     }
     
-    private func initControl() {
+    private func initializeControl() {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         

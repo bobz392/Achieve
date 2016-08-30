@@ -28,6 +28,8 @@ class HomeViewController: BaseViewController {
     private var finishToken: RealmSwift.NotificationToken?
     private var runningToken: RealmSwift.NotificationToken?
     
+    private let animation = LayerTransitioningAnimation()
+    
     private var isFullScreenSize = false
     private var selectedIndex: NSIndexPath? = nil
     // MARK: - life circle
@@ -77,11 +79,13 @@ class HomeViewController: BaseViewController {
     // MARK: - ui config
     override func configMainUI() {
         let colors = Colors()
+        
+        self.navigationController?.view.backgroundColor = colors.mainGreenColor
+        self.view.backgroundColor = colors.mainGreenColor
         self.currentDateLabel.textColor = colors.cloudColor
         self.taskTableView.backgroundColor = colors.cloudColor
         self.taskTableView.separatorColor = colors.separatorColor
         self.cardView.backgroundColor = colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
         
         self.statusSegment.tintColor = colors.mainGreenColor
         self.emptyHintLabel.textColor = colors.secondaryTextColor
@@ -255,11 +259,11 @@ class HomeViewController: BaseViewController {
         if !isFullScreenSize {
             self.cardViewLeftConstraint.constant = 20
             self.cardViewRightConstraint.constant = 20
-            self.cardViewBottomConstraint.constant = 20
+            self.cardViewBottomConstraint.constant = 15
             self.cardViewTopConstraint.constant = 70
             self.addTaskWidthConstraint.constant = 70
             self.addTaskHeightConstraint.constant = 70
-            self.addTaskBottomConstraint.constant = 15
+            self.addTaskBottomConstraint.constant = 10
             if (animation) {
                 self.newTaskButton.addCornerRadiusAnimation(16, to: 35, duration: kNormalAnimationDuration)
                 UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
@@ -275,17 +279,17 @@ class HomeViewController: BaseViewController {
             self.cardViewRightConstraint.constant = 5
             self.cardViewBottomConstraint.constant = 10
             self.cardViewTopConstraint.constant = 25
-            self.addTaskWidthConstraint.constant = 32
-            self.addTaskHeightConstraint.constant = 32
+            self.addTaskWidthConstraint.constant = 40
+            self.addTaskHeightConstraint.constant = 40
             self.addTaskBottomConstraint.constant = 10
             if (animation) {
-                self.newTaskButton.addCornerRadiusAnimation(35, to: 16, duration: kNormalAnimationDuration)
+                self.newTaskButton.addCornerRadiusAnimation(40, to: 20, duration: kNormalAnimationDuration)
                 UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 0
                     })
             } else {
-                self.newTaskButton.layer.cornerRadius = 16
+                self.newTaskButton.layer.cornerRadius = 20
                 self.currentDateLabel.alpha = 0
             }
         }
@@ -338,8 +342,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedIndex = indexPath
         
-        let vc = ScheduleViewController()
-        self.presentViewController(vc, animated: true, completion: nil)
+        let task: Task?
+        if inRunningTasksTable() {
+            task = self.runningTasks?[indexPath.row]
+        } else {
+            task = self.finishTasks?[indexPath.row]
+        }
+        
+        guard let t = task else { return }
+        let taskVC = TaskDetailViewController(task: t)
+        self.navigationController?.delegate = self
+        self.navigationController?.pushViewController(taskVC, animated: true)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -360,5 +373,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func inRunningTasksTable() -> Bool {
         return self.statusSegment.selectedSegmentIndex == 0
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+extension HomeViewController: UINavigationControllerDelegate {
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animation.reverse = operation == UINavigationControllerOperation.Pop
+        return animation
     }
 }

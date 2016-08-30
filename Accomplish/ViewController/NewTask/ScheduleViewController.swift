@@ -27,6 +27,8 @@ class ScheduleViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
     }
     
+    private func initializeControl() {}
+    
     func back() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

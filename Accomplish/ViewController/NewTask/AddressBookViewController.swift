@@ -40,7 +40,7 @@ final class AddressBookViewController: BaseViewController {
         super.viewDidLoad()
         
         configMainUI()
-        initControl()
+        initializeControl()
         
         config(tableView: tableView)
     }
@@ -84,7 +84,7 @@ final class AddressBookViewController: BaseViewController {
         self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
     }
     
-    private func initControl() {
+    private func initializeControl() {
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = 30
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)

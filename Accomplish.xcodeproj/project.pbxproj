@@ -10,7 +10,6 @@
 		C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */; };
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C7105F8F1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F911D6CD52F0096A1A3 /* Task.swift */; };
@@ -36,7 +35,6 @@
 		C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */; };
 		C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */; };
 		C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D586F1D746A7800E76E91 /* SystemActionType.swift */; };
-		C71D58721D747E2600E76E91 /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D58711D747E2600E76E91 /* NSDate+Convenient.swift */; };
 		C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D58751D74910400E76E91 /* TaskDetailViewController.swift */; };
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
@@ -63,7 +61,6 @@
 		C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194A21D6FF14200437560 /* AddressBookViewController.swift */; };
 		C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194A31D6FF14200437560 /* AddressBookViewController.xib */; };
 		C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AA1D6FF1A200437560 /* AddressBook.swift */; };
-		C77194AD1D6FF1E000437560 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AC1D6FF1E000437560 /* String+Convenient.swift */; };
 		C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */; };
 		C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194B61D6FF35000437560 /* AddressBookTableViewCell.xib */; };
 		C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194B81D6FF3E600437560 /* libicucore.tbd */; };
@@ -112,6 +109,9 @@
 		C7DDA5AE1D75DC1C0054154C /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA57F1D75DC080054154C /* SVProgressHUD.framework.dSYM */; };
 		C7DDA5AF1D75DC1C0054154C /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5811D75DC080054154C /* SwiftyJSON.framework.dSYM */; };
 		C7DDA5B01D75DC1C0054154C /* YYText.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7DDA5831D75DC080054154C /* YYText.framework.dSYM */; };
+		C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
+		C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
+		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,7 +163,6 @@
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C7105EA51D6C7AD60096A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Convenient.swift"; path = "Accomplish/Extension/UIView+Convenient.swift"; sourceTree = "<group>"; };
 		C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Accomplish-Bridging-Header.h"; sourceTree = "<group>"; };
 		C7105F8D1D6CCDB00096A1A3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C7105F911D6CD52F0096A1A3 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -205,7 +204,6 @@
 		C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
 		C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		C71D586F1D746A7800E76E91 /* SystemActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionType.swift; sourceTree = "<group>"; };
-		C71D58711D747E2600E76E91 /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
 		C71D58751D74910400E76E91 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 		C77194A61D6FF16700437560 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		C77194A81D6FF17400437560 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C77194AA1D6FF1A200437560 /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
-		C77194AC1D6FF1E000437560 /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
 		C77194AF1D6FF26700437560 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C77194B21D6FF28300437560 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookTableViewCell.swift; sourceTree = "<group>"; };
@@ -298,6 +295,9 @@
 		C7DDA5811D75DC080054154C /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
 		C7DDA5821D75DC080054154C /* YYText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YYText.framework; sourceTree = "<group>"; };
 		C7DDA5831D75DC080054154C /* YYText.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = YYText.framework.dSYM; sourceTree = "<group>"; };
+		C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
+		C7DDA5B51D75FAD30054154C /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
+		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,17 +340,6 @@
 				C7105EA51D6C7AD60096A1A3 /* Info.plist */,
 			);
 			path = AccomplishToday;
-			sourceTree = "<group>";
-		};
-		C7105EBB1D6CA7D90096A1A3 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				C7105EBC1D6CA8260096A1A3 /* UIView+Convenient.swift */,
-				C77194AC1D6FF1E000437560 /* String+Convenient.swift */,
-				C71D58711D747E2600E76E91 /* NSDate+Convenient.swift */,
-			);
-			name = Extension;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		C7105F8C1D6CCDA90096A1A3 /* Tool */ = {
@@ -562,7 +551,7 @@
 			children = (
 				C77192421D6CEE4E00437560 /* ViewController */,
 				C7105F901D6CD5200096A1A3 /* Model */,
-				C7105EBB1D6CA7D90096A1A3 /* Extension */,
+				C7DDA5B31D75FAD30054154C /* Extension */,
 				C7105F8C1D6CCDA90096A1A3 /* Tool */,
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
 				C7860E401D6C23FF000281FA /* AppDelegate.swift */,
@@ -617,6 +606,16 @@
 			);
 			name = iOS;
 			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		C7DDA5B31D75FAD30054154C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */,
+				C7DDA5B51D75FAD30054154C /* String+Convenient.swift */,
+				C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -806,6 +805,7 @@
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
+				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
@@ -818,9 +818,9 @@
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
+				C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */,
+				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
 				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
-				C77194AD1D6FF1E000437560 /* String+Convenient.swift in Sources */,
-				C71D58721D747E2600E76E91 /* NSDate+Convenient.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
 				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
@@ -841,7 +841,6 @@
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
-				C7105EBD1D6CA8260096A1A3 /* UIView+Convenient.swift in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,

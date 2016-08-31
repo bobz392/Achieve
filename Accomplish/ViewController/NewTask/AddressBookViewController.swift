@@ -79,14 +79,14 @@ final class AddressBookViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)
-        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(40)
+        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
         cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
     }
     
     private func initializeControl() {
         self.cancelButton.addShadow()
-        self.cancelButton.layer.cornerRadius = 30
+        self.cancelButton.layer.cornerRadius = kBackButtonCorner
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
         self.cardView.addShadow()

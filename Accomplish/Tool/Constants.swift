@@ -12,3 +12,5 @@ let kNormalAnimationDuration: NSTimeInterval = 0.35
 let kLongAnimationDuration: NSTimeInterval = 1
 let kCardViewCornerRadius: CGFloat = 10
 let kKeyboardAnimationDelay: NSTimeInterval = 0.05
+
+let kBackButtonCorner: CGFloat = 21

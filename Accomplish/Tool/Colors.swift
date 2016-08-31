@@ -18,5 +18,6 @@ struct Colors {
     let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)
     let mainTextColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
     let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
+    let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
     let linkTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
 }

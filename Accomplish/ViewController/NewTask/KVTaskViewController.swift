@@ -80,18 +80,16 @@ class KVTaskViewController: BaseViewController {
         self.titleLabel.textColor = colors.cloudColor
         
         self.toolView.addTopShadow()
+        self.toolView.backgroundColor = colors.cloudColor
         self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
-        
-        self.toolView.backgroundColor = colors.cloudColor
-        self.cancelButton.tintColor = colors.mainGreenColor
         
         self.lineView.backgroundColor = colors.cloudColor
         self.titleTextField.tintColor = colors.mainGreenColor
         self.titleTextField.textColor = colors.mainTextColor
         self.contentTextView.tintColor = colors.mainGreenColor
         self.contentTextView.textColor = colors.mainTextColor
-        self.placeholderLabel.textColor = colors.secondaryTextColor
+        self.placeholderLabel.textColor = colors.placeHolderTextColor
         
         self.cancelButton.tintColor = colors.mainGreenColor
         self.saveButton.tintColor = colors.mainGreenColor

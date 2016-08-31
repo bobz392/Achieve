@@ -39,7 +39,7 @@
                             <rect key="frame" x="10" y="10" width="570" height="525"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="8tL-tN-3YB">
-                                    <rect key="frame" x="5" y="0.0" width="560" height="44"/>
+                                    <rect key="frame" x="10" y="0.0" width="555" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="bAY-nc-Vyd"/>
                                     </constraints>
@@ -50,7 +50,7 @@
                                     </connections>
                                 </textField>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Kil-hw-i5S">
-                                    <rect key="frame" x="5" y="59" width="560" height="461"/>
+                                    <rect key="frame" x="5" y="49" width="560" height="471"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -59,7 +59,7 @@
                                     </connections>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lt0-fv-amA">
-                                    <rect key="frame" x="10" y="67" width="550" height="17"/>
+                                    <rect key="frame" x="10" y="57" width="550" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -70,8 +70,8 @@
                                 <constraint firstAttribute="bottom" secondItem="Kil-hw-i5S" secondAttribute="bottom" constant="5" id="1cG-0Q-peY"/>
                                 <constraint firstAttribute="trailing" secondItem="8tL-tN-3YB" secondAttribute="trailing" constant="5" id="69D-HA-5SP"/>
                                 <constraint firstItem="Kil-hw-i5S" firstAttribute="leading" secondItem="I81-o6-Sut" secondAttribute="leading" constant="5" id="7yA-ii-WUs"/>
-                                <constraint firstItem="Kil-hw-i5S" firstAttribute="top" secondItem="8tL-tN-3YB" secondAttribute="bottom" constant="15" id="DmS-kN-jZ4"/>
-                                <constraint firstItem="8tL-tN-3YB" firstAttribute="leading" secondItem="I81-o6-Sut" secondAttribute="leading" constant="5" id="cMU-fZ-MNR"/>
+                                <constraint firstItem="Kil-hw-i5S" firstAttribute="top" secondItem="8tL-tN-3YB" secondAttribute="bottom" constant="5" id="DmS-kN-jZ4"/>
+                                <constraint firstItem="8tL-tN-3YB" firstAttribute="leading" secondItem="I81-o6-Sut" secondAttribute="leading" constant="10" id="cMU-fZ-MNR"/>
                                 <constraint firstItem="8tL-tN-3YB" firstAttribute="top" secondItem="I81-o6-Sut" secondAttribute="top" id="cOA-IB-0Ye"/>
                                 <constraint firstItem="lt0-fv-amA" firstAttribute="top" secondItem="Kil-hw-i5S" secondAttribute="top" constant="8" id="cfI-e3-9Hd"/>
                                 <constraint firstAttribute="trailing" secondItem="Kil-hw-i5S" secondAttribute="trailing" constant="5" id="l7G-Ix-UGR"/>

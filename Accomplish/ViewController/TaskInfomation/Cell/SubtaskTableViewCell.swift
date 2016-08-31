@@ -71,7 +71,7 @@ class SubtaskTableViewCell: UITableViewCell {
             self.trashButton.hidden = false
             self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         } else {
-            let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.secondaryTextColor])
+            let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.placeHolderTextColor])
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
             self.trashButton.hidden = true
             self.iconButton.tintColor = colors.secondaryTextColor

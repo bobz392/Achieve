@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
+    
     typealias RealmBlock = () -> Void
     
     private let realm = try! Realm()
@@ -28,7 +29,7 @@ class RealmManager {
         }
     }
     
-    func updateObject(updateBlock: RealmBlock) {
+    func updateObject(@noescape updateBlock: RealmBlock) {
         try! realm.write({ 
             updateBlock()
         })

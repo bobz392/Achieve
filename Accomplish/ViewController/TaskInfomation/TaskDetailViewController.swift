@@ -337,7 +337,26 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
             self.datePickerView?.setIndex(indexPath.row)
             self.showDatePickerView(show: true)
         } else {
+            if indexPath.row == self.iconList.count - 1 {
+                let noteVC = NoteViewController(task: self.task, noteDelegate: self)
+                self.navigationController?.pushViewController(noteVC, animated: true)
+//                self.presentViewController(noteVC, animated: true, completion: { })
+            }
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
+}
+
+extension TaskDetailViewController: TaskNoteDataDelegate {
+    func taskNoteAdd(newNote: String) {
+        RealmManager.shareManager.updateObject { 
+            self.task.taskNote = newNote
+            let index = NSIndexPath(forRow: iconList.count - 1, inSection: 0)
+            self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+        }
+    }
+}
+
+protocol TaskNoteDataDelegate {
+    func taskNoteAdd(newNote: String)
 }

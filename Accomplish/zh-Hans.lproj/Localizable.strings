@@ -33,6 +33,7 @@
 "setCreateDate"="设置开始日期";
 "setReminder"="设置提醒";
 "setRepeat"="设置重复";
+"writeNote"="写点什么吧...";
 
 "high"="高";
 "normal"="普通";
@@ -54,7 +55,7 @@
 "subtaskInfo"="输入您的多个子任务，子任务之间以回车分隔";
 "detailPostponeTomorrow"="如果今天没有完成，推迟任务到明天";
 "detailIncomplete"="如果今天没有完成，标记为未完成";
-"detailNotifyTime"="任务提醒时间";
+"detailNotifyTime"="没有任务提醒";
 "repeat"="不重复";
 "taskNote"="添加备注";
 "detailAddSubtask"="添加子任务";

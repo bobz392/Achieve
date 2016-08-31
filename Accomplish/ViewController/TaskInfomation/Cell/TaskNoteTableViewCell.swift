@@ -30,8 +30,8 @@ class TaskNoteTableViewCell: UITableViewCell {
             icon.imageWithSize(CGSize(width: 20, height: 20))
         self.iconButton.setImage(image, forState: .Normal)
         
-        self.noteLabel.highlightedTextColor = colors.mainGreenColor
-        self.noteLabel.textColor = colors.secondaryTextColor
+        self.noteLabel.highlightedTextColor = colors.mainTextColor
+        self.noteLabel.textColor = colors.placeHolderTextColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

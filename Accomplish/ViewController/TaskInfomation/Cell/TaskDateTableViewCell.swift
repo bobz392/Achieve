@@ -39,7 +39,7 @@ class TaskDateTableViewCell: UITableViewCell {
         self.clearButton.addTarget(self, action: #selector(self.clearAction), forControlEvents: .TouchUpInside)
         
         self.infoLabel.highlightedTextColor = colors.mainGreenColor
-        self.infoLabel.textColor = colors.secondaryTextColor
+        self.infoLabel.textColor = colors.placeHolderTextColor
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

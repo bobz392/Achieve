@@ -36,7 +36,7 @@ class SubtaskTableViewCell: UITableViewCell {
         self.trashButton.setImage(iconImage, forState: .Normal)
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
-        self.subtaskTextField.textColor = colors.mainGreenColor
+        self.subtaskTextField.textColor = colors.mainTextColor
         
         self.separatorInset = UIEdgeInsets(top: 0, left: screenBounds.width, bottom: 0, right: 0)
     }

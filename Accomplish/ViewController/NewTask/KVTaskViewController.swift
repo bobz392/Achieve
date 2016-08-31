@@ -56,17 +56,12 @@ class KVTaskViewController: BaseViewController {
             KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
-            UIView.animateWithDuration(KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: {
-                self.cardView.layoutIfNeeded()
-                self.toolView.layoutIfNeeded()
+            UIView.animateWithDuration(KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
+                self.view.layoutIfNeeded()
                 }, completion: nil)
         }
         
         self.titleTextField.becomeFirstResponder()
-    }
-    
-    deinit {
-        KeyboardManager.sharedManager.closeNotification()
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,7 +107,7 @@ class KVTaskViewController: BaseViewController {
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
         self.saveButton.setTitle(Localized("save"), forState: .Normal)
-        self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)   
+        self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
     }
     
     // MARK: - action
@@ -129,9 +124,9 @@ class KVTaskViewController: BaseViewController {
             dispatch_delay(0.25, closure: { [unowned self] in
                 self.delegate?.actionData(title, info: content)
                 self.navigationController?.popViewControllerAnimated(true)
-            })
+                })
         } else {
-//            SVProgressHUD.showErrorWithStatus(Localized("errorInfos"))
+            //            SVProgressHUD.showErrorWithStatus(Localized("errorInfos"))
             HUD.sharedHUD.showHUD(self.view)
         }
     }

@@ -24,7 +24,6 @@ class KVTaskViewController: BaseViewController {
     @IBOutlet weak var placeholderLabel: UILabel!
     
     @IBOutlet weak var toolView: UIView!
-    @IBOutlet weak var toolLineView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
@@ -80,7 +79,7 @@ class KVTaskViewController: BaseViewController {
         
         self.titleLabel.textColor = colors.cloudColor
         
-        self.toolLineView.backgroundColor = colors.separatorColor
+        self.toolView.addTopShadow()
         self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         

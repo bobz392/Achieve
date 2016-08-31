@@ -12,9 +12,9 @@ class TaskNoteTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "TaskNoteTableViewCell", bundle: nil)
     static let reuseId = "taskNoteTableViewCell"
-    static let rowHeight: CGFloat = 120
+    static let rowHeight: CGFloat = 80
     
-    @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var noteLabel: UILabel!
     
     override func awakeFromNib() {
@@ -25,10 +25,12 @@ class TaskNoteTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsetsZero
         
-        self.iconLabel.textColor = colors.mainGreenColor
-        self.iconLabel.highlightedTextColor = colors.mainTextColor
+        let icon = try! FAKFontAwesome(identifier: SubtaskIconNote, size: 20)
+        let image =
+            icon.imageWithSize(CGSize(width: 20, height: 20))
+        self.iconButton.setImage(image, forState: .Normal)
         
-        self.noteLabel.highlightedTextColor = colors.mainTextColor
+        self.noteLabel.highlightedTextColor = colors.mainGreenColor
         self.noteLabel.textColor = colors.secondaryTextColor
     }
 
@@ -43,18 +45,16 @@ class TaskNoteTableViewCell: UITableViewCell {
     
     func configCell(task: Task) {
         let colors = Colors()
-        let icon = try! FAKFontAwesome(identifier: SubtaskIconNote, size: 20)
         
         if task.taskNote.characters.count > 0 {
             self.noteLabel.highlighted = true
             self.noteLabel.text = task.taskNote
-            icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-            self.iconLabel.attributedText = icon.attributedString()
+            self.iconButton.tintColor = colors.mainGreenColor
+            
         } else {
             self.noteLabel.highlighted = false
             self.noteLabel.text = Localized("taskNote")
-            icon.addAttribute(NSForegroundColorAttributeName, value: colors.secondaryTextColor)
-            self.iconLabel.attributedText = icon.attributedString()
+            self.iconButton.tintColor = colors.secondaryTextColor
         }
     }
 }

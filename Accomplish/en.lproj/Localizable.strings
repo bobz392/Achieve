@@ -31,6 +31,8 @@
 "priority"="Priority";
 "removeDate"="Remove";
 "setCreateDate"="Set start date";
+"setReminder"="Set reminder";
+"setRepeat"="Set repeat";
 
 "high"="High";
 "normal"="Normal";
@@ -53,7 +55,7 @@
 "detailPostponeTomorrow"="Postponed to tomorrow if not completed today";
 "detailIncomplete"="Marked as incomplete if not completed today";
 "detailNotifyTime"="Task reminder";
-"repeat"="Repeat";
+"repeat"="No repeat";
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
 

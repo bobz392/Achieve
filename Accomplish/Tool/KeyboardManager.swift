@@ -47,7 +47,7 @@ final class KeyboardManager {
             if frameValue.height > 0 {
                 KeyboardManager.keyboardHeight = frameValue.height
                 KeyboardManager.duration = durationValue
-                KeyboardManager.keyboardShow = false
+                KeyboardManager.keyboardShow = true
                 keyboardShowHandler?()
             }
         }

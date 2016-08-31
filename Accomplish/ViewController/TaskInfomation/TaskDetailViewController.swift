@@ -22,15 +22,19 @@ class TaskDetailViewController: BaseViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var datePickerHolderView: UIView!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
     
+    private var datePickerView: DatePickerView?
     private var iconList = [SubtaskIconCalendar, SubtaskIconBell, SubtaskIconRepeat, SubtaskIconAdd, SubtaskIconNote]
     private let subtaskStartIndex = 3
     
     var task: Task
     private var subtasks: Results<Subtask>?
     private var subtasksToken: RealmSwift.NotificationToken?
+    private var taskToken: RealmSwift.NotificationToken?
     
     init(task: Task) {
         self.task = task
@@ -90,9 +94,38 @@ class TaskDetailViewController: BaseViewController {
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleTextField.text = task.getNormalDisplayTitle()
+        
+        guard let datePickerView = NSBundle.mainBundle().loadNibNamed("DatePickerView", owner: self, options: nil).last as? DatePickerView else { return }
+        self.datePickerHolderView.addSubview(datePickerView)
+        datePickerView.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.bottom.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+        }
+        
+        self.datePickerView = datePickerView
+        datePickerView.task = self.task
+        
+        datePickerView.leftButton.addTarget(self, action: #selector(self.cancelDatePickerAction), forControlEvents: .TouchUpInside)
+        datePickerView.rightButton.addTarget(self, action: #selector(self.setDatePickerAction), forControlEvents: .TouchUpInside)
+        
+        self.configDetailWithTask()
+    }
+    
+    private func configDetailWithTask() {
+        print(task)
+        if self.task.taskType == kSystemTaskType {
+            self.titleTextField.enabled = self.task.taskToDoCanChange()
+        }
     }
     
     // MARK: - actions
+    func clearAction(btn: UIButton) {
+        let index = NSIndexPath(forRow: btn.tag, inSection: 0)
+        detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+    }
+    
     func cancelAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -100,11 +133,18 @@ class TaskDetailViewController: BaseViewController {
     private func keyboardAction() {
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             self.detailTableViewBottomConstraint.constant =
-                KeyboardManager.keyboardHeight - 90
+                KeyboardManager.keyboardHeight - 62
             
-            UIView.animateWithDuration(KeyboardManager.duration, animations: {
+            UIView.animateWithDuration(KeyboardManager.duration, animations: { 
                 self.detailTableView.layoutIfNeeded()
+                }, completion: { [unowned self] (finsh) in
+                    let index = NSIndexPath(forRow: self.iconList.count - 2, inSection: 0)
+                    self.detailTableView.scrollToRowAtIndexPath(index, atScrollPosition: .Bottom, animated: true)
             })
+            
+            if self.datePickerView?.viewIsShow() == true {
+                self.cancelDatePickerAction()
+            }
         }
         
         KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
@@ -115,8 +155,58 @@ class TaskDetailViewController: BaseViewController {
         }
     }
     
+    func cancelDatePickerAction() {
+        guard let datePicker = self.datePickerView else { return }
+        showDatePickerView(show: false)
+        let index = NSIndexPath(forRow: datePicker.getIndex(), inSection: 0)
+        self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+    }
+    
+    func setDatePickerAction() {
+        guard let datePicker = self.datePickerView else { return }
+        RealmManager.shareManager.updateObject { 
+            if datePicker.getIndex() == 0 {
+                self.task.createdDate = datePicker.datePicker.date
+            } else {
+                self.task.notifyDate = datePicker.datePicker.date
+            }
+        }
+        
+        showDatePickerView(show: false)
+        let index = NSIndexPath(forRow: datePicker.getIndex(), inSection: 0)
+        self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+    }
+    
+    private func showDatePickerView(show show: Bool) {
+        if (show) {
+            if KeyboardManager.keyboardShow {
+                self.view.endEditing(true)
+                guard let datePickerView = self.datePickerView else { return }
+                let selectedIndex = NSIndexPath(forRow: datePickerView.getIndex(), inSection: 0)
+                self.detailTableView.selectRowAtIndexPath(selectedIndex, animated: false, scrollPosition: .None)
+            }
+            if (self.datePickerView?.viewIsShow() == true) {
+                self.datePickerViewBottomConstraint.constant = -DatePickerView.height
+                UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: { [unowned self] in
+                    self.datePickerHolderView.layoutIfNeeded()
+                }) { [unowned self] (finish) in
+                    self.datePickerViewBottomConstraint.constant = 0
+                    UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {
+                        self.datePickerHolderView.layoutIfNeeded()
+                    }) { (finish) in }
+                }
+                return
+            }
+        }
+        
+        self.datePickerViewBottomConstraint.constant = show ? 0 : -DatePickerView.height
+        UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {  [unowned self] in
+            self.datePickerHolderView.layoutIfNeeded()
+        }) { (finish) in }
+    }
+    
     private func realmNoticationToken() {
-        subtasksToken = subtasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+        self.subtasksToken = subtasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
             switch changes {
             case .Initial:
                 self.detailTableView.reloadRowsAtIndexPaths(Array(self.subtaskStartIndex..<self.iconList.count - 1).map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
@@ -210,7 +300,8 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row < subtaskStartIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier(TaskDateTableViewCell.reuseId, forIndexPath: indexPath) as! TaskDateTableViewCell
             cell.configCell(task, iconString: iconList[indexPath.row])
-            
+            cell.clearButton.tag = indexPath.row
+            cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
             return cell
         } else if indexPath.row == iconList.count - 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(TaskNoteTableViewCell.reuseId, forIndexPath: indexPath) as! TaskNoteTableViewCell
@@ -239,6 +330,14 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath.row < 2 {
+            self.datePickerView?.setIndex(indexPath.row)
+            self.showDatePickerView(show: true)
+        } else if indexPath.row == 2 {
+            self.datePickerView?.setIndex(indexPath.row)
+            self.showDatePickerView(show: true)
+        } else {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
 }

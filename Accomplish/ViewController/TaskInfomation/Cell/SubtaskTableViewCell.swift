@@ -36,7 +36,7 @@ class SubtaskTableViewCell: UITableViewCell {
         self.trashButton.setImage(iconImage, forState: .Normal)
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
-        self.subtaskTextField.textColor = colors.mainTextColor
+        self.subtaskTextField.textColor = colors.mainGreenColor
         
         self.separatorInset = UIEdgeInsets(top: 0, left: screenBounds.width, bottom: 0, right: 0)
     }
@@ -69,7 +69,7 @@ class SubtaskTableViewCell: UITableViewCell {
             }
             
             self.trashButton.hidden = false
-            self.separatorInset = UIEdgeInsets(top: 0, left: 10000, bottom: 0, right: 0)
+            self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         } else {
             let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.secondaryTextColor])
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
@@ -84,7 +84,6 @@ class SubtaskTableViewCell: UITableViewCell {
     
     func deleteSubtask() {
         guard let subtask = self.subtask else { return }
-        self.separatorInset.left = screenBounds.width
         RealmManager.shareManager.deleteObject(subtask)
     }
     

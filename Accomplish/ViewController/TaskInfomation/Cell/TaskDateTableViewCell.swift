@@ -21,6 +21,8 @@ class TaskDateTableViewCell: UITableViewCell {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
     
+    var task: Task?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,8 +36,9 @@ class TaskDateTableViewCell: UITableViewCell {
         icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let iconImage = icon.imageWithSize(CGSize(width: kTaskClearCellIconSize, height: kTaskClearCellIconSize))
         self.clearButton.setImage(iconImage, forState: .Normal)
+        self.clearButton.addTarget(self, action: #selector(self.clearAction), forControlEvents: .TouchUpInside)
         
-        self.infoLabel.highlightedTextColor = colors.mainTextColor
+        self.infoLabel.highlightedTextColor = colors.mainGreenColor
         self.infoLabel.textColor = colors.secondaryTextColor
     }
     
@@ -47,7 +50,15 @@ class TaskDateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func clearAction() {
+        guard let task = self.task else { return }
+        RealmManager.shareManager.updateObject { 
+            task.notifyDate = nil
+        }
+    }
+    
     func configCell(task: Task, iconString: String) {
+        self.task = task
         let colors = Colors()
         
         let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskDetailCellIconSize)
@@ -67,9 +78,11 @@ class TaskDateTableViewCell: UITableViewCell {
         case SubtaskIconBell:
             self.infoLabel.highlighted = task.notifyDate != nil
             self.infoLabel.text =
-                task.notifyDate == nil ? Localized("detailNotifyTime") : task.notifyDate!.formattedDateWithFormat(timeDateFormat)
-            self.clearButton.hidden = true
-            self.iconButton.tintColor = colors.secondaryTextColor
+                task.notifyDate == nil ? Localized("detailNotifyTime") :
+                task.notifyDate!.formattedDateWithFormat(timeDateFormat)
+            self.clearButton.hidden = task.notifyDate == nil
+            self.iconButton.tintColor =
+                task.notifyDate == nil ? colors.secondaryTextColor : colors.mainGreenColor
             
         case SubtaskIconRepeat:
             self.infoLabel.highlighted = false

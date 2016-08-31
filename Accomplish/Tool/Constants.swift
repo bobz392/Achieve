@@ -8,6 +8,7 @@
 
 import Foundation
 
+let kSmallAnimationDuration: NSTimeInterval = 0.15
 let kNormalAnimationDuration: NSTimeInterval = 0.35
 let kLongAnimationDuration: NSTimeInterval = 1
 let kCardViewCornerRadius: CGFloat = 10

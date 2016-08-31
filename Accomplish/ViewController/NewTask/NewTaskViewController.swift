@@ -85,7 +85,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.setDateButton.tintColor = colors.mainGreenColor
         self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        let clockIcon = try! FAKFontAwesome(identifier: "fa-clock-o", size: 22)
+        let clockIcon = try! FAKFontAwesome(identifier: SubtaskIconCalendar, size: 20)
         let clockImage = clockIcon.imageWithSize(CGSize(width: 32, height: 32))
         self.clockButton.setImage(clockImage, forState: .Normal)
         self.clockButton.tintColor = colors.secondaryTextColor

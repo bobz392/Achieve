@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="cancelButton" destination="dzj-yx-3Hr" id="A5W-2w-F8K"/>
                 <outlet property="cardView" destination="KrW-ij-tUQ" id="HFB-Go-0Ui"/>
+                <outlet property="datePickerHolderView" destination="CjQ-99-yJr" id="Tqn-Au-WSe"/>
+                <outlet property="datePickerViewBottomConstraint" destination="3ok-wT-1Me" id="zNl-Jz-5yU"/>
                 <outlet property="detailTableView" destination="lcW-r7-hP2" id="Hdr-DA-J8r"/>
                 <outlet property="detailTableViewBottomConstraint" destination="5ow-ei-Uay" id="FfK-2B-j73"/>
                 <outlet property="titleTextField" destination="3z6-t5-Zy6" id="UC2-X8-XqG"/>
@@ -60,10 +62,19 @@
                         <outlet property="delegate" destination="-1" id="GyL-Ml-4aS"/>
                     </connections>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjQ-99-yJr">
+                    <rect key="frame" x="0.0" y="600" width="600" height="245"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="245" id="Ccj-r6-bSj"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="3z6-t5-Zy6" firstAttribute="leading" secondItem="KrW-ij-tUQ" secondAttribute="leading" id="20a-GZ-7yP"/>
+                <constraint firstAttribute="trailing" secondItem="CjQ-99-yJr" secondAttribute="trailing" id="2Uh-Iu-UFH"/>
+                <constraint firstAttribute="bottom" secondItem="CjQ-99-yJr" secondAttribute="bottom" constant="-245" id="3ok-wT-1Me"/>
                 <constraint firstItem="KrW-ij-tUQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="4Za-H6-HoU"/>
                 <constraint firstItem="dzj-yx-3Hr" firstAttribute="top" secondItem="KrW-ij-tUQ" secondAttribute="bottom" constant="10" id="K3q-Td-2C2"/>
                 <constraint firstItem="KrW-ij-tUQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="SOi-Qk-fga"/>
@@ -71,6 +82,7 @@
                 <constraint firstItem="3z6-t5-Zy6" firstAttribute="trailing" secondItem="KrW-ij-tUQ" secondAttribute="trailing" id="VAy-EB-Bta"/>
                 <constraint firstItem="KrW-ij-tUQ" firstAttribute="top" secondItem="3z6-t5-Zy6" secondAttribute="bottom" constant="10" id="aUe-Bi-MwU"/>
                 <constraint firstAttribute="bottom" secondItem="dzj-yx-3Hr" secondAttribute="bottom" constant="10" id="dkO-Ee-y19"/>
+                <constraint firstItem="CjQ-99-yJr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eb0-BA-pPe"/>
                 <constraint firstAttribute="trailing" secondItem="KrW-ij-tUQ" secondAttribute="trailing" constant="5" id="pAi-S3-gJX"/>
             </constraints>
         </view>

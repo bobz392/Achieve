@@ -1,0 +1,85 @@
+//
+//  DatePickerView.swift
+//  Accomplish
+//
+//  Created by zhoubo on 16/8/31.
+//  Copyright © 2016年 zhoubo. All rights reserved.
+//
+
+import UIKit
+
+class DatePickerView: UIView {
+
+    @IBOutlet weak var toolView: UIView!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    static let height: CGFloat = 245
+    
+    var task: Task?
+    private var index: Int = 0
+    private var viewShow = false
+    
+    override func awakeFromNib() {
+        let colors = Colors()
+        
+        self.toolView.backgroundColor = colors.cloudColor
+        self.leftButton.tintColor = colors.mainGreenColor
+        self.rightButton.tintColor = colors.mainGreenColor
+        self.backgroundColor = colors.cloudColor
+        
+        self.leftButton.setTitle(Localized("cancel"), forState: .Normal)
+        self.toolView.addTopShadow()
+        
+        self.leftButton.addTarget(self, action: #selector(self.close), forControlEvents: .TouchUpInside)
+        self.rightButton.addTarget(self, action: #selector(self.close), forControlEvents: .TouchUpInside)
+        
+        self.pickerView.hidden = true
+    }
+    
+    func close() {
+        self.viewShow = false
+    }
+    
+    func getIndex() -> Int {
+        return index
+    }
+    
+    func viewIsShow() -> Bool {
+        return viewShow
+    }
+    
+    func setIndex(index: Int) {
+        self.index = index
+        self.viewShow = true
+        self.pickerView.hidden = true
+        self.datePicker.hidden = true
+        
+        switch index {
+        case 0:
+            guard let task = self.task else { break }
+            self.datePicker.hidden = false
+            self.datePicker.minimumDate = task.createdDate
+            self.datePicker.datePickerMode = .Date
+            self.rightButton.setTitle(Localized("setCreateDate"), forState: .Normal)
+            self.datePicker.reloadInputViews()
+            
+        case 1:
+            self.datePicker.hidden = false
+            self.datePicker.datePickerMode = .Time
+            self.datePicker.minimumDate = NSDate()
+            self.rightButton.setTitle(Localized("setReminder"), forState: .Normal)
+            self.datePicker.reloadInputViews()
+        
+        case 2:
+            self.pickerView.hidden = false
+            self.rightButton.setTitle(Localized("setRepeat"), forState: .Normal)
+            break
+            
+        default:
+            break
+        }
+    }
+}

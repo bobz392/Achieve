@@ -64,7 +64,7 @@ class Task: Object {
         switch self.taskType {
         case kSystemTaskType:
             if let action = TaskStringManager().parseTaskText(self.taskToDo) {
-                return  action.type.ationNameWithType() ?? "" + action.name
+                return (action.type.ationNameWithType() ?? "") + action.name
             } else {
                 return self.taskToDo
             }
@@ -73,5 +73,9 @@ class Task: Object {
             return self.taskToDo
         }
 
+    }
+    
+    func taskToDoCanChange() -> Bool {
+        return taskToDo.componentsSeparatedByString(kSpliteTaskIdentity).count < 2
     }
 }

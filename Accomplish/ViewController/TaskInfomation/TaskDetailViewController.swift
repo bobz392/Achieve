@@ -76,7 +76,6 @@ class TaskDetailViewController: BaseViewController {
         let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(40)
         cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
-        
     }
     
     private func initializeControl() {
@@ -106,11 +105,11 @@ class TaskDetailViewController: BaseViewController {
             UIView.animateWithDuration(KeyboardManager.duration, animations: {
                 self.detailTableView.layoutIfNeeded()
             })
-            }
+        }
         
         KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
             self.detailTableViewBottomConstraint.constant = 10
-            UIView.animateWithDuration(KeyboardManager.duration, animations: { 
+            UIView.animateWithDuration(KeyboardManager.duration, animations: {
                 self.detailTableView.layoutIfNeeded()
             })
         }
@@ -139,7 +138,7 @@ class TaskDetailViewController: BaseViewController {
                         let element = subtask.finishedDate == nil ? SubtaskIconSquare : SubtaskIconChecked
                         self.iconList.insert(element, atIndex: index + self.subtaskStartIndex)
                     }
-
+                    
                     self.detailTableView.reloadRowsAtIndexPaths(modifications.map { NSIndexPath(forRow: $0 + self.subtaskStartIndex, inSection: 0) }, withRowAnimation: .Automatic)
                 }
                 
@@ -165,7 +164,7 @@ extension TaskDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let title = textField.text {
             if !title.isEmpty {
-                RealmManager.shareManager.updateObject({ 
+                RealmManager.shareManager.updateObject({
                     self.task.taskToDo = title
                 })
             }

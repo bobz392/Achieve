@@ -16,6 +16,7 @@
                 <outlet property="titleCardView" destination="I81-o6-Sut" id="ZZp-dy-diD"/>
                 <outlet property="titleLabel" destination="mSF-t9-hCG" id="cxd-cE-bg8"/>
                 <outlet property="titleTextField" destination="8tL-tN-3YB" id="9s1-qf-Ifm"/>
+                <outlet property="toolLineView" destination="QNO-H2-Eah" id="SUp-qo-WyD"/>
                 <outlet property="toolView" destination="8KS-tk-E5f" id="bK0-At-5aH"/>
                 <outlet property="toolViewBottomConstraint" destination="HfP-6w-1Iv" id="Zh8-Ig-YZX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -101,6 +102,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KS-tk-E5f">
                     <rect key="frame" x="0.0" y="600" width="600" height="44"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNO-H2-Eah">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="0.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="kJC-ay-ro9"/>
+                            </constraints>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bME-ae-lhf">
                             <rect key="frame" x="535" y="7" width="45" height="30"/>
                             <state key="normal" title="cancel"/>
@@ -114,9 +122,12 @@
                         <constraint firstItem="bME-ae-lhf" firstAttribute="centerY" secondItem="8KS-tk-E5f" secondAttribute="centerY" id="1e1-9f-pTf"/>
                         <constraint firstItem="ae9-8T-oO4" firstAttribute="height" secondItem="bME-ae-lhf" secondAttribute="height" id="2qa-8r-oJK"/>
                         <constraint firstItem="ae9-8T-oO4" firstAttribute="centerY" secondItem="bME-ae-lhf" secondAttribute="centerY" id="Chc-k0-vXC"/>
+                        <constraint firstItem="QNO-H2-Eah" firstAttribute="top" secondItem="8KS-tk-E5f" secondAttribute="top" id="G1h-xy-SP0"/>
                         <constraint firstItem="bME-ae-lhf" firstAttribute="leading" secondItem="ae9-8T-oO4" secondAttribute="trailing" constant="20" id="HzG-kU-5ef"/>
+                        <constraint firstAttribute="trailing" secondItem="QNO-H2-Eah" secondAttribute="trailing" id="Ppa-U4-Gci"/>
                         <constraint firstAttribute="trailing" secondItem="bME-ae-lhf" secondAttribute="trailing" constant="20" id="TNl-O1-035"/>
                         <constraint firstAttribute="height" constant="44" id="lu0-mD-k8n"/>
+                        <constraint firstItem="QNO-H2-Eah" firstAttribute="leading" secondItem="8KS-tk-E5f" secondAttribute="leading" id="x2a-pE-gVl"/>
                     </constraints>
                 </view>
             </subviews>

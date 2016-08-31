@@ -13,9 +13,9 @@
                 <outlet property="cardViewTopConstraint" destination="wrT-z0-jiS" id="gkr-Bx-dic"/>
                 <outlet property="clockButton" destination="KD9-lQ-lgC" id="lLf-x6-nH4"/>
                 <outlet property="datePicker" destination="Jdt-4n-GAw" id="kXL-nJ-Ozq"/>
-                <outlet property="datePickerHeightConstraint" destination="sJX-nM-Z2j" id="8Kp-Fw-Yul"/>
                 <outlet property="dateToolLineView" destination="XDm-9m-muz" id="ezH-tg-fNx"/>
                 <outlet property="dateToolView" destination="jBo-f4-xEV" id="r8I-jX-4Qf"/>
+                <outlet property="lineView" destination="coJ-xh-ksS" id="gNM-mS-jxf"/>
                 <outlet property="priorityCardView" destination="xOP-iq-T7t" id="CQU-gG-WS9"/>
                 <outlet property="priorityLabel" destination="tts-aO-sIm" id="Sba-oT-DBa"/>
                 <outlet property="prioritySegmental" destination="smr-3j-ASd" id="RJJ-rt-5iH"/>
@@ -109,6 +109,13 @@
                 <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-Ws-MLD">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-xh-ksS">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="0.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="VUr-AG-usf"/>
+                            </constraints>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KD9-lQ-lgC">
                             <rect key="frame" x="10" y="0.0" width="32" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -133,21 +140,21 @@
                             <state key="normal" title="cancel"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBo-f4-xEV">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="1" width="600" height="43"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDm-9m-muz">
-                                    <rect key="frame" x="0.0" y="43.5" width="600" height="0.5"/>
+                                    <rect key="frame" x="0.0" y="42" width="600" height="0.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="BGb-L5-4en"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s9-vD-v8K">
-                                    <rect key="frame" x="29" y="0.0" width="46" height="44"/>
+                                    <rect key="frame" x="10" y="0.0" width="46" height="43"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikr-3W-zki">
-                                    <rect key="frame" x="534" y="0.0" width="46" height="44"/>
+                                    <rect key="frame" x="544" y="0.0" width="46" height="43"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                             </subviews>
@@ -159,10 +166,10 @@
                                 <constraint firstItem="XDm-9m-muz" firstAttribute="leading" secondItem="jBo-f4-xEV" secondAttribute="leading" id="H6D-Lj-mlb"/>
                                 <constraint firstAttribute="bottom" secondItem="Ikr-3W-zki" secondAttribute="bottom" id="Khw-Dj-va0"/>
                                 <constraint firstItem="1s9-vD-v8K" firstAttribute="top" secondItem="jBo-f4-xEV" secondAttribute="top" id="Qit-Mw-VXb"/>
-                                <constraint firstAttribute="trailing" secondItem="Ikr-3W-zki" secondAttribute="trailing" constant="20" id="ZDR-q3-r8F"/>
+                                <constraint firstAttribute="trailing" secondItem="Ikr-3W-zki" secondAttribute="trailing" constant="10" id="ZDR-q3-r8F"/>
                                 <constraint firstAttribute="trailing" secondItem="XDm-9m-muz" secondAttribute="trailing" id="gVc-ko-M1C"/>
                                 <constraint firstItem="Ikr-3W-zki" firstAttribute="top" secondItem="jBo-f4-xEV" secondAttribute="top" id="hJl-kR-FB3"/>
-                                <constraint firstItem="1s9-vD-v8K" firstAttribute="leading" secondItem="jBo-f4-xEV" secondAttribute="leading" constant="29" id="sqo-AK-yaA"/>
+                                <constraint firstItem="1s9-vD-v8K" firstAttribute="leading" secondItem="jBo-f4-xEV" secondAttribute="leading" constant="10" id="sqo-AK-yaA"/>
                                 <constraint firstItem="Ikr-3W-zki" firstAttribute="leading" secondItem="XDm-9m-muz" secondAttribute="trailing" id="vs7-dV-45H"/>
                             </constraints>
                             <variation key="default">
@@ -175,6 +182,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="coJ-xh-ksS" firstAttribute="leading" secondItem="Vdp-Ws-MLD" secondAttribute="leading" id="0Ue-03-T2a"/>
                         <constraint firstAttribute="bottom" secondItem="jBo-f4-xEV" secondAttribute="bottom" id="2jX-UM-T4h"/>
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="leading" secondItem="Vdp-Ws-MLD" secondAttribute="leading" constant="10" id="9wa-Dx-BRD"/>
                         <constraint firstItem="VmR-Dd-PUz" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" id="ERJ-Tj-tyq"/>
@@ -183,11 +191,13 @@
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="centerY" secondItem="Vdp-Ws-MLD" secondAttribute="centerY" id="Oyo-v3-82R"/>
                         <constraint firstAttribute="bottom" secondItem="VmR-Dd-PUz" secondAttribute="bottom" id="PRN-mn-1mk"/>
                         <constraint firstItem="iHz-Dk-6DR" firstAttribute="height" secondItem="VmR-Dd-PUz" secondAttribute="height" id="SHU-n7-w8N"/>
+                        <constraint firstItem="coJ-xh-ksS" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" id="U9p-pN-h10"/>
                         <constraint firstItem="acP-FL-DWg" firstAttribute="height" secondItem="KD9-lQ-lgC" secondAttribute="height" id="UH9-r4-b1j"/>
                         <constraint firstItem="iHz-Dk-6DR" firstAttribute="centerY" secondItem="VmR-Dd-PUz" secondAttribute="centerY" id="Vr4-86-TVh"/>
                         <constraint firstItem="KD9-lQ-lgC" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" id="WJu-h5-tFg"/>
+                        <constraint firstAttribute="trailing" secondItem="coJ-xh-ksS" secondAttribute="trailing" id="ZUk-nh-U91"/>
                         <constraint firstAttribute="height" constant="44" id="fJv-3r-lhi"/>
-                        <constraint firstItem="jBo-f4-xEV" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" id="hy2-rX-h4J"/>
+                        <constraint firstItem="jBo-f4-xEV" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="top" constant="1" id="hy2-rX-h4J"/>
                         <constraint firstAttribute="trailing" secondItem="VmR-Dd-PUz" secondAttribute="trailing" constant="20" id="jTw-R9-paw"/>
                         <constraint firstAttribute="trailing" secondItem="jBo-f4-xEV" secondAttribute="trailing" id="nAz-vi-O2H"/>
                         <constraint firstItem="acP-FL-DWg" firstAttribute="leading" secondItem="KD9-lQ-lgC" secondAttribute="trailing" constant="20" id="nWw-pJ-vFV"/>
@@ -197,9 +207,9 @@
                     </constraints>
                 </view>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-4n-GAw">
-                    <rect key="frame" x="0.0" y="600" width="600" height="216"/>
+                    <rect key="frame" x="0.0" y="600" width="600" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="216" id="sJX-nM-Z2j"/>
+                        <constraint firstAttribute="height" constant="200" id="sJX-nM-Z2j"/>
                     </constraints>
                     <date key="date" timeIntervalSinceReferenceDate="494267466.18340898">
                         <!--2016-08-30 16:31:06 +0000-->

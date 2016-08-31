@@ -25,12 +25,14 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var toolView: UIView!
     
     @IBOutlet weak var dateToolView: UIView!
+    @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var dateToolLineView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var cancelDateButton: UIButton!
     @IBOutlet weak var setDateButton: UIButton!
     
     private let cardViewHeight: CGFloat = 194
+    private let datePickerHeight: CGFloat = 200
     
     private let task = Task()
     private var subtaskString: String? = nil
@@ -73,6 +75,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.prioritySegmental.tintColor = colors.mainGreenColor
         self.priorityLabel.textColor = colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
+        self.lineView.backgroundColor = colors.separatorColor
         self.dateToolLineView.backgroundColor = colors.separatorColor
         self.dateToolView.backgroundColor = colors.cloudColor
         self.datePicker.backgroundColor = colors.cloudColor
@@ -138,7 +141,6 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
-            self.datePickerHeightConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
@@ -174,22 +176,50 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         self.dateToolView.hidden = false
         self.datePicker.hidden = false
+        
+        self.cardViewTopConstraint.constant =
+            (self.view.frame.height - self.datePickerHeight - self.cardViewHeight) * 0.5
+        self.toolViewBottomConstraint.constant = self.datePickerHeight
+        
+        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: { 
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
     
     func cancelScheduleAction() {
-        self.datePicker.hidden = true
-        self.dateToolView.hidden = true
-        self.titleTextField.becomeFirstResponder()
+        self.clockButton.tintColor = Colors().secondaryTextColor
+        self.task.createdDate = nil
         
-        self.keyboardAction()
+        self.closeDatePicker()
+    }
+    
+    private func closeDatePicker() {
+        if self.titleTextField.enabled == true {
+            self.datePicker.hidden = true
+            self.dateToolView.hidden = true
+            
+            self.keyboardAction()
+            self.titleTextField.becomeFirstResponder()
+        } else {
+            self.cardViewTopConstraint.constant =
+                (self.view.frame.height - self.cardViewHeight) * 0.5
+            self.toolViewBottomConstraint.constant = 0
+            
+            UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {
+                self.dateToolView.hidden = true
+                self.view.layoutIfNeeded()
+                }, completion: { (finish) -> Void in
+                    self.datePicker.hidden = true
+            })
+        }
     }
     
     func saveScheduleAction() {
         let selectedDate = self.datePicker.date
-        task.createdDate = selectedDate
+        self.task.createdDate = selectedDate
         
         self.clockButton.tintColor = Colors().mainGreenColor
-        cancelScheduleAction()
+        self.closeDatePicker()
     }
     
     func systemAction() {
@@ -256,7 +286,6 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
 }
 
 // MARK: - parent view controller

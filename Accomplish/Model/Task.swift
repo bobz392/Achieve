@@ -29,7 +29,6 @@ class Task: Object {
     
     dynamic var status = kTaskRunning
     dynamic var taskType = kCustomTaskType
-    dynamic var taskRepeat: Int8 = 0
     dynamic var priority = kTaskPriorityNormal
     // for query
     dynamic var createdFormattedDate: String = ""
@@ -38,6 +37,7 @@ class Task: Object {
     dynamic var finishedDate: NSDate?
     dynamic var canPostpone: Bool = false
     
+    dynamic var taskRepeat: Repeater?
     dynamic var trigger: Trigger?
     
     dynamic var subTaskCount: Int = 0

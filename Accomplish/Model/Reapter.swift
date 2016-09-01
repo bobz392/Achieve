@@ -10,4 +10,5 @@ import RealmSwift
 
 class Repeater: Object {
     var uuid: String = ""
+    var date: NSDate?
 }

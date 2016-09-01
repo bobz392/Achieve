@@ -58,6 +58,18 @@ class TaskDetailViewController: BaseViewController {
         initializeControl()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        guard let count = subtasks?.count
+            where self.task.subTaskCount != count
+            else { return }
+        
+        RealmManager.shareManager.updateObject {
+            self.task.subTaskCount = count
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

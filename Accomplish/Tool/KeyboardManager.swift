@@ -18,7 +18,7 @@ final class KeyboardManager {
     
     var keyboardShowHandler: ( () -> Void)?
     var keyboardHideHandler: (() -> Void)?
-    
+        
     init() {
         NSNotificationCenter.defaultCenter().addObserverForName(
             UIKeyboardWillChangeFrameNotification, object: nil,

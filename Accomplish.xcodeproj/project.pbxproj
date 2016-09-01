@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */; };
 		C70BF6151D77DDE3006B0C1D /* Reapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Reapter.swift */; };
-		C70BF6161D77DDE3006B0C1D /* Reapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Reapter.swift */; };
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
@@ -567,17 +566,17 @@
 		C7860E3F1D6C23FF000281FA /* Accomplish */ = {
 			isa = PBXGroup;
 			children = (
+				C77192931D6CFE0700437560 /* Localizable.strings */,
+				C7860E401D6C23FF000281FA /* AppDelegate.swift */,
 				C77192421D6CEE4E00437560 /* ViewController */,
 				C7105F901D6CD5200096A1A3 /* Model */,
 				C7DDA5B31D75FAD30054154C /* Extension */,
 				C7105F8C1D6CCDA90096A1A3 /* Tool */,
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
-				C7860E401D6C23FF000281FA /* AppDelegate.swift */,
 				C7860E471D6C23FF000281FA /* Assets.xcassets */,
 				C7860E4C1D6C23FF000281FA /* Info.plist */,
 				C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */,
 				C77192821D6CFCAF00437560 /* Launch Screen.storyboard */,
-				C77192931D6CFE0700437560 /* Localizable.strings */,
 			);
 			path = Accomplish;
 			sourceTree = "<group>";
@@ -703,6 +702,11 @@
 					C7860E3C1D6C23FF000281FA = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = M396DA7L3B;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -816,7 +820,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70BF6161D77DDE3006B0C1D /* Reapter.swift in Sources */,
 				C7105F8F1D6CCDB00096A1A3 /* Colors.swift in Sources */,
 				C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */,
 			);

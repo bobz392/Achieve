@@ -6,9 +6,10 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
 class Repeater: Object {
-    var uuid: String = ""
-    var date: NSDate?
+    dynamic var uuid: String = ""
+    dynamic var repeatTask: Task?
 }

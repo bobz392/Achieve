@@ -35,14 +35,6 @@ class RealmManager {
         })
     }
     
-    func begin() {
-        realm.beginWrite()
-    }
-    
-    func commit() {
-        try! realm.commitWrite()
-    }
-    
     func writeObjects(objects: [Object]) {
         realm.beginWrite()
         realm.add(objects)
@@ -51,7 +43,7 @@ class RealmManager {
     
     func queryAll(clz: AnyClass) {
         let result = realm.objects(clz as! Object.Type)
-        print(result)
+        debugPrint(result)
     }
     
     func queryTodayTaskList(finished finished: Bool) -> Results<Task> {

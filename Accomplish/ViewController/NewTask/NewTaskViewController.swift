@@ -85,14 +85,14 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.setDateButton.tintColor = colors.mainGreenColor
         self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        let clockIcon = try! FAKFontAwesome(identifier: SubtaskIconCalendar, size: 20)
-        let clockImage = clockIcon.imageWithSize(CGSize(width: 32, height: 32))
+        let clockIcon = try! FAKFontAwesome(identifier: SubtaskIconCalendar, size: kTaskDetailCellIconSize)
+        let clockImage = clockIcon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
         self.clockButton.setImage(clockImage, forState: .Normal)
         self.clockButton.tintColor = colors.secondaryTextColor
         
-        let systemIcon = FAKFontAwesome.archiveIconWithSize(20)
+        let systemIcon = FAKFontAwesome.archiveIconWithSize(kTaskDetailCellIconSize)
         systemIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let systemImage = systemIcon.imageWithSize(CGSize(width: 32, height: 32))
+        let systemImage = systemIcon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
         self.systemButton.setImage(systemImage, forState: .Normal)
     }
     
@@ -107,7 +107,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         self.dateToolView.hidden = true
         self.datePicker.hidden = true
-        self.datePicker.datePickerMode = .Date
+        self.datePicker.datePickerMode = .DateAndTime
         self.datePicker.minimumDate = NSDate()
         
         self.titleTextField.placeholder = Localized("goingDo")

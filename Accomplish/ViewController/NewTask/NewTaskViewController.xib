@@ -206,7 +206,7 @@
                         <constraint firstItem="acP-FL-DWg" firstAttribute="centerY" secondItem="KD9-lQ-lgC" secondAttribute="centerY" id="uTM-aY-kCh"/>
                     </constraints>
                 </view>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-4n-GAw">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jdt-4n-GAw">
                     <rect key="frame" x="0.0" y="600" width="600" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="sJX-nM-Z2j"/>

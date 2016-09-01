@@ -28,6 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         register(application)
         HUD.sharedHUD.config()
         
+        if application.backgroundRefreshStatus == .Available {
+            debugPrint("Available")
+        } else if application.backgroundRefreshStatus == .Denied {
+            debugPrint("Denied")
+        } else {
+            debugPrint("Restricted")
+        }
+        
         return true
     }
     
@@ -38,11 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func register(application: UIApplication) {
         let settings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
+        
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     }
     
     private func configRealm() {
         let config = Realm.Configuration()
         Realm.Configuration.defaultConfiguration = config
+    }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+//        debugPrint(RealmManager.shareManager.queryTodayTaskList(finished: false))
+        debugPrint("background fetch")
     }
     
     func applicationWillResignActive(application: UIApplication) {

@@ -11,6 +11,7 @@ import Foundation
 let uuidFormat: String = "yyMMddHHmmssZ"
 let createdDateFormat: String = "yyyy.MM.dd"
 let timeDateFormat: String = "hh: mm a"
+let monthDayFormat: String = "MM.dd"
 
 // TASK
 extension NSDate {

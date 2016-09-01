@@ -72,7 +72,18 @@ class TaskDateTableViewCell: UITableViewCell {
         switch iconString {
         case SubtaskIconCalendar:
             self.infoLabel.highlighted = true
-            self.infoLabel.text = task.createdDate?.formattedDateWithStyle(.MediumStyle)
+            guard let createdDate = task.createdDate else { break }
+            let schedule = Localized("scheduled")
+            if createdDate.isToday() {
+                self.infoLabel.text = schedule + Localized("today")
+            } else if createdDate.isTomorrow() {
+                self.infoLabel.text = schedule + Localized("tomorrow")
+            } else if createdDate.isYesterday() {
+                self.infoLabel.text = schedule + Localized("yesterday")
+            } else {
+                self.infoLabel.text =
+                    schedule + " " + createdDate.formattedDateWithStyle(.MediumStyle)
+            }
 //                Localized(task.canPostpone ? "detailPostponeTomorrow" : "detailIncomplete")
             self.clearButton.hidden = true
             self.iconButton.tintColor = colors.mainGreenColor

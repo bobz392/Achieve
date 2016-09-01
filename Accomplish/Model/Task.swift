@@ -6,6 +6,7 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
 let kTaskRunning: Int = 0
@@ -36,8 +37,8 @@ class Task: Object {
     dynamic var notifyDate: NSDate?
     dynamic var finishedDate: NSDate?
     dynamic var canPostpone: Bool = false
+    dynamic var tag: String?
     
-    dynamic var taskRepeat: Repeater?
     dynamic var trigger: Trigger?
     
     dynamic var subTaskCount: Int = 0

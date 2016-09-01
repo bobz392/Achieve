@@ -63,3 +63,8 @@
 "addressBook"="Address Book";
 
 "errorInfos"="Please perfect information";
+
+"scheduled"="Task scheduled for ";
+"today"="today";
+"tomorrow"="tomorrow";
+"yesterday"="yesterday";

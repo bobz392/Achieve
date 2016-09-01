@@ -22,6 +22,14 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var emptyHintLabel: UILabel!
     @IBOutlet weak var emptyCoffeeLabel: UILabel!
     
+    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+    
     private var finishTasks: Results<Task>?
     private var runningTasks: Results<Task>?
     
@@ -32,6 +40,7 @@ class HomeViewController: BaseViewController {
     
     private var isFullScreenSize = false
     private var selectedIndex: NSIndexPath? = nil
+    
     // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +53,8 @@ class HomeViewController: BaseViewController {
         self.initializeControl()
         self.configMainButton()
         
-        self.finishTasks = RealmManager.shareManager.queryTodayTaskList(true)
-        self.runningTasks = RealmManager.shareManager.queryTodayTaskList(false)
+        self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
+        self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
         self.realmNoticationToken()
     }
     
@@ -191,21 +200,7 @@ class HomeViewController: BaseViewController {
                 self.taskTableView.reloadData()
                 
             case .Update(_, let deletions, let insertions, let modifications):
-                self.taskTableView.beginUpdates()
-                if insertions.count > 0 {
-                    self.taskTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
-                }
-                
-                if modifications.count > 0 {
-                    self.taskTableView.reloadRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
-                }
-                
-                if deletions.count > 0 {
-                    self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
-                        withRowAnimation: .Automatic)
-                }
-                
-                self.taskTableView.endUpdates()
+                self.handleUpdate(deletions, insertions: insertions, modifications: modifications)
                 
             case .Error(let error):
                 print(error)
@@ -222,27 +217,34 @@ class HomeViewController: BaseViewController {
                 self.taskTableView.reloadData()
                 
             case .Update(_, let deletions, let insertions, let modifications):
-                self.taskTableView.beginUpdates()
-                if insertions.count > 0 {
-                    self.taskTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+                self.handleUpdate(deletions, insertions: insertions, modifications: modifications)
+                guard let deletion = deletions.first,
+                    let selectedRow = self.selectedIndex?.row else { break }
+                if deletion == selectedRow {
+                    self.selectedIndex = nil
                 }
-                
-                if modifications.count > 0 {
-                    self.taskTableView.reloadRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
-                }
-                
-                if deletions.count > 0 {
-                    self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) },
-                        withRowAnimation: .Automatic)
-                }
-                self.taskTableView.endUpdates()
                 
             case .Error(let error):
-                print(error)
+                debugPrint(error)
                 break
             }
             })
+    }
+    
+    private func handleUpdate(deletions: [Int], insertions: [Int], modifications: [Int]) {
+        self.taskTableView.beginUpdates()
+        if insertions.count > 0 {
+            self.taskTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+        }
         
+        if modifications.count > 0 {
+            self.taskTableView.reloadRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+        }
+        
+        if deletions.count > 0 {
+            self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+        }
+        self.taskTableView.endUpdates()
     }
     
     // MARK: - actions
@@ -314,13 +316,6 @@ class HomeViewController: BaseViewController {
         self.taskTableView.reloadData()
     }
     
-    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
 }
 
 // MARK: - table view

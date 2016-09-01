@@ -10,7 +10,6 @@ import Foundation
 
 // Hash
 extension String {
-    
     var MD5String: String {
         let digest = NSMutableData(length: Int(CC_MD5_DIGEST_LENGTH))!
         let digestPointer = unsafeBitCast(digest.mutableBytes, UnsafeMutablePointer<UInt8>.self)

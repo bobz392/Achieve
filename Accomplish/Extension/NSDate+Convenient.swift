@@ -17,4 +17,8 @@ extension NSDate {
     func createTaskUUID() -> String {
         return self.formattedDateWithFormat(uuidFormat)
     }
+    
+    func createdFormatedDateString() -> String {
+        return self.formattedDateWithFormat(createdDateFormat)
+    }
 }

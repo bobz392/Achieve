@@ -52,22 +52,25 @@ class TaskPickerView: UIView {
     }
     
     func setIndex(index: Int) {
+        guard let task = self.task else { return }
         self.index = index
         self.viewShow = true
         self.pickerView.hidden = true
         self.datePicker.hidden = true
+        let now = NSDate()
+        self.datePicker.date = task.createdDate ?? now
         
         switch index {
         case 0:
-            guard let task = self.task else { break }
             self.datePicker.hidden = false
-            self.datePicker.minimumDate = task.createdDate
+            self.datePicker.minimumDate = now
             self.datePicker.datePickerMode = .Date
             self.rightButton.setTitle(Localized("setCreateDate"), forState: .Normal)
             self.datePicker.reloadInputViews()
             
         case 1:
-            guard let createDate = self.task?.createdDate else { break }
+            guard let createDate = task.createdDate else { break }
+            self.datePicker.date = now
             self.datePicker.hidden = false
             self.datePicker.datePickerMode = .Time
             

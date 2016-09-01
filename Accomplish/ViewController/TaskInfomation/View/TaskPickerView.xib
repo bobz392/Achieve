@@ -15,7 +15,7 @@
                     <rect key="frame" x="0.0" y="44.5" width="600" height="200.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </pickerView>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fOd-cV-hxL">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="fOd-cV-hxL">
                     <rect key="frame" x="0.0" y="44.5" width="600" height="200.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <date key="date" timeIntervalSinceReferenceDate="494306346.44370401">

@@ -6,7 +6,6 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 let kTaskRunning: Int = 0
@@ -27,10 +26,12 @@ class Task: Object {
     dynamic var uuid = ""
     dynamic var taskToDo = ""
     dynamic var taskNote = ""
+    
     dynamic var status = kTaskRunning
     dynamic var taskType = kCustomTaskType
     dynamic var taskRepeat: Int8 = 0
     dynamic var priority = kTaskPriorityNormal
+    // for query
     dynamic var createdFormattedDate: String = ""
     dynamic var createdDate: NSDate?
     dynamic var notifyDate: NSDate?
@@ -47,13 +48,13 @@ class Task: Object {
     
     func createDefaultTask(taskToDo: String, priority: Int = kTaskPriorityNormal) {
         if let date = self.createdDate {
-            self.createdFormattedDate = date.formattedDateWithFormat(createdDateFormat)
-            self.uuid = date.formattedDateWithFormat(uuidFormat)
+            self.createdFormattedDate = date.createdFormatedDateString()
+            self.uuid = date.createTaskUUID()
         } else {
             let now = NSDate()
             self.createdDate = now
-            self.createdFormattedDate = now.formattedDateWithFormat(createdDateFormat)
-            self.uuid = now.formattedDateWithFormat(uuidFormat)
+            self.createdFormattedDate = now.createdFormatedDateString()
+            self.uuid = now.createTaskUUID()
         }
         
         self.priority = priority

@@ -36,6 +36,13 @@ func dispatch_global_async(closure: () -> Void) {
     }
 }
 
+// uuid generator
+func uuidGenerator() -> String {
+    let newUniqueId = CFUUIDCreate(kCFAllocatorDefault)
+    let uuidCFString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId)
+    return String(uuidCFString)
+}
+
 /**
  ** screen
  **/

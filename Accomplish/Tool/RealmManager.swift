@@ -54,7 +54,7 @@ class RealmManager {
         print(result)
     }
     
-    func queryTodayTaskList(finished: Bool) -> Results<Task> {
+    func queryTodayTaskList(finished finished: Bool) -> Results<Task> {
         let queryDate = "'" + NSDate().formattedDateWithFormat(createdDateFormat) + "'"
         
         let tasks = realm

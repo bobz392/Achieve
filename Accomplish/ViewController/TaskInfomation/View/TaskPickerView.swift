@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatePickerView: UIView {
+class TaskPickerView: UIView {
 
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var leftButton: UIButton!
@@ -67,9 +67,18 @@ class DatePickerView: UIView {
             self.datePicker.reloadInputViews()
             
         case 1:
+            guard let createDate = self.task?.createdDate else { break }
             self.datePicker.hidden = false
             self.datePicker.datePickerMode = .Time
-            self.datePicker.minimumDate = NSDate()
+            
+            // 如果是今天的任务那么只能添加后面的提醒
+            // 如果是今天以后的任务，那么一天随时都可以
+            if createDate.isToday() {
+                self.datePicker.minimumDate = NSDate()
+            } else {
+                self.datePicker.minimumDate = nil
+            }
+            
             self.rightButton.setTitle(Localized("setReminder"), forState: .Normal)
             self.datePicker.reloadInputViews()
         

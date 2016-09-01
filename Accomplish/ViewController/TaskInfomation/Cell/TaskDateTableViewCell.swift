@@ -55,6 +55,8 @@ class TaskDateTableViewCell: UITableViewCell {
         RealmManager.shareManager.updateObject { 
             task.notifyDate = nil
         }
+        
+        LocalNotificationManager().cancelNotify(task.uuid)
     }
     
     func configCell(task: Task, iconString: String) {

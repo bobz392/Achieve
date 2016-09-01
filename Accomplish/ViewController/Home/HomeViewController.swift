@@ -158,6 +158,8 @@ class HomeViewController: BaseViewController {
         self.calendarButton.addTarget(self, action: #selector(self.calendarAction), forControlEvents: .TouchUpInside)
         
         self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
+        
+        self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
     }
     
     private func showEmptyHint(show: Bool) {
@@ -244,6 +246,11 @@ class HomeViewController: BaseViewController {
     }
     
     // MARK: - actions
+    func setting() {
+        let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
+        print(notifications)
+    }
+    
     func switchScreenAction() {
         doSwitchScreen(true)
     }
@@ -341,14 +348,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         selectedIndex = indexPath
         
         let task: Task?
+        let change: Bool
         if inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
+            change = true
         } else {
             task = self.finishTasks?[indexPath.row]
+            change = false
         }
         
         guard let t = task else { return }
-        let taskVC = TaskDetailViewController(task: t)
+        let taskVC = TaskDetailViewController(task: t, change: change)
         self.navigationController?.delegate = self
         self.navigationController?.pushViewController(taskVC, animated: true)
     }

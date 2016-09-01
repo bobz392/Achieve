@@ -13,10 +13,22 @@ final class HUD {
     static let sharedHUD = HUD()
     
     func config() {
-        
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Light)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Custom)
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.Native)
     }
     
-    func showHUD(showInView: UIView) {
-        
+    func show(status: String = "") {
+        SVProgressHUD.showWithStatus(status)
     }
+    
+    func error(status: String) {
+        SVProgressHUD.showErrorWithStatus(status)
+    }
+    
+    func dismiss() {
+        SVProgressHUD.dismiss()
+    }
+    
 }

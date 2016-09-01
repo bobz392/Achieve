@@ -113,8 +113,7 @@ class NoteViewController: BaseViewController {
             self.noteDelegate?.taskNoteAdd(content)
             self.navigationController?.popViewControllerAnimated(true)
         } else {
-            //            SVProgressHUD.showErrorWithStatus(Localized("errorInfos"))
-            //            HUD.sharedHUD.showHUD(self.view)
+            HUD.sharedHUD.error(Localized("errorInfos"))
         }
     }
 }

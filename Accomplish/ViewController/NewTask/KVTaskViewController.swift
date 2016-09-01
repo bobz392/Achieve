@@ -126,8 +126,7 @@ class KVTaskViewController: BaseViewController {
                 self.navigationController?.popViewControllerAnimated(true)
                 })
         } else {
-            //            SVProgressHUD.showErrorWithStatus(Localized("errorInfos"))
-            HUD.sharedHUD.showHUD(self.view)
+            HUD.sharedHUD.error(Localized("errorInfos"))
         }
     }
 }

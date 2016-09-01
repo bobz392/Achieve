@@ -48,13 +48,13 @@ final class AddressBookViewController: BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        HUD.sharedHUD.showHUD(self.view)
+        HUD.sharedHUD.show()
         
         AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
             dispatch_async(self.indexingQueue) {
                 (self.indexes, self.data) = self.processPeople(people)
                 dispatch_async(dispatch_get_main_queue()) {
-//                    SVProgressHUD.dismiss()
+                    HUD.sharedHUD.dismiss()
                     self.tableView.reloadData()
                 }
             }

@@ -27,17 +27,20 @@ class TaskDetailViewController: BaseViewController {
     @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
     
-    private var datePickerView: DatePickerView?
+    private var datePickerView: TaskPickerView?
     private var iconList = [SubtaskIconCalendar, SubtaskIconBell, SubtaskIconRepeat, SubtaskIconAdd, SubtaskIconNote]
     private let subtaskStartIndex = 3
     
     var task: Task
+    // only running task can change
+    var change: Bool = true
     private var subtasks: Results<Subtask>?
     private var subtasksToken: RealmSwift.NotificationToken?
     private var taskToken: RealmSwift.NotificationToken?
     
-    init(task: Task) {
+    init(task: Task, change: Bool) {
         self.task = task
+        self.change = change
         super.init(nibName: "TaskDetailViewController", bundle: nil)
     }
     
@@ -50,6 +53,7 @@ class TaskDetailViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+
         configMainUI()
         initializeControl()
     }
@@ -95,7 +99,7 @@ class TaskDetailViewController: BaseViewController {
         
         self.titleTextField.text = task.getNormalDisplayTitle()
         
-        guard let datePickerView = NSBundle.mainBundle().loadNibNamed("DatePickerView", owner: self, options: nil).last as? DatePickerView else { return }
+        guard let datePickerView = NSBundle.mainBundle().loadNibNamed("DatePickerView", owner: self, options: nil).last as? TaskPickerView else { return }
         self.datePickerHolderView.addSubview(datePickerView)
         datePickerView.snp_makeConstraints { (make) in
             make.top.equalTo(0)
@@ -114,9 +118,8 @@ class TaskDetailViewController: BaseViewController {
     }
     
     private func configDetailWithTask() {
-        print(task)
         if self.task.taskType == kSystemTaskType {
-            self.titleTextField.enabled = self.task.taskToDoCanChange()
+            self.titleTextField.enabled = self.task.taskToDoCanChange() && change
         }
     }
     
@@ -164,11 +167,15 @@ class TaskDetailViewController: BaseViewController {
     
     func setDatePickerAction() {
         guard let datePicker = self.datePickerView else { return }
-        RealmManager.shareManager.updateObject { 
-            if datePicker.getIndex() == 0 {
+        RealmManager.shareManager.updateObject {
+            switch datePicker.getIndex() {
+            case 0:
                 self.task.createdDate = datePicker.datePicker.date
-            } else {
+            case 1:
                 self.task.notifyDate = datePicker.datePicker.date
+                LocalNotificationManager().createNotify(self.task)
+            default:
+                break
             }
         }
         
@@ -186,7 +193,7 @@ class TaskDetailViewController: BaseViewController {
                 self.detailTableView.selectRowAtIndexPath(selectedIndex, animated: false, scrollPosition: .None)
             }
             if (self.datePickerView?.viewIsShow() == true) {
-                self.datePickerViewBottomConstraint.constant = -DatePickerView.height
+                self.datePickerViewBottomConstraint.constant = -TaskPickerView.height
                 UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: { [unowned self] in
                     self.datePickerHolderView.layoutIfNeeded()
                 }) { [unowned self] (finish) in
@@ -199,7 +206,7 @@ class TaskDetailViewController: BaseViewController {
             }
         }
         
-        self.datePickerViewBottomConstraint.constant = show ? 0 : -DatePickerView.height
+        self.datePickerViewBottomConstraint.constant = show ? 0 : -TaskPickerView.height
         UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {  [unowned self] in
             self.datePickerHolderView.layoutIfNeeded()
         }) { (finish) in }
@@ -297,16 +304,17 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let tableCell: UITableViewCell
         if indexPath.row < subtaskStartIndex {
             let cell = tableView.dequeueReusableCellWithIdentifier(TaskDateTableViewCell.reuseId, forIndexPath: indexPath) as! TaskDateTableViewCell
             cell.configCell(task, iconString: iconList[indexPath.row])
             cell.clearButton.tag = indexPath.row
             cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
-            return cell
+            tableCell = cell
         } else if indexPath.row == iconList.count - 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier(TaskNoteTableViewCell.reuseId, forIndexPath: indexPath) as! TaskNoteTableViewCell
             cell.configCell(task)
-            return cell
+            tableCell = cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(SubtaskTableViewCell.reuseId, forIndexPath: indexPath) as! SubtaskTableViewCell
             let row = indexPath.row
@@ -315,8 +323,11 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.configCell(task, subtask: self.subtasks?[row - subtaskStartIndex], iconString: iconList[indexPath.row])
             }
-            return cell
+            tableCell = cell
         }
+        
+        tableCell.userInteractionEnabled = change
+        return tableCell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

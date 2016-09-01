@@ -39,6 +39,7 @@
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
+		C7290F581D771769009903A4 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7290F571D771769009903A4 /* LocalNotificationManager.swift */; };
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
 		C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77192451D6CEE4E00437560 /* HomeViewController.xib */; };
 		C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771924D1D6CEE6800437560 /* NewTaskViewController.swift */; };
@@ -114,8 +115,8 @@
 		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
 		C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5BA1D7673FF0054154C /* NoteViewController.swift */; };
 		C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5BB1D7673FF0054154C /* NoteViewController.xib */; };
-		C7DDA5C01D7682FC0054154C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5BF1D7682FC0054154C /* DatePickerView.swift */; };
-		C7DDA5C21D7683030054154C /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5C11D7683030054154C /* DatePickerView.xib */; };
+		C7DDA5C01D7682FC0054154C /* TaskPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */; };
+		C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5C11D7683030054154C /* TaskPickerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
+		C7290F571D771769009903A4 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C77192451D6CEE4E00437560 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C771924D1D6CEE6800437560 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -304,8 +306,8 @@
 		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5BA1D7673FF0054154C /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		C7DDA5BB1D7673FF0054154C /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
-		C7DDA5BF1D7682FC0054154C /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
-		C7DDA5C11D7683030054154C /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPickerView.swift; sourceTree = "<group>"; };
+		C7DDA5C11D7683030054154C /* TaskPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPickerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
 				C77194CB1D70FADD00437560 /* AwesomeButton.swift */,
 				C7DDA50B1D75C78C0054154C /* HUD.swift */,
+				C7290F571D771769009903A4 /* LocalNotificationManager.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -632,8 +635,8 @@
 		C7DDA5BE1D7682EC0054154C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDA5BF1D7682FC0054154C /* DatePickerView.swift */,
-				C7DDA5C11D7683030054154C /* DatePickerView.xib */,
+				C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */,
+				C7DDA5C11D7683030054154C /* TaskPickerView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -748,7 +751,7 @@
 				C7DDA5921D75DC080054154C /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C7DDA58D1D75DC080054154C /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap in Resources */,
-				C7DDA5C21D7683030054154C /* DatePickerView.xib in Resources */,
+				C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */,
 				C7DDA5971D75DC080054154C /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */,
 				C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */,
 				C7DDA5871D75DC080054154C /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */,
@@ -840,7 +843,7 @@
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
-				C7DDA5C01D7682FC0054154C /* DatePickerView.swift in Sources */,
+				C7DDA5C01D7682FC0054154C /* TaskPickerView.swift in Sources */,
 				C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */,
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
 				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
@@ -858,6 +861,7 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
+				C7290F581D771769009903A4 /* LocalNotificationManager.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,

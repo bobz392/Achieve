@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -25,13 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
-        application.statusBarStyle = .LightContent
-        
         configRealm()
-        
+        register(application)
         HUD.sharedHUD.config()
         
         return true
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        debugPrint("didReceiveLocalNotification = \(notification)")
+    }
+    
+    private func register(application: UIApplication) {
+        let settings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
     }
     
     private func configRealm() {

@@ -14,6 +14,7 @@
 		C70BF61D1D794A1B006B0C1D /* TaskDetailFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70BF61C1D794A1B006B0C1D /* TaskDetailFootView.xib */; };
 		C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61E1D7951CA006B0C1D /* SectionTableViewCell.swift */; };
 		C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */; };
+		C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6221D79B9B1006B0C1D /* RealmManager.swift */; };
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
@@ -55,7 +56,6 @@
 		C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192991D6DB27A00437560 /* KeyboardManager.swift */; };
 		C77193F61D6DE9C000437560 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
 		C77193F81D6E488F00437560 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F71D6E488F00437560 /* UserDefault.swift */; };
-		C771942D1D6F391500437560 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771942C1D6F391500437560 /* RealmManager.swift */; };
 		C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194911D6FCFC200437560 /* BaseViewController.swift */; };
 		C77194941D6FD5E600437560 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194931D6FD5E600437560 /* Trigger.swift */; };
 		C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194951D6FE96A00437560 /* AssociateViewController.swift */; };
@@ -175,6 +175,7 @@
 		C70BF61C1D794A1B006B0C1D /* TaskDetailFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailFootView.xib; sourceTree = "<group>"; };
 		C70BF61E1D7951CA006B0C1D /* SectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionTableViewCell.xib; sourceTree = "<group>"; };
+		C70BF6221D79B9B1006B0C1D /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccomplishToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -235,7 +236,6 @@
 		C77192991D6DB27A00437560 /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		C77193F51D6DE9C000437560 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C77193F71D6E488F00437560 /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
-		C771942C1D6F391500437560 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C77194911D6FCFC200437560 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C77194931D6FD5E600437560 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		C77194951D6FE96A00437560 /* AssociateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociateViewController.swift; sourceTree = "<group>"; };
@@ -379,7 +379,6 @@
 				C77192991D6DB27A00437560 /* KeyboardManager.swift */,
 				C77193F51D6DE9C000437560 /* Constants.swift */,
 				C77193F71D6E488F00437560 /* UserDefault.swift */,
-				C771942C1D6F391500437560 /* RealmManager.swift */,
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
 				C77194CB1D70FADD00437560 /* AwesomeButton.swift */,
 				C7DDA50B1D75C78C0054154C /* HUD.swift */,
@@ -390,6 +389,7 @@
 		C7105F901D6CD5200096A1A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C70BF6221D79B9B1006B0C1D /* RealmManager.swift */,
 				C7105F911D6CD52F0096A1A3 /* Task.swift */,
 				C77195781D71D0F800437560 /* Subtask.swift */,
 				C77194931D6FD5E600437560 /* Trigger.swift */,
@@ -862,6 +862,7 @@
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
+				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
@@ -887,7 +888,6 @@
 				C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */,
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
-				C771942D1D6F391500437560 /* RealmManager.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C771949C1D6FEA1000437560 /* TriggerTableViewCell.swift in Sources */,

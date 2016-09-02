@@ -40,7 +40,6 @@ class Task: Object {
     dynamic var tag: String?
     
     dynamic var trigger: Trigger?
-    
     dynamic var subTaskCount: Int = 0
     
     override class func primaryKey() -> String? {

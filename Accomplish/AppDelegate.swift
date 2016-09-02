@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         debugPrint("didReceiveLocalNotification = \(notification)")
+        application.applicationIconBadgeNumber -= 1
     }
     
     private func register(application: UIApplication) {

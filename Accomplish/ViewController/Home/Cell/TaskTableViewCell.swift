@@ -48,7 +48,7 @@ class TaskTableViewCell: UITableViewCell {
         
         self.taskStatusButton.backgroundColor = colors.cloudColor
         
-        self.taskStatusButton.addTarget(self, action: #selector(self.markTast(_:)), forControlEvents: .TouchUpInside)
+        self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), forControlEvents: .TouchUpInside)
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -138,7 +138,7 @@ class TaskTableViewCell: UITableViewCell {
         block?(actionString: action.info)
     }
     
-    func markTast(btn: UIButton) {
+    func markTask(btn: UIButton) {
         guard let task = self.task else { return }
         if task.status == kTaskFinish {
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)

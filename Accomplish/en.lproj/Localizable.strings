@@ -29,7 +29,7 @@
 
 "goingDo"="What would you like to do?";
 "priority"="Priority";
-"removeDate"="Remove";
+"remove"="Remove";
 "setCreateDate"="Set start date";
 "setReminder"="Set reminder";
 "setRepeat"="Set repeat";
@@ -53,10 +53,12 @@
 "addSubtask"="Create a task with subtask";
 "subtaskTitle"="Enter your task name";
 "subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
-"detailPostponeTomorrow"="Postponed to tomorrow if not completed today";
-"detailIncomplete"="Marked as incomplete if not completed today";
-"detailNotifyTime"="No task reminder";
-"repeat"="No repeat";
+//"detailPostponeTomorrow"="Postponed to tomorrow if not completed today";
+//"detailIncomplete"="Marked as incomplete if not completed today";
+"noReminder"="No reminder";
+"reminderMe"="Reminder me at ";
+"repeat"="Repeat ";
+"noRepeat"="No repeat";
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
 
@@ -68,3 +70,18 @@
 "today"="today";
 "tomorrow"="tomorrow";
 "yesterday"="yesterday";
+
+"everyday"="Daily";
+"weekday"="Every weekday(Mon-Fri)";
+"everyWeek"="Every week(%@)";
+"everyMonth"="Every month(the %@st)";
+"annual"="Every year(%@)";
+
+"day1" = "Mon";
+"day2" = "Tue";
+"day3" = "Wed";
+"day4" = "Thu";
+"day5" = "Fri";
+"day6" = "Sat";
+"day7" = "Sun";
+

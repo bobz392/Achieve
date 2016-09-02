@@ -260,6 +260,8 @@ class HomeViewController: BaseViewController {
     func calendarAction() {
         print(runningTasks)
         print(RealmManager.shareManager.queryAll(Subtask.self))
+        
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
     
     private func doSwitchScreen(animation: Bool) {

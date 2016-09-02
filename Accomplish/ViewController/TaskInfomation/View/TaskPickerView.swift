@@ -17,6 +17,8 @@ class TaskPickerView: UIView {
     @IBOutlet weak var pickerView: UIPickerView!
     
     static let height: CGFloat = 245
+
+    private let repeatTypes: [RepeaterTimeType] = [.Daily, .Weekday, .EveryWeek, .EveryMonth, .Annual]
     
     var task: Task?
     private var index: Int = 0
@@ -49,6 +51,10 @@ class TaskPickerView: UIView {
     
     func viewIsShow() -> Bool {
         return viewShow
+    }
+    
+    func repeatTimeType() -> RepeaterTimeType {
+        return repeatTypes[self.pickerView.selectedRowInComponent(0)]
     }
     
     func setIndex(index: Int) {
@@ -88,10 +94,33 @@ class TaskPickerView: UIView {
         case 2:
             self.pickerView.hidden = false
             self.rightButton.setTitle(Localized("setRepeat"), forState: .Normal)
+            self.pickerView.reloadAllComponents()
             break
             
         default:
             break
         }
+    }
+}
+
+extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
+    func repeaterSelectedTitle() -> String {
+        guard let createDate = self.task?.createdDate else { return "" }
+        return self.repeatTimeType().repeaterTitle(createDate)
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.repeatTypes.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        guard let createDate = self.task?.createdDate else { return nil }
+        let title = self.repeatTypes[row].repeaterTitle(createDate)
+        return NSAttributedString(string: title,
+                                  attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14)])
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
 }

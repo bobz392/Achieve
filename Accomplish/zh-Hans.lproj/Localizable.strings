@@ -29,7 +29,7 @@
 
 "goingDo"="准备做点什么呢?";
 "priority"="优先级";
-"removeDate"="移除";
+"remove"="移除";
 "setCreateDate"="设置开始日期";
 "setReminder"="设置提醒";
 "setRepeat"="设置重复";
@@ -53,10 +53,12 @@
 "addSubtask"="创建一个有子任务的任务";
 "subtaskTitle"="输入您的任务名";
 "subtaskInfo"="输入您的多个子任务，子任务之间以回车分隔";
-"detailPostponeTomorrow"="如果今天没有完成，推迟任务到明天";
-"detailIncomplete"="如果今天没有完成，标记为未完成";
-"detailNotifyTime"="没有任务提醒";
-"repeat"="不重复";
+//"detailPostponeTomorrow"="如果今天没有完成，推迟任务到明天";
+//"detailIncomplete"="如果今天没有完成，标记为未完成";
+"noReminder"="没有提醒";
+"reminderMe"="提醒我在 ";
+"repeat"="重复 ";
+"noRepeat"="不重复";
 "taskNote"="添加备注";
 "detailAddSubtask"="添加子任务";
 
@@ -68,3 +70,17 @@
 "today"="今天";
 "tomorrow"="明天";
 "yesterday"="昨天";
+
+"everyday"="每天";
+"weekday"="每工作日（周一至周五）";
+"everyWeek"="每周(%@)";
+"everyMonth"="每月(%@号)";
+"annual"="每年(%@)";
+
+"day1" = "周一";
+"day2" = "周二";
+"day3" = "周三";
+"day4" = "周四";
+"day5" = "周五";
+"day6" = "周六";
+"day7" = "周日";

@@ -113,7 +113,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.titleTextField.placeholder = Localized("goingDo")
         self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
         
-        self.cancelDateButton.setTitle(Localized("removeDate"), forState: .Normal)
+        self.cancelDateButton.setTitle(Localized("remove"), forState: .Normal)
         self.setDateButton.setTitle(Localized("setCreateDate"), forState: .Normal)
         self.saveButton.setTitle(Localized("save"), forState: .Normal)
         

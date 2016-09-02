@@ -36,7 +36,6 @@ class TaskDetailViewController: BaseViewController {
     var change: Bool = true
     private var subtasks: Results<Subtask>?
     private var subtasksToken: RealmSwift.NotificationToken?
-    private var taskToken: RealmSwift.NotificationToken?
     
     init(task: Task, change: Bool) {
         self.task = task
@@ -53,7 +52,7 @@ class TaskDetailViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-
+        
         configMainUI()
         initializeControl()
     }
@@ -150,12 +149,12 @@ class TaskDetailViewController: BaseViewController {
             self.detailTableViewBottomConstraint.constant =
                 KeyboardManager.keyboardHeight - 62
             
-            UIView.animateWithDuration(KeyboardManager.duration, animations: { 
+            UIView.animateWithDuration(KeyboardManager.duration, animations: {
                 self.detailTableView.layoutIfNeeded()
                 }, completion: { [unowned self] (finsh) in
                     let index = NSIndexPath(forRow: self.iconList.count - 2, inSection: 0)
                     self.detailTableView.scrollToRowAtIndexPath(index, atScrollPosition: .Bottom, animated: true)
-            })
+                })
             
             if self.taskPickerView?.viewIsShow() == true {
                 self.cancelDatePickerAction()
@@ -310,7 +309,6 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == self.iconList.count - 1 {
                 let noteVC = NoteViewController(task: self.task, noteDelegate: self)
                 self.navigationController?.pushViewController(noteVC, animated: true)
-//                self.presentViewController(noteVC, animated: true, completion: { })
             }
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
@@ -329,17 +327,39 @@ extension TaskDetailViewController {
     
     func setDatePickerAction() {
         guard let taskPickerView = self.taskPickerView else { return }
-        RealmManager.shareManager.updateObject {
-            switch taskPickerView.getIndex() {
-            case 0:
+        
+        switch taskPickerView.getIndex() {
+        case 0:
+            RealmManager.shareManager.updateObject {
                 self.task.createdDate = taskPickerView.datePicker.date
                 self.task.createdFormattedDate = taskPickerView.datePicker.date.createdFormatedDateString()
-            case 1:
-                self.task.notifyDate = taskPickerView.datePicker.date
-                LocalNotificationManager().createNotify(self.task)
-            default:
-                break
             }
+        case 1:
+            RealmManager.shareManager.updateObject {
+                let date = taskPickerView.datePicker.date
+                let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 5)
+            
+                self.task.notifyDate = fireDate
+            }
+            LocalNotificationManager().createNotify(self.task)
+            
+        case 2:
+            let repeatTimeType = taskPickerView.repeatTimeType()
+            RealmManager.shareManager
+                .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
+//            let repeater =
+//                RealmManager.shareManager.repeaterWithTask(taskUUID: self.task.uuid)
+//
+//            
+//            
+//            repeater.repeatType = Int(repeatType.rawValue)
+//            RealmManager.shareManager.writeObject(repeater)
+//            if self.task.notifyDate != nil {
+//                LocalNotificationManager().updateNotify(self.task)
+//            }
+            
+        default:
+            break
         }
         
         showDatePickerView(show: false)
@@ -347,6 +367,7 @@ extension TaskDetailViewController {
         self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
     }
     
+    // to-do
     private func showDatePickerView(show show: Bool) {
         if (show) {
             if KeyboardManager.keyboardShow {
@@ -374,13 +395,13 @@ extension TaskDetailViewController {
             self.datePickerHolderView.layoutIfNeeded()
         }) { (finish) in }
     }
-
+    
 }
 
 // MARK: - TaskNoteDataDelegate
 extension TaskDetailViewController: TaskNoteDataDelegate {
     func taskNoteAdd(newNote: String) {
-        RealmManager.shareManager.updateObject { 
+        RealmManager.shareManager.updateObject {
             self.task.taskNote = newNote
             let index = NSIndexPath(forRow: iconList.count - 1, inSection: 0)
             self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)

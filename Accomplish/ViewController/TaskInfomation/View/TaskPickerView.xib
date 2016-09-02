@@ -14,6 +14,10 @@
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CXh-Af-hNH">
                     <rect key="frame" x="0.0" y="44.5" width="600" height="200.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="Ytc-ja-m9d"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="xrV-Iq-Xf6"/>
+                    </connections>
                 </pickerView>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="fOd-cV-hxL">
                     <rect key="frame" x="0.0" y="44.5" width="600" height="200.5"/>

@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */; };
-		C70BF6151D77DDE3006B0C1D /* Reapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Reapter.swift */; };
+		C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Repeater.swift */; };
+		C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */; };
+		C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */; };
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
@@ -40,7 +42,6 @@
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
-		C7290F581D771769009903A4 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7290F571D771769009903A4 /* LocalNotificationManager.swift */; };
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
 		C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77192451D6CEE4E00437560 /* HomeViewController.xib */; };
 		C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771924D1D6CEE6800437560 /* NewTaskViewController.swift */; };
@@ -165,7 +166,9 @@
 
 /* Begin PBXFileReference section */
 		C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerTransitioningAnimation.swift; sourceTree = "<group>"; };
-		C70BF6141D77DDE3006B0C1D /* Reapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reapter.swift; sourceTree = "<group>"; };
+		C70BF6141D77DDE3006B0C1D /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
+		C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterTimeType.swift; sourceTree = "<group>"; };
+		C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccomplishToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -215,7 +218,6 @@
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
-		C7290F571D771769009903A4 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C77192451D6CEE4E00437560 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C771924D1D6CEE6800437560 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +333,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C70BF6171D78C7D6006B0C1D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */,
+				C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		C7105E9C1D6C7AD60096A1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,7 +377,6 @@
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
 				C77194CB1D70FADD00437560 /* AwesomeButton.swift */,
 				C7DDA50B1D75C78C0054154C /* HUD.swift */,
-				C7290F571D771769009903A4 /* LocalNotificationManager.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -377,7 +387,7 @@
 				C7105F911D6CD52F0096A1A3 /* Task.swift */,
 				C77195781D71D0F800437560 /* Subtask.swift */,
 				C77194931D6FD5E600437560 /* Trigger.swift */,
-				C70BF6141D77DDE3006B0C1D /* Reapter.swift */,
+				C70BF6141D77DDE3006B0C1D /* Repeater.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,6 +455,7 @@
 		C71D58741D748D2F00E76E91 /* TaskInfomation */ = {
 			isa = PBXGroup;
 			children = (
+				C70BF6171D78C7D6006B0C1D /* Core */,
 				C7DDA5BE1D7682EC0054154C /* View */,
 				C71D58791D74A69F00E76E91 /* Cell */,
 				C71D58751D74910400E76E91 /* TaskDetailViewController.swift */,
@@ -843,6 +854,7 @@
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
+				C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */,
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
@@ -856,7 +868,7 @@
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
 				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
-				C70BF6151D77DDE3006B0C1D /* Reapter.swift in Sources */,
+				C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */,
 				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,
@@ -870,7 +882,6 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
-				C7290F581D771769009903A4 /* LocalNotificationManager.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
@@ -880,6 +891,7 @@
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
+				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,

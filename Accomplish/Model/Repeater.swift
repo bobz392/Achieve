@@ -6,10 +6,11 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 class Repeater: Object {
-    dynamic var uuid: String = ""
-    dynamic var repeatTask: Task?
+    dynamic var uuid: String = uuidGenerator()
+    dynamic var repeatTaskUUID: String = ""
+    dynamic var repeatType: Int = 0
+    dynamic var notifyUUID: String? = nil
 }

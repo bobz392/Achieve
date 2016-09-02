@@ -22,6 +22,7 @@ class TaskDateTableViewCell: UITableViewCell {
     @IBOutlet weak var clearButton: UIButton!
     
     var task: Task?
+    var detailType: TaskDetailType = .Other
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +37,7 @@ class TaskDateTableViewCell: UITableViewCell {
         icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let iconImage = icon.imageWithSize(CGSize(width: kTaskClearCellIconSize, height: kTaskClearCellIconSize))
         self.clearButton.setImage(iconImage, forState: .Normal)
-        self.clearButton.addTarget(self, action: #selector(self.clearAction), forControlEvents: .TouchUpInside)
+        self.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
         
         self.infoLabel.highlightedTextColor = colors.mainGreenColor
         self.infoLabel.textColor = colors.placeHolderTextColor
@@ -50,13 +51,24 @@ class TaskDateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func clearAction() {
+    func clearAction(btn: UIButton) {
         guard let task = self.task else { return }
-        RealmManager.shareManager.updateObject { 
-            task.notifyDate = nil
+        
+        switch self.detailType {
+        case TaskDetailType.Repeat:
+            RealmManager.shareManager.deleteRepeater(task.uuid)
+            
+        case TaskDetailType.Notify:
+            RealmManager.shareManager.updateObject {
+                task.notifyDate = nil
+            }
+            
+            LocalNotificationManager().cancelNotify(task.uuid)
+            
+        default:
+            break
         }
         
-        LocalNotificationManager().cancelNotify(task.uuid)
     }
     
     func configCell(task: Task, iconString: String) {
@@ -68,6 +80,7 @@ class TaskDateTableViewCell: UITableViewCell {
             icon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
         self.iconButton.setImage(image, forState: .Normal)
         self.clearButton.hidden = false
+        self.detailType = .Other
         
         switch iconString {
         case SubtaskIconCalendar:
@@ -81,8 +94,8 @@ class TaskDateTableViewCell: UITableViewCell {
             } else if createdDate.isYesterday() {
                 self.infoLabel.text = schedule + Localized("yesterday")
             } else {
-                self.infoLabel.text =
-                    schedule + " " + createdDate.formattedDateWithStyle(.MediumStyle)
+                self.infoLabel.text = schedule + " "
+                    + createdDate.formattedDateWithStyle(.MediumStyle)
             }
 //                Localized(task.canPostpone ? "detailPostponeTomorrow" : "detailIncomplete")
             self.clearButton.hidden = true
@@ -90,21 +103,47 @@ class TaskDateTableViewCell: UITableViewCell {
             
         case SubtaskIconBell:
             self.infoLabel.highlighted = task.notifyDate != nil
-            self.infoLabel.text =
-                task.notifyDate == nil ? Localized("detailNotifyTime") :
-                task.notifyDate!.formattedDateWithFormat(timeDateFormat)
+            if let notifyDate = task.notifyDate {
+                self.infoLabel.text = Localized("reminderMe")
+                    + notifyDate.formattedDateWithFormat(timeDateFormat)
+            } else {
+                self.infoLabel.text = Localized("noReminder")
+            }
+        
             self.clearButton.hidden = task.notifyDate == nil
+            self.detailType = .Notify
             self.iconButton.tintColor =
                 task.notifyDate == nil ? colors.secondaryTextColor : colors.mainGreenColor
             
         case SubtaskIconRepeat:
-            self.infoLabel.highlighted = false
-            self.clearButton.hidden = true
-            self.infoLabel.text = Localized("repeat")
-            self.iconButton.tintColor = colors.secondaryTextColor
+            let hasRepeater: Bool
+            if let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid) {
+                hasRepeater = true
+                if let type = RepeaterTimeType(rawValue: repeater.repeatType),
+                    let createDate = task.createdDate {
+                    self.infoLabel.text = Localized("repeat")
+                        + type.repeaterTitle(createDate)
+                } else {
+                    self.infoLabel.text = Localized("repeat")
+                }
+            } else {
+                hasRepeater = false
+                self.infoLabel.text = Localized("noRepeat")
+            }
+            self.infoLabel.highlighted = hasRepeater
+            self.clearButton.hidden = !hasRepeater
+            self.detailType = .Repeat
+            self.iconButton.tintColor =
+                hasRepeater ? colors.mainGreenColor : colors.secondaryTextColor
             
         default:
             break
         }
+    }
+    
+    enum TaskDetailType: Int {
+        case Notify = 100
+        case Repeat = 101
+        case Other = 0
     }
 }

@@ -69,6 +69,12 @@ class TaskDetailViewController: BaseViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.keyboardAction()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,7 +105,6 @@ class TaskDetailViewController: BaseViewController {
     
     private func initializeControl() {
         self.initializeTableView()
-        self.keyboardAction()
         
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = kBackButtonCorner
@@ -334,6 +339,7 @@ extension TaskDetailViewController {
                 self.task.createdDate = taskPickerView.datePicker.date
                 self.task.createdFormattedDate = taskPickerView.datePicker.date.createdFormatedDateString()
             }
+            
         case 1:
             RealmManager.shareManager.updateObject {
                 let date = taskPickerView.datePicker.date

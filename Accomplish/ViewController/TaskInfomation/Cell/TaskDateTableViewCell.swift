@@ -56,7 +56,7 @@ class TaskDateTableViewCell: UITableViewCell {
         
         switch self.detailType {
         case TaskDetailType.Repeat:
-            RealmManager.shareManager.deleteRepeater(task.uuid)
+            RealmManager.shareManager.deleteRepeater(task)
             
         case TaskDetailType.Notify:
             RealmManager.shareManager.updateObject {

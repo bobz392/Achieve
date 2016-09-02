@@ -258,9 +258,9 @@ class HomeViewController: BaseViewController {
     }
     
     func calendarAction() {
-        print(runningTasks)
-        print(RealmManager.shareManager.queryAll(Subtask.self))
         
+//        print(RealmManager.shareManager.queryAll(Subtask.self))
+        print(RealmManager.shareManager.queryAll(Repeater.self))
         UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
     

@@ -113,13 +113,12 @@ extension RealmManager {
         return repeater
     }
     
-    func deleteRepeater(taskUUID: String) {
-        if let repeater = queryRepeaterWithTask(taskUUID) {
+    func deleteRepeater(task: Task) {
+        if let repeater = queryRepeaterWithTask(task.uuid) {
             deleteObject(repeater)
         }
         
-        LocalNotificationManager().notifyWithUUID(taskUUID)?.repeatInterval =
-            NSCalendarUnit(rawValue: 0)
+        LocalNotificationManager().updateNotify(task, repeatInterval: NSCalendarUnit(rawValue: 0))
     }
     
     func updateRepeater(repeater: Repeater) {

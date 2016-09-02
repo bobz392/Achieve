@@ -15,7 +15,7 @@ class TaskDateTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "TaskDateTableViewCell", bundle: nil)
     static let reuseId = "taskDateTableViewCell"
-    static let rowHeight: CGFloat = 50
+    static let rowHeight: CGFloat = 40
   
     @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
@@ -30,7 +30,7 @@ class TaskDateTableViewCell: UITableViewCell {
         let colors = Colors()
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
-        self.layoutMargins = UIEdgeInsetsZero
+        
         
         self.clearButton.tintColor = colors.mainGreenColor
         let icon = try! FAKFontAwesome(identifier: "fa-times", size: kTaskDetailCellIconSize)

@@ -11,6 +11,9 @@
 		C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Repeater.swift */; };
 		C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */; };
 		C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */; };
+		C70BF61D1D794A1B006B0C1D /* TaskDetailFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70BF61C1D794A1B006B0C1D /* TaskDetailFootView.xib */; };
+		C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61E1D7951CA006B0C1D /* SectionTableViewCell.swift */; };
+		C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */; };
 		C7105EA11D6C7AD60096A1A3 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */; };
 		C7105EA81D6C7AD60096A1A3 /* AccomplishToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
@@ -169,6 +172,9 @@
 		C70BF6141D77DDE3006B0C1D /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterTimeType.swift; sourceTree = "<group>"; };
 		C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		C70BF61C1D794A1B006B0C1D /* TaskDetailFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailFootView.xib; sourceTree = "<group>"; };
+		C70BF61E1D7951CA006B0C1D /* SectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
+		C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionTableViewCell.xib; sourceTree = "<group>"; };
 		C7105E9B1D6C7AD60096A1A3 /* AccomplishToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AccomplishToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EA01D6C7AD60096A1A3 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -475,6 +481,8 @@
 				C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */,
 				C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */,
 				C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */,
+				C70BF61E1D7951CA006B0C1D /* SectionTableViewCell.swift */,
+				C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -651,6 +659,7 @@
 			children = (
 				C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */,
 				C7DDA5C11D7683030054154C /* TaskPickerView.xib */,
+				C70BF61C1D794A1B006B0C1D /* TaskDetailFootView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -755,6 +764,7 @@
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
 				C7DDA58E1D75DC080054154C /* 80ED5B68-966C-3E36-A2B3-44F05907579A.bcsymbolmap in Resources */,
 				C7DDA5931D75DC080054154C /* C24731D5-B714-3038-A38B-B35CAEDD6ECC.bcsymbolmap in Resources */,
+				C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */,
 				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
@@ -786,6 +796,7 @@
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
 				C7DDA58C1D75DC080054154C /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */,
 				C7DDA5861D75DC080054154C /* 116C6638-1311-3369-9A35-B0746DFCB3B6.bcsymbolmap in Resources */,
+				C70BF61D1D794A1B006B0C1D /* TaskDetailFootView.xib in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
 				C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */,
@@ -869,6 +880,7 @@
 				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
 				C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */,
+				C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */,
 				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,

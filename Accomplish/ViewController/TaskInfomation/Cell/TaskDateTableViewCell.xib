@@ -46,7 +46,6 @@
                 </constraints>
                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             </tableViewCellContentView>
-            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="8"/>
             <connections>
                 <outlet property="clearButton" destination="Hf8-oe-zQU" id="NOb-Vw-0qe"/>
                 <outlet property="iconButton" destination="oQ6-t7-sOT" id="mB1-r9-ieR"/>

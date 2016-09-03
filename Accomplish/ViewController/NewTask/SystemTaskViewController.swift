@@ -152,7 +152,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
         
         switch type.actionPresent() {
         case .AddressBook, .AddressBookEmail:
-            let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: info)
+            let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: info)
             task.taskToDo = taskToText
             
             attrText.appendAttributedString(
@@ -167,7 +167,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             newTaskDelegate?.toDoForSystemTask(attrText, task: task)
             
         case .CreateSubtasks:
-            let taskToText = TaskStringManager().createTaskText(type.rawValue, name: name, info: nil)
+            let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: nil)
             task.taskToDo = taskToText.componentsSeparatedByString(kSpliteTaskIdentity).last ?? ""
             
             let nameAttrText = NSAttributedString(string: name)

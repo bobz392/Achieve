@@ -60,6 +60,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         //        debugPrint(RealmManager.shareManager.queryTodayTaskList(finished: false))
         debugPrint("background fetch")
+        
+        let repeaterManager = RepeaterManager()
+        if repeaterManager.isNewDay() {
+            completionHandler(.NewData)
+            
+            guard let nav = application.keyWindow?.rootViewController as? UINavigationController else {
+                debugPrint("UINavigationController is not ")
+                return
+            }
+            guard let vc = nav.viewControllers.first as? HomeViewController else {
+                debugPrint("HomeViewController is not ")
+                return
+            }
+            debugPrint("handle new day")
+            vc.handleNewDay()
+        } else {
+            completionHandler(.NoData)
+        }
     }
     
     func applicationWillResignActive(application: UIApplication) {

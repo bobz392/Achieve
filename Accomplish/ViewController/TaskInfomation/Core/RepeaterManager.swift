@@ -22,9 +22,9 @@ struct RepeaterManager {
         }
         
         let lastDate = lastDateString.dateFromCreatedFormatString()
-
-        debugPrint("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.daysEarlierThan(now) > 0)")
-        if !lastDate.isToday() && lastDate.daysEarlierThan(now) > 0 {
+        
+        debugPrint("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
+        if !lastDate.isToday() && lastDate.isEarlierThan(now) {
 //             do some use repeater create todays task
             self.repeaterTaskCreate()
             userDefault.write(kLastFetchDateKey, value: NSDate().createdFormatedDateString())

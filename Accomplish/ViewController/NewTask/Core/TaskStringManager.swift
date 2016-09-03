@@ -16,8 +16,9 @@ let kOpenTapAtNotification = "open.at.notification"
 
 let kSpliteTaskIdentity = "$$"
 
-struct TaskStringManager {
+struct TaskManager {
     
+    // 生成系统任务的字符串
     func createTaskText(type: Int, name: String, info: String?) -> String {
         if let info = info {
             return "\(type)$$\(name)$$\(info)"
@@ -41,13 +42,13 @@ struct TaskStringManager {
         }
     }
     
-    private func createNormalText(text: String, colors: Colors)
-        -> NSMutableAttributedString {
-            let attachment = NSMutableAttributedString(string: text)
-            attachment.yy_font = UIFont.systemFontOfSize(kTaskTitleFontSize)
-            attachment.yy_color = colors.mainTextColor
-            return attachment
-    }
+//    private func createNormalText(text: String, colors: Colors)
+//        -> NSMutableAttributedString {
+//            let attachment = NSMutableAttributedString(string: text)
+//            attachment.yy_font = UIFont.systemFontOfSize(kTaskTitleFontSize)
+//            attachment.yy_color = colors.mainTextColor
+//            return attachment
+//    }
     
 }
 

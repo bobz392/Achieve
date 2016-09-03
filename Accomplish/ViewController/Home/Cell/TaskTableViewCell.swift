@@ -78,7 +78,7 @@ class TaskTableViewCell: UITableViewCell {
         var taskTitle: String
         switch task.taskType {
         case kSystemTaskType:
-            if let actionContent = TaskStringManager().parseTaskText(task.taskToDo) {
+            if let actionContent = TaskManager().parseTaskText(task.taskToDo) {
                 systemActionContent = actionContent
                 taskTitle = actionContent.type.ationNameWithType() ?? ""
                 self.taskInfoButton.enabled = true

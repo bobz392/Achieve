@@ -64,7 +64,7 @@ class Task: Object {
     func getNormalDisplayTitle() -> String {
         switch self.taskType {
         case kSystemTaskType:
-            if let action = TaskStringManager().parseTaskText(self.taskToDo) {
+            if let action = TaskManager().parseTaskText(self.taskToDo) {
                 return (action.type.ationNameWithType() ?? "") + action.name
             } else {
                 return self.taskToDo
@@ -73,7 +73,21 @@ class Task: Object {
         default:
             return self.taskToDo
         }
-
+    }
+    
+    func taskScheme() -> String {
+        switch self.taskType {
+        case kSystemTaskType:
+            if let action = TaskManager().parseTaskText(self.taskToDo) {
+                guard let scheme = action.type.actionScheme() else { return "" }
+                return scheme + action.name
+            } else {
+                return ""
+            }
+            
+        default:
+            return ""
+        }
     }
     
     func taskToDoCanChange() -> Bool {

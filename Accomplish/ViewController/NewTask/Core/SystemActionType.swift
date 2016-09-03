@@ -68,8 +68,7 @@ enum SystemActionType: Int {
         }
     }
     
-    // action 的 回调 block
-    func actionBlockWithType() -> ActionBlock? {
+    func actionScheme() -> String? {
         let urlScheme: String
         switch self {
         case .PhoneCall:
@@ -88,9 +87,16 @@ enum SystemActionType: Int {
             return nil
         }
         
+        return urlScheme
+    }
+    
+    // action 的 回调 block
+    func actionBlockWithType() -> ActionBlock? {
+        guard let scheme = self.actionScheme() else { return nil }
+        
         return { (string) -> Void in
             let checkString = string.stringByReplacingOccurrencesOfString(" ", withString: "")
-            guard let url = NSURL(string: "\(urlScheme)\(checkString)") else {
+            guard let url = NSURL(string: "\(scheme)\(checkString)") else {
                 return
             }
             let application = UIApplication.sharedApplication()

@@ -6,6 +6,7 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
+import Foundation
 import RealmSwift
 
 class Repeater: Object {

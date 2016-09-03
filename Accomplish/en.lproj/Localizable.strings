@@ -70,6 +70,7 @@
 "today"="today";
 "tomorrow"="tomorrow";
 "yesterday"="yesterday";
+"taskTody"="You have %d task due today.";
 
 "everyday"="Daily";
 "weekday"="Every weekday(Mon-Fri)";

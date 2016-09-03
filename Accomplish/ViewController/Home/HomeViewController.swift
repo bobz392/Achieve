@@ -59,6 +59,10 @@ class HomeViewController: BaseViewController {
         self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
         self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
         self.realmNoticationToken()
+        self.addNotification()
+        
+//        self.repeaterManager.isNewDay()
+        self.initTimer()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -82,6 +86,7 @@ class HomeViewController: BaseViewController {
     deinit {
         finishToken?.stop()
         runningToken?.stop()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -172,9 +177,20 @@ class HomeViewController: BaseViewController {
         self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
         
         self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
+    }
+    
+    private func addNotification() {
+        NSNotificationCenter.defaultCenter().addObserverForName(
+            UIApplicationDidBecomeActiveNotification, object: nil,
+            queue: NSOperationQueue.mainQueue()) { notification in
+                self.timer?.resume()
+        }
         
-        repeaterManager.isNewDay()
-        initTimer()
+        NSNotificationCenter.defaultCenter().addObserverForName(
+            UIApplicationDidEnterBackgroundNotification, object: nil,
+            queue: NSOperationQueue.mainQueue()) { notification in
+                self.timer?.suspend()
+        }
     }
     
     private func initTimer() {
@@ -182,8 +198,7 @@ class HomeViewController: BaseViewController {
             guard let ws = self else { return }
             if ws.repeaterManager.isNewDay() {
                 HUD.sharedHUD.showOnce(Localized("newDay"))
-                ws.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
-                ws.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
+                ws.handleNewDay()
             }
             ws.taskTableView.reloadData()
             })
@@ -235,9 +250,12 @@ class HomeViewController: BaseViewController {
             switch changes {
             case .Initial:
                 self.taskTableView.reloadData()
+                self.handleUpdateTodayGroup()
                 
             case .Update(_, let deletions, let insertions, let modifications):
                 self.handleUpdate(deletions, insertions: insertions, modifications: modifications)
+                self.handleUpdateTodayGroup()
+                
                 guard let deletion = deletions.first,
                     let selectedRow = self.selectedIndex?.row else { break }
                 if deletion == selectedRow {
@@ -248,6 +266,7 @@ class HomeViewController: BaseViewController {
                 debugPrint(error)
                 break
             }
+            
             })
     }
     
@@ -265,6 +284,21 @@ class HomeViewController: BaseViewController {
             self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
         }
         self.taskTableView.endUpdates()
+    }
+    
+    func handleNewDay() {
+        self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
+        self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
+        
+        handleUpdateTodayGroup()
+    }
+    
+    private func handleUpdateTodayGroup() {
+        guard let group = GroupUserDefault(),
+            let tasks = self.runningTasks else {
+                return
+        }
+        group.writeTasks(tasks)
     }
     
     // MARK: - actions

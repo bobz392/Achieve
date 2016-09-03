@@ -70,6 +70,7 @@
 "today"="今天";
 "tomorrow"="明天";
 "yesterday"="昨天";
+"taskTody"="您今天还有%d个任务。";
 
 "everyday"="每天";
 "weekday"="每工作日（周一至周五）";

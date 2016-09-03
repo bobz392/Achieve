@@ -58,8 +58,3 @@ func uuidGenerator() -> String {
     let uuidCFString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId)
     return String(uuidCFString)
 }
-
-/**
- ** screen
- **/
-let screenBounds = UIScreen.mainScreen().bounds

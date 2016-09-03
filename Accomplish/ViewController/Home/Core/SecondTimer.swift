@@ -16,7 +16,9 @@ struct SecondTimer {
     
     private let  handle: () -> Void
     
-    init(handle: () -> Void, fetchSecondInterval: Int = 5) {
+    private var timerRunning = false
+    
+    init(handle: () -> Void, fetchSecondInterval: Int = 10 * 60) {
         self.handle = handle
         self.fetchSecondInterval = fetchSecondInterval
         
@@ -24,7 +26,7 @@ struct SecondTimer {
         timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue)
     }
     
-    func start() {
+    mutating func start() {
         let interval = UInt64(fetchSecondInterval) * NSEC_PER_SEC
         dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, interval, 0)
         dispatch_source_set_event_handler(timer) { () -> Void in
@@ -33,17 +35,30 @@ struct SecondTimer {
             })
         }
         dispatch_resume(timer)
+        self.timerRunning = true
     }
     
-    func suspend() {
+    mutating func suspend() {
+        if timerRunning == false {
+            return
+        }
         dispatch_suspend(timer)
+        self.timerRunning = false
     }
     
-    func stop() {
+    mutating func stop() {
+        if timerRunning == false {
+            return
+        }
         dispatch_source_cancel(timer)
+        timerRunning = false
     }
     
-    func resume() {
+    mutating func resume() {
+        if timerRunning == true {
+            return
+        }
         dispatch_resume(timer)
+        self.timerRunning = true
     }
 }

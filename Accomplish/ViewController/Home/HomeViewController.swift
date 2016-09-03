@@ -41,6 +41,8 @@ class HomeViewController: BaseViewController {
     private var isFullScreenSize = false
     private var selectedIndex: NSIndexPath? = nil
     
+    private var timer: SecondTimer?
+    
     // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,7 +171,47 @@ class HomeViewController: BaseViewController {
         self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
         
         self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
+        
+        initTimer()
+        
+        RepeaterManager().checkLastFetchDate()
     }
+    
+    private func initTimer() {
+        self.timer = SecondTimer(handle: { [weak self] () -> Void in
+            guard let ws = self else { return }
+            ws.taskTableView.reloadData()
+//            debugPrint("dododod")
+//            guard let lastDateString = UserDefault().readString(kLastFetchDateKey),
+//                let date = lastDateString.dateFromCreatedFormat() else {
+//                    return
+//            }
+//            if !date.isToday() {
+//                UserDefault().write(kLastFetchDateKey, value: NSDate().createdFormatedDateString())
+//                
+//            }
+            
+            })
+        
+        self.timer?.start()
+    }
+//    
+//    private func checkFetchDate() {
+//        let userDefault = UserDefault()
+//        let now = NSDate()
+//        guard let lastDateString = userDefault.readString(kLastFetchDateKey),
+//            let lastDate = lastDateString.dateFromCreatedFormat() else {
+//                userDefault.write(kLastFetchDateKey, value:now.createdFormatedDateString())
+//                return
+//        }
+//        
+//        if !lastDate.isToday() && lastDate.isEarlierThan(now) {
+//            // do some use repeater create todays task
+////            RealmManager.shareManager.queryRepeaterInToday()
+//            userDefault.write(kLastFetchDateKey, value: NSDate().createdFormatedDateString())
+//        }
+//    }
+
     
     private func showEmptyHint(show: Bool) {
         self.emptyHintLabel.hidden = !show
@@ -251,6 +293,7 @@ class HomeViewController: BaseViewController {
     func setting() {
         let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
         print(notifications)
+        
     }
     
     func switchScreenAction() {
@@ -258,8 +301,7 @@ class HomeViewController: BaseViewController {
     }
     
     func calendarAction() {
-        
-//        print(RealmManager.shareManager.queryAll(Subtask.self))
+        //        print(RealmManager.shareManager.queryAll(Subtask.self))
         print(RealmManager.shareManager.queryAll(Repeater.self))
         UIApplication.sharedApplication().cancelAllLocalNotifications()
     }
@@ -317,7 +359,6 @@ class HomeViewController: BaseViewController {
     func segmentValueChangeAction(seg: UISegmentedControl) {
         self.taskTableView.reloadData()
     }
-    
 }
 
 // MARK: - table view

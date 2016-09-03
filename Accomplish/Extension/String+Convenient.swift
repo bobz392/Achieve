@@ -29,10 +29,30 @@ extension String {
     }
 }
 
+// Date
+extension String {
+    func dateFromCreatedFormatString() -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = createdDateFormat
+        return dateFormatter.dateFromString(self)!
+    
+//        let ss = self.componentsSeparatedByString(".")
+//        guard ss.count == 3 else { return nil }
+//        guard let year = ss[0].intValue(),
+//            let month = ss[1].intValue(),
+//            let day = ss[2].intValue() else { return nil }
+//        return NSDate(year: year, month: month, day: day)
+    }
+}
+
 // counting
 extension String {
     func isEmpty() -> Bool {
         return self.characters.count <= 0
+    }
+    
+    func length() -> Int {
+        return self.characters.count
     }
 }
 
@@ -153,6 +173,12 @@ extension String {
         return success ? mutableSelf as String : nil
     }
     
+}
+
+extension String {
+    func intValue() -> Int? {
+        return Int(self)
+    }
 }
 
 // Emoji 相关

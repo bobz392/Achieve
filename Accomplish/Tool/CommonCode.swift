@@ -15,6 +15,22 @@ func Localized(key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
+func nowDate() -> NSDate {
+    return NSDate()
+}
+
+func beginDebugPrint(someTag: String = "") {
+    debugPrint("")
+    debugPrint("")
+    debugPrint("========================\(someTag) begin============================")
+}
+
+func endDebugPrint(someTag: String = "") {
+    debugPrint("========================\(someTag) end==============================")
+    debugPrint("")
+    debugPrint("")
+}
+
 /**
  延迟若干秒。
  */

@@ -9,11 +9,13 @@
 import Foundation
 
 let kIsFullScreenSizeKey = "com.zhoubo.currentScreenSizeKey"
+let kLastFetchDateKey = "com.zhoubo.last.fetch"
 
 struct UserDefault {
     let def = NSUserDefaults.standardUserDefaults()
     
     func write(key: String, value: AnyObject) {
+        debugPrint("write to user default with key = \(key) and value = \(value)")
         def.setObject(value, forKey: key)
         def.synchronize()
     }

@@ -83,7 +83,7 @@ class TaskPickerView: UIView {
             // 如果是今天的任务那么只能添加后面的提醒
             // 如果是今天以后的任务，那么一天随时都可以
             if createDate.isToday() {
-                self.datePicker.minimumDate = NSDate()
+                self.datePicker.minimumDate = now
             } else {
                 self.datePicker.minimumDate = nil
             }

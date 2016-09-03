@@ -16,10 +16,11 @@ let monthDayFormat: String = "MM/dd"
 // TASK
 extension NSDate {
     func createTaskUUID() -> String {
-        return self.formattedDateWithFormat(uuidFormat)
+        return self.formattedDateWithFormat(uuidFormat + uuidGenerator())
     }
     
     func createdFormatedDateString() -> String {
+        debugPrint("created formated date string = \(formattedDateWithFormat(createdDateFormat))")
         return self.formattedDateWithFormat(createdDateFormat)
     }
 }

@@ -16,6 +16,7 @@ class TaskTableViewCell: UITableViewCell {
     static let reuseId = "taskTableViewCell"
     static let rowHeight: CGFloat = 65
     
+    // 用户添加了系统动作
     @IBOutlet weak var taskInfoButton: UIButton!
     @IBOutlet weak var taskSettingButton: UIButton!
     @IBOutlet weak var taskStatusButton: UIButton!
@@ -23,7 +24,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
     
-    var systemAction: SystemActionContent? = nil
+    var systemActionContent: SystemActionContent? = nil
     var task: Task?
     
     override func awakeFromNib() {
@@ -37,7 +38,7 @@ class TaskTableViewCell: UITableViewCell {
         
         self.taskTitleLabel.textColor = colors.mainTextColor
         self.taskInfoButton.tintColor = colors.linkTextColor
-        self.taskInfoButton.addTarget(self, action: #selector(self.infoAction), forControlEvents: .TouchUpInside)
+        self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
         self.taskDateLabel.textColor = colors.secondaryTextColor
         
         self.taskSettingButton.tintColor = colors.mainGreenColor
@@ -77,11 +78,11 @@ class TaskTableViewCell: UITableViewCell {
         var taskTitle: String
         switch task.taskType {
         case kSystemTaskType:
-            if let action = TaskStringManager().parseTaskText(task.taskToDo) {
-                systemAction = action
-                taskTitle = systemAction?.type.ationNameWithType() ?? ""
+            if let actionContent = TaskStringManager().parseTaskText(task.taskToDo) {
+                systemActionContent = actionContent
+                taskTitle = actionContent.type.ationNameWithType() ?? ""
                 self.taskInfoButton.enabled = true
-                self.taskInfoButton.setTitle(systemAction?.name, forState: .Normal)
+                self.taskInfoButton.setTitle(actionContent.name, forState: .Normal)
             } else {
                 self.taskInfoButton.enabled = false
                 self.taskInfoButton.setTitle(nil, forState: .Normal)
@@ -103,6 +104,7 @@ class TaskTableViewCell: UITableViewCell {
             let squareImage = squareIcon.imageWithSize(CGSize(width: 20, height: 20))
             self.taskStatusButton.setImage(squareImage, forState: .Normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor
+            self.taskSettingButton.hidden = false
             
             if let create = task.createdDate {
                 let now = NSDate()
@@ -122,6 +124,7 @@ class TaskTableViewCell: UITableViewCell {
             self.taskStatusButton.tintColor = colors.secondaryTextColor
             self.taskDateLabel.text =
                 task.finishedDate?.formattedDateWithFormat(timeDateFormat)
+            self.taskSettingButton.hidden = true
             
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
@@ -129,13 +132,14 @@ class TaskTableViewCell: UITableViewCell {
             icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let image = icon.imageWithSize(CGSize(width: 20, height: 20))
             self.taskStatusButton.setImage(image, forState: .Normal)
+            self.taskSettingButton.hidden = true
         }
     }
     
-    func infoAction() {
-        guard let action = systemAction else { return }
-        let block = action.type.actionBlockWithType()
-        block?(actionString: action.info)
+    func systemAction() {
+        guard let actionContent = systemActionContent else { return }
+        let block = actionContent.type.actionBlockWithType()
+        block?(actionString: actionContent.info)
     }
     
     func markTask(btn: UIButton) {

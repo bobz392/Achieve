@@ -28,7 +28,7 @@ struct LocalNotificationManager {
         for n in notify {
             UIApplication.sharedApplication().cancelLocalNotification(n)
         }
-        debugPrint("clear task uuid = \(taskUUID) success")
+        debugPrint("clear local notifycation task uuid = \(taskUUID) success")
     }
     
     func updateNotify(task: Task, repeatInterval: NSCalendarUnit) {
@@ -50,7 +50,7 @@ struct LocalNotificationManager {
         guard let notifyDate = task.notifyDate else { return }
         let notify = UILocalNotification()
         
-        let repeater = RepeaterManager(taskUUID: task.uuid).repeaterWithTaskUUID()
+        let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid)
         if let repeater = repeater,
             let type = RepeaterTimeType(rawValue: repeater.repeatType) {
             if type == .Weekday {
@@ -97,25 +97,6 @@ struct LocalNotificationManager {
                 UIApplication.sharedApplication().scheduleLocalNotification(notify)
             }
         }
-    }
-}
-
-struct RepeaterManager {
-    private let repeater: Repeater?
-    
-    private init() { self.repeater = nil }
-    
-    init(taskUUID: String) {
-        self.repeater = RealmManager.shareManager.queryRepeaterWithTask(taskUUID)
-    }
-    
-    func repeaterWithTaskUUID() -> Repeater? {
-        return repeater
-    }
-    
-    func clearRepeater() {
-        guard let repeater = self.repeater else { return }
-        RealmManager.shareManager.deleteObject(repeater)
     }
 }
 

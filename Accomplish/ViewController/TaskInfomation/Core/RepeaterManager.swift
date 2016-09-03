@@ -11,27 +11,30 @@ import Foundation
 struct RepeaterManager {
     
     // 检查最后一次检查时间，并创建重复task
-    func checkLastFetchDate() {
+    func isNewDay() -> Bool {
         // check last check is today or not
         let userDefault = UserDefault()
         let now = NSDate()
         
         guard let lastDateString = userDefault.readString(kLastFetchDateKey) else {
             userDefault.write(kLastFetchDateKey, value:now.createdFormatedDateString())
-            return
+            return false
         }
         
         let lastDate = lastDateString.dateFromCreatedFormatString()
 
-        debugPrint("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
-        if !lastDate.isToday() && lastDate.isEarlierThan(now) {
+        debugPrint("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.daysEarlierThan(now) > 0)")
+        if !lastDate.isToday() && lastDate.daysEarlierThan(now) > 0 {
 //             do some use repeater create todays task
             self.repeaterTaskCreate()
             userDefault.write(kLastFetchDateKey, value: NSDate().createdFormatedDateString())
+            return true
+        } else {
+            return false
         }
     }
     
-    func repeaterTaskCreate() {
+    private func repeaterTaskCreate() {
         beginDebugPrint("repeater task create")
         let manager = RealmManager.shareManager
         let all = manager.allRepeater()

@@ -23,6 +23,10 @@ final class HUD {
         SVProgressHUD.showWithStatus(status)
     }
     
+    func showOnce(status: String = "") {
+        SVProgressHUD.showSuccessWithStatus(status)
+    }
+    
     func error(status: String) {
         SVProgressHUD.showErrorWithStatus(status)
     }

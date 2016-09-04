@@ -74,21 +74,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.alltasks = group.allTasks()
             self.todayTableView.reloadData()
             
-            let taskCount = self.alltasks.count
-            //            if taskCount == 1
-            self.infoLabel.text = String(format: Localized("taskTody"), taskCount)
-            
-            
-            if taskCount > maxShowTaskCount {
-                self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(maxShowTaskCount) + bottomHeight)
-            } else {
-                self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(taskCount) + bottomHeight)
-            }
-            group.setTaskChanged(false)
+            self.updateContent()
             completionHandler(.NewData)
         } else {
-            //            self.alltasks = group.allTasks()
-            //            self.todayTableView.reloadData()
             completionHandler(.NoData)
         }
     }
@@ -99,7 +87,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func updateTask() {
-        print("update")
         guard let group = GroupUserDefault() else {
             return
         }
@@ -157,6 +144,11 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let task = self.alltasks[indexPath.row]
+        let taskUUID = task[GroupUserDefault.GroupTaskUUIDIndex]
+        guard let url = NSURL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
+        self.extensionContext?.openURL(url, completionHandler: nil)
     }
     
     func checkTask(btn: UIButton) {

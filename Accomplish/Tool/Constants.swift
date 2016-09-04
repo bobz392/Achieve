@@ -17,3 +17,4 @@ let kKeyboardAnimationDelay: NSTimeInterval = 0.05
 let kBackButtonCorner: CGFloat = 21
 
 let kMyRootUrlScheme: String = "achieve://"
+let kTaskDetailPath = "task/detail/"

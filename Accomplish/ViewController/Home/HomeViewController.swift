@@ -186,6 +186,7 @@ class HomeViewController: BaseViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidBecomeActiveNotification, object: nil,
             queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
+                self.repeaterManager.isNewDay()
                 self.timer?.resume()
                 
                 guard let group = GroupUserDefault() else { return }

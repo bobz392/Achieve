@@ -40,8 +40,8 @@ class NoteViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        configMainUI()
-        initializeControl()
+        self.configMainUI()
+        self.initializeControl()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,7 +51,7 @@ class NoteViewController: BaseViewController {
             KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
-            UIView.animateWithDuration(KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
+            UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }

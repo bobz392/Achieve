@@ -36,14 +36,14 @@ class HomeViewController: BaseViewController {
     private var finishToken: RealmSwift.NotificationToken?
     private var runningToken: RealmSwift.NotificationToken?
     
-    private let animation = LayerTransitioningAnimation()
-    
     private var isFullScreenSize = false
     private var selectedIndex: NSIndexPath? = nil
     
     private var timer: SecondTimer?
     private var repeaterManager = RepeaterManager()
     private let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
+    
+    private var toViewControllerAnimationType = 0
     
     // MARK: - life circle
     override func viewDidLoad() {
@@ -73,6 +73,7 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.taskTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -334,13 +335,16 @@ class HomeViewController: BaseViewController {
     }
     
     func switchScreenAction() {
+        print(RealmManager.shareManager.queryAll(Repeater.self))
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
         doSwitchScreen(true)
     }
     
     func calendarAction() {
-        //        print(RealmManager.shareManager.queryAll(Subtask.self))
-        print(RealmManager.shareManager.queryAll(Repeater.self))
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        let calendarVC = CalendarViewController()
+        self.navigationController?.delegate = self
+        self.toViewControllerAnimationType = 0
+        self.navigationController?.pushViewController(calendarVC, animated: true)
     }
     
     private func doSwitchScreen(animation: Bool) {
@@ -435,6 +439,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let t = task else { return }
         let taskVC = TaskDetailViewController(task: t, change: change)
         self.navigationController?.delegate = self
+        self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(taskVC, animated: true)
     }
     
@@ -462,7 +467,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - UINavigationControllerDelegate
 extension HomeViewController: UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animation.reverse = operation == UINavigationControllerOperation.Pop
-        return animation
+        switch toViewControllerAnimationType {
+        case 0:
+            let animation = LayerTransitioningAnimation()
+            animation.reverse = operation == UINavigationControllerOperation.Pop
+            return animation
+            
+        default:
+            let animation = CircleTransitionAnimator()
+            animation.reverse = operation == UINavigationControllerOperation.Pop
+            animation.buttonFrame = self.calendarButton.frame
+            return animation
+        }
+        
     }
 }

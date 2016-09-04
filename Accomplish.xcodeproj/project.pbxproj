@@ -93,6 +93,9 @@
 		C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */; };
 		C7821ECF1D7BF18E0056623D /* MMWormholeSessionMessageTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */; };
 		C7821ED01D7C01940056623D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
+		C7821ED51D7C076B0056623D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED31D7C076B0056623D /* CalendarViewController.swift */; };
+		C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7821ED41D7C076B0056623D /* CalendarViewController.xib */; };
+		C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
@@ -124,6 +127,7 @@
 		C78ED8B31D7A958F00031B4D /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */; };
 		C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */; };
 		C78ED8B51D7A984300031B4D /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */; };
+		C79805511D7C2D980011DE19 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805501D7C2D980011DE19 /* BlurView.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -319,6 +323,9 @@
 		C7821EBF1D7BF1820056623D /* MMWormholeSessionMessageTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeSessionMessageTransiting.h; sourceTree = "<group>"; };
 		C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeSessionMessageTransiting.m; sourceTree = "<group>"; };
 		C7821EC11D7BF1820056623D /* MMWormholeTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeTransiting.h; sourceTree = "<group>"; };
+		C7821ED31D7C076B0056623D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		C7821ED41D7C076B0056623D /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
+		C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTransitionAnimator.swift; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -340,6 +347,7 @@
 		C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Today.swift"; sourceTree = "<group>"; };
 		C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayTableViewCell.xib; sourceTree = "<group>"; };
+		C79805501D7C2D980011DE19 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -424,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				C70BF6251D79C58B006B0C1D /* SecondTimer.swift */,
+				C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -458,6 +467,7 @@
 				C7DDA50B1D75C78C0054154C /* HUD.swift */,
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */,
+				C79805501D7C2D980011DE19 /* BlurView.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -572,6 +582,8 @@
 				C77192431D6CEE4E00437560 /* Home */,
 				C71D58741D748D2F00E76E91 /* TaskInfomation */,
 				C77192481D6CEE4E00437560 /* NewTask */,
+				C7821ED11D7C07250056623D /* Calendar */,
+				C7821ED21D7C07500056623D /* Settings */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -660,6 +672,22 @@
 				C7821EC11D7BF1820056623D /* MMWormholeTransiting.h */,
 			);
 			path = MMWormhole;
+			sourceTree = "<group>";
+		};
+		C7821ED11D7C07250056623D /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C7821ED31D7C076B0056623D /* CalendarViewController.swift */,
+				C7821ED41D7C076B0056623D /* CalendarViewController.xib */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C7821ED21D7C07500056623D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C7860E341D6C23FF000281FA = {
@@ -885,6 +913,7 @@
 				C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */,
 				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
+				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
 				C7DDA5961D75DC080054154C /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */,
@@ -1013,6 +1042,7 @@
 				C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */,
 				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
 				C78ED8AC1D7A916700031B4D /* GroupUserDefault+Today.swift in Sources */,
+				C7821ED51D7C076B0056623D /* CalendarViewController.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,
 				C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */,
@@ -1025,12 +1055,14 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
+				C79805511D7C2D980011DE19 /* BlurView.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
 				C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
+				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,

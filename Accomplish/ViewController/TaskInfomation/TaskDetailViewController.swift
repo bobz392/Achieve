@@ -57,8 +57,8 @@ class TaskDetailViewController: BaseViewController {
         // Do any additional setup after loading the view.
         
         
-        configMainUI()
-        initializeControl()
+        self.configMainUI()
+        self.initializeControl()
     }
     
     override func viewWillDisappear(animated: Bool) {

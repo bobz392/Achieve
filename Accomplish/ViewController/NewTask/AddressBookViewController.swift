@@ -31,7 +31,7 @@ final class AddressBookViewController: BaseViewController {
         return address
     }
     
-    private var indexingQueue = dispatch_queue_create("com.shimo.AddressBook.indexing", DISPATCH_QUEUE_SERIAL)
+    private var indexingQueue = dispatch_queue_create("achieve.addressBook.indexing", DISPATCH_QUEUE_SERIAL)
     
     private var indexes: Indexes = []
     private var data: IndexedData = [:]
@@ -39,10 +39,10 @@ final class AddressBookViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configMainUI()
-        initializeControl()
+        self.configMainUI()
+        self.initializeControl()
         
-        config(tableView: tableView)
+        self.config(tableView: tableView)
     }
     
     override func viewDidAppear(animated: Bool) {

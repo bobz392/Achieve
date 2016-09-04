@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="Accomplish" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="9jR-Sg-hIY" id="mOU-to-fpS"/>
+                <outlet property="cardView" destination="Ptq-Wo-nZo" id="ysS-LO-bFA"/>
+                <outlet property="titleLabel" destination="7gR-ye-a0D" id="zeG-oi-9Th"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-ye-a0D">
+                    <rect key="frame" x="5" y="34" width="54" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-Wo-nZo">
+                    <rect key="frame" x="5" y="70" width="590" height="468"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-Sg-hIY" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
+                    <rect key="frame" x="279" y="548" width="42" height="42"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="Odh-k6-fbS"/>
+                        <constraint firstAttribute="height" constant="42" id="azD-Ho-z9p"/>
+                    </constraints>
+                    <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" constant="5" id="8HG-kc-QuE"/>
+                <constraint firstItem="9jR-Sg-hIY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9pQ-ZV-68M"/>
+                <constraint firstAttribute="bottom" secondItem="9jR-Sg-hIY" secondAttribute="bottom" constant="10" id="RkC-ij-2oO"/>
+                <constraint firstItem="9jR-Sg-hIY" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="10" id="Vwc-xN-PzS"/>
+                <constraint firstItem="7gR-ye-a0D" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" id="Xmk-Zl-Y7O"/>
+                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="mhE-De-zRU"/>
+                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="7gR-ye-a0D" secondAttribute="bottom" constant="10" id="qF2-mC-VkY"/>
+                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="sqz-87-6su"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

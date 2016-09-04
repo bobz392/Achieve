@@ -45,8 +45,8 @@ class KVTaskViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        configMainUI()
-        initializeControl()
+        self.configMainUI()
+        self.initializeControl()
     }
     
     override func viewDidAppear(animated: Bool) {

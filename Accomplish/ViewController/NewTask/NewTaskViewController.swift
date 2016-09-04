@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GPUImage
 
 class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
@@ -142,7 +141,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
-            UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
+            UIView.animateWithDuration(kNormalLongAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: .TransitionNone, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
             }) { [unowned self] (finish) in
                 self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
@@ -298,18 +297,13 @@ extension NewTaskViewController {
         }
         let image = p.view.convertViewToImage()
         
-        let filter = GPUImageiOSBlurFilter()
-        let imagePicture = GPUImagePicture(image: image)
-        imagePicture.addTarget(filter)
-        filter.blurRadiusInPixels = 0.5
-        filter.useNextFrameForImageCapture()
-        imagePicture.processImage()
-        
         self.view.frame = p.view.frame
         p.view.addSubview(self.view)
         
+        self.renderImageView.image =
+            image.blurredImage(5, iterations: 3, ratio: 2.0, blendColor: nil, blendMode: .Clear)
+        
         self.cardViewTopConstraint.constant = (p.view.frame.height - cardViewHeight) * 0.5
-        self.renderImageView.image = filter.imageFromCurrentFramebuffer()
         
         self.configMainUI()
         self.initializeControl()

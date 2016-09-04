@@ -78,6 +78,21 @@
 		C77195791D71D0F800437560 /* Subtask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195781D71D0F800437560 /* Subtask.swift */; };
 		C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771957A1D71ED6400437560 /* KVTaskViewController.swift */; };
 		C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771957B1D71ED6400437560 /* KVTaskViewController.xib */; };
+		C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
+		C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
+		C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
+		C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBA1D7BF1820056623D /* MMWormholeSession.m */; };
+		C7821EC61D7BF1820056623D /* MMWormholeSessionContextTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBC1D7BF1820056623D /* MMWormholeSessionContextTransiting.m */; };
+		C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */; };
+		C7821EC81D7BF1820056623D /* MMWormholeSessionMessageTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */; };
+		C7821EC91D7BF18E0056623D /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
+		C7821ECA1D7BF18E0056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
+		C7821ECB1D7BF18E0056623D /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
+		C7821ECC1D7BF18E0056623D /* MMWormholeSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBA1D7BF1820056623D /* MMWormholeSession.m */; };
+		C7821ECD1D7BF18E0056623D /* MMWormholeSessionContextTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBC1D7BF1820056623D /* MMWormholeSessionContextTransiting.m */; };
+		C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */; };
+		C7821ECF1D7BF18E0056623D /* MMWormholeSessionMessageTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */; };
+		C7821ED01D7C01940056623D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
@@ -289,6 +304,21 @@
 		C77195781D71D0F800437560 /* Subtask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subtask.swift; sourceTree = "<group>"; };
 		C771957A1D71ED6400437560 /* KVTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVTaskViewController.swift; sourceTree = "<group>"; };
 		C771957B1D71ED6400437560 /* KVTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVTaskViewController.xib; sourceTree = "<group>"; };
+		C7821EB31D7BF1820056623D /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormhole.h; sourceTree = "<group>"; };
+		C7821EB41D7BF1820056623D /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormhole.m; sourceTree = "<group>"; };
+		C7821EB51D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeCoordinatedFileTransiting.h; sourceTree = "<group>"; };
+		C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeCoordinatedFileTransiting.m; sourceTree = "<group>"; };
+		C7821EB71D7BF1820056623D /* MMWormholeFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeFileTransiting.h; sourceTree = "<group>"; };
+		C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeFileTransiting.m; sourceTree = "<group>"; };
+		C7821EB91D7BF1820056623D /* MMWormholeSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeSession.h; sourceTree = "<group>"; };
+		C7821EBA1D7BF1820056623D /* MMWormholeSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeSession.m; sourceTree = "<group>"; };
+		C7821EBB1D7BF1820056623D /* MMWormholeSessionContextTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeSessionContextTransiting.h; sourceTree = "<group>"; };
+		C7821EBC1D7BF1820056623D /* MMWormholeSessionContextTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeSessionContextTransiting.m; sourceTree = "<group>"; };
+		C7821EBD1D7BF1820056623D /* MMWormholeSessionFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeSessionFileTransiting.h; sourceTree = "<group>"; };
+		C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeSessionFileTransiting.m; sourceTree = "<group>"; };
+		C7821EBF1D7BF1820056623D /* MMWormholeSessionMessageTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeSessionMessageTransiting.h; sourceTree = "<group>"; };
+		C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormholeSessionMessageTransiting.m; sourceTree = "<group>"; };
+		C7821EC11D7BF1820056623D /* MMWormholeTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeTransiting.h; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -448,6 +478,7 @@
 		C7105F981D6CDBFD0096A1A3 /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C7821EB21D7BF1820056623D /* MMWormhole */,
 				C7105F991D6CDBFD0096A1A3 /* DateTools */,
 				C7105FAA1D6CDBFD0096A1A3 /* FontAwesomeKit */,
 			);
@@ -607,6 +638,28 @@
 				C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		C7821EB21D7BF1820056623D /* MMWormhole */ = {
+			isa = PBXGroup;
+			children = (
+				C7821EB31D7BF1820056623D /* MMWormhole.h */,
+				C7821EB41D7BF1820056623D /* MMWormhole.m */,
+				C7821EB51D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.h */,
+				C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */,
+				C7821EB71D7BF1820056623D /* MMWormholeFileTransiting.h */,
+				C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */,
+				C7821EB91D7BF1820056623D /* MMWormholeSession.h */,
+				C7821EBA1D7BF1820056623D /* MMWormholeSession.m */,
+				C7821EBB1D7BF1820056623D /* MMWormholeSessionContextTransiting.h */,
+				C7821EBC1D7BF1820056623D /* MMWormholeSessionContextTransiting.m */,
+				C7821EBD1D7BF1820056623D /* MMWormholeSessionFileTransiting.h */,
+				C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */,
+				C7821EBF1D7BF1820056623D /* MMWormholeSessionMessageTransiting.h */,
+				C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */,
+				C7821EC11D7BF1820056623D /* MMWormholeTransiting.h */,
+			);
+			path = MMWormhole;
 			sourceTree = "<group>";
 		};
 		C7860E341D6C23FF000281FA = {
@@ -928,10 +981,13 @@
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
+				C7821EC61D7BF1820056623D /* MMWormholeSessionContextTransiting.m in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
+				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
+				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
 				C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */,
@@ -939,8 +995,10 @@
 				C70BF6271D79CADB006B0C1D /* SecondTimer.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C78ED8A91D7A85E600031B4D /* GroupUserDefault.swift in Sources */,
+				C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
+				C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
@@ -961,6 +1019,7 @@
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
+				C7821EC81D7BF1820056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C771949C1D6FEA1000437560 /* TriggerTableViewCell.swift in Sources */,
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
@@ -977,6 +1036,7 @@
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
+				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
@@ -993,17 +1053,25 @@
 				C78ED89E1D7A800D00031B4D /* DTTimePeriodChain.m in Sources */,
 				C78ED8991D7A7FC600031B4D /* Colors.swift in Sources */,
 				C78ED8B31D7A958F00031B4D /* TodayTableViewCell.swift in Sources */,
+				C7821ECC1D7BF18E0056623D /* MMWormholeSession.m in Sources */,
+				C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C78ED87C1D7A7D3100031B4D /* TodayViewController.swift in Sources */,
+				C7821ECA1D7BF18E0056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				C78ED89D1D7A800D00031B4D /* DTTimePeriod.m in Sources */,
 				C78ED8A11D7A800D00031B4D /* NSDate+DateTools.m in Sources */,
 				C78ED8A41D7A80F900031B4D /* NSDate+Convenient.swift in Sources */,
+				C7821EC91D7BF18E0056623D /* MMWormhole.m in Sources */,
 				C78ED8A51D7A80FF00031B4D /* String+Convenient.swift in Sources */,
 				C78ED89B1D7A800D00031B4D /* DTConstants.m in Sources */,
+				C7821ECD1D7BF18E0056623D /* MMWormholeSessionContextTransiting.m in Sources */,
+				C7821ECF1D7BF18E0056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
+				C7821ECB1D7BF18E0056623D /* MMWormholeFileTransiting.m in Sources */,
 				C78ED89C1D7A800D00031B4D /* DTError.m in Sources */,
 				C78ED89F1D7A800D00031B4D /* DTTimePeriodCollection.m in Sources */,
 				C78ED8981D7A7FBE00031B4D /* CommonCode.swift in Sources */,
 				C78ED8AF1D7A932E00031B4D /* FAKFontAwesome.m in Sources */,
 				C78ED8B51D7A984300031B4D /* FAKIcon.m in Sources */,
+				C7821ED01D7C01940056623D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1235,6 +1303,7 @@
 				C78ED8861D7A7D3200031B4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

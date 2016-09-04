@@ -43,6 +43,7 @@ class HomeViewController: BaseViewController {
     
     private var timer: SecondTimer?
     private var repeaterManager = RepeaterManager()
+    private let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
     
     // MARK: - life circle
     override func viewDidLoad() {
@@ -61,7 +62,6 @@ class HomeViewController: BaseViewController {
         self.realmNoticationToken()
         self.addNotification()
         
-//        self.repeaterManager.isNewDay()
         self.initTimer()
     }
     
@@ -179,18 +179,37 @@ class HomeViewController: BaseViewController {
         self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
     }
     
+    // 在app 进入前台的时候需要检查两种状态
+    // 第一种就是 timer 
+    // 然后就是 today 中是否有勾选完成的任务
     private func addNotification() {
         NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidBecomeActiveNotification, object: nil,
-            queue: NSOperationQueue.mainQueue()) { notification in
+            queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
                 self.timer?.resume()
                 
+                guard let group = GroupUserDefault() else { return }
+                let finishTasks = group.getAllFinishTask()
                 
+                let manager = RealmManager.shareManager
+      
+                let _ = finishTasks.map({ (taskInfoArr) -> Void in
+                    let uuid = taskInfoArr[GroupUserDefault.GroupTaskUUIDIndex]
+                    let dateString = taskInfoArr[GroupUserDefault.GroupTaskFinishDateIndex]
+                    let date = dateString.dateFromString(uuidFormat)
+                    guard let task = self.runningTasks?.filter({ (t) -> Bool in
+                        t.uuid == uuid
+                    }).first else { return }
+                    
+                    manager.updateTaskStatus(task, status: kTaskFinish, updateDate: date)
+                })
+                
+                group.clearTaskFinish()
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidEnterBackgroundNotification, object: nil,
-            queue: NSOperationQueue.mainQueue()) { notification in
+            queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
                 self.timer?.suspend()
         }
     }
@@ -208,6 +227,7 @@ class HomeViewController: BaseViewController {
         self.timer?.start()
     }
     
+    // 当 task list 为空的时候展示对应的 hint
     private func showEmptyHint(show: Bool) {
         self.emptyHintLabel.hidden = !show
         self.emptyCoffeeLabel.hidden = !show
@@ -288,6 +308,7 @@ class HomeViewController: BaseViewController {
         self.taskTableView.endUpdates()
     }
     
+    // 当新的一天到来的时候调用， 来处理新的数据
     func handleNewDay() {
         self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
         self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
@@ -301,6 +322,7 @@ class HomeViewController: BaseViewController {
                 return
         }
         group.writeTasks(tasks)
+        wormhole.passMessageObject(nil, identifier: wormholeIdentifier)
     }
     
     // MARK: - actions

@@ -90,7 +90,7 @@
 "systemTaskHint"="在内置动作中您可以快速添加一个任务，例如给谁通话、短讯给谁、创建一个购物清单，等等。并且您可以直接通过点击推送通知来执行您的动作。（例如通话、写短讯，等）";
 
 // today
-"noTaskTody"="您今天没有新任务。";
-"taskTody"="您今天还有%d个任务。";
-"taskTodys"="您今天还有%d个任务。";
-"showAll"="Enter";
+"noTaskToday"="您今天没有新任务。";
+"taskToday"="您今天还有%d个任务。";
+"taskTodays"="您今天还有%d个任务。";
+"showAll"="所有任务";

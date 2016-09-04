@@ -34,6 +34,5 @@ extension GroupUserDefault {
         self.groupDefault.setObject(tasksArr, forKey: tasksKey)
         
         self.setTaskChanged(true)
-        self.groupDefault.synchronize()
     }
 }

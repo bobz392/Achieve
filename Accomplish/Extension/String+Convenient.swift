@@ -14,7 +14,7 @@ extension String {
     func dateFromCreatedFormatString() -> NSDate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = createdDateFormat
-        return dateFormatter.dateFromString(self)!
+        return dateFormatter.dateFromString(self) ?? NSDate()
     
 //        let ss = self.componentsSeparatedByString(".")
 //        guard ss.count == 3 else { return nil }
@@ -22,6 +22,12 @@ extension String {
 //            let month = ss[1].intValue(),
 //            let day = ss[2].intValue() else { return nil }
 //        return NSDate(year: year, month: month, day: day)
+    }
+    
+    func dateFromString(format: String) -> NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.dateFromString(self) ?? NSDate()
     }
 }
 

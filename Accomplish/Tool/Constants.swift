@@ -15,3 +15,5 @@ let kCardViewCornerRadius: CGFloat = 10
 let kKeyboardAnimationDelay: NSTimeInterval = 0.05
 
 let kBackButtonCorner: CGFloat = 21
+
+let kMyRootUrlScheme: String = "achieve://"

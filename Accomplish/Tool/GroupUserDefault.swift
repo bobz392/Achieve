@@ -8,16 +8,19 @@
 
 import Foundation
 
+let group = "group.bob.accomplish"
+let wormholeIdentifier = "newTask"
+
 struct GroupUserDefault {
-    
     let groupDefault: NSUserDefaults
-    let group = "group.bob.accomplish"
     let tasksKey = "all.task.today"
     let taskChangeKey = "task.changed.today"
     let todayFinishTaskKey = "task.finish.by.today"
     
-    static let taskTitleIndex = 1
-    static let taskSchemeIndex = 2
+    static let GroupTaskUUIDIndex = 0
+    static let GroupTaskTitleIndex = 1
+    static let GroupTaskSchemeIndex = 2
+    static let GroupTaskFinishDateIndex = 3
     
     init?() {
         guard let groupDefault = NSUserDefaults(suiteName: group) else {
@@ -48,7 +51,11 @@ struct GroupUserDefault {
         self.groupDefault.synchronize()
     }
     
-    func setTaskFinish(finish: [String]) {
+    func getAllFinishTask() -> [[String]] {
+        return (self.groupDefault.arrayForKey(todayFinishTaskKey) as? [[String]]) ?? [[String]]()
+    }
+    
+    private func setTaskFinish(finish: [String]) {
         var tasks = self.groupDefault.objectForKey(todayFinishTaskKey) as? [[String]]
         if tasks == nil {
             tasks = [[String]]()
@@ -56,6 +63,20 @@ struct GroupUserDefault {
         
         tasks?.append(finish)
         self.groupDefault.setObject(tasks, forKey: todayFinishTaskKey)
+    }
+    
+    func clearTaskFinish() {
+        self.groupDefault.setObject(nil, forKey: todayFinishTaskKey)
         self.groupDefault.synchronize()
+    }
+    
+    func moveTaskFinish(taskIndex: Int) {
+        guard var tasks = self.groupDefault.arrayForKey(tasksKey) as? [[String]]
+            else { return }
+        
+        var finishTask = tasks.removeAtIndex(taskIndex)
+        finishTask.append(NSDate().formattedDateWithFormat(uuidFormat))
+        self.setTaskFinish(finishTask)
+        self.writeTasks(tasks)
     }
 }

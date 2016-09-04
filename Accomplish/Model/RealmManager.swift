@@ -107,16 +107,16 @@ class RealmManager {
         return newTask
     }
     
-    func updateTaskStatus(task: Task, status: Int) {
+    func updateTaskStatus(task: Task, status: Int, updateDate: NSDate? = nil) {
         try! realm.write({
             task.status = status
             if status == kTaskFinish {
                 let now = NSDate()
                 let subtasks = querySubtask(task.uuid)
                 for subtask in subtasks {
-                    subtask.finishedDate = now
+                    subtask.finishedDate = updateDate ?? now
                 }
-                task.finishedDate = now
+                task.finishedDate = updateDate ?? now
             } else if status == kTaskRunning {
                 task.finishedDate = nil
             } else {

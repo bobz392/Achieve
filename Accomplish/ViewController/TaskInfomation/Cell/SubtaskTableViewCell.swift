@@ -42,7 +42,7 @@ class SubtaskTableViewCell: UITableViewCell {
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
-        selectedBackgroundView = UIView(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: frame.height - 1)))
+        selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
         
         super.setSelected(selected, animated: animated)
@@ -53,9 +53,9 @@ class SubtaskTableViewCell: UITableViewCell {
         self.task = task
         self.subtask = subtask
         let colors = Colors()
-        let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskDetailCellIconSize)
+        let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskButtonIconSize)
         let image =
-            icon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
+            icon.imageWithSize(CGSize(width: kTaskButtonIconSize, height: kTaskButtonIconSize))
         self.iconButton.setImage(image, forState: .Normal)
         self.subtaskTextField.attributedText = nil
         
@@ -71,7 +71,7 @@ class SubtaskTableViewCell: UITableViewCell {
             self.trashButton.hidden = false
             self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         } else {
-            let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.placeHolderTextColor])
+            let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.secondaryTextColor])
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
             self.trashButton.hidden = true
             self.iconButton.tintColor = colors.secondaryTextColor

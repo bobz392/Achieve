@@ -66,6 +66,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.todayTableView.reloadData()
             
             let taskCount = self.alltasks.count
+//            if taskCount == 1
             self.infoLabel.text = String(format: Localized("taskTody"), taskCount)
             
             
@@ -101,12 +102,31 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(TodayTableViewCell.reuseId, forIndexPath: indexPath) as! TodayTableViewCell
         
+        cell.task = alltasks[indexPath.row]
         cell.titleLabel.text = alltasks[indexPath.row][GroupUserDefault.taskTitleIndex]
-        
+        cell.checkButton.addTarget(self, action: #selector(self.checkTask(_:)), forControlEvents: .TouchUpInside)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func checkTask(btn: UIButton) {
+//        print(task)
+//        guard let group = GroupUserDefault() else {
+//            return
+//        }
+//        
+//        let finishTask = self.alltasks.removeAtIndex(<#T##index: Int##Int#>)
+//        self.todayTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: <#T##Int#>, inSection: 0)], withRowAnimation: .Automatic)
+//        let taskCount = self.alltasks.count
+//        if taskCount > 5 {
+//            self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * 5.0 + bottomHeight)
+//        } else {
+//            self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(taskCount) + bottomHeight)
+//        }
+//
+//        group.setTaskFinish(finishTask)
     }
 }

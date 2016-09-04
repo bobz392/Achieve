@@ -25,17 +25,17 @@ class TaskNoteTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsetsZero
         
-        let icon = try! FAKFontAwesome(identifier: SubtaskIconNote, size: 20)
+        let icon = try! FAKFontAwesome(identifier: SubtaskIconNote, size: kTaskButtonIconSize)
         let image =
-            icon.imageWithSize(CGSize(width: 20, height: 20))
+            icon.imageWithSize(CGSize(width: kTaskButtonIconSize, height: kTaskButtonIconSize))
         self.iconButton.setImage(image, forState: .Normal)
         
         self.noteLabel.highlightedTextColor = colors.mainTextColor
-        self.noteLabel.textColor = colors.placeHolderTextColor
+        self.noteLabel.textColor = colors.secondaryTextColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
-        selectedBackgroundView = UIView(frame: CGRect(origin: frame.origin, size: CGSize(width: frame.width, height: frame.height - 1)))
+        selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
         
         super.setSelected(selected, animated: animated)

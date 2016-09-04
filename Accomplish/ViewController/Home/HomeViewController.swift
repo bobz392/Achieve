@@ -184,6 +184,8 @@ class HomeViewController: BaseViewController {
             UIApplicationDidBecomeActiveNotification, object: nil,
             queue: NSOperationQueue.mainQueue()) { notification in
                 self.timer?.resume()
+                
+                
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName(

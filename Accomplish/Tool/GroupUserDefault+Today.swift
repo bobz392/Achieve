@@ -32,9 +32,8 @@ extension GroupUserDefault {
         
         debugPrint("write new task count = \(tasks.count)")
         self.groupDefault.setObject(tasksArr, forKey: tasksKey)
-        self.groupDefault.synchronize()
         
         self.setTaskChanged(true)
+        self.groupDefault.synchronize()
     }
-
 }

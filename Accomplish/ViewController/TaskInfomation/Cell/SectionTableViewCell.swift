@@ -12,7 +12,7 @@ class SectionTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "SectionTableViewCell", bundle: nil)
     static let reuseId = "sectionTableViewCell"
-    static let rowHeight: CGFloat = 5
+    static let rowHeight: CGFloat = 14
 
     @IBOutlet weak var lineView: UIView!
     

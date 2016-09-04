@@ -14,6 +14,7 @@ struct GroupUserDefault {
     let group = "group.bob.accomplish"
     let tasksKey = "all.task.today"
     let taskChangeKey = "task.changed.today"
+    let todayFinishTaskKey = "task.finish.by.today"
     
     static let taskTitleIndex = 1
     static let taskSchemeIndex = 2
@@ -42,4 +43,19 @@ struct GroupUserDefault {
         return tasksArray
     }
     
+    func writeTasks(tasks: [[String]]) {
+        self.groupDefault.setObject(tasks, forKey: tasksKey)
+        self.groupDefault.synchronize()
+    }
+    
+    func setTaskFinish(finish: [String]) {
+        var tasks = self.groupDefault.objectForKey(todayFinishTaskKey) as? [[String]]
+        if tasks == nil {
+            tasks = [[String]]()
+        }
+        
+        tasks?.append(finish)
+        self.groupDefault.setObject(tasks, forKey: todayFinishTaskKey)
+        self.groupDefault.synchronize()
+    }
 }

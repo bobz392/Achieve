@@ -16,11 +16,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQw-Bj-5fl">
-                        <rect key="frame" x="290" y="5" width="25" height="54.5"/>
+                        <rect key="frame" x="285" y="0.0" width="35" height="64.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="aDW-of-jNN"/>
+                            <constraint firstAttribute="width" constant="35" id="aDW-of-jNN"/>
                         </constraints>
+                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRC-r3-d8A">
                         <rect key="frame" x="0.0" y="0.0" width="5" height="64.5"/>
@@ -61,7 +62,7 @@
                 <constraints>
                     <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TnC-Re-QZp" secondAttribute="trailing" constant="5" id="3QM-gE-0Oe"/>
                     <constraint firstItem="AiK-42-CC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8Fu-el-2X3"/>
-                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="GSY-eW-aKB"/>
+                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GSY-eW-aKB"/>
                     <constraint firstItem="TnC-Re-QZp" firstAttribute="centerY" secondItem="fG9-rB-pjb" secondAttribute="centerY" id="GVT-Ln-Wcn"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" constant="10" id="PeF-gX-t7N"/>
                     <constraint firstItem="TnC-Re-QZp" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="trailing" constant="5" id="TVw-bk-sGZ"/>
@@ -71,11 +72,11 @@
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jfR-cN-6yC"/>
                     <constraint firstAttribute="bottom" secondItem="AiK-42-CC7" secondAttribute="bottom" id="kpN-do-Zzb"/>
                     <constraint firstAttribute="bottom" secondItem="nRC-r3-d8A" secondAttribute="bottom" id="lVJ-ua-SB1"/>
-                    <constraint firstAttribute="bottom" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" constant="5" id="lvV-Wz-e8P"/>
+                    <constraint firstAttribute="bottom" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" id="lvV-Wz-e8P"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n0X-1M-TZ3"/>
                     <constraint firstItem="j4a-ig-DCb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="oBG-6j-IVj"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uO9-Xl-xK0"/>
-                    <constraint firstAttribute="trailing" secondItem="ZQw-Bj-5fl" secondAttribute="trailing" constant="5" id="x4M-Bk-DSD"/>
+                    <constraint firstAttribute="trailing" secondItem="ZQw-Bj-5fl" secondAttribute="trailing" id="x4M-Bk-DSD"/>
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="x80-JV-5NI"/>
                 </constraints>
                 <variation key="default">

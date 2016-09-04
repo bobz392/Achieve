@@ -10,14 +10,16 @@ import UIKit
 
 let kTaskDetailCellIconSize: CGFloat = 18
 let kTaskClearCellIconSize: CGFloat = 16
+let kTaskButtonIconSize: CGFloat = 20
 
 class TaskDateTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "TaskDateTableViewCell", bundle: nil)
     static let reuseId = "taskDateTableViewCell"
-    static let rowHeight: CGFloat = 40
+    static let rowHeight: CGFloat = 38
   
-    @IBOutlet weak var iconButton: UIButton!
+//    @IBOutlet weak var iconButton: UIButton!
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
     
@@ -40,13 +42,13 @@ class TaskDateTableViewCell: UITableViewCell {
         self.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
         
         self.infoLabel.highlightedTextColor = colors.mainGreenColor
-        self.infoLabel.textColor = colors.placeHolderTextColor
+        self.infoLabel.textColor = colors.secondaryTextColor
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
-        
+
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
@@ -75,10 +77,17 @@ class TaskDateTableViewCell: UITableViewCell {
         self.task = task
         let colors = Colors()
         
+        let iconSize = CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize)
         let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskDetailCellIconSize)
+        icon.addAttributes([NSForegroundColorAttributeName: colors.secondaryTextColor])
         let image =
-            icon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
-        self.iconButton.setImage(image, forState: .Normal)
+            icon.imageWithSize(iconSize)
+        self.iconImageView.image = image
+        
+        icon.addAttributes([NSForegroundColorAttributeName: colors.mainGreenColor])
+        let hImage = icon.imageWithSize(iconSize)
+        self.iconImageView.highlightedImage = hImage
+        
         self.clearButton.hidden = false
         self.detailType = .Other
         
@@ -97,9 +106,8 @@ class TaskDateTableViewCell: UITableViewCell {
                 self.infoLabel.text = schedule + " "
                     + createdDate.formattedDateWithStyle(.MediumStyle)
             }
-//                Localized(task.canPostpone ? "detailPostponeTomorrow" : "detailIncomplete")
             self.clearButton.hidden = true
-            self.iconButton.tintColor = colors.mainGreenColor
+            self.iconImageView.highlighted = true
             
         case SubtaskIconBell:
             self.infoLabel.highlighted = task.notifyDate != nil
@@ -112,8 +120,7 @@ class TaskDateTableViewCell: UITableViewCell {
         
             self.clearButton.hidden = task.notifyDate == nil
             self.detailType = .Notify
-            self.iconButton.tintColor =
-                task.notifyDate == nil ? colors.secondaryTextColor : colors.mainGreenColor
+            self.iconImageView.highlighted = task.notifyDate != nil
             
         case SubtaskIconRepeat:
             let hasRepeater: Bool
@@ -133,8 +140,7 @@ class TaskDateTableViewCell: UITableViewCell {
             self.infoLabel.highlighted = hasRepeater
             self.clearButton.hidden = !hasRepeater
             self.detailType = .Repeat
-            self.iconButton.tintColor =
-                hasRepeater ? colors.mainGreenColor : colors.secondaryTextColor
+            self.iconImageView.highlighted = hasRepeater
             
         default:
             break

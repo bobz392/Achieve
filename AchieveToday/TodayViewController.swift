@@ -33,16 +33,24 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         self.infoLabel.textColor = colors.cloudColor
         
-        self.allButton.backgroundColor = UIColor(red:0.50, green:0.55, blue:0.55, alpha:1.00)//colors.cloudColor
+//        self.allButton.backgroundColor = UIColor(red:0.50, green:0.55, blue:0.55, alpha:1.00)//colors.cloudColor
         self.allButton.setTitleColor(colors.cloudColor, forState: .Normal)
         self.allButton.tintColor = colors.secondaryTextColor
         self.allButton.setTitle(Localized("showAll"), forState: .Normal)
         self.allButton.addTarget(self, action: #selector(self.enterApp), forControlEvents: .TouchUpInside)
+        self.allButton.clipsToBounds = true
         self.allButton.layer.cornerRadius = 4
         
         self.wormhole.listenForMessageWithIdentifier(wormholeIdentifier) { (any) in
             self.updateTask()
         }
+        
+        let eff = UIBlurEffect(style: .Light)
+        let effView = UIVisualEffectView(effect: eff)
+        effView.frame = allButton.bounds
+        effView.userInteractionEnabled = false
+        
+        self.allButton.addSubview(effView)
     }
     
     override func didReceiveMemoryWarning() {

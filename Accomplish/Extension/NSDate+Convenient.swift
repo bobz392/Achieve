@@ -12,6 +12,7 @@ let uuidFormat: String = "yyMMddHHmmssZ"
 let createdDateFormat: String = "yyyy.MM.dd"
 let timeDateFormat: String = "hh: mm a"
 let monthDayFormat: String = "MM/dd"
+let monthFormat: String = "MMM yyyy"
 
 // TASK
 extension NSDate {
@@ -22,5 +23,11 @@ extension NSDate {
     func createdFormatedDateString() -> String {
         debugPrint("created formated date string = \(formattedDateWithFormat(createdDateFormat))")
         return self.formattedDateWithFormat(createdDateFormat)
+    }
+    
+    func toLocalDate() -> NSDate {
+        let zone = NSTimeZone.systemTimeZone()
+        let iter = NSTimeInterval(zone.secondsFromGMTForDate(self))
+        return self.dateByAddingTimeInterval(iter)
     }
 }

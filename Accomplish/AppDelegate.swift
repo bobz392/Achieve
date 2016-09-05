@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         register(application)
         HUD.sharedHUD.config()
         
-        
         if application.backgroundRefreshStatus == .Available {
             debugPrint("Available")
         } else if application.backgroundRefreshStatus == .Denied {

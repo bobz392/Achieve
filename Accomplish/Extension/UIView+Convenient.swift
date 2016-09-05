@@ -67,4 +67,8 @@ extension UIView {
         self.tintColor = colors.mainGreenColor
         self.backgroundColor = colors.cloudColor
     }
+    
+    func clearView() {
+        self.backgroundColor = UIColor.clearColor()
+    }
 }

@@ -27,11 +27,29 @@ struct RepeaterManager {
         if !lastDate.isToday() && lastDate.isEarlierThan(now) {
 //             do some use repeater create todays task
             self.repeaterTaskCreate()
-            userDefault.write(kLastFetchDateKey, value: NSDate().createdFormatedDateString())
+            userDefault.write(kLastFetchDateKey, value: now.createdFormatedDateString())
+            // 加入昨天的check in
+            // 以及任务完成率
+            createCheckIn(now)
+            
             return true
         } else {
             return false
         }
+    }
+    
+    private func createCheckIn(now: NSDate) {
+        let localYesterday = now.dateBySubtractingDays(1).toLocalDate()
+        let checkIn = CheckIn()
+        checkIn.year = localYesterday.year()
+        checkIn.day = localYesterday.day()
+        checkIn.month = localYesterday.month()
+        
+        let c = RealmManager.shareManager.queryYesterdayTaskCount()
+        checkIn.finishCount = c.finish
+        checkIn.runningCount = c.running
+        
+        RealmManager.shareManager.saveCheckIn(checkIn)
     }
     
     private func repeaterTaskCreate() {

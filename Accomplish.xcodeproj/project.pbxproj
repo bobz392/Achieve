@@ -127,7 +127,21 @@
 		C78ED8B31D7A958F00031B4D /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */; };
 		C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */; };
 		C78ED8B51D7A984300031B4D /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */; };
-		C79805511D7C2D980011DE19 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805501D7C2D980011DE19 /* BlurView.swift */; };
+		C79805511D7C2D980011DE19 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805501D7C2D980011DE19 /* DynamicBlurView.swift */; };
+		C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805521D7CC8740011DE19 /* CheckIn.swift */; };
+		C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798056D1D7CD8C90011DE19 /* CalendarCell.swift */; };
+		C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798056F1D7CD8D50011DE19 /* CalendarCell.xib */; };
+		C79805721D7CDB8D0011DE19 /* UIColor+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */; };
+		C79805781D7D427A0011DE19 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805771D7D427A0011DE19 /* AnimationTools.swift */; };
+		C79805C21D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805B81D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift */; };
+		C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805BA1D7D4E610011DE19 /* JTAppleCalendarDelegates.swift */; };
+		C79805C41D7D4E610011DE19 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805BB1D7D4E610011DE19 /* JTAppleCalendarLayout.swift */; };
+		C79805C51D7D4E610011DE19 /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805BC1D7D4E610011DE19 /* JTAppleCalendarView.swift */; };
+		C79805C61D7D4E610011DE19 /* JTAppleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805BD1D7D4E610011DE19 /* JTAppleCollectionReusableView.swift */; };
+		C79805C71D7D4E610011DE19 /* JTAppleDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805BE1D7D4E610011DE19 /* JTAppleDayCell.swift */; };
+		C79805C81D7D4E610011DE19 /* JTAppleViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805BF1D7D4E610011DE19 /* JTAppleViews.swift */; };
+		C79805C91D7D4E610011DE19 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805C01D7D4E610011DE19 /* JTCalendarProtocols.swift */; };
+		C79805CA1D7D4E610011DE19 /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805C11D7D4E610011DE19 /* UserInteractionFunctions.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -347,7 +361,22 @@
 		C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Today.swift"; sourceTree = "<group>"; };
 		C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayTableViewCell.xib; sourceTree = "<group>"; };
-		C79805501D7C2D980011DE19 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		C79805501D7C2D980011DE19 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
+		C79805521D7CC8740011DE19 /* CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
+		C798056D1D7CD8C90011DE19 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		C798056F1D7CD8D50011DE19 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenient.swift"; sourceTree = "<group>"; };
+		C79805771D7D427A0011DE19 /* AnimationTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTools.swift; sourceTree = "<group>"; };
+		C79805B81D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
+		C79805B91D7D4E610011DE19 /* JTAppleCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTAppleCalendar.h; sourceTree = "<group>"; };
+		C79805BA1D7D4E610011DE19 /* JTAppleCalendarDelegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleCalendarDelegates.swift; sourceTree = "<group>"; };
+		C79805BB1D7D4E610011DE19 /* JTAppleCalendarLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleCalendarLayout.swift; sourceTree = "<group>"; };
+		C79805BC1D7D4E610011DE19 /* JTAppleCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleCalendarView.swift; sourceTree = "<group>"; };
+		C79805BD1D7D4E610011DE19 /* JTAppleCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleCollectionReusableView.swift; sourceTree = "<group>"; };
+		C79805BE1D7D4E610011DE19 /* JTAppleDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleDayCell.swift; sourceTree = "<group>"; };
+		C79805BF1D7D4E610011DE19 /* JTAppleViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleViews.swift; sourceTree = "<group>"; };
+		C79805C01D7D4E610011DE19 /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCalendarProtocols.swift; sourceTree = "<group>"; };
+		C79805C11D7D4E610011DE19 /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractionFunctions.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -467,7 +496,8 @@
 				C7DDA50B1D75C78C0054154C /* HUD.swift */,
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */,
-				C79805501D7C2D980011DE19 /* BlurView.swift */,
+				C79805501D7C2D980011DE19 /* DynamicBlurView.swift */,
+				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -481,6 +511,7 @@
 				C77195781D71D0F800437560 /* Subtask.swift */,
 				C77194931D6FD5E600437560 /* Trigger.swift */,
 				C70BF6141D77DDE3006B0C1D /* Repeater.swift */,
+				C79805521D7CC8740011DE19 /* CheckIn.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,6 +519,7 @@
 		C7105F981D6CDBFD0096A1A3 /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C79805B71D7D4E610011DE19 /* JTAppleCalendar */,
 				C7821EB21D7BF1820056623D /* MMWormhole */,
 				C7105F991D6CDBFD0096A1A3 /* DateTools */,
 				C7105FAA1D6CDBFD0096A1A3 /* FontAwesomeKit */,
@@ -677,6 +709,7 @@
 		C7821ED11D7C07250056623D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				C798056C1D7CD8A20011DE19 /* Cell */,
 				C7821ED31D7C076B0056623D /* CalendarViewController.swift */,
 				C7821ED41D7C076B0056623D /* CalendarViewController.xib */,
 			);
@@ -744,6 +777,32 @@
 			path = AchieveToday;
 			sourceTree = "<group>";
 		};
+		C798056C1D7CD8A20011DE19 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C798056D1D7CD8C90011DE19 /* CalendarCell.swift */,
+				C798056F1D7CD8D50011DE19 /* CalendarCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C79805B71D7D4E610011DE19 /* JTAppleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				C79805B81D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift */,
+				C79805B91D7D4E610011DE19 /* JTAppleCalendar.h */,
+				C79805BA1D7D4E610011DE19 /* JTAppleCalendarDelegates.swift */,
+				C79805BB1D7D4E610011DE19 /* JTAppleCalendarLayout.swift */,
+				C79805BC1D7D4E610011DE19 /* JTAppleCalendarView.swift */,
+				C79805BD1D7D4E610011DE19 /* JTAppleCollectionReusableView.swift */,
+				C79805BE1D7D4E610011DE19 /* JTAppleDayCell.swift */,
+				C79805BF1D7D4E610011DE19 /* JTAppleViews.swift */,
+				C79805C01D7D4E610011DE19 /* JTCalendarProtocols.swift */,
+				C79805C11D7D4E610011DE19 /* UserInteractionFunctions.swift */,
+			);
+			path = JTAppleCalendar;
+			sourceTree = "<group>";
+		};
 		C7DDA55F1D75DC080054154C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,6 +854,7 @@
 				C7DDA5B51D75FAD30054154C /* String+Convenient.swift */,
 				C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */,
 				C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */,
+				C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -952,6 +1012,7 @@
 				C7DDA5851D75DC080054154C /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */,
 				C7DDA5841D75DC080054154C /* 0ACAF69F-11E2-35A9-B080-729E9C2FCB3B.bcsymbolmap in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
+				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,
 				C7DDA58A1D75DC080054154C /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1007,6 +1068,7 @@
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
 				C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */,
 				C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */,
+				C79805CA1D7D4E610011DE19 /* UserInteractionFunctions.swift in Sources */,
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
@@ -1025,6 +1087,7 @@
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C78ED8A91D7A85E600031B4D /* GroupUserDefault.swift in Sources */,
 				C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
+				C79805721D7CDB8D0011DE19 /* UIColor+Convenient.swift in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
 				C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */,
@@ -1035,6 +1098,9 @@
 				C7DDA5C01D7682FC0054154C /* TaskPickerView.swift in Sources */,
 				C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */,
 				C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */,
+				C79805C51D7D4E610011DE19 /* JTAppleCalendarView.swift in Sources */,
+				C79805C21D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift in Sources */,
+				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
 				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
@@ -1046,6 +1112,7 @@
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,
 				C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */,
+				C79805781D7D427A0011DE19 /* AnimationTools.swift in Sources */,
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
@@ -1055,21 +1122,28 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
-				C79805511D7C2D980011DE19 /* BlurView.swift in Sources */,
+				C79805511D7C2D980011DE19 /* DynamicBlurView.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
+				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
+				C79805C61D7D4E610011DE19 /* JTAppleCollectionReusableView.swift in Sources */,
 				C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */,
+				C79805C91D7D4E610011DE19 /* JTCalendarProtocols.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
+				C79805C41D7D4E610011DE19 /* JTAppleCalendarLayout.swift in Sources */,
+				C79805C71D7D4E610011DE19 /* JTAppleDayCell.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
+				C79805C81D7D4E610011DE19 /* JTAppleViews.swift in Sources */,
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
+				C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,

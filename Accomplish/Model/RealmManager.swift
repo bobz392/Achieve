@@ -47,10 +47,6 @@ class RealmManager {
     }
     
     func queryTodayTaskList(finished finished: Bool) -> Results<Task> {
-//        guard let queryDate = UserDefault().readString(kLastFetchDateKey) else {
-//            fatalError("some bug with kLastFetchDateKey not exist")
-//        }
-//        
         let queryDate = NSDate().createdFormatedDateString()
         
         let tasks = realm
@@ -59,6 +55,20 @@ class RealmManager {
             .sorted("createdDate")
         
         return tasks
+    }
+    
+    func queryYesterdayTaskCount() -> (finish: Int, running: Int) {
+        let queryDate = NSDate().dateBySubtractingDays(1).createdFormatedDateString()
+        
+        let runningCount = realm.objects(Task.self)
+            .filter("createdFormattedDate = '\(queryDate)' AND status  = \(kTaskRunning)")
+            .count
+        let finishCount = realm
+            .objects(Task.self)
+            .filter("createdFormattedDate = '\(queryDate)' AND status != \(kTaskRunning)")
+            .count
+        
+        return (finishCount, runningCount)
     }
     
     func queryTask(taskUUID: String) -> Task? {
@@ -70,8 +80,6 @@ class RealmManager {
             .filter("rootUUID = '\(rootUUID)'")
             .sorted("createdDate")
     }
-    
-
     
     func deleteTask(task: Task) {
     }
@@ -126,4 +134,19 @@ class RealmManager {
     }
 }
 
+extension RealmManager {
+    func queryCheckIn(year: Int, month: Int, day: Int) -> CheckIn? {
+        return realm.objects(CheckIn.self)
+            .filter("year = \(year) and month = \(month) and day = \(day)")
+            .first
+    }
+    
+    func saveCheckIn(checkIn: CheckIn) {
+        if let old = queryCheckIn(checkIn.year, month: checkIn.month, day: checkIn.day) {
+            deleteObject(old)
+        }
+        
+        writeObject(checkIn)
+    }
+}
 

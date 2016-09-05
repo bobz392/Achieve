@@ -77,6 +77,8 @@
 "everyMonth"="Every month(the %@st)";
 "annual"="Every year(%@)";
 
+"calendar"="Calendar";
+
 "day1" = "Mon";
 "day2" = "Tue";
 "day3" = "Wed";

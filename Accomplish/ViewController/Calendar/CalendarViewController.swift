@@ -58,9 +58,8 @@ class CalendarViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        
         self.titleLabel.textColor = colors.cloudColor
-        self.cardView.clearView()//.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         self.navigationController?.view.backgroundColor = colors.mainGreenColor
         
@@ -73,14 +72,15 @@ class CalendarViewController: BaseViewController {
     }
     
     private func initializeControl() {
-        self.backButton.clearView()//.addShadow()
+        self.titleLabel.text = Localized("calendar")
         
+        self.backButton.addShadow()
         self.backButton.clipsToBounds = true
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
-        
         self.cardView.addShadow()
+        self.cardView.layer.cornerRadius = 4
         
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
@@ -88,7 +88,6 @@ class CalendarViewController: BaseViewController {
         self.calendarView.allowsMultipleSelection = false
         self.calendarView.registerCellViewXib(fileName: "CalendarCell")
         self.calendarView.clearView()
-        self.titleLabel.text = Localized("calendar")
         self.calendarView.alpha = 0
         
 //        guard let url = NSBundle.mainBundle().URLForResource("gif7", withExtension: "gif") else { return }
@@ -123,21 +122,20 @@ class CalendarViewController: BaseViewController {
 //        layer.frame = self.animatedImageView.bounds
 //        self.animatedImageView.layer.addSublayer(layer)
         
-        
-        let eff = UIBlurEffect(style: .Light)
-        let effView = UIVisualEffectView(effect: eff)
-        effView.frame = self.cardView.bounds
-        effView.userInteractionEnabled = false
-        
-        self.cardView.insertSubview(effView, atIndex: 0)
-        self.cardView.clipsToBounds = true
-        self.cardView.layer.cornerRadius = 4
-        
-        let effbtn = UIBlurEffect(style: .Light)
-        let effbtnView = UIVisualEffectView(effect: effbtn)
-        effbtnView.frame = self.backButton.bounds
-        effbtnView.userInteractionEnabled = false
-        self.backButton.insertSubview(effbtnView, atIndex: 0)
+//        let eff = UIBlurEffect(style: .Light)
+//        let effView = UIVisualEffectView(effect: eff)
+//        effView.frame = self.cardView.bounds
+//        effView.userInteractionEnabled = false
+//        
+//        self.cardView.insertSubview(effView, atIndex: 0)
+//        self.cardView.clipsToBounds = true
+//        self.cardView.layer.cornerRadius = 4
+//        
+//        let effbtn = UIBlurEffect(style: .Light)
+//        let effbtnView = UIVisualEffectView(effect: effbtn)
+//        effbtnView.frame = self.backButton.bounds
+//        effbtnView.userInteractionEnabled = false
+//        self.backButton.insertSubview(effbtnView, atIndex: 0)
         
     }
     

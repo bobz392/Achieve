@@ -444,7 +444,7 @@ extension TaskDetailViewController: TaskNoteDataDelegate {
     func taskNoteAdd(newNote: String) {
         RealmManager.shareManager.updateObject {
             self.task.taskNote = newNote
-            let index = NSIndexPath(forRow: iconList.count - 1, inSection: 0)
+            let index = NSIndexPath(forRow: 0, inSection: iconList.count - 1)
             self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
         }
     }

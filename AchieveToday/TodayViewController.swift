@@ -45,12 +45,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.updateTask()
         }
         
-        let eff = UIBlurEffect(style: .Light)
-        let effView = UIVisualEffectView(effect: eff)
-        effView.frame = allButton.bounds
-        effView.userInteractionEnabled = false
+//        let eff = UIBlurEffect(style: .Light)
+//        let effView = UIVisualEffectView(effect: eff)
+//        effView.frame = allButton.bounds
+//        effView.userInteractionEnabled = false
+//        
+//        self.allButton.addSubview(effView)
         
-        self.allButton.addSubview(effView)
+        self.allButton.addBlurEffect()
     }
     
     override func didReceiveMemoryWarning() {

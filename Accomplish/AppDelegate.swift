@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: root)
         nav.navigationBarHidden = true
         window?.rootViewController = nav
+//        window?.backgroundColor = Colors().mainGreenColor
         window?.makeKeyAndVisible()
         
         configRealm()

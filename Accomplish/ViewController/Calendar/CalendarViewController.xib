@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="animatedImageView" destination="wNc-GP-9EZ" id="gCz-3R-dsY"/>
                 <outlet property="backButton" destination="9jR-Sg-hIY" id="mOU-to-fpS"/>
                 <outlet property="calendarView" destination="Mzf-lB-vyJ" id="odz-J3-eIK"/>
                 <outlet property="cardView" destination="Ptq-Wo-nZo" id="ysS-LO-bFA"/>
@@ -20,6 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNc-GP-9EZ" customClass="FLAnimatedImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-ye-a0D">
                     <rect key="frame" x="5" y="34" width="54" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -133,14 +138,23 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="wNc-GP-9EZ" secondAttribute="trailing" id="4xU-q1-h6Z"/>
                 <constraint firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" constant="5" id="8HG-kc-QuE"/>
                 <constraint firstItem="9jR-Sg-hIY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9pQ-ZV-68M"/>
+                <constraint firstItem="wNc-GP-9EZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OXH-Zp-aRx"/>
+                <constraint firstAttribute="bottom" secondItem="wNc-GP-9EZ" secondAttribute="bottom" id="RWx-bc-SeL"/>
                 <constraint firstAttribute="bottom" secondItem="9jR-Sg-hIY" secondAttribute="bottom" constant="10" id="RkC-ij-2oO"/>
                 <constraint firstItem="7gR-ye-a0D" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" id="Xmk-Zl-Y7O"/>
+                <constraint firstItem="wNc-GP-9EZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fnV-dw-Y7g"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="mhE-De-zRU"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="7gR-ye-a0D" secondAttribute="bottom" constant="10" id="qF2-mC-VkY"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="sqz-87-6su"/>
             </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="wNc-GP-9EZ"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

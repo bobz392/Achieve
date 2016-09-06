@@ -198,33 +198,22 @@ class HomeViewController: BaseViewController {
         self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
     }
     
-    // 在app 进入前台的时候需要检查两种状态
-    // 第一种就是 timer 
-    // 然后就是 today 中是否有勾选完成的任务
+    // 在app 进入前台的时候需要检查三种种状态
+    // 第一种就是 today 中是否有勾选完成的任务
+    // 然后就是 timer
+    // 最后就是 new day 处理
     private func addNotification() {
         NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidBecomeActiveNotification, object: nil,
             queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
-                self.repeaterManager.isNewDay()
+          
+                self.handelTodayFinish()
+                
+                if self.repeaterManager.isNewDay() {
+                    self.handleNewDay()
+                    self.handleUpdateTodayGroup()
+                }
                 self.timer?.resume()
-                
-                guard let group = GroupUserDefault() else { return }
-                let finishTasks = group.getAllFinishTask()
-                
-                let manager = RealmManager.shareManager
-      
-                let _ = finishTasks.map({ (taskInfoArr) -> Void in
-                    let uuid = taskInfoArr[GroupUserDefault.GroupTaskUUIDIndex]
-                    let dateString = taskInfoArr[GroupUserDefault.GroupTaskFinishDateIndex]
-                    let date = dateString.dateFromString(uuidFormat)
-                    guard let task = self.runningTasks?.filter({ (t) -> Bool in
-                        t.uuid == uuid
-                    }).first else { return }
-                    
-                    manager.updateTaskStatus(task, status: kTaskFinish, updateDate: date)
-                })
-                
-                group.clearTaskFinish()
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName(
@@ -245,6 +234,26 @@ class HomeViewController: BaseViewController {
             })
         
         self.timer?.start()
+    }
+    
+    private func handelTodayFinish() {
+        guard let group = GroupUserDefault() else { return }
+        let finishTasks = group.getAllFinishTask()
+        
+        let manager = RealmManager.shareManager
+        
+        let _ = finishTasks.map({ (taskInfoArr) -> Void in
+            let uuid = taskInfoArr[GroupUserDefault.GroupTaskUUIDIndex]
+            let dateString = taskInfoArr[GroupUserDefault.GroupTaskFinishDateIndex]
+            let date = dateString.dateFromString(uuidFormat)
+            guard let task = self.runningTasks?.filter({ (t) -> Bool in
+                t.uuid == uuid
+            }).first else { return }
+            
+            manager.updateTaskStatus(task, status: kTaskFinish, updateDate: date)
+        })
+        
+        group.clearTaskFinish()
     }
     
     // 当 task list 为空的时候展示对应的 hint
@@ -333,7 +342,9 @@ class HomeViewController: BaseViewController {
         self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
         self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
         
-        handleUpdateTodayGroup()
+        self.realmNoticationToken()
+        
+        self.handleUpdateTodayGroup()
     }
     
     private func handleUpdateTodayGroup() {

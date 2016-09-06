@@ -1,7 +1,6 @@
 github "Alamofire/Alamofire" "3.4.2"
-github "BradLarson/GPUImage" "0.1.7"
+github "Flipboard/FLAnimatedImage" "1.0.12"
 github "SVProgressHUD/SVProgressHUD" "2.0.3"
 github "SnapKit/SnapKit" "0.22.0"
 github "SwiftyJSON/SwiftyJSON" "2.3.3"
-github "ibireme/YYText" "1.0.5"
 github "realm/realm-cocoa" "v1.0.2"

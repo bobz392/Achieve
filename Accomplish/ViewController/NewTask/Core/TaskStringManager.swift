@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import YYText
 
 let kAttributedStringLineSpace: CGFloat = 4
 let kTaskTitleFontSize: CGFloat = 22

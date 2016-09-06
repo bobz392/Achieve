@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YYText
 import SnapKit
 
 class TaskTableViewCell: UITableViewCell {

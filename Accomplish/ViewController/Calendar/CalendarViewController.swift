@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FLAnimatedImage
 
 class CalendarViewController: BaseViewController {
     
@@ -15,6 +16,7 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var weekView: UIView!
+    @IBOutlet weak var animatedImageView: FLAnimatedImageView!
     
     
     override func viewDidLoad() {
@@ -56,9 +58,11 @@ class CalendarViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
+        
         self.titleLabel.textColor = colors.cloudColor
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.clearView()//.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
+        self.navigationController?.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
         let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
@@ -69,12 +73,14 @@ class CalendarViewController: BaseViewController {
     }
     
     private func initializeControl() {
-        self.backButton.addShadow()
+        self.backButton.clearView()//.addShadow()
+        
+        self.backButton.clipsToBounds = true
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
+        
         self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = 4
         
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
@@ -84,6 +90,55 @@ class CalendarViewController: BaseViewController {
         self.calendarView.clearView()
         self.titleLabel.text = Localized("calendar")
         self.calendarView.alpha = 0
+        
+//        guard let url = NSBundle.mainBundle().URLForResource("gif7", withExtension: "gif") else { return }
+//        guard let date = NSData(contentsOfURL: url) else { return }
+//        let image = FLAnimatedImage(animatedGIFData: date, optimalFrameCacheSize: 0, predrawingEnabled: true)
+//        
+//        animatedImageView.contentMode = .ScaleAspectFill
+//        animatedImageView.animatedImage = image
+        
+//        guard let image = UIImage(named: "p2.jpeg") else { return }
+//        animatedImageView.contentMode = .ScaleAspectFill
+//        animatedImageView.image = image
+//            image.blurredImage(5, iterations: 0, ratio: 0, blendColor: nil, blendMode: .Clear)
+        
+//        let eff = UIBlurEffect(style: .ExtraLight)
+//        let effView = UIVisualEffectView(effect: eff)
+//        effView.frame = animatedImageView.bounds
+//        effView.userInteractionEnabled = false
+//        self.animatedImageView.addSubview(effView)
+        
+//                let blurView = DynamicBlurView(frame: view.bounds)
+//                blurView.blurRadius = 2
+//        blurView.blendColor = UIColor.blackColor()
+//        blurView.blendMode = .Color
+//                blurView.dynamicMode = .Common
+//                blurView.refresh()
+//                self.animatedImageView.addSubview(blurView)
+        
+//        let layer = CALayer()
+//        layer.backgroundColor = UIColor.blackColor().CGColor
+//        layer.opacity = 0.6
+//        layer.frame = self.animatedImageView.bounds
+//        self.animatedImageView.layer.addSublayer(layer)
+        
+        
+        let eff = UIBlurEffect(style: .Light)
+        let effView = UIVisualEffectView(effect: eff)
+        effView.frame = self.cardView.bounds
+        effView.userInteractionEnabled = false
+        
+        self.cardView.insertSubview(effView, atIndex: 0)
+        self.cardView.clipsToBounds = true
+        self.cardView.layer.cornerRadius = 4
+        
+        let effbtn = UIBlurEffect(style: .Light)
+        let effbtnView = UIVisualEffectView(effect: effbtn)
+        effbtnView.frame = self.backButton.bounds
+        effbtnView.userInteractionEnabled = false
+        self.backButton.insertSubview(effbtnView, atIndex: 0)
+        
     }
     
     func configWeekView() {

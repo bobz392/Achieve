@@ -71,4 +71,13 @@ extension UIView {
     func clearView() {
         self.backgroundColor = UIColor.clearColor()
     }
+    
+    func addBlurEffect() {
+        let eff = UIBlurEffect(style: .Light)
+        let effView = UIVisualEffectView(effect: eff)
+        effView.frame = self.bounds
+        effView.userInteractionEnabled = false
+        
+        self.insertSubview(effView, atIndex: 0)
+    }
 }

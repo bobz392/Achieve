@@ -32,15 +32,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd5-mt-tzm">
-                    <rect key="frame" x="350" y="539" width="32" height="32"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="cki-2h-1RS"/>
-                        <constraint firstAttribute="height" constant="32" id="fC1-2N-vNo"/>
-                    </constraints>
-                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHa-FE-BbB">
                     <rect key="frame" x="20" y="70" width="560" height="435"/>
                     <subviews>
@@ -124,6 +115,15 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="QcJ-Jc-irn"/>
                         <constraint firstAttribute="width" constant="32" id="zHI-Kq-VOv"/>
+                    </constraints>
+                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cd5-mt-tzm">
+                    <rect key="frame" x="350" y="539" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="cki-2h-1RS"/>
+                        <constraint firstAttribute="height" constant="32" id="fC1-2N-vNo"/>
                     </constraints>
                     <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                 </button>

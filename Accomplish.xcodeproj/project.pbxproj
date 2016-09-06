@@ -166,15 +166,6 @@
 		C79806531D7D86510011DE19 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C79806291D7D86070011DE19 /* SnapKit.framework.dSYM */; };
 		C79806541D7D86510011DE19 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C798062B1D7D86070011DE19 /* SVProgressHUD.framework.dSYM */; };
 		C79806551D7D86510011DE19 /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C798062D1D7D86070011DE19 /* SwiftyJSON.framework.dSYM */; };
-		C79806591D7D86FB0011DE19 /* gif1.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79806581D7D86FB0011DE19 /* gif1.gif */; };
-		C798065B1D7D8ABD0011DE19 /* gif2.gif in Resources */ = {isa = PBXBuildFile; fileRef = C798065A1D7D8ABD0011DE19 /* gif2.gif */; };
-		C798065D1D7D8B780011DE19 /* gif3.gif in Resources */ = {isa = PBXBuildFile; fileRef = C798065C1D7D8B780011DE19 /* gif3.gif */; };
-		C798065F1D7D8D100011DE19 /* gif4.gif in Resources */ = {isa = PBXBuildFile; fileRef = C798065E1D7D8D100011DE19 /* gif4.gif */; };
-		C79806611D7D8E840011DE19 /* gif5.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79806601D7D8E840011DE19 /* gif5.gif */; };
-		C79806631D7D8EA20011DE19 /* gif6.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79806621D7D8EA20011DE19 /* gif6.gif */; };
-		C79806651D7D8F980011DE19 /* p1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C79806641D7D8F980011DE19 /* p1.jpeg */; };
-		C79806671D7D929C0011DE19 /* p2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C79806661D7D929C0011DE19 /* p2.jpeg */; };
-		C79806691D7E32800011DE19 /* gif7.gif in Resources */ = {isa = PBXBuildFile; fileRef = C79806681D7E32800011DE19 /* gif7.gif */; };
 		C798066A1D7E33BE0011DE19 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
@@ -415,15 +406,6 @@
 		C798062B1D7D86070011DE19 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C798062C1D7D86070011DE19 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		C798062D1D7D86070011DE19 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
-		C79806581D7D86FB0011DE19 /* gif1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif1.gif; sourceTree = "<group>"; };
-		C798065A1D7D8ABD0011DE19 /* gif2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif2.gif; sourceTree = "<group>"; };
-		C798065C1D7D8B780011DE19 /* gif3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif3.gif; sourceTree = "<group>"; };
-		C798065E1D7D8D100011DE19 /* gif4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif4.gif; sourceTree = "<group>"; };
-		C79806601D7D8E840011DE19 /* gif5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif5.gif; sourceTree = "<group>"; };
-		C79806621D7D8EA20011DE19 /* gif6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif6.gif; sourceTree = "<group>"; };
-		C79806641D7D8F980011DE19 /* p1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = p1.jpeg; sourceTree = "<group>"; };
-		C79806661D7D929C0011DE19 /* p2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = p2.jpeg; sourceTree = "<group>"; };
-		C79806681D7E32800011DE19 /* gif7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif7.gif; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -767,15 +749,6 @@
 				C7105F8C1D6CCDA90096A1A3 /* Tool */,
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
 				C7860E471D6C23FF000281FA /* Assets.xcassets */,
-				C798065E1D7D8D100011DE19 /* gif4.gif */,
-				C79806661D7D929C0011DE19 /* p2.jpeg */,
-				C79806641D7D8F980011DE19 /* p1.jpeg */,
-				C798065A1D7D8ABD0011DE19 /* gif2.gif */,
-				C798065C1D7D8B780011DE19 /* gif3.gif */,
-				C79806581D7D86FB0011DE19 /* gif1.gif */,
-				C79806601D7D8E840011DE19 /* gif5.gif */,
-				C79806681D7E32800011DE19 /* gif7.gif */,
-				C79806621D7D8EA20011DE19 /* gif6.gif */,
 				C7860E4C1D6C23FF000281FA /* Info.plist */,
 				C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */,
 				C77192821D6CFCAF00437560 /* Launch Screen.storyboard */,
@@ -1010,29 +983,20 @@
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
 				C79806331D7D86070011DE19 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
-				C798065F1D7D8D100011DE19 /* gif4.gif in Resources */,
 				C79806311D7D86070011DE19 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */,
 				C79806361D7D86070011DE19 /* 97E493D8-3E85-3420-A120-4079769FC6BB.bcsymbolmap in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
 				C79806301D7D86070011DE19 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
-				C79806651D7D8F980011DE19 /* p1.jpeg in Resources */,
 				C798063D1D7D86070011DE19 /* DDCFA124-933E-36E6-9147-8BBCAA6BA7FB.bcsymbolmap in Resources */,
-				C79806671D7D929C0011DE19 /* p2.jpeg in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
 				C798062F1D7D86070011DE19 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
-				C79806611D7D8E840011DE19 /* gif5.gif in Resources */,
-				C79806591D7D86FB0011DE19 /* gif1.gif in Resources */,
-				C798065D1D7D8B780011DE19 /* gif3.gif in Resources */,
 				C798063B1D7D86070011DE19 /* B2D77D44-5706-3C96-A891-BD6343A2D730.bcsymbolmap in Resources */,
-				C79806691D7E32800011DE19 /* gif7.gif in Resources */,
 				C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */,
 				C798063C1D7D86070011DE19 /* D6C01220-C776-3F94-8C51-8B1DBAB0FEDF.bcsymbolmap in Resources */,
 				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
-				C798065B1D7D8ABD0011DE19 /* gif2.gif in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
-				C79806631D7D8EA20011DE19 /* gif6.gif in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
 				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,

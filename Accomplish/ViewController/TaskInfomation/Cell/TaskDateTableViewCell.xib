@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sadasldasdasdasdasdasdasdasdsssdasdasdasd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsZ-4J-U5H">
-                        <rect key="frame" x="52" y="12" width="216" height="19.5"/>
+                        <rect key="frame" x="51" y="12" width="217" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -27,10 +27,10 @@
                         </constraints>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="trC-wy-WS5">
-                        <rect key="frame" x="17" y="13" width="18" height="18"/>
+                        <rect key="frame" x="17" y="13.5" width="17" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="18" id="U6U-R2-izN"/>
-                            <constraint firstAttribute="width" constant="18" id="y2h-3o-e0I"/>
+                            <constraint firstAttribute="height" constant="17" id="U6U-R2-izN"/>
+                            <constraint firstAttribute="width" constant="17" id="y2h-3o-e0I"/>
                         </constraints>
                     </imageView>
                 </subviews>

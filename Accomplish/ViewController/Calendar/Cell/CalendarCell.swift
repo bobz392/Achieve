@@ -21,25 +21,8 @@ class CalendarCell: JTAppleDayCellView {
         configureTextColor(cellState, date: date)
         
         // Setup cell selection status
-        delayRunOnMainThread(0.0) {
-            self.configueViewIntoBubbleView(cellState)
-        }
-        
-        // Configure Visibility
-        //        configureVisibility(cellState)
+        self.configueViewIntoBubbleView(cellState)
     }
-    
-    //    func configureVisibility(cellState: CellState) {
-    //        if
-    //            cellState.dateBelongsTo == .ThisMonth ||
-    //                cellState.dateBelongsTo == .PreviousMonthWithinBoundary ||
-    //                cellState.dateBelongsTo == .FollowingMonthWithinBoundary {
-    //            self.hidden = false
-    //        } else {
-    //            self.hidden = false
-    //        }
-    //
-    //    }
     
     func configureTextColor(cellState: CellState, date: NSDate) {
         let colors = Colors()
@@ -47,7 +30,7 @@ class CalendarCell: JTAppleDayCellView {
             self.dateLabel.textColor = colors.cloudColor
         } else {
             if date.isToday() {
-                self.dateLabel.textColor = colors.linkTextColor
+                self.dateLabel.textColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
             } else if cellState.dateBelongsTo == .ThisMonth {
                 self.dateLabel.textColor = colors.mainTextColor
             } else {
@@ -60,11 +43,9 @@ class CalendarCell: JTAppleDayCellView {
     
     func cellSelectionChanged(cellState: CellState, date: NSDate) {
         if cellState.isSelected == true {
-            if selectedView.hidden == true {
-                configueViewIntoBubbleView(cellState)
-                selectedView.animateWithBounceEffect(withCompletionHandler: {
-                })
-            }
+            configueViewIntoBubbleView(cellState)
+            selectedView.animateWithBounceEffect(withCompletionHandler: { })
+            
         } else {
             configueViewIntoBubbleView(cellState, animateDeselection: true)
         }

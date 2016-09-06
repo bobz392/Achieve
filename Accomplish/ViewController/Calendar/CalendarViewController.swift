@@ -18,6 +18,7 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var animatedImageView: FLAnimatedImageView!
     
+    private var row = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class CalendarViewController: BaseViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .Default
+        return .LightContent
     }
     
     override func configMainUI() {
@@ -85,58 +86,9 @@ class CalendarViewController: BaseViewController {
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
         self.calendarView.cellInset = CGPoint(x: 0, y: 0)
-        self.calendarView.allowsMultipleSelection = false
         self.calendarView.registerCellViewXib(fileName: "CalendarCell")
         self.calendarView.clearView()
         self.calendarView.alpha = 0
-        
-//        guard let url = NSBundle.mainBundle().URLForResource("gif7", withExtension: "gif") else { return }
-//        guard let date = NSData(contentsOfURL: url) else { return }
-//        let image = FLAnimatedImage(animatedGIFData: date, optimalFrameCacheSize: 0, predrawingEnabled: true)
-//        
-//        animatedImageView.contentMode = .ScaleAspectFill
-//        animatedImageView.animatedImage = image
-        
-//        guard let image = UIImage(named: "p2.jpeg") else { return }
-//        animatedImageView.contentMode = .ScaleAspectFill
-//        animatedImageView.image = image
-//            image.blurredImage(5, iterations: 0, ratio: 0, blendColor: nil, blendMode: .Clear)
-        
-//        let eff = UIBlurEffect(style: .ExtraLight)
-//        let effView = UIVisualEffectView(effect: eff)
-//        effView.frame = animatedImageView.bounds
-//        effView.userInteractionEnabled = false
-//        self.animatedImageView.addSubview(effView)
-        
-//                let blurView = DynamicBlurView(frame: view.bounds)
-//                blurView.blurRadius = 2
-//        blurView.blendColor = UIColor.blackColor()
-//        blurView.blendMode = .Color
-//                blurView.dynamicMode = .Common
-//                blurView.refresh()
-//                self.animatedImageView.addSubview(blurView)
-        
-//        let layer = CALayer()
-//        layer.backgroundColor = UIColor.blackColor().CGColor
-//        layer.opacity = 0.6
-//        layer.frame = self.animatedImageView.bounds
-//        self.animatedImageView.layer.addSublayer(layer)
-        
-//        let eff = UIBlurEffect(style: .Light)
-//        let effView = UIVisualEffectView(effect: eff)
-//        effView.frame = self.cardView.bounds
-//        effView.userInteractionEnabled = false
-//        
-//        self.cardView.insertSubview(effView, atIndex: 0)
-//        self.cardView.clipsToBounds = true
-//        self.cardView.layer.cornerRadius = 4
-//        
-//        let effbtn = UIBlurEffect(style: .Light)
-//        let effbtnView = UIVisualEffectView(effect: effbtn)
-//        effbtnView.frame = self.backButton.bounds
-//        effbtnView.userInteractionEnabled = false
-//        self.backButton.insertSubview(effbtnView, atIndex: 0)
-        
     }
     
     func configWeekView() {
@@ -161,10 +113,9 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         let firstDate = formatter.dateFromString("2016 01 05")
         let secondDate = NSDate()
-        let numberOfRows = 6
         let aCalendar = NSCalendar.currentCalendar() // Properly configure your calendar to your time zone here
         
-        return (startDate: firstDate!, endDate: secondDate, numberOfRows: numberOfRows, calendar: aCalendar)
+        return (startDate: firstDate!, endDate: secondDate, numberOfRows: row, calendar: aCalendar)
     }
     
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
@@ -187,6 +138,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(calendar: JTAppleCalendarView, canSelectDate date: NSDate, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
+        guard let cell = cell as? CalendarCell else { return true }
         return true
     }
 }

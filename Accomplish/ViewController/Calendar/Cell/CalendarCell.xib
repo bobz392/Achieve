@@ -27,6 +27,14 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aee-gJ-a1x">
+                    <rect key="frame" x="298" y="309" width="4" height="4"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="4" id="bKM-Vx-8AI"/>
+                        <constraint firstAttribute="height" constant="4" id="fGW-pE-Vb7"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -35,6 +43,8 @@
                 <constraint firstItem="B1z-kN-nfz" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" constant="1" id="PSl-IB-H00"/>
                 <constraint firstItem="B1z-kN-nfz" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="eMJ-Fb-DOG"/>
                 <constraint firstItem="B1z-kN-nfz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gmJ-4p-F1A"/>
+                <constraint firstItem="Aee-gJ-a1x" firstAttribute="centerX" secondItem="IPU-Il-8uQ" secondAttribute="centerX" id="iPJ-9k-U2F"/>
+                <constraint firstItem="Aee-gJ-a1x" firstAttribute="top" secondItem="IPU-Il-8uQ" secondAttribute="bottom" id="qlj-hH-Z6L"/>
                 <constraint firstItem="B1z-kN-nfz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zrR-F6-EO8"/>
             </constraints>
             <variation key="default">
@@ -45,6 +55,7 @@
             </variation>
             <connections>
                 <outlet property="dateLabel" destination="IPU-Il-8uQ" id="NXT-lA-p6n"/>
+                <outlet property="hasTaskView" destination="Aee-gJ-a1x" id="Csa-e9-jMd"/>
                 <outlet property="selectedView" destination="B1z-kN-nfz" id="UYu-UY-Rqw"/>
             </connections>
         </view>

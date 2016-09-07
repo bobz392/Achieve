@@ -57,18 +57,19 @@ class RealmManager {
         return tasks
     }
     
-    func queryYesterdayTaskCount() -> (finish: Int, running: Int) {
-        let queryDate = NSDate().dateBySubtractingDays(1).createdFormatedDateString()
+    func queryYesterdayTaskCount() -> (complete: Int, created: Int) {
+        let yesterday = NSDate().dateBySubtractingDays(1)
+        return queryTaskCount(yesterday)
+    }
+    
+    func queryTaskCount(date: NSDate) -> (complete: Int, created: Int) {
+        let task = realm.objects(Task.self)
+            .filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
         
-        let runningCount = realm.objects(Task.self)
-            .filter("createdFormattedDate = '\(queryDate)' AND status  = \(kTaskRunning)")
-            .count
-        let finishCount = realm
-            .objects(Task.self)
-            .filter("createdFormattedDate = '\(queryDate)' AND status != \(kTaskRunning)")
-            .count
+        let created = task.count
+        let complete = task.filter("status == \(kTaskFinish)").count
         
-        return (finishCount, runningCount)
+        return (complete, created)
     }
     
     func queryTask(taskUUID: String) -> Task? {
@@ -134,19 +135,28 @@ class RealmManager {
     }
 }
 
+// 以后为多个年的chekc in 优化
 extension RealmManager {
-    func queryCheckIn(year: Int, month: Int, day: Int) -> CheckIn? {
+    func queryFirstCheckIn() -> CheckIn? {
+        return realm.objects(CheckIn.self).sorted("checkInDate", ascending: true).first
+    }
+    
+    func queryCheckIn(formatedDate: String) -> CheckIn? {
         return realm.objects(CheckIn.self)
-            .filter("year = \(year) and month = \(month) and day = \(day)")
+            .filter("formatedDate = '\(formatedDate)'")
             .first
     }
     
     func saveCheckIn(checkIn: CheckIn) {
-        if let old = queryCheckIn(checkIn.year, month: checkIn.month, day: checkIn.day) {
+        if let old = queryCheckIn(checkIn.formatedDate) {
             deleteObject(old)
         }
         
         writeObject(checkIn)
+    }
+    
+    func allCheckIn() -> Results<CheckIn> {
+        return realm.objects(CheckIn.self)
     }
 }
 

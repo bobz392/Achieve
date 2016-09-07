@@ -11,17 +11,27 @@ import UIKit
 class CalendarCell: JTAppleDayCellView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectedView: AnimationView!
+    @IBOutlet weak var hasTaskView: UIView!
     
-    func setupCellBeforeDisplay(cellState: CellState, date: NSDate) {
-        // Setup Cell text
-        dateLabel.text = cellState.text
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
         self.clearView()
-        // Setup text color
-        configureTextColor(cellState, date: date)
+        self.hasTaskView.layer.cornerRadius = 2
+        self.hasTaskView.backgroundColor = Colors().priorityLowColor
+    }
+    
+    func setupCellBeforeDisplay(cellState: CellState, date: NSDate, hasTask: Bool) {
         
-        // Setup cell selection status
+        dateLabel.text = cellState.text
+        
+        self.configureTextColor(cellState, date: date)
+        self.configureHasTaskView(hasTask)
         self.configueViewIntoBubbleView(cellState)
+    }
+    
+    private func configureHasTaskView(hasTask: Bool) {
+        self.hasTaskView.hidden = !hasTask
     }
     
     func configureTextColor(cellState: CellState, date: NSDate) {

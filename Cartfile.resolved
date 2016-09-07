@@ -1,5 +1,5 @@
 github "Alamofire/Alamofire" "3.4.2"
-github "Flipboard/FLAnimatedImage" "1.0.12"
+github "danielgindi/Charts" "v2.2.5"
 github "SVProgressHUD/SVProgressHUD" "2.0.3"
 github "SnapKit/SnapKit" "0.22.0"
 github "SwiftyJSON/SwiftyJSON" "2.3.3"

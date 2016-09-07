@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FLAnimatedImage
 
 class CalendarViewController: BaseViewController {
     
@@ -16,9 +15,19 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var weekView: UIView!
-    @IBOutlet weak var animatedImageView: FLAnimatedImageView!
+    @IBOutlet weak var circleView: CircleProgressView!
     
-    private var row = 6
+    @IBOutlet weak var createdLabel: UICountingLabel!
+    @IBOutlet weak var completedLabel: UICountingLabel!
+    @IBOutlet weak var showDetailButton: UIButton!
+    @IBOutlet weak var createdTitleLable: UILabel!
+    @IBOutlet weak var completedTitleLabel: UILabel!
+    
+    @IBOutlet weak var dayDetail: UIButton!
+    
+    lazy private var checkInManager = CheckInManager()
+    lazy private var firstDate = RealmManager.shareManager.queryFirstCheckIn()?.checkInDate ?? NSDate()
+    lazy private var row = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +78,16 @@ class CalendarViewController: BaseViewController {
         cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.backButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
         
+        self.dayDetail.setTitle(Localized("calendarReport"), forState: .Normal)
+        self.dayDetail.setTitleColor(colors.cloudColor, forState: .Normal)
+        self.dayDetail.addTarget(self, action: #selector(self.checkReport), forControlEvents: .TouchUpInside)
+        
         self.configWeekView()
+        
+        self.createdLabel.textColor = colors.mainTextColor
+        self.completedLabel.textColor = colors.mainTextColor
+        self.createdTitleLable.textColor = colors.mainTextColor
+        self.completedTitleLabel.textColor = colors.mainTextColor
     }
     
     private func initializeControl() {
@@ -89,6 +107,16 @@ class CalendarViewController: BaseViewController {
         self.calendarView.registerCellViewXib(fileName: "CalendarCell")
         self.calendarView.clearView()
         self.calendarView.alpha = 0
+        
+        self.configCountingLabel(self.createdLabel)
+        self.configCountingLabel(self.completedLabel)
+    }
+    
+    func configCountingLabel(countLabel: UICountingLabel) {
+        countLabel.numberOfLines = 1
+        countLabel.animationDuration = kCalendarProgressAnimationDuration
+        countLabel.method = .EaseOut
+        countLabel.format = "%d"
     }
     
     func configWeekView() {
@@ -104,28 +132,33 @@ class CalendarViewController: BaseViewController {
     func cancelAction() {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    func checkReport() {
+    
+    }
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy MM dd"
         
-        let firstDate = formatter.dateFromString("2016 01 05")
         let secondDate = NSDate()
-        let aCalendar = NSCalendar.currentCalendar() // Properly configure your calendar to your time zone here
+        let aCalendar = NSCalendar.currentCalendar()
         
-        return (startDate: firstDate!, endDate: secondDate, numberOfRows: row, calendar: aCalendar)
+        return (startDate: self.firstDate, endDate: secondDate, numberOfRows: row, calendar: aCalendar)
     }
     
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
-        cell.setupCellBeforeDisplay(cellState, date: date)
+        
+        cell.setupCellBeforeDisplay(cellState, date: date,
+                                    hasTask: checkInManager.dateIsCheckIn(date)?.createdCount > 0)
     }
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
+        
+        self.showInfoWhenNeed(date)
     }
     
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
@@ -138,8 +171,15 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(calendar: JTAppleCalendarView, canSelectDate date: NSDate, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
-        guard let cell = cell as? CalendarCell else { return true }
-        return true
+        return !cellState.isSelected && !circleView.isInAnimation()
+    }
+    
+    // 选中当前的date的进度 和 任务数量的动画
+    private func showInfoWhenNeed(date: NSDate) {
+        let task = RealmManager.shareManager.queryTaskCount(date)
+        self.circleView.start(completed: task.complete, created: task.created)
+        self.createdLabel.countFrom(0, to: CGFloat(task.created))
+        self.completedLabel.countFrom(0, to: CGFloat(task.complete))
     }
 }
 

@@ -9,10 +9,10 @@
 import UIKit
 
 struct Colors {
-    let mainGreenColor = UIColor(red:0.10, green:0.74, blue:0.61, alpha:1.00)
+    let mainGreenColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)//UIColor(red:0.10, green:0.74, blue:0.61, alpha:1.00)
     let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
-    let selectedColor = UIColor(red:0.64, green:0.87, blue:0.82, alpha:1.00)
+    let selectedColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:0.3)//UIColor(red:0.64, green:0.87, blue:0.82, alpha:1.00)
     let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
     let priorityNormalColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)

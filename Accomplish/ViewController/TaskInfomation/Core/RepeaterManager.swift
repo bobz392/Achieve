@@ -39,15 +39,13 @@ struct RepeaterManager {
     }
     
     private func createCheckIn(now: NSDate) {
-        let localYesterday = now.dateBySubtractingDays(1).toLocalDate()
         let checkIn = CheckIn()
-        checkIn.year = localYesterday.year()
-        checkIn.day = localYesterday.day()
-        checkIn.month = localYesterday.month()
-        
-        let c = RealmManager.shareManager.queryYesterdayTaskCount()
-        checkIn.finishCount = c.finish
-        checkIn.runningCount = c.running
+        let checkInDate = now.dateBySubtractingDays(1)
+        checkIn.checkInDate = checkInDate
+        checkIn.formatedDate = checkInDate.formattedDateWithFormat(createdDateFormat)
+        let task = RealmManager.shareManager.queryYesterdayTaskCount()
+        checkIn.completedCount = task.complete
+        checkIn.createdCount = task.created
         
         RealmManager.shareManager.saveCheckIn(checkIn)
     }

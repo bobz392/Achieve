@@ -287,6 +287,7 @@ class HomeViewController: BaseViewController {
                 
             case .Update(_, let deletions, let insertions, let modifications):
                 self.handleUpdate(deletions, insertions: insertions, modifications: modifications)
+                self.handleUpdateTodayGroup()
                 
             case .Error(let error):
                 print(error)

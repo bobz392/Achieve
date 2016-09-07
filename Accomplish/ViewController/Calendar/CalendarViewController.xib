@@ -3,14 +3,22 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
-                <outlet property="animatedImageView" destination="wNc-GP-9EZ" id="gCz-3R-dsY"/>
                 <outlet property="backButton" destination="9jR-Sg-hIY" id="mOU-to-fpS"/>
                 <outlet property="calendarView" destination="Mzf-lB-vyJ" id="odz-J3-eIK"/>
                 <outlet property="cardView" destination="Ptq-Wo-nZo" id="ysS-LO-bFA"/>
+                <outlet property="circleView" destination="ykf-Pj-aTB" id="XBL-04-bgK"/>
+                <outlet property="completedLabel" destination="6qq-4T-ld4" id="zgE-Td-A5c"/>
+                <outlet property="completedTitleLabel" destination="KUt-8r-SET" id="pfC-yc-JrR"/>
+                <outlet property="createdLabel" destination="kYH-Ed-2rT" id="gqE-em-tiY"/>
+                <outlet property="createdTitleLable" destination="sIG-WB-n4S" id="OC9-VK-9ZL"/>
+                <outlet property="dayDetail" destination="sIN-iL-ftt" id="tM6-t0-VMg"/>
+                <outlet property="showDetailButton" destination="sIN-iL-ftt" id="4bE-Uk-RxT"/>
                 <outlet property="titleLabel" destination="7gR-ye-a0D" id="zeG-oi-9Th"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekView" destination="m29-D1-27Q" id="ljX-09-ouT"/>
@@ -21,10 +29,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNc-GP-9EZ" customClass="FLAnimatedImageView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-ye-a0D">
                     <rect key="frame" x="5" y="34" width="54" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -135,26 +139,68 @@
                     <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykf-Pj-aTB" customClass="CircleProgressView" customModule="Accomplish" customModuleProvider="target">
+                    <rect key="frame" x="210" y="349" width="179" height="179"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="1:1" id="iNt-r2-SdQ"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-iL-ftt">
+                    <rect key="frame" x="259.5" y="425" width="80" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Daily Report">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CREATED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIG-WB-n4S">
+                    <rect key="frame" x="474" y="516" width="42" height="11"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYH-Ed-2rT" customClass="UICountingLabel">
+                    <rect key="frame" x="483" y="491" width="24.5" height="20"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="COMPLETED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUt-8r-SET">
+                    <rect key="frame" x="76" y="516" width="57" height="11"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-4T-ld4" customClass="UICountingLabel">
+                    <rect key="frame" x="93" y="491" width="24.5" height="20"/>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="wNc-GP-9EZ" secondAttribute="trailing" id="4xU-q1-h6Z"/>
+                <constraint firstItem="KUt-8r-SET" firstAttribute="top" secondItem="6qq-4T-ld4" secondAttribute="bottom" constant="5" id="0Xx-hD-w7O"/>
+                <constraint firstItem="ykf-Pj-aTB" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="39" id="56l-Qv-qe8"/>
                 <constraint firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" constant="5" id="8HG-kc-QuE"/>
                 <constraint firstItem="9jR-Sg-hIY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9pQ-ZV-68M"/>
-                <constraint firstItem="wNc-GP-9EZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OXH-Zp-aRx"/>
-                <constraint firstAttribute="bottom" secondItem="wNc-GP-9EZ" secondAttribute="bottom" id="RWx-bc-SeL"/>
+                <constraint firstItem="kYH-Ed-2rT" firstAttribute="centerX" secondItem="sIG-WB-n4S" secondAttribute="centerX" id="Duf-8W-ZoF"/>
+                <constraint firstItem="ykf-Pj-aTB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Dzo-IH-z78"/>
+                <constraint firstItem="sIG-WB-n4S" firstAttribute="top" secondItem="kYH-Ed-2rT" secondAttribute="bottom" constant="5" id="JfC-D2-od5"/>
+                <constraint firstItem="6qq-4T-ld4" firstAttribute="centerX" secondItem="KUt-8r-SET" secondAttribute="centerX" id="Kcm-ws-5wV"/>
                 <constraint firstAttribute="bottom" secondItem="9jR-Sg-hIY" secondAttribute="bottom" constant="10" id="RkC-ij-2oO"/>
+                <constraint firstItem="sIG-WB-n4S" firstAttribute="bottom" secondItem="ykf-Pj-aTB" secondAttribute="bottom" id="Srh-fO-TgK"/>
                 <constraint firstItem="7gR-ye-a0D" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" id="Xmk-Zl-Y7O"/>
-                <constraint firstItem="wNc-GP-9EZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fnV-dw-Y7g"/>
+                <constraint firstItem="KUt-8r-SET" firstAttribute="centerY" secondItem="sIG-WB-n4S" secondAttribute="centerY" id="cRs-JP-Lzt"/>
+                <constraint firstItem="KUt-8r-SET" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.35" id="lzi-nv-fLw"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="mhE-De-zRU"/>
+                <constraint firstItem="sIN-iL-ftt" firstAttribute="centerY" secondItem="ykf-Pj-aTB" secondAttribute="centerY" constant="1" id="nGY-r4-Jao"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="7gR-ye-a0D" secondAttribute="bottom" constant="10" id="qF2-mC-VkY"/>
+                <constraint firstItem="sIG-WB-n4S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.65" id="roj-Yz-02v"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="sqz-87-6su"/>
+                <constraint firstItem="9jR-Sg-hIY" firstAttribute="top" secondItem="ykf-Pj-aTB" secondAttribute="bottom" constant="20" id="v8K-v7-OWV"/>
+                <constraint firstItem="sIN-iL-ftt" firstAttribute="centerX" secondItem="ykf-Pj-aTB" secondAttribute="centerX" id="vB0-db-mrK"/>
             </constraints>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="wNc-GP-9EZ"/>
-                </mask>
-            </variation>
         </view>
     </objects>
 </document>

@@ -57,11 +57,6 @@ class RealmManager {
         return tasks
     }
     
-    func queryYesterdayTaskCount() -> (complete: Int, created: Int) {
-        let yesterday = NSDate().dateBySubtractingDays(1)
-        return queryTaskCount(yesterday)
-    }
-    
     func queryTaskCount(date: NSDate) -> (complete: Int, created: Int) {
         let task = realm.objects(Task.self)
             .filter("createdFormattedDate = '\(date.createdFormatedDateString())'")

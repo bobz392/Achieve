@@ -43,7 +43,7 @@ struct RepeaterManager {
         let checkInDate = now.dateBySubtractingDays(1)
         checkIn.checkInDate = checkInDate
         checkIn.formatedDate = checkInDate.formattedDateWithFormat(createdDateFormat)
-        let task = RealmManager.shareManager.queryYesterdayTaskCount()
+        let task = RealmManager.shareManager.queryTaskCount(checkInDate)
         checkIn.completedCount = task.complete
         checkIn.createdCount = task.created
         

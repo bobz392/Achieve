@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.backgroundColor = Colors().mainGreenColor
         window?.makeKeyAndVisible()
         
+        application.applicationIconBadgeNumber = 0
         configRealm()
         register(application)
         HUD.sharedHUD.config()

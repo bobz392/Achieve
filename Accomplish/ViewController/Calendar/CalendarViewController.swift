@@ -59,6 +59,8 @@ class CalendarViewController: BaseViewController {
                 self.calendarView.alpha = 1
                 })
         }
+        
+        RealmManager.shareManager.queryAll(CheckIn.self)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -134,7 +136,7 @@ class CalendarViewController: BaseViewController {
     }
     
     func checkReport() {
-    
+        
     }
 }
 
@@ -151,7 +153,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         guard let cell = cell as? CalendarCell else { return }
         
         cell.setupCellBeforeDisplay(cellState, date: date,
-                                    hasTask: checkInManager.dateIsCheckIn(date)?.createdCount > 0)
+                                    hasTask: checkInManager.checkInWithDate(date)?.createdCount > 0)
     }
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
@@ -176,10 +178,18 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     // 选中当前的date的进度 和 任务数量的动画
     private func showInfoWhenNeed(date: NSDate) {
-        let task = RealmManager.shareManager.queryTaskCount(date)
-        self.circleView.start(completed: task.complete, created: task.created)
-        self.createdLabel.countFrom(0, to: CGFloat(task.created))
-        self.completedLabel.countFrom(0, to: CGFloat(task.complete))
+        let created: Int
+        let completed: Int
+        if let checkIn = self.checkInManager.checkInWithDate(date) {
+            created = checkIn.createdCount
+            completed = checkIn.completedCount
+        } else {
+            created = 0
+            completed = 0
+        }
+        self.circleView.start(completed: completed, created: created)
+        self.createdLabel.countFrom(0, to: CGFloat(created))
+        self.completedLabel.countFrom(0, to: CGFloat(completed))
     }
 }
 

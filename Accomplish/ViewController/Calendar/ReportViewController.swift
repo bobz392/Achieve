@@ -11,7 +11,7 @@ import RealmSwift
 
 class ReportViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    //    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scheduleTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     
@@ -46,15 +46,15 @@ class ReportViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
-
+        //        self.titleLabel.textColor = colors.cloudColor
+        
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
         let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
         cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.backButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
-
+        
     }
     
     private func initializeControl() {
@@ -64,16 +64,7 @@ class ReportViewController: BaseViewController {
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.backAction), forControlEvents: .TouchUpInside)
         
-        if checkInDate.isToday() {
-            self.titleLabel.text = Localized("schedule") + Localized("today")
-        } else if checkInDate.isTomorrow() {
-            self.titleLabel.text = Localized("schedule") + Localized("tomorrow")
-        } else if checkInDate.isYesterday() {
-            self.titleLabel.text = Localized("schedule") + Localized("yesterday")
-        } else {
-            self.titleLabel.text = Localized("schedule") + " "
-                + checkInDate.formattedDateWithStyle(.MediumStyle)
-        }
+        
     }
     
     // MARK: - actions
@@ -89,6 +80,25 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         self.scheduleTableView.registerNib(ScheduleTableViewCell.nib, forCellReuseIdentifier: ScheduleTableViewCell.reuseId)
         
         self.scheduleTableView.tableFooterView = UIView()
+        guard let headerView = ScheduleHeaderView.loadNib(self) else { return }
+        
+        headerView.frame = CGRect(origin: CGPointZero, size: CGSize(width: screenBounds.width, height: 50))
+        if checkInDate.isToday() {
+            headerView.titleLableView.text = Localized("schedule") + Localized("today")
+        } else if checkInDate.isTomorrow() {
+            headerView.titleLableView.text = Localized("schedule") + Localized("tomorrow")
+        } else if checkInDate.isYesterday() {
+            headerView.titleLableView.text = Localized("schedule") + Localized("yesterday")
+        } else {
+            headerView.titleLableView.text = Localized("schedule") + " "
+                + checkInDate.formattedDateWithStyle(.MediumStyle)
+        }
+        self.scheduleTableView.tableHeaderView = headerView
+        self.scheduleTableView.tableHeaderView?.snp_makeConstraints(closure: { (make) in
+            make.top.equalTo(self.scheduleTableView)
+            make.height.equalTo(50)
+            make.leading.equalTo(self.scheduleTableView)
+        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -32,7 +32,7 @@ class ScheduleTableViewCell: UITableViewCell {
         let colors = Colors()
         self.lineView.backgroundColor = colors.cloudColor
         
-        self.statusLabel.layer.cornerRadius = 8
+        self.statusLabel.layer.cornerRadius = 10
         self.statusLabel.backgroundColor = colors.cloudColor
         self.tasksLabel.textColor = colors.cloudColor
         self.createdTimeLabel.textColor = colors.cloudColor

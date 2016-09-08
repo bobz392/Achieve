@@ -162,7 +162,6 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
-        
         self.showInfoWhenNeed(date)
     }
     
@@ -199,6 +198,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.circleView.start(completed: completed, created: created)
         self.createdLabel.countFrom(0, to: CGFloat(created))
         self.completedLabel.countFrom(0, to: CGFloat(completed))
+        
+        self.showDetailButton.hidden = created <= 0
     }
 }
 

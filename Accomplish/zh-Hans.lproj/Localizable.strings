@@ -11,6 +11,7 @@
 "completed"="已完成";
 "emptyTask"="没有新任务，放松一下 :)";
 "emptyFinishTask"="没有已经结束的任务";
+"emptyHint"="空空如也";
 
 "noPermission"="没有权限";
 "abPermission"="目前没有读取通讯录的权限，该权限可以在“系统设置 > 隐私 > 联系人”中开启";
@@ -92,7 +93,11 @@
 "systemTaskHint"="在内置动作中您可以快速添加一个任务，例如给谁通话、短讯给谁、创建一个购物清单，等等。并且您可以直接通过点击推送通知来执行您的动作。（例如通话、写短讯，等）";
 
 // calendar
-"calendarReport"="查看报表";
+"calendarReport"="查看日程";
+"schedule"="日程-";
+"completedAt"="完成于 ";
+"notCompleted"="没有完成";
+"notComoletedYet"="还未完成";
 
 // today
 "noTaskToday"="您今天没有新任务。";

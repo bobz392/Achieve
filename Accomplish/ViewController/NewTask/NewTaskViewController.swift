@@ -250,12 +250,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         task.subTaskCount = subTasks.count
         let now = NSDate()
         task.createdDate = now
-        let taskUUID = now.createTaskUUID()
         
         let tasks = subTasks.enumerate().flatMap({ (index: Int, sub: String) -> Subtask? in
             guard sub.characters.count > 0 else { return nil }
             let subtask = Subtask()
-            subtask.rootUUID = taskUUID
+            subtask.rootUUID = task.uuid
             let createdDate = now.dateByAddingSeconds(index)
             subtask.createdDate = createdDate
             subtask.taskToDo = sub

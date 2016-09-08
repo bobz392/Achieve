@@ -28,6 +28,7 @@ class CalendarViewController: BaseViewController {
     lazy private var checkInManager = CheckInManager()
     lazy private var firstDate = RealmManager.shareManager.queryFirstCheckIn()?.checkInDate ?? NSDate()
     lazy private var row = 6
+    private var toTodayAlleady = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,15 +53,16 @@ class CalendarViewController: BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let now = NSDate()
-        self.calendarView.selectDates([now])
-        self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil) {
-            UIView.animateWithDuration(kSmallAnimationDuration, animations: { [unowned self] in
-                self.calendarView.alpha = 1
-                })
+        if self.toTodayAlleady == false {
+            let now = NSDate()
+            self.calendarView.selectDates([now])
+            self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil) {
+                UIView.animateWithDuration(kSmallAnimationDuration, animations: { [unowned self] in
+                    self.calendarView.alpha = 1
+                    })
+            }
+            self.toTodayAlleady = true
         }
-        
-        RealmManager.shareManager.queryAll(CheckIn.self)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -86,17 +88,16 @@ class CalendarViewController: BaseViewController {
         
         self.configWeekView()
         
-        self.createdLabel.textColor = colors.mainTextColor
-        self.completedLabel.textColor = colors.mainTextColor
-        self.createdTitleLable.textColor = colors.mainTextColor
-        self.completedTitleLabel.textColor = colors.mainTextColor
+        self.createdLabel.textColor = colors.cloudColor
+        self.completedLabel.textColor = colors.cloudColor
+        self.createdTitleLable.textColor = colors.cloudColor
+        self.completedTitleLabel.textColor = colors.cloudColor
     }
     
     private func initializeControl() {
         self.titleLabel.text = Localized("calendar")
         
         self.backButton.addShadow()
-        self.backButton.clipsToBounds = true
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
@@ -136,7 +137,9 @@ class CalendarViewController: BaseViewController {
     }
     
     func checkReport() {
-        
+        guard let checkDate = self.calendarView.selectedDates.first else { return }
+        let reportVC = ReportViewController(checkInDate: checkDate)
+        self.navigationController?.pushViewController(reportVC, animated: true)
     }
 }
 
@@ -184,8 +187,14 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
             created = checkIn.createdCount
             completed = checkIn.completedCount
         } else {
-            created = 0
-            completed = 0
+            if date.isToday() {
+                let task = RealmManager.shareManager.queryTaskCount(date)
+                created = task.created
+                completed = task.complete
+            } else {
+                created = 0
+                completed = 0
+            }
         }
         self.circleView.start(completed: completed, created: created)
         self.createdLabel.countFrom(0, to: CGFloat(created))

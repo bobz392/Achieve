@@ -110,7 +110,7 @@ class TaskTableViewCell: UITableViewCell {
                 if create.isEarlierThan(now) {
                     self.taskDateLabel.text = create.timeAgoSinceDate(now)
                 } else {
-                    self.taskDateLabel.text = create.formattedDateWithFormat(timeDateFormat)
+                    self.taskDateLabel.text = create.timeDateString()
                 }
             }
             
@@ -122,7 +122,7 @@ class TaskTableViewCell: UITableViewCell {
             self.taskStatusButton.setImage(squareCheckImage, forState: .Normal)
             self.taskStatusButton.tintColor = colors.secondaryTextColor
             self.taskDateLabel.text =
-                task.finishedDate?.formattedDateWithFormat(timeDateFormat)
+                task.finishedDate?.timeDateString()
             self.taskSettingButton.hidden = true
             
         default:

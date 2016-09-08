@@ -171,10 +171,14 @@
 		C79806DD1D7ED6040011DE19 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C79806AE1D7ED5DE0011DE19 /* SnapKit.framework.dSYM */; };
 		C79806DE1D7ED6040011DE19 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C79806B01D7ED5DE0011DE19 /* SVProgressHUD.framework.dSYM */; };
 		C79806DF1D7ED6040011DE19 /* SwiftyJSON.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C79806B21D7ED5DE0011DE19 /* SwiftyJSON.framework.dSYM */; };
-		C79806E21D7F051D0011DE19 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C79806E11D7F051D0011DE19 /* UICountingLabel.m */; };
 		C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E41D8006580011DE19 /* CheckInManager.swift */; };
 		C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E61D8011E20011DE19 /* ReportViewController.swift */; };
 		C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806E71D8011E20011DE19 /* ReportViewController.xib */; };
+		C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */; };
+		C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */; };
+		C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C79806F01D8157880011DE19 /* UICountingLabel.m */; };
+		C79806F31D8158610011DE19 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806F21D8158610011DE19 /* EmptyView.xib */; };
+		C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806F41D81586F0011DE19 /* EmptyView.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -420,11 +424,15 @@
 		C79806B01D7ED5DE0011DE19 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C79806B11D7ED5DE0011DE19 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		C79806B21D7ED5DE0011DE19 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
-		C79806E01D7F051D0011DE19 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
-		C79806E11D7F051D0011DE19 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		C79806E41D8006580011DE19 /* CheckInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInManager.swift; sourceTree = "<group>"; };
 		C79806E61D8011E20011DE19 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		C79806E71D8011E20011DE19 /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
+		C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		C79806EF1D8157880011DE19 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		C79806F01D8157880011DE19 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+		C79806F21D8158610011DE19 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
+		C79806F41D81586F0011DE19 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -509,8 +517,6 @@
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */,
 				C79805501D7C2D980011DE19 /* DynamicBlurView.swift */,
-				C79806E01D7F051D0011DE19 /* UICountingLabel.h */,
-				C79806E11D7F051D0011DE19 /* UICountingLabel.m */,
 				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
 				C798068C1D7ECEB60011DE19 /* CircleProgressView.swift */,
 			);
@@ -772,6 +778,7 @@
 				C7105F901D6CD5200096A1A3 /* Model */,
 				C7DDA5B31D75FAD30054154C /* Extension */,
 				C7105F8C1D6CCDA90096A1A3 /* Tool */,
+				C79806EE1D8157640011DE19 /* Controls */,
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
 				C7860E471D6C23FF000281FA /* Assets.xcassets */,
 				C7860E4C1D6C23FF000281FA /* Info.plist */,
@@ -800,6 +807,8 @@
 			children = (
 				C798056D1D7CD8C90011DE19 /* CalendarCell.swift */,
 				C798056F1D7CD8D50011DE19 /* CalendarCell.xib */,
+				C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */,
+				C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -871,6 +880,17 @@
 				C79806E41D8006580011DE19 /* CheckInManager.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		C79806EE1D8157640011DE19 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				C79806EF1D8157880011DE19 /* UICountingLabel.h */,
+				C79806F01D8157880011DE19 /* UICountingLabel.m */,
+				C79806F21D8158610011DE19 /* EmptyView.xib */,
+				C79806F41D81586F0011DE19 /* EmptyView.swift */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		C7DDA5B31D75FAD30054154C /* Extension */ = {
@@ -1007,6 +1027,7 @@
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
 				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
 				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
+				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
 				C79806B71D7ED5DE0011DE19 /* 3440746B-2C7A-3B23-98C0-16E08FACDE2B.bcsymbolmap in Resources */,
 				C79806B81D7ED5DE0011DE19 /* 3D923F2F-79FA-3299-9903-150CC9D79233.bcsymbolmap in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
@@ -1018,6 +1039,7 @@
 				C79806BD1D7ED5DE0011DE19 /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap in Resources */,
 				C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
+				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
 				C79806C81D7ED5DE0011DE19 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C79806C11D7ED5DE0011DE19 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap in Resources */,
@@ -1089,9 +1111,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */,
-				C79806E21D7F051D0011DE19 /* UICountingLabel.m in Sources */,
+				C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */,
 				C77193F61D6DE9C000437560 /* Constants.swift in Sources */,
 				C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */,
+				C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
@@ -1108,6 +1131,7 @@
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
+				C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
 				C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */,

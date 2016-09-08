@@ -53,9 +53,15 @@ final class AddressBookViewController: BaseViewController {
         AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
             dispatch_async(self.indexingQueue) {
                 (self.indexes, self.data) = self.processPeople(people)
-                dispatch_async(dispatch_get_main_queue()) {
+                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
                     HUD.sharedHUD.dismiss()
                     self.tableView.reloadData()
+                    if self.data.count == 0 {
+                        guard let emptyView = EmptyView.loadNib(self) else { return }
+                        self.cardView.addSubview(emptyView)
+                        emptyView.layout(self.cardView)
+                    }
+                    
                 }
             }
             })

@@ -13,6 +13,8 @@ let createdDateFormat: String = "yyyy.MM.dd"
 let timeDateFormat: String = "hh: mm a"
 let monthDayFormat: String = "MM/dd"
 let monthFormat: String = "MMM yyyy"
+let onlyTimeFormat = "hh:mm"
+let onlyAmFormat = "a"
 
 // TASK
 extension NSDate {
@@ -29,5 +31,16 @@ extension NSDate {
         let zone = NSTimeZone.systemTimeZone()
         let iter = NSTimeInterval(zone.secondsFromGMTForDate(self))
         return self.dateByAddingTimeInterval(iter)
+    }
+    
+    func timeDateString() -> String {
+        return self.formattedDateWithFormat(timeDateFormat)
+    }
+    
+    func timeString() -> String {
+        return self.formattedDateWithFormat(onlyTimeFormat)
+    }
+    func am() -> String {
+        return self.formattedDateWithFormat(onlyAmFormat)
     }
 }

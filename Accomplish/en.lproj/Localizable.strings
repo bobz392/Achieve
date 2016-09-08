@@ -11,6 +11,7 @@
 "completed"="Completed";
 "emptyTask"="No new task, Enjoy the day :)";
 "emptyFinishTask"="No finshed task";
+"emptyHint"="Nothing here";
 
 "noPermission"="No access permission";
 "abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";
@@ -92,7 +93,11 @@
 "systemTaskHint"="In the built-in action you can quickly add a task. For example, make phone call or send message, or create a shopping list, and so on. And you can directly carry out your action by clicking on the push notification.";
 
 // calendar
-"calendarReport"="Check report";
+"calendarReport"="Check Schedule";
+"schedule"="Schedule-";
+"completedAt"="completed at ";
+"notCompleted"="not completed";
+"notComoletedYet"="not completed yet";
 
 //today
 "noTaskToday"="You have no task due today.";

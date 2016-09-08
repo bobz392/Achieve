@@ -75,9 +75,10 @@ extension UIView {
     func addBlurEffect() {
         let eff = UIBlurEffect(style: .Light)
         let effView = UIVisualEffectView(effect: eff)
-        effView.frame = self.bounds
         effView.userInteractionEnabled = false
         
         self.insertSubview(effView, atIndex: 0)
+        layoutIfNeeded()
+        effView.frame = self.bounds
     }
 }

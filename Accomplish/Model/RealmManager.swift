@@ -71,6 +71,10 @@ class RealmManager {
         return realm.objects(Task.self).filter("uuid = '\(taskUUID)'").first
     }
     
+    func queryTaskList(date: NSDate) -> Results<Task> {
+        return realm.objects(Task.self).filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
+    }
+    
     func querySubtask(rootUUID: String) -> Results<Subtask> {
         return realm.objects(Subtask.self)
             .filter("rootUUID = '\(rootUUID)'")

@@ -50,6 +50,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         
+//        let action = UIMutableUserNotificationAction()
+//        action.identifier = "action"
+//        action.title = "添加task"
+//        action.activationMode = .Foreground
+//        if #available(iOS 9.0, *) {
+//            action.behavior = .TextInput
+//        }
+//        action.authenticationRequired = false
+//        action.destructive = false
+//        
+//        let catrgory = UIMutableUserNotificationCategory()
+//        catrgory.identifier = "catrgory"
+//        catrgory.setActions([action], forContext: .Default)
+        
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     }
     

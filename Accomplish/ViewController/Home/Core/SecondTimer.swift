@@ -28,7 +28,7 @@ struct SecondTimer {
     
     mutating func start() {
         let interval = UInt64(fetchSecondInterval) * NSEC_PER_SEC
-        dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, interval, 0)
+        dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, interval, 60)
         dispatch_source_set_event_handler(timer) { () -> Void in
             dispatch_async_main({ () -> Void in
                 self.handle()

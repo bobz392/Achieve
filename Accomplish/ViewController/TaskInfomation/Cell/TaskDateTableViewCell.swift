@@ -114,7 +114,7 @@ class TaskDateTableViewCell: UITableViewCell {
             self.infoLabel.highlighted = task.notifyDate != nil
             if let notifyDate = task.notifyDate {
                 self.infoLabel.text = Localized("reminderMe")
-                    + notifyDate.formattedDateWithFormat(timeDateFormat)
+                    + notifyDate.timeDateString()
             } else {
                 self.infoLabel.text = Localized("noReminder")
             }

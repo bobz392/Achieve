@@ -19,7 +19,7 @@ struct GroupUserDefault {
     
     static let GroupTaskUUIDIndex = 0
     static let GroupTaskTitleIndex = 1
-    static let GroupTaskSchemeIndex = 2
+    static let GroupTaskPriorityIndex = 2
     static let GroupTaskFinishDateIndex = 3
     
     init?() {

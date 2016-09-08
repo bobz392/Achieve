@@ -77,7 +77,7 @@ class TaskTableViewCell: UITableViewCell {
         var taskTitle: String
         switch task.taskType {
         case kSystemTaskType:
-            if let actionContent = TaskManager().parseTaskText(task.taskToDo) {
+            if let actionContent = TaskManager().parseTaskToDoText(task.taskToDo) {
                 systemActionContent = actionContent
                 taskTitle = actionContent.type.ationNameWithType() ?? ""
                 self.taskInfoButton.enabled = true
@@ -138,7 +138,7 @@ class TaskTableViewCell: UITableViewCell {
     func systemAction() {
         guard let actionContent = systemActionContent else { return }
         let block = actionContent.type.actionBlockWithType()
-        block?(actionString: actionContent.info)
+        block?(actionString: actionContent.urlSchemeInfo)
     }
     
     func markTask(btn: UIButton) {

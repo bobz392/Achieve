@@ -73,11 +73,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.updateContent()
             return
         }
-//        
-//        self.alltasks = group.allTasks()
-//        self.todayTableView.reloadData()
-//        self.updateContent()
-//        completionHandler(.NewData)
+        //
+        //        self.alltasks = group.allTasks()
+        //        self.todayTableView.reloadData()
+        //        self.updateContent()
+        //        completionHandler(.NewData)
         
         if group.taskHasChanged() {
             self.alltasks = group.allTasks()
@@ -168,6 +168,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let task = self.alltasks[indexPath.row]
         let taskUUID = task[GroupUserDefault.GroupTaskUUIDIndex]
+        
         guard let url = NSURL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
         self.extensionContext?.openURL(url, completionHandler: nil)
     }

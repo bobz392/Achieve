@@ -120,7 +120,7 @@
 		C78ED8A51D7A80FF00031B4D /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A61D7A842E00031B4D /* ReamManager+Repeater.swift */; };
 		C78ED8A91D7A85E600031B4D /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
-		C78ED8AC1D7A916700031B4D /* GroupUserDefault+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */; };
+		C78ED8AC1D7A916700031B4D /* GroupUserDefault+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */; };
 		C78ED8AE1D7A91C200031B4D /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
 		C78ED8AF1D7A932E00031B4D /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */; };
 		C78ED8B01D7A932E00031B4D /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */; };
@@ -184,6 +184,7 @@
 		C79806FB1D818E660011DE19 /* HintView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806FA1D818E660011DE19 /* HintView.xib */; };
 		C79806FD1D818E6F0011DE19 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FC1D818E6F0011DE19 /* HintView.swift */; };
 		C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */; };
+		C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -373,7 +374,7 @@
 		C78ED8941D7A7FA600031B4D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Accomplish/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		C78ED8A61D7A842E00031B4D /* ReamManager+Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReamManager+Repeater.swift"; sourceTree = "<group>"; };
 		C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupUserDefault.swift; sourceTree = "<group>"; };
-		C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Today.swift"; sourceTree = "<group>"; };
+		C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Main.swift"; sourceTree = "<group>"; };
 		C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayTableViewCell.xib; sourceTree = "<group>"; };
 		C79805501D7C2D980011DE19 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
@@ -443,6 +444,7 @@
 		C79806FA1D818E660011DE19 /* HintView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HintView.xib; sourceTree = "<group>"; };
 		C79806FC1D818E6F0011DE19 /* HintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionDispatcher.swift; sourceTree = "<group>"; };
+		C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSchemeDispatcher.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -525,11 +527,12 @@
 				C77194CB1D70FADD00437560 /* AwesomeButton.swift */,
 				C7DDA50B1D75C78C0054154C /* HUD.swift */,
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
-				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Today.swift */,
+				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */,
 				C79805501D7C2D980011DE19 /* DynamicBlurView.swift */,
 				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
 				C798068C1D7ECEB60011DE19 /* CircleProgressView.swift */,
 				C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */,
+				C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
 				C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
+				C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
@@ -1177,7 +1181,7 @@
 				C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */,
 				C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */,
 				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
-				C78ED8AC1D7A916700031B4D /* GroupUserDefault+Today.swift in Sources */,
+				C78ED8AC1D7A916700031B4D /* GroupUserDefault+Main.swift in Sources */,
 				C7821ED51D7C076B0056623D /* CalendarViewController.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,

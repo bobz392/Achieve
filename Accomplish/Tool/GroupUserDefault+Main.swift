@@ -24,9 +24,9 @@ extension GroupUserDefault {
         for task in tasks {
             let title = task.getNormalDisplayTitle()
             let uuid = task.uuid
-            let openScheme = task.taskScheme()
+            let priority = task.priority
             
-            let taskArray = [uuid, title, openScheme]
+            let taskArray = [uuid, title, "\(priority)"]
             tasksArr.append(taskArray)
         }
         

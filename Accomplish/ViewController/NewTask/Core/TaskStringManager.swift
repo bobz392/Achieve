@@ -26,7 +26,7 @@ struct TaskManager {
         }
     }
     
-    func parseTaskText(text: String) -> SystemActionContent? {
+    func parseTaskToDoText(text: String) -> SystemActionContent? {
         let results = text.componentsSeparatedByString(kSpliteTaskIdentity)
         if results.count == 3 {
             guard let type = Int(results[0]) else { return nil }
@@ -35,7 +35,7 @@ struct TaskManager {
             
             guard let actionType = SystemActionType(rawValue: type) else { return nil }
             
-            return SystemActionContent(type: actionType, name: showString, info: infoString)
+            return SystemActionContent(type: actionType, name: showString, urlSchemeInfo: infoString)
         } else {
             return nil
         }

@@ -94,17 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        debugPrint(url)
-        
-        debugPrint("url.baseURL = \(url.baseURL)")
-        debugPrint("absoluteString = \(url.absoluteString)")
-        debugPrint("pathComponents = \(url.pathComponents)")
-        debugPrint("relativeString = \(url.relativeString)")
-        debugPrint("lastPathComponent = \(url.lastPathComponent)")
-        debugPrint("query = \(url.query)")
-        
-        
-        return true
+        return UrlSchemeDispatcher().handleUrl(url)
     }
     
     func applicationWillResignActive(application: UIApplication) {

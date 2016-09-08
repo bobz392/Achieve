@@ -14,7 +14,7 @@ import Foundation
 struct SystemActionContent {
     let type: SystemActionType
     let name: String
-    let info: String
+    let urlSchemeInfo: String
 }
 
 /**

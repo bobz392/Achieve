@@ -417,6 +417,23 @@ class HomeViewController: BaseViewController {
     func segmentValueChangeAction(seg: UISegmentedControl) {
         self.taskTableView.reloadData()
     }
+    
+    // 从today 点击一个 task 进入 detail
+    func enterTaskFromToday(uuid: String) {
+        guard let t = self.runningTasks?.filter({ (task) -> Bool in
+            task.uuid == uuid
+        }).first else { return }
+        
+        // 系统消息的时候，并且系统消息type 中有回调的block， 那么执行
+        if let actionContent = TaskManager().parseTaskToDoText(t.taskToDo),
+            let action = actionContent.type.actionBlockWithType() {
+            dispatch_delay(0.1, closure: {
+                action(actionString: actionContent.urlSchemeInfo)
+            })
+        } else {
+            self.enterTask(t, canChange: true)
+        }
+    }
 }
 
 // MARK: - table view
@@ -444,17 +461,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         selectedIndex = indexPath
         
         let task: Task?
-        let change: Bool
+        let canChange: Bool
         if inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
-            change = true
+            canChange = true
         } else {
             task = self.finishTasks?[indexPath.row]
-            change = false
+            canChange = false
         }
         
         guard let t = task else { return }
-        let taskVC = TaskDetailViewController(task: t, change: change)
+        self.enterTask(t, canChange: canChange)
+    }
+    
+    private func enterTask(task: Task, canChange: Bool) {
+        let taskVC = TaskDetailViewController(task: task, canChange: canChange)
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(taskVC, animated: true)

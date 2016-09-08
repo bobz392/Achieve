@@ -37,13 +37,13 @@ class TaskDetailViewController: BaseViewController {
     
     var task: Task
     // only running task can change
-    var change: Bool = true
+    var canChange: Bool = true
     private var subtasks: Results<Subtask>?
     private var subtasksToken: RealmSwift.NotificationToken?
     
-    init(task: Task, change: Bool) {
+    init(task: Task, canChange: Bool) {
         self.task = task
-        self.change = change
+        self.canChange = canChange
         super.init(nibName: "TaskDetailViewController", bundle: nil)
     }
     
@@ -139,7 +139,7 @@ class TaskDetailViewController: BaseViewController {
     
     private func configDetailWithTask() {
         if self.task.taskType == kSystemTaskType {
-            self.titleTextField.enabled = self.task.taskToDoCanChange() && change
+            self.titleTextField.enabled = self.task.taskToDoCanChange() && canChange
         }
     }
     
@@ -305,7 +305,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
             tableCell = cell
         }
         
-        tableCell.userInteractionEnabled = change
+        tableCell.userInteractionEnabled = canChange
         return tableCell
     }
     

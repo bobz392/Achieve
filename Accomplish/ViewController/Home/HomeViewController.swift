@@ -45,6 +45,8 @@ class HomeViewController: BaseViewController {
     
     private var toViewControllerAnimationType = 0
     
+    private weak var newTaskVC: NewTaskViewController? = nil
+    
     // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,25 +152,7 @@ class HomeViewController: BaseViewController {
     
     private func initializeControl() {
         self.taskTableView.tableFooterView = UIView()
-        
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = self.view.frame
-//        self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
-//        let colors = Colors()
-//        
-//        gradientLayer.startPoint = CGPointMake(0, 0)
-//        gradientLayer.endPoint = CGPointMake(1, 0)
-//        gradientLayer.colors = [colors.mainGreenColor.CGColor, UIColor(red:0.18, green:0.80, blue:0.44, alpha:1.00).CGColor]
-//        gradientLayer.locations = [0.5, 1.0]
-        
-//        let blurView = DynamicBlurView(frame: view.bounds)
-//        blurView.blurRadius = 5
-//        blurView.blendMode = .Clear
-//        blurView.blurRatio = 2
-//        blurView.dynamicMode = .Common
-//        blurView.refresh()
-//        self.view.insertSubview(blurView, atIndex: 1)
-        
+    
         self.cardView.addShadow()
         self.newTaskButton.addShadow()
         self.settingButton.addShadow()
@@ -220,6 +204,7 @@ class HomeViewController: BaseViewController {
             UIApplicationDidEnterBackgroundNotification, object: nil,
             queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
                 self.timer?.suspend()
+                self.newTaskVC?.removeFromParentViewController()
         }
     }
     
@@ -425,6 +410,8 @@ class HomeViewController: BaseViewController {
         let newTaskVC = NewTaskViewController()
         self.addChildViewController(newTaskVC)
         newTaskVC.didMoveToParentViewController(self)
+        
+        self.newTaskVC = newTaskVC
     }
     
     func segmentValueChangeAction(seg: UISegmentedControl) {

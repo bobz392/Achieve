@@ -104,3 +104,7 @@
 "taskToday"="您今天还有%d个任务。";
 "taskTodays"="您今天还有%d个任务。";
 "showAll"="所有任务";
+
+// Shortcut
+"shortCutCreate"="添加新任务";
+"shortCutCalendar"="进入日历";

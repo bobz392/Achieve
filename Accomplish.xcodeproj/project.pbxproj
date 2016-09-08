@@ -181,6 +181,9 @@
 		C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806F41D81586F0011DE19 /* EmptyView.swift */; };
 		C79806F71D8180CD0011DE19 /* ScheduleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806F61D8180CD0011DE19 /* ScheduleHeaderView.swift */; };
 		C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806F81D8180DA0011DE19 /* ScheduleHeaderView.xib */; };
+		C79806FB1D818E660011DE19 /* HintView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806FA1D818E660011DE19 /* HintView.xib */; };
+		C79806FD1D818E6F0011DE19 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FC1D818E6F0011DE19 /* HintView.swift */; };
+		C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -437,6 +440,9 @@
 		C79806F41D81586F0011DE19 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C79806F61D8180CD0011DE19 /* ScheduleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHeaderView.swift; sourceTree = "<group>"; };
 		C79806F81D8180DA0011DE19 /* ScheduleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleHeaderView.xib; sourceTree = "<group>"; };
+		C79806FA1D818E660011DE19 /* HintView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HintView.xib; sourceTree = "<group>"; };
+		C79806FC1D818E6F0011DE19 /* HintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
+		C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionDispatcher.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -523,6 +529,7 @@
 				C79805501D7C2D980011DE19 /* DynamicBlurView.swift */,
 				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
 				C798068C1D7ECEB60011DE19 /* CircleProgressView.swift */,
+				C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -893,6 +900,8 @@
 			children = (
 				C79806EF1D8157880011DE19 /* UICountingLabel.h */,
 				C79806F01D8157880011DE19 /* UICountingLabel.m */,
+				C79806FC1D818E6F0011DE19 /* HintView.swift */,
+				C79806FA1D818E660011DE19 /* HintView.xib */,
 				C79806F41D81586F0011DE19 /* EmptyView.swift */,
 				C79806F21D8158610011DE19 /* EmptyView.xib */,
 			);
@@ -1026,6 +1035,7 @@
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
 				C79806BC1D7ED5DE0011DE19 /* 606F3DE2-E222-3EEB-92C0-AFE4CAB84330.bcsymbolmap in Resources */,
+				C79806FB1D818E660011DE19 /* HintView.xib in Resources */,
 				C79806B91D7ED5DE0011DE19 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C79806CA1D7ED5DE0011DE19 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap in Resources */,
@@ -1193,6 +1203,7 @@
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
 				C79805C61D7D4E610011DE19 /* JTAppleCollectionReusableView.swift in Sources */,
 				C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */,
+				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
 				C79805C91D7D4E610011DE19 /* JTCalendarProtocols.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
@@ -1210,6 +1221,7 @@
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,
+				C79806FD1D818E6F0011DE19 /* HintView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

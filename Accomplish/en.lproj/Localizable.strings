@@ -99,8 +99,12 @@
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
 
-//today
+// today
 "noTaskToday"="You have no task due today.";
 "taskToday"="You have %d task due today.";
 "taskTodays"="You have %d tasks due today.";
 "showAll"="All tasks";
+
+// Shortcut
+"shortCutCreate"="Create Task";
+"shortCutCalendar"="Enter Calendar";

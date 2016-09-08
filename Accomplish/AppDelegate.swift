@@ -22,12 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: root)
         nav.navigationBarHidden = true
         window?.rootViewController = nav
-//        window?.backgroundColor = Colors().mainGreenColor
+        //        window?.backgroundColor = Colors().mainGreenColor
         window?.makeKeyAndVisible()
         
         application.applicationIconBadgeNumber = 0
-        configRealm()
-        register(application)
+        self.configRealm()
+        self.register(application)
+        
+        if #available(iOS 9.0, *) {
+            self.configureDynamicShortcuts()
+        }
         HUD.sharedHUD.config()
         
         if application.backgroundRefreshStatus == .Available {
@@ -50,19 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         
-//        let action = UIMutableUserNotificationAction()
-//        action.identifier = "action"
-//        action.title = "添加task"
-//        action.activationMode = .Foreground
-//        if #available(iOS 9.0, *) {
-//            action.behavior = .TextInput
-//        }
-//        action.authenticationRequired = false
-//        action.destructive = false
-//        
-//        let catrgory = UIMutableUserNotificationCategory()
-//        catrgory.identifier = "catrgory"
-//        catrgory.setActions([action], forContext: .Default)
+        //        let action = UIMutableUserNotificationAction()
+        //        action.identifier = "action"
+        //        action.title = "添加task"
+        //        action.activationMode = .Foreground
+        //        if #available(iOS 9.0, *) {
+        //            action.behavior = .TextInput
+        //        }
+        //        action.authenticationRequired = false
+        //        action.destructive = false
+        //
+        //        let catrgory = UIMutableUserNotificationCategory()
+        //        catrgory.identifier = "catrgory"
+        //        catrgory.setActions([action], forContext: .Default)
         
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     }
@@ -124,7 +128,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
+
+@available(iOS 9.0, *)
+extension AppDelegate {
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        QuickActionDispatcher().dispatch(shortcutItem, completion: completionHandler)
+    }
     
-    
+    @available(iOS 9.0, *)
+    func configureDynamicShortcuts() {
+        let shortcutItem1 = UIApplicationShortcutItem(
+            type: QuickActionType.Create.rawValue,
+            localizedTitle: Localized("shortCutCreate"),
+            localizedSubtitle: "",
+            icon: UIApplicationShortcutIcon(type: .Add),
+            userInfo: nil)
+        
+        let icon = UIApplicationShortcutIcon(templateImageName: "Calendar")
+        let shortcutItem2 = UIApplicationShortcutItem(
+            type: QuickActionType.Calendar.rawValue,
+            localizedTitle: Localized("shortCutCalendar"),
+            localizedSubtitle: "",
+            icon: icon,
+            userInfo: nil)
+        
+        UIApplication.sharedApplication().shortcutItems =
+            [ shortcutItem1, shortcutItem2 ]
+    }
 }
 

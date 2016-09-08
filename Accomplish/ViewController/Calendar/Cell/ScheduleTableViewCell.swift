@@ -65,7 +65,7 @@ class ScheduleTableViewCell: UITableViewCell {
             if task.createdDate!.isToday() {
                 self.completedLabel.text = Localized("notComoletedYet")
             } else {
-                self.completedLabel.text = Localized("notComoleted")
+                self.completedLabel.text = Localized("notCompleted")
             }
         }
         

@@ -107,6 +107,7 @@
 "taskToday"="您今天还有%d个任务。";
 "taskTodays"="您今天还有%d个任务。";
 "showAll"="所有任务";
+"showPriority"="仅显示优先级为";
 
 // Shortcut
 "shortCutCreate"="添加新任务";

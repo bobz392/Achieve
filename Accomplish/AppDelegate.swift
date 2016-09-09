@@ -36,15 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         HUD.sharedHUD.config()
         
-        if application.backgroundRefreshStatus == .Available {
-            debugPrint("Available")
-        } else if application.backgroundRefreshStatus == .Denied {
-            debugPrint("Denied")
-        } else {
-            debugPrint("Restricted")
-        }
+//        if application.backgroundRefreshStatus == .Available {
+//            debugPrint("Available")
+//        } else if application.backgroundRefreshStatus == .Denied {
+//            debugPrint("Denied")
+//        } else {
+//            debugPrint("Restricted")
+//        }
         
         Fabric.with([Crashlytics.self])
+        Crashlytics.sharedInstance().debugMode = true
         
         return true
     }

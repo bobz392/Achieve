@@ -189,6 +189,7 @@
 		C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807151D8298380011DE19 /* SettingsViewController.xib */; };
 		C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79807191D82B97E0011DE19 /* Fabric.framework */; };
 		C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C798071A1D82B97E0011DE19 /* Crashlytics.framework */; };
+		C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */ = {isa = PBXBuildFile; fileRef = C798071D1D82C0C70011DE19 /* Acknowledgements */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -453,6 +454,7 @@
 		C79807151D8298380011DE19 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		C79807191D82B97E0011DE19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		C798071A1D82B97E0011DE19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		C798071D1D82C0C70011DE19 /* Acknowledgements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Acknowledgements; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
 				C7860E471D6C23FF000281FA /* Assets.xcassets */,
 				C7860E4C1D6C23FF000281FA /* Info.plist */,
+				C798071D1D82C0C70011DE19 /* Acknowledgements */,
 				C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */,
 				C77192821D6CFCAF00437560 /* Launch Screen.storyboard */,
 			);
@@ -1057,6 +1060,7 @@
 				C79806B91D7ED5DE0011DE19 /* 45783E78-22D5-3919-85FD-520547F0A65A.bcsymbolmap in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C79806CA1D7ED5DE0011DE19 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap in Resources */,
+				C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */,
 				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
 				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,

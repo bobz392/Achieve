@@ -107,6 +107,7 @@
 "taskToday"="You have %d task due today.";
 "taskTodays"="You have %d tasks due today.";
 "showAll"="All tasks";
+"showPriority"="Show task with priority";
 
 // Shortcut
 "shortCutCreate"="Create Task";

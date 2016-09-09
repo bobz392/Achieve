@@ -15,6 +15,9 @@ class SettingsViewController: BaseViewController {
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     
+    
+    var titles = [[String]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,6 +56,31 @@ class SettingsViewController: BaseViewController {
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleLabel.text = Localized("setting")
+        
+        self.settingTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        self.settingDatas()
+    }
+    
+    private func settingDatas() {
+        let extras = [
+            Localized("emailUs"),
+            Localized("about"),
+//            Localized("version"),
+            Localized("writeReview")
+        ]
+        
+        let general = [
+            Localized("Theme"),
+            Localized("enabDueNextDay"),
+            Localized("showPriority"),
+            Localized("hintClose")
+        ]
+        
+        titles.append(general)
+        titles.append(extras)
+        
+        self.settingTableView.reloadData()
     }
     
     // MARK: - actions
@@ -63,14 +91,30 @@ class SettingsViewController: BaseViewController {
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return titles[section].count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+        return titles.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        cell.textLabel?.text = titles[indexPath.section][indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "general"
+        } else {
+            return "extras"
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 }

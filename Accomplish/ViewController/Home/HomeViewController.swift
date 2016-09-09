@@ -16,6 +16,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var newTaskButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
+    @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var fullScreenButton: UIButton!
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var currentDateLabel: UILabel!
@@ -115,6 +116,7 @@ class HomeViewController: BaseViewController {
         self.newTaskButton.buttonColor(colors)
         self.calendarButton.buttonColor(colors)
         self.fullScreenButton.buttonColor(colors)
+        self.tagButton.buttonColor(colors)
         
         let coffeeIcon = FAKFontAwesome.coffeeIconWithSize(60)
         coffeeIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -132,6 +134,10 @@ class HomeViewController: BaseViewController {
         let calendarIcon = FAKFontAwesome.calendarIconWithSize(20)
         calendarIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
+        
+        let tagIcon = FAKFontAwesome.tagIconWithSize(20)
+        tagIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+        self.tagButton.setAttributedTitle(tagIcon.attributedString(), forState: .Normal)
         
         self.configFullSizeButton(colors)
     }
@@ -158,6 +164,7 @@ class HomeViewController: BaseViewController {
         self.settingButton.addShadow()
         self.fullScreenButton.addShadow()
         self.calendarButton.addShadow()
+        self.tagButton.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         if #available(iOS 9, *) {
@@ -257,6 +264,7 @@ class HomeViewController: BaseViewController {
         self.settingButton.layer.cornerRadius = 16
         self.fullScreenButton.layer.cornerRadius = 16
         self.calendarButton.layer.cornerRadius = 16
+        self.tagButton.layer.cornerRadius = 16
         
         doSwitchScreen(false)
     }

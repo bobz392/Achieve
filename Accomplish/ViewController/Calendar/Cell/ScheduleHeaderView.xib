@@ -14,7 +14,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHw-8f-4tr">
                     <rect key="frame" x="5" y="14" width="120" height="26"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="mxR-QC-Ios"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="mxR-QC-Ios"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

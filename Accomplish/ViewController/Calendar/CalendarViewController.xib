@@ -147,7 +147,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-iL-ftt">
-                    <rect key="frame" x="228.5" y="394.5" width="142" height="89"/>
+                    <rect key="frame" x="228.5" y="395" width="142" height="89"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="Daily Report">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

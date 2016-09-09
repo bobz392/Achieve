@@ -38,6 +38,13 @@
                         <outlet property="delegate" destination="-1" id="krH-MK-C7T"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bq9-jY-Zze">
+                    <rect key="frame" x="178" y="560" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="showAction:" destination="-1" eventType="touchUpInside" id="b3c-6W-w77"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -46,7 +53,9 @@
                 <constraint firstItem="CQ5-bB-F8q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Uod-0x-0M3"/>
                 <constraint firstItem="mvc-xD-TWy" firstAttribute="top" secondItem="CQ5-bB-F8q" secondAttribute="bottom" constant="10" id="bDJ-f4-l6R"/>
                 <constraint firstItem="mvc-xD-TWy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dRb-ic-RhQ"/>
+                <constraint firstItem="bq9-jY-Zze" firstAttribute="bottom" secondItem="mvc-xD-TWy" secondAttribute="bottom" id="ePO-Sd-PuY"/>
                 <constraint firstItem="CQ5-bB-F8q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="s4Y-u8-Cfr"/>
+                <constraint firstItem="mvc-xD-TWy" firstAttribute="leading" secondItem="bq9-jY-Zze" secondAttribute="trailing" constant="55" id="tOl-x9-3LJ"/>
             </constraints>
         </view>
     </objects>

@@ -19,3 +19,4 @@ let kBackButtonCorner: CGFloat = 21
 
 let kMyRootUrlScheme: String = "achieve://"
 let kTaskDetailPath = "task/detail/"
+let kTaskAllPath = "task/all/"

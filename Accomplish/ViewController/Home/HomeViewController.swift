@@ -347,6 +347,10 @@ class HomeViewController: BaseViewController {
         let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
         print(notifications)
         
+        let settingVC = SettingsViewController()
+        self.navigationController?.delegate = self
+        self.toViewControllerAnimationType = 0
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     func switchScreenAction() {

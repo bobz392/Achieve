@@ -21,6 +21,10 @@
                     <rect key="frame" x="216" y="0.0" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
+                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="13" translatesAutoresizingMaskIntoConstraints="NO" id="5dw-nO-xlA">
+                    <rect key="frame" x="0.0" y="110" width="252" height="37"/>
+                    <color key="pageIndicatorTintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>

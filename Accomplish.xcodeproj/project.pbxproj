@@ -185,6 +185,10 @@
 		C79806FD1D818E6F0011DE19 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FC1D818E6F0011DE19 /* HintView.swift */; };
 		C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */; };
 		C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */; };
+		C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807141D8298380011DE19 /* SettingsViewController.swift */; };
+		C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807151D8298380011DE19 /* SettingsViewController.xib */; };
+		C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79807191D82B97E0011DE19 /* Fabric.framework */; };
+		C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C798071A1D82B97E0011DE19 /* Crashlytics.framework */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -445,6 +449,10 @@
 		C79806FC1D818E6F0011DE19 /* HintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionDispatcher.swift; sourceTree = "<group>"; };
 		C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSchemeDispatcher.swift; sourceTree = "<group>"; };
+		C79807141D8298380011DE19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C79807151D8298380011DE19 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		C79807191D82B97E0011DE19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		C798071A1D82B97E0011DE19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -465,6 +473,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
+				C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */,
+				C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +767,8 @@
 		C7821ED21D7C07500056623D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C79807141D8298380011DE19 /* SettingsViewController.swift */,
+				C79807151D8298380011DE19 /* SettingsViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -764,6 +776,8 @@
 		C7860E341D6C23FF000281FA = {
 			isa = PBXGroup;
 			children = (
+				C79807191D82B97E0011DE19 /* Fabric.framework */,
+				C798071A1D82B97E0011DE19 /* Crashlytics.framework */,
 				C798068E1D7ED5DE0011DE19 /* iOS */,
 				C7860E3F1D6C23FF000281FA /* Accomplish */,
 				C78ED87A1D7A7D3100031B4D /* AchieveToday */,
@@ -945,6 +959,7 @@
 				C7860E3B1D6C23FF000281FA /* Resources */,
 				C7105F751D6CB54F0096A1A3 /* Copy Carthage dSYMs */,
 				C7105F821D6CB5850096A1A3 /* Copy Carthage Frameworks */,
+				C79807181D82B8E60011DE19 /* Frabic Run Script */,
 			);
 			buildRules = (
 			);
@@ -1044,6 +1059,7 @@
 				C79806CA1D7ED5DE0011DE19 /* FC8CAD6D-E7C1-33C1-A209-063568A0E0A2.bcsymbolmap in Resources */,
 				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
+				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
 				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
 				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
@@ -1123,6 +1139,20 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		C79807181D82B8E60011DE19 /* Frabic Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Frabic Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 94529d28ee795e0f76d6086b6b1f3832eb117358 6b4ea331ad8ca6c8316433adfc578c59a04e21621b4425b1b57b31860ad3374e";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1134,6 +1164,7 @@
 				C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */,
 				C77193F61D6DE9C000437560 /* Constants.swift in Sources */,
 				C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */,
+				C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */,
 				C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
@@ -1389,6 +1420,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Accomplish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1411,6 +1443,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Accomplish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

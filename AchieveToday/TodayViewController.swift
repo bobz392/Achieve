@@ -73,11 +73,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.updateContent()
             return
         }
-        //
-        //        self.alltasks = group.allTasks()
-        //        self.todayTableView.reloadData()
-        //        self.updateContent()
-        //        completionHandler(.NewData)
         
         if group.taskHasChanged() {
             self.alltasks = group.allTasks()
@@ -103,7 +98,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func enterApp() {
-        guard let url = NSURL(string: kMyRootUrlScheme) else { return }
+        guard let url = NSURL(string: kMyRootUrlScheme + kTaskAllPath) else { return }
         self.extensionContext?.openURL(url, completionHandler: nil)
     }
     

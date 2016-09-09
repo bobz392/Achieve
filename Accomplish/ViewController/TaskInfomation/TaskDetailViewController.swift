@@ -59,6 +59,7 @@ class TaskDetailViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
+        //fa-share-square-o
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -139,7 +140,9 @@ class TaskDetailViewController: BaseViewController {
     
     private func configDetailWithTask() {
         if self.task.taskType == kSystemTaskType {
-            self.titleTextField.enabled = self.task.taskToDoCanChange() && canChange
+            self.titleTextField.enabled = self.task.taskToDoCanChange() && self.canChange
+        } else {
+           self.titleTextField.enabled = self.canChange
         }
     }
     

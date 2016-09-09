@@ -117,6 +117,19 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    @IBAction func showAction(sender: AnyObject) {
+        let activeViewController = UIActivityViewController(activityItems: ["hahaha"], applicationActivities: nil)
+        self.presentViewController(activeViewController, animated: true) {
+            
+        }
+        
+        let myblock: UIActivityViewControllerCompletionWithItemsHandler = {(activityType: String?, completed: Bool , returnedItems: Array?, activityError: NSError?) -> Void in
+            debugPrint(activityType)
+            debugPrint(completed)
+        }
+        activeViewController.completionWithItemsHandler = myblock
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return ScheduleTableViewCell.rowHeight
     }

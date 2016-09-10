@@ -89,6 +89,8 @@
 "day7" = "Sun";
 
 "newDay"="The new day begins :)";
+
+// hint
 "repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your shoud prepare to complete it each day, but you can remove repeat of this task.";
 "systemTaskHint"="In the built-in action you can quickly add a task. For example, make phone call or send message, or create a shopping list, and so on. And you can directly carry out your action by clicking on the push notification.";
 
@@ -98,6 +100,7 @@
 // calendar
 "calendarReport"="Check Schedule";
 "schedule"="Schedule-";
+"noSchedule"="No Schedule";
 "completedAt"="completed at ";
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";

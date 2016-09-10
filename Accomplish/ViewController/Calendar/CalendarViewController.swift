@@ -19,11 +19,10 @@ class CalendarViewController: BaseViewController {
     
     @IBOutlet weak var createdLabel: UICountingLabel!
     @IBOutlet weak var completedLabel: UICountingLabel!
-    @IBOutlet weak var showDetailButton: UIButton!
     @IBOutlet weak var createdTitleLable: UILabel!
     @IBOutlet weak var completedTitleLabel: UILabel!
     
-    @IBOutlet weak var dayDetail: UIButton!
+    @IBOutlet weak var scheduleButton: UIButton!
     
     lazy private var checkInManager = CheckInManager()
     lazy private var firstDate = RealmManager.shareManager.queryFirstCheckIn()?.checkInDate ?? NSDate()
@@ -82,9 +81,10 @@ class CalendarViewController: BaseViewController {
         cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.backButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
         
-        self.dayDetail.setTitle(Localized("calendarReport"), forState: .Normal)
-        self.dayDetail.setTitleColor(colors.cloudColor, forState: .Normal)
-        self.dayDetail.addTarget(self, action: #selector(self.checkReport), forControlEvents: .TouchUpInside)
+        self.scheduleButton.setTitle(Localized("calendarReport"), forState: .Normal)
+        self.scheduleButton.setTitle(Localized("noSchedule"), forState: .Disabled)
+        self.scheduleButton.setTitleColor(colors.cloudColor, forState: .Normal)
+        self.scheduleButton.addTarget(self, action: #selector(self.checkReport), forControlEvents: .TouchUpInside)
         
         self.configWeekView()
         
@@ -199,7 +199,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.createdLabel.countFrom(0, to: CGFloat(created))
         self.completedLabel.countFrom(0, to: CGFloat(completed))
         
-        self.showDetailButton.hidden = created <= 0
+        self.scheduleButton.enabled = created > 0
     }
 }
 

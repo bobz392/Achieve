@@ -17,8 +17,7 @@
                 <outlet property="completedTitleLabel" destination="KUt-8r-SET" id="pfC-yc-JrR"/>
                 <outlet property="createdLabel" destination="kYH-Ed-2rT" id="gqE-em-tiY"/>
                 <outlet property="createdTitleLable" destination="sIG-WB-n4S" id="OC9-VK-9ZL"/>
-                <outlet property="dayDetail" destination="sIN-iL-ftt" id="tM6-t0-VMg"/>
-                <outlet property="showDetailButton" destination="sIN-iL-ftt" id="4bE-Uk-RxT"/>
+                <outlet property="scheduleButton" destination="sIN-iL-ftt" id="fY6-d5-nYM"/>
                 <outlet property="titleLabel" destination="7gR-ye-a0D" id="zeG-oi-9Th"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekView" destination="m29-D1-27Q" id="ljX-09-ouT"/>

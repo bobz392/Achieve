@@ -73,7 +73,6 @@ class SettingsViewController: BaseViewController {
         let general = [
             Localized("Theme"),
             Localized("enabDueNextDay"),
-            Localized("showPriority"),
             Localized("hintClose")
         ]
         

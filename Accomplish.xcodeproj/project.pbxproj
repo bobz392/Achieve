@@ -190,6 +190,8 @@
 		C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79807191D82B97E0011DE19 /* Fabric.framework */; };
 		C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C798071A1D82B97E0011DE19 /* Crashlytics.framework */; };
 		C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */ = {isa = PBXBuildFile; fileRef = C798071D1D82C0C70011DE19 /* Acknowledgements */; };
+		C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */; };
+		C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -455,6 +457,8 @@
 		C79807191D82B97E0011DE19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		C798071A1D82B97E0011DE19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C798071D1D82C0C70011DE19 /* Acknowledgements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Acknowledgements; sourceTree = "<group>"; };
+		C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -769,6 +773,7 @@
 		C7821ED21D7C07500056623D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C798071F1D82D0C20011DE19 /* Cell */,
 				C79807141D8298380011DE19 /* SettingsViewController.swift */,
 				C79807151D8298380011DE19 /* SettingsViewController.xib */,
 			);
@@ -928,6 +933,15 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		C798071F1D82D0C20011DE19 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */,
+				C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C7DDA5B31D75FAD30054154C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1052,6 +1066,7 @@
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
 				C79806B31D7ED5DE0011DE19 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */,
 				C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */,
+				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
 				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
@@ -1180,6 +1195,7 @@
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
 				C7821EC61D7BF1820056623D /* MMWormholeSessionContextTransiting.m in Sources */,
+				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,

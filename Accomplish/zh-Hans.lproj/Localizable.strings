@@ -98,6 +98,7 @@
 // calendar
 "calendarReport"="查看日程";
 "schedule"="日程-";
+"noSchedule"="没有日程";
 "completedAt"="完成于 ";
 "notCompleted"="没有完成";
 "notComoletedYet"="还未完成";

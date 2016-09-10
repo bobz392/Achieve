@@ -192,6 +192,8 @@
 		C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */ = {isa = PBXBuildFile; fileRef = C798071D1D82C0C70011DE19 /* Acknowledgements */; };
 		C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */; };
 		C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */; };
+		C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807241D83958F0011DE19 /* SettingHeaderView.xib */; };
+		C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807261D83959D0011DE19 /* SettingHeaderView.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -459,6 +461,8 @@
 		C798071D1D82C0C70011DE19 /* Acknowledgements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Acknowledgements; sourceTree = "<group>"; };
 		C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		C79807241D83958F0011DE19 /* SettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingHeaderView.xib; sourceTree = "<group>"; };
+		C79807261D83959D0011DE19 /* SettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -938,6 +942,8 @@
 			children = (
 				C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */,
 				C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */,
+				C79807261D83959D0011DE19 /* SettingHeaderView.swift */,
+				C79807241D83958F0011DE19 /* SettingHeaderView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1103,6 +1109,7 @@
 				C79806C91D7ED5DE0011DE19 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */,
 				C79806B61D7ED5DE0011DE19 /* 28C8E1DF-912C-31B6-8EE3-DC32E515327B.bcsymbolmap in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
+				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
 				C79806B51D7ED5DE0011DE19 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
 				C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
@@ -1259,6 +1266,7 @@
 				C79805C61D7D4E610011DE19 /* JTAppleCollectionReusableView.swift in Sources */,
 				C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */,
 				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
+				C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */,
 				C79805C91D7D4E610011DE19 /* JTCalendarProtocols.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
@@ -1432,7 +1440,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1455,7 +1462,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;

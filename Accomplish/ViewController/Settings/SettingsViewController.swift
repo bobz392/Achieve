@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: BaseViewController {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var settingTableView: UITableView!
@@ -20,13 +20,13 @@ class SettingsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.configMainUI()
         self.initializeControl()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,7 +66,6 @@ class SettingsViewController: BaseViewController {
         let extras = [
             Localized("emailUs"),
             Localized("about"),
-//            Localized("version"),
             Localized("writeReview")
         ]
         
@@ -99,21 +98,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        
+        cell.clearView()
+        cell.contentView.clearView()
         cell.textLabel?.text = titles[indexPath.section][indexPath.row]
         
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "general"
-        } else {
-            return "extras"
-        }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.clearView()
+        return view
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 20
     }
 }

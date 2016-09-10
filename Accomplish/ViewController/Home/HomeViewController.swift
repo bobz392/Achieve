@@ -122,28 +122,37 @@ class HomeViewController: BaseViewController {
         coffeeIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.emptyCoffeeLabel.attributedText = coffeeIcon.attributedString()
         
-        let cogIcon = FAKFontAwesome.cogIconWithSize(20)
+        let iconSize: CGFloat = 20
+        
+        let cogIcon = FAKFontAwesome.cogIconWithSize(iconSize)
         cogIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.settingButton.setAttributedTitle(cogIcon.attributedString(), forState: .Normal)
+        let cogImage = cogIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
+        self.settingButton.setImage(cogImage, forState: .Normal)
+//        self.settingButton.setAttributedTitle(cogIcon.attributedString(), forState: .Normal)
         
         let newIcon = FAKFontAwesome.plusIconWithSize(50)
         newIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let newImage = newIcon.imageWithSize(CGSize(width: 70, height: 70))
         self.newTaskButton.setImage(newImage, forState: .Normal)
         
-        let calendarIcon = FAKFontAwesome.calendarIconWithSize(20)
+        let calendarIcon = FAKFontAwesome.calendarIconWithSize(iconSize)
         calendarIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
+        let calendarImage = calendarIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
+        self.calendarButton.setImage(calendarImage, forState: .Normal)
+//        self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
         
-        let tagIcon = FAKFontAwesome.tagIconWithSize(20)
+        let tagIcon = FAKFontAwesome.tagIconWithSize(iconSize)
         tagIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.tagButton.setAttributedTitle(tagIcon.attributedString(), forState: .Normal)
+        let tagImage = tagIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
+        self.tagButton.setImage(tagImage, forState: .Normal)
+//        self.tagButton.setAttributedTitle(tagIcon.attributedString(), forState: .Normal)
+        
         
         self.configFullSizeButton(colors)
     }
     
     private func configFullSizeButton(colors: Colors) {
-        if isFullScreenSize {
+        if self.isFullScreenSize {
             let compressIcon = FAKFontAwesome.compressIconWithSize(20)
             compressIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
             let compressImage = compressIcon.imageWithSize(CGSize(width: 20, height: 20))

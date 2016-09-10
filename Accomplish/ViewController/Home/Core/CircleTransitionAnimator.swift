@@ -26,7 +26,7 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         guard let containerView = transitionContext.containerView() else { return }
         
         print(transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey))
-        guard let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) else { return }
+//        guard let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) else { return }
         
         guard let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) else { return }
         

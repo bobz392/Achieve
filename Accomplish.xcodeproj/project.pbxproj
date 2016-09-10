@@ -71,7 +71,6 @@
 		C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194C41D70988800437560 /* TaskTableViewCell.xib */; };
 		C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194C71D70ED2300437560 /* SystemTaskTableViewCell.swift */; };
 		C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194C81D70ED2300437560 /* SystemTaskTableViewCell.xib */; };
-		C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194CB1D70FADD00437560 /* AwesomeButton.swift */; };
 		C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194CE1D710A8300437560 /* SystemAtions.swift */; };
 		C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194D01D710A8900437560 /* TaskStringManager.swift */; };
 		C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195761D71530100437560 /* SystemActionBuilder.swift */; };
@@ -127,7 +126,6 @@
 		C78ED8B31D7A958F00031B4D /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */; };
 		C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */; };
 		C78ED8B51D7A984300031B4D /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */; };
-		C79805511D7C2D980011DE19 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805501D7C2D980011DE19 /* DynamicBlurView.swift */; };
 		C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805521D7CC8740011DE19 /* CheckIn.swift */; };
 		C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798056D1D7CD8C90011DE19 /* CalendarCell.swift */; };
 		C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798056F1D7CD8D50011DE19 /* CalendarCell.xib */; };
@@ -143,7 +141,6 @@
 		C79805C91D7D4E610011DE19 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805C01D7D4E610011DE19 /* JTCalendarProtocols.swift */; };
 		C79805CA1D7D4E610011DE19 /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805C11D7D4E610011DE19 /* UserInteractionFunctions.swift */; };
 		C798066A1D7E33BE0011DE19 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
-		C798068D1D7ECEB60011DE19 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798068C1D7ECEB60011DE19 /* CircleProgressView.swift */; };
 		C79806B31D7ED5DE0011DE19 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C798068F1D7ED5DE0011DE19 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */; };
 		C79806B41D7ED5DE0011DE19 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C79806901D7ED5DE0011DE19 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */; };
 		C79806B51D7ED5DE0011DE19 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C79806911D7ED5DE0011DE19 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */; };
@@ -194,11 +191,14 @@
 		C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */; };
 		C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807241D83958F0011DE19 /* SettingHeaderView.xib */; };
 		C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807261D83959D0011DE19 /* SettingHeaderView.swift */; };
+		C79807291D83D04F0011DE19 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807281D83D04F0011DE19 /* CircleProgressView.swift */; };
+		C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */; };
+		C798072E1D83DB3F0011DE19 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */; };
+		C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072C1D83DB3F0011DE19 /* HUD.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
 		C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */; };
-		C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA50B1D75C78C0054154C /* HUD.swift */; };
 		C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
 		C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
@@ -340,7 +340,6 @@
 		C77194C41D70988800437560 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		C77194C71D70ED2300437560 /* SystemTaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemTaskTableViewCell.swift; sourceTree = "<group>"; };
 		C77194C81D70ED2300437560 /* SystemTaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemTaskTableViewCell.xib; sourceTree = "<group>"; };
-		C77194CB1D70FADD00437560 /* AwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeButton.swift; sourceTree = "<group>"; };
 		C77194CE1D710A8300437560 /* SystemAtions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemAtions.swift; sourceTree = "<group>"; };
 		C77194D01D710A8900437560 /* TaskStringManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStringManager.swift; sourceTree = "<group>"; };
 		C77195761D71530100437560 /* SystemActionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionBuilder.swift; sourceTree = "<group>"; };
@@ -386,7 +385,6 @@
 		C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Main.swift"; sourceTree = "<group>"; };
 		C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayTableViewCell.xib; sourceTree = "<group>"; };
-		C79805501D7C2D980011DE19 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
 		C79805521D7CC8740011DE19 /* CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
 		C798056D1D7CD8C90011DE19 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		C798056F1D7CD8D50011DE19 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -402,7 +400,6 @@
 		C79805BF1D7D4E610011DE19 /* JTAppleViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTAppleViews.swift; sourceTree = "<group>"; };
 		C79805C01D7D4E610011DE19 /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTCalendarProtocols.swift; sourceTree = "<group>"; };
 		C79805C11D7D4E610011DE19 /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInteractionFunctions.swift; sourceTree = "<group>"; };
-		C798068C1D7ECEB60011DE19 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		C798068F1D7ED5DE0011DE19 /* 0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0E470E60-8C87-3EBF-B050-D168E8BCAA14.bcsymbolmap"; sourceTree = "<group>"; };
 		C79806901D7ED5DE0011DE19 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap"; sourceTree = "<group>"; };
 		C79806911D7ED5DE0011DE19 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap"; sourceTree = "<group>"; };
@@ -463,11 +460,14 @@
 		C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		C79807241D83958F0011DE19 /* SettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingHeaderView.xib; sourceTree = "<group>"; };
 		C79807261D83959D0011DE19 /* SettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
+		C79807281D83D04F0011DE19 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeButton.swift; sourceTree = "<group>"; };
+		C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
+		C798072C1D83DB3F0011DE19 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskNoteTableViewCell.xib; sourceTree = "<group>"; };
-		C7DDA50B1D75C78C0054154C /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B51D75FAD30054154C /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
@@ -544,13 +544,9 @@
 				C77193F51D6DE9C000437560 /* Constants.swift */,
 				C77193F71D6E488F00437560 /* UserDefault.swift */,
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
-				C77194CB1D70FADD00437560 /* AwesomeButton.swift */,
-				C7DDA50B1D75C78C0054154C /* HUD.swift */,
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */,
-				C79805501D7C2D980011DE19 /* DynamicBlurView.swift */,
 				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
-				C798068C1D7ECEB60011DE19 /* CircleProgressView.swift */,
 				C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */,
 				C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */,
 			);
@@ -927,6 +923,10 @@
 		C79806EE1D8157640011DE19 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */,
+				C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */,
+				C798072C1D83DB3F0011DE19 /* HUD.swift */,
+				C79807281D83D04F0011DE19 /* CircleProgressView.swift */,
 				C79806EF1D8157880011DE19 /* UICountingLabel.h */,
 				C79806F01D8157880011DE19 /* UICountingLabel.m */,
 				C79806FC1D818E6F0011DE19 /* HintView.swift */,
@@ -1192,6 +1192,7 @@
 				C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */,
 				C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */,
 				C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */,
+				C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
@@ -1217,6 +1218,7 @@
 				C70BF6271D79CADB006B0C1D /* SecondTimer.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C78ED8A91D7A85E600031B4D /* GroupUserDefault.swift in Sources */,
+				C798072E1D83DB3F0011DE19 /* DynamicBlurView.swift in Sources */,
 				C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				C79805721D7CDB8D0011DE19 /* UIColor+Convenient.swift in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
@@ -1234,11 +1236,9 @@
 				C79805C21D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift in Sources */,
 				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
-				C7DDA50C1D75C78C0054154C /* HUD.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
 				C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */,
 				C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */,
-				C77194CC1D70FADD00437560 /* AwesomeButton.swift in Sources */,
 				C78ED8AC1D7A916700031B4D /* GroupUserDefault+Main.swift in Sources */,
 				C7821ED51D7C076B0056623D /* CalendarViewController.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
@@ -1255,14 +1255,13 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
-				C79805511D7C2D980011DE19 /* DynamicBlurView.swift in Sources */,
-				C798068D1D7ECEB60011DE19 /* CircleProgressView.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
+				C79807291D83D04F0011DE19 /* CircleProgressView.swift in Sources */,
 				C79805C61D7D4E610011DE19 /* JTAppleCollectionReusableView.swift in Sources */,
 				C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */,
 				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
@@ -1282,6 +1281,7 @@
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
+				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,
 				C79806FD1D818E6F0011DE19 /* HintView.swift in Sources */,

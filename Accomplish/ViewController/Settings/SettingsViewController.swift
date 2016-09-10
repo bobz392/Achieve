@@ -39,7 +39,8 @@ class SettingsViewController: BaseViewController {
         
         self.settingTableView.clearView()
         self.cardView.backgroundColor = colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
+        self.view.clearView()//.backgroundColor = colors.mainGreenColor
+        self.navigationController?.view.clearView()
         
         self.backButton.buttonColor(colors)
         let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
@@ -83,7 +84,10 @@ class SettingsViewController: BaseViewController {
     
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+//        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true) { 
+            
+        }
     }
 }
 

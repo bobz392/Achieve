@@ -79,7 +79,7 @@ internal final class CircleShapeLayer: CAShapeLayer {
     }
 
     func start(total: Int, finish: Int) {
-        guard total > 0 && finish > 0 && total > finish else {
+        guard total > 0 && finish > 0 && total >= finish else {
             self.progressLayer.strokeEnd = 0
             return
         }

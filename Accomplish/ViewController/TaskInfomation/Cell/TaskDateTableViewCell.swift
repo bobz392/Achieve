@@ -34,13 +34,9 @@ class TaskDateTableViewCell: UITableViewCell {
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
         
-        
-        self.clearButton.tintColor = colors.mainGreenColor
-        let icon = try! FAKFontAwesome(identifier: "fa-times", size: kTaskDetailCellIconSize)
-        icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let iconImage = icon.imageWithSize(CGSize(width: kTaskClearCellIconSize, height: kTaskClearCellIconSize))
-        self.clearButton.setImage(iconImage, forState: .Normal)
         self.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
+        self.clearButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
+                                          icon: "fa-times", color: colors.mainGreenColor, status: .Normal)
         
         self.infoLabel.highlightedTextColor = colors.mainGreenColor
         self.infoLabel.textColor = colors.secondaryTextColor

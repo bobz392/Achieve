@@ -51,10 +51,9 @@ class ReportViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
-        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
-        cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.backButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
-        
+        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
+                                         icon: backButtonIconString, color: colors.mainGreenColor,
+                                         status: .Normal)
     }
     
     private func initializeControl() {

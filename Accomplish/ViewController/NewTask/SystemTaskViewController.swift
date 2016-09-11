@@ -49,9 +49,8 @@ class SystemTaskViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)
-        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
-        cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.cancelButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
+        self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
+                                           icon: backButtonIconString, color: colors.mainGreenColor, status: .Normal)
     }
     
     private func initControl() {

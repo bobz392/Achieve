@@ -197,6 +197,7 @@
 		C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072C1D83DB3F0011DE19 /* HUD.swift */; };
 		C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */; };
 		C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */; };
+		C79807391D8507F20011DE19 /* UIButton+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807381D8507F20011DE19 /* UIButton+Icon.swift */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -468,6 +469,7 @@
 		C798072C1D83DB3F0011DE19 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetialTableViewCell.swift; sourceTree = "<group>"; };
 		C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingDetialTableViewCell.xib; sourceTree = "<group>"; };
+		C79807381D8507F20011DE19 /* UIButton+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Icon.swift"; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -962,6 +964,7 @@
 				C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */,
 				C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */,
 				C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */,
+				C79807381D8507F20011DE19 /* UIButton+Icon.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1255,6 +1258,7 @@
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
 				C79806F71D8180CD0011DE19 /* ScheduleHeaderView.swift in Sources */,
+				C79807391D8507F20011DE19 /* UIButton+Icon.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
 				C7821EC81D7BF1820056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,

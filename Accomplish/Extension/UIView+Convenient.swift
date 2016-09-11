@@ -63,11 +63,6 @@ extension UIView {
         self.layer.cornerRadius = to
     }
     
-    func buttonColor(colors: Colors) {
-        self.tintColor = colors.mainGreenColor
-        self.backgroundColor = colors.cloudColor
-    }
-    
     func clearView() {
         self.backgroundColor = UIColor.clearColor()
     }

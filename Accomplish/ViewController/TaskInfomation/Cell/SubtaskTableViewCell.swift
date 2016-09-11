@@ -29,11 +29,9 @@ class SubtaskTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsetsZero
         
-        self.trashButton.tintColor = colors.mainGreenColor
-        let icon = try! FAKFontAwesome(identifier: "fa-trash-o", size: kTaskDetailCellIconSize)
-        icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let iconImage = icon.imageWithSize(CGSize(width: kTaskClearCellIconSize, height: kTaskClearCellIconSize))
-        self.trashButton.setImage(iconImage, forState: .Normal)
+        self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
+                                         icon: "fa-trash-o", color: colors.mainGreenColor,
+                                         status: .Normal)
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
         self.subtaskTextField.textColor = colors.mainTextColor
@@ -53,10 +51,9 @@ class SubtaskTableViewCell: UITableViewCell {
         self.task = task
         self.subtask = subtask
         let colors = Colors()
-        let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskButtonIconSize)
-        let image =
-            icon.imageWithSize(CGSize(width: kTaskButtonIconSize, height: kTaskButtonIconSize))
-        self.iconButton.setImage(image, forState: .Normal)
+        
+        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize, imageSize: kTaskButtonIconSize, icon: iconString, color: colors.mainGreenColor, status: .Normal)
+        
         self.subtaskTextField.attributedText = nil
         
         if let subtask = subtask {

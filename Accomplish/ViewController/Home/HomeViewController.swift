@@ -16,6 +16,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var newTaskButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var fullScreenButton: UIButton!
     @IBOutlet weak var taskTableView: UITableView!
@@ -117,51 +118,39 @@ class HomeViewController: BaseViewController {
         self.calendarButton.buttonColor(colors)
         self.fullScreenButton.buttonColor(colors)
         self.tagButton.buttonColor(colors)
+        self.searchButton.backgroundColor = colors.mainGreenColor
         
         let coffeeIcon = FAKFontAwesome.coffeeIconWithSize(60)
         coffeeIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.emptyCoffeeLabel.attributedText = coffeeIcon.attributedString()
         
         let iconSize: CGFloat = 20
+        self.settingButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
+                                            icon: "fa-cog", color: colors.mainGreenColor, status: .Normal)
         
-        let cogIcon = FAKFontAwesome.cogIconWithSize(iconSize)
-        cogIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let cogImage = cogIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
-        self.settingButton.setImage(cogImage, forState: .Normal)
-        //        self.settingButton.setAttributedTitle(cogIcon.attributedString(), forState: .Normal)
+        self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70,
+                                            icon: "fa-plus", color: colors.mainGreenColor, status: .Normal)
         
-        let newIcon = FAKFontAwesome.plusIconWithSize(50)
-        newIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let newImage = newIcon.imageWithSize(CGSize(width: 70, height: 70))
-        self.newTaskButton.setImage(newImage, forState: .Normal)
+        self.calendarButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
+                                             icon: "fa-calendar", color: colors.mainGreenColor, status: .Normal)
         
-        let calendarIcon = FAKFontAwesome.calendarIconWithSize(iconSize)
-        calendarIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let calendarImage = calendarIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
-        self.calendarButton.setImage(calendarImage, forState: .Normal)
-        //        self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
+        self.tagButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
+                                        icon: "fa-tag", color: colors.mainGreenColor, status: .Normal)
         
-        let tagIcon = FAKFontAwesome.tagIconWithSize(iconSize)
-        tagIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let tagImage = tagIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
-        self.tagButton.setImage(tagImage, forState: .Normal)
-        //        self.tagButton.setAttributedTitle(tagIcon.attributedString(), forState: .Normal)
-        
+        self.searchButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
+                                           icon: "fa-search", color: colors.cloudColor, status: .Normal)
+        self.searchButton.tintColor = colors.mainGreenColor
         
         self.configFullSizeButton(colors)
     }
     
     private func configFullSizeButton(colors: Colors) {
         if self.isFullScreenSize {
-            let compressIcon = FAKFontAwesome.compressIconWithSize(20)
-            compressIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-            let compressImage = compressIcon.imageWithSize(CGSize(width: 20, height: 20))
-            self.fullScreenButton.setImage(compressImage, forState: .Normal)
+            self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-compress",
+                                                   color: colors.mainGreenColor, status: .Normal)
         } else {
-            let expandIcon = FAKFontAwesome.expandIconWithSize(20)
-            expandIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-            let expandImage = expandIcon.imageWithSize(CGSize(width: 20, height: 20))
-            self.fullScreenButton.setImage(expandImage, forState: .Normal)
+            self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-expand",
+                                                   color: colors.mainGreenColor, status: .Normal)
         }
     }
     
@@ -427,10 +416,12 @@ class HomeViewController: BaseViewController {
                 UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 1
+                    self.searchButton.alpha = 1
                     })
             } else {
                 self.newTaskButton.layer.cornerRadius = 35
                 self.currentDateLabel.alpha = 1
+                self.searchButton.alpha = 1
             }
         } else {
             self.cardViewLeftConstraint.constant = 5
@@ -445,10 +436,12 @@ class HomeViewController: BaseViewController {
                 UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 0
+                    self.searchButton.alpha = 0
                     })
             } else {
                 self.newTaskButton.layer.cornerRadius = 20
                 self.currentDateLabel.alpha = 0
+                self.searchButton.alpha = 0
             }
         }
         

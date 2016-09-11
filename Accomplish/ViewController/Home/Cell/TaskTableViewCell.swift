@@ -40,14 +40,10 @@ class TaskTableViewCell: UITableViewCell {
         self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
         self.taskDateLabel.textColor = colors.secondaryTextColor
         
-        self.taskSettingButton.tintColor = colors.mainGreenColor
-        self.taskSettingButton.backgroundColor = colors.cloudColor
-        let icon = FAKFontAwesome.ellipsisVIconWithSize(18)
-        icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.taskSettingButton.setAttributedTitle(icon.attributedString(), forState: .Normal)
+        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: .Normal)
+        self.taskSettingButton.clearView()
         
-        self.taskStatusButton.backgroundColor = colors.cloudColor
-        
+        self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), forControlEvents: .TouchUpInside)
     }
     
@@ -97,11 +93,8 @@ class TaskTableViewCell: UITableViewCell {
         switch task.status {
         case kTaskRunning:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
-            
-            let squareIcon = FAKFontAwesome.squareOIconWithSize(20)
-            squareIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-            let squareImage = squareIcon.imageWithSize(CGSize(width: 20, height: 20))
-            self.taskStatusButton.setImage(squareImage, forState: .Normal)
+            self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-square-o",
+                                                   color: colors.mainGreenColor, status: .Normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor
             self.taskSettingButton.hidden = false
             
@@ -117,20 +110,21 @@ class TaskTableViewCell: UITableViewCell {
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
             
-            let squareCheckIcon = FAKFontAwesome.checkSquareOIconWithSize(20)
-            let squareCheckImage = squareCheckIcon.imageWithSize(CGSize(width: 20, height: 20))
-            self.taskStatusButton.setImage(squareCheckImage, forState: .Normal)
-            self.taskStatusButton.tintColor = colors.secondaryTextColor
+            self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-check-square-o",
+                                                   color: colors.secondaryTextColor, status: .Normal)
+            self.taskStatusButton.tintColor = colors.mainGreenColor
+            
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
             self.taskSettingButton.hidden = true
             
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
-            let icon = FAKFontAwesome.timesIconWithSize(20)
-            icon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-            let image = icon.imageWithSize(CGSize(width: 20, height: 20))
-            self.taskStatusButton.setImage(image, forState: .Normal)
+            
+            self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-close",
+                                                   color: colors.mainGreenColor, status: .Normal)
+            self.taskStatusButton.tintColor = colors.mainGreenColor
+            
             self.taskSettingButton.hidden = true
         }
     }

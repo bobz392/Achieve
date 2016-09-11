@@ -84,15 +84,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.setDateButton.tintColor = colors.mainGreenColor
         self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        let clockIcon = try! FAKFontAwesome(identifier: SubtaskIconCalendar, size: kTaskDetailCellIconSize)
-        let clockImage = clockIcon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
-        self.clockButton.setImage(clockImage, forState: .Normal)
-        self.clockButton.tintColor = colors.secondaryTextColor
+        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: SubtaskIconCalendar, color: colors.secondaryTextColor, status: .Normal)
         
-        let systemIcon = FAKFontAwesome.archiveIconWithSize(kTaskDetailCellIconSize)
-        systemIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        let systemImage = systemIcon.imageWithSize(CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize))
-        self.systemButton.setImage(systemImage, forState: .Normal)
+        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: "fa-archive", color: colors.mainGreenColor, status: .Normal)
     }
     
     private func initializeControl() {

@@ -25,10 +25,8 @@ class TaskNoteTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsetsZero
         
-        let icon = try! FAKFontAwesome(identifier: SubtaskIconNote, size: kNoteCellIconSize)
-        let image =
-            icon.imageWithSize(CGSize(width: kNoteCellIconSize, height: kNoteCellIconSize))
-        self.iconButton.setImage(image, forState: .Normal)
+        self.iconButton.createIconButton(iconSize: kNoteCellIconSize, imageSize: kNoteCellIconSize,
+                                           icon: SubtaskIconNote, color: colors.mainGreenColor, status: .Normal)
         
         self.noteLabel.highlightedTextColor = colors.mainTextColor
         self.noteLabel.textColor = colors.secondaryTextColor

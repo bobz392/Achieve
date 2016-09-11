@@ -53,9 +53,9 @@ class SettingsViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
-        let cancelIcon = FAKFontAwesome.arrowLeftIconWithSize(kBackButtonCorner)
-        cancelIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.backButton.setAttributedTitle(cancelIcon.attributedString(), forState: .Normal)
+        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
+                                         icon: backButtonIconString, color: colors.mainGreenColor,
+                                         status: .Normal)
         
         self.settingTableView.separatorColor = colors.separatorColor
     }
@@ -150,7 +150,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let size = self.sizes[indexPath.section][indexPath.row]
         let icon = try! FAKFontAwesome(identifier: self.icons[indexPath.section][indexPath.row], size: size)
         icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
-        
         
         if indexPath.section == 0 && indexPath.row != 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(SettingDetialTableViewCell.reuseId, forIndexPath: indexPath) as! SettingDetialTableViewCell

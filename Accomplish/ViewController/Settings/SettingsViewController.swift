@@ -223,10 +223,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 
             case 2:
-                self.handleDueToday()
+                self.handleOpenCloseCell(indexPath.row)
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
             case 3:
+                self.handleOpenCloseCell(indexPath.row)
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 
             default:
@@ -239,13 +240,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    private func handleDueToday() {
+    private func handleOpenCloseCell(index: Int) {
         let ud = UserDefault()
-        let closeDue = ud.readBool(kCloseHintKey)
+        let key = index == 2 ? kCloseDueTodayKey : kCloseHintKey
+        let closeDue = ud.readBool(key)
+        ud.write(key, value: !closeDue)
         
-        ud.write(kCloseHintKey, value: !closeDue)
-        
-        let reloadIndex = NSIndexPath(forRow: 2, inSection: 0)
+        let reloadIndex = NSIndexPath(forRow: index, inSection: 0)
         self.settingTableView.reloadRowsAtIndexPaths([reloadIndex], withRowAnimation: .Automatic)
     }
     

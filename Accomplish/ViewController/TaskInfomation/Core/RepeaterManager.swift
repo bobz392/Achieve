@@ -42,7 +42,7 @@ struct RepeaterManager {
         let checkIn = CheckIn()
         let checkInDate = now.dateBySubtractingDays(1)
         checkIn.checkInDate = checkInDate
-        checkIn.formatedDate = checkInDate.formattedDateWithFormat(createdDateFormat)
+        checkIn.formatedDate = checkInDate.createdFormatedDateString()
         let task = RealmManager.shareManager.queryTaskCount(checkInDate)
         checkIn.completedCount = task.complete
         checkIn.createdCount = task.created
@@ -76,7 +76,7 @@ struct RepeaterManager {
             }
             
             if createTask {
-                let newTask = manager.copyTask(task)
+                let newTask = self.copyTask(task)
                 manager.updateObject({ 
                     repeater.repeatTaskUUID = newTask.uuid
                 })
@@ -86,5 +86,38 @@ struct RepeaterManager {
         })
         
         endDebugPrint("repeater task create")
+    }
+    
+    private func copyTask(task: Task) -> Task {
+        let newTask = Task()
+        let now = NSDate()
+        let createDate = task.createdDate ?? now
+        newTask.createdDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: createDate.hour(), minute: createDate.minute(), second: createDate.second())
+        newTask.createDefaultTask(task.taskToDo, priority: task.priority)
+        newTask.canPostpone = task.canPostpone
+        newTask.finishedDate = nil
+        newTask.notifyDate = task.notifyDate
+        newTask.subTaskCount = task.subTaskCount
+        newTask.status = kTaskRunning
+        newTask.tag = task.tag
+        newTask.taskNote = task.taskNote
+        newTask.taskType = task.taskType
+        newTask.trigger = nil
+        
+        let shareManager = RealmManager.shareManager
+        let subtasks = shareManager.querySubtask(task.uuid)
+        for (index, sub) in subtasks.enumerate() {
+            let subtask = Subtask()
+            subtask.rootUUID = newTask.uuid
+            subtask.taskToDo = sub.taskToDo
+            let subtaskCreateDate = now.dateByAddingMinutes(index)
+            subtask.createdDate = subtaskCreateDate
+            subtask.uuid = subtaskCreateDate.createTaskUUID()
+            shareManager.writeObject(subtask)
+        }
+        debugPrint("copy task with name = \(task.taskToDo) and subtask count = \(task.subTaskCount)")
+        
+        return newTask
+
     }
 }

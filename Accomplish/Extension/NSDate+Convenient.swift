@@ -9,10 +9,10 @@
 import Foundation
 
 let uuidFormat: String = "yyMMddHHmmssZ"
-let createdDateFormat: String = "yyyy.MM.dd"
+internal let createdDateFormat: String = "yyyy.MM.dd"
 let timeDateFormat: String = "hh: mm a"
 let monthDayFormat: String = "MM/dd"
-let monthFormat: String = "MMM yyyy"
+let monthFormat: String = "MMM"
 let onlyTimeFormat = "hh:mm"
 let onlyAmFormat = "a"
 
@@ -23,8 +23,8 @@ extension NSDate {
     }
     
     func createdFormatedDateString() -> String {
-        debugPrint("created formated date string = \(formattedDateWithFormat(createdDateFormat))")
-        return self.formattedDateWithFormat(createdDateFormat)
+        debugPrint("created formated date string = \(self.formattedDateWithFormat(createdDateFormat, locale: NSLocale.init(localeIdentifier: "en_US")))")
+        return self.formattedDateWithFormat(createdDateFormat, locale: NSLocale.init(localeIdentifier: "en_US"))
     }
     
     func toLocalDate() -> NSDate {

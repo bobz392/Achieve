@@ -128,7 +128,7 @@ class HomeViewController: BaseViewController {
         cogIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let cogImage = cogIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
         self.settingButton.setImage(cogImage, forState: .Normal)
-//        self.settingButton.setAttributedTitle(cogIcon.attributedString(), forState: .Normal)
+        //        self.settingButton.setAttributedTitle(cogIcon.attributedString(), forState: .Normal)
         
         let newIcon = FAKFontAwesome.plusIconWithSize(50)
         newIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
@@ -139,13 +139,13 @@ class HomeViewController: BaseViewController {
         calendarIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let calendarImage = calendarIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
         self.calendarButton.setImage(calendarImage, forState: .Normal)
-//        self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
+        //        self.calendarButton.setAttributedTitle(calendarIcon.attributedString(), forState: .Normal)
         
         let tagIcon = FAKFontAwesome.tagIconWithSize(iconSize)
         tagIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         let tagImage = tagIcon.imageWithSize(CGSize(width: iconSize, height: iconSize))
         self.tagButton.setImage(tagImage, forState: .Normal)
-//        self.tagButton.setAttributedTitle(tagIcon.attributedString(), forState: .Normal)
+        //        self.tagButton.setAttributedTitle(tagIcon.attributedString(), forState: .Normal)
         
         
         self.configFullSizeButton(colors)
@@ -167,7 +167,7 @@ class HomeViewController: BaseViewController {
     
     private func initializeControl() {
         self.taskTableView.tableFooterView = UIView()
-    
+        
         self.cardView.addShadow()
         self.newTaskButton.addShadow()
         self.settingButton.addShadow()
@@ -196,6 +196,8 @@ class HomeViewController: BaseViewController {
         self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
         
         self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
+        
+        self.tagButton.addTarget(self, action: #selector(self.tag), forControlEvents: .TouchUpInside)
     }
     
     // 在app 进入前台的时候需要检查三种种状态
@@ -206,7 +208,7 @@ class HomeViewController: BaseViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(
             UIApplicationDidBecomeActiveNotification, object: nil,
             queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
-          
+                
                 self.handelTodayFinish()
                 
                 if self.repeaterManager.isNewDay() {
@@ -343,13 +345,35 @@ class HomeViewController: BaseViewController {
     }
     
     // 当新的一天到来的时候调用， 来处理新的数据
+    // TODO - handle due today
     func handleNewDay() {
-        self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
-        self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
-        
+        let shareManager = RealmManager.shareManager
+        self.finishTasks = shareManager.queryTodayTaskList(finished: true)
+        self.runningTasks = shareManager.queryTodayTaskList(finished: false)
         self.realmNoticationToken()
         
         self.handleUpdateTodayGroup()
+        if !UserDefault().readBool(kCloseDueTodayKey) {
+            self.handleMoveTaskToToday()
+        }
+    }
+    
+    private func handleMoveTaskToToday() {
+        let shareManager = RealmManager.shareManager
+        let s = shareManager.queryTaskCount(NSDate().dateBySubtractingDays(1))
+        if (s.created - s.complete) > 0 {
+            let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .Alert)
+            let moveAction = UIAlertAction(title: Localized("move"), style: .Default) { (action) in
+                shareManager.moveYesterdayTaskToToday()
+            }
+            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .Cancel) { (action) in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            alert.addAction(moveAction)
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     private func handleUpdateTodayGroup() {
@@ -383,6 +407,10 @@ class HomeViewController: BaseViewController {
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(calendarVC, animated: true)
+    }
+    
+    func tag() {
+        handleMoveTaskToToday()
     }
     
     private func doSwitchScreen(animation: Bool) {

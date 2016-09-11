@@ -84,35 +84,22 @@ class RealmManager {
     func deleteTask(task: Task) {
     }
     
-    func copyTask(task: Task) -> Task {
-        let newTask = Task()
-        let now = NSDate()
-        let createDate = task.createdDate ?? now
-        newTask.createdDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: createDate.hour(), minute: createDate.minute(), second: createDate.second())
-        newTask.createDefaultTask(task.taskToDo, priority: task.priority)
-        newTask.canPostpone = task.canPostpone
-        newTask.finishedDate = nil
-        newTask.notifyDate = task.notifyDate
-        newTask.subTaskCount = task.subTaskCount
-        newTask.status = kTaskRunning
-        newTask.tag = task.tag
-        newTask.taskNote = task.taskNote
-        newTask.taskType = task.taskType
-        newTask.trigger = nil
-        
-        let subtasks = querySubtask(task.uuid)
-        for (index, sub) in subtasks.enumerate() {
-            let subtask = Subtask()
-            subtask.rootUUID = newTask.uuid
-            subtask.taskToDo = sub.taskToDo
-            let subtaskCreateDate = now.dateByAddingMinutes(index)
-            subtask.createdDate = subtaskCreateDate
-            subtask.uuid = subtaskCreateDate.createTaskUUID()
-            writeObject(subtask)
+    func moveYesterdayTaskToToday() {
+        let today = NSDate()
+        let todayDateString = today.createdFormatedDateString()
+        let yesterday = today.dateBySubtractingDays(1).createdFormatedDateString()
+        let movedtasks = realm.objects(Task.self)
+            .filter("createdFormattedDate = '\(yesterday)' AND status = \(kTaskRunning)")
+            .filter { (task) -> Bool in
+                return queryRepeaterWithTask(task.uuid) == nil
         }
-        debugPrint("copy task with name = \(task.taskToDo) and subtask count = \(task.subTaskCount)")
         
-        return newTask
+        self.updateObject {
+            for task in movedtasks {
+                task.createdFormattedDate = todayDateString
+                task.notifyDate = nil
+            }
+        }
     }
     
     func updateTaskStatus(task: Task, status: Int, updateDate: NSDate? = nil) {

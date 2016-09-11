@@ -12,7 +12,7 @@ struct CheckInManager {
     private let allCheckIn = RealmManager.shareManager.allCheckIn()
     
     func checkInWithDate(date: NSDate) -> CheckIn? {
-        return allCheckIn.filter("formatedDate == '\(date.formattedDateWithFormat(createdDateFormat))'").first
+        return allCheckIn.filter("formatedDate == '\(date.createdFormatedDateString())'").first
     }
     
 }

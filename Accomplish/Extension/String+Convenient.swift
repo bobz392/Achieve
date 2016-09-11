@@ -8,12 +8,12 @@
 
 import Foundation
 
-
 // Date
 extension String {
     func dateFromCreatedFormatString() -> NSDate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = createdDateFormat
+        dateFormatter.calendar = NSCalendar(calendarIdentifier: "en_US")
         return dateFormatter.dateFromString(self) ?? NSDate()
     
 //        let ss = self.componentsSeparatedByString(".")

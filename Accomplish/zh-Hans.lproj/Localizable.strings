@@ -12,6 +12,8 @@
 "emptyTask"="没有新任务，放松一下 :)";
 "emptyFinishTask"="没有已经结束的任务";
 "emptyHint"="空空如也";
+"detailIncomplete"="把昨天未完成的任务移到今天";
+"move"="移动";
 
 "noPermission"="没有权限";
 "abPermission"="目前没有读取通讯录的权限，该权限可以在“系统设置 > 隐私 > 联系人”中开启";
@@ -54,8 +56,7 @@
 "addSubtask"="创建一个有子任务的任务";
 "subtaskTitle"="输入您的任务名";
 "subtaskInfo"="输入您的多个子任务，子任务之间以回车分隔";
-//"detailPostponeTomorrow"="如果今天没有完成，推迟任务到明天";
-//"detailIncomplete"="如果今天没有完成，标记为未完成";
+
 "noReminder"="没有提醒";
 "reminderMe"="提醒我在 ";
 "repeat"="重复 ";

@@ -12,6 +12,8 @@
 "emptyTask"="No new task, Enjoy the day :)";
 "emptyFinishTask"="No finshed task";
 "emptyHint"="Nothing here";
+"detailIncomplete"="Yesterday unfinished tasks postponed to today";
+"move"="Move";
 
 "noPermission"="No access permission";
 "abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";
@@ -54,8 +56,7 @@
 "addSubtask"="Create a task with subtask";
 "subtaskTitle"="Enter your task name";
 "subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
-//"detailPostponeTomorrow"="Postponed to tomorrow if not completed today";
-//"detailIncomplete"="Marked as incomplete if not completed today";
+
 "noReminder"="No reminder";
 "reminderMe"="Reminder me at ";
 "repeat"="Repeat ";
@@ -121,7 +122,7 @@
 "about"="About";
 "writeReview"="Write review";
 "theme"="Background";
-"enabDueNextDay"="Postpone incomplete tasks to today";
+"enabDueNextDay"="Postpone unfinished tasks to today";
 "hintClose"="Show hint button";
 "startDay"="Week start on";
 

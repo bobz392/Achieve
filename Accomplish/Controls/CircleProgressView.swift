@@ -117,7 +117,7 @@ internal final class CircleShapeLayer: CAShapeLayer {
         self.progressLayer.backgroundColor = UIColor.clearColor().CGColor
         self.progressLayer.path = self.drawPathWithArcCenter()
         self.progressLayer.fillColor = UIColor.clearColor().CGColor
-        self.progressLayer.strokeColor = colors.priorityLowColor.CGColor
+        self.progressLayer.strokeColor = colors.progressColor.CGColor
         self.progressLayer.lineWidth = circleLineWidth
         self.progressLayer.lineCap = kCALineCapRound
         self.progressLayer.lineJoin = kCALineJoinRound

@@ -105,6 +105,8 @@ class TaskDetailViewController: BaseViewController {
         self.cancelButton.buttonColor(colors)
         self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                            icon: backButtonIconString, color: colors.mainGreenColor, status: .Normal)
+        
+        self.detailTableView.reloadData()
     }
     
     private func initializeControl() {

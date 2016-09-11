@@ -14,7 +14,6 @@ class SettingTableViewCell: UITableViewCell {
     static let reuseId = "settingTableViewCell"
     static let rowHeight: CGFloat = 44
     
-    
     @IBOutlet weak var settingTitleLabel: UILabel!
     @IBOutlet weak var iconLabel: UILabel!
     

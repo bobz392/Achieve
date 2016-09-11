@@ -13,6 +13,7 @@ let kLastFetchDateKey = "com.zhoubo.last.fetch"
 let kWeekStartKey = "com.date.start"
 let kCloseDueTodayKey = "com.due.today"
 let kCloseHintKey = "com.close.hint"
+let kBackgroundKey = "com.background"
 
 struct UserDefault {
     let def = NSUserDefaults.standardUserDefaults()

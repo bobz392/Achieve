@@ -8,7 +8,7 @@
 
 import UIKit
 
-let kThemeNeedRefreshNotification = "theme.need.refresh.notify"
+let kBackgroundNeedRefreshNotification = "theme.need.refresh.notify"
 
 class BaseViewController: UIViewController {
     
@@ -17,7 +17,7 @@ class BaseViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.configMainUI), name: kThemeNeedRefreshNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeMainUI), name: kBackgroundNeedRefreshNotification, object: nil)
         
         self.edgesForExtendedLayout = .None
     }
@@ -37,5 +37,15 @@ class BaseViewController: UIViewController {
     
     func configMainUI() {
         
+    }
+    
+    func changeMainUI() {
+        if self.isViewLoaded() && self.view.window != nil {
+            UIView.animateWithDuration(kNormalAnimationDuration) {
+                self.configMainUI()
+            }
+        } else {
+            self.configMainUI()
+        }
     }
 }

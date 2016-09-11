@@ -25,16 +25,18 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
-        let colors = Colors()
+        let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
+        let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
+        let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
         
         self.todayTableView.registerNib(TodayTableViewCell.nib, forCellReuseIdentifier: TodayTableViewCell.reuseId)
-        self.todayTableView.separatorColor = colors.separatorColor
+        self.todayTableView.separatorColor = separatorColor
         self.todayTableView.tableFooterView = UIView()
         
-        self.infoLabel.textColor = colors.cloudColor
+        self.infoLabel.textColor = cloudColor
         
-        self.allButton.setTitleColor(colors.cloudColor, forState: .Normal)
-        self.allButton.tintColor = colors.secondaryTextColor
+        self.allButton.setTitleColor(cloudColor, forState: .Normal)
+        self.allButton.tintColor = secondaryTextColor
         self.allButton.setTitle(Localized("showAll"), forState: .Normal)
         self.allButton.addTarget(self, action: #selector(self.enterApp), forControlEvents: .TouchUpInside)
         self.allButton.clipsToBounds = true

@@ -142,6 +142,8 @@ class HomeViewController: BaseViewController {
         self.searchButton.tintColor = colors.mainGreenColor
         
         self.configFullSizeButton(colors)
+        
+        self.taskTableView.reloadData()
     }
     
     private func configFullSizeButton(colors: Colors) {
@@ -184,9 +186,9 @@ class HomeViewController: BaseViewController {
         
         self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
         
-        self.settingButton.addTarget(self, action: #selector(self.setting), forControlEvents: .TouchUpInside)
+        self.settingButton.addTarget(self, action: #selector(self.settingAction), forControlEvents: .TouchUpInside)
         
-        self.tagButton.addTarget(self, action: #selector(self.tag), forControlEvents: .TouchUpInside)
+        self.tagButton.addTarget(self, action: #selector(self.tagAction), forControlEvents: .TouchUpInside)
     }
     
     // 在app 进入前台的时候需要检查三种种状态
@@ -375,7 +377,7 @@ class HomeViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func setting() {
+    func settingAction() {
         let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
         print(notifications)
         
@@ -398,8 +400,8 @@ class HomeViewController: BaseViewController {
         self.navigationController?.pushViewController(calendarVC, animated: true)
     }
     
-    func tag() {
-        handleMoveTaskToToday()
+    func tagAction() {
+        
     }
     
     private func doSwitchScreen(animation: Bool) {

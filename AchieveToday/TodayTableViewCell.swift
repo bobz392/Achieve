@@ -25,9 +25,10 @@ class TodayTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let colors = Colors()
-        self.checkButton.tintColor = colors.cloudColor
-        self.titleLabel.textColor = colors.cloudColor
+        let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
+        
+        self.titleLabel.textColor = cloudColor
+        self.checkButton.tintColor = cloudColor
         
         let icon = try! FAKFontAwesome(identifier: subtaskIconSquare, size: 22)
         let image = icon.imageWithSize(CGSize(width: 22, height: 22))
@@ -36,7 +37,6 @@ class TodayTableViewCell: UITableViewCell {
         let hIcon = try! FAKFontAwesome(identifier: subtaskIconChecked, size: 22)
         let hImage = hIcon.imageWithSize(CGSize(width: 22, height: 22))
         self.checkButton.setImage(hImage, forState: .Highlighted)
-
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -87,6 +87,8 @@ final class AddressBookViewController: BaseViewController {
         self.cancelButton.buttonColor(colors)
         self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                            icon: backButtonIconString, color: colors.mainGreenColor, status: .Normal)
+        
+        self.tableView.reloadData()
     }
     
     private func initializeControl() {

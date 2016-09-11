@@ -97,6 +97,7 @@
 
 // setting
 "setting"="Settings";
+"background"="Background";
 
 // calendar
 "calendarReport"="Check Schedule";

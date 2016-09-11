@@ -58,6 +58,7 @@ class SettingsViewController: BaseViewController {
                                          status: .Normal)
         
         self.settingTableView.separatorColor = colors.separatorColor
+        self.settingTableView.reloadData()
     }
     
     private func initializeControl() {
@@ -214,7 +215,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                self.selectedIndex = indexPath
+                let backgroundVC = BackgroundViewController()
+                self.navigationController?.pushViewController(backgroundVC, animated: true)
                 
             // first day of week
             case 1:
@@ -236,7 +239,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             
         }
-        
     }
     
     private func handleOpenCloseCell(index: Int) {

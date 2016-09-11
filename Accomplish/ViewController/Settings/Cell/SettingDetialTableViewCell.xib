@@ -26,16 +26,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="wnX-Qi-yOg">
-                        <rect key="frame" x="45" y="6" width="35.5" height="20"/>
+                        <rect key="frame" x="45" y="6" width="31" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="iLe-e2-0Gn"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="xkf-yn-gjN">
-                        <rect key="frame" x="45" y="25.5" width="26.5" height="16"/>
+                        <rect key="frame" x="45" y="25" width="26.5" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="iwK-d5-UGf"/>
                         </constraints>

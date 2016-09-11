@@ -31,8 +31,8 @@ class TaskTableViewCell: UITableViewCell {
         // Initialization code
         
         let colors = Colors()
-        self.backgroundColor = colors.cloudColor
-        self.contentView.backgroundColor = colors.cloudColor
+        self.clearView()
+        self.contentView.clearView()
         self.layoutMargins = UIEdgeInsetsZero
         
         self.taskTitleLabel.textColor = colors.mainTextColor
@@ -40,7 +40,6 @@ class TaskTableViewCell: UITableViewCell {
         self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
         self.taskDateLabel.textColor = colors.secondaryTextColor
         
-        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: .Normal)
         self.taskSettingButton.clearView()
         
         self.taskStatusButton.clearView()
@@ -58,6 +57,8 @@ class TaskTableViewCell: UITableViewCell {
     func configCellUse(task: Task) {
         self.task = task
         let colors = Colors()
+        
+        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: .Normal)
         
         switch task.priority {
         case kTaskPriorityLow:

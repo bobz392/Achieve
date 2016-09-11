@@ -12,7 +12,7 @@ let uuidFormat: String = "yyMMddHHmmssZ"
 internal let createdDateFormat: String = "yyyy.MM.dd"
 let timeDateFormat: String = "hh: mm a"
 let monthDayFormat: String = "MM/dd"
-let monthFormat: String = "MMM"
+let monthFormat: String = "MMM YYYY"
 let onlyTimeFormat = "hh:mm"
 let onlyAmFormat = "a"
 

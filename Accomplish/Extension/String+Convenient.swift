@@ -15,13 +15,6 @@ extension String {
         dateFormatter.dateFormat = createdDateFormat
         dateFormatter.calendar = NSCalendar(calendarIdentifier: "en_US")
         return dateFormatter.dateFromString(self) ?? NSDate()
-    
-//        let ss = self.componentsSeparatedByString(".")
-//        guard ss.count == 3 else { return nil }
-//        guard let year = ss[0].intValue(),
-//            let month = ss[1].intValue(),
-//            let day = ss[2].intValue() else { return nil }
-//        return NSDate(year: year, month: month, day: day)
     }
     
     func dateFromString(format: String) -> NSDate {

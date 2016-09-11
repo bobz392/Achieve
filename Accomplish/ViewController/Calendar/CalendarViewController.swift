@@ -166,7 +166,7 @@ class CalendarViewController: BaseViewController {
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
         
-        let secondDate = NSDate()
+        let secondDate = self.firstDate.dateByAddingMonths(12)
         let aCalendar = NSCalendar.currentCalendar()
         
         return (startDate: self.firstDate, endDate: secondDate, numberOfRows: row, calendar: aCalendar)
@@ -200,22 +200,6 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     // 选中当前的date的进度 和 任务数量的动画
     private func showInfoWhenNeed(date: NSDate) {
-//        let created: Int
-//        let completed: Int
-//        if let checkIn = self.checkInManager.checkInWithDate(date) {
-//            created = checkIn.createdCount
-//            completed = checkIn.completedCount
-//        } else {
-//            if date.isToday() {
-//                let task = RealmManager.shareManager.queryTaskCount(date)
-//                created = task.created
-//                completed = task.complete
-//            } else {
-//                created = 0
-//                completed = 0
-//            }
-//        }
-        
         let task = RealmManager.shareManager.queryTaskCount(date)
         let created = task.created
         let completed = task.complete

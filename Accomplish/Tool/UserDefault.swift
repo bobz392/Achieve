@@ -10,6 +10,9 @@ import Foundation
 
 let kIsFullScreenSizeKey = "com.zhoubo.currentScreenSizeKey"
 let kLastFetchDateKey = "com.zhoubo.last.fetch"
+let kWeekStartKey = "com.date.start"
+let kCloseDueTodayKey = "com.due.today"
+let kCloseHintKey = "com.close.hint"
 
 struct UserDefault {
     let def = NSUserDefaults.standardUserDefaults()
@@ -26,6 +29,10 @@ struct UserDefault {
     
     func readString(key: String) -> String? {
         return def.stringForKey(key)
+    }
+    
+    func readInt(key: String) -> Int {
+        return def.integerForKey(key)
     }
     
     func remove(key: String) {

@@ -228,7 +228,9 @@ class HomeViewController: BaseViewController {
         self.timer = SecondTimer(handle: { [weak self] () -> Void in
             guard let ws = self else { return }
             if ws.repeaterManager.isNewDay() {
-                HUD.sharedHUD.showOnce(Localized("newDay"))
+                if NSDate().isMorning() {
+                    HUD.sharedHUD.showOnce(Localized("newDay"))
+                }
                 ws.handleNewDay()
             }
             ws.taskTableView.reloadData()
@@ -365,12 +367,9 @@ class HomeViewController: BaseViewController {
         print(notifications)
         
         let settingVC = SettingsViewController()
-//        self.navigationController?.delegate = self
-//        self.toViewControllerAnimationType = 0
-        self.presentViewController(settingVC, animated: true) { 
-            
-        }
-//        self.navigationController?.pushViewController(settingVC, animated: true)
+        self.navigationController?.delegate = self
+        self.toViewControllerAnimationType = 0
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     func switchScreenAction() {

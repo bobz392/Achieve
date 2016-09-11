@@ -43,4 +43,13 @@ extension NSDate {
     func am() -> String {
         return self.formattedDateWithFormat(onlyAmFormat)
     }
+    
+    func isLaterThenToday() -> Bool {
+        let now = NSDate()
+        return self.isToday() || self.isLaterThan(now)
+    }
+    
+    func isMorning() -> Bool {
+        return self.hour() < 10
+    }
 }

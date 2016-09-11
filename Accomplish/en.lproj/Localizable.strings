@@ -88,7 +88,7 @@
 "day6" = "Sat";
 "day7" = "Sun";
 
-"newDay"="The new day begins :)";
+"newDay"="Have a nice day :)";
 
 // hint
 "repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your shoud prepare to complete it each day, but you can remove repeat of this task.";
@@ -115,3 +115,15 @@
 // Shortcut
 "shortCutCreate"="Create Task";
 "shortCutCalendar"="Enter Calendar";
+
+// settings
+"emailUs"="Email us";
+"about"="About";
+"writeReview"="Write review";
+"theme"="Background";
+"enabDueNextDay"="Postpone incomplete tasks to today";
+"hintClose"="Show hint button";
+"startDay"="Week start on";
+
+"open"="Opened";
+"close"="Closed";

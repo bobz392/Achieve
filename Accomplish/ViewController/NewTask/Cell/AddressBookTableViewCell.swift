@@ -29,5 +29,4 @@ final class AddressBookTableViewCell: UITableViewCell {
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
     }
-    
 }

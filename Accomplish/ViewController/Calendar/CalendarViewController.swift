@@ -104,30 +104,50 @@ class CalendarViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
         
-        self.calendarView.dataSource = self
-        self.calendarView.delegate = self
+        
+        let startDay = UserDefault().readInt(kWeekStartKey)
+        self.calendarView.firstDayOfWeek = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.Sunday
         self.calendarView.cellInset = CGPoint(x: 0, y: 0)
         self.calendarView.registerCellViewXib(fileName: "CalendarCell")
+        self.calendarView.dataSource = self
+        self.calendarView.delegate = self
         self.calendarView.clearView()
         self.calendarView.alpha = 0
         
         self.configCountingLabel(self.createdLabel)
         self.configCountingLabel(self.completedLabel)
+        self.calendarView.reloadData()
     }
     
     func configCountingLabel(countLabel: UICountingLabel) {
         countLabel.numberOfLines = 1
         countLabel.animationDuration = kCalendarProgressAnimationDuration
-        countLabel.method = .EaseOut
+        countLabel.method = .EaseIn
         countLabel.format = "%d"
     }
     
     func configWeekView() {
+        let startDay = UserDefault().readInt(kWeekStartKey)
+        
         for subview in self.weekView.subviews {
             let colors = Colors()
             guard let label = subview as? UILabel else { break }
             label.textColor = colors.mainGreenColor
-            label.text = Localized("day\(label.tag + 1)")
+            if startDay == DaysOfWeek.Monday.rawValue {
+                label.text = Localized("day\(label.tag)")
+            } else if startDay == DaysOfWeek.Saturday.rawValue {
+                if label.tag < 3 {
+                    label.text = Localized("day\(label.tag + 5)")
+                } else {
+                    label.text = Localized("day\(label.tag - 2)")
+                }
+            } else {
+                if label.tag == 1 {
+                    label.text = Localized("day7")
+                } else {
+                    label.text = Localized("day\(label.tag - 1)")
+                }
+            }
         }
     }
     
@@ -180,21 +200,25 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     // 选中当前的date的进度 和 任务数量的动画
     private func showInfoWhenNeed(date: NSDate) {
-        let created: Int
-        let completed: Int
-        if let checkIn = self.checkInManager.checkInWithDate(date) {
-            created = checkIn.createdCount
-            completed = checkIn.completedCount
-        } else {
-            if date.isToday() {
-                let task = RealmManager.shareManager.queryTaskCount(date)
-                created = task.created
-                completed = task.complete
-            } else {
-                created = 0
-                completed = 0
-            }
-        }
+//        let created: Int
+//        let completed: Int
+//        if let checkIn = self.checkInManager.checkInWithDate(date) {
+//            created = checkIn.createdCount
+//            completed = checkIn.completedCount
+//        } else {
+//            if date.isToday() {
+//                let task = RealmManager.shareManager.queryTaskCount(date)
+//                created = task.created
+//                completed = task.complete
+//            } else {
+//                created = 0
+//                completed = 0
+//            }
+//        }
+        
+        let task = RealmManager.shareManager.queryTaskCount(date)
+        let created = task.created
+        let completed = task.complete
         self.circleView.start(completed: completed, created: created)
         self.createdLabel.countFrom(0, to: CGFloat(created))
         self.completedLabel.countFrom(0, to: CGFloat(completed))

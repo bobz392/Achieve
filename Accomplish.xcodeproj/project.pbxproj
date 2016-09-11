@@ -195,6 +195,8 @@
 		C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */; };
 		C798072E1D83DB3F0011DE19 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */; };
 		C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072C1D83DB3F0011DE19 /* HUD.swift */; };
+		C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */; };
+		C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -464,6 +466,8 @@
 		C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeButton.swift; sourceTree = "<group>"; };
 		C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
 		C798072C1D83DB3F0011DE19 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetialTableViewCell.swift; sourceTree = "<group>"; };
+		C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingDetialTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -942,6 +946,8 @@
 			children = (
 				C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */,
 				C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */,
+				C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */,
+				C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */,
 				C79807261D83959D0011DE19 /* SettingHeaderView.swift */,
 				C79807241D83958F0011DE19 /* SettingHeaderView.xib */,
 			);
@@ -1113,6 +1119,7 @@
 				C79806B51D7ED5DE0011DE19 /* 27CEBD09-CAF3-3D3C-94B9-4C0BECFAD435.bcsymbolmap in Resources */,
 				C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
+				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
 				C79806B41D7ED5DE0011DE19 /* 21D362CE-3223-36CE-88FE-4AE0C2BC22B7.bcsymbolmap in Resources */,
 				C79806BA1D7ED5DE0011DE19 /* 46A772D4-9140-3C27-81E5-E1CB49466F0E.bcsymbolmap in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
@@ -1256,6 +1263,7 @@
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
+				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,

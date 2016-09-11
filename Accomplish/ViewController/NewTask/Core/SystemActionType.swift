@@ -109,3 +109,14 @@ enum SystemActionType: Int {
         }
     }
 }
+
+/**
+ ** action 对应的功能展现
+ ** such as 从 address book 中取回数据
+ **/
+enum ActionFeaturePresent {
+    case AddressBook
+    case AddressBookEmail
+    case CreateSubtasks
+    case None
+}

@@ -51,7 +51,7 @@ class ScheduleTableViewCell: UITableViewCell {
     func config(task: Task) {
         let colors = Colors()
         let identifier = task.status == kTaskFinish ?
-            "fa-check" : (task.createdDate!.isToday() ? "fa-exclamation" : "fa-times")
+            "fa-check" : (task.createdDate!.isLaterThenToday() ? "fa-exclamation" : "fa-times")
         let checkIcon = try! FAKFontAwesome(identifier: identifier, size: 12)
         checkIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
         self.statusLabel.attributedText = checkIcon.attributedString()
@@ -62,7 +62,8 @@ class ScheduleTableViewCell: UITableViewCell {
         if let finishDate = task.finishedDate {
             self.completedLabel.text = Localized("completedAt") + finishDate.timeDateString()
         } else {
-            if task.createdDate!.isToday() {
+    
+            if task.createdDate!.isLaterThenToday() {
                 self.completedLabel.text = Localized("notComoletedYet")
             } else {
                 self.completedLabel.text = Localized("notCompleted")

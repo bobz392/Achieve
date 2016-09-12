@@ -96,6 +96,7 @@ class RealmManager {
         
         self.updateObject {
             for task in movedtasks {
+                task.createdDate = task.createdDate?.dateByAddingDays(1)
                 task.createdFormattedDate = todayDateString
                 task.notifyDate = nil
             }

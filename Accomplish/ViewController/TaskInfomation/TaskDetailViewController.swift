@@ -294,6 +294,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.clearButton.tag = indexPath.row
             cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
             tableCell = cell
+            tableCell.userInteractionEnabled = canChange
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier(TaskNoteTableViewCell.reuseId, forIndexPath: indexPath) as! TaskNoteTableViewCell
             cell.configCell(task)
@@ -307,9 +308,10 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.configCell(task, subtask: self.subtasks?[row], iconString: iconList[indexPath.section][indexPath.row])
             }
             tableCell = cell
+            tableCell.userInteractionEnabled = canChange
         }
         
-        tableCell.userInteractionEnabled = canChange
+        
         return tableCell
     }
     

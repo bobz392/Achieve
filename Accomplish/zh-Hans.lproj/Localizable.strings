@@ -68,7 +68,7 @@
 
 "errorInfos"="请完善信息";
 
-"scheduled"="任务安排在 ";
+"scheduled"="任务开始于 ";
 "today"="今天";
 "tomorrow"="明天";
 "yesterday"="昨天";

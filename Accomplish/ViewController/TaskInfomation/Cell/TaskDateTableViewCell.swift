@@ -93,16 +93,8 @@ class TaskDateTableViewCell: UITableViewCell {
             self.infoLabel.highlighted = true
             guard let createdDate = task.createdDate else { break }
             let schedule = Localized("scheduled")
-            if createdDate.isToday() {
-                self.infoLabel.text = schedule + Localized("today")
-            } else if createdDate.isTomorrow() {
-                self.infoLabel.text = schedule + Localized("tomorrow")
-            } else if createdDate.isYesterday() {
-                self.infoLabel.text = schedule + Localized("yesterday")
-            } else {
-                self.infoLabel.text = schedule + " "
-                    + createdDate.formattedDateWithStyle(.MediumStyle)
-            }
+            self.infoLabel.text = schedule + " "
+                + createdDate.formattedDateWithFormat(timeDateFormat)
             self.clearButton.hidden = true
             self.iconImageView.highlighted = true
             

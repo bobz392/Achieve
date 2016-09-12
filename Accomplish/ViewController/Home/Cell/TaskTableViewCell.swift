@@ -96,7 +96,6 @@ class TaskTableViewCell: UITableViewCell {
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-square-o",
                                                    color: colors.mainGreenColor, status: .Normal)
-            self.taskStatusButton.tintColor = colors.mainGreenColor
             self.taskSettingButton.hidden = false
             
             if let create = task.createdDate {
@@ -113,7 +112,6 @@ class TaskTableViewCell: UITableViewCell {
             
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-check-square-o",
                                                    color: colors.secondaryTextColor, status: .Normal)
-            self.taskStatusButton.tintColor = colors.mainGreenColor
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()

@@ -94,7 +94,7 @@
                 <outlet property="taskStatusButton" destination="AiK-42-CC7" id="zPA-rx-Qy2"/>
                 <outlet property="taskTitleLabel" destination="fG9-rB-pjb" id="fc8-eb-qFC"/>
             </connections>
-            <point key="canvasLocation" x="305" y="322.5"/>
+            <point key="canvasLocation" x="159" y="230.5"/>
         </tableViewCell>
     </objects>
 </document>

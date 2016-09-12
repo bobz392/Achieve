@@ -64,7 +64,7 @@ enum MainColorType: Int {
         case .Nephritis:
             return UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.00)
         case .Wisteria:
-            return UIColor(red:0.71, green:0.19, blue:0.40, alpha:1.00)//UIColor(red:0.80, green:0.31, blue:0.58, alpha:1.00)//UIColor(red:0.56, green:0.27, blue:0.68, alpha:1.00)
+            return UIColor(red:0.71, green:0.19, blue:0.40, alpha:1.00)
         case .BelizeHole:
             return UIColor(red:0.16, green:0.50, blue:0.73, alpha:1.00)
         case .RedWine:
@@ -85,7 +85,7 @@ enum MainColorType: Int {
         case .Nephritis:
             return UIColor(red:0.15, green:0.68, blue:0.38, alpha:0.3)
         case .Wisteria:
-            return UIColor(red:0.56, green:0.27, blue:0.68, alpha:0.3)
+            return UIColor(red:0.71, green:0.19, blue:0.40, alpha:0.4)
         case .BelizeHole:
             return UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.3)
         case .RedWine:

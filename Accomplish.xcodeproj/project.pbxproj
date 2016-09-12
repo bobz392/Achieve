@@ -206,6 +206,8 @@
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
 		C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */; };
 		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
+		C7D933881D85908D00F0A759 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933871D85908D00F0A759 /* SearchView.swift */; };
+		C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D933891D85909400F0A759 /* SearchView.xib */; };
 		C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
 		C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
@@ -483,6 +485,8 @@
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskNoteTableViewCell.xib; sourceTree = "<group>"; };
 		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
+		C7D933871D85908D00F0A759 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C7D933891D85909400F0A759 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B51D75FAD30054154C /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
@@ -950,6 +954,8 @@
 				C79806FA1D818E660011DE19 /* HintView.xib */,
 				C79806F41D81586F0011DE19 /* EmptyView.swift */,
 				C79806F21D8158610011DE19 /* EmptyView.xib */,
+				C7D933871D85908D00F0A759 /* SearchView.swift */,
+				C7D933891D85909400F0A759 /* SearchView.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1148,6 +1154,7 @@
 				C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */,
 				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
+				C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
 				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,
@@ -1222,6 +1229,7 @@
 				C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
+				C7D933881D85908D00F0A759 /* SearchView.swift in Sources */,
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
 				C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */,
 				C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */,

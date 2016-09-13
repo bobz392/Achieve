@@ -18,8 +18,8 @@ class TaskDateTableViewCell: UITableViewCell {
     static let nib = UINib(nibName: "TaskDateTableViewCell", bundle: nil)
     static let reuseId = "taskDateTableViewCell"
     static let rowHeight: CGFloat = 38
-  
-//    @IBOutlet weak var iconButton: UIButton!
+    
+    //    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
@@ -45,7 +45,7 @@ class TaskDateTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
-
+        
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
@@ -64,10 +64,14 @@ class TaskDateTableViewCell: UITableViewCell {
             
             LocalNotificationManager().cancelNotify(task.uuid)
             
+        case TaskDetailType.Estimate:
+            RealmManager.shareManager.updateObject({ 
+                task.estimateDate = nil
+            })
+            
         default:
             break
         }
-        
     }
     
     func configCell(task: Task, iconString: String) {
@@ -89,7 +93,8 @@ class TaskDateTableViewCell: UITableViewCell {
         self.detailType = .Other
         
         switch iconString {
-        case SubtaskIconCalendar:
+            
+        case TaskIconCalendar:
             self.infoLabel.highlighted = true
             guard let createdDate = task.createdDate else { break }
             let schedule = Localized("scheduled")
@@ -98,20 +103,44 @@ class TaskDateTableViewCell: UITableViewCell {
             self.clearButton.hidden = true
             self.iconImageView.highlighted = true
             
-        case SubtaskIconBell:
+        case TaskIconBell:
             self.infoLabel.highlighted = task.notifyDate != nil
+            
             if let notifyDate = task.notifyDate {
                 self.infoLabel.text = Localized("reminderMe")
                     + notifyDate.timeDateString()
             } else {
                 self.infoLabel.text = Localized("noReminder")
             }
-        
+            
             self.clearButton.hidden = task.notifyDate == nil
             self.detailType = .Notify
             self.iconImageView.highlighted = task.notifyDate != nil
             
-        case SubtaskIconRepeat:
+        case TaskDueIconCalendar:
+            if task.status == kTaskFinish {
+                self.infoLabel.highlighted = task.finishedDate != nil
+                self.clearButton.hidden = true
+                self.iconImageView.highlighted = task.finishedDate != nil
+                self.detailType = .Other
+                
+                if let finishDate = task.finishedDate {
+                    self.infoLabel.text = Localized("finishAt") + finishDate.formattedDateWithFormat(timeDateFormat)
+                }
+            } else {
+                self.infoLabel.highlighted = task.estimateDate != nil
+                self.clearButton.hidden = task.estimateDate == nil
+                self.iconImageView.highlighted = task.estimateDate != nil
+                self.detailType = .Estimate
+                
+                if let estimateDate = task.estimateDate {
+                    self.infoLabel.text = Localized("estimeateAt") + estimateDate.formattedDateWithFormat(timeDateFormat)
+                } else {
+                    self.infoLabel.text = Localized("noEstimate")
+                }
+            }
+            
+        case TaskIconRepeat:
             let hasRepeater: Bool
             if let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid) {
                 hasRepeater = true
@@ -126,6 +155,7 @@ class TaskDateTableViewCell: UITableViewCell {
                 hasRepeater = false
                 self.infoLabel.text = Localized("noRepeat")
             }
+            
             self.infoLabel.highlighted = hasRepeater
             self.clearButton.hidden = !hasRepeater
             self.detailType = .Repeat
@@ -139,6 +169,7 @@ class TaskDateTableViewCell: UITableViewCell {
     enum TaskDetailType: Int {
         case Notify = 100
         case Repeat = 101
+        case Estimate = 102
         case Other = 0
     }
 }

@@ -29,7 +29,7 @@ class SettingDetialTableViewCell: UITableViewCell {
         self.clearView()
         self.settingTitleLabel.textColor =
             colors.mainTextColor
-        self.detailLabel.textColor = colors.secondaryTextColor
+        self.detailLabel.textColor = colors.linkTextColor
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

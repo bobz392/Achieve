@@ -84,9 +84,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.setDateButton.tintColor = colors.mainGreenColor
         self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: SubtaskIconCalendar, color: colors.secondaryTextColor, status: .Normal)
+        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: TaskIconCalendar, color: colors.secondaryTextColor, status: .Normal)
         
-        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: "fa-archive", color: colors.mainGreenColor, status: .Normal)
+        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: SystemIcon, color: colors.mainGreenColor, status: .Normal)
     }
     
     private func initializeControl() {
@@ -161,6 +161,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             }
             self.saveNewTask(title)
         }
+    }
+    
+    func dueDateAction() {
+        KeyboardManager.sharedManager.closeNotification()
+        self.titleTextField.resignFirstResponder()
     }
     
     func scheduleAction() {

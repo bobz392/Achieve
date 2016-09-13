@@ -9,13 +9,19 @@
 import UIKit
 import RealmSwift
 
-let SubtaskIconCalendar = "fa-calendar-plus-o"
-let SubtaskIconBell = "fa-bell-o"
-let SubtaskIconRepeat = "fa-repeat"
+let TaskIconCalendar = "fa-calendar-plus-o"
+let TaskDueIconCalendar = "fa-calendar-minus-o"
+let TaskIconBell = "fa-bell-o"
+let TaskIconRepeat = "fa-repeat"
 let SubtaskIconAdd = "fa-plus"
-let SubtaskIconNote = "fa-pencil-square-o"
+let SystemIcon = "fa-archive"
+let TaskIconNote = "fa-pencil-square-o"
 let SubtaskIconSquare = "fa-square-o"
 let SubtaskIconChecked = "fa-check-square-o"
+
+let TaskDueIndex = 1
+let TaskReminderIndex = 2
+let TaskRepeatIndex = 3
 
 class TaskDetailViewController: BaseViewController {
     
@@ -29,9 +35,9 @@ class TaskDetailViewController: BaseViewController {
     
     private var taskPickerView: TaskPickerView?
     private var iconList = [
-        [SubtaskIconCalendar, SubtaskIconBell, SubtaskIconRepeat],
+        [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat],
         [SubtaskIconAdd],
-        [SubtaskIconNote]
+        [TaskIconNote]
     ]
     private let subtaskSection = 1
     
@@ -59,7 +65,6 @@ class TaskDetailViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
-        //fa-share-square-o
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -143,7 +148,7 @@ class TaskDetailViewController: BaseViewController {
         if self.task.taskType == kSystemTaskType {
             self.titleTextField.enabled = self.task.taskToDoCanChange() && self.canChange
         } else {
-           self.titleTextField.enabled = self.canChange
+            self.titleTextField.enabled = self.canChange
         }
     }
     
@@ -331,13 +336,8 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-//            if indexPath.row < 2 {
-                self.taskPickerView?.setIndex(indexPath.row)
-                self.showDatePickerView(show: true)
-//            } else if indexPath.row == 2 {
-//                self.taskPickerView?.setIndex(indexPath.row)
-//                self.showDatePickerView(show: true)
-//            }
+            self.taskPickerView?.setIndex(indexPath.row)
+            self.showDatePickerView(show: true)
         } else if indexPath.section == 2 {
             let noteVC = NoteViewController(task: self.task, noteDelegate: self)
             self.navigationController?.pushViewController(noteVC, animated: true)
@@ -358,7 +358,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-
+    
 }
 
 // MARK: - task data picker
@@ -381,29 +381,34 @@ extension TaskDetailViewController {
                 self.task.createdFormattedDate = taskPickerView.datePicker.date.createdFormatedDateString()
             }
             
-        case 1:
+        case TaskDueIndex:
+            RealmManager.shareManager.updateObject {
+                self.task.estimateDate = taskPickerView.datePicker.date
+            }
+            
+        case TaskReminderIndex:
             RealmManager.shareManager.updateObject {
                 let date = taskPickerView.datePicker.date
                 let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 5)
-            
+                
                 self.task.notifyDate = fireDate
             }
             LocalNotificationManager().createNotify(self.task)
             
-        case 2:
+        case TaskRepeatIndex:
             let repeatTimeType = taskPickerView.repeatTimeType()
             RealmManager.shareManager
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
-//            let repeater =
-//                RealmManager.shareManager.repeaterWithTask(taskUUID: self.task.uuid)
-//
-//
-//
-//            repeater.repeatType = Int(repeatType.rawValue)
-//            RealmManager.shareManager.writeObject(repeater)
-//            if self.task.notifyDate != nil {
-//                LocalNotificationManager().updateNotify(self.task)
-//            }
+            //            let repeater =
+            //                RealmManager.shareManager.repeaterWithTask(taskUUID: self.task.uuid)
+            //
+            //
+            //
+            //            repeater.repeatType = Int(repeatType.rawValue)
+            //            RealmManager.shareManager.writeObject(repeater)
+            //            if self.task.notifyDate != nil {
+            //                LocalNotificationManager().updateNotify(self.task)
+            //            }
             
         default:
             break

@@ -73,8 +73,15 @@ class TaskPickerView: UIView {
             self.datePicker.datePickerMode = .DateAndTime
             self.rightButton.setTitle(Localized("setCreateDate"), forState: .Normal)
             self.datePicker.reloadInputViews()
-            
-        case 1:
+        
+        case TaskDueIndex:
+            self.datePicker.hidden = false
+            self.datePicker.minimumDate = (task.createdDate?.dateByAddingMinutes(15)) ?? now
+            self.datePicker.datePickerMode = .Time
+            self.rightButton.setTitle(Localized("setEstimateDate"), forState: .Normal)
+            self.datePicker.reloadInputViews()
+        
+        case TaskReminderIndex:
             guard let createDate = task.createdDate else { break }
             self.datePicker.date = now
             self.datePicker.hidden = false
@@ -91,7 +98,7 @@ class TaskPickerView: UIView {
             self.rightButton.setTitle(Localized("setReminder"), forState: .Normal)
             self.datePicker.reloadInputViews()
         
-        case 2:
+        case TaskRepeatIndex:
             self.pickerView.hidden = false
             self.rightButton.setTitle(Localized("setRepeat"), forState: .Normal)
             self.pickerView.reloadAllComponents()

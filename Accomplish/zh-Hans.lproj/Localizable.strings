@@ -23,7 +23,8 @@
 "cancel"="取消";
 "permit"="允许";
 "reject"="拒绝";
-"save"="添加";
+"add"="添加";
+"save"="保存";
 "ok"="知道了";
 "done"="完成";
 "customTask"="新任务";

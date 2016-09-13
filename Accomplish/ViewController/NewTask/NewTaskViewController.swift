@@ -108,7 +108,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         self.cancelDateButton.setTitle(Localized("remove"), forState: .Normal)
         self.setDateButton.setTitle(Localized("setCreateDate"), forState: .Normal)
-        self.saveButton.setTitle(Localized("save"), forState: .Normal)
+        self.saveButton.setTitle(Localized("add"), forState: .Normal)
         
         self.priorityLabel.text = Localized("priority")
         

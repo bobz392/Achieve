@@ -106,7 +106,7 @@ class KVTaskViewController: BaseViewController {
         self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
         
-        self.saveButton.setTitle(Localized("save"), forState: .Normal)
+        self.saveButton.setTitle(Localized("add"), forState: .Normal)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
     }
     

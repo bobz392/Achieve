@@ -23,7 +23,8 @@
 "cancel"="Cancel";
 "permit"="Allow";
 "reject"="Reject";
-"save"="Add";
+"add"="Add";
+"save"="Save";
 "ok"="Ok";
 "done"="Done";
 "customTask"="Custom task";

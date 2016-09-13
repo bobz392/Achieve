@@ -48,13 +48,24 @@ class NoteViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
-            KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
+        
+        KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
+            self.toolViewBottomConstraint.constant = 0
+            UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        KeyboardManager.sharedManager.closeNotification()
     }
     
     override func didReceiveMemoryWarning() {

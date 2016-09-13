@@ -59,15 +59,16 @@
 "subtaskTitle"="Enter your task name";
 "subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
 
-"noReminder"="No reminder";
+"noReminder"="Reminder";
 "reminderMe"="Reminder me at ";
-"noEstimate"="No estimated finish time";
+"noEstimate"="Estimated finish time";
 "estimeateAt"="Estimated finish time ";
 "finishAt"="Finished at ";
 "repeat"="Repeat ";
-"noRepeat"="No repeat";
+"noRepeat"="Repeat";
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
+"overTime"="  overtime  ";
 
 "addressBook"="Address Book";
 

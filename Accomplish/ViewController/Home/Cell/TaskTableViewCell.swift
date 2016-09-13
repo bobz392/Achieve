@@ -22,6 +22,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var priorityView: UIView!
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
+    @IBOutlet weak var overTimeLabel: UILabel!
     
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
@@ -44,6 +45,8 @@ class TaskTableViewCell: UITableViewCell {
         
         self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), forControlEvents: .TouchUpInside)
+        
+        self.overTimeLabel.text = Localized("overTime")
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -125,6 +128,18 @@ class TaskTableViewCell: UITableViewCell {
             self.taskStatusButton.tintColor = colors.mainGreenColor
             
             self.taskSettingButton.hidden = true
+        }
+        
+        self.overTimeLabel.hidden = true
+        if let estimateDate = task.estimateDate {
+            if estimateDate.isEarlierThan(NSDate()) {
+                self.overTimeLabel.hidden = false
+                
+                self.overTimeLabel.textColor = colors.mainGreenColor
+                self.overTimeLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
+                self.overTimeLabel.layer.borderColor = colors.mainGreenColor.CGColor
+                self.overTimeLabel.layer.borderWidth = 1
+            }
         }
     }
     

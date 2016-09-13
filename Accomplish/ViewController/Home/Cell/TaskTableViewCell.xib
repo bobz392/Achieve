@@ -36,13 +36,13 @@
                             <constraint firstAttribute="height" constant="25" id="rMb-Oy-7qD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4a-ig-DCb">
                         <rect key="frame" x="50" y="40" width="31" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-42-CC7">
@@ -54,10 +54,19 @@
                         <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-Re-QZp">
-                        <rect key="frame" x="80" y="10.5" width="30" height="25"/>
+                        <rect key="frame" x="80" y="10" width="30" height="25"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <state key="normal" title="bob"/>
                     </button>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="over time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Ed-xfX">
+                        <rect key="frame" x="232" y="39.5" width="45" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="OeG-U5-eGV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TnC-Re-QZp" secondAttribute="trailing" constant="5" id="3QM-gE-0Oe"/>
@@ -73,8 +82,10 @@
                     <constraint firstAttribute="bottom" secondItem="AiK-42-CC7" secondAttribute="bottom" id="kpN-do-Zzb"/>
                     <constraint firstAttribute="bottom" secondItem="nRC-r3-d8A" secondAttribute="bottom" id="lVJ-ua-SB1"/>
                     <constraint firstAttribute="bottom" secondItem="ZQw-Bj-5fl" secondAttribute="bottom" id="lvV-Wz-e8P"/>
+                    <constraint firstItem="Pvh-Ed-xfX" firstAttribute="centerY" secondItem="j4a-ig-DCb" secondAttribute="centerY" id="mQE-gR-20T"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n0X-1M-TZ3"/>
                     <constraint firstItem="j4a-ig-DCb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="oBG-6j-IVj"/>
+                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" secondItem="Pvh-Ed-xfX" secondAttribute="trailing" constant="8" id="sCj-O9-gWy"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uO9-Xl-xK0"/>
                     <constraint firstAttribute="trailing" secondItem="ZQw-Bj-5fl" secondAttribute="trailing" id="x4M-Bk-DSD"/>
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="x80-JV-5NI"/>
@@ -87,6 +98,7 @@
             </tableViewCellContentView>
             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
             <connections>
+                <outlet property="overTimeLabel" destination="Pvh-Ed-xfX" id="89F-gm-GmQ"/>
                 <outlet property="priorityView" destination="nRC-r3-d8A" id="4q3-8l-HWg"/>
                 <outlet property="taskDateLabel" destination="j4a-ig-DCb" id="tdA-3a-lzh"/>
                 <outlet property="taskInfoButton" destination="TnC-Re-QZp" id="fui-Az-tQy"/>

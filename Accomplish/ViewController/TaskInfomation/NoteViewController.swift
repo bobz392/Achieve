@@ -55,8 +55,6 @@ class NoteViewController: BaseViewController {
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
-        
-        self.contentTextView.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {

@@ -31,7 +31,7 @@ class BackgroundViewController: BaseViewController {
     
     override func configMainUI() {
         let colors = Colors()
-        debugPrint(Colors.backgroundType)
+        
         self.titleLabel.textColor = colors.cloudColor
         
         self.cardView.backgroundColor = colors.cloudColor

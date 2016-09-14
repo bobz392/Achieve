@@ -59,7 +59,7 @@
                         <state key="normal" title="bob"/>
                     </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="over time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Ed-xfX">
-                        <rect key="frame" x="232" y="39.5" width="45" height="16"/>
+                        <rect key="frame" x="240" y="39" width="45" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="OeG-U5-eGV"/>
                         </constraints>
@@ -85,7 +85,7 @@
                     <constraint firstItem="Pvh-Ed-xfX" firstAttribute="centerY" secondItem="j4a-ig-DCb" secondAttribute="centerY" id="mQE-gR-20T"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n0X-1M-TZ3"/>
                     <constraint firstItem="j4a-ig-DCb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="oBG-6j-IVj"/>
-                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" secondItem="Pvh-Ed-xfX" secondAttribute="trailing" constant="8" id="sCj-O9-gWy"/>
+                    <constraint firstItem="ZQw-Bj-5fl" firstAttribute="leading" secondItem="Pvh-Ed-xfX" secondAttribute="trailing" id="sCj-O9-gWy"/>
                     <constraint firstItem="nRC-r3-d8A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uO9-Xl-xK0"/>
                     <constraint firstAttribute="trailing" secondItem="ZQw-Bj-5fl" secondAttribute="trailing" id="x4M-Bk-DSD"/>
                     <constraint firstItem="fG9-rB-pjb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="5" id="x80-JV-5NI"/>

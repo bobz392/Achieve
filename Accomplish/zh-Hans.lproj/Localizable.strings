@@ -130,6 +130,9 @@
 "enabDueNextDay"="推迟未完成的任务到今天";
 "hintClose"="显示提示按钮";
 "startDay"="每周开始于";
+"about"="关于";
+"licenses"="开源许可";
+"version"="版本 ";
 
 "open"="已打开";
 "close"="已关闭";

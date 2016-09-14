@@ -43,6 +43,10 @@
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
+		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
+		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
+		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
+		C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6461D8862D800E68871 /* LicensesViewController.xib */; };
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
 		C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77192451D6CEE4E00437560 /* HomeViewController.xib */; };
 		C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771924D1D6CEE6800437560 /* NewTaskViewController.swift */; };
@@ -315,6 +319,10 @@
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
+		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
+		C769A6461D8862D800E68871 /* LicensesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicensesViewController.xib; sourceTree = "<group>"; };
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C77192451D6CEE4E00437560 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C771924D1D6CEE6800437560 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -797,6 +805,10 @@
 				C79807151D8298380011DE19 /* SettingsViewController.xib */,
 				C798073A1D8538C00011DE19 /* BackgroundViewController.swift */,
 				C798073B1D8538C00011DE19 /* BackgroundViewController.xib */,
+				C769A6411D885AB700E68871 /* AboutViewController.swift */,
+				C769A6421D885AB700E68871 /* AboutViewController.xib */,
+				C769A6451D8862D800E68871 /* LicensesViewController.swift */,
+				C769A6461D8862D800E68871 /* LicensesViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1128,11 +1140,13 @@
 				C79806BD1D7ED5DE0011DE19 /* 9F821747-B64B-320C-9B63-EC3043581514.bcsymbolmap in Resources */,
 				C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
+				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
 				C79806C81D7ED5DE0011DE19 /* DE8BA871-024C-3A3A-86B4-B5DF8731C473.bcsymbolmap in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C79806C11D7ED5DE0011DE19 /* B2E186B3-D728-32C7-A6F0-52A9902D227C.bcsymbolmap in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
+				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C79806BB1D7ED5DE0011DE19 /* 5CE7EB3F-88A7-3691-B1F6-41BD16EC9FE9.bcsymbolmap in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
 				C79806C91D7ED5DE0011DE19 /* EE713B7F-172B-3911-BA82-C959BA1C5A19.bcsymbolmap in Resources */,
@@ -1263,10 +1277,12 @@
 				C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */,
 				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
+				C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
 				C7DDA5C01D7682FC0054154C /* TaskPickerView.swift in Sources */,
 				C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */,
 				C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */,
+				C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */,
 				C79805C51D7D4E610011DE19 /* JTAppleCalendarView.swift in Sources */,
 				C79805C21D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift in Sources */,
 				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,

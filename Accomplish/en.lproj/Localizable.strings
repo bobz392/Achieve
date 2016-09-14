@@ -133,6 +133,10 @@
 "enabDueNextDay"="Postpone unfinished tasks to today";
 "hintClose"="Show hint button";
 "startDay"="Week start on";
+"about"="About";
+"licenses"="Licenses";
+"version"="version ";
 
 "open"="Opened";
 "close"="Closed";
+

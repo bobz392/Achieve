@@ -237,7 +237,21 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
         } else {
-            
+            switch indexPath.row {
+            case 0:
+                break
+                
+            case 1:
+                self.selectedIndex = indexPath
+                let aboutVC = AboutViewController()
+                self.navigationController?.pushViewController(aboutVC, animated: true)
+                
+            case 2:
+                break
+                
+            default:
+                break
+            }
         }
     }
     

@@ -112,7 +112,6 @@ class TaskTableViewCell: UITableViewCell {
             
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
-            
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-check-square-o",
                                                    color: colors.secondaryTextColor, status: .Normal)
             
@@ -122,7 +121,6 @@ class TaskTableViewCell: UITableViewCell {
             
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
-            
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-close",
                                                    color: colors.mainGreenColor, status: .Normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor

@@ -14,6 +14,7 @@ class ReportViewController: BaseViewController {
     //    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scheduleTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var exportButton: UIButton!
     
     private let checkInDate: NSDate
     private var taskList: Results<Task>? = nil
@@ -46,14 +47,16 @@ class ReportViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        //        self.titleLabel.textColor = colors.cloudColor
-        
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
                                          status: .Normal)
+        
+        self.exportButton.buttonColor(colors)
+        self.exportButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
+                                           icon: "fa-share", color: colors.mainGreenColor, status: .Normal)
     }
     
     private func initializeControl() {
@@ -63,12 +66,39 @@ class ReportViewController: BaseViewController {
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.backAction), forControlEvents: .TouchUpInside)
         
-        
+        self.exportButton.addShadow()
+        self.exportButton.layer.cornerRadius = kBackButtonCorner
+        self.exportButton.addTarget(self, action: #selector(self.extportAction), forControlEvents: .TouchUpInside)
     }
     
     // MARK: - actions
     func backAction() {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func extportAction() {
+        let activeViewController = UIActivityViewController(activityItems: [self.generateReport()], applicationActivities: nil)
+        self.presentViewController(activeViewController, animated: true) {
+            
+        }
+        
+        let myblock: UIActivityViewControllerCompletionWithItemsHandler = {(activityType: String?, completed: Bool , returnedItems: Array?, activityError: NSError?) -> Void in
+            debugPrint(activityType)
+            debugPrint(completed)
+            debugPrint(returnedItems)
+            debugPrint(activityError)
+        }
+        activeViewController.completionWithItemsHandler = myblock
+    }
+    
+    private func generateReport() -> String {
+        let string = self.taskList?.reduce("", combine: { (content, task) -> String in
+            return content + task.getNormalDisplayTitle() + "\n"
+        })
+        guard let report = string else {
+            return "No report today"
+        }
+        return report
     }
 }
 
@@ -114,19 +144,6 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
-    }
-    
-    @IBAction func showAction(sender: AnyObject) {
-        let activeViewController = UIActivityViewController(activityItems: ["hahaha"], applicationActivities: nil)
-        self.presentViewController(activeViewController, animated: true) {
-            
-        }
-        
-        let myblock: UIActivityViewControllerCompletionWithItemsHandler = {(activityType: String?, completed: Bool , returnedItems: Array?, activityError: NSError?) -> Void in
-            debugPrint(activityType)
-            debugPrint(completed)
-        }
-        activeViewController.completionWithItemsHandler = myblock
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

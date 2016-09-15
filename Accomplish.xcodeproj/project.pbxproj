@@ -207,6 +207,9 @@
 		C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5BB1D7673FF0054154C /* NoteViewController.xib */; };
 		C7DDA5C01D7682FC0054154C /* TaskPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */; };
 		C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5C11D7683030054154C /* TaskPickerView.xib */; };
+		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
+		C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
+		C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -470,6 +473,8 @@
 		C7DDA5BB1D7673FF0054154C /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPickerView.swift; sourceTree = "<group>"; };
 		C7DDA5C11D7683030054154C /* TaskPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPickerView.xib; sourceTree = "<group>"; };
+		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -542,6 +547,7 @@
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */,
 				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
+				C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */,
 				C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */,
 				C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */,
 			);
@@ -558,6 +564,7 @@
 				C77194931D6FD5E600437560 /* Trigger.swift */,
 				C70BF6141D77DDE3006B0C1D /* Repeater.swift */,
 				C79805521D7CC8740011DE19 /* CheckIn.swift */,
+				C7E3C3A81D8AF13500087C77 /* Tag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1201,6 +1208,7 @@
 				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
+				C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
 				C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */,
@@ -1251,6 +1259,7 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
+				C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
@@ -1299,6 +1308,7 @@
 				C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C78ED87C1D7A7D3100031B4D /* TodayViewController.swift in Sources */,
 				C7821ECA1D7BF18E0056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
+				C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */,
 				C78ED89D1D7A800D00031B4D /* DTTimePeriod.m in Sources */,
 				C78ED8A11D7A800D00031B4D /* NSDate+DateTools.m in Sources */,
 				C78ED8A41D7A80F900031B4D /* NSDate+Convenient.swift in Sources */,

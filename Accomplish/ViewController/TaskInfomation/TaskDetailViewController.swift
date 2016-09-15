@@ -14,6 +14,7 @@ let TaskDueIconCalendar = "fa-calendar-minus-o"
 let TaskIconBell = "fa-bell-o"
 let TaskIconRepeat = "fa-repeat"
 let SubtaskIconAdd = "fa-plus"
+let TaskTagIcon = "fa-tag"
 let SystemIcon = "fa-archive"
 let TaskIconNote = "fa-pencil-square-o"
 let SubtaskIconSquare = "fa-square-o"
@@ -22,6 +23,7 @@ let SubtaskIconChecked = "fa-check-square-o"
 let TaskDueIndex = 1
 let TaskReminderIndex = 2
 let TaskRepeatIndex = 3
+let TagIndex = 4
 
 class TaskDetailViewController: BaseViewController {
     
@@ -36,7 +38,7 @@ class TaskDetailViewController: BaseViewController {
     fileprivate var taskPickerView: TaskPickerView?
     
     fileprivate var iconList = [
-        [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat],
+        [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
         [SubtaskIconAdd],
         [TaskIconNote]
     ]

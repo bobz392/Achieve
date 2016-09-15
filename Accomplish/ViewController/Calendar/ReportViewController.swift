@@ -86,13 +86,11 @@ class ReportViewController: BaseViewController {
             
         }
         
-        let myblock: UIActivityViewControllerCompletionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool , returnedItems: [Any]?, activityError: NSError?) -> Void in
+        let myblock: UIActivityViewControllerCompletionHandler = {(activityType: UIActivityType?, completed: Bool) -> Void in
             debugPrint(activityType)
             debugPrint(completed)
-            debugPrint(returnedItems)
-            debugPrint(activityError)
-        } as! UIActivityViewControllerCompletionWithItemsHandler
-        activeViewController.completionWithItemsHandler = myblock
+        }
+        activeViewController.completionHandler = myblock
     }
     
     fileprivate func generateReport() -> String {

@@ -28,6 +28,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5o-WL-Vnq">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxB-HZ-gWF">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="aKN-ri-ZpR"/>
+                            </constraints>
                             <state key="normal" title="Button"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ay2-WH-ncR">
@@ -39,17 +42,11 @@
                         <constraint firstItem="ay2-WH-ncR" firstAttribute="top" secondItem="V5o-WL-Vnq" secondAttribute="top" id="3ka-8U-ikq"/>
                         <constraint firstAttribute="height" constant="44" id="Cvc-tM-ykV"/>
                         <constraint firstAttribute="trailing" secondItem="ay2-WH-ncR" secondAttribute="trailing" constant="10" id="JdM-nX-Mez"/>
-                        <constraint firstItem="zxB-HZ-gWF" firstAttribute="leading" secondItem="V5o-WL-Vnq" secondAttribute="leading" constant="10" id="S5o-pl-aV2"/>
+                        <constraint firstItem="zxB-HZ-gWF" firstAttribute="leading" secondItem="V5o-WL-Vnq" secondAttribute="leading" id="S5o-pl-aV2"/>
                         <constraint firstAttribute="bottom" secondItem="ay2-WH-ncR" secondAttribute="bottom" id="gVc-2i-7hT"/>
                         <constraint firstAttribute="bottom" secondItem="zxB-HZ-gWF" secondAttribute="bottom" id="npH-HZ-TMk"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qDY-JP-zZJ"/>
                         <constraint firstItem="zxB-HZ-gWF" firstAttribute="top" secondItem="V5o-WL-Vnq" secondAttribute="top" id="qHY-Nm-2HC"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="qDY-JP-zZJ"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

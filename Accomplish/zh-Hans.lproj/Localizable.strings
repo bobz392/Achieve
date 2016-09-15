@@ -66,6 +66,8 @@
 "reminderMe"="提醒我在 ";
 "repeat"="重复 ";
 "noRepeat"="不重复";
+"tag"="标签 ";
+"noTag"="添加标签";
 "taskNote"="添加备注";
 "detailAddSubtask"="添加子任务";
 "overTime"="  超时  ";

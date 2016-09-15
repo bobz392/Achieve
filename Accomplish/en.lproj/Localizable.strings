@@ -67,6 +67,8 @@
 "finishAt"="Finished at ";
 "repeat"="Repeat ";
 "noRepeat"="Repeat";
+"tag"="Tag ";
+"noTag"="Add tag";
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
 "overTime"="  overtime  ";

@@ -17,7 +17,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     fileprivate var alltasks = [[String]]()
     fileprivate let bottomHeight: CGFloat = 73
-    fileprivate let maxShowTaskCount = 5
+    fileprivate let maxShowTaskCount = 8
     
     fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
     
@@ -26,17 +26,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view from its nib.
         
         let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
-        let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
         let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
+        let mainTextColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
         
         self.todayTableView.register(TodayTableViewCell.nib, forCellReuseIdentifier: TodayTableViewCell.reuseId)
-        self.todayTableView.separatorColor = separatorColor
+        self.todayTableView.separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
+        
         self.todayTableView.tableFooterView = UIView()
         
-        self.infoLabel.textColor = cloudColor
+        if SystemInfo.shareSystemInfo.isAboveOS10() {
+            self.infoLabel.textColor = secondaryTextColor
+            self.allButton.tintColor = cloudColor
+            self.allButton.setTitleColor(mainTextColor, for: UIControlState())
+        } else {
+            self.infoLabel.textColor = cloudColor
+            self.allButton.tintColor = secondaryTextColor
+            
+            self.allButton.setTitleColor(cloudColor, for: UIControlState())
+        }
         
-        self.allButton.setTitleColor(cloudColor, for: UIControlState())
-        self.allButton.tintColor = secondaryTextColor
         self.allButton.setTitle(Localized("showAll"), for: UIControlState())
         self.allButton.addTarget(self, action: #selector(self.enterApp), for: .touchUpInside)
         self.allButton.clipsToBounds = true
@@ -48,6 +56,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         self.allButton.addBlurEffect()
         self.updateTask()
+    
+        if #available(iOS 10.0, *) {
+            self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        }
     }
     
     deinit {
@@ -61,6 +73,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsets.zero
+    }
+    
+    @available (iOS 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if (activeDisplayMode == .expanded) {
+            let taskCount = self.alltasks.count
+            if taskCount > maxShowTaskCount {
+                self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(maxShowTaskCount) + bottomHeight)
+            } else {
+                self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(taskCount) + bottomHeight)
+            }
+        } else if (activeDisplayMode == .compact) {
+            self.preferredContentSize = maxSize
+        }
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {

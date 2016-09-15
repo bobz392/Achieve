@@ -9,7 +9,7 @@
 import UIKit
 
 class SubtaskTableViewCell: UITableViewCell {
-
+    
     static let nib = UINib(nibName: "SubtaskTableViewCell", bundle: nil)
     static let reuseId = "subtaskTableViewCell"
     static let rowHeight: CGFloat = 40
@@ -30,8 +30,8 @@ class SubtaskTableViewCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsets.zero
         
         self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
-                                         icon: "fa-trash-o", color: colors.mainGreenColor,
-                                         status: UIControlState())
+                                          icon: "fa-trash-o", color: colors.mainGreenColor,
+                                          status: UIControlState())
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
         self.subtaskTextField.textColor = colors.mainTextColor
@@ -61,14 +61,20 @@ class SubtaskTableViewCell: UITableViewCell {
                 self.subtaskTextField.attributedText = subtask.taskToDo.addStrikethrough()
                 self.iconButton.tintColor = colors.secondaryTextColor
             } else {
-                self.subtaskTextField.attributedText = NSAttributedString(string: subtask.taskToDo)
+                self.subtaskTextField.text = subtask.taskToDo
                 self.iconButton.tintColor = colors.mainGreenColor
             }
             
             self.trashButton.isHidden = false
             self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         } else {
-            let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.secondaryTextColor])
+            let attrPlacehold =
+                NSAttributedString(string: Localized("detailAddSubtask"), attributes: [
+                    NSForegroundColorAttributeName: colors.secondaryTextColor,
+                    NSFontAttributeName: UIFont.systemFont(ofSize: 16)
+                    ]
+            )
+            
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
             self.trashButton.isHidden = true
             self.iconButton.tintColor = colors.secondaryTextColor
@@ -87,7 +93,7 @@ class SubtaskTableViewCell: UITableViewCell {
     func subtaskChecked() {
         guard let subtask = self.subtask else { return }
         
-        RealmManager.shareManager.updateObject { 
+        RealmManager.shareManager.updateObject {
             if subtask.finishedDate == nil {
                 subtask.finishedDate = NSDate()
             } else {
@@ -97,13 +103,13 @@ class SubtaskTableViewCell: UITableViewCell {
     }
 }
 
-extension SubtaskTableViewCell: UITextFieldDelegate {
+extension SubtaskTableViewCell: UITextFieldDelegate {    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let task = self.task,
             let text = textField.text {
             if text.characters.count > 0 {
                 if let subtask = self.subtask {
-                    RealmManager.shareManager.updateObject({ 
+                    RealmManager.shareManager.updateObject({
                         subtask.taskToDo = text
                     })
                 } else {

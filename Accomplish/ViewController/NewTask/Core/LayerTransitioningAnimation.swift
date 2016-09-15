@@ -31,7 +31,7 @@ class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewC
     
     fileprivate func animateTransition(_ transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView) {
         
-        guard let containerView = transitionContext.containerView else { return }
+        let containerView = transitionContext.containerView
         
         containerView.addSubview(toView)
         containerView.addSubview(fromView)

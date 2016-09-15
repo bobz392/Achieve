@@ -113,7 +113,11 @@ class KVTaskViewController: BaseViewController {
     // MARK: - action
     func cancelAction() {
         self.toolView.isHidden = true
-        self.navigationController?.popViewController(animated: true)
+        
+        guard let nav = self.navigationController else {
+            return
+        }
+        nav.popViewController(animated: true)
     }
     
     func saveAction() {
@@ -123,7 +127,10 @@ class KVTaskViewController: BaseViewController {
             self.view.endEditing(true)
             dispatch_delay(0.25, closure: { [unowned self] in
                 self.delegate?.actionData(title, info: content)
-                self.navigationController?.popViewController(animated: true)
+                guard let nav = self.navigationController else {
+                    return
+                }
+                nav.popViewController(animated: true)
                 })
         } else {
             HUD.sharedHUD.error(Localized("errorInfos"))

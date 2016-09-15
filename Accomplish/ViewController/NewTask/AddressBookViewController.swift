@@ -59,7 +59,7 @@ final class AddressBookViewController: BaseViewController {
                     if self.data.count == 0 {
                         guard let emptyView = EmptyView.loadNib(self) else { return }
                         self.cardView.addSubview(emptyView)
-                        emptyView.layout(self.cardView)
+                        emptyView.layout(superview: self.cardView)
                     }
                     
                 }
@@ -104,7 +104,10 @@ final class AddressBookViewController: BaseViewController {
     
     // MARK: - action
     func cancelAction() {
-        self.navigationController?.popViewController(animated: true)
+        guard let nav = self.navigationController else {
+            return
+        }
+        nav.popViewController(animated: true)
     }
 }
 
@@ -138,7 +141,11 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 delegate?.actionData(person.name.fullName, info: person.mails.first ?? "")
             }
-            self.navigationController?.popViewController(animated: true)
+            
+            guard let nav = self.navigationController else {
+                return
+            }
+            nav.popViewController(animated: true)
         }
     }
     

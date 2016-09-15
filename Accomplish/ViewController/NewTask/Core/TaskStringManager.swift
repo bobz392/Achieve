@@ -30,8 +30,8 @@ struct TaskManager {
         let results = text.components(separatedBy: kSpliteTaskIdentity)
         if results.count == 3 {
             guard let type = Int(results[0]) else { return nil }
-            let showString = results[1] ?? ""
-            let infoString = results[2] ?? ""
+            let showString = results[1]
+            let infoString = results[2] 
             
             guard let actionType = SystemActionType(rawValue: type) else { return nil }
             

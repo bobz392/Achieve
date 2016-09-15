@@ -67,7 +67,10 @@ class BackgroundViewController: BaseViewController {
 
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewController(animated: true)
+        guard let nav = self.navigationController else {
+            return
+        }
+        nav.popViewController(animated: true)
     }
 }
 

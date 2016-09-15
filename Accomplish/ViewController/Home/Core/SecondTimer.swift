@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct SecondTimer {
+final class SecondTimer {
     fileprivate let fetchSecondInterval: Int
     
     fileprivate var queue: DispatchQueue
-    fileprivate var timer: DispatchSource
+    fileprivate var timer: DispatchSourceTimer
     
-    fileprivate let  handle: () -> Void
+    fileprivate let handle: () -> Void
     
     fileprivate var timerRunning = false
     
@@ -22,13 +22,14 @@ struct SecondTimer {
         self.handle = handle
         self.fetchSecondInterval = fetchSecondInterval
         
-        queue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
-        timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: queue) /*Migrator FIXME: Use DispatchSourceTimer to avoid the cast*/ as! DispatchSource
+        queue = DispatchQueue.global()
+        timer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: UInt(0)), queue: queue)
     }
     
-    mutating func start() {
-        let interval = UInt64(fetchSecondInterval) * NSEC_PER_SEC
-        timer.setTimer(start: DispatchTime.now(), interval: interval, leeway: 60)
+    func start() {
+        let interval = Double(fetchSecondInterval)
+        timer.scheduleRepeating(deadline: DispatchTime.now(), interval: interval, leeway: DispatchTimeInterval.seconds(60))
+        
         timer.setEventHandler { () -> Void in
             dispatch_async_main({ () -> Void in
                 self.handle()
@@ -38,7 +39,7 @@ struct SecondTimer {
         self.timerRunning = true
     }
     
-    mutating func suspend() {
+    func suspend() {
         if timerRunning == false {
             return
         }
@@ -46,7 +47,7 @@ struct SecondTimer {
         self.timerRunning = false
     }
     
-    mutating func stop() {
+    func stop() {
         if timerRunning == false {
             return
         }
@@ -54,7 +55,7 @@ struct SecondTimer {
         timerRunning = false
     }
     
-    mutating func resume() {
+    func resume() {
         if timerRunning == true {
             return
         }

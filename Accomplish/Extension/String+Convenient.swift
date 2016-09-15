@@ -14,7 +14,7 @@ extension String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = createdDateFormat
-        dateFormatter.calendar = NSCalendar(identifier: NSCalendar.Identifier(rawValue: "en_US")) as Calendar!
+        dateFormatter.calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let d = dateFormatter.date(from: self) ?? Date()
         
         return d as NSDate

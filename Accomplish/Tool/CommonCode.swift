@@ -42,12 +42,12 @@ func dispatch_delay(_ seconds: TimeInterval, closure: @escaping () -> Void) {
 }
 
 func dispatch_async_main(_ closure: @escaping () -> Void) {
-    let queue = DispatchQueue.main
-    queue.async(execute: closure)
+    DispatchQueue.main.async(execute: closure)
 }
 
 func dispatch_global_async(_ closure: @escaping () -> Void) {
-    DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
+    let queue = DispatchQueue.global()
+    queue.async {
         closure()
     }
 }

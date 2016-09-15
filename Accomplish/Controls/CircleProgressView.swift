@@ -102,7 +102,7 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
         self.inAnimation = true
     }
     
-    func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.inAnimation = false
     }
     

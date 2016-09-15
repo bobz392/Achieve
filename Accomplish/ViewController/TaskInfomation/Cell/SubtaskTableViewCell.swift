@@ -89,7 +89,7 @@ class SubtaskTableViewCell: UITableViewCell {
         
         RealmManager.shareManager.updateObject { 
             if subtask.finishedDate == nil {
-                subtask.finishedDate = Date()
+                subtask.finishedDate = NSDate()
             } else {
                 subtask.finishedDate = nil
             }
@@ -117,7 +117,7 @@ extension SubtaskTableViewCell: UITextFieldDelegate {
     
     fileprivate func createSubtask(_ title: String, task: Task) {
         let subtask = Subtask()
-        let now = Date()
+        let now = NSDate()
         subtask.createdDate = now
         subtask.taskToDo = title
         subtask.rootUUID = task.uuid

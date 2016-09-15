@@ -22,8 +22,8 @@ class EmptyView: UIView {
         super.awakeFromNib()
     }
     
-    func layout(_ superview: UIView) {
-        self.snp_makeConstraints { (make) in
+    func layout(superview: UIView) {
+        self.snp.makeConstraints { (make) in
             make.width.equalTo(100)
             make.height.equalTo(50)
             make.center.equalTo(superview)

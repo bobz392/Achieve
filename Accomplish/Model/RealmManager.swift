@@ -29,7 +29,7 @@ class RealmManager {
         }
     }
     
-    func updateObject(_ updateBlock: @escaping RealmBlock) {
+    func updateObject(_ updateBlock: RealmBlock) {
         try! realm.write(block: {
             updateBlock()
         })

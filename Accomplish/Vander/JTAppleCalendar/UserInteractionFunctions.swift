@@ -166,11 +166,11 @@ extension JTAppleCalendarView {
         }
         
         for date in validDatesToSelect {
-            let components = (self.calendar as NSCalendar).components([.year, .month, .day],  from: date)
+            let components = self.calendar.dateComponents([.year, .month, .day],  from: date)
             let firstDayOfDate = self.calendar.date(from: components)!
             
             // If the date is not within valid boundaries, then exit
-            if !(firstDayOfDate >= self.startOfMonthCache as Date && firstDayOfDate <= self.endOfMonthCache as Date) { continue }
+            if !(firstDayOfDate >= self.startOfMonthCache && firstDayOfDate <= self.endOfMonthCache) { continue }
             let pathFromDates = self.pathsFromDates([date])
             
             // If the date path youre searching for, doesnt exist, then return
@@ -244,7 +244,7 @@ extension JTAppleCalendarView {
     public func scrollToDate(_ date: Date, triggerScrollToDateDelegate: Bool = true, animateScroll: Bool = true, preferredScrollPosition: UICollectionViewScrollPosition? = nil, completionHandler:(()->Void)? = nil) {
         self.triggerScrollToDateDelegate = triggerScrollToDateDelegate
         
-        let components = (calendar as NSCalendar).components([.year, .month, .day],  from: date)
+        let components = calendar.dateComponents([.year, .month, .day],  from: date)
         let firstDayOfDate = calendar.date(from: components)!
         
         scrollInProgress = true
@@ -283,7 +283,7 @@ extension JTAppleCalendarView {
                     self.calendarView.scrollToItem(at: iPath, at: position, animated: animateScroll)
                     
                     if animateScroll {
-                        if let check = self.calendarOffsetIsAlreadyAtScrollPosition(forIndexPath: iPath) , check == true {
+                        if let check = self.calendarOffsetIsAlreadyAtScrollPosition(forIndexPath: iPath), check == true {
                                 self.scrollViewDidEndScrollingAnimation(self.calendarView)
                                 self.scrollInProgress = false
                                 return
@@ -344,7 +344,7 @@ extension JTAppleCalendarView {
         var currentDate = startDate
         repeat {
             returnDates.append(currentDate)
-            currentDate = calendar.startOfDay(for: (calendar as NSCalendar).date(byAdding: .day, value: 1, to: currentDate, options: [])!)
+            currentDate = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: currentDate)!)
         } while currentDate <= endDate
         return returnDates
     }

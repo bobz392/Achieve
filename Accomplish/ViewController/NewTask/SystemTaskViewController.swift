@@ -164,7 +164,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
                 ])
             
             attrText.append(nameAttrText)
-            newTaskDelegate?.toDoForSystemTask(attrText, task: task)
+            newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)
             
         case .createSubtasks:
             let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: nil)
@@ -172,7 +172,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             let nameAttrText = NSAttributedString(string: name)
             attrText.append(nameAttrText)
-            newTaskDelegate?.toDoForSystemSubtask(attrText, task: task, subtasks: info)
+            newTaskDelegate?.toDoForSystemSubtask(text: attrText, task: task, subtasks: info)
             
         default:
             return

@@ -7,26 +7,6 @@
 //
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 class CalendarViewController: BaseViewController {
     
@@ -175,12 +155,13 @@ class CalendarViewController: BaseViewController {
     
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewController(animated: true)
+        guard let nav = self.navigationController else { return }
+        nav.popViewController(animated: true)
     }
     
     func checkReport() {
         guard let checkDate = self.calendarView.selectedDates.first else { return }
-        let reportVC = ReportViewController(checkInDate: checkDate)
+        let reportVC = ReportViewController(checkInDate: checkDate as NSDate)
         self.navigationController?.pushViewController(reportVC, animated: true)
     }
 }
@@ -188,23 +169,23 @@ class CalendarViewController: BaseViewController {
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
         
-        let secondDate = (self.firstDate as NSDate).addingMonths(12)
+        let secondDate = self.firstDate.addingMonths(12) as NSDate
         let aCalendar = Calendar.current
         
-        return (startDate: self.firstDate, endDate: secondDate, numberOfRows: row, calendar: aCalendar)
+        return (startDate: self.firstDate as Date, endDate: secondDate as Date, numberOfRows: row, calendar: aCalendar)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         
         cell.setupCellBeforeDisplay(cellState, date: date,
-                                    hasTask: checkInManager.checkInWithDate(date)?.createdCount > 0)
+                                    hasTask: (checkInManager.checkInWithDate(date: date as NSDate)?.createdCount ?? 0) > 0)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
-        self.showInfoWhenNeed(date)
+        self.showInfoWhenNeed(date as NSDate)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
@@ -221,8 +202,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     // 选中当前的date的进度 和 任务数量的动画
-    fileprivate func showInfoWhenNeed(_ date: Date) {
-        let task = RealmManager.shareManager.queryTaskCount(date)
+    fileprivate func showInfoWhenNeed(_ date: NSDate) {
+        let task = RealmManager.shareManager.queryTaskCount(date: date)
         let created = task.created
         let completed = task.complete
         self.circleView.start(completed: completed, created: created)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
     
     weak var transitionContext: UIViewControllerContextTransitioning?
     
@@ -23,7 +23,7 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
         
-        guard let containerView = transitionContext.containerView else { return }
+        let containerView = transitionContext.containerView
         
         print(transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from))
 //        guard let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) else { return }
@@ -59,7 +59,7 @@ class CircleTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         
     }
     
-    func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.transitionContext?.completeTransition(true)
         
         self.maskLayer.removeFromSuperlayer()

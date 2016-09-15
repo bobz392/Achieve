@@ -127,7 +127,7 @@ final class DynamicBlurView: UIView {
         }
     }
     
-    open override func actionForLayer(_ layer: CALayer, forKey event: String) -> CAAction? {
+    override func action(for layer: CALayer, forKey event: String) -> CAAction? {
         if event == BlurLayer.BlurRadiusKey {
             fromBlurRadius = nil
             
@@ -137,7 +137,8 @@ final class DynamicBlurView: UIView {
                 staticImage = nil
             }
             
-            if let action = super.actionForLayer(layer, forKey: "backgroundColor") as? CAAnimation {
+            
+            if let action = super.action(for: layer, forKey: "backgroundColor") as? CAAnimation {
                 fromBlurRadius = blurPresentationLayer.blurRadius
                 
                 let animation = CABasicAnimation()
@@ -159,10 +160,10 @@ final class DynamicBlurView: UIView {
             }
         }
         
-        return super.actionForLayer(layer, forKey: event)
+        return super.action(for: layer, forKey: event)
     }
     
-    open override func displayLayer(_ layer: CALayer) {
+    override func display(_ layer: CALayer) {
         let blurRadius: CGFloat
         
         if let radius = fromBlurRadius {
@@ -180,14 +181,15 @@ final class DynamicBlurView: UIView {
                 self.setCaptureImage(capture, radius: blurRadius)
             }
         }
+
     }
     
     /// Get blur image again. for DynamicMode.None
     open func refresh() {
-        staticImage = nil
-        fromBlurRadius = nil
-        blurRatio = 1
-        displayLayer(blurLayer)
+        self.staticImage = nil
+        self.fromBlurRadius = nil
+        self.blurRatio = 1
+        self.display(blurLayer)
     }
     
     /// Delete blur image. for DynamicMode.None
@@ -292,7 +294,7 @@ final class DynamicBlurView: UIView {
     }
     
     func displayDidRefresh(_ displayLink: CADisplayLink) {
-        displayLayer(blurLayer)
+        display(blurLayer)
     }
 }
 

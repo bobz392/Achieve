@@ -16,16 +16,16 @@ class ReportViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var exportButton: UIButton!
     
-    fileprivate let checkInDate: Date
+    fileprivate let checkInDate: NSDate
     fileprivate var taskList: Results<Task>? = nil
     
-    init(checkInDate: Date) {
+    init(checkInDate: NSDate) {
         self.checkInDate = checkInDate
         super.init(nibName: "ReportViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.checkInDate = Date()
+        self.checkInDate = NSDate()
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -73,21 +73,25 @@ class ReportViewController: BaseViewController {
     
     // MARK: - actions
     func backAction() {
-        self.navigationController?.popViewController(animated: true)
+        guard let nav = self.navigationController else {
+            return
+        }
+        nav.popViewController(animated: true)
     }
     
     func extportAction() {
         let activeViewController = UIActivityViewController(activityItems: [self.generateReport()], applicationActivities: nil)
+        
         self.present(activeViewController, animated: true) {
             
         }
         
-        let myblock: UIActivityViewControllerCompletionWithItemsHandler = {(activityType: String?, completed: Bool , returnedItems: Array?, activityError: NSError?) -> Void in
+        let myblock: UIActivityViewControllerCompletionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool , returnedItems: [Any]?, activityError: NSError?) -> Void in
             debugPrint(activityType)
             debugPrint(completed)
             debugPrint(returnedItems)
             debugPrint(activityError)
-        }
+        } as! UIActivityViewControllerCompletionWithItemsHandler
         activeViewController.completionWithItemsHandler = myblock
     }
     
@@ -123,7 +127,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
                 + (checkInDate as NSDate).formattedDate(with: .medium)
         }
         self.scheduleTableView.tableHeaderView = headerView
-        self.scheduleTableView.tableHeaderView?.snp_makeConstraints({ (make) in
+        self.scheduleTableView.tableHeaderView?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.scheduleTableView)
             make.height.equalTo(50)
             make.leading.equalTo(self.scheduleTableView)

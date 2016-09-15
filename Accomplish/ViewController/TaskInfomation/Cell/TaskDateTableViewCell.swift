@@ -147,7 +147,7 @@ class TaskDateTableViewCell: UITableViewCell {
                 if let type = RepeaterTimeType(rawValue: repeater.repeatType),
                     let createDate = task.createdDate {
                     self.infoLabel.text = Localized("repeat")
-                        + type.repeaterTitle(createDate)
+                        + type.repeaterTitle(createDate: createDate)
                 } else {
                     self.infoLabel.text = Localized("repeat")
                 }

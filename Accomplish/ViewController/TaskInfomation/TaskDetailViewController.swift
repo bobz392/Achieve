@@ -34,6 +34,7 @@ class TaskDetailViewController: BaseViewController {
     @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate var taskPickerView: TaskPickerView?
+    
     fileprivate var iconList = [
         [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat],
         [SubtaskIconAdd],
@@ -172,7 +173,7 @@ class TaskDetailViewController: BaseViewController {
                 KeyboardManager.keyboardHeight - 62
             
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
-                self.detailTableView.layoutIfNeeded()
+                self.view.layoutIfNeeded()
                 }, completion: { [unowned self] (finsh) in
                     let index = IndexPath(row: self.iconList[self.subtaskSection].count - 1, section: self.subtaskSection)
                     self.detailTableView.scrollToRow(at: index, at: .bottom, animated: true)
@@ -186,7 +187,7 @@ class TaskDetailViewController: BaseViewController {
         KeyboardManager.sharedManager.setHideHander { [unowned self] in
             self.detailTableViewBottomConstraint.constant = 10
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
-                self.detailTableView.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             })
         }
     }
@@ -339,8 +340,11 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath as NSIndexPath).section == 0 {
-            self.taskPickerView?.setIndex(index: (indexPath as NSIndexPath).row)
-            self.showDatePickerView(show: true)
+            dispatch_delay(kSmallAnimationDuration, closure: { [unowned self] in
+                self.taskPickerView?.setIndex(index: (indexPath as NSIndexPath).row)
+                self.showDatePickerView(show: true)
+            })
+            
         } else if (indexPath as NSIndexPath).section == 2 {
             let noteVC = NoteViewController(task: self.task, noteDelegate: self)
             self.navigationController?.pushViewController(noteVC, animated: true)
@@ -403,16 +407,6 @@ extension TaskDetailViewController {
             let repeatTimeType = taskPickerView.repeatTimeType()
             RealmManager.shareManager
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
-            //            let repeater =
-            //                RealmManager.shareManager.repeaterWithTask(taskUUID: self.task.uuid)
-            //
-            //
-            //
-            //            repeater.repeatType = Int(repeatType.rawValue)
-            //            RealmManager.shareManager.writeObject(repeater)
-            //            if self.task.notifyDate != nil {
-            //                LocalNotificationManager().updateNotify(self.task)
-            //            }
             
         default:
             break
@@ -434,12 +428,12 @@ extension TaskDetailViewController {
             }
             if (self.taskPickerView?.viewIsShow() == true) {
                 self.datePickerViewBottomConstraint.constant = -TaskPickerView.height
-                UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: { [unowned self] in
-                    self.datePickerHolderView.layoutIfNeeded()
+                UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions.allowAnimatedContent, animations: { [unowned self] in
+                    self.view.layoutIfNeeded()
                 }) { [unowned self] (finish) in
                     self.datePickerViewBottomConstraint.constant = 0
                     UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
-                        self.datePickerHolderView.layoutIfNeeded()
+                        self.view.layoutIfNeeded()
                     }) { (finish) in }
                 }
                 return
@@ -448,7 +442,7 @@ extension TaskDetailViewController {
         
         self.datePickerViewBottomConstraint.constant = show ? 0 : -TaskPickerView.height
         UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {  [unowned self] in
-            self.datePickerHolderView.layoutIfNeeded()
+            self.view.layoutIfNeeded()
         }) { (finish) in }
     }
     

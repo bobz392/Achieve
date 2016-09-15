@@ -167,16 +167,29 @@ class TaskDateTableViewCell: UITableViewCell {
             self.iconImageView.isHighlighted = hasRepeater
             
         case TaskTagIcon:
-            self.infoLabel.isHighlighted = task.tag != nil
-            self.clearButton.isHidden = task.tag == nil
-            self.iconImageView.isHighlighted = task.tag != nil
-            self.detailType = .tag
+            let hasTag: Bool
             // MARK: -- to do
-            if let tag = task.tag {
-                self.infoLabel.text = Localized("tag") + " ot do"
+            if let tagUUID = task.tag {
+                // 检查 tag 是否还在，如果不在则删除 task 的 tag
+                if let tag = RealmManager.shareManager.queryTag(usingName: false, query: tagUUID) {
+                    hasTag = true
+                    self.infoLabel.text = Localized("tag") + tag.name
+                } else {
+                    hasTag = false
+                    self.infoLabel.text = Localized("noTag")
+                    RealmManager.shareManager.updateObject({ 
+                        self.task?.tag = nil
+                    })
+                }
             } else {
+                hasTag = false
                 self.infoLabel.text = Localized("noTag")
             }
+            
+            self.infoLabel.isHighlighted = hasTag
+            self.clearButton.isHidden = !hasTag
+            self.iconImageView.isHighlighted = hasTag
+            self.detailType = .tag
             
         default:
             break

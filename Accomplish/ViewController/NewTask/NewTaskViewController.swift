@@ -140,8 +140,8 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             }) { [unowned self] (finish) in
                 self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
                 self.toolView.alpha = 1
-                UIView.animate(withDuration: 0.25, animations: { [unowned self] in
-                    self.toolView.layoutIfNeeded()
+                UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
+                    self.view.layoutIfNeeded()
                     })
             }
         }

@@ -85,7 +85,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(taskCount) + bottomHeight)
             }
         } else if (activeDisplayMode == .compact) {
-            self.preferredContentSize = maxSize
+            if self.alltasks.count > 1 {
+                self.preferredContentSize = maxSize
+            } else {
+                self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight + bottomHeight)
+            }
         }
     }
     

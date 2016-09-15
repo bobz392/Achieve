@@ -37,7 +37,7 @@ class KVTaskViewController: BaseViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.actionType = SystemActionType.None
+        self.actionType = SystemActionType.none
         super.init(coder: aDecoder)
     }
     
@@ -49,14 +49,14 @@ class KVTaskViewController: BaseViewController {
         self.initializeControl()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
-            UIView.animateWithDuration(KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
+            UIView.animate(withDuration: KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
@@ -90,7 +90,7 @@ class KVTaskViewController: BaseViewController {
         self.saveButton.tintColor = colors.mainGreenColor
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
@@ -103,17 +103,17 @@ class KVTaskViewController: BaseViewController {
         self.titleCardView.layer.cornerRadius = 6.0
         self.titleCardView.addSmallShadow()
         
-        self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.cancelButton.setTitle(Localized("cancel"), for: UIControlState())
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
-        self.saveButton.setTitle(Localized("add"), forState: .Normal)
-        self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
+        self.saveButton.setTitle(Localized("add"), for: UIControlState())
+        self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
     }
     
     // MARK: - action
     func cancelAction() {
-        self.toolView.hidden = true
-        self.navigationController?.popViewControllerAnimated(true)
+        self.toolView.isHidden = true
+        self.navigationController?.popViewController(animated: true)
     }
     
     func saveAction() {
@@ -123,7 +123,7 @@ class KVTaskViewController: BaseViewController {
             self.view.endEditing(true)
             dispatch_delay(0.25, closure: { [unowned self] in
                 self.delegate?.actionData(title, info: content)
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
                 })
         } else {
             HUD.sharedHUD.error(Localized("errorInfos"))
@@ -132,14 +132,14 @@ class KVTaskViewController: BaseViewController {
 }
 
 extension KVTaskViewController: UITextViewDelegate {
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        self.placeholderLabel.hidden = range.location + text.characters.count > 0
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        self.placeholderLabel.isHidden = range.location + text.characters.count > 0
         return true
     }
 }
 
 extension KVTaskViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.contentTextView.becomeFirstResponder()
         return false
     }

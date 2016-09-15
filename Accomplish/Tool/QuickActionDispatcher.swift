@@ -18,7 +18,7 @@ struct QuickActionDispatcher {
     
     typealias QuickActionCompletion = (Bool) -> Void
     
-    func dispatch(shortcutItem: UIApplicationShortcutItem, completion: QuickActionCompletion) {
+    func dispatch(_ shortcutItem: UIApplicationShortcutItem, completion: QuickActionCompletion) {
         switch shortcutItem.type {
         case QuickActionType.Create.rawValue:
             self.handleCreate()
@@ -31,20 +31,20 @@ struct QuickActionDispatcher {
         }
     }
     
-    private func rootViewController() -> UINavigationController? {
-        return UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
+    fileprivate func rootViewController() -> UINavigationController? {
+        return UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
     }
     
-    private func handleCreate() {
+    fileprivate func handleCreate() {
         guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewControllerAnimated(false)
+        rootNavigationController.popToRootViewController(animated: false)
         guard let homeVC = rootNavigationController.viewControllers.first as? HomeViewController else { return }
         homeVC.newTaskAction()
     }
     
-    private func handleCalender() {
+    fileprivate func handleCalender() {
         guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewControllerAnimated(false)
+        rootNavigationController.popToRootViewController(animated: false)
         let calendar = CalendarViewController()
         rootNavigationController.pushViewController(calendar, animated: true)
     }

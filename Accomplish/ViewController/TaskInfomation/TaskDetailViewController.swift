@@ -33,19 +33,19 @@ class TaskDetailViewController: BaseViewController {
     @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
     
-    private var taskPickerView: TaskPickerView?
-    private var iconList = [
+    fileprivate var taskPickerView: TaskPickerView?
+    fileprivate var iconList = [
         [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat],
         [SubtaskIconAdd],
         [TaskIconNote]
     ]
-    private let subtaskSection = 1
+    fileprivate let subtaskSection = 1
     
     var task: Task
     // only running task can change
     var canChange: Bool = true
-    private var subtasks: Results<Subtask>?
-    private var subtasksToken: RealmSwift.NotificationToken?
+    fileprivate var subtasks: Results<Subtask>?
+    fileprivate var subtasksToken: RealmSwift.NotificationToken?
     
     init(task: Task, canChange: Bool) {
         self.task = task
@@ -67,11 +67,11 @@ class TaskDetailViewController: BaseViewController {
         self.initializeControl()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         guard let count = subtasks?.count
-            where self.task.subTaskCount != count
+            , self.task.subTaskCount != count
             else { return }
         
         RealmManager.shareManager.updateObject {
@@ -79,7 +79,7 @@ class TaskDetailViewController: BaseViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.keyboardAction()
@@ -109,24 +109,24 @@ class TaskDetailViewController: BaseViewController {
         
         self.cancelButton.buttonColor(colors)
         self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: backButtonIconString, color: colors.mainGreenColor, status: .Normal)
+                                           icon: backButtonIconString, color: colors.mainGreenColor, status: UIControlState())
         
         self.detailTableView.reloadData()
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.initializeTableView()
         
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleTextField.text = task.getNormalDisplayTitle()
         
-        guard let taskPickerView = NSBundle.mainBundle().loadNibNamed("TaskPickerView", owner: self, options: nil).last as? TaskPickerView else { return }
+        guard let taskPickerView = Bundle.main.loadNibNamed("TaskPickerView", owner: self, options: nil)?.last as? TaskPickerView else { return }
         self.datePickerHolderView.addSubview(taskPickerView)
         taskPickerView.snp_makeConstraints { (make) in
             make.top.equalTo(0)
@@ -138,40 +138,40 @@ class TaskDetailViewController: BaseViewController {
         self.taskPickerView = taskPickerView
         taskPickerView.task = self.task
         
-        taskPickerView.leftButton.addTarget(self, action: #selector(self.cancelDatePickerAction), forControlEvents: .TouchUpInside)
-        taskPickerView.rightButton.addTarget(self, action: #selector(self.setDatePickerAction), forControlEvents: .TouchUpInside)
+        taskPickerView.leftButton.addTarget(self, action: #selector(self.cancelDatePickerAction), for: .touchUpInside)
+        taskPickerView.rightButton.addTarget(self, action: #selector(self.setDatePickerAction), for: .touchUpInside)
         
         self.configDetailWithTask()
     }
     
-    private func configDetailWithTask() {
+    fileprivate func configDetailWithTask() {
         if self.task.taskType == kSystemTaskType {
-            self.titleTextField.enabled = self.task.taskToDoCanChange() && self.canChange
+            self.titleTextField.isEnabled = self.task.taskToDoCanChange() && self.canChange
         } else {
-            self.titleTextField.enabled = self.canChange
+            self.titleTextField.isEnabled = self.canChange
         }
     }
     
     // MARK: - actions
-    func clearAction(btn: UIButton) {
-        let index = NSIndexPath(forRow: btn.tag, inSection: 0)
-        detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+    func clearAction(_ btn: UIButton) {
+        let index = IndexPath(row: btn.tag, section: 0)
+        detailTableView.reloadRows(at: [index], with: .automatic)
     }
     
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    private func keyboardAction() {
+    fileprivate func keyboardAction() {
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             self.detailTableViewBottomConstraint.constant =
                 KeyboardManager.keyboardHeight - 62
             
-            UIView.animateWithDuration(KeyboardManager.duration, animations: {
+            UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.detailTableView.layoutIfNeeded()
                 }, completion: { [unowned self] (finsh) in
-                    let index = NSIndexPath(forRow: self.iconList[self.subtaskSection].count - 1, inSection: self.subtaskSection)
-                    self.detailTableView.scrollToRowAtIndexPath(index, atScrollPosition: .Bottom, animated: true)
+                    let index = IndexPath(row: self.iconList[self.subtaskSection].count - 1, section: self.subtaskSection)
+                    self.detailTableView.scrollToRow(at: index, at: .bottom, animated: true)
                 })
             
             if self.taskPickerView?.viewIsShow() == true {
@@ -181,13 +181,13 @@ class TaskDetailViewController: BaseViewController {
         
         KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
             self.detailTableViewBottomConstraint.constant = 10
-            UIView.animateWithDuration(KeyboardManager.duration, animations: {
+            UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.detailTableView.layoutIfNeeded()
             })
         }
     }
     
-    private func realmNoticationToken() {
+    fileprivate func realmNoticationToken() {
         self.subtasksToken = subtasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
             switch changes {
             case .Initial:
@@ -234,7 +234,7 @@ class TaskDetailViewController: BaseViewController {
 
 // MARK: - UITextFieldDelegate
 extension TaskDetailViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let title = textField.text {
             if !title.isEmpty {
                 RealmManager.shareManager.updateObject({
@@ -249,7 +249,7 @@ extension TaskDetailViewController: UITextFieldDelegate {
 
 // MARK: - table view
 extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    private func initializeTableView() {
+    fileprivate func initializeTableView() {
         let sts = RealmManager.shareManager.querySubtask(task.uuid)
         self.subtasks = sts
         for index in 0..<sts.count {
@@ -262,10 +262,10 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
         realmNoticationToken()
         
         self.detailTableView.tableFooterView = UIView()
-        self.detailTableView.registerNib(TaskDateTableViewCell.nib, forCellReuseIdentifier: TaskDateTableViewCell.reuseId)
-        self.detailTableView.registerNib(SubtaskTableViewCell.nib, forCellReuseIdentifier: SubtaskTableViewCell.reuseId)
-        self.detailTableView.registerNib(TaskNoteTableViewCell.nib, forCellReuseIdentifier: TaskNoteTableViewCell.reuseId)
-        self.detailTableView.registerNib(SectionTableViewCell.nib, forCellReuseIdentifier: SectionTableViewCell.reuseId)
+        self.detailTableView.register(TaskDateTableViewCell.nib, forCellReuseIdentifier: TaskDateTableViewCell.reuseId)
+        self.detailTableView.register(SubtaskTableViewCell.nib, forCellReuseIdentifier: SubtaskTableViewCell.reuseId)
+        self.detailTableView.register(TaskNoteTableViewCell.nib, forCellReuseIdentifier: TaskNoteTableViewCell.reuseId)
+        self.detailTableView.register(SectionTableViewCell.nib, forCellReuseIdentifier: SectionTableViewCell.reuseId)
         
     }
     // 1 set time
@@ -273,89 +273,89 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     // 3 notify repeat
     // 4 subtask
     // 5 note
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return iconList[section].count + 1
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.section == self.subtaskSection {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if (indexPath as NSIndexPath).section == self.subtaskSection {
             return nil
         } else {
             return indexPath
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell: UITableViewCell
-        if indexPath.row > self.iconList[indexPath.section].count - 1 {
-            tableCell = tableView.dequeueReusableCellWithIdentifier(SectionTableViewCell.reuseId, forIndexPath: indexPath)
-            tableCell.userInteractionEnabled = false
+        if (indexPath as NSIndexPath).row > self.iconList[(indexPath as NSIndexPath).section].count - 1 {
+            tableCell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.reuseId, for: indexPath)
+            tableCell.isUserInteractionEnabled = false
             return tableCell
         }
         
-        if  indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(TaskDateTableViewCell.reuseId, forIndexPath: indexPath) as! TaskDateTableViewCell
-            cell.configCell(task, iconString: iconList[indexPath.section][indexPath.row])
-            cell.clearButton.tag = indexPath.row
-            cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), forControlEvents: .TouchUpInside)
+        if  (indexPath as NSIndexPath).section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TaskDateTableViewCell.reuseId, for: indexPath) as! TaskDateTableViewCell
+            cell.configCell(task, iconString: iconList[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row])
+            cell.clearButton.tag = (indexPath as NSIndexPath).row
+            cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), for: .touchUpInside)
             tableCell = cell
-            tableCell.userInteractionEnabled = canChange
-        } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(TaskNoteTableViewCell.reuseId, forIndexPath: indexPath) as! TaskNoteTableViewCell
+            tableCell.isUserInteractionEnabled = canChange
+        } else if (indexPath as NSIndexPath).section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TaskNoteTableViewCell.reuseId, for: indexPath) as! TaskNoteTableViewCell
             cell.configCell(task)
             tableCell = cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(SubtaskTableViewCell.reuseId, forIndexPath: indexPath) as! SubtaskTableViewCell
-            let row = indexPath.row
-            if iconList[indexPath.section][row] == SubtaskIconAdd {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SubtaskTableViewCell.reuseId, for: indexPath) as! SubtaskTableViewCell
+            let row = (indexPath as NSIndexPath).row
+            if iconList[(indexPath as NSIndexPath).section][row] == SubtaskIconAdd {
                 cell.configCell(task, subtask: nil, iconString: SubtaskIconAdd)
             } else {
                 cell.configCell(task, subtask: self.subtasks?[row], iconString: iconList[indexPath.section][indexPath.row])
             }
             tableCell = cell
-            tableCell.userInteractionEnabled = canChange
+            tableCell.isUserInteractionEnabled = canChange
         }
         
         
         return tableCell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row > self.iconList[indexPath.section].count - 1 {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row > self.iconList[(indexPath as NSIndexPath).section].count - 1 {
             return SectionTableViewCell.rowHeight
         }
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             return TaskDateTableViewCell.rowHeight
-        } else if indexPath.section == 2 {
+        } else if (indexPath as NSIndexPath).section == 2 {
             return TaskNoteTableViewCell.rowHeight
         } else {
             return SubtaskTableViewCell.rowHeight
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-            self.taskPickerView?.setIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 {
+            self.taskPickerView?.setIndex((indexPath as NSIndexPath).row)
             self.showDatePickerView(show: true)
-        } else if indexPath.section == 2 {
+        } else if (indexPath as NSIndexPath).section == 2 {
             let noteVC = NoteViewController(task: self.task, noteDelegate: self)
             self.navigationController?.pushViewController(noteVC, animated: true)
             self.view.endEditing(true)
             
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.iconList.count
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
     
@@ -367,8 +367,8 @@ extension TaskDetailViewController {
     func cancelDatePickerAction() {
         guard let datePicker = self.taskPickerView else { return }
         showDatePickerView(show: false)
-        let index = NSIndexPath(forRow: datePicker.getIndex(), inSection: 0)
-        self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+        let index = IndexPath(row: datePicker.getIndex(), section: 0)
+        self.detailTableView.reloadRows(at: [index], with: .automatic)
     }
     
     func setDatePickerAction() {
@@ -389,7 +389,7 @@ extension TaskDetailViewController {
         case TaskReminderIndex:
             RealmManager.shareManager.updateObject {
                 let date = taskPickerView.datePicker.date
-                let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 5)
+                let fireDate = NSDate(year: (date as NSDate).year(), month: (date as NSDate).month(), day: (date as NSDate).day(), hour: (date as NSDate).hour(), minute: (date as NSDate).minute(), second: 5)
                 
                 self.task.notifyDate = fireDate
             }
@@ -415,26 +415,26 @@ extension TaskDetailViewController {
         }
         
         showDatePickerView(show: false)
-        let index = NSIndexPath(forRow: taskPickerView.getIndex(), inSection: 0)
-        self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+        let index = IndexPath(row: taskPickerView.getIndex(), section: 0)
+        self.detailTableView.reloadRows(at: [index], with: .automatic)
     }
     
     // to-do
-    private func showDatePickerView(show show: Bool) {
+    fileprivate func showDatePickerView(show: Bool) {
         if (show) {
             if KeyboardManager.keyboardShow {
                 self.view.endEditing(true)
                 guard let datePickerView = self.taskPickerView else { return }
-                let selectedIndex = NSIndexPath(forRow: datePickerView.getIndex(), inSection: 0)
-                self.detailTableView.selectRowAtIndexPath(selectedIndex, animated: false, scrollPosition: .None)
+                let selectedIndex = IndexPath(row: datePickerView.getIndex(), section: 0)
+                self.detailTableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
             }
             if (self.taskPickerView?.viewIsShow() == true) {
                 self.datePickerViewBottomConstraint.constant = -TaskPickerView.height
-                UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: { [unowned self] in
+                UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: { [unowned self] in
                     self.datePickerHolderView.layoutIfNeeded()
                 }) { [unowned self] (finish) in
                     self.datePickerViewBottomConstraint.constant = 0
-                    UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {
+                    UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
                         self.datePickerHolderView.layoutIfNeeded()
                     }) { (finish) in }
                 }
@@ -443,7 +443,7 @@ extension TaskDetailViewController {
         }
         
         self.datePickerViewBottomConstraint.constant = show ? 0 : -TaskPickerView.height
-        UIView.animateWithDuration(kSmallAnimationDuration, delay: 0, options: .CurveEaseInOut, animations: {  [unowned self] in
+        UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {  [unowned self] in
             self.datePickerHolderView.layoutIfNeeded()
         }) { (finish) in }
     }
@@ -452,15 +452,15 @@ extension TaskDetailViewController {
 
 // MARK: - TaskNoteDataDelegate
 extension TaskDetailViewController: TaskNoteDataDelegate {
-    func taskNoteAdd(newNote: String) {
+    func taskNoteAdd(_ newNote: String) {
         RealmManager.shareManager.updateObject {
             self.task.taskNote = newNote
-            let index = NSIndexPath(forRow: 0, inSection: iconList.count - 1)
-            self.detailTableView.reloadRowsAtIndexPaths([index], withRowAnimation: .Automatic)
+            let index = IndexPath(row: 0, section: iconList.count - 1)
+            self.detailTableView.reloadRows(at: [index], with: .automatic)
         }
     }
 }
 
 protocol TaskNoteDataDelegate {
-    func taskNoteAdd(newNote: String)
+    func taskNoteAdd(_ newNote: String)
 }

@@ -17,9 +17,9 @@ class SystemTaskViewController: BaseViewController {
     
     weak var newTaskDelegate: NewTaskDataDelegate? = nil
     
-    private let animation = LayerTransitioningAnimation()
-    private let actionBuilder = SystemActionBuilder()
-    private var selectedActionType: SystemActionType? = nil
+    fileprivate let animation = LayerTransitioningAnimation()
+    fileprivate let actionBuilder = SystemActionBuilder()
+    fileprivate var selectedActionType: SystemActionType? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +50,20 @@ class SystemTaskViewController: BaseViewController {
         
         self.cancelButton.buttonColor(colors)
         self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: backButtonIconString, color: colors.mainGreenColor, status: .Normal)
+                                           icon: backButtonIconString, color: colors.mainGreenColor, status: UIControlState())
         self.taskTableView.reloadData()
     }
     
-    private func initControl() {
+    fileprivate func initControl() {
         if #available(iOS 9, *) {
             self.taskTableView.cellLayoutMarginsFollowReadableWidth = false
         }
         self.taskTableView.tableFooterView = UIView()
-        self.taskTableView.registerNib(SystemTaskTableViewCell.nib, forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
+        self.taskTableView.register(SystemTaskTableViewCell.nib, forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
         
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
@@ -73,51 +73,51 @@ class SystemTaskViewController: BaseViewController {
     
     // MARK: - action
     func cancelAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 // MARK: - table view
 extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actionBuilder.allActions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(SystemTaskTableViewCell.reuseId, forIndexPath: indexPath) as! SystemTaskTableViewCell
-        let action = actionBuilder.allActions[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SystemTaskTableViewCell.reuseId, for: indexPath) as! SystemTaskTableViewCell
+        let action = actionBuilder.allActions[(indexPath as NSIndexPath).row]
         cell.iconImage.image = UIImage(named: action.actionImage)
         cell.taskTitle.text = Localized(action.hintString)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SystemTaskTableViewCell.rowHeight
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let actionType = actionBuilder.allActions[indexPath.row].type
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let actionType = actionBuilder.allActions[(indexPath as NSIndexPath).row].type
         selectedActionType = actionType
         guard let present = selectedActionType?.actionPresent() else { return }
         
         switch present {
-        case .AddressBook:
+        case .addressBook:
             AddressBook.requestAccess {[unowned self] (finish) in
                 let addressVC = AddressBookViewController.loadFromNib(true, delegate: self)
                 
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
-        case .AddressBookEmail:
+        case .addressBookEmail:
             AddressBook.requestAccess {[unowned self] (finish) in
                 let addressVC = AddressBookViewController.loadFromNib(false, delegate: self)
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
-        case .CreateSubtasks:
+        case .createSubtasks:
             let task = KVTaskViewController(actionType: actionType, delegate: self)
             self.navigationController?.pushViewController(task, animated: true)
             break
@@ -130,8 +130,8 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UINavigationControllerDelegate
 extension SystemTaskViewController: UINavigationControllerDelegate {
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animation.reverse = operation == UINavigationControllerOperation.Pop
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        animation.reverse = operation == UINavigationControllerOperation.pop
         return animation
     }
 }
@@ -142,7 +142,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
     // such as name = zhoubo info = 18827420512
     // taskToText = 1$$zhoubo$$18827420512
     // show = call zhoubo
-    func actionData(name: String, info: String) {
+    func actionData(_ name: String, info: String) {
         guard let type = selectedActionType else { return }
         // 返回task 信息
         let task = Task()
@@ -151,11 +151,11 @@ extension SystemTaskViewController: TaskActionDataDelegate {
         let attrText = NSMutableAttributedString()
         
         switch type.actionPresent() {
-        case .AddressBook, .AddressBookEmail:
+        case .addressBook, .addressBookEmail:
             let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: info)
             task.taskToDo = taskToText
             
-            attrText.appendAttributedString(
+            attrText.append(
                 NSAttributedString(string: type.ationNameWithType(), attributes:[
                     NSForegroundColorAttributeName: Colors().mainTextColor
                     ]))
@@ -163,25 +163,25 @@ extension SystemTaskViewController: TaskActionDataDelegate {
                 NSForegroundColorAttributeName: Colors().linkTextColor
                 ])
             
-            attrText.appendAttributedString(nameAttrText)
+            attrText.append(nameAttrText)
             newTaskDelegate?.toDoForSystemTask(attrText, task: task)
             
-        case .CreateSubtasks:
+        case .createSubtasks:
             let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: nil)
-            task.taskToDo = taskToText.componentsSeparatedByString(kSpliteTaskIdentity).last ?? ""
+            task.taskToDo = taskToText.components(separatedBy: kSpliteTaskIdentity).last ?? ""
             
             let nameAttrText = NSAttributedString(string: name)
-            attrText.appendAttributedString(nameAttrText)
+            attrText.append(nameAttrText)
             newTaskDelegate?.toDoForSystemSubtask(attrText, task: task, subtasks: info)
             
         default:
             return
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 protocol TaskActionDataDelegate: NSObjectProtocol {
-    func actionData(name: String, info: String)
+    func actionData(_ name: String, info: String)
 }

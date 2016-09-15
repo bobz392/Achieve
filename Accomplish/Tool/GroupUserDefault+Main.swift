@@ -12,14 +12,14 @@ import RealmSwift
 extension GroupUserDefault {
     
     func clearAllTask() {
-        groupDefault.removeObjectForKey(tasksKey)
+        groupDefault.removeObject(forKey: tasksKey)
     }
     
-    func updateTask(task: Task) {
-        groupDefault.arrayForKey(tasksKey)
+    func updateTask(_ task: Task) {
+        groupDefault.array(forKey: tasksKey)
     }
     
-    func writeTasks(tasks: Results<Task>) {
+    func writeTasks(_ tasks: Results<Task>) {
         var tasksArr = [[String]]()
         for task in tasks {
             let title = task.getNormalDisplayTitle()
@@ -31,7 +31,7 @@ extension GroupUserDefault {
         }
         
         debugPrint("write new task count = \(tasks.count)")
-        self.groupDefault.setObject(tasksArr, forKey: tasksKey)
+        self.groupDefault.set(tasksArr, forKey: tasksKey)
         
         self.setTaskChanged(true)
     }

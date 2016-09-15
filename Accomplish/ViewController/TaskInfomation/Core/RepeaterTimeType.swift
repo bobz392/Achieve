@@ -9,41 +9,41 @@
 import Foundation
 
 enum RepeaterTimeType: Int {
-    case Daily
-    case Weekday
-    case EveryWeek
-    case EveryMonth
-    case Annual
+    case daily
+    case weekday
+    case everyWeek
+    case everyMonth
+    case annual
     
-    func getCalendarUnit() -> NSCalendarUnit {
+    func getCalendarUnit() -> NSCalendar.Unit {
         switch self {
-        case .Daily:
-            return .Day
-        case .Weekday:
-            return .WeekdayOrdinal
-        case .EveryWeek:
-            return .WeekOfYear
-        case .EveryMonth:
-            return .Month
-        case .Annual:
-            return .Year
+        case .daily:
+            return .day
+        case .weekday:
+            return .weekdayOrdinal
+        case .everyWeek:
+            return .weekOfYear
+        case .everyMonth:
+            return .month
+        case .annual:
+            return .year
         }
     }
     
     func repeaterTitle(createDate: NSDate) -> String {
         switch self {
-        case .Daily:
+        case .daily:
             return Localized("everyday")
-        case .Weekday:
+        case .weekday:
             return Localized("weekday")
-        case .EveryWeek:
+        case .everyWeek:
             // 周
-            return String(format: Localized("everyWeek"), createDate.formattedDateWithFormat("EEE"))
-        case .EveryMonth:
+            return String(format: Localized("everyWeek"), createDate.formattedDate(withFormat: "EEE"))
+        case .everyMonth:
             // 多少号 - st
-            return String(format: Localized("everyMonth"), createDate.formattedDateWithFormat("d"))
-        case .Annual:
-            return String(format: Localized("annual"), createDate.formattedDateWithFormat("MMM d"))
+            return String(format: Localized("everyMonth"), createDate.formattedDate(withFormat: "d"))
+        case .annual:
+            return String(format: Localized("annual"), createDate.formattedDate(withFormat: "MMM d"))
         }
     }
 }

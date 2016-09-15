@@ -21,11 +21,11 @@ struct SystemAction {
 struct SystemActionBuilder {
     
     let allActions = [
-        SystemAction(type: .PhoneCall, actionImage: "app_phone", hintString: "addPhoneCall"),
-        SystemAction(type: .MessageTo, actionImage: "app_imessage", hintString: "addMessage"),
-        SystemAction(type: .FaceTime, actionImage: "app_facetime", hintString: "addFaceTime"),
-        SystemAction(type: .MailTo, actionImage: "app_mail", hintString: "addMail"),
-        SystemAction(type: .Subtask, actionImage: "app_subtask", hintString: "addSubtask"),
+        SystemAction(type: .phoneCall, actionImage: "app_phone", hintString: "addPhoneCall"),
+        SystemAction(type: .messageTo, actionImage: "app_imessage", hintString: "addMessage"),
+        SystemAction(type: .faceTime, actionImage: "app_facetime", hintString: "addFaceTime"),
+        SystemAction(type: .mailTo, actionImage: "app_mail", hintString: "addMail"),
+        SystemAction(type: .subtask, actionImage: "app_subtask", hintString: "addSubtask"),
         ]
     
 }

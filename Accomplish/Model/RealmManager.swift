@@ -17,94 +17,94 @@ class RealmManager {
     
     static let shareManager = RealmManager()
     
-    func writeObject(object: Object) {
+    func writeObject(_ object: Object) {
         try! realm.write {
             realm.add(object)
         }
     }
     
-    func deleteObject(object: Object) {
+    func deleteObject(_ object: Object) {
         try! realm.write {
             realm.delete(object)
         }
     }
     
-    func updateObject(@noescape updateBlock: RealmBlock) {
-        try! realm.write({
+    func updateObject(_ updateBlock: @escaping RealmBlock) {
+        try! realm.write(block: {
             updateBlock()
         })
     }
     
-    func writeObjects(objects: [Object]) {
+    func writeObjects(_ objects: [Object]) {
         realm.beginWrite()
         realm.add(objects)
         try! realm.commitWrite()
     }
     
     func queryAll(clz: AnyClass) {
-        let result = realm.objects(clz as! Object.Type)
+        let result = realm.allObjects(ofType: clz as! Object.Type)
         debugPrint(result)
     }
     
-    func queryTodayTaskList(finished finished: Bool) -> Results<Task> {
+    func queryTodayTaskList(finished: Bool) -> Results<Task> {
         let queryDate = NSDate().createdFormatedDateString()
         
         let tasks = realm
-            .objects(Task.self)
-            .filter("createdFormattedDate = '\(queryDate)' AND status \(finished ? "!=" : "==") \(kTaskRunning)")
-            .sorted("createdDate")
+            .allObjects(ofType: Task.self)
+            .filter(using: "createdFormattedDate = '\(queryDate)' AND status \(finished ? "!=" : "==") \(kTaskRunning)")
+            .sorted(onProperty: "createdDate")
         
         return tasks
     }
     
     func queryTaskCount(date: NSDate) -> (complete: Int, created: Int) {
-        let task = realm.objects(Task.self)
-            .filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
+        let task = realm.allObjects(ofType: Task.self)
+            .filter(using: "createdFormattedDate = '\(date.createdFormatedDateString())'")
         
         let created = task.count
-        let complete = task.filter("status == \(kTaskFinish)").count
+        let complete = task.filter(using: "status == \(kTaskFinish)").count
         
         return (complete, created)
     }
     
-    func queryTask(taskUUID: String) -> Task? {
-        return realm.objects(Task.self).filter("uuid = '\(taskUUID)'").first
+    func queryTask(_ taskUUID: String) -> Task? {
+        return realm.allObjects(ofType: Task.self).filter(using: "uuid = '\(taskUUID)'").first
     }
     
-    func queryTaskList(date: NSDate) -> Results<Task> {
-        return realm.objects(Task.self).filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
+    func queryTaskList(_ date: NSDate) -> Results<Task> {
+        return realm.allObjects(ofType: Task.self).filter(using: "createdFormattedDate = '\(date.createdFormatedDateString())'")
     }
     
-    func querySubtask(rootUUID: String) -> Results<Subtask> {
-        return realm.objects(Subtask.self)
-            .filter("rootUUID = '\(rootUUID)'")
-            .sorted("createdDate")
+    func querySubtask(_ rootUUID: String) -> Results<Subtask> {
+        return realm.allObjects(ofType: Subtask.self)
+            .filter(using: "rootUUID = '\(rootUUID)'")
+            .sorted(onProperty: "createdDate")
     }
     
-    func deleteTask(task: Task) {
+    func deleteTask(_ task: Task) {
     }
     
     func moveYesterdayTaskToToday() {
         let today = NSDate()
         let todayDateString = today.createdFormatedDateString()
-        let yesterday = today.dateBySubtractingDays(1).createdFormatedDateString()
-        let movedtasks = realm.objects(Task.self)
-            .filter("createdFormattedDate = '\(yesterday)' AND status = \(kTaskRunning)")
+        let yesterday = (today.subtractingDays(1) as NSDate).createdFormatedDateString()
+        let movedtasks = realm.allObjects(ofType: Task.self)
+            .filter(using: "createdFormattedDate = '\(yesterday)' AND status = \(kTaskRunning)")
             .filter { (task) -> Bool in
-                return queryRepeaterWithTask(task.uuid) == nil
+                return self.queryRepeaterWithTask(task.uuid) == nil
         }
         
         self.updateObject {
             for task in movedtasks {
-                task.createdDate = task.createdDate?.dateByAddingDays(1)
+                task.createdDate = task.createdDate?.addingDays(1) as NSDate?
                 task.createdFormattedDate = todayDateString
                 task.notifyDate = nil
             }
         }
     }
     
-    func updateTaskStatus(task: Task, status: Int, updateDate: NSDate? = nil) {
-        try! realm.write({
+    func updateTaskStatus(_ task: Task, status: Int, updateDate: NSDate? = nil) {
+        try! realm.write(block: {
             task.status = status
             if status == kTaskFinish {
                 let now = NSDate()
@@ -125,16 +125,16 @@ class RealmManager {
 // 以后为多个年的chekc in 优化
 extension RealmManager {
     func queryFirstCheckIn() -> CheckIn? {
-        return realm.objects(CheckIn.self).sorted("checkInDate", ascending: true).first
+        return realm.allObjects(ofType: CheckIn.self).sorted(onProperty: "checkInDate", ascending: true).first
     }
     
-    func queryCheckIn(formatedDate: String) -> CheckIn? {
-        return realm.objects(CheckIn.self)
-            .filter("formatedDate = '\(formatedDate)'")
+    func queryCheckIn(_ formatedDate: String) -> CheckIn? {
+        return realm.allObjects(ofType: CheckIn.self)
+            .filter(using: "formatedDate = '\(formatedDate)'")
             .first
     }
     
-    func saveCheckIn(checkIn: CheckIn) {
+    func saveCheckIn(_ checkIn: CheckIn) {
         if let old = queryCheckIn(checkIn.formatedDate) {
             deleteObject(old)
         }
@@ -143,7 +143,7 @@ extension RealmManager {
     }
     
     func allCheckIn() -> Results<CheckIn> {
-        return realm.objects(CheckIn.self)
+        return realm.allObjects(ofType: CheckIn.self)
     }
 }
 

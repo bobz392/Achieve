@@ -11,16 +11,21 @@ import Foundation
 // Date
 extension String {
     func dateFromCreatedFormatString() -> NSDate {
-        let dateFormatter = NSDateFormatter()
+        
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = createdDateFormat
-        dateFormatter.calendar = NSCalendar(calendarIdentifier: "en_US")
-        return dateFormatter.dateFromString(self) ?? NSDate()
+        dateFormatter.calendar = NSCalendar(identifier: NSCalendar.Identifier(rawValue: "en_US")) as Calendar!
+        let d = dateFormatter.date(from: self) ?? Date()
+        
+        return d as NSDate
     }
     
-    func dateFromString(format: String) -> NSDate {
-        let dateFormatter = NSDateFormatter()
+    func dateFromString(_ format: String) -> NSDate {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        return dateFormatter.dateFromString(self) ?? NSDate()
+        let d = dateFormatter.date(from: self) ?? Date()
+        
+        return d as NSDate
     }
 }
 
@@ -39,8 +44,8 @@ extension String {
 extension String {
     subscript (r: Range<Int>) -> String {
         get {
-            let startIndex = self.startIndex.advancedBy(r.startIndex)
-            let endIndex = self.startIndex.advancedBy(r.endIndex)
+            let startIndex = self.characters.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.characters.index(self.startIndex, offsetBy: r.upperBound)
             
             return self[Range(startIndex ..< endIndex)]
         }
@@ -48,27 +53,20 @@ extension String {
     
     subscript (r: NSRange) -> String {
         get {
-            let startIndex = self.startIndex.advancedBy(r.location)
-            let endIndex = self.startIndex.advancedBy(r.length + r.location)
+            let startIndex = self.characters.index(self.startIndex, offsetBy: r.location)
+            let endIndex = self.characters.index(self.startIndex, offsetBy: r.length + r.location)
             return self[Range(startIndex ..< endIndex)]
         }
     }
     
     subscript (p: Int) -> String {
         get {
-            let startIndex = self.startIndex.advancedBy(p)
-            let endIndex = self.startIndex.advancedBy(p + 1)
+            let startIndex = self.characters.index(self.startIndex, offsetBy: p)
+            let endIndex = self.characters.index(self.startIndex, offsetBy: p + 1)
             
             return self[Range(startIndex ..< endIndex)]
         }
     }
-    
-    subscript (i: Index) -> String {
-        get {
-            return self[Range(i.advancedBy(-1) ..< i)]
-        }
-    }
-    
     
 }
 
@@ -79,9 +77,9 @@ extension String {
      是否只包含指定字符集中的字符
      - parameter characterSet: 需要检查的字符集
      */
-    func containsOnly(characterSet: NSCharacterSet) -> Bool {
+    func containsOnly(_ characterSet: CharacterSet) -> Bool {
         for codeUnit in utf16 {
-            if !characterSet.characterIsMember(codeUnit) {
+            if !characterSet.contains(UnicodeScalar(codeUnit)!) {
                 return false
             }
         }
@@ -105,14 +103,14 @@ extension String {
      把当前字符串变换成 ASCII 字符串，例如：`nǐ hǎo` -> `ni hao`
      */
     var ASCIIString: String? {
-        if let data = dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true) {
-            return NSString(data: data, encoding: NSASCIIStringEncoding) as? String
+        if let data = data(using: String.Encoding.ascii, allowLossyConversion: true) {
+            return NSString(data: data, encoding: String.Encoding.ascii.rawValue) as? String
         } else {
             return nil
         }
     }
     
-    private func transform(type: CFString) -> String? {
+    fileprivate func transform(_ type: CFString) -> String? {
         let mutableSelf = (self as NSString).mutableCopy() as! NSMutableString
         let success = CFStringTransform(mutableSelf, nil, type, false)
         
@@ -137,7 +135,7 @@ extension String {
     var containsEmoji: Bool {
         var result = false
         
-        (self as NSString).enumerateSubstringsInRange(NSMakeRange(0, (self as NSString).length), options: .ByComposedCharacterSequences) { (substring, _, _, stop) in
+        (self as NSString).enumerateSubstrings(in: NSMakeRange(0, (self as NSString).length), options: .byComposedCharacterSequences) { (substring, _, _, stop) in
             
             guard let substring = substring else {
                 return
@@ -145,7 +143,7 @@ extension String {
             
             if substring.isEmoji {
                 result = true
-                stop.initialize(true)
+                stop.initialize(to: true)
             }
             
         }
@@ -153,12 +151,12 @@ extension String {
         return result
     }
     
-    private var isEmoji: Bool {
-        let high = (self as NSString).characterAtIndex(0)
+    fileprivate var isEmoji: Bool {
+        let high = (self as NSString).character(at: 0)
         
         // Surrogate pair (U+1D000-1F77F)
         if (0xd800 <= high && high <= 0xdbff) {
-            let low = (self as NSString).characterAtIndex(1)
+            let low = (self as NSString).character(at: 1)
             let codepoint: Int = ((Int(high) - 0xd800) * 0x400) + (Int(low) - 0xdc00) + 0x10000
             
             return (0x1d000 <= codepoint && codepoint <= 0x1f77f);

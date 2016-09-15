@@ -21,7 +21,7 @@ class CalendarCell: JTAppleDayCellView {
         self.hasTaskView.backgroundColor = Colors().priorityLowColor
     }
     
-    func setupCellBeforeDisplay(cellState: CellState, date: NSDate, hasTask: Bool) {
+    func setupCellBeforeDisplay(_ cellState: CellState, date: Date, hasTask: Bool) {
         
         dateLabel.text = cellState.text
         
@@ -30,18 +30,18 @@ class CalendarCell: JTAppleDayCellView {
         self.configueViewIntoBubbleView(cellState)
     }
     
-    private func configureHasTaskView(hasTask: Bool) {
-        self.hasTaskView.hidden = !hasTask
+    fileprivate func configureHasTaskView(_ hasTask: Bool) {
+        self.hasTaskView.isHidden = !hasTask
     }
     
-    func configureTextColor(cellState: CellState, date: NSDate) {
+    func configureTextColor(_ cellState: CellState, date: Date) {
         let colors = Colors()
         if cellState.isSelected {
             self.dateLabel.textColor = colors.cloudColor
         } else {
-            if date.isToday() {
+            if (date as NSDate).isToday() {
                 self.dateLabel.textColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
-            } else if cellState.dateBelongsTo == .ThisMonth {
+            } else if cellState.dateBelongsTo == .thisMonth {
                 self.dateLabel.textColor = colors.mainTextColor
             } else {
                 self.dateLabel.textColor = colors.secondaryTextColor
@@ -51,7 +51,7 @@ class CalendarCell: JTAppleDayCellView {
         self.selectedView.backgroundColor = colors.mainGreenColor
     }
     
-    func cellSelectionChanged(cellState: CellState, date: NSDate) {
+    func cellSelectionChanged(_ cellState: CellState, date: Date) {
         if cellState.isSelected == true {
             configueViewIntoBubbleView(cellState)
             selectedView.animateWithBounceEffect(withCompletionHandler: { })
@@ -63,21 +63,21 @@ class CalendarCell: JTAppleDayCellView {
         configureTextColor(cellState, date: date)
     }
     
-    private func configueViewIntoBubbleView(cellState: CellState, animateDeselection: Bool = false) {
+    fileprivate func configueViewIntoBubbleView(_ cellState: CellState, animateDeselection: Bool = false) {
         if cellState.isSelected {
             self.selectedView.layer.cornerRadius =  self.selectedView.frame.width  / 2
-            self.selectedView.hidden = false
+            self.selectedView.isHidden = false
             
         } else {
             if animateDeselection {
-                if selectedView.hidden == false {
+                if selectedView.isHidden == false {
                     selectedView.animateWithFadeEffect(withCompletionHandler: { () -> Void in
-                        self.selectedView.hidden = true
+                        self.selectedView.isHidden = true
                         self.selectedView.alpha = 1
                     })
                 }
             } else {
-                selectedView.hidden = true
+                selectedView.isHidden = true
             }
         }
     }

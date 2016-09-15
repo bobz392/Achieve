@@ -10,7 +10,7 @@ import Foundation
 
 struct UrlSchemeDispatcher {
  
-    func handleUrl(url: NSURL) -> Bool {
+    func handleUrl(_ url: URL) -> Bool {
 //        debugPrint(url)
 //        debugPrint("url.baseURL = \(url.baseURL)")
 //        debugPrint("absoluteString = \(url.absoluteString)")
@@ -19,11 +19,11 @@ struct UrlSchemeDispatcher {
 //        debugPrint("lastPathComponent = \(url.lastPathComponent)")
 //        debugPrint("query = \(url.query)")
         
-        if url.absoluteString.containsString(kTaskDetailPath) {
-            guard let uuid = url.lastPathComponent else { return false }
+        if url.absoluteString.contains(kTaskDetailPath) {
+            let uuid = url.lastPathComponent
             self.checkTaskDetail(uuid)
             return true
-        } else if url.absoluteString.containsString(kTaskAllPath) {
+        } else if url.absoluteString.contains(kTaskAllPath) {
             self.enterDestop()
             return true
         }
@@ -31,19 +31,19 @@ struct UrlSchemeDispatcher {
         return false
     }
     
-    private func rootViewController() -> UINavigationController? {
-        return UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
+    fileprivate func rootViewController() -> UINavigationController? {
+        return UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
     }
     
-    func checkTaskDetail(uuid: String) {
+    func checkTaskDetail(_ uuid: String) {
         guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewControllerAnimated(false)
+        rootNavigationController.popToRootViewController(animated: false)
         guard let homeVC = rootNavigationController.viewControllers.first as? HomeViewController else { return }
         homeVC.enterTaskFromToday(uuid)
     }
     
     func enterDestop() {
         guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewControllerAnimated(false)
+        rootNavigationController.popToRootViewController(animated: false)
     }
 }

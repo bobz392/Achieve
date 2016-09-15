@@ -18,7 +18,7 @@ let kSpliteTaskIdentity = "$$"
 struct TaskManager {
     
     // 生成系统任务的字符串
-    func createTaskText(type: Int, name: String, info: String?) -> String {
+    func createTaskText(_ type: Int, name: String, info: String?) -> String {
         if let info = info {
             return "\(type)$$\(name)$$\(info)"
         } else {
@@ -26,8 +26,8 @@ struct TaskManager {
         }
     }
     
-    func parseTaskToDoText(text: String) -> SystemActionContent? {
-        let results = text.componentsSeparatedByString(kSpliteTaskIdentity)
+    func parseTaskToDoText(_ text: String) -> SystemActionContent? {
+        let results = text.components(separatedBy: kSpliteTaskIdentity)
         if results.count == 3 {
             guard let type = Int(results[0]) else { return nil }
             let showString = results[1] ?? ""

@@ -10,11 +10,11 @@ import UIKit
 
 extension UIImageView {
     
-    func createIconImage(iconSize iconSize: CGFloat, imageSize: CGFloat,
+    func createIconImage(iconSize: CGFloat, imageSize: CGFloat,
                                    icon: String, color: UIColor) {
         let icon = try! FAKFontAwesome(identifier: icon, size: iconSize)
         icon.addAttribute(NSForegroundColorAttributeName, value: color)
-        let iconImage = icon.imageWithSize(CGSize(width: imageSize, height: imageSize))
+        let iconImage = icon.image(with: CGSize(width: imageSize, height: imageSize))
         self.image = iconImage
     }
     

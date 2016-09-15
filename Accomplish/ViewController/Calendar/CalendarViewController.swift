@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CalendarViewController: BaseViewController {
     
@@ -24,10 +44,11 @@ class CalendarViewController: BaseViewController {
     
     @IBOutlet weak var scheduleButton: UIButton!
     
-    lazy private var checkInManager = CheckInManager()
-    lazy private var firstDate = RealmManager.shareManager.queryFirstCheckIn()?.checkInDate ?? NSDate()
-    lazy private var row = 6
-    private var toTodayAlleady = false
+    lazy fileprivate var checkInManager = CheckInManager()
+    lazy fileprivate var firstDate =
+        RealmManager.shareManager.queryFirstCheckIn()?.checkInDate ?? NSDate()
+    lazy fileprivate var row = 6
+    fileprivate var toTodayAlleady = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +70,14 @@ class CalendarViewController: BaseViewController {
         self.weekView.layoutSubviews()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if self.toTodayAlleady == false {
-            let now = NSDate()
+            let now = Date()
             self.calendarView.selectDates([now])
             self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil) {
-                UIView.animateWithDuration(kSmallAnimationDuration, animations: { [unowned self] in
+                UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
                     self.calendarView.alpha = 1
                     })
             }
@@ -64,8 +85,8 @@ class CalendarViewController: BaseViewController {
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     override func configMainUI() {
@@ -79,13 +100,13 @@ class CalendarViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                            icon: backButtonIconString, color: colors.mainGreenColor,
-                                           status: .Normal)
+                                           status: UIControlState())
     
         
-        self.scheduleButton.setTitle(Localized("calendarReport"), forState: .Normal)
-        self.scheduleButton.setTitle(Localized("noSchedule"), forState: .Disabled)
-        self.scheduleButton.setTitleColor(colors.cloudColor, forState: .Normal)
-        self.scheduleButton.addTarget(self, action: #selector(self.checkReport), forControlEvents: .TouchUpInside)
+        self.scheduleButton.setTitle(Localized("calendarReport"), for: UIControlState())
+        self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
+        self.scheduleButton.setTitleColor(colors.cloudColor, for: UIControlState())
+        self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
         
         self.configWeekView()
         
@@ -95,19 +116,19 @@ class CalendarViewController: BaseViewController {
         self.completedTitleLabel.textColor = colors.cloudColor
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.titleLabel.text = Localized("calendar")
         
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
         
         
         let startDay = UserDefault().readInt(kWeekStartKey)
-        self.calendarView.firstDayOfWeek = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.Sunday
+        self.calendarView.firstDayOfWeek = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.sunday
         self.calendarView.cellInset = CGPoint(x: 0, y: 0)
         self.calendarView.registerCellViewXib(fileName: "CalendarCell")
         self.calendarView.dataSource = self
@@ -120,10 +141,10 @@ class CalendarViewController: BaseViewController {
         self.calendarView.reloadData()
     }
     
-    func configCountingLabel(countLabel: UICountingLabel) {
+    func configCountingLabel(_ countLabel: UICountingLabel) {
         countLabel.numberOfLines = 1
         countLabel.animationDuration = kCalendarProgressAnimationDuration
-        countLabel.method = .EaseIn
+        countLabel.method = .easeIn
         countLabel.format = "%d"
     }
     
@@ -134,9 +155,9 @@ class CalendarViewController: BaseViewController {
             let colors = Colors()
             guard let label = subview as? UILabel else { break }
             label.textColor = colors.mainGreenColor
-            if startDay == DaysOfWeek.Monday.rawValue {
+            if startDay == DaysOfWeek.monday.rawValue {
                 label.text = Localized("day\(label.tag)")
-            } else if startDay == DaysOfWeek.Saturday.rawValue {
+            } else if startDay == DaysOfWeek.saturday.rawValue {
                 if label.tag < 3 {
                     label.text = Localized("day\(label.tag + 5)")
                 } else {
@@ -154,7 +175,7 @@ class CalendarViewController: BaseViewController {
     
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func checkReport() {
@@ -165,50 +186,50 @@ class CalendarViewController: BaseViewController {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
-    func configureCalendar(calendar: JTAppleCalendarView) -> (startDate: NSDate, endDate: NSDate, numberOfRows: Int, calendar: NSCalendar) {
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
         
-        let secondDate = self.firstDate.dateByAddingMonths(12)
-        let aCalendar = NSCalendar.currentCalendar()
+        let secondDate = (self.firstDate as NSDate).addingMonths(12)
+        let aCalendar = Calendar.current
         
         return (startDate: self.firstDate, endDate: secondDate, numberOfRows: row, calendar: aCalendar)
     }
     
-    func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         
         cell.setupCellBeforeDisplay(cellState, date: date,
                                     hasTask: checkInManager.checkInWithDate(date)?.createdCount > 0)
     }
     
-    func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
         self.showInfoWhenNeed(date)
     }
     
-    func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
     }
     
-    func calendar(calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {
-        self.titleLabel.text = Localized("calendar") + "-" + startDate.formattedDateWithFormat(monthFormat)
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
+        self.titleLabel.text = Localized("calendar") + "-" + (startDate as NSDate).formattedDate(withFormat: monthFormat)
     }
     
-    func calendar(calendar: JTAppleCalendarView, canSelectDate date: NSDate, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
+    func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
         return !cellState.isSelected && !circleView.isInAnimation()
     }
     
     // 选中当前的date的进度 和 任务数量的动画
-    private func showInfoWhenNeed(date: NSDate) {
+    fileprivate func showInfoWhenNeed(_ date: Date) {
         let task = RealmManager.shareManager.queryTaskCount(date)
         let created = task.created
         let completed = task.complete
         self.circleView.start(completed: completed, created: created)
-        self.createdLabel.countFrom(0, to: CGFloat(created))
-        self.completedLabel.countFrom(0, to: CGFloat(completed))
+        self.createdLabel.count(from: 0, to: CGFloat(created))
+        self.completedLabel.count(from: 0, to: CGFloat(completed))
         
-        self.scheduleButton.enabled = created > 0
+        self.scheduleButton.isEnabled = created > 0
     }
 }
 

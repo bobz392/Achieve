@@ -24,17 +24,17 @@ final class AddressBookViewController: BaseViewController {
     var readPhoneType = true
     weak var delegate: TaskActionDataDelegate? = nil
     
-    class func loadFromNib(readPhoneType: Bool, delegate: TaskActionDataDelegate) -> AddressBookViewController {
+    class func loadFromNib(_ readPhoneType: Bool, delegate: TaskActionDataDelegate) -> AddressBookViewController {
         let address = AddressBookViewController(nibName: "AddressBookViewController", bundle: nil)
         address.readPhoneType = readPhoneType
         address.delegate = delegate
         return address
     }
     
-    private var indexingQueue = dispatch_queue_create("achieve.addressBook.indexing", DISPATCH_QUEUE_SERIAL)
+    fileprivate var indexingQueue = DispatchQueue(label: "achieve.addressBook.indexing", attributes: [])
     
-    private var indexes: Indexes = []
-    private var data: IndexedData = [:]
+    fileprivate var indexes: Indexes = []
+    fileprivate var data: IndexedData = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,15 +45,15 @@ final class AddressBookViewController: BaseViewController {
         self.config(tableView: tableView)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         HUD.sharedHUD.show()
         
         AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
-            dispatch_async(self.indexingQueue) {
+            self.indexingQueue.async {
                 (self.indexes, self.data) = self.processPeople(people)
-                dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                DispatchQueue.main.async { [unowned self] in
                     HUD.sharedHUD.dismiss()
                     self.tableView.reloadData()
                     if self.data.count == 0 {
@@ -67,12 +67,12 @@ final class AddressBookViewController: BaseViewController {
             })
     }
     
-    private func config(tableView tableView: UITableView?) {
+    fileprivate func config(tableView: UITableView?) {
         let colors = Colors()
         tableView?.sectionIndexColor = colors.mainTextColor
         tableView?.sectionIndexBackgroundColor = colors.cloudColor
-        tableView?.registerNib(AddressBookTableViewCell.nib, forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
-        tableView?.separatorStyle = .None
+        tableView?.register(AddressBookTableViewCell.nib, forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
+        tableView?.separatorStyle = .none
     }
     
     override func configMainUI() {
@@ -86,15 +86,15 @@ final class AddressBookViewController: BaseViewController {
         
         self.cancelButton.buttonColor(colors)
         self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: backButtonIconString, color: colors.mainGreenColor, status: .Normal)
+                                           icon: backButtonIconString, color: colors.mainGreenColor, status: UIControlState())
         
         self.tableView.reloadData()
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
@@ -104,52 +104,52 @@ final class AddressBookViewController: BaseViewController {
     
     // MARK: - action
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 25
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return indexes.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let index = indexes[section]
         return data[index]?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        let index = indexes[indexPath.section]
+        let index = indexes[(indexPath as NSIndexPath).section]
         
-        if let person = data[index]?[indexPath.row] {
+        if let person = data[index]?[(indexPath as NSIndexPath).row] {
             if readPhoneType {
                 delegate?.actionData(person.name.fullName, info: person.phoneNumbers.first?.phoneNumberString ?? "")
             } else {
                 delegate?.actionData(person.name.fullName, info: person.mails.first ?? "")
             }
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(AddressBookTableViewCell.reuseId, forIndexPath: indexPath) as? AddressBookTableViewCell else {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AddressBookTableViewCell.reuseId, for: indexPath) as? AddressBookTableViewCell else {
             return UITableViewCell()
         }
         
-        let index = indexes[indexPath.section]
+        let index = indexes[(indexPath as NSIndexPath).section]
         
-        if let person = data[index]?[indexPath.row] {
+        if let person = data[index]?[(indexPath as NSIndexPath).row] {
             if readPhoneType {
                 cell.nameLabel.text = person.name.fullName
                 cell.phoneNumberLabel.text = person.phoneNumbers.first?.displayName ?? ""
@@ -162,7 +162,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 25))
         
         let colors = Colors()
@@ -170,8 +170,8 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         
         let margin: CGFloat = 16
         let titleLabel = UILabel(frame: CGRect(x: margin, y: 0, width: view.bounds.width - margin, height: view.bounds.height))
-        titleLabel.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        titleLabel.font = UIFont.systemFontOfSize(12)
+        titleLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
         titleLabel.textColor = colors.secondaryTextColor
         titleLabel.text = indexes[section]
         view.addSubview(titleLabel)
@@ -179,7 +179,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         return view
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return indexes
     }
     
@@ -187,10 +187,10 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension AddressBookViewController {
     
-    private func processPeople(people: [AddressBook.Person]) -> (Indexes, IndexedData) {
+    fileprivate func processPeople(_ people: [AddressBook.Person]) -> (Indexes, IndexedData) {
         var data = IndexedData()
         
-        for (i, person) in people.enumerate() {
+        for (i, person) in people.enumerated() {
             let personNameInLatin = person.name.uppercaseStrippedLatinFullName
             
             #if debug
@@ -204,7 +204,7 @@ extension AddressBookViewController {
             let firstString = String(firstChar)
             
             let key: String
-            if firstString.containsOnly(NSCharacterSet.uppercaseLetterCharacterSet()) {
+            if firstString.containsOnly(CharacterSet.uppercaseLetters) {
                 key = firstString
             } else {
                 key = AddressBookMiscIndexKey
@@ -234,19 +234,19 @@ extension AddressBookViewController {
         }
         
         for (key, value) in data {
-            data[key] = value.sort { (a, b) -> Bool in
-                return a.name.uppercaseStrippedLatinFullName.localizedCaseInsensitiveCompare(b.name.uppercaseStrippedLatinFullName) == NSComparisonResult.OrderedAscending
+            data[key] = value.sorted { (a, b) -> Bool in
+                return a.name.uppercaseStrippedLatinFullName.localizedCaseInsensitiveCompare(b.name.uppercaseStrippedLatinFullName) == ComparisonResult.orderedAscending
             }
         }
         
         let keys = Array(data.keys)
-        let indexes = keys.sort {
+        let indexes = keys.sorted {
             if $0 == AddressBookMiscIndexKey {
                 return false
             } else if $1 == AddressBookMiscIndexKey {
                 return true
             } else {
-                return $0.localizedCaseInsensitiveCompare($1) == .OrderedAscending
+                return $0.localizedCaseInsensitiveCompare($1) == .orderedAscending
             }
         }
         

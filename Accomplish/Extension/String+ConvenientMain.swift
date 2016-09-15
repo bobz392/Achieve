@@ -12,14 +12,14 @@ import Foundation
 extension String {
     var MD5String: String {
         let digest = NSMutableData(length: Int(CC_MD5_DIGEST_LENGTH))!
-        let digestPointer = unsafeBitCast(digest.mutableBytes, UnsafeMutablePointer<UInt8>.self)
+        let digestPointer = unsafeBitCast(digest.mutableBytes, to: UnsafeMutablePointer<UInt8>.self)
         
-        if let data = dataUsingEncoding(NSUTF8StringEncoding) {
-            CC_MD5(data.bytes, CC_LONG(CC_MD5_DIGEST_LENGTH), digestPointer)
+        if let data = data(using: String.Encoding.utf8) {
+            CC_MD5((data as NSData).bytes, CC_LONG(CC_MD5_DIGEST_LENGTH), digestPointer)
         }
         
         var result = ""
-        let start = unsafeBitCast(digest.bytes, UnsafePointer<UInt8>.self)
+        let start = unsafeBitCast(digest.bytes, to: UnsafePointer<UInt8>.self)
         let buffer = UnsafeBufferPointer(start: start, count: Int(CC_MD5_DIGEST_LENGTH))
         for i in buffer {
             result += NSString(format: "%02x", i) as String
@@ -31,21 +31,21 @@ extension String {
 
 // Range
 extension String {
-    func subRange(start: Int, end: Int) -> Range<Index> {
-        let startIndex = self.startIndex.advancedBy(start)
-        let endIndex = self.startIndex.advancedBy(end)
+    func subRange(_ start: Int, end: Int) -> Range<Index> {
+        let startIndex = self.characters.index(self.startIndex, offsetBy: start)
+        let endIndex = self.characters.index(self.startIndex, offsetBy: end)
         return Range(startIndex ..< endIndex)
     }
     
-    func index(position: Int) -> Index {
-        return self.startIndex.advancedBy(position)
+    func index(_ position: Int) -> Index {
+        return self.characters.index(self.startIndex, offsetBy: position)
     }
     
-    mutating func replace(range: NSRange, replacement: String) {
-        let startIndex = self.startIndex.advancedBy(range.location)
-        let endIndex = self.startIndex.advancedBy(range.location + range.length)
+    mutating func replace(_ range: NSRange, replacement: String) {
+        let startIndex = self.characters.index(self.startIndex, offsetBy: range.location)
+        let endIndex = self.characters.index(self.startIndex, offsetBy: range.location + range.length)
         let newRange = Range(startIndex ..< endIndex)
-        replaceRange(newRange, with: replacement)
+        replaceSubrange(newRange, with: replacement)
         
     }
 }
@@ -56,7 +56,7 @@ extension String {
         let colors = Colors()
         return NSAttributedString(string: self, attributes: [
             NSForegroundColorAttributeName: colors.secondaryTextColor,
-            NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+            NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
             NSStrikethroughColorAttributeName: colors.secondaryTextColor,
             ])
     }

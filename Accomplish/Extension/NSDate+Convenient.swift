@@ -19,33 +19,33 @@ let onlyAmFormat = "a"
 // TASK
 extension NSDate {
     func createTaskUUID() -> String {
-        return self.formattedDateWithFormat(uuidFormat + uuidGenerator())
+        return (self as NSDate).formattedDate(withFormat: uuidFormat + uuidGenerator())
     }
     
     func createdFormatedDateString() -> String {
-        debugPrint("created formated date string = \(self.formattedDateWithFormat(createdDateFormat, locale: NSLocale.init(localeIdentifier: "en_US")))")
-        return self.formattedDateWithFormat(createdDateFormat, locale: NSLocale.init(localeIdentifier: "en_US"))
+        debugPrint("created formated date string = \(self.formattedDate(withFormat: createdDateFormat, locale: Locale.init(identifier: "en_US")))")
+        return self.formattedDate(withFormat: createdDateFormat, locale: Locale.init(identifier: "en_US"))
     }
     
     func toLocalDate() -> NSDate {
-        let zone = NSTimeZone.systemTimeZone()
-        let iter = NSTimeInterval(zone.secondsFromGMTForDate(self))
-        return self.dateByAddingTimeInterval(iter)
+        let zone = TimeZone.current
+        let iter = TimeInterval(zone.secondsFromGMT(for: self as Date))
+        return self.addingTimeInterval(iter)
     }
     
     func timeDateString() -> String {
-        return self.formattedDateWithFormat(timeDateFormat)
+        return self.formattedDate(withFormat: timeDateFormat)
     }
     
     func timeString() -> String {
-        return self.formattedDateWithFormat(onlyTimeFormat)
+        return self.formattedDate(withFormat: onlyTimeFormat)
     }
     func am() -> String {
-        return self.formattedDateWithFormat(onlyAmFormat)
+        return self.formattedDate(withFormat: onlyAmFormat)
     }
     
     func isLaterThenToday() -> Bool {
-        let now = NSDate()
+        let now = Date()
         return self.isToday() || self.isLaterThan(now)
     }
     

@@ -27,11 +27,11 @@ class SubtaskTableViewCell: UITableViewCell {
         let colors = Colors()
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
-        self.layoutMargins = UIEdgeInsetsZero
+        self.layoutMargins = UIEdgeInsets.zero
         
         self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
                                          icon: "fa-trash-o", color: colors.mainGreenColor,
-                                         status: .Normal)
+                                         status: UIControlState())
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
         self.subtaskTextField.textColor = colors.mainTextColor
@@ -39,7 +39,7 @@ class SubtaskTableViewCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: screenBounds.width, bottom: 0, right: 0)
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
         
@@ -47,12 +47,12 @@ class SubtaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(task: Task, subtask: Subtask?, iconString: String) {
+    func configCell(_ task: Task, subtask: Subtask?, iconString: String) {
         self.task = task
         self.subtask = subtask
         let colors = Colors()
         
-        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize, imageSize: kTaskButtonIconSize, icon: iconString, color: colors.mainGreenColor, status: .Normal)
+        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize, imageSize: kTaskButtonIconSize, icon: iconString, color: colors.mainGreenColor, status: UIControlState())
         
         self.subtaskTextField.attributedText = nil
         
@@ -65,18 +65,18 @@ class SubtaskTableViewCell: UITableViewCell {
                 self.iconButton.tintColor = colors.mainGreenColor
             }
             
-            self.trashButton.hidden = false
+            self.trashButton.isHidden = false
             self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         } else {
             let attrPlacehold = NSAttributedString(string: Localized("detailAddSubtask"), attributes: [NSForegroundColorAttributeName: colors.secondaryTextColor])
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
-            self.trashButton.hidden = true
+            self.trashButton.isHidden = true
             self.iconButton.tintColor = colors.secondaryTextColor
             self.separatorInset = UIEdgeInsets(top: 0, left: 55, bottom: 0, right: 0)
         }
         
-        self.trashButton.addTarget(self, action: #selector(self.deleteSubtask), forControlEvents: .TouchUpInside)
-        self.iconButton.addTarget(self, action: #selector(self.subtaskChecked), forControlEvents: .TouchUpInside)
+        self.trashButton.addTarget(self, action: #selector(self.deleteSubtask), for: .touchUpInside)
+        self.iconButton.addTarget(self, action: #selector(self.subtaskChecked), for: .touchUpInside)
     }
     
     func deleteSubtask() {
@@ -89,7 +89,7 @@ class SubtaskTableViewCell: UITableViewCell {
         
         RealmManager.shareManager.updateObject { 
             if subtask.finishedDate == nil {
-                subtask.finishedDate = NSDate()
+                subtask.finishedDate = Date()
             } else {
                 subtask.finishedDate = nil
             }
@@ -98,7 +98,7 @@ class SubtaskTableViewCell: UITableViewCell {
 }
 
 extension SubtaskTableViewCell: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let task = self.task,
             let text = textField.text {
             if text.characters.count > 0 {
@@ -115,9 +115,9 @@ extension SubtaskTableViewCell: UITextFieldDelegate {
         return textField.resignFirstResponder()
     }
     
-    private func createSubtask(title: String, task: Task) {
+    fileprivate func createSubtask(_ title: String, task: Task) {
         let subtask = Subtask()
-        let now = NSDate()
+        let now = Date()
         subtask.createdDate = now
         subtask.taskToDo = title
         subtask.rootUUID = task.uuid

@@ -20,15 +20,15 @@ final class KeyboardManager {
     var keyboardHideHandler: (() -> Void)?
         
     init() {
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIKeyboardWillChangeFrameNotification, object: nil,
-            queue: NSOperationQueue.mainQueue()) { notification in
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil,
+            queue: OperationQueue.main) { notification in
                 self.handleKeyboardShow(notification)
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIKeyboardWillHideNotification, object: nil,
-            queue: NSOperationQueue.mainQueue()) { notification in
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.UIKeyboardWillHide, object: nil,
+            queue: OperationQueue.main) { notification in
                 self.handleKeyboardHide(notification)
         }
     }
@@ -39,10 +39,10 @@ final class KeyboardManager {
         keyboardHideHandler = nil
     }
     
-    private func handleKeyboardShow(notification: NSNotification) {
-        if let userInfo = notification.userInfo,
-            let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
-            let durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue {
+    fileprivate func handleKeyboardShow(_ notification: Notification) {
+        if let userInfo = (notification as NSNotification).userInfo,
+            let frameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue,
+            let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue {
             //            print("change frame height to \(frameValue.height)")
             if frameValue.height > 0 {
                 KeyboardManager.keyboardHeight = frameValue.height
@@ -53,7 +53,7 @@ final class KeyboardManager {
         }
     }
     
-    private func handleKeyboardHide(notification: NSNotification) {
+    fileprivate func handleKeyboardHide(_ notification: Notification) {
         keyboardHideHandler?()
         KeyboardManager.keyboardShow = false
     }

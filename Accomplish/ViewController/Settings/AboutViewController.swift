@@ -44,7 +44,7 @@ class AboutViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .Normal)
+                                         status: UIControlState())
         
         self.versionLabel.textColor = colors.cloudColor
         self.acknowledgementsButton.tintColor = colors.cloudColor
@@ -53,10 +53,10 @@ class AboutViewController: BaseViewController {
         self.wordLabel.textColor = colors.cloudColor
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
@@ -64,13 +64,13 @@ class AboutViewController: BaseViewController {
 //        self.titleLabel.text = Localized("about")
         
         self.versionLabel.text = Localized("version") + AppVersion().version
-        self.acknowledgementsButton.setTitle(Localized("licenses"), forState: .Normal)
-        self.acknowledgementsButton.addTarget(self, action: #selector(self.licensesAction), forControlEvents: .TouchUpInside)
+        self.acknowledgementsButton.setTitle(Localized("licenses"), for: UIControlState())
+        self.acknowledgementsButton.addTarget(self, action: #selector(self.licensesAction), for: .touchUpInside)
     }
     
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func licensesAction() {
@@ -82,11 +82,11 @@ class AboutViewController: BaseViewController {
 struct AppVersion {
     
     var build: String {
-        return NSBundle.mainBundle().infoDictionary?[kCFBundleVersionKey as String] as! String
+        return Bundle.main.infoDictionary?[kCFBundleVersionKey as String] as! String
     }
     
     var version: String {
-        return NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     }
     
 }

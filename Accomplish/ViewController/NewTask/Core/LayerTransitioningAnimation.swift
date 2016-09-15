@@ -10,43 +10,43 @@ import UIKit
 
 class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
     
-    internal let animationDuration: NSTimeInterval = 0.5
+    internal let animationDuration: TimeInterval = 0.5
     var reverse = false
     
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view else { return }
-        guard let toView = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)?.view else { return }
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view else { return }
+        guard let toView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)?.view else { return }
         
         let bounds = screenBounds
-        fromView.frame=CGRectMake(0, 0, bounds.width, bounds.height);
-        toView.frame=CGRectMake(0, 0, bounds.width, bounds.height);
+        fromView.frame=CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height);
+        toView.frame=CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height);
         
         self.animateTransition(transitionContext, fromView: fromView, toView: toView)
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return animationDuration
     }
     
-    private func animateTransition(transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView) {
+    fileprivate func animateTransition(_ transitionContext: UIViewControllerContextTransitioning, fromView: UIView, toView: UIView) {
         
-        guard let containerView = transitionContext.containerView() else { return }
+        guard let containerView = transitionContext.containerView else { return }
         
         containerView.addSubview(toView)
         containerView.addSubview(fromView)
         
-        let temporaryPoint = CGPointMake(-CGRectGetMaxX(toView.frame), CGRectGetMidY(toView.frame))
+        let temporaryPoint = CGPoint(x: -toView.frame.maxX, y: toView.frame.midY)
         let centerPoint = toView.center
         
         if (self.reverse){
             toView.center = temporaryPoint
-            UIView.animateWithDuration(self.animationDuration * 0.7, animations: {
-                fromView.transform = CGAffineTransformMakeScale(0.8, 0.8)
+            UIView.animate(withDuration: self.animationDuration * 0.7, animations: {
+                fromView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 fromView.alpha = 0
                 }, completion: nil)
             
-            UIView.animateWithDuration(self.animationDuration * 0.7, delay: self.animationDuration * 0.3, options: .CurveEaseInOut, animations: {
+            UIView.animate(withDuration: self.animationDuration * 0.7, delay: self.animationDuration * 0.3, options: UIViewAnimationOptions(), animations: {
                 toView.center = centerPoint
                 
                 }, completion: { (finish) in
@@ -55,10 +55,10 @@ class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewC
             })
         } else {
             toView.alpha = 0.3
-            toView.transform = CGAffineTransformMakeScale(0.8, 0.8)
-            UIView.animateWithDuration(self.animationDuration, animations: {
+            toView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            UIView.animate(withDuration: self.animationDuration, animations: {
                 fromView.center = temporaryPoint
-                toView.transform = CGAffineTransformIdentity
+                toView.transform = CGAffineTransform.identity
                 toView.alpha = 1.0
                 }, completion: { (finish) in
                     transitionContext.completeTransition(true)

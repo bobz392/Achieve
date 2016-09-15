@@ -43,7 +43,7 @@ final class CircleProgressView: UIView {
         return circleShapeLayer.inAnimation
     }
     
-    func start(completed completed: Int, created: Int) {
+    func start(completed: Int, created: Int) {
         self.circleShapeLayer.start(created, finish: completed)
     }
     
@@ -54,11 +54,11 @@ final class CircleProgressView: UIView {
 }
 
 
-internal final class CircleShapeLayer: CAShapeLayer {
+internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
     
-    private let progressLayer = CAShapeLayer()
-    private let circleLineWidth: CGFloat = 10
-    private var percent: Double = 0
+    fileprivate let progressLayer = CAShapeLayer()
+    fileprivate let circleLineWidth: CGFloat = 10
+    fileprivate var percent: Double = 0
     
     var inAnimation = false
     
@@ -78,7 +78,7 @@ internal final class CircleShapeLayer: CAShapeLayer {
         super.layoutSublayers()
     }
 
-    func start(total: Int, finish: Int) {
+    func start(_ total: Int, finish: Int) {
         guard total > 0 && finish > 0 && total >= finish else {
             self.progressLayer.strokeEnd = 0
             return
@@ -89,35 +89,35 @@ internal final class CircleShapeLayer: CAShapeLayer {
         self.startAnimation(self.percent)
     }
     
-    private func startAnimation(percent: Double) {
+    fileprivate func startAnimation(_ percent: Double) {
         let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
         pathAnimation.duration = kCalendarProgressAnimationDuration
         pathAnimation.fromValue = 0
         pathAnimation.toValue = percent
         pathAnimation.delegate = self
-        pathAnimation.removedOnCompletion = true
+        pathAnimation.isRemovedOnCompletion = true
         pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         
-        self.progressLayer.addAnimation(pathAnimation, forKey: nil)
+        self.progressLayer.add(pathAnimation, forKey: nil)
         self.inAnimation = true
     }
     
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         self.inAnimation = false
     }
     
-    private func setupLayer() {
+    fileprivate func setupLayer() {
         let colors = Colors()
         self.path = self.drawPathWithArcCenter()
-        self.fillColor = UIColor.clearColor().CGColor
-        self.strokeColor = colors.cloudColor.CGColor
+        self.fillColor = UIColor.clear.cgColor
+        self.strokeColor = colors.cloudColor.cgColor
         self.lineWidth = circleLineWidth
-        self.backgroundColor = UIColor.clearColor().CGColor
+        self.backgroundColor = UIColor.clear.cgColor
         
-        self.progressLayer.backgroundColor = UIColor.clearColor().CGColor
+        self.progressLayer.backgroundColor = UIColor.clear.cgColor
         self.progressLayer.path = self.drawPathWithArcCenter()
-        self.progressLayer.fillColor = UIColor.clearColor().CGColor
-        self.progressLayer.strokeColor = colors.progressColor.CGColor
+        self.progressLayer.fillColor = UIColor.clear.cgColor
+        self.progressLayer.strokeColor = colors.progressColor.cgColor
         self.progressLayer.lineWidth = circleLineWidth
         self.progressLayer.lineCap = kCALineCapRound
         self.progressLayer.lineJoin = kCALineJoinRound
@@ -126,10 +126,10 @@ internal final class CircleShapeLayer: CAShapeLayer {
         self.addSublayer(progressLayer)
     }
     
-    private func drawPathWithArcCenter() -> CGPathRef {
+    fileprivate func drawPathWithArcCenter() -> CGPath {
         let positionY = self.frame.height * 0.5
         let positionX = self.frame.width * 0.5
-        let center = CGPointMake(positionX, positionY)
-        return UIBezierPath(arcCenter: center, radius: positionX, startAngle: CGFloat(-M_PI * 0.5), endAngle: CGFloat(1.5 * M_PI), clockwise: true).CGPath
+        let center = CGPoint(x: positionX, y: positionY)
+        return UIBezierPath(arcCenter: center, radius: positionX, startAngle: CGFloat(-M_PI * 0.5), endAngle: CGFloat(1.5 * M_PI), clockwise: true).cgPath
     }
 }

@@ -23,34 +23,34 @@ class TaskNoteTableViewCell: UITableViewCell {
         let colors = Colors()
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
-        self.layoutMargins = UIEdgeInsetsZero
+        self.layoutMargins = UIEdgeInsets.zero
         
         self.iconButton.createIconButton(iconSize: kNoteCellIconSize, imageSize: kNoteCellIconSize,
-                                           icon: TaskIconNote, color: colors.mainGreenColor, status: .Normal)
+                                           icon: TaskIconNote, color: colors.mainGreenColor, status: UIControlState())
         
         self.noteLabel.highlightedTextColor = colors.mainTextColor
         self.noteLabel.textColor = colors.secondaryTextColor
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
         
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
-        self.highlighted = false
+        self.isHighlighted = false
     }
     
-    func configCell(task: Task) {
+    func configCell(_ task: Task) {
         let colors = Colors()
         
         if task.taskNote.characters.count > 0 {
-            self.noteLabel.highlighted = true
+            self.noteLabel.isHighlighted = true
             self.noteLabel.text = task.taskNote
             self.iconButton.tintColor = colors.mainGreenColor
             
         } else {
-            self.noteLabel.highlighted = false
+            self.noteLabel.isHighlighted = false
             self.noteLabel.text = Localized("taskNote")
             self.iconButton.tintColor = colors.secondaryTextColor
         }

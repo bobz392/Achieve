@@ -10,37 +10,37 @@ import Foundation
 
 enum SystemActionType: Int {
     
-    typealias ActionBlock = (actionString: String) -> Void
+    typealias ActionBlock = (_ actionString: String) -> Void
     
-    case PhoneCall
-    case MessageTo
-    case FaceTime
-    case MailTo
-    case Subtask
-    case None
+    case phoneCall
+    case messageTo
+    case faceTime
+    case mailTo
+    case subtask
+    case none
     
     // action 本地化的 key， 用于显示文本
     func ationNameWithType() -> String {
         switch self {
-        case .PhoneCall:
+        case .phoneCall:
             return Localized("callAction")
-        case .MessageTo:
+        case .messageTo:
             return Localized("sendMessageAction")
-        case .FaceTime:
+        case .faceTime:
             return Localized("faceTimeAction")
-        case .MailTo:
+        case .mailTo:
             return Localized("mailAction")
-        case .Subtask:
+        case .subtask:
             return Localized("addSubtask")
             
-        case .None:
+        case .none:
             return ""
         }
     }
     
     func hintNameWithType() -> (String, String)? {
         switch self {
-        case .Subtask:
+        case .subtask:
             return ("subtaskTitle", "subtaskInfo")
             
         default:
@@ -51,39 +51,39 @@ enum SystemActionType: Int {
     // 具体的功能类型，决定跳转页面
     func actionPresent() -> ActionFeaturePresent {
         switch self {
-        case .PhoneCall, .MessageTo, .FaceTime:
+        case .phoneCall, .messageTo, .faceTime:
             // 跳转通讯录的电话
-            return .AddressBook
+            return .addressBook
             
-        case .MailTo:
+        case .mailTo:
             //跳转通讯录的email
-            return .AddressBookEmail
+            return .addressBookEmail
             
-        case .Subtask:
+        case .subtask:
             // 跳转到创建任务清单
-            return .CreateSubtasks
+            return .createSubtasks
             
-        case .None:
-            return .None
+        case .none:
+            return .none
         }
     }
     
     func actionScheme() -> String? {
         let urlScheme: String
         switch self {
-        case .PhoneCall:
+        case .phoneCall:
             urlScheme = "tel:"
             
-        case .MessageTo:
+        case .messageTo:
             urlScheme = "sms:"
             
-        case .FaceTime:
+        case .faceTime:
             urlScheme = "facetime://"
             
-        case .MailTo:
+        case .mailTo:
             urlScheme = "mailto:"
             
-        case .Subtask, .None:
+        case .subtask, .none:
             return nil
         }
         
@@ -95,11 +95,11 @@ enum SystemActionType: Int {
         guard let scheme = self.actionScheme() else { return nil }
         
         return { (string) -> Void in
-            let checkString = string.stringByReplacingOccurrencesOfString(" ", withString: "")
-            guard let url = NSURL(string: "\(scheme)\(checkString)") else {
+            let checkString = string.replacingOccurrences(of: " ", with: "")
+            guard let url = URL(string: "\(scheme)\(checkString)") else {
                 return
             }
-            let application = UIApplication.sharedApplication()
+            let application = UIApplication.shared
             guard application.canOpenURL(url) == true else {
                 debugPrint("can not call")
                 return
@@ -115,8 +115,8 @@ enum SystemActionType: Int {
  ** such as 从 address book 中取回数据
  **/
 enum ActionFeaturePresent {
-    case AddressBook
-    case AddressBookEmail
-    case CreateSubtasks
-    case None
+    case addressBook
+    case addressBookEmail
+    case createSubtasks
+    case none
 }

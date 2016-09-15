@@ -34,22 +34,22 @@ class TaskTableViewCell: UITableViewCell {
         let colors = Colors()
         self.clearView()
         self.contentView.clearView()
-        self.layoutMargins = UIEdgeInsetsZero
+        self.layoutMargins = UIEdgeInsets.zero
         
         self.taskTitleLabel.textColor = colors.mainTextColor
         self.taskInfoButton.tintColor = colors.linkTextColor
-        self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), forControlEvents: .TouchUpInside)
+        self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), for: .touchUpInside)
         self.taskDateLabel.textColor = colors.secondaryTextColor
         
         self.taskSettingButton.clearView()
         
         self.taskStatusButton.clearView()
-        self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), forControlEvents: .TouchUpInside)
+        self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), for: .touchUpInside)
         
         self.overTimeLabel.text = Localized("overTime")
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor
         
@@ -57,11 +57,11 @@ class TaskTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCellUse(task: Task) {
+    func configCellUse(_ task: Task) {
         self.task = task
         let colors = Colors()
         
-        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: .Normal)
+        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: UIControlState())
         
         switch task.priority {
         case kTaskPriorityLow:
@@ -80,17 +80,17 @@ class TaskTableViewCell: UITableViewCell {
             if let actionContent = TaskManager().parseTaskToDoText(task.taskToDo) {
                 systemActionContent = actionContent
                 taskTitle = actionContent.type.ationNameWithType() ?? ""
-                self.taskInfoButton.enabled = true
-                self.taskInfoButton.setTitle(actionContent.name, forState: .Normal)
+                self.taskInfoButton.isEnabled = true
+                self.taskInfoButton.setTitle(actionContent.name, for: UIControlState())
             } else {
-                self.taskInfoButton.enabled = false
-                self.taskInfoButton.setTitle(nil, forState: .Normal)
+                self.taskInfoButton.isEnabled = false
+                self.taskInfoButton.setTitle(nil, for: UIControlState())
                 taskTitle = task.taskToDo
             }
             
         default:
-            self.taskInfoButton.enabled = false
-            self.taskInfoButton.setTitle(nil, forState: .Normal)
+            self.taskInfoButton.isEnabled = false
+            self.taskInfoButton.setTitle(nil, for: UIControlState())
             taskTitle = task.taskToDo
         }
         
@@ -98,13 +98,13 @@ class TaskTableViewCell: UITableViewCell {
         case kTaskRunning:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-square-o",
-                                                   color: colors.mainGreenColor, status: .Normal)
-            self.taskSettingButton.hidden = false
+                                                   color: colors.mainGreenColor, status: UIControlState())
+            self.taskSettingButton.isHidden = false
             
             if let create = task.createdDate {
-                let now = NSDate()
-                if create.isEarlierThan(now) {
-                    self.taskDateLabel.text = create.timeAgoSinceDate(now)
+                let now = Date()
+                if (create as NSDate).isEarlierThan(now) {
+                    self.taskDateLabel.text = (create as NSDate).timeAgo(since: now)
                 } else {
                     self.taskDateLabel.text = create.timeDateString()
                 }
@@ -113,29 +113,29 @@ class TaskTableViewCell: UITableViewCell {
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-check-square-o",
-                                                   color: colors.secondaryTextColor, status: .Normal)
+                                                   color: colors.secondaryTextColor, status: UIControlState())
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
-            self.taskSettingButton.hidden = true
+            self.taskSettingButton.isHidden = true
             
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-close",
-                                                   color: colors.mainGreenColor, status: .Normal)
+                                                   color: colors.mainGreenColor, status: UIControlState())
             self.taskStatusButton.tintColor = colors.mainGreenColor
             
-            self.taskSettingButton.hidden = true
+            self.taskSettingButton.isHidden = true
         }
         
-        self.overTimeLabel.hidden = true
+        self.overTimeLabel.isHidden = true
         if let estimateDate = task.estimateDate {
-            if estimateDate.isEarlierThan(NSDate()) {
-                self.overTimeLabel.hidden = false
+            if (estimateDate as NSDate).isEarlierThan(Date()) {
+                self.overTimeLabel.isHidden = false
                 
                 self.overTimeLabel.textColor = colors.mainGreenColor
                 self.overTimeLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
-                self.overTimeLabel.layer.borderColor = colors.mainGreenColor.CGColor
+                self.overTimeLabel.layer.borderColor = colors.mainGreenColor.cgColor
                 self.overTimeLabel.layer.borderWidth = 1
             }
         }
@@ -144,10 +144,10 @@ class TaskTableViewCell: UITableViewCell {
     func systemAction() {
         guard let actionContent = systemActionContent else { return }
         let block = actionContent.type.actionBlockWithType()
-        block?(actionString: actionContent.urlSchemeInfo)
+        block?(actionContent.urlSchemeInfo)
     }
     
-    func markTask(btn: UIButton) {
+    func markTask(_ btn: UIButton) {
         guard let task = self.task else { return }
         if task.status == kTaskFinish {
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)

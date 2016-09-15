@@ -15,11 +15,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var infoLabel: UILabel!
     
-    private var alltasks = [[String]]()
-    private let bottomHeight: CGFloat = 73
-    private let maxShowTaskCount = 5
+    fileprivate var alltasks = [[String]]()
+    fileprivate let bottomHeight: CGFloat = 73
+    fileprivate let maxShowTaskCount = 5
     
-    private let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
+    fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,20 +29,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
         let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
         
-        self.todayTableView.registerNib(TodayTableViewCell.nib, forCellReuseIdentifier: TodayTableViewCell.reuseId)
+        self.todayTableView.register(TodayTableViewCell.nib, forCellReuseIdentifier: TodayTableViewCell.reuseId)
         self.todayTableView.separatorColor = separatorColor
         self.todayTableView.tableFooterView = UIView()
         
         self.infoLabel.textColor = cloudColor
         
-        self.allButton.setTitleColor(cloudColor, forState: .Normal)
+        self.allButton.setTitleColor(cloudColor, for: UIControlState())
         self.allButton.tintColor = secondaryTextColor
-        self.allButton.setTitle(Localized("showAll"), forState: .Normal)
-        self.allButton.addTarget(self, action: #selector(self.enterApp), forControlEvents: .TouchUpInside)
+        self.allButton.setTitle(Localized("showAll"), for: UIControlState())
+        self.allButton.addTarget(self, action: #selector(self.enterApp), for: .touchUpInside)
         self.allButton.clipsToBounds = true
         self.allButton.layer.cornerRadius = 4
         
-        self.wormhole.listenForMessageWithIdentifier(wormholeIdentifier) { (any) in
+        self.wormhole.listenForMessage(withIdentifier: wormholeIdentifier) { (any) in
             self.updateTask()
         }
         
@@ -51,7 +51,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     deinit {
-        self.wormhole.stopListeningForMessageWithIdentifier(wormholeIdentifier)
+        self.wormhole.stopListeningForMessage(withIdentifier: wormholeIdentifier)
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,11 +59,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
         
         // If an error is encountered, use NCUpdateResult.Failed
@@ -71,7 +71,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         
         guard let group = GroupUserDefault() else {
-            completionHandler(.Failed)
+            completionHandler(.failed)
             self.updateContent()
             return
         }
@@ -91,17 +91,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(taskCount) + bottomHeight)
             }
             group.setTaskChanged(false)
-            completionHandler(.NewData)
+            completionHandler(.newData)
         } else {
             self.alltasks = group.allTasks()
             self.todayTableView.reloadData()
-            completionHandler(.NoData)
+            completionHandler(.noData)
         }
     }
     
     func enterApp() {
-        guard let url = NSURL(string: kMyRootUrlScheme + kTaskAllPath) else { return }
-        self.extensionContext?.openURL(url, completionHandler: nil)
+        guard let url = URL(string: kMyRootUrlScheme + kTaskAllPath) else { return }
+        self.extensionContext?.open(url, completionHandler: nil)
     }
     
     func updateTask() {
@@ -119,7 +119,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.updateContent()
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
     }
     
@@ -143,44 +143,44 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 }
 
 extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alltasks.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TodayTableViewCell.rowHeight
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TodayTableViewCell.reuseId, forIndexPath: indexPath) as! TodayTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TodayTableViewCell.reuseId, for: indexPath) as! TodayTableViewCell
         
-        cell.task = alltasks[indexPath.row]
-        cell.checkButton.tag = indexPath.row
-        cell.titleLabel.text = alltasks[indexPath.row][GroupUserDefault.GroupTaskTitleIndex]
-        cell.checkButton.addTarget(self, action: #selector(self.checkTask(_:)), forControlEvents: .TouchUpInside)
+        cell.task = alltasks[(indexPath as NSIndexPath).row]
+        cell.checkButton.tag = (indexPath as NSIndexPath).row
+        cell.titleLabel.text = alltasks[(indexPath as NSIndexPath).row][GroupUserDefault.GroupTaskTitleIndex]
+        cell.checkButton.addTarget(self, action: #selector(self.checkTask(_:)), for: .touchUpInside)
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let task = self.alltasks[indexPath.row]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let task = self.alltasks[(indexPath as NSIndexPath).row]
         let taskUUID = task[GroupUserDefault.GroupTaskUUIDIndex]
         
-        guard let url = NSURL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
-        self.extensionContext?.openURL(url, completionHandler: nil)
+        guard let url = URL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
+        self.extensionContext?.open(url, completionHandler: nil)
     }
     
-    func checkTask(btn: UIButton) {
+    func checkTask(_ btn: UIButton) {
         guard let group = GroupUserDefault() else {
             return
         }
         
-        self.alltasks.removeAtIndex(btn.tag)
-        self.todayTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: btn.tag, inSection: 0)], withRowAnimation: .Automatic)
+        self.alltasks.remove(at: btn.tag)
+        self.todayTableView.deleteRows(at: [IndexPath(row: btn.tag, section: 0)], with: .automatic)
         self.updateContent()
         group.moveTaskFinish(btn.tag)
         let reloadIndexs =
-            (btn.tag..<self.alltasks.count).map( { NSIndexPath(forRow: $0, inSection: 0) } )
-        self.todayTableView.reloadRowsAtIndexPaths(reloadIndexs, withRowAnimation: .None)
+            (btn.tag..<self.alltasks.count).map( { IndexPath(row: $0, section: 0) } )
+        self.todayTableView.reloadRows(at: reloadIndexs, with: .none)
     }
 }

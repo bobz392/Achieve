@@ -18,11 +18,11 @@ class TaskPickerView: UIView {
     
     static let height: CGFloat = 245
 
-    private let repeatTypes: [RepeaterTimeType] = [.Daily, .Weekday, .EveryWeek, .EveryMonth, .Annual]
+    fileprivate let repeatTypes: [RepeaterTimeType] = [.daily, .weekday, .everyWeek, .everyMonth, .annual]
     
     var task: Task?
-    private var index: Int = 0
-    private var viewShow = false
+    fileprivate var index: Int = 0
+    fileprivate var viewShow = false
     
     override func awakeFromNib() {
         let colors = Colors()
@@ -32,13 +32,13 @@ class TaskPickerView: UIView {
         self.rightButton.tintColor = colors.mainGreenColor
         self.backgroundColor = colors.cloudColor
         
-        self.leftButton.setTitle(Localized("cancel"), forState: .Normal)
+        self.leftButton.setTitle(Localized("cancel"), for: UIControlState())
         self.toolView.addTopShadow()
         
-        self.leftButton.addTarget(self, action: #selector(self.close), forControlEvents: .TouchUpInside)
-        self.rightButton.addTarget(self, action: #selector(self.close), forControlEvents: .TouchUpInside)
+        self.leftButton.addTarget(self, action: #selector(self.close), for: .touchUpInside)
+        self.rightButton.addTarget(self, action: #selector(self.close), for: .touchUpInside)
         
-        self.pickerView.hidden = true
+        self.pickerView.isHidden = true
     }
     
     func close() {
@@ -54,53 +54,53 @@ class TaskPickerView: UIView {
     }
     
     func repeatTimeType() -> RepeaterTimeType {
-        return repeatTypes[self.pickerView.selectedRowInComponent(0)]
+        return repeatTypes[self.pickerView.selectedRow(inComponent: 0)]
     }
     
     func setIndex(index: Int) {
         guard let task = self.task else { return }
         self.index = index
         self.viewShow = true
-        self.pickerView.hidden = true
-        self.datePicker.hidden = true
-        let now = NSDate()
-        self.datePicker.date = task.createdDate ?? now
+        self.pickerView.isHidden = true
+        self.datePicker.isHidden = true
+        let now = Date()
+        self.datePicker.date = task.createdDate as Date? ?? now
         
         switch index {
         case 0:
-            self.datePicker.hidden = false
+            self.datePicker.isHidden = false
             self.datePicker.minimumDate = now
-            self.datePicker.datePickerMode = .DateAndTime
-            self.rightButton.setTitle(Localized("setCreateDate"), forState: .Normal)
+            self.datePicker.datePickerMode = .dateAndTime
+            self.rightButton.setTitle(Localized("setCreateDate"), for: UIControlState())
             self.datePicker.reloadInputViews()
         
         case TaskDueIndex:
-            self.datePicker.hidden = false
-            self.datePicker.minimumDate = (task.createdDate?.dateByAddingMinutes(15)) ?? now
-            self.datePicker.datePickerMode = .Time
-            self.rightButton.setTitle(Localized("setEstimateDate"), forState: .Normal)
+            self.datePicker.isHidden = false
+            self.datePicker.minimumDate = ((task.createdDate as NSDate?)?.addingMinutes(15)) ?? now
+            self.datePicker.datePickerMode = .time
+            self.rightButton.setTitle(Localized("setEstimateDate"), for: UIControlState())
             self.datePicker.reloadInputViews()
         
         case TaskReminderIndex:
             guard let createDate = task.createdDate else { break }
             self.datePicker.date = now
-            self.datePicker.hidden = false
-            self.datePicker.datePickerMode = .Time
+            self.datePicker.isHidden = false
+            self.datePicker.datePickerMode = .time
             
             // 如果是今天的任务那么只能添加后面的提醒
             // 如果是今天以后的任务，那么一天随时都可以
-            if createDate.isToday() {
+            if (createDate as NSDate).isToday() {
                 self.datePicker.minimumDate = now
             } else {
                 self.datePicker.minimumDate = nil
             }
             
-            self.rightButton.setTitle(Localized("setReminder"), forState: .Normal)
+            self.rightButton.setTitle(Localized("setReminder"), for: UIControlState())
             self.datePicker.reloadInputViews()
         
         case TaskRepeatIndex:
-            self.pickerView.hidden = false
-            self.rightButton.setTitle(Localized("setRepeat"), forState: .Normal)
+            self.pickerView.isHidden = false
+            self.rightButton.setTitle(Localized("setRepeat"), for: UIControlState())
             self.pickerView.reloadAllComponents()
             break
             
@@ -113,21 +113,21 @@ class TaskPickerView: UIView {
 extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
     func repeaterSelectedTitle() -> String {
         guard let createDate = self.task?.createdDate else { return "" }
-        return self.repeatTimeType().repeaterTitle(createDate)
+        return self.repeatTimeType().repeaterTitle(createDate: createDate)
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.repeatTypes.count
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         guard let createDate = self.task?.createdDate else { return nil }
-        let title = self.repeatTypes[row].repeaterTitle(createDate)
+        let title = self.repeatTypes[row].repeaterTitle(createDate: createDate)
         return NSAttributedString(string: title,
-                                  attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14)])
+                                  attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
 }

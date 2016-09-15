@@ -15,11 +15,11 @@ class SettingsViewController: BaseViewController {
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     
-    private var titles = [[String]]()
-    private var icons = [[String]]()
-    private var sizes = [[CGFloat]]()
+    fileprivate var titles = [[String]]()
+    fileprivate var icons = [[String]]()
+    fileprivate var sizes = [[CGFloat]]()
     
-    private var selectedIndex: NSIndexPath? = nil
+    fileprivate var selectedIndex: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,11 @@ class SettingsViewController: BaseViewController {
         self.initializeControl()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let s = selectedIndex else { return }
-        self.settingTableView.deselectRowAtIndexPath(s, animated: true)
+        self.settingTableView.deselectRow(at: s, animated: true)
         self.selectedIndex = nil
     }
     
@@ -55,16 +55,16 @@ class SettingsViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .Normal)
+                                         status: UIControlState())
         
         self.settingTableView.separatorColor = colors.separatorColor
         self.settingTableView.reloadData()
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
@@ -72,15 +72,15 @@ class SettingsViewController: BaseViewController {
         self.titleLabel.text = Localized("setting")
         
         self.settingTableView
-            .registerNib(SettingTableViewCell.nib, forCellReuseIdentifier: SettingTableViewCell.reuseId)
+            .register(SettingTableViewCell.nib, forCellReuseIdentifier: SettingTableViewCell.reuseId)
         self.settingTableView
-            .registerNib(SettingDetialTableViewCell.nib, forCellReuseIdentifier: SettingDetialTableViewCell.reuseId)
+            .register(SettingDetialTableViewCell.nib, forCellReuseIdentifier: SettingDetialTableViewCell.reuseId)
         
         self.settingDatas()
     }
     
     // title and icon 生成
-    private func settingDatas() {
+    fileprivate func settingDatas() {
         let extras = [
             Localized("emailUs"),
             Localized("about"),
@@ -134,52 +134,52 @@ class SettingsViewController: BaseViewController {
     
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles[section].count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return titles.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let size = self.sizes[indexPath.section][indexPath.row]
-        let icon = try! FAKFontAwesome(identifier: self.icons[indexPath.section][indexPath.row], size: size)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let size = self.sizes[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        let icon = try! FAKFontAwesome(identifier: self.icons[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row], size: size)
         icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
         
-        if indexPath.section == 0 && indexPath.row != 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(SettingDetialTableViewCell.reuseId, forIndexPath: indexPath) as! SettingDetialTableViewCell
-            cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row != 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingDetialTableViewCell.reuseId, for: indexPath) as! SettingDetialTableViewCell
+            cell.settingTitleLabel.text = self.titles[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
             cell.iconLabel.attributedText = icon.attributedString()
-            cell.accessoryType = .None
+            cell.accessoryType = .none
             // todo
             let ud = UserDefault()
-            if indexPath.row == 1 {
+            if (indexPath as NSIndexPath).row == 1 {
                 let weekStart = ud.readInt(kWeekStartKey)
                 let weeks: DaysOfWeek
                 if let ws = DaysOfWeek(rawValue: weekStart) {
                     weeks = ws
                 } else {
-                    weeks = .Sunday
+                    weeks = .sunday
                 }
                 
                 switch weeks {
-                case .Sunday:
+                case .sunday:
                     cell.detailLabel.text = Localized("day7")
-                case .Monday:
+                case .monday:
                     cell.detailLabel.text = Localized("day1")
-                case .Saturday:
+                case .saturday:
                     cell.detailLabel.text = Localized("day6")
                     
                 default:
                     break
                 }
-            } else if indexPath.row == 2 {
+            } else if (indexPath as NSIndexPath).row == 2 {
                 let closeDue = ud.readBool(kCloseDueTodayKey)
                 cell.detailLabel.text = closeDue ? Localized("close") : Localized("open")
                 
@@ -191,29 +191,29 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(SettingTableViewCell.reuseId, forIndexPath: indexPath) as! SettingTableViewCell
-            cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseId, for: indexPath) as! SettingTableViewCell
+            cell.settingTitleLabel.text = self.titles[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
             cell.iconLabel.attributedText = icon.attributedString()
-            cell.accessoryType = .DisclosureIndicator
+            cell.accessoryType = .disclosureIndicator
             
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.clearView()
         return view
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 {
-            switch indexPath.row {
+        if (indexPath as NSIndexPath).section == 0 {
+            switch (indexPath as NSIndexPath).row {
             case 0:
                 self.selectedIndex = indexPath
                 let backgroundVC = BackgroundViewController()
@@ -222,22 +222,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             // first day of week
             case 1:
                 self.handleWeekOfDay()
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
                 
             case 2:
-                self.handleOpenCloseCell(indexPath.row)
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                self.handleOpenCloseCell((indexPath as NSIndexPath).row)
+                tableView.deselectRow(at: indexPath, animated: true)
             
             case 3:
-                self.handleOpenCloseCell(indexPath.row)
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                self.handleOpenCloseCell((indexPath as NSIndexPath).row)
+                tableView.deselectRow(at: indexPath, animated: true)
                 
             default:
                 break
             }
             
         } else {
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
                 break
                 
@@ -255,43 +255,43 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    private func handleOpenCloseCell(index: Int) {
+    fileprivate func handleOpenCloseCell(_ index: Int) {
         let ud = UserDefault()
         let key = index == 2 ? kCloseDueTodayKey : kCloseHintKey
         let closeDue = ud.readBool(key)
         ud.write(key, value: !closeDue)
         
-        let reloadIndex = NSIndexPath(forRow: index, inSection: 0)
-        self.settingTableView.reloadRowsAtIndexPaths([reloadIndex], withRowAnimation: .Automatic)
+        let reloadIndex = IndexPath(row: index, section: 0)
+        self.settingTableView.reloadRows(at: [reloadIndex], with: .automatic)
     }
     
-    private func handleWeekOfDay() {
+    fileprivate func handleWeekOfDay() {
         let ud = UserDefault()
         let weekStart = ud.readInt(kWeekStartKey)
         let weeks: DaysOfWeek
         if let ws = DaysOfWeek(rawValue: weekStart) {
             weeks = ws
         } else {
-            weeks = .Sunday
+            weeks = .sunday
         }
         
         switch weeks {
-        case .Sunday:
-            ud.write(kWeekStartKey, value: DaysOfWeek.Monday.rawValue)
+        case .sunday:
+            ud.write(kWeekStartKey, value: DaysOfWeek.monday.rawValue)
             
-        case .Monday:
-            ud.write(kWeekStartKey, value: DaysOfWeek.Saturday.rawValue)
+        case .monday:
+            ud.write(kWeekStartKey, value: DaysOfWeek.saturday.rawValue)
             
-        case .Saturday:
-            ud.write(kWeekStartKey, value: DaysOfWeek.Sunday.rawValue)
+        case .saturday:
+            ud.write(kWeekStartKey, value: DaysOfWeek.sunday.rawValue)
             
         default:
             break
         }
         
         
-        let reloadIndex = NSIndexPath(forRow: 1, inSection: 0)
-        self.settingTableView.reloadRowsAtIndexPaths([reloadIndex], withRowAnimation: .Automatic)
+        let reloadIndex = IndexPath(row: 1, section: 0)
+        self.settingTableView.reloadRows(at: [reloadIndex], with: .automatic)
     }
 }
 

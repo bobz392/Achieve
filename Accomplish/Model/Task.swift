@@ -47,7 +47,7 @@ class Task: Object {
         return "uuid"
     }
     
-    func createDefaultTask(taskToDo: String, priority: Int = kTaskPriorityNormal) {
+    func createDefaultTask(_ taskToDo: String, priority: Int = kTaskPriorityNormal) {
         if let date = self.createdDate {
             self.createdFormattedDate = date.createdFormatedDateString()
             self.uuid = date.createTaskUUID()
@@ -66,7 +66,7 @@ class Task: Object {
         switch self.taskType {
         case kSystemTaskType:
             if let action = TaskManager().parseTaskToDoText(self.taskToDo) {
-                return (action.type.ationNameWithType() ?? "") + action.name
+                return action.type.ationNameWithType() + action.name
             } else {
                 return self.taskToDo
             }
@@ -92,6 +92,6 @@ class Task: Object {
     }
     
     func taskToDoCanChange() -> Bool {
-        return taskToDo.componentsSeparatedByString(kSpliteTaskIdentity).count < 2
+        return taskToDo.components(separatedBy: kSpliteTaskIdentity).count < 2
     }
 }

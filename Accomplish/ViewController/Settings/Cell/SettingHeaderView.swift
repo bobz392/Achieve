@@ -12,8 +12,8 @@ class SettingHeaderView: UIView {
 
     @IBOutlet weak var headerTitleLabel: UILabel!
  
-    class func loadNib(target: AnyObject) -> SettingHeaderView? {
-        return NSBundle.mainBundle().loadNibNamed("SettingHeaderView", owner: target, options: nil).first as? SettingHeaderView
+    class func loadNib(_ target: AnyObject) -> SettingHeaderView? {
+        return Bundle.main.loadNibNamed("SettingHeaderView", owner: target, options: nil)?.first as? SettingHeaderView
     }
     
     override func awakeFromNib() {

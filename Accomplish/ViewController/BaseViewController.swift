@@ -17,9 +17,9 @@ class BaseViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeMainUI), name: kBackgroundNeedRefreshNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.changeMainUI), name: NSNotification.Name(rawValue: kBackgroundNeedRefreshNotification), object: nil)
         
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = UIRectEdge()
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,12 +27,12 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func configMainUI() {
@@ -40,10 +40,10 @@ class BaseViewController: UIViewController {
     }
     
     func changeMainUI() {
-        if self.isViewLoaded() && self.view.window != nil {
-            UIView.animateWithDuration(kNormalAnimationDuration) {
+        if self.isViewLoaded && self.view.window != nil {
+            UIView.animate(withDuration: kNormalAnimationDuration, animations: {
                 self.configMainUI()
-            }
+            }) 
         } else {
             self.configMainUI()
         }

@@ -12,8 +12,8 @@ import SnapKit
 class EmptyView: UIView {
     @IBOutlet weak var hintLabel: UILabel!
     
-    class func loadNib(target: AnyObject) -> EmptyView? {
-        return NSBundle.mainBundle().loadNibNamed("EmptyView", owner: target, options: nil).first as? EmptyView
+    class func loadNib(_ target: AnyObject) -> EmptyView? {
+        return Bundle.main.loadNibNamed("EmptyView", owner: target, options: nil)?.first as? EmptyView
     }
     
     override func awakeFromNib() {
@@ -22,7 +22,7 @@ class EmptyView: UIView {
         super.awakeFromNib()
     }
     
-    func layout(superview: View) {
+    func layout(_ superview: UIView) {
         self.snp_makeConstraints { (make) in
             make.width.equalTo(100)
             make.height.equalTo(50)

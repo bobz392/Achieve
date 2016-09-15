@@ -21,16 +21,16 @@ struct RepeaterManager {
             return false
         }
         
-        let lastDate = lastDateString.dateFromCreatedFormatString()
+        let lastDate: NSDate = lastDateString.dateFromCreatedFormatString() as NSDate
         
-        debugPrint("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
-        if !lastDate.isToday() && lastDate.isEarlierThan(now) {
+        debugPrint("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now as Date!))")
+        if !lastDate.isToday() && lastDate.isEarlierThan(now as Date!) {
 //             do some use repeater create todays task
             self.repeaterTaskCreate()
             userDefault.write(kLastFetchDateKey, value: now.createdFormatedDateString())
             // 加入昨天的check in
             // 以及任务完成率
-            createCheckIn(now)
+            createCheckIn(now: now)
             
             return true
         } else {
@@ -38,19 +38,19 @@ struct RepeaterManager {
         }
     }
     
-    private func createCheckIn(now: NSDate) {
+    fileprivate func createCheckIn(now: NSDate) {
         let checkIn = CheckIn()
-        let checkInDate = now.dateBySubtractingDays(1)
+        let checkInDate = now.subtractingDays(1) as NSDate
         checkIn.checkInDate = checkInDate
         checkIn.formatedDate = checkInDate.createdFormatedDateString()
-        let task = RealmManager.shareManager.queryTaskCount(checkInDate)
+        let task = RealmManager.shareManager.queryTaskCount(date: checkInDate)
         checkIn.completedCount = task.complete
         checkIn.createdCount = task.created
         
         RealmManager.shareManager.saveCheckIn(checkIn)
     }
     
-    private func repeaterTaskCreate() {
+    fileprivate func repeaterTaskCreate() {
         beginDebugPrint("repeater task create")
         let manager = RealmManager.shareManager
         let all = manager.allRepeater()
@@ -63,15 +63,15 @@ struct RepeaterManager {
             
             let createTask: Bool
             switch repeatTime {
-            case .Daily:
+            case .daily:
                 createTask = true
-            case .Annual:
+            case .annual:
                 createTask = today.month() == createDate.month() && createDate.day() == today.day()
-            case .EveryMonth:
+            case .everyMonth:
                 createTask = today.day() == createDate.day()
-            case .Weekday:
+            case .weekday:
                 createTask = !today.isWeekend()
-            case .EveryWeek:
+            case .everyWeek:
                 createTask = today.weekday() == createDate.weekday()
             }
             
@@ -88,11 +88,11 @@ struct RepeaterManager {
         endDebugPrint("repeater task create")
     }
     
-    private func copyTask(task: Task) -> Task {
+    fileprivate func copyTask(_ task: Task) -> Task {
         let newTask = Task()
         let now = NSDate()
         let createDate = task.createdDate ?? now
-        newTask.createdDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: createDate.hour(), minute: createDate.minute(), second: createDate.second())
+        newTask.createdDate = NSDate(year: (now as NSDate).year(), month: (now as NSDate).month(), day: (now as NSDate).day(), hour: (createDate as NSDate).hour(), minute: (createDate as NSDate).minute(), second: (createDate as NSDate).second())
         newTask.createDefaultTask(task.taskToDo, priority: task.priority)
         newTask.canPostpone = task.canPostpone
         newTask.finishedDate = nil
@@ -106,11 +106,11 @@ struct RepeaterManager {
         
         let shareManager = RealmManager.shareManager
         let subtasks = shareManager.querySubtask(task.uuid)
-        for (index, sub) in subtasks.enumerate() {
+        for (index, sub) in subtasks.enumerated() {
             let subtask = Subtask()
             subtask.rootUUID = newTask.uuid
             subtask.taskToDo = sub.taskToDo
-            let subtaskCreateDate = now.dateByAddingMinutes(index)
+            let subtaskCreateDate = now.addingMinutes(index) as NSDate
             subtask.createdDate = subtaskCreateDate
             subtask.uuid = subtaskCreateDate.createTaskUUID()
             shareManager.writeObject(subtask)

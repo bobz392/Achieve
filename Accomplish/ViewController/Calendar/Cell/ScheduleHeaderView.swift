@@ -12,9 +12,9 @@ class ScheduleHeaderView: UIView {
 
     @IBOutlet weak var titleLableView: UILabel!
     
-    class func loadNib(target: AnyObject) -> ScheduleHeaderView? {
-        return NSBundle.mainBundle()
-            .loadNibNamed("ScheduleHeaderView", owner: target, options: nil).first as? ScheduleHeaderView
+    class func loadNib(_ target: AnyObject) -> ScheduleHeaderView? {
+        return Bundle.main
+            .loadNibNamed("ScheduleHeaderView", owner: target, options: nil)?.first as? ScheduleHeaderView
     }
     
     override func awakeFromNib() {

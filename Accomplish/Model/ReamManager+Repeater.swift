@@ -14,7 +14,7 @@ extension RealmManager {
 
     // 更新指定的update，如果不存在直接创建一个
     // 暂时没有考虑notify date
-    func repeaterUpdate(task: Task, repeaterTimeType: RepeaterTimeType) {
+    func repeaterUpdate(_ task: Task, repeaterTimeType: RepeaterTimeType) {
         // 返回指定 task uuid 的repeater， 如果不存在创建一个
         if let repeater = queryRepeaterWithTask(task.uuid) {
             updateObject({
@@ -33,26 +33,26 @@ extension RealmManager {
         print("notfiy = \(LocalNotificationManager().notifyWithUUID(task.uuid))")
     }
     
-    func queryRepeaterWithTask(taskUUID: String) -> Repeater? {
-        let repeater = realm.objects(Repeater.self)
-            .filter("repeatTaskUUID = '\(taskUUID)'")
+    func queryRepeaterWithTask(_ taskUUID: String) -> Repeater? {
+        let repeater = realm.allObjects(ofType: Repeater.self)
+            .filter(using: "repeatTaskUUID = '\(taskUUID)'")
             .first
         return repeater
     }
     
     func allRepeater() -> Results<Repeater> {
-        return realm.objects(Repeater.self)
+        return realm.allObjects(ofType: Repeater.self)
     }
     
-    func deleteRepeater(task: Task) {
+    func deleteRepeater(_ task: Task) {
         if let repeater = queryRepeaterWithTask(task.uuid) {
             deleteObject(repeater)
         }
         
-        LocalNotificationManager().updateNotify(task, repeatInterval: NSCalendarUnit(rawValue: 0))
+        LocalNotificationManager().updateNotify(task, repeatInterval: NSCalendar.Unit(rawValue: 0))
     }
     
-    func updateRepeater(repeater: Repeater) {
+    func updateRepeater(_ repeater: Repeater) {
         
     }
 }

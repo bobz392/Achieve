@@ -24,7 +24,7 @@ final class AddressBookTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        selectionStyle = .None
+        selectionStyle = .none
         let colors = Colors()
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor

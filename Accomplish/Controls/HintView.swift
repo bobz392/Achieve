@@ -10,8 +10,8 @@ import UIKit
 
 class HintView: UIView {
 
-    class func loadNib(target: AnyObject) -> HintView? {
-        return NSBundle.mainBundle().loadNibNamed("HintView", owner: target, options: nil).first as? HintView
+    class func loadNib(_ target: AnyObject) -> HintView? {
+        return Bundle.main.loadNibNamed("HintView", owner: target, options: nil)?.first as? HintView
     }
 
 }

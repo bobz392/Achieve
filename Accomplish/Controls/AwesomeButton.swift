@@ -13,21 +13,21 @@ class AwesomeButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), forControlEvents: .TouchDown)
-        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), forControlEvents: .TouchUpOutside)
+        self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
+        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
         
-        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpInside)
     }
     
-    func buttonAnimationStartAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .CurveEaseInOut, animations: {
-            btn.transform = CGAffineTransformScale(btn.transform, 0.8, 0.8)
+    func buttonAnimationStartAction(_ btn: UIButton) {
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: UIViewAnimationOptions(), animations: {
+            btn.transform = btn.transform.scaledBy(x: 0.8, y: 0.8)
         }) { (finish) in }
     }
     
-    func buttonAnimationEndAction(btn: UIButton) {
-        UIView.animateWithDuration(kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .LayoutSubviews, animations: {
-            btn.transform = CGAffineTransformMakeScale(1, 1)
+    func buttonAnimationEndAction(_ btn: UIButton) {
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .layoutSubviews, animations: {
+            btn.transform = CGAffineTransform(scaleX: 1, y: 1)
         }) { (finish) in }
     }
 }

@@ -31,15 +31,15 @@ class TodayTableViewCell: UITableViewCell {
         self.checkButton.tintColor = cloudColor
         
         let icon = try! FAKFontAwesome(identifier: subtaskIconSquare, size: 22)
-        let image = icon.imageWithSize(CGSize(width: 22, height: 22))
-        self.checkButton.setImage(image, forState: .Normal)
+        let image = icon.image(with: CGSize(width: 22, height: 22))
+        self.checkButton.setImage(image, for: UIControlState())
         
         let hIcon = try! FAKFontAwesome(identifier: subtaskIconChecked, size: 22)
-        let hImage = hIcon.imageWithSize(CGSize(width: 22, height: 22))
-        self.checkButton.setImage(hImage, forState: .Highlighted)
+        let hImage = hIcon.image(with: CGSize(width: 22, height: 22))
+        self.checkButton.setImage(hImage, for: .highlighted)
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = UIColor(red:0.34, green:0.40, blue:0.47, alpha:1.00)
         

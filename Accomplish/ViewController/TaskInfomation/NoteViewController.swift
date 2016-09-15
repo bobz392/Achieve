@@ -44,26 +44,26 @@ class NoteViewController: BaseViewController {
         self.initializeControl()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
-            UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
+            UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
         
         KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
             self.toolViewBottomConstraint.constant = 0
-            UIView.animateWithDuration(kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: .CurveEaseInOut, animations: { [unowned self] in
+            UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
                 self.view.layoutIfNeeded()
                 }, completion: nil)
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         KeyboardManager.sharedManager.closeNotification()
     }
@@ -90,37 +90,37 @@ class NoteViewController: BaseViewController {
         self.saveButton.tintColor = colors.mainGreenColor
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleCardView.layer.cornerRadius = 6.0
         self.titleCardView.addSmallShadow()
         
-        self.cancelButton.setTitle(Localized("cancel"), forState: .Normal)
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.cancelButton.setTitle(Localized("cancel"), for: UIControlState())
+        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
-        self.saveButton.setTitle(Localized("save"), forState: .Normal)
-        self.saveButton.addTarget(self, action: #selector(self.saveAction), forControlEvents: .TouchUpInside)
+        self.saveButton.setTitle(Localized("save"), for: UIControlState())
+        self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
         
         if !self.task.taskNote.isEmpty {
             self.contentTextView.text = self.task.taskNote
         }
-        self.placeholderLabel.hidden = !self.task.taskNote.isEmpty
+        self.placeholderLabel.isHidden = !self.task.taskNote.isEmpty
         self.titleLabel.text = self.task.getNormalDisplayTitle()
         self.placeholderLabel.text = Localized("writeNote")
     }
     
     // MARK: - action
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func saveAction() {
         guard let content = self.contentTextView.text else { return }
         if content.characters.count > 0 {
             self.noteDelegate?.taskNoteAdd(content)
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         } else {
             HUD.sharedHUD.error(Localized("errorInfos"))
         }
@@ -128,8 +128,8 @@ class NoteViewController: BaseViewController {
 }
 
 extension NoteViewController: UITextViewDelegate {
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        self.placeholderLabel.hidden = range.location + text.characters.count > 0
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        self.placeholderLabel.isHidden = range.location + text.characters.count > 0
         return true
     }
 }

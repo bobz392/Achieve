@@ -9,16 +9,16 @@
 import UIKit
 
 struct Colors {
-    private static var type: Int? = nil
+    fileprivate static var type: Int? = nil
     static var backgroundType: MainColorType {
         get {
             guard let t = self.type else {
                 let ud = UserDefault()
                 let background = ud.readInt(kBackgroundKey)
                 self.type = background
-                return MainColorType(rawValue: background) ?? .GreenSea
+                return MainColorType(rawValue: background) ?? .greenSea
             }
-            return MainColorType(rawValue: t) ?? .GreenSea
+            return MainColorType(rawValue: t) ?? .greenSea
         }
         
         set (value) {
@@ -43,14 +43,14 @@ struct Colors {
 }
 
 enum MainColorType: Int {
-    case GreenSea = 0
-    case Teal
-    case Nephritis
-    case BelizeHole
-    case Wisteria
-    case WetAsphalt
-    case Coffee
-    case RedWine
+    case greenSea = 0
+    case teal
+    case nephritis
+    case belizeHole
+    case wisteria
+    case wetAsphalt
+    case coffee
+    case redWine
     
     static func count() -> Int {
         return 8
@@ -59,42 +59,42 @@ enum MainColorType: Int {
     func mianColor() -> UIColor {
         
         switch self {
-        case .GreenSea:
+        case .greenSea:
             return UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
-        case .Nephritis:
+        case .nephritis:
             return UIColor(red:0.15, green:0.68, blue:0.38, alpha:1.00)
-        case .Wisteria:
+        case .wisteria:
             return UIColor(red:0.71, green:0.19, blue:0.40, alpha:1.00)
-        case .BelizeHole:
+        case .belizeHole:
             return UIColor(red:0.16, green:0.50, blue:0.73, alpha:1.00)
-        case .RedWine:
+        case .redWine:
             return UIColor(red:0.67, green:0.16, blue:0.18, alpha:1.00)
-        case .WetAsphalt:
+        case .wetAsphalt:
             return UIColor(red:0.20, green:0.29, blue:0.37, alpha:1.00)
-        case .Teal:
+        case .teal:
             return UIColor(red:0.00, green:0.59, blue:0.53, alpha:1.00)
-        case .Coffee:
+        case .coffee:
             return UIColor(red:0.56, green:0.44, blue:0.25, alpha:1.00)
         }
     }
     
     func selectedColor() -> UIColor {
         switch self {
-        case .GreenSea:
+        case .greenSea:
             return UIColor(red:0.09, green:0.63, blue:0.52, alpha:0.3)
-        case .Nephritis:
+        case .nephritis:
             return UIColor(red:0.15, green:0.68, blue:0.38, alpha:0.3)
-        case .Wisteria:
+        case .wisteria:
             return UIColor(red:0.71, green:0.19, blue:0.40, alpha:0.4)
-        case .BelizeHole:
+        case .belizeHole:
             return UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.3)
-        case .RedWine:
+        case .redWine:
             return UIColor(red:0.67, green:0.16, blue:0.18, alpha:0.3)
-        case .WetAsphalt:
+        case .wetAsphalt:
             return UIColor(red:0.20, green:0.29, blue:0.37, alpha:0.3)
-        case .Teal:
+        case .teal:
             return UIColor(red:0.00, green:0.59, blue:0.53, alpha:0.3)
-        case .Coffee:
+        case .coffee:
             return UIColor(red:0.56, green:0.44, blue:0.25, alpha:0.3)
         }
     }

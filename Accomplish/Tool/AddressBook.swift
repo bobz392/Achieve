@@ -9,21 +9,21 @@
 import UIKit
 import AddressBook
 
-typealias AddressBookAccessRequestHandler = Bool -> Void
-typealias AddressBookFetchResultHandler = [AddressBook.Person] -> Void
+typealias AddressBookAccessRequestHandler = (Bool) -> Void
+typealias AddressBookFetchResultHandler = ([AddressBook.Person]) -> Void
 
 final class AddressBook: NSObject {
     
-    class func requestAccess(completion: AddressBookAccessRequestHandler) {
+    class func requestAccess(_ completion: @escaping AddressBookAccessRequestHandler) {
         showFakeRequestIfNeeded { fakeGranted in
             guard fakeGranted else {
                 return
             }
             
-            dispatch_async(AddressBookProcessingQueue) {
+            AddressBookProcessingQueue.async {
                 let addressBook = ABAddressBookCreateWithOptions(nil, nil)?.takeRetainedValue()
                 ABAddressBookRequestAccessWithCompletion(addressBook) { (granted, _) in
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         completion(granted)
                     }
                 }
@@ -31,9 +31,9 @@ final class AddressBook: NSObject {
         }
     }
     
-    class func fetchAllPeopleInAddressBook(phone: Bool = true, completion: AddressBookFetchResultHandler) {
+    class func fetchAllPeopleInAddressBook(_ phone: Bool = true, completion: @escaping AddressBookFetchResultHandler) {
         
-        dispatch_async(AddressBookProcessingQueue) {
+        AddressBookProcessingQueue.async {
             
             var result = [Person]()
             
@@ -49,7 +49,7 @@ final class AddressBook: NSObject {
             
             let count = CFArrayGetCount(people)
             for i in 0..<count {
-                let record = unsafeBitCast(CFArrayGetValueAtIndex(people, i), ABRecordRef.self)
+                let record = unsafeBitCast(CFArrayGetValueAtIndex(people, i), to: ABRecord.self)
                 if !phone {
                     // 没有邮箱的人不显示
                     if let emails = MailAddress.fetchMails(inRecord: record) {
@@ -70,7 +70,7 @@ final class AddressBook: NSObject {
             
 //            debugPrint("\(result.count) contacts are added.")
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 completion(result)
             }
         }
@@ -104,7 +104,7 @@ extension AddressBook {
         let fullName: String
         let uppercaseStrippedLatinFullName: String
         
-        init(record: ABRecordRef) {
+        init(record: ABRecord) {
             var nameComponents = [String]()
             
             if let firstName = ABRecordCopyValue(record, kABPersonFirstNameProperty)?.takeRetainedValue() as? String {
@@ -121,7 +121,7 @@ extension AddressBook {
             
             let delimiter: String
             if let nameDelimiter = ABPersonCopyCompositeNameDelimiterForRecord(record)?.takeRetainedValue() {
-                delimiter = unsafeBitCast(nameDelimiter, NSString.self) as String
+                delimiter = unsafeBitCast(nameDelimiter, to: NSString.self) as String
             } else {
                 delimiter = ""
             }
@@ -129,22 +129,22 @@ extension AddressBook {
             let nameFormat = Int(ABPersonGetCompositeNameFormatForRecord(record))
             switch nameFormat {
             case kABPersonCompositeNameFormatFirstNameFirst:
-                fullName = nameComponents.joinWithSeparator(delimiter)
+                fullName = nameComponents.joined(separator: delimiter)
                 
             case kABPersonCompositeNameFormatLastNameFirst:
-                fullName = nameComponents.reverse().joinWithSeparator(delimiter)
+                fullName = nameComponents.reversed().joined(separator: delimiter)
                 
             default:
                 fullName = ""
             }
             
-            uppercaseStrippedLatinFullName = fullName.latinString?.ASCIIString?.uppercaseString ?? ""
+            uppercaseStrippedLatinFullName = fullName.latinString?.ASCIIString?.uppercased() ?? ""
         }
     }
     
     struct MailAddress {
         
-        static func fetchMails(inRecord record: ABRecordRef) -> [String]? {
+        static func fetchMails(inRecord record: ABRecord) -> [String]? {
             guard let emailValue =
                 ABRecordCopyValue(record, kABPersonEmailProperty)?.takeRetainedValue() else { return nil }
             
@@ -178,7 +178,7 @@ extension AddressBook {
                 }
             }
             
-            static func fetchPhoneNumbers(inRecord record: ABRecordRef) -> [PhoneNumber]? {
+            static func fetchPhoneNumbers(inRecord record: ABRecord) -> [PhoneNumber]? {
                 guard let phoneValue =
                     ABRecordCopyValue(record, kABPersonPhoneProperty)?.takeRetainedValue() else { return nil }
                 
@@ -197,7 +197,7 @@ extension AddressBook {
                     let phoneLabel = ABMultiValueCopyLabelAtIndex(phoneValue, j)?.takeRetainedValue()
                     let phoneLabelString: String?
                     if let phoneLabelLocalized = ABAddressBookCopyLocalizedLabel(phoneLabel)?.takeRetainedValue() {
-                        phoneLabelString = unsafeBitCast(phoneLabelLocalized, NSString.self) as String
+                        phoneLabelString = unsafeBitCast(phoneLabelLocalized, to: NSString.self) as String
                     } else {
                         phoneLabelString = nil
                     }
@@ -211,12 +211,12 @@ extension AddressBook {
         }
     }
     
-    private let AddressBookProcessingQueue = dispatch_queue_create("com.zhoubo.AddressBook", DISPATCH_QUEUE_SERIAL)
+    private let AddressBookProcessingQueue = DispatchQueue(label: "com.zhoubo.AddressBook", attributes: [])
     
     extension AddressBook {
         
-        private class func showFakeRequestIfNeeded(completion: AddressBookAccessRequestHandler) {
-            guard ABAddressBookGetAuthorizationStatus() == .NotDetermined else {
+        fileprivate class func showFakeRequestIfNeeded(_ completion: @escaping AddressBookAccessRequestHandler) {
+            guard ABAddressBookGetAuthorizationStatus() == .notDetermined else {
                 completion(true)
                 return
             }
@@ -238,7 +238,7 @@ extension AddressBook {
         
         var completion: AddressBookAccessRequestHandler?
         
-        @objc private func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        @objc fileprivate func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
             completion?(buttonIndex == 1)
         }
         

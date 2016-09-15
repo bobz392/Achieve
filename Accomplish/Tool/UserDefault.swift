@@ -16,28 +16,28 @@ let kCloseHintKey = "com.close.hint"
 let kBackgroundKey = "com.background"
 
 struct UserDefault {
-    let def = NSUserDefaults.standardUserDefaults()
+    let def = UserDefaults.standard
     
-    func write(key: String, value: AnyObject) {
+    func write(_ key: String, value: Any) {
         debugPrint("write to user default with key = \(key) and value = \(value)")
-        def.setObject(value, forKey: key)
+        def.set(value, forKey: key)
         def.synchronize()
     }
     
-    func readBool(key: String) -> Bool {
-        return def.boolForKey(key)
+    func readBool(_ key: String) -> Bool {
+        return def.bool(forKey: key)
     }
     
-    func readString(key: String) -> String? {
-        return def.stringForKey(key)
+    func readString(_ key: String) -> String? {
+        return def.string(forKey: key)
     }
     
-    func readInt(key: String) -> Int {
-        return def.integerForKey(key)
+    func readInt(_ key: String) -> Int {
+        return def.integer(forKey: key)
     }
     
-    func remove(key: String) {
-        def.removeObjectForKey(key)
+    func remove(_ key: String) {
+        def.removeObject(forKey: key)
         def.synchronize()
     }
 }

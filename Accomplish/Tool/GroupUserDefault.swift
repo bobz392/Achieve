@@ -12,7 +12,7 @@ let group = "group.bob.accomplish"
 let wormholeIdentifier = "newTask"
 
 struct GroupUserDefault {
-    let groupDefault: NSUserDefaults
+    let groupDefault: UserDefaults
     let tasksKey = "all.task.today"
     let taskChangeKey = "task.changed.today"
     let todayFinishTaskKey = "task.finish.by.today"
@@ -23,7 +23,7 @@ struct GroupUserDefault {
     static let GroupTaskFinishDateIndex = 3
     
     init?() {
-        guard let groupDefault = NSUserDefaults(suiteName: group) else {
+        guard let groupDefault = UserDefaults(suiteName: group) else {
             return nil
         }
         
@@ -31,51 +31,51 @@ struct GroupUserDefault {
     }
     
     func taskHasChanged() -> Bool {
-        return self.groupDefault.boolForKey(taskChangeKey)
+        return self.groupDefault.bool(forKey: taskChangeKey)
     }
     
-    func setTaskChanged(changed: Bool) {
-        self.groupDefault.setBool(changed, forKey: taskChangeKey)
+    func setTaskChanged(_ changed: Bool) {
+        self.groupDefault.set(changed, forKey: taskChangeKey)
         self.groupDefault.synchronize()
     }
     
     func allTasks() -> [[String]] {
-        guard let tasksArray = self.groupDefault.arrayForKey(tasksKey) as? [[String]]
+        guard let tasksArray = self.groupDefault.array(forKey: tasksKey) as? [[String]]
             else { return [[String]]() }
         
         return tasksArray
     }
     
-    func writeTasks(tasks: [[String]]) {
-        self.groupDefault.setObject(tasks, forKey: tasksKey)
+    func writeTasks(_ tasks: [[String]]) {
+        self.groupDefault.set(tasks, forKey: tasksKey)
         self.groupDefault.synchronize()
     }
     
     func getAllFinishTask() -> [[String]] {
-        return (self.groupDefault.arrayForKey(todayFinishTaskKey) as? [[String]]) ?? [[String]]()
+        return (self.groupDefault.array(forKey: todayFinishTaskKey) as? [[String]]) ?? [[String]]()
     }
     
-    private func setTaskFinish(finish: [String]) {
-        var tasks = self.groupDefault.objectForKey(todayFinishTaskKey) as? [[String]]
+    fileprivate func setTaskFinish(_ finish: [String]) {
+        var tasks = self.groupDefault.object(forKey: todayFinishTaskKey) as? [[String]]
         if tasks == nil {
             tasks = [[String]]()
         }
         
         tasks?.append(finish)
-        self.groupDefault.setObject(tasks, forKey: todayFinishTaskKey)
+        self.groupDefault.set(tasks, forKey: todayFinishTaskKey)
     }
     
     func clearTaskFinish() {
-        self.groupDefault.setObject(nil, forKey: todayFinishTaskKey)
+        self.groupDefault.set(nil, forKey: todayFinishTaskKey)
         self.groupDefault.synchronize()
     }
     
-    func moveTaskFinish(taskIndex: Int) {
-        guard var tasks = self.groupDefault.arrayForKey(tasksKey) as? [[String]]
+    func moveTaskFinish(_ taskIndex: Int) {
+        guard var tasks = self.groupDefault.array(forKey: tasksKey) as? [[String]]
             else { return }
         
-        var finishTask = tasks.removeAtIndex(taskIndex)
-        finishTask.append(NSDate().formattedDateWithFormat(uuidFormat))
+        var finishTask = tasks.remove(at: taskIndex)
+        finishTask.append((Date() as NSDate).formattedDate(withFormat: uuidFormat))
         self.setTaskFinish(finishTask)
         self.writeTasks(tasks)
     }

@@ -21,7 +21,7 @@ class AssociateViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         
     }
 }

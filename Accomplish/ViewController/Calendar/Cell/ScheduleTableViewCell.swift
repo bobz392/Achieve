@@ -40,15 +40,15 @@ class ScheduleTableViewCell: UITableViewCell {
         self.completedLabel.textColor = colors.cloudColor
     }
     
-    func setTop(isTop: Bool) {
+    func setTop(_ isTop: Bool) {
         self.lineViewTopConstraint.constant = isTop ? 10: 0
     }
     
-    func setBottom(isBottom: Bool) {
+    func setBottom(_ isBottom: Bool) {
         self.lineViewBottomConstraint.constant = isBottom ? ScheduleTableViewCell.rowHeight - 10 : 0
     }
     
-    func config(task: Task) {
+    func config(_ task: Task) {
         let colors = Colors()
         let identifier = task.status == kTaskFinish ?
             "fa-check" : (task.createdDate!.isLaterThenToday() ? "fa-exclamation" : "fa-times")

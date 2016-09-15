@@ -11,4 +11,4 @@ import Foundation
 /**
  ** screen
  **/
-let screenBounds = UIScreen.mainScreen().bounds
+let screenBounds = UIScreen.main.bounds

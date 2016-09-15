@@ -27,7 +27,7 @@ class SystemTaskTableViewCell: UITableViewCell {
         self.taskTitle.textColor = colors.mainTextColor
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = Colors().selectedColor

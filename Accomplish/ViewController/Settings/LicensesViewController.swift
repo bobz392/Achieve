@@ -38,23 +38,23 @@ class LicensesViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .Normal)
+                                         status: UIControlState())
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), forControlEvents: .TouchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleLabel.text = Localized("licenses")
         
-        if let stringURL = NSBundle.mainBundle().URLForResource("Acknowledgements", withExtension: nil) {
-            dispatch_async(dispatch_queue_create("com.shimo.fileReading", DISPATCH_QUEUE_SERIAL)) {
-                if let string = try? String(contentsOfURL: stringURL, encoding: NSUTF8StringEncoding) {
-                    dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+        if let stringURL = Bundle.main.url(forResource: "Acknowledgements", withExtension: nil) {
+            DispatchQueue(label: "com.shimo.fileReading", attributes: []).async {
+                if let string = try? String(contentsOf: stringURL, encoding: String.Encoding.utf8) {
+                    DispatchQueue.main.async { [unowned self] in
                         self.textView.text = string
                     }
                 }
@@ -64,6 +64,6 @@ class LicensesViewController: BaseViewController {
     
     // MARK: - actions
     func cancelAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }

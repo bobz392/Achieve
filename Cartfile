@@ -1,6 +1,3 @@
-github "SwiftyJSON/SwiftyJSON"
 github "SnapKit/SnapKit" >= 0.15.0
-github "realm/realm-cocoa"
-github "Alamofire/Alamofire" ~> 3.3
+github "realm/realm-cocoa" "master"
 github "SVProgressHUD/SVProgressHUD"
-github "danielgindi/Charts" ~> 2.2.5

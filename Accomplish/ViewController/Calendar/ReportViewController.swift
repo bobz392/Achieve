@@ -16,16 +16,16 @@ class ReportViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var exportButton: UIButton!
     
-    private let checkInDate: NSDate
-    private var taskList: Results<Task>? = nil
+    fileprivate let checkInDate: Date
+    fileprivate var taskList: Results<Task>? = nil
     
-    init(checkInDate: NSDate) {
+    init(checkInDate: Date) {
         self.checkInDate = checkInDate
         super.init(nibName: "ReportViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.checkInDate = NSDate()
+        self.checkInDate = Date()
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -52,33 +52,33 @@ class ReportViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .Normal)
+                                         status: UIControlState())
         
         self.exportButton.buttonColor(colors)
         self.exportButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: "fa-share", color: colors.mainGreenColor, status: .Normal)
+                                           icon: "fa-share", color: colors.mainGreenColor, status: UIControlState())
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         configTableView()
         
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), forControlEvents: .TouchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.exportButton.addShadow()
         self.exportButton.layer.cornerRadius = kBackButtonCorner
-        self.exportButton.addTarget(self, action: #selector(self.extportAction), forControlEvents: .TouchUpInside)
+        self.exportButton.addTarget(self, action: #selector(self.extportAction), for: .touchUpInside)
     }
     
     // MARK: - actions
     func backAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func extportAction() {
         let activeViewController = UIActivityViewController(activityItems: [self.generateReport()], applicationActivities: nil)
-        self.presentViewController(activeViewController, animated: true) {
+        self.present(activeViewController, animated: true) {
             
         }
         
@@ -91,8 +91,8 @@ class ReportViewController: BaseViewController {
         activeViewController.completionWithItemsHandler = myblock
     }
     
-    private func generateReport() -> String {
-        let string = self.taskList?.reduce("", combine: { (content, task) -> String in
+    fileprivate func generateReport() -> String {
+        let string = self.taskList?.reduce("", { (content, task) -> String in
             return content + task.getNormalDisplayTitle() + "\n"
         })
         guard let report = string else {
@@ -106,38 +106,38 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     
     func configTableView() {
         self.scheduleTableView.clearView()
-        self.scheduleTableView.registerNib(ScheduleTableViewCell.nib, forCellReuseIdentifier: ScheduleTableViewCell.reuseId)
+        self.scheduleTableView.register(ScheduleTableViewCell.nib, forCellReuseIdentifier: ScheduleTableViewCell.reuseId)
         
         self.scheduleTableView.tableFooterView = UIView()
         guard let headerView = ScheduleHeaderView.loadNib(self) else { return }
         
-        headerView.frame = CGRect(origin: CGPointZero, size: CGSize(width: screenBounds.width, height: 50))
-        if checkInDate.isToday() {
+        headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screenBounds.width, height: 50))
+        if (checkInDate as NSDate).isToday() {
             headerView.titleLableView.text = Localized("schedule") + Localized("today")
-        } else if checkInDate.isTomorrow() {
+        } else if (checkInDate as NSDate).isTomorrow() {
             headerView.titleLableView.text = Localized("schedule") + Localized("tomorrow")
-        } else if checkInDate.isYesterday() {
+        } else if (checkInDate as NSDate).isYesterday() {
             headerView.titleLableView.text = Localized("schedule") + Localized("yesterday")
         } else {
             headerView.titleLableView.text = Localized("schedule") + " "
-                + checkInDate.formattedDateWithStyle(.MediumStyle)
+                + (checkInDate as NSDate).formattedDate(with: .medium)
         }
         self.scheduleTableView.tableHeaderView = headerView
-        self.scheduleTableView.tableHeaderView?.snp_makeConstraints(closure: { (make) in
+        self.scheduleTableView.tableHeaderView?.snp_makeConstraints({ (make) in
             make.top.equalTo(self.scheduleTableView)
             make.height.equalTo(50)
             make.leading.equalTo(self.scheduleTableView)
         })
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.taskList?.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(ScheduleTableViewCell.reuseId, forIndexPath: indexPath) as! ScheduleTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId, for: indexPath) as! ScheduleTableViewCell
         
-        cell.setTop(indexPath.row == 0)
+        cell.setTop((indexPath as NSIndexPath).row == 0)
         cell.setBottom(indexPath.row == (self.taskList?.count ?? 0) - 1)
         if let task = self.taskList?[indexPath.row] {
             cell.config(task)
@@ -146,7 +146,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return ScheduleTableViewCell.rowHeight
     }
 }

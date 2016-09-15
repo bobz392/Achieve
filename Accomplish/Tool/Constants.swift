@@ -8,12 +8,12 @@
 
 import Foundation
 
-let kSmallAnimationDuration: NSTimeInterval = 0.15
-let kNormalAnimationDuration: NSTimeInterval = 0.35
-let kNormalLongAnimationDuration: NSTimeInterval = 0.5
-let kLongAnimationDuration: NSTimeInterval = 1
+let kSmallAnimationDuration: TimeInterval = 0.15
+let kNormalAnimationDuration: TimeInterval = 0.35
+let kNormalLongAnimationDuration: TimeInterval = 0.5
+let kLongAnimationDuration: TimeInterval = 1
 let kCardViewCornerRadius: CGFloat = 8
-let kKeyboardAnimationDelay: NSTimeInterval = 0.1
+let kKeyboardAnimationDelay: TimeInterval = 0.1
 
 let kBackButtonCorner: CGFloat = 21
 

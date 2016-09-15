@@ -32,22 +32,22 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     
-    private var finishTasks: Results<Task>?
-    private var runningTasks: Results<Task>?
+    fileprivate var finishTasks: Results<Task>?
+    fileprivate var runningTasks: Results<Task>?
     
-    private var finishToken: RealmSwift.NotificationToken?
-    private var runningToken: RealmSwift.NotificationToken?
+    fileprivate var finishToken: RealmSwift.NotificationToken?
+    fileprivate var runningToken: RealmSwift.NotificationToken?
     
-    private var isFullScreenSize = false
-    private var selectedIndex: NSIndexPath? = nil
+    fileprivate var isFullScreenSize = false
+    fileprivate var selectedIndex: IndexPath? = nil
     
-    private var timer: SecondTimer?
-    private var repeaterManager = RepeaterManager()
-    private let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
+    fileprivate var timer: SecondTimer?
+    fileprivate var repeaterManager = RepeaterManager()
+    fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
     
-    private var toViewControllerAnimationType = 0
+    fileprivate var toViewControllerAnimationType = 0
     
-    private weak var newTaskVC: NewTaskViewController? = nil
+    fileprivate weak var newTaskVC: NewTaskViewController? = nil
     
     // MARK: - life circle
     override func viewDidLoad() {
@@ -69,29 +69,29 @@ class HomeViewController: BaseViewController {
         self.initTimer()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
-        self.taskTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.taskTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        self.taskTableView.deselectRow(at: indexPath, animated: true)
+        self.taskTableView.reloadRows(at: [indexPath], with: .automatic)
         self.selectedIndex = nil
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
     deinit {
         finishToken?.stop()
         runningToken?.stop()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,25 +120,25 @@ class HomeViewController: BaseViewController {
         self.tagButton.buttonColor(colors)
         self.searchButton.backgroundColor = colors.mainGreenColor
         
-        let coffeeIcon = FAKFontAwesome.coffeeIconWithSize(60)
-        coffeeIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.emptyCoffeeLabel.attributedText = coffeeIcon.attributedString()
+        let coffeeIcon = FAKFontAwesome.coffeeIcon(withSize: 60)
+        coffeeIcon?.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+        self.emptyCoffeeLabel.attributedText = coffeeIcon?.attributedString()
         
         let iconSize: CGFloat = 20
         self.settingButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                            icon: "fa-cog", color: colors.mainGreenColor, status: .Normal)
+                                            icon: "fa-cog", color: colors.mainGreenColor, status: UIControlState())
         
         self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70,
-                                            icon: "fa-plus", color: colors.mainGreenColor, status: .Normal)
+                                            icon: "fa-plus", color: colors.mainGreenColor, status: UIControlState())
         
         self.calendarButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                             icon: "fa-calendar", color: colors.mainGreenColor, status: .Normal)
+                                             icon: "fa-calendar", color: colors.mainGreenColor, status: UIControlState())
         
         self.tagButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                        icon: "fa-tag", color: colors.mainGreenColor, status: .Normal)
+                                        icon: "fa-tag", color: colors.mainGreenColor, status: UIControlState())
         
         self.searchButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                           icon: "fa-search", color: colors.cloudColor, status: .Normal)
+                                           icon: "fa-search", color: colors.cloudColor, status: UIControlState())
         self.searchButton.tintColor = colors.mainGreenColor
         
         self.configFullSizeButton(colors)
@@ -146,17 +146,17 @@ class HomeViewController: BaseViewController {
         self.taskTableView.reloadData()
     }
     
-    private func configFullSizeButton(colors: Colors) {
+    fileprivate func configFullSizeButton(_ colors: Colors) {
         if self.isFullScreenSize {
             self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-compress",
-                                                   color: colors.mainGreenColor, status: .Normal)
+                                                   color: colors.mainGreenColor, status: UIControlState())
         } else {
             self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-expand",
-                                                   color: colors.mainGreenColor, status: .Normal)
+                                                   color: colors.mainGreenColor, status: UIControlState())
         }
     }
     
-    private func initializeControl() {
+    fileprivate func initializeControl() {
         self.taskTableView.tableFooterView = UIView()
         
         self.cardView.addShadow()
@@ -171,34 +171,34 @@ class HomeViewController: BaseViewController {
             self.taskTableView.cellLayoutMarginsFollowReadableWidth = false
         }
         
-        self.statusSegment.setTitle(Localized("progess"), forSegmentAtIndex: 0)
-        self.statusSegment.setTitle(Localized("finished"), forSegmentAtIndex: 1)
-        self.statusSegment.addTarget(self, action: #selector(self.segmentValueChangeAction(_:)), forControlEvents: .ValueChanged)
+        self.statusSegment.setTitle(Localized("progess"), forSegmentAt: 0)
+        self.statusSegment.setTitle(Localized("finished"), forSegmentAt: 1)
+        self.statusSegment.addTarget(self, action: #selector(self.segmentValueChangeAction(_:)), for: .valueChanged)
         
-        taskTableView.registerNib(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
+        taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
-        self.currentDateLabel.text = NSDate().formattedDateWithStyle(.MediumStyle)
+        self.currentDateLabel.text = (Date() as NSDate).formattedDate(with: .medium)
         self.emptyHintLabel.text = Localized("emptyTask")
         
-        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), forControlEvents: .TouchUpInside)
+        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
         
-        self.calendarButton.addTarget(self, action: #selector(self.calendarAction), forControlEvents: .TouchUpInside)
+        self.calendarButton.addTarget(self, action: #selector(self.calendarAction), for: .touchUpInside)
         
-        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), forControlEvents: .TouchUpInside)
+        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), for: .touchUpInside)
         
-        self.settingButton.addTarget(self, action: #selector(self.settingAction), forControlEvents: .TouchUpInside)
+        self.settingButton.addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
         
-        self.tagButton.addTarget(self, action: #selector(self.tagAction), forControlEvents: .TouchUpInside)
+        self.tagButton.addTarget(self, action: #selector(self.tagAction), for: .touchUpInside)
     }
     
     // 在app 进入前台的时候需要检查三种种状态
     // 第一种就是 today 中是否有勾选完成的任务
     // 然后就是 timer
     // 最后就是 new day 处理
-    private func addNotification() {
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIApplicationDidBecomeActiveNotification, object: nil,
-            queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
+    fileprivate func addNotification() {
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil,
+            queue: OperationQueue.main) { [unowned self] notification in
                 
                 self.handelTodayFinish()
                 
@@ -209,15 +209,15 @@ class HomeViewController: BaseViewController {
                 self.timer?.resume()
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
-            UIApplicationDidEnterBackgroundNotification, object: nil,
-            queue: NSOperationQueue.mainQueue()) { [unowned self] notification in
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.UIApplicationDidEnterBackground, object: nil,
+            queue: OperationQueue.main) { [unowned self] notification in
                 self.timer?.suspend()
                 self.newTaskVC?.removeFromParentViewController()
         }
     }
     
-    private func initTimer() {
+    fileprivate func initTimer() {
         self.timer = SecondTimer(handle: { [weak self] () -> Void in
             guard let ws = self else { return }
             if ws.repeaterManager.isNewDay() {
@@ -232,7 +232,7 @@ class HomeViewController: BaseViewController {
         self.timer?.start()
     }
     
-    private func handelTodayFinish() {
+    fileprivate func handelTodayFinish() {
         guard let group = GroupUserDefault() else { return }
         let finishTasks = group.getAllFinishTask()
         
@@ -253,9 +253,9 @@ class HomeViewController: BaseViewController {
     }
     
     // 当 task list 为空的时候展示对应的 hint
-    private func showEmptyHint(show: Bool) {
-        self.emptyHintLabel.hidden = !show
-        self.emptyCoffeeLabel.hidden = !show
+    fileprivate func showEmptyHint(_ show: Bool) {
+        self.emptyHintLabel.isHidden = !show
+        self.emptyCoffeeLabel.isHidden = !show
         
         if self.inRunningTasksTable() {
             self.emptyHintLabel.text = Localized("emptyTask")
@@ -264,7 +264,7 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    private func configMainButton() {
+    fileprivate func configMainButton() {
         self.settingButton.layer.cornerRadius = 16
         self.fullScreenButton.layer.cornerRadius = 16
         self.calendarButton.layer.cornerRadius = 16
@@ -273,8 +273,8 @@ class HomeViewController: BaseViewController {
         doSwitchScreen(false)
     }
     
-    private func realmNoticationToken() {
-        finishToken = finishTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+    fileprivate func realmNoticationToken() {
+        finishToken = finishTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == 0 {
                 return
             }
@@ -292,7 +292,7 @@ class HomeViewController: BaseViewController {
             }
             })
         
-        runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+        runningToken = runningTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == 1 {
                 return
             }
@@ -319,18 +319,18 @@ class HomeViewController: BaseViewController {
             })
     }
     
-    private func handleUpdate(deletions: [Int], insertions: [Int], modifications: [Int]) {
+    fileprivate func handleUpdate(_ deletions: [Int], insertions: [Int], modifications: [Int]) {
         self.taskTableView.beginUpdates()
         if insertions.count > 0 {
-            self.taskTableView.insertRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+            self.taskTableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         
         if modifications.count > 0 {
-            self.taskTableView.reloadRowsAtIndexPaths(insertions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+            self.taskTableView.reloadRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         
         if deletions.count > 0 {
-            self.taskTableView.deleteRowsAtIndexPaths(deletions.map { NSIndexPath(forRow: $0, inSection: 0) }, withRowAnimation: .Automatic)
+            self.taskTableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         self.taskTableView.endUpdates()
     }
@@ -349,25 +349,25 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    private func handleMoveTaskToToday() {
+    fileprivate func handleMoveTaskToToday() {
         let shareManager = RealmManager.shareManager
-        let s = shareManager.queryTaskCount(NSDate().dateBySubtractingDays(1))
+        let s = shareManager.queryTaskCount(date: NSDate().subtractingDays(1) as NSDate)
         if (s.created - s.complete) > 0 {
-            let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .Alert)
-            let moveAction = UIAlertAction(title: Localized("move"), style: .Default) { (action) in
+            let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .alert)
+            let moveAction = UIAlertAction(title: Localized("move"), style: .default) { (action) in
                 shareManager.moveYesterdayTaskToToday()
             }
-            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .Cancel) { (action) in
-                alert.dismissViewControllerAnimated(true, completion: nil)
+            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
+                alert.dismiss(animated: true, completion: nil)
             }
             
             alert.addAction(moveAction)
             alert.addAction(cancelAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    private func handleUpdateTodayGroup() {
+    fileprivate func handleUpdateTodayGroup() {
         guard let group = GroupUserDefault(),
             let tasks = self.runningTasks else {
                 return
@@ -378,7 +378,7 @@ class HomeViewController: BaseViewController {
     
     // MARK: - actions
     func settingAction() {
-        let notifications = UIApplication.sharedApplication().scheduledLocalNotifications
+        let notifications = UIApplication.shared.scheduledLocalNotifications
         print(notifications)
         
         let settingVC = SettingsViewController()
@@ -388,8 +388,8 @@ class HomeViewController: BaseViewController {
     }
     
     func switchScreenAction() {
-        print(RealmManager.shareManager.queryAll(Repeater.self))
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        print(RealmManager.shareManager.queryAll(clz: Repeater.self))
+        UIApplication.shared.cancelAllLocalNotifications()
         doSwitchScreen(true)
     }
     
@@ -404,7 +404,7 @@ class HomeViewController: BaseViewController {
         
     }
     
-    private func doSwitchScreen(animation: Bool) {
+    fileprivate func doSwitchScreen(_ animation: Bool) {
         if !isFullScreenSize {
             self.cardViewLeftConstraint.constant = 20
             self.cardViewRightConstraint.constant = 20
@@ -415,7 +415,7 @@ class HomeViewController: BaseViewController {
             self.addTaskBottomConstraint.constant = 10
             if (animation) {
                 self.newTaskButton.addCornerRadiusAnimation(16, to: 35, duration: kNormalAnimationDuration)
-                UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
+                UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 1
                     self.searchButton.alpha = 1
@@ -435,7 +435,7 @@ class HomeViewController: BaseViewController {
             self.addTaskBottomConstraint.constant = 10
             if (animation) {
                 self.newTaskButton.addCornerRadiusAnimation(40, to: 20, duration: kNormalAnimationDuration)
-                UIView.animateWithDuration(kNormalAnimationDuration, animations: { [unowned self] in
+                UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 0
                     self.searchButton.alpha = 0
@@ -455,17 +455,17 @@ class HomeViewController: BaseViewController {
     func newTaskAction() {
         let newTaskVC = NewTaskViewController()
         self.addChildViewController(newTaskVC)
-        newTaskVC.didMoveToParentViewController(self)
+        newTaskVC.didMove(toParentViewController: self)
         
         self.newTaskVC = newTaskVC
     }
     
-    func segmentValueChangeAction(seg: UISegmentedControl) {
+    func segmentValueChangeAction(_ seg: UISegmentedControl) {
         self.taskTableView.reloadData()
     }
     
     // 从today 点击一个 task 进入 detail
-    func enterTaskFromToday(uuid: String) {
+    func enterTaskFromToday(_ uuid: String) {
         guard let t = self.runningTasks?.filter({ (task) -> Bool in
             task.uuid == uuid
         }).first else { return }
@@ -474,7 +474,7 @@ class HomeViewController: BaseViewController {
         if let actionContent = TaskManager().parseTaskToDoText(t.taskToDo),
             let action = actionContent.type.actionBlockWithType() {
             dispatch_delay(0.1, closure: {
-                action(actionString: actionContent.urlSchemeInfo)
+                action(actionContent.urlSchemeInfo)
             })
         } else {
             self.enterTask(t, canChange: true)
@@ -485,7 +485,7 @@ class HomeViewController: BaseViewController {
 // MARK: - table view
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
             showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
             return self.runningTasks?.count ?? 0
@@ -495,15 +495,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return TaskTableViewCell.rowHeight
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TaskTableViewCell.rowHeight
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
         
         let task: Task?
@@ -520,15 +520,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         self.enterTask(t, canChange: canChange)
     }
     
-    private func enterTask(task: Task, canChange: Bool) {
+    fileprivate func enterTask(_ task: Task, canChange: Bool) {
         let taskVC = TaskDetailViewController(task: task, canChange: canChange)
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(taskVC, animated: true)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TaskTableViewCell.reuseId, forIndexPath: indexPath) as! TaskTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseId, for: indexPath) as! TaskTableViewCell
         
         var task: Task?
         if self.inRunningTasksTable() {
@@ -543,23 +543,23 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    private func inRunningTasksTable() -> Bool {
+    fileprivate func inRunningTasksTable() -> Bool {
         return self.statusSegment.selectedSegmentIndex == 0
     }
 }
 
 // MARK: - UINavigationControllerDelegate
 extension HomeViewController: UINavigationControllerDelegate {
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch toViewControllerAnimationType {
         case 0:
             let animation = LayerTransitioningAnimation()
-            animation.reverse = operation == UINavigationControllerOperation.Pop
+            animation.reverse = operation == UINavigationControllerOperation.pop
             return animation
             
         default:
             let animation = CircleTransitionAnimator()
-            animation.reverse = operation == UINavigationControllerOperation.Pop
+            animation.reverse = operation == UINavigationControllerOperation.pop
             animation.buttonFrame = self.calendarButton.frame
             return animation
         }

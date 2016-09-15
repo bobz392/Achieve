@@ -11,21 +11,21 @@ import Foundation
 /**
  ** 本地化
  **/
-func Localized(key: String) -> String {
+func Localized(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
-func nowDate() -> NSDate {
-    return NSDate()
+func nowDate() -> Date {
+    return Date()
 }
 
-func beginDebugPrint(someTag: String = "") {
+func beginDebugPrint(_ someTag: String = "") {
     debugPrint("")
     debugPrint("")
     debugPrint("========================\(someTag) begin============================")
 }
 
-func endDebugPrint(someTag: String = "") {
+func endDebugPrint(_ someTag: String = "") {
     debugPrint("========================\(someTag) end==============================")
     debugPrint("")
     debugPrint("")
@@ -34,20 +34,20 @@ func endDebugPrint(someTag: String = "") {
 /**
  延迟若干秒。
  */
-func dispatch_delay(seconds: NSTimeInterval, closure: () -> Void) {
-    let delta = Int64(seconds * NSTimeInterval(NSEC_PER_SEC))
-    let delayTime = dispatch_time(DISPATCH_TIME_NOW, delta)
-    let queue = dispatch_get_main_queue()
-    dispatch_after(delayTime, queue, closure)
+func dispatch_delay(_ seconds: TimeInterval, closure: @escaping () -> Void) {
+    let delta = Int64(seconds * TimeInterval(NSEC_PER_SEC))
+    let delayTime = DispatchTime.now() + Double(delta) / Double(NSEC_PER_SEC)
+    let queue = DispatchQueue.main
+    queue.asyncAfter(deadline: delayTime, execute: closure)
 }
 
-func dispatch_async_main(closure: () -> Void) {
-    let queue = dispatch_get_main_queue()
-    dispatch_async(queue, closure)
+func dispatch_async_main(_ closure: @escaping () -> Void) {
+    let queue = DispatchQueue.main
+    queue.async(execute: closure)
 }
 
-func dispatch_global_async(closure: () -> Void) {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+func dispatch_global_async(_ closure: @escaping () -> Void) {
+    DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
         closure()
     }
 }
@@ -56,5 +56,5 @@ func dispatch_global_async(closure: () -> Void) {
 func uuidGenerator() -> String {
     let newUniqueId = CFUUIDCreate(kCFAllocatorDefault)
     let uuidCFString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId)
-    return String(uuidCFString)
+    return String(describing: uuidCFString)
 }

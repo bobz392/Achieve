@@ -47,19 +47,19 @@ class NoteViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+        KeyboardManager.sharedManager.setHideHander { [unowned self] in
+            self.toolViewBottomConstraint.constant = 0
+            UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
+        KeyboardManager.sharedManager.setShowHander { [unowned self] in
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
                 self.view.layoutIfNeeded()
                 }, completion: nil)
-        }
-        
-        KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
-            self.toolViewBottomConstraint.constant = 0
-            UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
-                self.view.layoutIfNeeded()
-                }, completion: nil)
+
         }
     }
     

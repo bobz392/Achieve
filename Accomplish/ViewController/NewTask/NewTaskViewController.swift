@@ -131,7 +131,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: - actions
     fileprivate func keyboardAction() {
-        KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+        KeyboardManager.sharedManager.setShowHander { [unowned self] in
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
@@ -145,6 +145,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
                     })
             }
         }
+        
     }
     
     func cancelAction() {
@@ -179,7 +180,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             (self.view.frame.height - self.datePickerHeight - self.cardViewHeight) * 0.5
         self.toolViewBottomConstraint.constant = self.datePickerHeight
         
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: { 
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
@@ -321,9 +322,9 @@ extension NewTaskViewController {
         UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
             self.renderImageView.alpha = 1
             self.cardView.alpha = 1
-        }, completion: { (finish) in
-            self.titleTextField.becomeFirstResponder()
-        }) 
+            }, completion: { (finish) in
+                self.titleTextField.becomeFirstResponder()
+        })
     }
     
     override func removeFromParentViewController() {
@@ -331,9 +332,9 @@ extension NewTaskViewController {
         self.toolView.isHidden = true
         UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
             self.view.alpha = 0
-        }, completion: { [unowned self] (finish) in
-            self.view.removeFromSuperview()
-        }) 
+            }, completion: { [unowned self] (finish) in
+                self.view.removeFromSuperview()
+            })
     }
 }
 

@@ -167,7 +167,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     fileprivate func keyboardAction() {
-        KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+        KeyboardManager.sharedManager.setShowHander { [unowned self] in
             self.detailTableViewBottomConstraint.constant =
                 KeyboardManager.keyboardHeight - 62
             
@@ -183,7 +183,7 @@ class TaskDetailViewController: BaseViewController {
             }
         }
         
-        KeyboardManager.sharedManager.keyboardHideHandler = { [unowned self] in
+        KeyboardManager.sharedManager.setHideHander { [unowned self] in
             self.detailTableViewBottomConstraint.constant = 10
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.detailTableView.layoutIfNeeded()

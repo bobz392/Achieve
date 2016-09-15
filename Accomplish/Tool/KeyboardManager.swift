@@ -9,15 +9,15 @@
 import UIKit
 
 final class KeyboardManager {
+    typealias KeyboardHandle = () -> Void
     
     static let sharedManager = KeyboardManager()
-    
     static var keyboardHeight: CGFloat = 0
     static var duration: Double = 0
     static var keyboardShow: Bool = false
     
-    var keyboardShowHandler: ( () -> Void)?
-    var keyboardHideHandler: (() -> Void)?
+    @objc fileprivate var keyboardShowHandler: KeyboardHandle?
+    @objc fileprivate var keyboardHideHandler: KeyboardHandle?
         
     init() {
         NotificationCenter.default.addObserver(
@@ -33,6 +33,15 @@ final class KeyboardManager {
         }
     }
     
+    func setShowHander(show: @escaping KeyboardHandle) {
+        self.keyboardShowHandler = show
+    }
+    
+    func setHideHander(hide: @escaping KeyboardHandle) {
+        self.keyboardHideHandler = hide
+    }
+    
+    
     func closeNotification() {
         print("keyboard manager remove and handle")
         keyboardShowHandler = nil
@@ -41,9 +50,9 @@ final class KeyboardManager {
     
     fileprivate func handleKeyboardShow(_ notification: Notification) {
         if let userInfo = (notification as NSNotification).userInfo,
-            let frameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue,
-            let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue {
-            //            print("change frame height to \(frameValue.height)")
+            let frameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+            debugPrint("change frame height to \(frameValue.height)")
             if frameValue.height > 0 {
                 KeyboardManager.keyboardHeight = frameValue.height
                 KeyboardManager.duration = durationValue

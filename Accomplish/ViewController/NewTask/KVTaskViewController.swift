@@ -52,7 +52,7 @@ class KVTaskViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        KeyboardManager.sharedManager.keyboardShowHandler = { [unowned self] in
+        KeyboardManager.sharedManager.setShowHander { [unowned self] in
             KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             

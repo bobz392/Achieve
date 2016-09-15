@@ -122,7 +122,7 @@ class RealmManager {
     }
 }
 
-// 以后为多个年的chekc in 优化
+// 以后为多个年的 check in 优化
 extension RealmManager {
     func queryFirstCheckIn() -> CheckIn? {
         return realm.allObjects(ofType: CheckIn.self).sorted(onProperty: "checkInDate", ascending: true).first
@@ -147,3 +147,25 @@ extension RealmManager {
     }
 }
 
+extension RealmManager {
+    func saveTag(_ tag: Tag) {
+        if let old = queryTag(usingName: true, query: tag.name) {
+            deleteObject(old)
+        }
+        
+        writeObject(tag)
+    }
+    
+    func queryTag(usingName name: Bool, query: String) -> Tag? {
+        let q = name == true ? "name" : "tagUUID"
+        return realm
+            .allObjects(ofType: Tag.self)
+            .filter(using: "\(q) = '\(query)'")
+            .first
+    }
+    
+    
+    func allTags() -> Results<Tag> {
+        return realm.allObjects(ofType: Tag.self)
+    }
+}

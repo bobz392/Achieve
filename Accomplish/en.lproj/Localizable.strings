@@ -39,6 +39,7 @@
 "setEstimateDate"="Set estimated finish time";
 "setReminder"="Set reminder";
 "setRepeat"="Set repeat";
+"setTag"="Set tag";
 "writeNote"="write something...";
 
 "high"="High";
@@ -62,8 +63,8 @@
 
 "noReminder"="Reminder";
 "reminderMe"="Reminder me at ";
-"noEstimate"="Estimated finish time";
-"estimeateAt"="Estimated finish time ";
+"noEstimate"="Estimate finish time";
+"estimeateAt"="Estimate finish at ";
 "finishAt"="Finished at ";
 "repeat"="Repeat ";
 "noRepeat"="Repeat";

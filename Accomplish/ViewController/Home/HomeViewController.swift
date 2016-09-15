@@ -401,7 +401,8 @@ class HomeViewController: BaseViewController {
     }
     
     func tagAction() {
-        
+        let tagVC = TagViewController()
+        self.navigationController?.pushViewController(tagVC, animated: true)
     }
     
     fileprivate func doSwitchScreen(_ animation: Bool) {

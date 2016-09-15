@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */; };
+		C70528371D8B07320036FCC1 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70528351D8B07320036FCC1 /* TagViewController.swift */; };
+		C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70528361D8B07320036FCC1 /* TagViewController.xib */; };
 		C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Repeater.swift */; };
 		C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */; };
 		C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */; };
@@ -253,6 +255,8 @@
 
 /* Begin PBXFileReference section */
 		C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerTransitioningAnimation.swift; sourceTree = "<group>"; };
+		C70528351D8B07320036FCC1 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		C70528361D8B07320036FCC1 /* TagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewController.xib; sourceTree = "<group>"; };
 		C70BF6141D77DDE3006B0C1D /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterTimeType.swift; sourceTree = "<group>"; };
 		C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -669,6 +673,8 @@
 				C71D58761D74910400E76E91 /* TaskDetailViewController.xib */,
 				C7DDA5BA1D7673FF0054154C /* NoteViewController.swift */,
 				C7DDA5BB1D7673FF0054154C /* NoteViewController.xib */,
+				C70528351D8B07320036FCC1 /* TagViewController.swift */,
+				C70528361D8B07320036FCC1 /* TagViewController.xib */,
 			);
 			path = TaskInfomation;
 			sourceTree = "<group>";
@@ -1109,6 +1115,7 @@
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
+				C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */,
 				C715A6B31D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap in Resources */,
 				C715A6B41D8AB09500B4CAB9 /* 9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
@@ -1201,6 +1208,7 @@
 				C79805CA1D7D4E610011DE19 /* UserInteractionFunctions.swift in Sources */,
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
+				C70528371D8B07320036FCC1 /* TagViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
 				C7821EC61D7BF1820056623D /* MMWormholeSessionContextTransiting.m in Sources */,
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,

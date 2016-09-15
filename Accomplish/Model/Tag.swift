@@ -11,5 +11,5 @@ import RealmSwift
 
 class Tag: Object {
     dynamic var tagUUID: String = ""
-    dynamic var tag: String = ""
+    dynamic var name: String = ""
 }

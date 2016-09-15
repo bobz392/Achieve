@@ -410,6 +410,12 @@ extension TaskDetailViewController {
             RealmManager.shareManager
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
             
+        case TagIndex:
+            let tagUUID = taskPickerView.selectedTagUUID()
+            RealmManager.shareManager.updateObject({
+                self.task.tag = tagUUID
+            })
+            
         default:
             break
         }

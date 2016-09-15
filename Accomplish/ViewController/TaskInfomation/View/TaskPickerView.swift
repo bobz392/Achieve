@@ -9,7 +9,7 @@
 import UIKit
 
 class TaskPickerView: UIView {
-
+    
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
@@ -17,8 +17,9 @@ class TaskPickerView: UIView {
     @IBOutlet weak var pickerView: UIPickerView!
     
     static let height: CGFloat = 245
-
+    
     fileprivate let repeatTypes: [RepeaterTimeType] = [.daily, .weekday, .everyWeek, .everyMonth, .annual]
+    fileprivate let allTags = RealmManager.shareManager.allTags()
     
     var task: Task?
     fileprivate var index: Int = 0
@@ -46,15 +47,19 @@ class TaskPickerView: UIView {
     }
     
     func getIndex() -> Int {
-        return index
+        return self.index
     }
     
     func viewIsShow() -> Bool {
-        return viewShow
+        return self.viewShow
     }
     
     func repeatTimeType() -> RepeaterTimeType {
-        return repeatTypes[self.pickerView.selectedRow(inComponent: 0)]
+        return self.repeatTypes[self.pickerView.selectedRow(inComponent: 0)]
+    }
+    
+    func selectedTagUUID() -> String {
+        return self.allTags[self.pickerView.selectedRow(inComponent: 0)].tagUUID
     }
     
     func setIndex(index: Int) {
@@ -73,14 +78,14 @@ class TaskPickerView: UIView {
             self.datePicker.datePickerMode = .dateAndTime
             self.rightButton.setTitle(Localized("setCreateDate"), for: UIControlState())
             self.datePicker.reloadInputViews()
-        
+            
         case TaskDueIndex:
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = ((task.createdDate as NSDate?)?.addingMinutes(15)) ?? now
             self.datePicker.datePickerMode = .time
             self.rightButton.setTitle(Localized("setEstimateDate"), for: UIControlState())
             self.datePicker.reloadInputViews()
-        
+            
         case TaskReminderIndex:
             guard let createDate = task.createdDate else { break }
             self.datePicker.date = now
@@ -97,12 +102,19 @@ class TaskPickerView: UIView {
             
             self.rightButton.setTitle(Localized("setReminder"), for: UIControlState())
             self.datePicker.reloadInputViews()
-        
+            
         case TaskRepeatIndex:
             self.pickerView.isHidden = false
             self.rightButton.setTitle(Localized("setRepeat"), for: UIControlState())
+            self.pickerView.tag = TaskRepeatIndex
             self.pickerView.reloadAllComponents()
             break
+            
+        case TagIndex:
+            self.pickerView.isHidden = false
+            self.rightButton.setTitle(Localized("setTag"), for: UIControlState())
+            self.pickerView.tag = TagIndex
+            self.pickerView.reloadAllComponents()
             
         default:
             break
@@ -117,12 +129,22 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.repeatTypes.count
+        if pickerView.tag == TaskRepeatIndex {
+            return self.repeatTypes.count
+        } else {
+            return self.allTags.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        guard let createDate = self.task?.createdDate else { return nil }
-        let title = self.repeatTypes[row].repeaterTitle(createDate: createDate)
+        let title: String
+        if pickerView.tag == TaskRepeatIndex {
+            guard let createDate = self.task?.createdDate else { return nil }
+            title = self.repeatTypes[row].repeaterTitle(createDate: createDate)
+        } else {
+            title = self.allTags[row].name
+        }
+        
         return NSAttributedString(string: title,
                                   attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
     }

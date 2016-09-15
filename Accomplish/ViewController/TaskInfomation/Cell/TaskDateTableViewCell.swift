@@ -69,6 +69,11 @@ class TaskDateTableViewCell: UITableViewCell {
                 task.estimateDate = nil
             })
             
+        case TaskDetailType.tag:
+            RealmManager.shareManager.updateObject({ 
+                task.tag = nil
+            })
+            
         default:
             break
         }
@@ -161,6 +166,18 @@ class TaskDateTableViewCell: UITableViewCell {
             self.detailType = .repeat
             self.iconImageView.isHighlighted = hasRepeater
             
+        case TaskTagIcon:
+            self.infoLabel.isHighlighted = task.tag != nil
+            self.clearButton.isHidden = task.tag == nil
+            self.iconImageView.isHighlighted = task.tag != nil
+            self.detailType = .tag
+            // MARK: -- to do
+            if let tag = task.tag {
+                self.infoLabel.text = Localized("tag") + " ot do"
+            } else {
+                self.infoLabel.text = Localized("noTag")
+            }
+            
         default:
             break
         }
@@ -170,6 +187,7 @@ class TaskDateTableViewCell: UITableViewCell {
         case notify = 100
         case `repeat` = 101
         case estimate = 102
+        case tag = 103
         case other = 0
     }
 }

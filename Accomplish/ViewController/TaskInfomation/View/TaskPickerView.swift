@@ -58,8 +58,13 @@ class TaskPickerView: UIView {
         return self.repeatTypes[self.pickerView.selectedRow(inComponent: 0)]
     }
     
-    func selectedTagUUID() -> String {
-        return self.allTags[self.pickerView.selectedRow(inComponent: 0)].tagUUID
+    func selectedTagUUID() -> String? {
+        let selectedRow = self.pickerView.selectedRow(inComponent: 0)
+        if selectedRow == 0 {
+            return nil
+        } else {
+            return self.allTags[selectedRow - 1].tagUUID
+        }
     }
     
     func setIndex(index: Int) {
@@ -132,7 +137,7 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView.tag == TaskRepeatIndex {
             return self.repeatTypes.count
         } else {
-            return self.allTags.count
+            return self.allTags.count + 1
         }
     }
     
@@ -143,7 +148,11 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
             guard let createDate = self.task?.createdDate else { return pickerLabel }
             title = self.repeatTypes[row].repeaterTitle(createDate: createDate)
         } else {
-            title = self.allTags[row].name
+            if row == 0 {
+                title = Localized("noneTag")
+            } else {
+                title = self.allTags[row - 1].name
+            }
         }
         pickerLabel.text = title
         pickerLabel.textColor = Colors().mainTextColor

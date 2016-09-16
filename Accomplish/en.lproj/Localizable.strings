@@ -42,6 +42,7 @@
 "setReminder"="Set reminder";
 "setRepeat"="Set repeat";
 "setTag"="Set tag";
+"noneTag"="None";
 "writeNote"="write something...";
 
 "high"="High";

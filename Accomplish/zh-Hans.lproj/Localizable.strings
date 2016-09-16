@@ -41,6 +41,7 @@
 "setReminder"="设置提醒";
 "setRepeat"="设置重复";
 "setTag"="设置标签";
+"noneTag"="无标签";
 "writeNote"="写点什么吧...";
 
 "high"="高";

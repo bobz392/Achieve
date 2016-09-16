@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43.5"/>
+                <frame key="frameInset" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8z-xv-pN7">
@@ -26,17 +26,9 @@
                             <constraint firstAttribute="width" constant="52" id="Ymj-fd-xdv"/>
                         </constraints>
                     </button>
-                    <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z6P-vq-Ywu">
+                    <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdasd" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z6P-vq-Ywu">
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <attributedString key="attributedText">
-                            <fragment content="asdasd">
-                                <attributes>
-                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <font key="NSFont" metaFont="system" size="16"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                         <connections>
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="GOl-Xe-OpJ"/>
@@ -45,10 +37,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="U5i-Dm-emu" secondAttribute="bottom" id="9Lf-v3-A2h"/>
+                    <constraint firstAttribute="bottom" secondItem="Z6P-vq-Ywu" secondAttribute="bottom" constant="3" id="Hf9-bU-Nes"/>
                     <constraint firstItem="L8z-xv-pN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="I6p-3o-x32"/>
                     <constraint firstAttribute="trailing" secondItem="U5i-Dm-emu" secondAttribute="trailing" id="Ubs-eO-Kjy"/>
                     <constraint firstItem="U5i-Dm-emu" firstAttribute="leading" secondItem="Z6P-vq-Ywu" secondAttribute="trailing" id="V5H-q5-vMY"/>
-                    <constraint firstItem="Z6P-vq-Ywu" firstAttribute="centerY" secondItem="L8z-xv-pN7" secondAttribute="centerY" id="ZT5-T8-Xeo"/>
+                    <constraint firstItem="Z6P-vq-Ywu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="cTG-Df-ap6"/>
                     <constraint firstItem="L8z-xv-pN7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kU7-5R-71g"/>
                     <constraint firstItem="U5i-Dm-emu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mqN-gR-XrD"/>
                     <constraint firstItem="Z6P-vq-Ywu" firstAttribute="leading" secondItem="L8z-xv-pN7" secondAttribute="trailing" id="rGE-qX-lmZ"/>

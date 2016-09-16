@@ -240,6 +240,16 @@ class TaskDetailViewController: BaseViewController {
 
 // MARK: - UITextFieldDelegate
 extension TaskDetailViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        KeyboardManager.sharedManager.closeNotification()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        self.keyboardAction()
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let title = textField.text {
             if !title.isEmpty {
@@ -248,7 +258,6 @@ extension TaskDetailViewController: UITextFieldDelegate {
                 })
             }
         }
-        
         return textField.resignFirstResponder()
     }
 }

@@ -26,11 +26,11 @@
 #import <WatchConnectivity/WatchConnectivity.h>
 
 @interface MMWormholeSessionFileTransiting () <WCSessionDelegate>
-@property (nonatomic, strong) WCSession *session;
-@end
+    @property (nonatomic, strong) WCSession *session;
+    @end
 
 @implementation MMWormholeSessionFileTransiting
-
+    
 - (instancetype)initWithApplicationGroupIdentifier:(nullable NSString *)identifier
                                  optionalDirectory:(nullable NSString *)directory {
     if ((self = [super initWithApplicationGroupIdentifier:identifier optionalDirectory:directory])) {
@@ -43,7 +43,7 @@
     
     return self;
 }
-
+    
 - (BOOL)writeMessageObject:(id<NSCoding>)messageObject forIdentifier:(NSString *)identifier {
     if (identifier == nil) {
         return NO;
@@ -76,5 +76,17 @@
     
     return NO;
 }
-
-@end
+    
+-(void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(NSError *)error {
+    
+}
+    
+-(void)sessionDidBecomeInactive:(WCSession *)session {
+    
+}
+    
+-(void)sessionDidDeactivate:(WCSession *)session {
+    
+}
+    
+    @end

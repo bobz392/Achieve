@@ -136,17 +136,20 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
         let title: String
         if pickerView.tag == TaskRepeatIndex {
-            guard let createDate = self.task?.createdDate else { return nil }
+            guard let createDate = self.task?.createdDate else { return pickerLabel }
             title = self.repeatTypes[row].repeaterTitle(createDate: createDate)
         } else {
             title = self.allTags[row].name
         }
-        
-        return NSAttributedString(string: title,
-                                  attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
+        pickerLabel.text = title
+        pickerLabel.textColor = Colors().mainTextColor
+        pickerLabel.font = UIFont.systemFont(ofSize: 16)
+        pickerLabel.textAlignment = .center
+        return pickerLabel
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

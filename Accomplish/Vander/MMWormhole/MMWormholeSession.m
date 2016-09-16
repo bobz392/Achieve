@@ -28,7 +28,7 @@
 @end
 
 @implementation MMWormholeSession
-
+    
 + (instancetype)sharedListeningSession {
     static MMWormholeSession *sharedSession = nil;
     
@@ -86,6 +86,18 @@
 
 #pragma mark - WCSessionDelegate Methods
 
+-(void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(NSError *)error {
+
+}
+ 
+-(void)sessionDidBecomeInactive:(WCSession *)session {
+
+}
+    
+-(void)sessionDidDeactivate:(WCSession *)session {
+
+}
+    
 - (void)session:(nonnull WCSession *)session didReceiveMessage:(nonnull NSDictionary<NSString *,id> *)message {
     for (NSString *identifier in message.allKeys) {
         NSData *data = message[identifier];

@@ -8,11 +8,10 @@
 
 import UIKit
 
-class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
+final class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
     
     internal let animationDuration: TimeInterval = 0.5
     var reverse = false
-    
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromView = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)?.view else { return }

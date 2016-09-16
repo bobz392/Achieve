@@ -59,7 +59,7 @@ final class DynamicBlurView: UIView {
         if responds(to: #selector(getter: UIView.mask)) { // #available (iOS 8.0, *)
             return DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive)
         } else {
-            return DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.high)
+            return DispatchQueue.global(qos: DispatchQoS.QoSClass.utility)
         }
     }
     

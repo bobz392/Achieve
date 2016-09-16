@@ -290,10 +290,10 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
 extension NewTaskViewController {
     
     override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
         guard let p = parent else {
             return
         }
+        
         let image = p.view.convertViewToImage()
         
         self.view.frame = p.view.frame
@@ -306,11 +306,11 @@ extension NewTaskViewController {
         
         self.configMainUI()
         self.initializeControl()
+        
+        super.willMove(toParentViewController: parent)
     }
     
     override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        
         guard let _ = parent else {
             return
         }
@@ -325,6 +325,8 @@ extension NewTaskViewController {
             }, completion: { (finish) in
                 self.titleTextField.becomeFirstResponder()
         })
+        
+        super.didMove(toParentViewController: parent)
     }
     
     override func removeFromParentViewController() {

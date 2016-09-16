@@ -21,6 +21,8 @@
 
 "newTask"="Add task";
 "cancel"="Cancel";
+"deleteTask"="Delete Task";
+"deleteReminder"="Delete Reminder";
 "permit"="Allow";
 "reject"="Reject";
 "add"="Add";

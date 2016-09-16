@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+typealias TaskSettingBlock = (String) -> Void
+
 class HomeViewController: BaseViewController {
     // MARK: - props
     @IBOutlet weak var cardView: UIView!
@@ -540,12 +542,44 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let t = task {
             cell.configCellUse(t)
+            
+            cell.settingBlock = { [unowned self] (uuid) -> Void in
+                self.showSettings(taskUUID: uuid)
+            }
         }
         return cell
     }
     
     fileprivate func inRunningTasksTable() -> Bool {
         return self.statusSegment.selectedSegmentIndex == 0
+    }
+    
+    fileprivate func showSettings(taskUUID: String) {
+        guard  let task = RealmManager.shareManager.queryTask(taskUUID) else {
+            return
+        }
+        
+        let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
+            RealmManager.shareManager.deleteTask(task)
+        }
+        alert.addAction(deleteAction)
+        
+        if let _ = task.notifyDate {
+            let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .default, handler: { (action) in
+                RealmManager.shareManager.deleteTaskReminder(task)
+                
+            })
+            alert.addAction(deleteReminderAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

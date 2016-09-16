@@ -75,13 +75,42 @@ class RealmManager {
         return realm.allObjects(ofType: Task.self).filter(using: "createdFormattedDate = '\(date.createdFormatedDateString())'")
     }
     
-    func querySubtask(_ rootUUID: String) -> Results<Subtask> {
-        return realm.allObjects(ofType: Subtask.self)
+    func querySubtask(_ rootUUID: String, sorted: Bool = true) -> Results<Subtask> {
+        let subtasks = realm.allObjects(ofType: Subtask.self)
             .filter(using: "rootUUID = '\(rootUUID)'")
-            .sorted(onProperty: "createdDate")
+        
+        if sorted {
+            return subtasks.sorted(onProperty: "createdDate")
+        } else {
+            return subtasks
+        }
     }
     
+    /**
+     删除子任务， 删除通知， 删除重复
+     **/
     func deleteTask(_ task: Task) {
+        self.deleteTaskReminder(task)
+        self.deleteRepeater(task)
+        
+        
+        let subtasks = self.querySubtask(task.uuid, sorted: false)
+        
+        realm.beginWrite()
+        if subtasks.count > 0 {
+            realm.delete(subtasks)
+        }
+        realm.delete(task)
+        try! realm.commitWrite()
+    }
+    
+    func deleteTaskReminder(_ task: Task) {
+        guard let _ = task.notifyDate else { return }
+        
+        self.updateObject {
+            task.notifyDate = nil
+        }
+        LocalNotificationManager().cancelNotify(task.uuid)
     }
     
     func moveYesterdayTaskToToday() {
@@ -122,6 +151,7 @@ class RealmManager {
     }
 }
 
+// MARK: - CheckIn model
 // 以后为多个年的 check in 优化
 extension RealmManager {
     func queryFirstCheckIn() -> CheckIn? {
@@ -147,6 +177,7 @@ extension RealmManager {
     }
 }
 
+// MARK: -  Tag model
 extension RealmManager {
     func saveTag(_ tag: Tag) {
         if let old = queryTag(usingName: true, query: tag.name) {

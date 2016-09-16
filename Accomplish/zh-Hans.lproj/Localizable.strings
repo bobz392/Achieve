@@ -21,6 +21,8 @@
 
 "newTask"="添加新任务";
 "cancel"="取消";
+"deleteTask"="删除任务";
+"deleteReminder"="删除提醒";
 "permit"="允许";
 "reject"="拒绝";
 "add"="添加";

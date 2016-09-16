@@ -26,6 +26,7 @@ class TaskTableViewCell: UITableViewCell {
     
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
+    var settingBlock: TaskSettingBlock? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +48,7 @@ class TaskTableViewCell: UITableViewCell {
         self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), for: .touchUpInside)
         
         self.overTimeLabel.text = Localized("overTime")
+        self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -139,6 +141,13 @@ class TaskTableViewCell: UITableViewCell {
                 self.overTimeLabel.layer.borderWidth = 1
             }
         }
+    }
+    
+    func settingsAction() {
+        guard let task = self.task,
+            let block = self.settingBlock else { return }
+        
+        block(task.uuid)
     }
     
     func systemAction() {

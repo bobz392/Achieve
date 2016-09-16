@@ -15,25 +15,27 @@ typealias AddressBookFetchResultHandler = ([AddressBook.Person]) -> Void
 final class AddressBook: NSObject {
     
     class func requestAccess(_ completion: @escaping AddressBookAccessRequestHandler) {
-        showFakeRequestIfNeeded { fakeGranted in
+        self.showFakeRequestIfNeeded { fakeGranted in
             guard fakeGranted else {
                 return
             }
             
-            AddressBookProcessingQueue.async {
-                let addressBook = ABAddressBookCreateWithOptions(nil, nil)?.takeRetainedValue()
-                ABAddressBookRequestAccessWithCompletion(addressBook) { (granted, _) in
+            DispatchQueue.global().async {
+                let addressBook = ABAddressBookCreateWithOptions(nil, nil)?.takeUnretainedValue()
+                debugPrint("addressBook = \(addressBook)")
+                ABAddressBookRequestAccessWithCompletion(addressBook, { (granted, error) in
+                    debugPrint("granted = \(granted), error = \(error)")
                     DispatchQueue.main.async {
                         completion(granted)
                     }
-                }
+                })
             }
         }
     }
     
     class func fetchAllPeopleInAddressBook(_ phone: Bool = true, completion: @escaping AddressBookFetchResultHandler) {
         
-        AddressBookProcessingQueue.async {
+        DispatchQueue.global().async {
             
             var result = [Person]()
             
@@ -84,7 +86,7 @@ extension AddressBook {
         {
             static let title = Localized("needABPermission")
             static let grant = Localized("permit")
-            static let cancel = Localized("Reject")
+            static let cancel = Localized("reject")
         }
         
         struct Real {
@@ -211,14 +213,13 @@ extension AddressBook {
         }
     }
     
-    private let AddressBookProcessingQueue = DispatchQueue(label: "com.zhoubo.AddressBook", attributes: [])
-    
     extension AddressBook {
         
         fileprivate class func showFakeRequestIfNeeded(_ completion: @escaping AddressBookAccessRequestHandler) {
             guard ABAddressBookGetAuthorizationStatus() == .notDetermined else {
                 completion(true)
                 return
+                
             }
             
             let alertView = UIAlertView(title: Constants.Fake.title,

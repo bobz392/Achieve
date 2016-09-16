@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import AudioToolbox
 
 class TaskTableViewCell: UITableViewCell {
     
@@ -161,7 +162,15 @@ class TaskTableViewCell: UITableViewCell {
         if task.status == kTaskFinish {
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
         } else {
+            self.dingSound()
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
         }
+    }
+    
+    fileprivate func dingSound() {
+        guard let url = Bundle.main.url(forResource: "ding", withExtension: "wav") as CFURL? else { return }
+        let d = UnsafeMutablePointer<SystemSoundID>.allocate(capacity: 32)
+        AudioServicesCreateSystemSoundID(url, d)
+        AudioServicesPlayAlertSound(d.move())
     }
 }

@@ -103,10 +103,10 @@ class KVTaskViewController: BaseViewController {
         self.titleCardView.layer.cornerRadius = 6.0
         self.titleCardView.addSmallShadow()
         
-        self.cancelButton.setTitle(Localized("cancel"), for: UIControlState())
+        self.cancelButton.setTitle(Localized("cancel"), for: .normal)
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
-        self.saveButton.setTitle(Localized("add"), for: UIControlState())
+        self.saveButton.setTitle(Localized("add"), for: .normal)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
     }
     

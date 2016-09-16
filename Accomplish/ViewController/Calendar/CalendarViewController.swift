@@ -80,12 +80,12 @@ class CalendarViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                            icon: backButtonIconString, color: colors.mainGreenColor,
-                                           status: UIControlState())
+                                           status: .normal)
     
         
-        self.scheduleButton.setTitle(Localized("calendarReport"), for: UIControlState())
+        self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)
         self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
-        self.scheduleButton.setTitleColor(colors.cloudColor, for: UIControlState())
+        self.scheduleButton.setTitleColor(colors.cloudColor, for: .normal)
         self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
         
         self.configWeekView()

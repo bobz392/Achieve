@@ -84,9 +84,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.setDateButton.tintColor = colors.mainGreenColor
         self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: TaskIconCalendar, color: colors.secondaryTextColor, status: UIControlState())
+        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: TaskIconCalendar, color: colors.secondaryTextColor, status: .normal)
         
-        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: SystemIcon, color: colors.mainGreenColor, status: UIControlState())
+        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: SystemIcon, color: colors.mainGreenColor, status: .normal)
     }
     
     fileprivate func initializeControl() {
@@ -104,11 +104,11 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.datePicker.minimumDate = Date()
         
         self.titleTextField.placeholder = Localized("goingDo")
-        self.cancelButton.setTitle(Localized("cancel"), for: UIControlState())
+        self.cancelButton.setTitle(Localized("cancel"), for: .normal)
         
-        self.cancelDateButton.setTitle(Localized("remove"), for: UIControlState())
-        self.setDateButton.setTitle(Localized("setCreateDate"), for: UIControlState())
-        self.saveButton.setTitle(Localized("add"), for: UIControlState())
+        self.cancelDateButton.setTitle(Localized("remove"), for: .normal)
+        self.setDateButton.setTitle(Localized("setCreateDate"), for: .normal)
+        self.saveButton.setTitle(Localized("add"), for: .normal)
         
         self.priorityLabel.text = Localized("priority")
         

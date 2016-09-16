@@ -52,11 +52,12 @@ class ReportViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: UIControlState())
+                                         status: .normal)
         
         self.exportButton.buttonColor(colors)
         self.exportButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: "fa-share", color: colors.mainGreenColor, status: UIControlState())
+                                           icon: "fa-share", color: colors.mainGreenColor,
+                                           status: .normal)
     }
     
     fileprivate func initializeControl() {

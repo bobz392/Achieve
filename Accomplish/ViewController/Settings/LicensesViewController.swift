@@ -38,7 +38,7 @@ class LicensesViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: UIControlState())
+                                         status: .normal)
     }
     
     fileprivate func initializeControl() {

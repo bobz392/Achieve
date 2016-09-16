@@ -64,7 +64,7 @@ class TaskTableViewCell: UITableViewCell {
         self.task = task
         let colors = Colors()
         
-        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: UIControlState())
+        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: .normal)
         
         switch task.priority {
         case kTaskPriorityLow:
@@ -84,16 +84,16 @@ class TaskTableViewCell: UITableViewCell {
                 systemActionContent = actionContent
                 taskTitle = actionContent.type.ationNameWithType()
                 self.taskInfoButton.isEnabled = true
-                self.taskInfoButton.setTitle(actionContent.name, for: UIControlState())
+                self.taskInfoButton.setTitle(actionContent.name, for: .normal)
             } else {
                 self.taskInfoButton.isEnabled = false
-                self.taskInfoButton.setTitle(nil, for: UIControlState())
+                self.taskInfoButton.setTitle(nil, for: .normal)
                 taskTitle = task.taskToDo
             }
             
         default:
             self.taskInfoButton.isEnabled = false
-            self.taskInfoButton.setTitle(nil, for: UIControlState())
+            self.taskInfoButton.setTitle(nil, for: .normal)
             taskTitle = task.taskToDo
         }
         
@@ -101,7 +101,7 @@ class TaskTableViewCell: UITableViewCell {
         case kTaskRunning:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-square-o",
-                                                   color: colors.mainGreenColor, status: UIControlState())
+                                                   color: colors.mainGreenColor, status: .normal)
             self.taskSettingButton.isHidden = false
             
             if let create = task.createdDate {
@@ -116,7 +116,7 @@ class TaskTableViewCell: UITableViewCell {
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-check-square-o",
-                                                   color: colors.secondaryTextColor, status: UIControlState())
+                                                   color: colors.secondaryTextColor, status: .normal)
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
@@ -125,7 +125,7 @@ class TaskTableViewCell: UITableViewCell {
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-close",
-                                                   color: colors.mainGreenColor, status: UIControlState())
+                                                   color: colors.mainGreenColor, status: .normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor
             
             self.taskSettingButton.isHidden = true

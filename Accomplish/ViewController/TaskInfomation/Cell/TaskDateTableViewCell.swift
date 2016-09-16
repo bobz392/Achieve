@@ -35,8 +35,8 @@ class TaskDateTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         
         self.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), for: .touchUpInside)
-        self.clearButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
-                                          icon: "fa-times", color: colors.mainGreenColor, status: UIControlState())
+        self.clearButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize, icon: "fa-times", color: colors.mainGreenColor,
+                                          status: .normal)
         
         self.infoLabel.highlightedTextColor = colors.mainGreenColor
         self.infoLabel.textColor = colors.secondaryTextColor

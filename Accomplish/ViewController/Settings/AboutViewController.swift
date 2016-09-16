@@ -44,7 +44,7 @@ class AboutViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: UIControlState())
+                                         status: .normal)
         
         self.versionLabel.textColor = colors.cloudColor
         self.acknowledgementsButton.tintColor = colors.cloudColor
@@ -64,7 +64,7 @@ class AboutViewController: BaseViewController {
 //        self.titleLabel.text = Localized("about")
         
         self.versionLabel.text = Localized("version") + AppVersion().version
-        self.acknowledgementsButton.setTitle(Localized("licenses"), for: UIControlState())
+        self.acknowledgementsButton.setTitle(Localized("licenses"), for: .normal)
         self.acknowledgementsButton.addTarget(self, action: #selector(self.licensesAction), for: .touchUpInside)
     }
     

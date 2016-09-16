@@ -33,7 +33,7 @@ class TaskPickerView: UIView {
         self.rightButton.tintColor = colors.mainGreenColor
         self.backgroundColor = colors.cloudColor
         
-        self.leftButton.setTitle(Localized("cancel"), for: UIControlState())
+        self.leftButton.setTitle(Localized("cancel"), for: .normal)
         self.toolView.addTopShadow()
         
         self.leftButton.addTarget(self, action: #selector(self.close), for: .touchUpInside)
@@ -81,14 +81,14 @@ class TaskPickerView: UIView {
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = now
             self.datePicker.datePickerMode = .dateAndTime
-            self.rightButton.setTitle(Localized("setCreateDate"), for: UIControlState())
+            self.rightButton.setTitle(Localized("setCreateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case TaskDueIndex:
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = ((task.createdDate as NSDate?)?.addingMinutes(15)) ?? now
             self.datePicker.datePickerMode = .time
-            self.rightButton.setTitle(Localized("setEstimateDate"), for: UIControlState())
+            self.rightButton.setTitle(Localized("setEstimateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case TaskReminderIndex:
@@ -105,19 +105,19 @@ class TaskPickerView: UIView {
                 self.datePicker.minimumDate = nil
             }
             
-            self.rightButton.setTitle(Localized("setReminder"), for: UIControlState())
+            self.rightButton.setTitle(Localized("setReminder"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case TaskRepeatIndex:
             self.pickerView.isHidden = false
-            self.rightButton.setTitle(Localized("setRepeat"), for: UIControlState())
+            self.rightButton.setTitle(Localized("setRepeat"), for: .normal)
             self.pickerView.tag = TaskRepeatIndex
             self.pickerView.reloadAllComponents()
             break
             
         case TagIndex:
             self.pickerView.isHidden = false
-            self.rightButton.setTitle(Localized("setTag"), for: UIControlState())
+            self.rightButton.setTitle(Localized("setTag"), for: .normal)
             self.pickerView.tag = TagIndex
             self.pickerView.reloadAllComponents()
             

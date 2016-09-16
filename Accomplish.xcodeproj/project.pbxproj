@@ -11,6 +11,8 @@
 		C70528371D8B07320036FCC1 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70528351D8B07320036FCC1 /* TagViewController.swift */; };
 		C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70528361D8B07320036FCC1 /* TagViewController.xib */; };
 		C705283C1D8BE62D0036FCC1 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C705283B1D8BE62D0036FCC1 /* ding.wav */; };
+		C705283F1D8BEEE50036FCC1 /* HintCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */; };
+		C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */; };
 		C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Repeater.swift */; };
 		C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */; };
 		C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */; };
@@ -259,6 +261,8 @@
 		C70528351D8B07320036FCC1 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C70528361D8B07320036FCC1 /* TagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewController.xib; sourceTree = "<group>"; };
 		C705283B1D8BE62D0036FCC1 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
+		C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintCollectionViewCell.swift; sourceTree = "<group>"; };
+		C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HintCollectionViewCell.xib; sourceTree = "<group>"; };
 		C70BF6141D77DDE3006B0C1D /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterTimeType.swift; sourceTree = "<group>"; };
 		C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -932,6 +936,8 @@
 				C79806F01D8157880011DE19 /* UICountingLabel.m */,
 				C79806FC1D818E6F0011DE19 /* HintView.swift */,
 				C79806FA1D818E660011DE19 /* HintView.xib */,
+				C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */,
+				C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */,
 				C79806F41D81586F0011DE19 /* EmptyView.swift */,
 				C79806F21D8158610011DE19 /* EmptyView.xib */,
 				C7D933871D85908D00F0A759 /* SearchView.swift */,
@@ -1103,6 +1109,7 @@
 				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
 				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
+				C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
 				C705283C1D8BE62D0036FCC1 /* ding.wav in Resources */,
 				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
@@ -1257,6 +1264,7 @@
 				C78ED8AC1D7A916700031B4D /* GroupUserDefault+Main.swift in Sources */,
 				C7821ED51D7C076B0056623D /* CalendarViewController.swift in Sources */,
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
+				C705283F1D8BEEE50036FCC1 /* HintCollectionViewCell.swift in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,
 				C77194971D6FE96A00437560 /* AssociateViewController.swift in Sources */,
 				C79805781D7D427A0011DE19 /* AnimationTools.swift in Sources */,

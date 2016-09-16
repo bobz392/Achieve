@@ -128,19 +128,25 @@ class HomeViewController: BaseViewController {
         
         let iconSize: CGFloat = 20
         self.settingButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                            icon: "fa-cog", color: colors.mainGreenColor, status: UIControlState())
+                                            icon: "fa-cog", color: colors.mainGreenColor,
+                                            status: .normal)
         
         self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70,
-                                            icon: "fa-plus", color: colors.mainGreenColor, status: UIControlState())
+                                            icon: "fa-plus", color: colors.mainGreenColor,
+                                            status: .normal)
         
         self.calendarButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                             icon: "fa-calendar", color: colors.mainGreenColor, status: UIControlState())
+                                             icon: "fa-calendar", color: colors.mainGreenColor,
+                                             status: .normal)
         
         self.tagButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                        icon: "fa-tag", color: colors.mainGreenColor, status: UIControlState())
+                                        icon: "fa-tag", color: colors.mainGreenColor,
+                                        status: .normal)
         
         self.searchButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                           icon: "fa-search", color: colors.cloudColor, status: UIControlState())
+                                           icon: "fa-search", color: colors.cloudColor,
+                                           status: .normal)
+        
         self.searchButton.tintColor = colors.mainGreenColor
         
         self.configFullSizeButton(colors)
@@ -151,10 +157,10 @@ class HomeViewController: BaseViewController {
     fileprivate func configFullSizeButton(_ colors: Colors) {
         if self.isFullScreenSize {
             self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-compress",
-                                                   color: colors.mainGreenColor, status: UIControlState())
+                                                   color: colors.mainGreenColor, status: .normal)
         } else {
             self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-expand",
-                                                   color: colors.mainGreenColor, status: UIControlState())
+                                                   color: colors.mainGreenColor, status: .normal)
         }
     }
     

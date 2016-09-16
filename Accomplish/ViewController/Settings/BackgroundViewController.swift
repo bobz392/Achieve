@@ -40,7 +40,7 @@ class BackgroundViewController: BaseViewController {
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: UIControlState())
+                                         status: UIControlState.normal)
     }
     
     fileprivate func initializeControl() {

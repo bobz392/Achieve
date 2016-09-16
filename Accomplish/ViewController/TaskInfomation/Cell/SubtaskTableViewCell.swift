@@ -31,7 +31,7 @@ class SubtaskTableViewCell: UITableViewCell {
         
         self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
                                           icon: "fa-trash-o", color: colors.mainGreenColor,
-                                          status: UIControlState())
+                                          status: .normal)
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
         self.subtaskTextField.textColor = colors.mainTextColor
@@ -52,7 +52,7 @@ class SubtaskTableViewCell: UITableViewCell {
         self.subtask = subtask
         let colors = Colors()
         
-        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize, imageSize: kTaskButtonIconSize, icon: iconString, color: colors.mainGreenColor, status: UIControlState())
+        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize, imageSize: kTaskButtonIconSize, icon: iconString, color: colors.mainGreenColor, status: .normal)
         
         self.subtaskTextField.attributedText = nil
         

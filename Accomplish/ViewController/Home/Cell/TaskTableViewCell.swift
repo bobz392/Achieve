@@ -171,6 +171,6 @@ class TaskTableViewCell: UITableViewCell {
         guard let url = Bundle.main.url(forResource: "ding", withExtension: "wav") as CFURL? else { return }
         let d = UnsafeMutablePointer<SystemSoundID>.allocate(capacity: 32)
         AudioServicesCreateSystemSoundID(url, d)
-        AudioServicesPlayAlertSound(d.move())
+        AudioServicesPlaySystemSound(d.move())
     }
 }

@@ -19,7 +19,7 @@ let OnlyAmFormat = "a"
 // TASK
 extension NSDate {
     func createTaskUUID() -> String {
-        return self.formattedDate(withFormat: UUIDFormat) + uuidGenerator()
+        return self.formattedDate(withFormat: UUIDFormat)
     }
     
     func createTagUUID() -> String {

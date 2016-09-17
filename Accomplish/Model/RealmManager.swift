@@ -142,10 +142,11 @@ class RealmManager {
                     subtask.finishedDate = updateDate ?? now
                 }
                 task.finishedDate = updateDate ?? now
+                
+                LocalNotificationManager().skipFireToday(skip: true, task: task)
             } else if status == kTaskRunning {
                 task.finishedDate = nil
-            } else {
-                
+                LocalNotificationManager().skipFireToday(skip: false, task: task)
             }
         })
     }

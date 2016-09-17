@@ -34,7 +34,7 @@ struct LocalNotificationManager {
     func updateNotify(_ task: Task, repeatInterval: NSCalendar.Unit) {
         guard let _ = task.notifyDate else  { return }
         
-        let notify = LocalNotificationManager().notifyWithUUID(task.uuid)
+        let notify = self.notifyWithUUID(task.uuid)
         guard notify.count > 0 else {
             createNotify(task)
             return
@@ -44,6 +44,53 @@ struct LocalNotificationManager {
             UIApplication.shared.cancelLocalNotification(n)
         }
         createNotify(task)
+    }
+    
+    func skipFireToday(skip: Bool, task: Task) {
+        guard let repeater =
+            RealmManager.shareManager.queryRepeaterWithTask(task.uuid) else {
+                if skip {
+                    self.cancelNotify(task.uuid)
+                } else {
+                    self.createNotify(task)
+                }
+                return
+        }
+        let notify = self.notifyWithUUID(task.uuid)
+        
+        if let type = RepeaterTimeType(rawValue: repeater.repeatType) {
+            switch type {
+            case .annual:
+                let fireDate = notify.first?.fireDate as NSDate?
+                notify.first?.fireDate =
+                    (skip ? fireDate?.addingYears(1) : fireDate?.subtractingYears(1)) as Date?
+            
+            case .everyMonth:
+                let fireDate = notify.first?.fireDate as NSDate?
+                notify.first?.fireDate =
+                    (skip ? fireDate?.addingMonths(1) : fireDate?.subtractingMonths(1)) as Date?
+                
+            case .everyWeek:
+                let fireDate = notify.first?.fireDate as NSDate?
+                notify.first?.fireDate =
+                    (skip ? fireDate?.addingWeeks(1) : fireDate?.subtractingWeeks(1)) as Date?
+             
+            case .daily:
+                let fireDate = notify.first?.fireDate as NSDate?
+                notify.first?.fireDate =
+                    (skip ? fireDate?.addingDays(1) : fireDate?.subtractingDays(1)) as Date?
+                
+            case .weekday:
+                guard let notify = notify.filter({ (localNotify) -> Bool in
+                    return (localNotify.fireDate as NSDate?)?.isToday() ?? false
+                }).first else { break }
+                
+                let fireDate = notify.fireDate as NSDate?
+                notify.fireDate =
+                    (skip ? fireDate?.addingDays(7) : fireDate?.subtractingDays(7)) as Date?
+            }
+        }
+        
     }
     
     func createNotify(_ task: Task) {
@@ -63,7 +110,7 @@ struct LocalNotificationManager {
             notify.repeatInterval = NSCalendar.Unit(rawValue: 0)
         }
         
-        notify.fireDate = notifyDate as Date
+        notify.fireDate = notifyDate.clearSecond() as Date
         notify.soundName = UILocalNotificationDefaultSoundName
         notify.alertBody = task.getNormalDisplayTitle()
         notify.applicationIconBadgeNumber =
@@ -76,10 +123,10 @@ struct LocalNotificationManager {
     }
     
     fileprivate func createWeekday(task: Task) {
-        guard let notifyDate = task.notifyDate else { return }
+        guard let notifyDate = task.notifyDate?.clearSecond() else { return }
         
         for i in 0 ..< 7 {
-            let fireDate = (notifyDate as NSDate).addingDays(i) as NSDate
+            let fireDate = notifyDate.addingDays(i) as NSDate
             if fireDate.isWeekend() {
                 continue
             }else {

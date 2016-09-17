@@ -23,14 +23,15 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        self.watchTable.setNumberOfRows(10, withRowType: "taskRowType")
-        for i in 0..<10 {
+        guard let alltasks = GroupUserDefault()?.allTasks() else { return }
+        self.watchTable.setNumberOfRows(alltasks.count, withRowType: "taskRowType")
+        for i in 0..<alltasks.count {
             guard let row: TaskRowType =
                 self.watchTable.rowController(at: i) as? TaskRowType else { break }
-            row.checkButton.setTitle("asd")
+            row.checkButton.setTitle(alltasks[i].taskTitle)
         }
         
-        debugPrint(GroupUserDefault()?.allTasks())
+        debugPrint()
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {

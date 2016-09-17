@@ -13,8 +13,6 @@
 		C705283C1D8BE62D0036FCC1 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C705283B1D8BE62D0036FCC1 /* ding.wav */; };
 		C705283F1D8BEEE50036FCC1 /* HintCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */; };
 		C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */; };
-		C70612491D8D184100E37CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
-		C706124A1D8D184100E37CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C70612541D8D21DB00E37CE6 /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
 		C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
 		C70612561D8D21DB00E37CE6 /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
@@ -142,7 +140,6 @@
 		C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7821ED41D7C076B0056623D /* CalendarViewController.xib */; };
 		C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
-		C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
 		C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */; };
 		C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */; };
@@ -220,6 +217,10 @@
 		C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798073B1D8538C00011DE19 /* BackgroundViewController.xib */; };
 		C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */; };
 		C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */; };
+		C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
+		C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
+		C7B74DB51D8D9277002EE15E /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
+		C7B74DB61D8D9297002EE15E /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -245,7 +246,6 @@
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
 		C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
 		C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
-		C7F566B01D8D16EE00F837E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -538,6 +538,7 @@
 		C798073B1D8538C00011DE19 /* BackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundViewController.xib; sourceTree = "<group>"; };
 		C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundCollectionViewCell.xib; sourceTree = "<group>"; };
+		C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WatchAssets.xcassets; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
@@ -1077,6 +1078,7 @@
 				C706126A1D8D691100E37CE6 /* AchieveWatch.entitlements */,
 				C7E1B0461D8C7A9600554B11 /* Interface.storyboard */,
 				C7E1B04B1D8C7A9600554B11 /* Info.plist */,
+				C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */,
 			);
 			path = AchieveWatch;
 			sourceTree = "<group>";
@@ -1288,6 +1290,7 @@
 				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
 				C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */,
+				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
 				C705283C1D8BE62D0036FCC1 /* ding.wav in Resources */,
 				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
@@ -1316,7 +1319,6 @@
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
-				C7860E481D6C23FF000281FA /* Assets.xcassets in Resources */,
 				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
 				C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */,
@@ -1334,7 +1336,7 @@
 				C78ED8A21D7A801200031B4D /* Localizable.strings in Resources */,
 				C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */,
 				C78ED8B01D7A932E00031B4D /* FontAwesome.otf in Resources */,
-				C7F566B01D8D16EE00F837E7 /* Assets.xcassets in Resources */,
+				C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */,
 				C78ED89A1D7A800600031B4D /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1343,8 +1345,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B74DB51D8D9277002EE15E /* WatchAssets.xcassets in Resources */,
 				C7E1B06D1D8C7D5C00554B11 /* Localizable.strings in Resources */,
-				C70612491D8D184100E37CE6 /* Assets.xcassets in Resources */,
 				C7E1B0481D8C7A9600554B11 /* Interface.storyboard in Resources */,
 				C70612611D8D67EF00E37CE6 /* DateTools.bundle in Resources */,
 			);
@@ -1354,8 +1356,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C706124A1D8D184100E37CE6 /* Assets.xcassets in Resources */,
 				C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */,
+				C7B74DB61D8D9297002EE15E /* WatchAssets.xcassets in Resources */,
 				C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

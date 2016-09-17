@@ -56,4 +56,10 @@ extension NSDate {
     func isMorning() -> Bool {
         return self.hour() < 10
     }
+    
+    func clearSecond() -> NSDate {
+        let newDate = NSDate(year: self.year(), month: self.month(),
+                             day: self.day(), hour: self.hour(), minute: self.minute(), second: 0)
+        return newDate ?? self
+    }
 }

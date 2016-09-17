@@ -111,7 +111,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.todayTableView.reloadData()
             
             let taskCount = self.allGroupTasks.count
-            //            if taskCount == 1
             self.infoLabel.text = String(format: Localized("taskTody"), taskCount)
             
             

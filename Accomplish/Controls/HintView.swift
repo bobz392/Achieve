@@ -18,6 +18,8 @@ class HintView: UIView {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
+    fileprivate var hints = [HintItem]()
+    
     class func loadNib(_ target: AnyObject) -> HintView? {
         return Bundle.main.loadNibNamed("HintView", owner: target, options: nil)?.first as? HintView
     }
@@ -31,17 +33,62 @@ class HintView: UIView {
         
         self.nextButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-arrow-right", color: colors.mainGreenColor, status: .normal)
         
-        self.collectionView.clearView()
         self.pageControl.tintColor = colors.mainGreenColor
         
+        self.configCollectionView()
+        self.titleLabel.text = Localized("help")
+    }
+    
+    func addHints(_ hints: [HintItem]) {
+        self.hints.removeAll()
+        self.hints.append(contentsOf: hints)
+        self.collectionView.reloadData()
+        
+        self.pageControl.numberOfPages = hints.count
+        self.pageControl.currentPage = 0
+    }
+    
+}
+
+extension HintView: UICollectionViewDelegate, UICollectionViewDataSource {
+    fileprivate func configCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: screenBounds.width, height: 80)
+        layout.itemSize = CGSize(width: 280, height: 80)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.sectionInset = UIEdgeInsets.zero
         layout.scrollDirection = .horizontal
-        
         self.collectionView.collectionViewLayout = layout
+
+        self.collectionView.isPagingEnabled = true
+        self.collectionView.clearView()
+        
+        self.collectionView.register(HintCollectionViewCell.nib, forCellWithReuseIdentifier: HintCollectionViewCell.reuseId)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.pageControl.currentPage = indexPath.row
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return hints.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HintCollectionViewCell.reuseId, for: indexPath) as! HintCollectionViewCell
+        
+        cell.configCell(item: self.hints[indexPath.row])
+        
+        return cell
+    }
+}
+
+struct HintItem {
+    var iconName: String
+    var hintDetail: String
+    
+    init(iconName: String, hintDetail: String) {
+        self.iconName = iconName
+        self.hintDetail = hintDetail
+    }
 }

@@ -16,7 +16,26 @@ class TagViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         debugPrint(RealmManager.shareManager.allTags())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        guard let hintView = HintView.loadNib(self) else { return }
+        
+        self.view.addSubview(hintView)
+        hintView.snp.makeConstraints { (make) in
+            make.center.equalTo(self.view)
+            make.height.equalTo(150)
+            make.width.equalTo(280)
+        }
+        let hints = [
+            HintItem(iconName: "fa-arrow-right", hintDetail: "asd"),
+            HintItem(iconName: "fa-arrow-right", hintDetail: "asdasdasd"),
+            HintItem(iconName: "fa-arrow-right", hintDetail: "asdasdas]sad"),
+            HintItem(iconName: "fa-arrow-right", hintDetail: "asdasdakjkasjl"),
+        ]
+        hintView.addHints(hints)
     }
 
     override func didReceiveMemoryWarning() {

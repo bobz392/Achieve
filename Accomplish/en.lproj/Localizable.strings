@@ -146,3 +146,6 @@
 "open"="Opened";
 "close"="Closed";
 
+// hint
+"help"="Help";
+

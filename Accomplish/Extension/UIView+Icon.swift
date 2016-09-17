@@ -26,3 +26,11 @@ extension UIButton {
         self.backgroundColor = colors.cloudColor
     }
 }
+
+extension UILabel {
+    func createIconText(iconSize: CGFloat, icon: String, color: UIColor) {
+        let icon = try! FAKFontAwesome(identifier: icon, size: iconSize)
+        icon.addAttribute(NSForegroundColorAttributeName, value: color)
+        self.attributedText = icon.attributedString()
+    }
+}

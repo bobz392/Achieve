@@ -19,6 +19,17 @@ class HintCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.clearView()
+        self.contentView.clearView()
     }
 
+    func configCell(item: HintItem) {
+        let colors = Colors()
+    
+        self.hintLabel.textColor = colors.mainTextColor
+        self.iconLabel.createIconText(iconSize: hintIconButtonSize,
+                                      icon: item.iconName, color: colors.mainGreenColor)
+        self.hintLabel.text = item.hintDetail
+    }
 }

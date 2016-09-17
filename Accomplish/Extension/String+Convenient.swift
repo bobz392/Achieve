@@ -13,7 +13,7 @@ extension String {
     func dateFromCreatedFormatString() -> NSDate {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = createdDateFormat
+        dateFormatter.dateFormat = CreatedDateFormat
         dateFormatter.calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let d = dateFormatter.date(from: self) ?? Date()
         

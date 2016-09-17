@@ -194,7 +194,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
-        self.titleLabel.text = Localized("calendar") + "-" + (startDate as NSDate).formattedDate(withFormat: monthFormat)
+        self.titleLabel.text = Localized("calendar") + "-" + (startDate as NSDate).formattedDate(withFormat: MonthFormat)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {

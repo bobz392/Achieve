@@ -13,6 +13,28 @@
 		C705283C1D8BE62D0036FCC1 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C705283B1D8BE62D0036FCC1 /* ding.wav */; };
 		C705283F1D8BEEE50036FCC1 /* HintCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */; };
 		C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */; };
+		C70612491D8D184100E37CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
+		C706124A1D8D184100E37CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
+		C70612541D8D21DB00E37CE6 /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
+		C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
+		C70612561D8D21DB00E37CE6 /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
+		C70612571D8D21DB00E37CE6 /* MMWormholeSession.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBA1D7BF1820056623D /* MMWormholeSession.m */; };
+		C70612581D8D21DB00E37CE6 /* MMWormholeSessionContextTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBC1D7BF1820056623D /* MMWormholeSessionContextTransiting.m */; };
+		C70612591D8D21DB00E37CE6 /* MMWormholeSessionFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */; };
+		C706125A1D8D21DB00E37CE6 /* MMWormholeSessionMessageTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */; };
+		C706125C1D8D258F00E37CE6 /* TaskRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C706125B1D8D258F00E37CE6 /* TaskRowType.swift */; };
+		C706125D1D8D67A200E37CE6 /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
+		C706125E1D8D67B700E37CE6 /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
+		C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192971D6D18BF00437560 /* CommonCode.swift */; };
+		C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7105F9A1D6CDBFD0096A1A3 /* DateTools.bundle */; };
+		C70612611D8D67EF00E37CE6 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7105F9A1D6CDBFD0096A1A3 /* DateTools.bundle */; };
+		C70612621D8D67F400E37CE6 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105F9D1D6CDBFD0096A1A3 /* DTConstants.m */; };
+		C70612631D8D67F400E37CE6 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105F9F1D6CDBFD0096A1A3 /* DTError.m */; };
+		C70612641D8D67F700E37CE6 /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA11D6CDBFD0096A1A3 /* DTTimePeriod.m */; };
+		C70612651D8D67F700E37CE6 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA31D6CDBFD0096A1A3 /* DTTimePeriodChain.m */; };
+		C70612661D8D67FB00E37CE6 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m */; };
+		C70612671D8D67FB00E37CE6 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA71D6CDBFD0096A1A3 /* DTTimePeriodGroup.m */; };
+		C70612681D8D67FD00E37CE6 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA91D6CDBFD0096A1A3 /* NSDate+DateTools.m */; };
 		C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6141D77DDE3006B0C1D /* Repeater.swift */; };
 		C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */; };
 		C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */; };
@@ -213,18 +235,17 @@
 		C7DDA5C01D7682FC0054154C /* TaskPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5BF1D7682FC0054154C /* TaskPickerView.swift */; };
 		C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DDA5C11D7683030054154C /* TaskPickerView.xib */; };
 		C7E1B0481D8C7A9600554B11 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E1B0461D8C7A9600554B11 /* Interface.storyboard */; };
-		C7E1B04A1D8C7A9600554B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7E1B0491D8C7A9600554B11 /* Assets.xcassets */; };
 		C7E1B0511D8C7A9600554B11 /* AchieveWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7E1B0501D8C7A9600554B11 /* AchieveWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7E1B0581D8C7A9600554B11 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1B0571D8C7A9600554B11 /* InterfaceController.swift */; };
 		C7E1B05A1D8C7A9600554B11 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1B0591D8C7A9600554B11 /* ExtensionDelegate.swift */; };
 		C7E1B05C1D8C7A9600554B11 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1B05B1D8C7A9600554B11 /* NotificationController.swift */; };
-		C7E1B05E1D8C7A9600554B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7E1B05D1D8C7A9600554B11 /* Assets.xcassets */; };
 		C7E1B0621D8C7A9600554B11 /* AchieveWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C7E1B0441D8C7A9600554B11 /* AchieveWatch.app */; };
 		C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7E1B06D1D8C7D5C00554B11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
 		C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
 		C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
+		C7F566B01D8D16EE00F837E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -309,6 +330,10 @@
 		C705283B1D8BE62D0036FCC1 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
 		C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintCollectionViewCell.swift; sourceTree = "<group>"; };
 		C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HintCollectionViewCell.xib; sourceTree = "<group>"; };
+		C70612531D8D21C400E37CE6 /* AccomplishWatch-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AccomplishWatch-Bridging-Header.h"; sourceTree = "<group>"; };
+		C706125B1D8D258F00E37CE6 /* TaskRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowType.swift; sourceTree = "<group>"; };
+		C70612691D8D690500E37CE6 /* AchieveWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AchieveWatch Extension.entitlements"; sourceTree = "<group>"; };
+		C706126A1D8D691100E37CE6 /* AchieveWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AchieveWatch.entitlements; sourceTree = "<group>"; };
 		C70BF6141D77DDE3006B0C1D /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		C70BF6181D78C7DC006B0C1D /* RepeaterTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterTimeType.swift; sourceTree = "<group>"; };
 		C70BF61A1D7921CD006B0C1D /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
@@ -529,14 +554,12 @@
 		C7DDA5C11D7683030054154C /* TaskPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPickerView.xib; sourceTree = "<group>"; };
 		C7E1B0441D8C7A9600554B11 /* AchieveWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AchieveWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E1B0471D8C7A9600554B11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		C7E1B0491D8C7A9600554B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7E1B04B1D8C7A9600554B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7E1B0501D8C7A9600554B11 /* AchieveWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "AchieveWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E1B0561D8C7A9600554B11 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		C7E1B0571D8C7A9600554B11 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		C7E1B0591D8C7A9600554B11 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		C7E1B05B1D8C7A9600554B11 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		C7E1B05D1D8C7A9600554B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7E1B05F1D8C7A9600554B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
@@ -1051,8 +1074,8 @@
 		C7E1B0451D8C7A9600554B11 /* AchieveWatch */ = {
 			isa = PBXGroup;
 			children = (
+				C706126A1D8D691100E37CE6 /* AchieveWatch.entitlements */,
 				C7E1B0461D8C7A9600554B11 /* Interface.storyboard */,
-				C7E1B0491D8C7A9600554B11 /* Assets.xcassets */,
 				C7E1B04B1D8C7A9600554B11 /* Info.plist */,
 			);
 			path = AchieveWatch;
@@ -1061,10 +1084,12 @@
 		C7E1B0541D8C7A9600554B11 /* AchieveWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C70612691D8D690500E37CE6 /* AchieveWatch Extension.entitlements */,
+				C706125B1D8D258F00E37CE6 /* TaskRowType.swift */,
 				C7E1B0571D8C7A9600554B11 /* InterfaceController.swift */,
 				C7E1B0591D8C7A9600554B11 /* ExtensionDelegate.swift */,
 				C7E1B05B1D8C7A9600554B11 /* NotificationController.swift */,
-				C7E1B05D1D8C7A9600554B11 /* Assets.xcassets */,
+				C70612531D8D21C400E37CE6 /* AccomplishWatch-Bridging-Header.h */,
 				C7E1B05F1D8C7A9600554B11 /* Info.plist */,
 				C7E1B0551D8C7A9600554B11 /* Supporting Files */,
 			);
@@ -1196,11 +1221,21 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = M396DA7L3B;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C7E1B04F1D8C7A9600554B11 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = M396DA7L3B;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1299,6 +1334,7 @@
 				C78ED8A21D7A801200031B4D /* Localizable.strings in Resources */,
 				C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */,
 				C78ED8B01D7A932E00031B4D /* FontAwesome.otf in Resources */,
+				C7F566B01D8D16EE00F837E7 /* Assets.xcassets in Resources */,
 				C78ED89A1D7A800600031B4D /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1307,9 +1343,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E1B04A1D8C7A9600554B11 /* Assets.xcassets in Resources */,
 				C7E1B06D1D8C7D5C00554B11 /* Localizable.strings in Resources */,
+				C70612491D8D184100E37CE6 /* Assets.xcassets in Resources */,
 				C7E1B0481D8C7A9600554B11 /* Interface.storyboard in Resources */,
+				C70612611D8D67EF00E37CE6 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,8 +1354,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E1B05E1D8C7A9600554B11 /* Assets.xcassets in Resources */,
+				C706124A1D8D184100E37CE6 /* Assets.xcassets in Resources */,
 				C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */,
+				C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1515,8 +1553,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E1B05C1D8C7A9600554B11 /* NotificationController.swift in Sources */,
+				C70612671D8D67FB00E37CE6 /* DTTimePeriodGroup.m in Sources */,
+				C70612581D8D21DB00E37CE6 /* MMWormholeSessionContextTransiting.m in Sources */,
+				C706125D1D8D67A200E37CE6 /* GroupUserDefault.swift in Sources */,
+				C70612661D8D67FB00E37CE6 /* DTTimePeriodCollection.m in Sources */,
+				C70612541D8D21DB00E37CE6 /* MMWormhole.m in Sources */,
+				C706125E1D8D67B700E37CE6 /* NSDate+Convenient.swift in Sources */,
+				C70612621D8D67F400E37CE6 /* DTConstants.m in Sources */,
+				C70612631D8D67F400E37CE6 /* DTError.m in Sources */,
+				C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */,
+				C70612641D8D67F700E37CE6 /* DTTimePeriod.m in Sources */,
+				C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */,
+				C706125A1D8D21DB00E37CE6 /* MMWormholeSessionMessageTransiting.m in Sources */,
+				C70612591D8D21DB00E37CE6 /* MMWormholeSessionFileTransiting.m in Sources */,
 				C7E1B05A1D8C7A9600554B11 /* ExtensionDelegate.swift in Sources */,
+				C70612651D8D67F700E37CE6 /* DTTimePeriodChain.m in Sources */,
 				C7E1B0581D8C7A9600554B11 /* InterfaceController.swift in Sources */,
+				C70612561D8D21DB00E37CE6 /* MMWormholeFileTransiting.m in Sources */,
+				C70612571D8D21DB00E37CE6 /* MMWormholeSession.m in Sources */,
+				C70612681D8D67FD00E37CE6 /* NSDate+DateTools.m in Sources */,
+				C706125C1D8D258F00E37CE6 /* TaskRowType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1768,10 +1824,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = AchieveWatch/AchieveWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = M396DA7L3B;
@@ -1794,10 +1851,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = AchieveWatch/AchieveWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = M396DA7L3B;
@@ -1823,6 +1881,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "AchieveWatch Extension/AchieveWatch Extension.entitlements";
 				DEVELOPMENT_TEAM = M396DA7L3B;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1833,6 +1892,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveWatch Extension/AccomplishWatch-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1846,6 +1906,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "AchieveWatch Extension/AchieveWatch Extension.entitlements";
 				DEVELOPMENT_TEAM = M396DA7L3B;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1855,6 +1916,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = ltestWatchEx;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveWatch Extension/AccomplishWatch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;

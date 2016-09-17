@@ -8,27 +8,27 @@
 
 import Foundation
 
-let uuidFormat: String = "yyMMddHHmmssZ"
-internal let createdDateFormat: String = "yyyy.MM.dd"
-let timeDateFormat: String = "hh: mm a"
-let monthDayFormat: String = "MM/dd"
-let monthFormat: String = "MMM YYYY"
-let onlyTimeFormat = "hh:mm"
-let onlyAmFormat = "a"
+let UUIDFormat: String = "yyMMddHHmmssZ"
+let CreatedDateFormat: String = "yyyy.MM.dd"
+let TimeDateFormat: String = "hh: mm a"
+let MonthDayFormat: String = "MM/dd"
+let MonthFormat: String = "MMM YYYY"
+let OnlyTimeFormat = "hh:mm"
+let OnlyAmFormat = "a"
 
 // TASK
 extension NSDate {
     func createTaskUUID() -> String {
-        return self.formattedDate(withFormat: uuidFormat) + uuidGenerator()
+        return self.formattedDate(withFormat: UUIDFormat) + uuidGenerator()
     }
     
     func createTagUUID() -> String {
-        return self.formattedDate(withFormat: uuidFormat) + "-tag"
+        return self.formattedDate(withFormat: UUIDFormat) + "-tag"
     }
     
     func createdFormatedDateString() -> String {
-        debugPrint("created formated date string = \(self.formattedDate(withFormat: createdDateFormat, locale: Locale.init(identifier: "en_US")))")
-        return self.formattedDate(withFormat: createdDateFormat, locale: Locale.init(identifier: "en_US"))
+        debugPrint("created formated date string = \(self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US")))")
+        return self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US"))
     }
     
     func toLocalDate() -> NSDate {
@@ -38,14 +38,14 @@ extension NSDate {
     }
     
     func timeDateString() -> String {
-        return self.formattedDate(withFormat: timeDateFormat)
+        return self.formattedDate(withFormat: TimeDateFormat)
     }
     
     func timeString() -> String {
-        return self.formattedDate(withFormat: onlyTimeFormat)
+        return self.formattedDate(withFormat: OnlyTimeFormat)
     }
     func am() -> String {
-        return self.formattedDate(withFormat: onlyAmFormat)
+        return self.formattedDate(withFormat: OnlyAmFormat)
     }
     
     func isLaterThenToday() -> Bool {

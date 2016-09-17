@@ -25,8 +25,9 @@ extension GroupUserDefault {
             let title = task.getNormalDisplayTitle()
             let uuid = task.uuid
             let priority = task.priority
+            let estimate = task.estimateDate?.formattedDate(withFormat: UUIDFormat) ?? ""
             
-            let taskArray = [uuid, title, "\(priority)"]
+            let taskArray = [uuid, title, "\(priority)", estimate]
             tasksArr.append(taskArray)
         }
         

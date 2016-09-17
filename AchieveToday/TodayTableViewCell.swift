@@ -14,7 +14,7 @@ class TodayTableViewCell: UITableViewCell {
     static let reuseId = "todayTableViewCell"
     static let rowHeight: CGFloat = 40
     
-    var task: [String]?
+    var task: GroupTask?
     let subtaskIconSquare = "fa-square-o"
     let subtaskIconChecked = "fa-check-square-o"
     

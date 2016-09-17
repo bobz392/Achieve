@@ -104,7 +104,7 @@ class TaskDateTableViewCell: UITableViewCell {
             guard let createdDate = task.createdDate else { break }
             let schedule = Localized("scheduled")
             self.infoLabel.text = schedule + " "
-                + (createdDate as NSDate).formattedDate(withFormat: timeDateFormat)
+                + (createdDate as NSDate).formattedDate(withFormat: TimeDateFormat)
             self.clearButton.isHidden = true
             self.iconImageView.isHighlighted = true
             
@@ -130,7 +130,7 @@ class TaskDateTableViewCell: UITableViewCell {
                 self.detailType = .other
                 
                 if let finishDate = task.finishedDate {
-                    self.infoLabel.text = Localized("finishAt") + (finishDate as NSDate).formattedDate(withFormat: timeDateFormat)
+                    self.infoLabel.text = Localized("finishAt") + (finishDate as NSDate).formattedDate(withFormat: TimeDateFormat)
                 }
             } else {
                 self.infoLabel.isHighlighted = task.estimateDate != nil
@@ -139,7 +139,7 @@ class TaskDateTableViewCell: UITableViewCell {
                 self.detailType = .estimate
                 
                 if let estimateDate = task.estimateDate {
-                    self.infoLabel.text = Localized("estimeateAt") + (estimateDate as NSDate).formattedDate(withFormat: timeDateFormat)
+                    self.infoLabel.text = Localized("estimeateAt") + (estimateDate as NSDate).formattedDate(withFormat: TimeDateFormat)
                 } else {
                     self.infoLabel.text = Localized("noEstimate")
                 }

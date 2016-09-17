@@ -45,7 +45,8 @@ class HomeViewController: BaseViewController {
     
     fileprivate var timer: SecondTimer?
     fileprivate var repeaterManager = RepeaterManager()
-    fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: group, optionalDirectory: nil)
+    fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: GroupIdentifier,
+                                               optionalDirectory: nil)
     
     fileprivate var toViewControllerAnimationType = 0
     
@@ -247,9 +248,9 @@ class HomeViewController: BaseViewController {
         let manager = RealmManager.shareManager
         
         let _ = finishTasks.map({ (taskInfoArr) -> Void in
-            let uuid = taskInfoArr[GroupUserDefault.GroupTaskUUIDIndex]
-            let dateString = taskInfoArr[GroupUserDefault.GroupTaskFinishDateIndex]
-            let date = dateString.dateFromString(uuidFormat)
+            let uuid = taskInfoArr[GroupTaskUUIDIndex]
+            let dateString = taskInfoArr[GroupTaskFinishDateIndex]
+            let date = dateString.dateFromString(UUIDFormat)
             guard let task = self.runningTasks?.filter({ (t) -> Bool in
                 t.uuid == uuid
             }).first else { return }
@@ -381,7 +382,7 @@ class HomeViewController: BaseViewController {
                 return
         }
         group.writeTasks(tasks)
-        wormhole.passMessageObject(nil, identifier: wormholeIdentifier)
+        wormhole.passMessageObject(nil, identifier: WormholeIdentifier)
     }
     
     // MARK: - actions

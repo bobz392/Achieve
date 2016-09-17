@@ -8,8 +8,14 @@
 
 import Foundation
 
-let group = "group.bob.accomplish"
-let wormholeIdentifier = "newTask"
+let GroupIdentifier = "group.bob.accomplish"
+let WormholeIdentifier = "newTask"
+
+let GroupTaskUUIDIndex = 0
+let GroupTaskTitleIndex = 1
+let GroupTaskPriorityIndex = 2
+let GroupTaskEstimateIndex = 3
+let GroupTaskFinishDateIndex = 4
 
 struct GroupUserDefault {
     let groupDefault: UserDefaults
@@ -17,13 +23,8 @@ struct GroupUserDefault {
     let taskChangeKey = "task.changed.today"
     let todayFinishTaskKey = "task.finish.by.today"
     
-    static let GroupTaskUUIDIndex = 0
-    static let GroupTaskTitleIndex = 1
-    static let GroupTaskPriorityIndex = 2
-    static let GroupTaskFinishDateIndex = 3
-    
     init?() {
-        guard let groupDefault = UserDefaults(suiteName: group) else {
+        guard let groupDefault = UserDefaults(suiteName: GroupIdentifier) else {
             return nil
         }
         
@@ -39,11 +40,24 @@ struct GroupUserDefault {
         self.groupDefault.synchronize()
     }
     
-    func allTasks() -> [[String]] {
-        guard let tasksArray = self.groupDefault.array(forKey: tasksKey) as? [[String]]
-            else { return [[String]]() }
+    func allTasks() -> [GroupTask] {
+        var tasks = [GroupTask]()
+        guard let tasksArr = self.groupDefault.array(forKey: tasksKey) as? [[String]]
+            else { return tasks }
         
-        return tasksArray
+        for task in tasksArr {
+            let uuid = task[GroupTaskUUIDIndex]
+            let prority = Int(task[GroupTaskPriorityIndex]) ?? 0
+            let title = task[GroupTaskTitleIndex]
+            let estimateDate = task[GroupTaskEstimateIndex]
+            let groupTask = GroupTask(taskUUID: uuid, taskPriority: prority,
+                                      taskTitle: title, taskEstimateDate: estimateDate,
+                                      taskFinishDate: nil)
+            
+            tasks.append(groupTask)
+        }
+        
+        return tasks
     }
     
     func writeTasks(_ tasks: [[String]]) {
@@ -75,8 +89,16 @@ struct GroupUserDefault {
             else { return }
         
         var finishTask = tasks.remove(at: taskIndex)
-        finishTask.append((Date() as NSDate).formattedDate(withFormat: uuidFormat))
+        finishTask.append(NSDate().formattedDate(withFormat: UUIDFormat))
         self.setTaskFinish(finishTask)
         self.writeTasks(tasks)
     }
+}
+
+struct GroupTask {
+    let taskUUID: String
+    let taskPriority: Int
+    let taskTitle: String
+    var taskEstimateDate: String? = nil
+    var taskFinishDate: String? = nil
 }

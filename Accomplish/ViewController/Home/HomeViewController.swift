@@ -230,9 +230,9 @@ class HomeViewController: BaseViewController {
         self.timer = SecondTimer(handle: { [weak self] () -> Void in
             guard let ws = self else { return }
             if ws.repeaterManager.isNewDay() {
-                if NSDate().isMorning() {
-                    HUD.sharedHUD.showOnce(Localized("newDay"))
-                }
+//                if NSDate().isMorning() {
+//                    HUD.sharedHUD.showOnce(Localized("newDay"))
+//                }
                 ws.handleNewDay()
             }
             ws.taskTableView.reloadData()

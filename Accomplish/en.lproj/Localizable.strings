@@ -82,6 +82,7 @@
 "errorInfos"="Please perfect information";
 
 "scheduled"="Started in ";
+"willScheduled"="Will start in ";
 "today"="today";
 "tomorrow"="tomorrow";
 "yesterday"="yesterday";

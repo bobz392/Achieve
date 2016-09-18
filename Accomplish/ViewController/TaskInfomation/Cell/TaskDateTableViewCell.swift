@@ -102,8 +102,9 @@ class TaskDateTableViewCell: UITableViewCell {
         case TaskIconCalendar:
             self.infoLabel.isHighlighted = true
             guard let createdDate = task.createdDate else { break }
-            let schedule = Localized("scheduled")
-            self.infoLabel.text = schedule + " "
+            let scheduled = createdDate.isEarlierThan(Date()) ?
+                Localized("scheduled") : Localized("willScheduled")
+            self.infoLabel.text = scheduled + " "
                 + (createdDate as NSDate).formattedDate(withFormat: TimeDateFormat)
             self.clearButton.isHidden = true
             self.iconImageView.isHighlighted = true

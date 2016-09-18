@@ -16,12 +16,13 @@
                                 <tableRow identifier="taskRowType" id="Xp6-cz-u2f" customClass="TaskRowType" customModule="AchieveWatch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="bAN-zt-cRY">
                                         <items>
-                                            <button width="20" height="20" alignment="left" verticalAlignment="center" backgroundImage="watch_uncheck" id="wjM-j0-vQR">
+                                            <button width="14" height="14" alignment="left" verticalAlignment="center" backgroundImage="watch_uncheck" id="wjM-j0-vQR">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="font" type="system" pointSize="1"/>
                                             </button>
-                                            <label height="39" alignment="left" text="dfsdfsdf sdf sdfd dsgfs gdfsg sdfg dsfg dsfg " id="x6p-dh-dEn">
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            <label height="39" alignment="left" verticalAlignment="center" text="dfsdfsdf sdf sdfd dsgfs gdfsg sdfg dsfg dsfg " id="x6p-dh-dEn">
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="font" type="system" pointSize="12"/>
                                             </label>
                                         </items>
                                     </group>
@@ -33,7 +34,6 @@
                             </items>
                         </table>
                     </items>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="watchTable" destination="Ltq-tr-4rc" id="JhZ-IF-ECf"/>
                     </connections>

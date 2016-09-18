@@ -21,7 +21,6 @@
 		C70612591D8D21DB00E37CE6 /* MMWormholeSessionFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EBE1D7BF1820056623D /* MMWormholeSessionFileTransiting.m */; };
 		C706125A1D8D21DB00E37CE6 /* MMWormholeSessionMessageTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EC01D7BF1820056623D /* MMWormholeSessionMessageTransiting.m */; };
 		C706125C1D8D258F00E37CE6 /* TaskRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C706125B1D8D258F00E37CE6 /* TaskRowType.swift */; };
-		C706125D1D8D67A200E37CE6 /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
 		C706125E1D8D67B700E37CE6 /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
 		C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192971D6D18BF00437560 /* CommonCode.swift */; };
 		C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7105F9A1D6CDBFD0096A1A3 /* DateTools.bundle */; };
@@ -87,6 +86,7 @@
 		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
 		C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6461D8862D800E68871 /* LicensesViewController.xib */; };
+		C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76AE2CE1D8E892F00930D43 /* WatchManager.swift */; };
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
 		C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77192451D6CEE4E00437560 /* HomeViewController.xib */; };
 		C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771924D1D6CEE6800437560 /* NewTaskViewController.swift */; };
@@ -220,7 +220,6 @@
 		C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C7B74DB51D8D9277002EE15E /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
-		C7B74DB61D8D9297002EE15E /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
 		C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */; };
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
@@ -243,6 +242,11 @@
 		C7E1B0621D8C7A9600554B11 /* AchieveWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C7E1B0441D8C7A9600554B11 /* AchieveWatch.app */; };
 		C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7E1B06D1D8C7D5C00554B11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
+		C7E2D9571D8F05000080D283 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9561D8F05000080D283 /* WatchConstants.swift */; };
+		C7E2D9581D8F05080080D283 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9561D8F05000080D283 /* WatchConstants.swift */; };
+		C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
+		C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
+		C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
 		C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
 		C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
@@ -411,6 +415,7 @@
 		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		C769A6461D8862D800E68871 /* LicensesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicensesViewController.xib; sourceTree = "<group>"; };
+		C76AE2CE1D8E892F00930D43 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C77192451D6CEE4E00437560 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C771924D1D6CEE6800437560 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +567,8 @@
 		C7E1B0591D8C7A9600554B11 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		C7E1B05B1D8C7A9600554B11 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C7E1B05F1D8C7A9600554B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7E2D9561D8F05000080D283 /* WatchConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
+		C7E2D9591D8F06B70080D283 /* GroupTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTasks.swift; sourceTree = "<group>"; };
 		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -635,15 +642,17 @@
 				C77192971D6D18BF00437560 /* CommonCode.swift */,
 				C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */,
 				C77192991D6DB27A00437560 /* KeyboardManager.swift */,
+				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
 				C77193F51D6DE9C000437560 /* Constants.swift */,
 				C77193F71D6E488F00437560 /* UserDefault.swift */,
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
+				C7E2D9591D8F06B70080D283 /* GroupTasks.swift */,
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */,
-				C79805771D7D427A0011DE19 /* AnimationTools.swift */,
 				C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */,
 				C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */,
 				C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */,
+				C76AE2CE1D8E892F00930D43 /* WatchManager.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1087,6 +1096,7 @@
 			isa = PBXGroup;
 			children = (
 				C70612691D8D690500E37CE6 /* AchieveWatch Extension.entitlements */,
+				C7E2D9561D8F05000080D283 /* WatchConstants.swift */,
 				C706125B1D8D258F00E37CE6 /* TaskRowType.swift */,
 				C7E1B0571D8C7A9600554B11 /* InterfaceController.swift */,
 				C7E1B0591D8C7A9600554B11 /* ExtensionDelegate.swift */,
@@ -1235,7 +1245,7 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1357,7 +1367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */,
-				C7B74DB61D8D9297002EE15E /* WatchAssets.xcassets in Resources */,
 				C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1438,6 +1447,7 @@
 				C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */,
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C70BF6271D79CADB006B0C1D /* SecondTimer.swift in Sources */,
+				C7E2D9581D8F05080080D283 /* WatchConstants.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
 				C78ED8A91D7A85E600031B4D /* GroupUserDefault.swift in Sources */,
 				C798072E1D83DB3F0011DE19 /* DynamicBlurView.swift in Sources */,
@@ -1499,6 +1509,8 @@
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
 				C79805C41D7D4E610011DE19 /* JTAppleCalendarLayout.swift in Sources */,
+				C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */,
+				C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */,
 				C79805C71D7D4E610011DE19 /* JTAppleDayCell.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
@@ -1540,6 +1552,7 @@
 				C7821ECD1D7BF18E0056623D /* MMWormholeSessionContextTransiting.m in Sources */,
 				C7821ECF1D7BF18E0056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
 				C7821ECB1D7BF18E0056623D /* MMWormholeFileTransiting.m in Sources */,
+				C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */,
 				C78ED89C1D7A800D00031B4D /* DTError.m in Sources */,
 				C78ED89F1D7A800D00031B4D /* DTTimePeriodCollection.m in Sources */,
 				C78ED8981D7A7FBE00031B4D /* CommonCode.swift in Sources */,
@@ -1557,13 +1570,13 @@
 				C7E1B05C1D8C7A9600554B11 /* NotificationController.swift in Sources */,
 				C70612671D8D67FB00E37CE6 /* DTTimePeriodGroup.m in Sources */,
 				C70612581D8D21DB00E37CE6 /* MMWormholeSessionContextTransiting.m in Sources */,
-				C706125D1D8D67A200E37CE6 /* GroupUserDefault.swift in Sources */,
 				C70612661D8D67FB00E37CE6 /* DTTimePeriodCollection.m in Sources */,
 				C70612541D8D21DB00E37CE6 /* MMWormhole.m in Sources */,
 				C706125E1D8D67B700E37CE6 /* NSDate+Convenient.swift in Sources */,
 				C70612621D8D67F400E37CE6 /* DTConstants.m in Sources */,
 				C70612631D8D67F400E37CE6 /* DTError.m in Sources */,
 				C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */,
+				C7E2D9571D8F05000080D283 /* WatchConstants.swift in Sources */,
 				C70612641D8D67F700E37CE6 /* DTTimePeriod.m in Sources */,
 				C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				C706125A1D8D21DB00E37CE6 /* MMWormholeSessionMessageTransiting.m in Sources */,
@@ -1572,6 +1585,7 @@
 				C70612651D8D67F700E37CE6 /* DTTimePeriodChain.m in Sources */,
 				C7E1B0581D8C7A9600554B11 /* InterfaceController.swift in Sources */,
 				C70612561D8D21DB00E37CE6 /* MMWormholeFileTransiting.m in Sources */,
+				C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */,
 				C70612571D8D21DB00E37CE6 /* MMWormholeSession.m in Sources */,
 				C70612681D8D67FD00E37CE6 /* NSDate+DateTools.m in Sources */,
 				C706125C1D8D258F00E37CE6 /* TaskRowType.swift in Sources */,
@@ -1881,7 +1895,6 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_ENTITLEMENTS = "AchieveWatch Extension/AchieveWatch Extension.entitlements";
 				DEVELOPMENT_TEAM = M396DA7L3B;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1906,7 +1919,6 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_ENTITLEMENTS = "AchieveWatch Extension/AchieveWatch Extension.entitlements";
 				DEVELOPMENT_TEAM = M396DA7L3B;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

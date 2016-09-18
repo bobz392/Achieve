@@ -50,7 +50,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.allButton.clipsToBounds = true
         self.allButton.layer.cornerRadius = 4
         
-        self.wormhole.listenForMessage(withIdentifier: WormholeIdentifier) { (any) in
+        self.wormhole.listenForMessage(withIdentifier: WormholeNewTaskIdentifier) { (any) in
             self.updateTask()
         }
         
@@ -63,7 +63,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     deinit {
-        self.wormhole.stopListeningForMessage(withIdentifier: WormholeIdentifier)
+        self.wormhole.stopListeningForMessage(withIdentifier: WormholeNewTaskIdentifier)
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,10 +106,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             return
         }
         
+        self.allGroupTasks = group.allTasks()
+        self.todayTableView.reloadData()
+        
         if group.taskHasChanged() {
-            self.allGroupTasks = group.allTasks()
-            self.todayTableView.reloadData()
-            
             let taskCount = self.allGroupTasks.count
             self.infoLabel.text = String(format: Localized("taskTody"), taskCount)
             
@@ -122,8 +122,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             group.setTaskChanged(false)
             completionHandler(.newData)
         } else {
-            self.allGroupTasks = group.allTasks()
-            self.todayTableView.reloadData()
             completionHandler(.noData)
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Fabric
 import Crashlytics
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 9.0, *) {
             self.configureDynamicShortcuts()
+            let re = self.watchManger.session?.isReachable
+            debugPrint(re)
         }
+        
         HUD.sharedHUD.config()
         
         Fabric.with([Crashlytics.self])
@@ -123,7 +127,6 @@ extension AppDelegate {
         QuickActionDispatcher().dispatch(shortcutItem, completion: completionHandler)
     }
     
-    @available(iOS 9.0, *)
     func configureDynamicShortcuts() {
         let shortcutItem1 = UIApplicationShortcutItem(
             type: QuickActionType.Create.rawValue,
@@ -143,5 +146,24 @@ extension AppDelegate {
         UIApplication.shared.shortcutItems =
             [ shortcutItem1, shortcutItem2 ]
     }
+}
+
+// MARK: - watch kit
+@available(iOS 9.0, *)
+extension AppDelegate {
+    var watchManger: WatchManager {
+        get {
+            return WatchManager.shareManager
+        }
+    }
+//
+//    fileprivate func configWatchManager() {
+//        let manager = WatchManager()
+//    }
+    
+//    func application(_ application: UIApplication, handleWatchKitExtensionRequest userInfo: [AnyHashable : Any]?, reply: @escaping ([AnyHashable : Any]?) -> Void) {
+//        debugPrint(userInfo)
+//        reply([AnyHashable(1) : "asd"])
+//    }
 }
 

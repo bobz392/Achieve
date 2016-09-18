@@ -9,13 +9,7 @@
 import Foundation
 
 let GroupIdentifier = "group.bob.accomplish"
-let WormholeIdentifier = "newTask"
-
-let GroupTaskUUIDIndex = 0
-let GroupTaskTitleIndex = 1
-let GroupTaskPriorityIndex = 2
-let GroupTaskEstimateIndex = 3
-let GroupTaskFinishDateIndex = 4
+let WormholeNewTaskIdentifier = "wormhole.new.task"
 
 struct GroupUserDefault {
     let groupDefault: UserDefaults
@@ -40,7 +34,7 @@ struct GroupUserDefault {
         self.groupDefault.synchronize()
     }
     
-    func allTasks() -> [GroupTask] {
+    func allTasks() -> [GroupTask] {        
         var tasks = [GroupTask]()
         guard let tasksArr = self.groupDefault.array(forKey: tasksKey) as? [[String]]
             else { return tasks }
@@ -58,6 +52,13 @@ struct GroupUserDefault {
         }
         
         return tasks
+    }
+    
+    func allTaskArray() -> [[String]] {
+        guard let tasksArray = self.groupDefault.array(forKey: tasksKey) as? [[String]]
+            else { return [[String]]() }
+        
+        return tasksArray
     }
     
     func writeTasks(_ tasks: [[String]]) {
@@ -93,12 +94,4 @@ struct GroupUserDefault {
         self.setTaskFinish(finishTask)
         self.writeTasks(tasks)
     }
-}
-
-struct GroupTask {
-    let taskUUID: String
-    let taskPriority: Int
-    let taskTitle: String
-    var taskEstimateDate: String? = nil
-    var taskFinishDate: String? = nil
 }

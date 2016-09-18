@@ -382,7 +382,7 @@ class HomeViewController: BaseViewController {
                 return
         }
         group.writeTasks(tasks)
-        wormhole.passMessageObject(nil, identifier: WormholeIdentifier)
+        wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
     }
     
     // MARK: - actions

@@ -13,4 +13,5 @@ class TaskRowType: NSObject {
     
     @IBOutlet var checkButton: WKInterfaceButton!
     @IBOutlet var taskLabel: WKInterfaceLabel!
+
 }

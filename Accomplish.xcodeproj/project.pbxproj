@@ -1216,6 +1216,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
 						};
 					};
 					C78ED8771D7A7D3100031B4D = {

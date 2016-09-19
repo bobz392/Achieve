@@ -32,12 +32,25 @@ class WatchManager: NSObject, WCSessionDelegate {
         } else {
             debugPrint("Watch does not support WCSession")
         }
-        
-        
     }
     
     func supported() -> Bool {
-        return WCSession.isSupported()
+        return WCSession.isSupported() &&
+            (self.session?.isPaired ?? false) &&
+            (self.session?.isWatchAppInstalled ?? false)
+    }
+    
+    func tellWatchQueryNewTask() {
+        AppUserDefault().write(kWatchDateHasNewKey, value: true)
+        
+        if supported() {
+            guard let session = self.session else { return }
+            if session.isReachable == true {
+                session.sendMessage([kAppSentKey : kAppTellWatchQueryKey], replyHandler: nil, errorHandler: { (error) in
+                    debugPrint("error = \(error)")
+                })
+            }
+        }
     }
     
     @available(iOS 9.3, *)
@@ -56,7 +69,7 @@ class WatchManager: NSObject, WCSessionDelegate {
             
             switch messageValue {
                 
-                // 如果是请求新数据
+            // 如果是请求新数据
             case kWatchQueryTodayTaskKey:
                 // 如果没有新数据则直接返回， watch 会直接使用 cache data
                 let userdefault = AppUserDefault()
@@ -74,7 +87,7 @@ class WatchManager: NSObject, WCSessionDelegate {
                 userdefault.write(kWatchDateHasNewKey, value: false)
                 replyHandler([kAppSentKey: tasks])
                 
-                // 如果是设置任务完成的key
+            // 如果是设置任务完成的key
             case kWatchSetTaskFinishKey:
                 break
                 

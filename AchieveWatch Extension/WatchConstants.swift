@@ -10,6 +10,7 @@ import Foundation
 
 let kWatchSentKey = "watch.sent.key"
 let kAppSentKey = "app.sent.key"
+let kAppTellWatchQueryKey = "app.tell.watch.query.key"
 let kAppSentFinishTaskKey = "app.sent.finish.task.key"
 let kNoData = "app.no.data"
 

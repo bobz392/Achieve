@@ -384,7 +384,9 @@ class HomeViewController: BaseViewController {
         group.writeTasks(tasks)
         
         self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
-        AppUserDefault().write(kWatchDateHasNewKey, value: true)
+        if #available(iOS 9.0, *) {
+            WatchManager.shareManager.tellWatchQueryNewTask()
+        }
     }
     
     // MARK: - actions

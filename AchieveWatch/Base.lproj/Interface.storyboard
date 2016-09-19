@@ -22,6 +22,9 @@
                                             <button width="14" height="14" alignment="left" verticalAlignment="center" backgroundImage="watch_uncheck" id="wjM-j0-vQR">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="font" type="system" pointSize="1"/>
+                                                <connections>
+                                                    <action selector="setTaskFinish" destination="Xp6-cz-u2f" id="bS9-10-8Rq"/>
+                                                </connections>
                                             </button>
                                             <label height="39" alignment="left" verticalAlignment="center" text="dfsdfsdf sdf sdfd dsgfs gdfsg sdfg dsfg dsfg " id="x6p-dh-dEn">
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

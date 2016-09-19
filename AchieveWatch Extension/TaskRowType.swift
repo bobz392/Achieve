@@ -11,7 +11,13 @@ import WatchKit
 
 class TaskRowType: NSObject {
     
+    var taskUUID: String?
+    
     @IBOutlet var checkButton: WKInterfaceButton!
     @IBOutlet var taskLabel: WKInterfaceLabel!
+
+    @IBAction func setTaskFinish() {
+        
+    }
 
 }

@@ -34,19 +34,23 @@ class InterfaceController: WKInterfaceController {
             debugPrint("WCSession.default().isReachable = \(WCSession.default().isReachable)")
             
             if (session.isReachable == true) {
-                session.sendMessage([kWatchSentKey: kWatchQueryTodayTaskKey], replyHandler: { (reply) in
-                    DispatchQueue.main.async { [unowned self] in
-                        debugPrint("reply = \(reply)")
-                        guard let allTasks = reply[kAppSentKey] as? [[String]] else { return }
-                        self.configTableView(allTasks: allTasks)
-                    }
-                    }, errorHandler: { (error) in
-                        DispatchQueue.main.async {
-                            debugPrint("error = \(error)")
-                        }
-                })
+                self.queryTaskFromApp(session: session)
             }
         }
+    }
+
+    fileprivate func queryTaskFromApp(session: WCSession) {
+        session.sendMessage([kWatchSentKey: kWatchQueryTodayTaskKey], replyHandler: { (reply) in
+            DispatchQueue.main.async { [unowned self] in
+                debugPrint("reply = \(reply)")
+                guard let allTasks = reply[kAppSentKey] as? [[String]] else { return }
+                self.configTableView(allTasks: allTasks)
+            }
+            }, errorHandler: { (error) in
+                DispatchQueue.main.async {
+                    debugPrint("error = \(error)")
+                }
+        })
     }
     
     fileprivate func useCacheData() {
@@ -62,7 +66,7 @@ class InterfaceController: WKInterfaceController {
             guard let row: TaskRowType =
                 self.watchTable.rowController(at: i) as? TaskRowType else { break }
             row.taskLabel.setText(" \(allTasks[i][GroupTaskTitleIndex])")
-            
+            row.taskUUID = allTasks[i][GroupTaskUUIDIndex]
         }
         self.titleLabel.setText(GroupTask.showTaskCountTitle(taskCount: allTasks.count))
         
@@ -85,7 +89,7 @@ extension InterfaceController: WCSessionDelegate {
     @available(watchOSApplicationExtension 2.2, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         debugPrint("activationDidCompleteWith error = \(error)")
-        debugPrint("activationState = \(activationState)")
+        debugPrint("activationState = \(activationState.rawValue)")
     }
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
@@ -94,6 +98,17 @@ extension InterfaceController: WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         debugPrint("watch message = \(message)")
+        
+        dispatch_async_main { [unowned self] in
+            guard let messageValue = message[kAppSentKey] as? String else { return }
+            
+            switch messageValue {
+            case kAppTellWatchQueryKey:
+                self.queryTaskFromApp(session: session)
+                
+            default:
+                break
+            }
+        }   
     }
-    
 }

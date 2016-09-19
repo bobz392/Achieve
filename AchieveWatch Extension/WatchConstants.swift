@@ -15,3 +15,4 @@ let kNoData = "app.no.data"
 
 let kWatchQueryTodayTaskKey = "watch.today.tasks"
 let kWatchTaskCachesKey = "watch.task.cache.key"
+let kWatchSetTaskFinishKey = "watch.set.task.finish"

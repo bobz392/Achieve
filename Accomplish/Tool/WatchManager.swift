@@ -48,10 +48,6 @@ class WatchManager: NSObject, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         dispatch_async_main {
             // 如果没有最新数据
-            let userdefault = AppUserDefault()
-            if userdefault.readBool(kWatchDateHasNewKey) == false {
-                replyHandler([kAppSentKey: kNoData])
-            }
             
             guard let messageValue = message[kWatchSentKey] as? String else {
                 replyHandler([kAppSentKey: kNoData])
@@ -59,7 +55,17 @@ class WatchManager: NSObject, WCSessionDelegate {
             }
             
             switch messageValue {
+                
+                // 如果是请求新数据
             case kWatchQueryTodayTaskKey:
+                // 如果没有新数据则直接返回， watch 会直接使用 cache data
+                let userdefault = AppUserDefault()
+                if userdefault.readBool(kWatchDateHasNewKey) == false {
+                    replyHandler([kAppSentKey: kNoData])
+                    return
+                }
+                
+                // 如果有新数据，则发送新数据后标记为没有新数据
                 guard let group = GroupUserDefault() else {
                     replyHandler([kAppSentKey: kNoData])
                     return
@@ -68,9 +74,15 @@ class WatchManager: NSObject, WCSessionDelegate {
                 userdefault.write(kWatchDateHasNewKey, value: false)
                 replyHandler([kAppSentKey: tasks])
                 
+                // 如果是设置任务完成的key
+            case kWatchSetTaskFinishKey:
+                break
+                
             default:
                 replyHandler([kAppSentKey: kNoData])
             }
+            
+            
         }
     }
     

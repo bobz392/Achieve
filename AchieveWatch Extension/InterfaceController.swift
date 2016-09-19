@@ -38,19 +38,23 @@ class InterfaceController: WKInterfaceController {
             }
         }
     }
-
+    
     fileprivate func queryTaskFromApp(session: WCSession) {
-        session.sendMessage([kWatchSentKey: kWatchQueryTodayTaskKey], replyHandler: { (reply) in
-            DispatchQueue.main.async { [unowned self] in
-                debugPrint("reply = \(reply)")
-                guard let allTasks = reply[kAppSentKey] as? [[String]] else { return }
-                self.configTableView(allTasks: allTasks)
-            }
-            }, errorHandler: { (error) in
-                DispatchQueue.main.async {
-                    debugPrint("error = \(error)")
+        if session.isReachable {
+            session.sendMessage([kWatchQueryTodayTaskKey: ""], replyHandler: { (reply) in
+                DispatchQueue.main.async { [unowned self] in
+                    debugPrint("reply = \(reply)")
+                    guard let allTasks = reply[kAppSentTaskKey] as? [[String]] else { return }
+                    self.configTableView(allTasks: allTasks)
                 }
-        })
+                }, errorHandler: { (error) in
+                    DispatchQueue.main.async {
+                        debugPrint("error = \(error)")
+                    }
+            })
+        } else {
+            debugPrint("session cant reachable")
+        }
     }
     
     fileprivate func useCacheData() {
@@ -67,6 +71,7 @@ class InterfaceController: WKInterfaceController {
                 self.watchTable.rowController(at: i) as? TaskRowType else { break }
             row.taskLabel.setText(" \(allTasks[i][GroupTaskTitleIndex])")
             row.taskUUID = allTasks[i][GroupTaskUUIDIndex]
+            row.delegate = self
         }
         self.titleLabel.setText(GroupTask.showTaskCountTitle(taskCount: allTasks.count))
         
@@ -81,6 +86,34 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+}
+
+extension InterfaceController: WatchTaskRowDelegate {
+    func setTaskFinish(uuid: String) {
+        let session = WCSession.default()
+        
+        if session.isReachable {
+            session.sendMessage([kWatchSetTaskFinishKey: uuid], replyHandler: { (reply) in
+                DispatchQueue.main.async { [unowned self] in
+                    guard let finishTaskUUID = reply[kAppSetTaskFinishOkKey] as? String else { return }
+                    for i in 0..<self.watchTable.numberOfRows {
+                        guard let row = self.watchTable.rowController(at: i) as? TaskRowType
+                            else { continue }
+                        if row.taskUUID == finishTaskUUID {
+                            var set = IndexSet()
+                            set.insert(i)
+                            self.watchTable.removeRows(at: set)
+                            break
+                        }
+                    }
+                }
+            }) { (error) in
+                DispatchQueue.main.async {
+                    debugPrint(error)
+                }
+            }
+        }
     }
 }
 
@@ -100,15 +133,13 @@ extension InterfaceController: WCSessionDelegate {
         debugPrint("watch message = \(message)")
         
         dispatch_async_main { [unowned self] in
-            guard let messageValue = message[kAppSentKey] as? String else { return }
+            guard let _ = message[kAppTellWatchQueryKey] as? String else { return }
             
-            switch messageValue {
-            case kAppTellWatchQueryKey:
-                self.queryTaskFromApp(session: session)
-                
-            default:
-                break
-            }
-        }   
+            self.queryTaskFromApp(session: session)
+        }
     }
+}
+
+protocol WatchTaskRowDelegate {
+    func setTaskFinish(uuid: String)
 }

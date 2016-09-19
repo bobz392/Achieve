@@ -8,10 +8,13 @@
 
 import Foundation
 
-let kWatchSentKey = "watch.sent.key"
-let kAppSentKey = "app.sent.key"
+
+let kAppSentTaskKey = "app.sent.key"
 let kAppTellWatchQueryKey = "app.tell.watch.query.key"
 let kAppSentFinishTaskKey = "app.sent.finish.task.key"
+
+let kAppSetTaskFinishOkKey = "app.sent.task.ok"
+
 let kNoData = "app.no.data"
 
 let kWatchQueryTodayTaskKey = "watch.today.tasks"

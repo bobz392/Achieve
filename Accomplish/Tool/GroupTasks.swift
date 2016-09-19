@@ -20,4 +20,14 @@ struct GroupTask {
     let taskTitle: String
     var taskEstimateDate: String? = nil
     var taskFinishDate: String? = nil
+    
+    static func showTaskCountTitle(taskCount: Int) -> String {
+        if taskCount == 0 {
+            return String(format: Localized("noTaskToday"), taskCount)
+        } else if taskCount == 1 {
+            return String(format: Localized("taskToday"), taskCount)
+        } else {
+            return String(format: Localized("taskTodays"), taskCount)
+        }
+    }
 }

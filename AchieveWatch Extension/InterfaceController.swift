@@ -11,14 +11,15 @@ import Foundation
 import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
-
+    
     @IBOutlet var watchTable: WKInterfaceTable!
+    @IBOutlet var titleLabel: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-     
+        
     }
     
     override func willActivate() {
@@ -32,28 +33,41 @@ class InterfaceController: WKInterfaceController {
             
             debugPrint("WCSession.default().isReachable = \(WCSession.default().isReachable)")
             
-            session.sendMessage([WatchSentKey: WatchQueryTodayTaskKey], replyHandler: { (reply) in
-                
-                DispatchQueue.main.async {
-                    debugPrint("reply = \(reply)")
-                    guard let allTasks = reply[AppSentKey] as? [[String]] else { return }
-                    self.watchTable.setNumberOfRows(allTasks.count, withRowType: "taskRowType")
-                    for i in 0..<allTasks.count {
-                        guard let row: TaskRowType =
-                            self.watchTable.rowController(at: i) as? TaskRowType else { break }
-                        row.taskLabel.setText(" \(allTasks[i][GroupTaskTitleIndex])")
+            if (session.isReachable == true) {
+                session.sendMessage([kWatchSentKey: kWatchQueryTodayTaskKey], replyHandler: { (reply) in
+                    DispatchQueue.main.async { [unowned self] in
+                        debugPrint("reply = \(reply)")
+                        guard let allTasks = reply[kAppSentKey] as? [[String]] else { return }
+                        self.configTableView(allTasks: allTasks)
                     }
-
-                }
-                
-                }, errorHandler: { (error) in
-                    
-                    DispatchQueue.main.async {
-                        debugPrint("error = \(error)")
-                    }
-            })
+                    }, errorHandler: { (error) in
+                        DispatchQueue.main.async {
+                            debugPrint("error = \(error)")
+                        }
+                })
+            }
         }
+    }
     
+    fileprivate func useCacheData() {
+        guard let allTasks = UserDefaults.standard.array(forKey: kWatchTaskCachesKey)
+            as? [[String]] else { return }
+        
+        configTableView(allTasks: allTasks)
+    }
+    
+    fileprivate func configTableView(allTasks: [[String]]) {
+        self.watchTable.setNumberOfRows(allTasks.count, withRowType: "taskRowType")
+        for i in 0..<allTasks.count {
+            guard let row: TaskRowType =
+                self.watchTable.rowController(at: i) as? TaskRowType else { break }
+            row.taskLabel.setText(" \(allTasks[i][GroupTaskTitleIndex])")
+            
+        }
+        self.titleLabel.setText(GroupTask.showTaskCountTitle(taskCount: allTasks.count))
+        
+        UserDefaults.standard.set(allTasks, forKey: kWatchTaskCachesKey)
+        UserDefaults.standard.synchronize()
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
@@ -67,10 +81,6 @@ class InterfaceController: WKInterfaceController {
 }
 
 extension InterfaceController: WCSessionDelegate {
-    
-    fileprivate func sessionInitialize() {
-    
-    }
     
     @available(watchOSApplicationExtension 2.2, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

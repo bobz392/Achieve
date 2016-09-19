@@ -27,8 +27,12 @@ extension NSDate {
     }
     
     func createdFormatedDateString() -> String {
-        debugPrint("created formated date string = \(self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US")))")
-        return self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US"))
+        guard let formateDate = self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US")) else {
+            fatalError()
+        }
+        debugPrint("created formated date string = \(formateDate)")
+        
+        return formateDate
     }
     
     func toLocalDate() -> NSDate {

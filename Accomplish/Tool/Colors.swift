@@ -13,7 +13,7 @@ struct Colors {
     static var backgroundType: MainColorType {
         get {
             guard let t = self.type else {
-                let ud = UserDefault()
+                let ud = AppUserDefault()
                 let background = ud.readInt(kBackgroundKey)
                 self.type = background
                 return MainColorType(rawValue: background) ?? .greenSea
@@ -23,7 +23,7 @@ struct Colors {
         
         set (value) {
             self.type = value.rawValue
-            UserDefault().write(kBackgroundKey, value: value.rawValue)
+            AppUserDefault().write(kBackgroundKey, value: value.rawValue)
         }
     }
     

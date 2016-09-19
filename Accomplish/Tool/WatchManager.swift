@@ -19,6 +19,10 @@ class WatchManager: NSObject, WCSessionDelegate {
     override fileprivate init() {
         super.init()
         
+        self.activateSession()
+    }
+    
+    fileprivate func activateSession() {
         if WCSession.isSupported() {
             let session = WCSession.default()
             session.delegate = self
@@ -28,41 +32,50 @@ class WatchManager: NSObject, WCSessionDelegate {
         } else {
             debugPrint("Watch does not support WCSession")
         }
+        
+        
     }
     
-    class func supported() -> Bool {
+    func supported() -> Bool {
         return WCSession.isSupported()
     }
     
     @available(iOS 9.3, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
+        debugPrint("activationDidCompleteWith activationState = \(activationState.rawValue)")
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         dispatch_async_main {
-            guard let messageValue = message[WatchSentKey] as? String else {
-                replyHandler([AppSentKey: NoData])
+            // 如果没有最新数据
+            let userdefault = AppUserDefault()
+            if userdefault.readBool(kWatchDateHasNewKey) == false {
+                replyHandler([kAppSentKey: kNoData])
+            }
+            
+            guard let messageValue = message[kWatchSentKey] as? String else {
+                replyHandler([kAppSentKey: kNoData])
                 return
             }
             
             switch messageValue {
-            case WatchQueryTodayTaskKey:
+            case kWatchQueryTodayTaskKey:
                 guard let group = GroupUserDefault() else {
-                    replyHandler([AppSentKey: NoData])
+                    replyHandler([kAppSentKey: kNoData])
                     return
                 }
                 let tasks = group.allTaskArray()
-                replyHandler([AppSentKey: tasks])
+                userdefault.write(kWatchDateHasNewKey, value: false)
+                replyHandler([kAppSentKey: tasks])
                 
             default:
-                replyHandler([AppSentKey: NoData])
+                replyHandler([kAppSentKey: kNoData])
             }
         }
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        debugPrint(message)
+        debugPrint("didReceiveMessage = \(message)")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -74,15 +87,6 @@ class WatchManager: NSObject, WCSessionDelegate {
     }
     
     func sessionWatchStateDidChange(_ session: WCSession) {
-        if WCSession.isSupported() {
-            let session = WCSession.default()
-            session.delegate = self
-            session.activate()
-            
-            self.session = session
-        } else {
-            debugPrint("Watch does not support WCSession")
-        }
-        
+        self.activateSession()
     }
 }

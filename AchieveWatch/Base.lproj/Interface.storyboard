@@ -11,9 +11,12 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="AchieveWatch" customModuleProvider="target">
                     <items>
+                        <label alignment="left" text="Loading" id="93v-7t-n1W">
+                            <fontDescription key="font" type="system" pointSize="14"/>
+                        </label>
                         <table alignment="left" id="Ltq-tr-4rc">
                             <items>
-                                <tableRow identifier="taskRowType" id="Xp6-cz-u2f" customClass="TaskRowType" customModule="AchieveWatch_Extension">
+                                <tableRow identifier="taskRowType" selectable="NO" id="Xp6-cz-u2f" customClass="TaskRowType" customModule="AchieveWatch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="bAN-zt-cRY">
                                         <items>
                                             <button width="14" height="14" alignment="left" verticalAlignment="center" backgroundImage="watch_uncheck" id="wjM-j0-vQR">
@@ -35,6 +38,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="titleLabel" destination="93v-7t-n1W" id="aYG-Ks-hb8"/>
                         <outlet property="watchTable" destination="Ltq-tr-4rc" id="JhZ-IF-ECf"/>
                     </connections>
                 </controller>

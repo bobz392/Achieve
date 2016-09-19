@@ -58,7 +58,7 @@ class HomeViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         
-        isFullScreenSize = UserDefault().readBool(kIsFullScreenSizeKey)
+        isFullScreenSize = AppUserDefault().readBool(kIsFullScreenSizeKey)
         
         self.configMainUI()
         self.initializeControl()
@@ -296,7 +296,7 @@ class HomeViewController: BaseViewController {
                 self.handleUpdateTodayGroup()
                 
             case .Error(let error):
-                print(error)
+                debugPrint("finishToken realmNoticationToken error = \(error)")
                 break
             }
             })
@@ -321,7 +321,7 @@ class HomeViewController: BaseViewController {
                 }
                 
             case .Error(let error):
-                debugPrint(error)
+                debugPrint("runningToken realmNoticationToken error = \(error)")
                 break
             }
             
@@ -353,7 +353,7 @@ class HomeViewController: BaseViewController {
         self.realmNoticationToken()
         
         self.handleUpdateTodayGroup()
-        if !UserDefault().readBool(kCloseDueTodayKey) {
+        if !AppUserDefault().readBool(kCloseDueTodayKey) {
             self.handleMoveTaskToToday()
         }
     }
@@ -382,7 +382,9 @@ class HomeViewController: BaseViewController {
                 return
         }
         group.writeTasks(tasks)
-        wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
+        
+        self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
+        AppUserDefault().write(kWatchDateHasNewKey, value: true)
     }
     
     // MARK: - actions
@@ -458,7 +460,7 @@ class HomeViewController: BaseViewController {
         }
         
         configFullSizeButton(Colors())
-        UserDefault().write(kIsFullScreenSizeKey, value: isFullScreenSize)
+        AppUserDefault().write(kIsFullScreenSizeKey, value: isFullScreenSize)
         isFullScreenSize = !isFullScreenSize
     }
     

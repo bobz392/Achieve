@@ -14,8 +14,9 @@ let kWeekStartKey = "com.date.start"
 let kCloseDueTodayKey = "com.due.today"
 let kCloseHintKey = "com.close.hint"
 let kBackgroundKey = "com.background"
+let kWatchDateHasNewKey = "com.watch.date.is.new"
 
-struct UserDefault {
+struct AppUserDefault {
     let def = UserDefaults.standard
     
     func write(_ key: String, value: Any) {

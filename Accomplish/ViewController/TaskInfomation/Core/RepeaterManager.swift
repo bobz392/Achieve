@@ -13,7 +13,7 @@ struct RepeaterManager {
     // 检查最后一次检查时间，并创建重复task
     func isNewDay() -> Bool {
         // check last check is today or not
-        let userDefault = UserDefault()
+        let userDefault = AppUserDefault()
         let now = NSDate()
         
         guard let lastDateString = userDefault.readString(kLastFetchDateKey) else {

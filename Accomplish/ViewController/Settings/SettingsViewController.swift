@@ -161,7 +161,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.iconLabel.attributedText = icon.attributedString()
             cell.accessoryType = .none
             // todo
-            let ud = UserDefault()
+            let ud = AppUserDefault()
             if (indexPath as NSIndexPath).row == 1 {
                 let weekStart = ud.readInt(kWeekStartKey)
                 let weeks: DaysOfWeek
@@ -259,7 +259,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func handleOpenCloseCell(_ index: Int) {
-        let ud = UserDefault()
+        let ud = AppUserDefault()
         let key = index == 2 ? kCloseDueTodayKey : kCloseHintKey
         let closeDue = ud.readBool(key)
         ud.write(key, value: !closeDue)
@@ -269,7 +269,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func handleWeekOfDay() {
-        let ud = UserDefault()
+        let ud = AppUserDefault()
         let weekStart = ud.readInt(kWeekStartKey)
         let weeks: DaysOfWeek
         if let ws = DaysOfWeek(rawValue: weekStart) {

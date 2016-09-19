@@ -111,8 +111,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         if group.taskHasChanged() {
             let taskCount = self.allGroupTasks.count
-            self.infoLabel.text = String(format: Localized("taskTody"), taskCount)
-            
+            self.infoLabel.text = GroupTask.showTaskCountTitle(taskCount: taskCount)
             
             if taskCount > maxShowTaskCount {
                 self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(maxShowTaskCount) + bottomHeight)
@@ -153,13 +152,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func updateContent() {
         let taskCount = self.allGroupTasks.count
         
-        if taskCount == 0 {
-            self.infoLabel.text = String(format: Localized("noTaskToday"), taskCount)
-        } else if taskCount == 1 {
-            self.infoLabel.text = String(format: Localized("taskToday"), taskCount)
-        } else {
-            self.infoLabel.text = String(format: Localized("taskTodays"), taskCount)
-        }
+        self.infoLabel.text = GroupTask.showTaskCountTitle(taskCount: taskCount)
         
         if taskCount > maxShowTaskCount {
             self.preferredContentSize = CGSize(width: 0, height: TodayTableViewCell.rowHeight * CGFloat(maxShowTaskCount) + bottomHeight)

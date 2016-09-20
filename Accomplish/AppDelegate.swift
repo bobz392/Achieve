@@ -44,28 +44,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    // MRAK: - todo handle notify
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         debugPrint("didReceiveLocalNotification = \(notification)")
         application.applicationIconBadgeNumber -= 1
     }
     
-    fileprivate func register(_ application: UIApplication) {
-        let settings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
-        application.registerUserNotificationSettings(settings)
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
+        application.applicationIconBadgeNumber -= 1
         
-        //        let action = UIMutableUserNotificationAction()
-        //        action.identifier = "action"
-        //        action.title = "添加task"
-        //        action.activationMode = .Foreground
-        //        if #available(iOS 9.0, *) {
-        //            action.behavior = .TextInput
-        //        }
-        //        action.authenticationRequired = false
-        //        action.destructive = false
-        //
-        //        let catrgory = UIMutableUserNotificationCategory()
-        //        catrgory.identifier = "catrgory"
-        //        catrgory.setActions([action], forContext: .Default)
+        guard let uuid = notification.userInfo?[kNotifyUserInfoKey] as? String else {
+            return
+        }
+        
+        if identifier == kNotifyFinishAction {
+            guard let task = RealmManager.shareManager.queryTask(uuid) else {
+                return
+            }
+            
+            RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+        } else if identifier == kNotifyReschedulingAction {
+            UrlSchemeDispatcher().checkTaskDetail(uuid)
+        }
+    }
+    
+    fileprivate func register(_ application: UIApplication) {
+        let action = UIMutableUserNotificationAction()
+        action.identifier = kNotifyFinishAction
+        action.title = Localized("finishTask")
+        action.activationMode = .foreground
+        if #available(iOS 9.0, *) {
+            action.behavior = .default
+        }
+        action.isAuthenticationRequired = false
+        action.isDestructive = false
+        
+        let action2 = UIMutableUserNotificationAction()
+        action2.identifier = kNotifyReschedulingAction
+        action2.title = Localized("rescheduling")
+        action2.activationMode = .foreground
+        if #available(iOS 9.0, *) {
+            action.behavior = .default
+        }
+        action2.isAuthenticationRequired = false
+        action2.isDestructive = false
+        
+        let catrgory = UIMutableUserNotificationCategory()
+        catrgory.identifier = kNotificationCategory
+        catrgory.setActions([action, action2], for: .default)
+        
+        let settings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: [catrgory])
+        application.registerUserNotificationSettings(settings)
         
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     }
@@ -113,7 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        application.applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

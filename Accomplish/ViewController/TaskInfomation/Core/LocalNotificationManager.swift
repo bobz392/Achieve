@@ -8,8 +8,13 @@
 
 import Foundation
 
+let kNotifyFinishAction = "notify.finish"
+let kNotifyReschedulingAction = "notify.rescheduling"
+let kNotificationCategory = "notify.category"
+let kNotifyUserInfoKey = "com.zhou.achieve.task"
+
 struct LocalNotificationManager {
-    let notifyKey = "com.zhou.achieve.task"
+    
     let repeaterKey = "com.zhou.achieve.repeater"
     
     func notifyWithUUID(_ taskUUID: String) -> [UILocalNotification] {
@@ -17,7 +22,7 @@ struct LocalNotificationManager {
         guard let notifys = notifications else { return [] }
         return notifys.filter { (n) -> Bool in
             guard let userInfo = n.userInfo else { return false }
-            guard let name = userInfo[notifyKey] as? String else { return false }
+            guard let name = userInfo[kNotifyUserInfoKey] as? String else { return false }
             return name == taskUUID
         }
     }
@@ -113,10 +118,11 @@ struct LocalNotificationManager {
         notify.fireDate = notifyDate.clearSecond() as Date
         notify.soundName = UILocalNotificationDefaultSoundName
         notify.alertBody = task.getNormalDisplayTitle()
+        notify.category = kNotificationCategory
         notify.applicationIconBadgeNumber =
             UIApplication.shared.applicationIconBadgeNumber + 1
         notify.timeZone = TimeZone.current
-        let info = [notifyKey: task.uuid]
+        let info = [kNotifyUserInfoKey: task.uuid]
         notify.userInfo = info
         
         UIApplication.shared.scheduleLocalNotification(notify)
@@ -135,10 +141,11 @@ struct LocalNotificationManager {
                 notify.soundName = UILocalNotificationDefaultSoundName
                 notify.alertBody = task.getNormalDisplayTitle()
                 notify.timeZone = TimeZone.current
+                notify.category = kNotificationCategory
                 notify.repeatInterval = .weekOfYear
                 notify.applicationIconBadgeNumber =
                     UIApplication.shared.applicationIconBadgeNumber + 1
-                let info = [notifyKey: task.uuid]
+                let info = [kNotifyUserInfoKey: task.uuid]
                 notify.userInfo = info
                 
                 UIApplication.shared.scheduleLocalNotification(notify)

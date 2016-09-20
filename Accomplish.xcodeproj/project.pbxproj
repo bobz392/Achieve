@@ -392,6 +392,8 @@
 		C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		C7145AC51D90506D000FAC18 /* WatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchColors.swift; sourceTree = "<group>"; };
+		C7145ACD1D91208F000FAC18 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap"; sourceTree = "<group>"; };
 		C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap"; sourceTree = "<group>"; };
 		C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap"; sourceTree = "<group>"; };
@@ -637,6 +639,8 @@
 				C77194A81D6FF17400437560 /* MessageUI.framework */,
 				C77194A61D6FF16700437560 /* AddressBook.framework */,
 				C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */,
+				C7145ACD1D91208F000FAC18 /* UserNotifications.framework */,
+				C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1744,6 +1748,7 @@
 		C7860E501D6C23FF000281FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1773,6 +1778,7 @@
 		C7860E511D6C23FF000281FA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

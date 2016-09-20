@@ -20,6 +20,8 @@
 "needABPermission"="需要通讯录权限";
 
 "newTask"="添加新任务";
+"rescheduling"="重定进度";
+"finishTask"="完成任务";
 "cancel"="取消";
 "deleteTask"="删除任务";
 "deleteReminder"="删除提醒";

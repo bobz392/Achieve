@@ -20,6 +20,8 @@
 "needABPermission"="Need permission to access Address Book";
 
 "newTask"="Add task";
+"rescheduling"="Rescheduling";
+"finishTask"="Finish Task";
 "cancel"="Cancel";
 "deleteTask"="Delete Task";
 "deleteReminder"="Delete Reminder";

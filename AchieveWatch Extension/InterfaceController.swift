@@ -15,6 +15,8 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var watchTable: WKInterfaceTable!
     @IBOutlet var titleLabel: WKInterfaceLabel!
     
+    var alltasks: [[String]]? = nil
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -48,6 +50,7 @@ class InterfaceController: WKInterfaceController {
                 DispatchQueue.main.async { [unowned self] in
                     debugPrint("reply = \(reply)")
                     guard let allTasks = reply[kAppSentTaskKey] as? [[String]] else { return }
+                    self.alltasks = allTasks
                     self.configTableView(allTasks: allTasks)
                 }
                 }, errorHandler: { (error) in
@@ -84,14 +87,15 @@ class InterfaceController: WKInterfaceController {
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         debugPrint(rowIndex)
-        
-        self.pushController(withName: "TaskInterfaceController", context: nil)
+        guard let task = self.alltasks?[rowIndex] else { return }
+        self.pushController(withName: "taskInterfaceController", context: task)
     }
     
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
+    ///    // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+
 }
 
 extension InterfaceController: WatchTaskRowDelegate {

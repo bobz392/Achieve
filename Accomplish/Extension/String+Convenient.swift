@@ -27,6 +27,14 @@ extension String {
         
         return d as NSDate
     }
+    
+
+    func optionalDateFromString(_ format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        
+        return dateFormatter.date(from: self)
+    }
 }
 
 // counting

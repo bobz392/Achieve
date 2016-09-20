@@ -56,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="220" y="362"/>
         </scene>
-        <!--Task Interface Controller-->
+        <!--taskInterfaceController-->
         <scene sceneID="gob-bF-Wec">
             <objects>
-                <controller id="WYF-FZ-7ew" customClass="TaskInterfaceController" customModule="AchieveWatch_Extension">
+                <controller identifier="taskInterfaceController" id="WYF-FZ-7ew" customClass="TaskInterfaceController" customModule="AchieveWatch_Extension">
                     <items>
                         <group width="1" alignment="left" id="z4X-mk-4Pn">
                             <items>
@@ -67,12 +67,16 @@
                                     <fontDescription key="font" type="system" pointSize="14"/>
                                 </label>
                             </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="15"/>
                         </group>
                         <group width="1" alignment="left" layout="vertical" id="GAk-IB-gvW"/>
                     </items>
+                    <connections>
+                        <outlet property="fullTitleLabel" destination="biU-Lj-mhy" id="nb4-RU-FUW"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="455" y="362"/>
+            <point key="canvasLocation" x="566" y="362"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

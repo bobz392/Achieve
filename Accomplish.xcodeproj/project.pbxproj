@@ -64,6 +64,7 @@
 		C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */; };
 		C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */; };
 		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
+		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C715A6B11D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */; };
 		C715A6B21D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */; };
 		C715A6B31D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */; };
@@ -1589,6 +1590,7 @@
 				C70612631D8D67F400E37CE6 /* DTError.m in Sources */,
 				C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */,
 				C7E2D9571D8F05000080D283 /* WatchConstants.swift in Sources */,
+				C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */,
 				C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */,
 				C70612641D8D67F700E37CE6 /* DTTimePeriod.m in Sources */,
 				C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */,

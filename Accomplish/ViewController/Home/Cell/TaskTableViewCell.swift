@@ -165,9 +165,9 @@ class TaskTableViewCell: UITableViewCell {
             self.dingSound()
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
             
-            if #available(iOS 9.0, *) {
-                WatchManager.shareManager.tellWatchQueryNewTask()
-            }
+//            if #available(iOS 9.0, *) {
+//                WatchManager.shareManager.tellWatchQueryNewTask()
+//            }
         }
     }
     

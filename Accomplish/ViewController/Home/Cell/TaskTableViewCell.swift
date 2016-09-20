@@ -136,7 +136,7 @@ class TaskTableViewCell: UITableViewCell {
             self.taskSettingButton.isHidden = true
         }
         
-        self.overTimeLabel.isHidden = true
+//        self.overTimeLabel.isHidden = true
         if let estimateDate = task.estimateDate {
             if estimateDate.isEarlierThan(Date()) {
                 let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
@@ -145,7 +145,11 @@ class TaskTableViewCell: UITableViewCell {
                 self.overTimeLabel.layer.borderColor = color.cgColor
                 self.overTimeLabel.layer.borderWidth = 1
                 self.overTimeLabel.isHidden = false
+            } else {
+                self.overTimeLabel.isHidden = true
             }
+        } else {
+            self.overTimeLabel.isHidden = true
         }
     }
     

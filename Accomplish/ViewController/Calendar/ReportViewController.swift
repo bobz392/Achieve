@@ -18,6 +18,7 @@ class ReportViewController: BaseViewController {
     
     fileprivate let checkInDate: NSDate
     fileprivate var taskList: Results<Task>? = nil
+    fileprivate var cellHeightCache = Array<CGFloat>()
     
     init(checkInDate: NSDate) {
         self.checkInDate = checkInDate
@@ -36,7 +37,9 @@ class ReportViewController: BaseViewController {
         self.configMainUI()
         self.initializeControl()
         
-        self.taskList = RealmManager.shareManager.queryTaskList(self.checkInDate)
+        let tasks = RealmManager.shareManager.queryTaskList(self.checkInDate)
+        self.taskList = tasks
+        self.cellHeightCache = Array(repeating: 0, count: tasks.count)
     }
     
     override func didReceiveMemoryWarning() {
@@ -154,12 +157,18 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return ScheduleTableViewCell.rowHeight
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId) as! ScheduleTableViewCell
-        
-        if let task = self.taskList?[indexPath.row] {
-            cell.config(task)
+        //        return ScheduleTableViewCell.rowHeight
+        if self.cellHeightCache[indexPath.row] != 0 {
+            return self.cellHeightCache[indexPath.row]
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId) as! ScheduleTableViewCell
+            
+            if let task = self.taskList?[indexPath.row] {
+                cell.config(task)
+            }
+            let height = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            self.cellHeightCache[indexPath.row] = height
+            return height
         }
-        return cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
     }
 }

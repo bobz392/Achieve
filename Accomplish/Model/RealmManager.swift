@@ -12,10 +12,14 @@ import RealmSwift
 class RealmManager {
     
     typealias RealmBlock = () -> Void
-    
     internal let realm = try! Realm()
     
     static let shareManager = RealmManager()
+    
+    static func configMainRealm() {
+        let config = Realm.Configuration()
+        Realm.Configuration.defaultConfiguration = config
+    }
     
     func writeObject(_ object: Object) {
         try! realm.write {

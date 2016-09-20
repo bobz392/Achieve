@@ -235,11 +235,15 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         guard taskToDo.characters.count > 0 else {
             return
         }
-        let priority = prioritySegmental.selectedSegmentIndex
-        task.createDefaultTask(taskToDo, priority:  priority)
+        let priority = self.prioritySegmental.selectedSegmentIndex
+        self.task.createDefaultTask(taskToDo, priority:  priority)
         
-        saveSubtasks()
-        RealmManager.shareManager.writeObject(task)
+        self.saveSubtasks()
+        RealmManager.shareManager.writeObject(self.task)
+        
+        if #available(iOS 9.0, *) {
+            SpotlightManager().addTaskToIndex(task: self.task)
+        }
         
         self.cancelAction()
     }
@@ -247,9 +251,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     fileprivate func saveSubtasks() {
         guard let subtaskString = self.subtaskString else { return }
         let subTasks = subtaskString.components(separatedBy: "\n")
-        task.subTaskCount = subTasks.count
+        self.task.subTaskCount = subTasks.count
         let now = NSDate()
-        task.createdDate = now
+        self.task.createdDate = now
         
         let tasks = subTasks.enumerated().flatMap({ (index: Int, sub: String) -> Subtask? in
             guard sub.characters.count > 0 else { return nil }
@@ -262,6 +266,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             return subtask
             
         })
+        
         RealmManager.shareManager.writeObjects(tasks)
     }
     

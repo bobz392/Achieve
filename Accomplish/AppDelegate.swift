@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
 import Fabric
 import Crashlytics
-import WatchConnectivity
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
-        self.configRealm()
+        RealmManager.configMainRealm()
         self.register(application)
         
         if #available(iOS 9.0, *) {
@@ -97,11 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-    }
-    
-    fileprivate func configRealm() {
-        let config = Realm.Configuration()
-        Realm.Configuration.defaultConfiguration = config
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -184,5 +178,23 @@ extension AppDelegate {
         get {
             return WatchManager.shareManager
         }
+    }
+}
+
+// MARK: - handoff delegate
+extension AppDelegate {
+    
+    @objc(application:continueUserActivity:restorationHandler:) func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if #available(iOS 9.0, *) {
+            if userActivity.activityType == CSSearchableItemActionType,
+                let uuid = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                UrlSchemeDispatcher().checkTaskDetail(uuid)
+            }
+        }
+        
+        return true
+    }
+    func application(_ application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
+        return false
     }
 }

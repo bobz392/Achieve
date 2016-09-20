@@ -48,7 +48,7 @@ class TaskTableViewCell: UITableViewCell {
         
         self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), for: .touchUpInside)
-    
+        
         self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
         self.overTimeLabel.text = Localized("overTime")
@@ -136,7 +136,7 @@ class TaskTableViewCell: UITableViewCell {
             self.taskSettingButton.isHidden = true
         }
         
-//        self.overTimeLabel.isHidden = true
+        //        self.overTimeLabel.isHidden = true
         if let estimateDate = task.estimateDate {
             if estimateDate.isEarlierThan(Date()) {
                 let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
@@ -173,10 +173,16 @@ class TaskTableViewCell: UITableViewCell {
         } else {
             self.dingSound()
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
-            
-//            if #available(iOS 9.0, *) {
+        }
+        
+        if #available(iOS 9.0, *) {
+            let manager = SpotlightManager()
+            if task.status == kTaskFinish {
+                manager.removeFromIndex(task: task)
+            } else {
+                manager.addTaskToIndex(task: task)
+            }
 //                WatchManager.shareManager.tellWatchQueryNewTask()
-//            }
         }
     }
     

@@ -355,6 +355,10 @@ class HomeViewController: BaseViewController {
         if !AppUserDefault().readBool(kCloseDueTodayKey) {
             self.handleMoveTaskToToday()
         }
+        
+        if #available(iOS 9.0, *) {
+            SpotlightManager().addDateTaskToIndex()
+        }
     }
     
     fileprivate func handleMoveTaskToToday() {
@@ -570,6 +574,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
             RealmManager.shareManager.deleteTask(task)
+            
+            if #available(iOS 9.0, *) {
+                SpotlightManager().removeFromIndex(task: task)
+            }
         }
         alert.addAction(deleteAction)
         

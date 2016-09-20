@@ -26,6 +26,9 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
+        self.titleLabel.setText("Achieve")
+        self.titleLabel.setTextColor(WatchColors().titleColor)
+        
         if WCSession.isSupported() {
             let session = WCSession.default()
             session.delegate = self
@@ -69,7 +72,7 @@ class InterfaceController: WKInterfaceController {
         for i in 0..<allTasks.count {
             guard let row: TaskRowType =
                 self.watchTable.rowController(at: i) as? TaskRowType else { break }
-            row.taskLabel.setText(" \(allTasks[i][GroupTaskTitleIndex])")
+            row.taskLabel.setText(allTasks[i][GroupTaskTitleIndex])
             row.taskUUID = allTasks[i][GroupTaskUUIDIndex]
             row.delegate = self
         }
@@ -81,6 +84,8 @@ class InterfaceController: WKInterfaceController {
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         debugPrint(rowIndex)
+        
+        self.pushController(withName: "TaskInterfaceController", context: nil)
     }
     
     override func didDeactivate() {
@@ -104,6 +109,10 @@ extension InterfaceController: WatchTaskRowDelegate {
                             var set = IndexSet()
                             set.insert(i)
                             self.watchTable.removeRows(at: set)
+                            
+                            self.titleLabel.setText(
+                                GroupTask.showTaskCountTitle(taskCount: self.watchTable.numberOfRows)
+                            )
                             break
                         }
                     }

@@ -16,20 +16,28 @@
                         </label>
                         <table alignment="left" id="Ltq-tr-4rc">
                             <items>
-                                <tableRow identifier="taskRowType" selectable="NO" id="Xp6-cz-u2f" customClass="TaskRowType" customModule="AchieveWatch_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="bAN-zt-cRY">
+                                <tableRow identifier="taskRowType" id="Xp6-cz-u2f" customClass="TaskRowType" customModule="AchieveWatch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="bAN-zt-cRY">
                                         <items>
-                                            <button width="18" height="18" alignment="left" verticalAlignment="center" backgroundImage="watch_uncheck" id="wjM-j0-vQR">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="font" type="system" pointSize="1"/>
-                                                <connections>
-                                                    <action selector="setTaskFinish" destination="Xp6-cz-u2f" id="bS9-10-8Rq"/>
-                                                </connections>
-                                            </button>
-                                            <label height="39" alignment="left" verticalAlignment="center" text="dfsdfsdf sdf sdfd dsgfs gdfsg sdfg dsfg dsfg " id="x6p-dh-dEn">
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="font" type="system" pointSize="14"/>
-                                            </label>
+                                            <group width="30" height="30" alignment="left" id="Bnw-yK-Jht">
+                                                <items>
+                                                    <button width="18" height="18" alignment="center" verticalAlignment="center" backgroundImage="watch_uncheck" id="wjM-j0-vQR">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="font" type="system" pointSize="1"/>
+                                                        <connections>
+                                                            <action selector="setTaskFinish" destination="Xp6-cz-u2f" id="bS9-10-8Rq"/>
+                                                        </connections>
+                                                    </button>
+                                                </items>
+                                            </group>
+                                            <group height="1" alignment="left" id="E4p-vP-lTW">
+                                                <items>
+                                                    <label width="0.0" height="0.75" alignment="left" verticalAlignment="center" text="s" numberOfLines="0" id="x6p-dh-dEn">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="font" type="system" pointSize="14"/>
+                                                    </label>
+                                                </items>
+                                            </group>
                                         </items>
                                     </group>
                                     <connections>
@@ -46,14 +54,32 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="362"/>
+        </scene>
+        <!--Task Interface Controller-->
+        <scene sceneID="gob-bF-Wec">
+            <objects>
+                <controller id="WYF-FZ-7ew" customClass="TaskInterfaceController" customModule="AchieveWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="z4X-mk-4Pn">
+                            <items>
+                                <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="biU-Lj-mhy">
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" id="GAk-IB-gvW"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="455" y="362"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                        <label width="1" alignment="left" text="Alert 撒大声地Labelasdasdasda" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>

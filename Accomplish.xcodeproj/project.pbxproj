@@ -62,6 +62,8 @@
 		C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */; };
 		C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */; };
 		C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */; };
+		C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */; };
+		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
 		C715A6B11D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */; };
 		C715A6B21D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */; };
 		C715A6B31D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */; };
@@ -140,6 +142,7 @@
 		C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7821ED41D7C076B0056623D /* CalendarViewController.xib */; };
 		C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
+		C78C47CB1D904161009CE56B /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
 		C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */; };
 		C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */; };
@@ -386,6 +389,8 @@
 		C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
 		C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
 		C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
+		C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
+		C7145AC51D90506D000FAC18 /* WatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchColors.swift; sourceTree = "<group>"; };
 		C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap"; sourceTree = "<group>"; };
 		C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap"; sourceTree = "<group>"; };
 		C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap"; sourceTree = "<group>"; };
@@ -1099,8 +1104,10 @@
 				C7E2D9561D8F05000080D283 /* WatchConstants.swift */,
 				C706125B1D8D258F00E37CE6 /* TaskRowType.swift */,
 				C7E1B0571D8C7A9600554B11 /* InterfaceController.swift */,
+				C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */,
 				C7E1B0591D8C7A9600554B11 /* ExtensionDelegate.swift */,
 				C7E1B05B1D8C7A9600554B11 /* NotificationController.swift */,
+				C7145AC51D90506D000FAC18 /* WatchColors.swift */,
 				C70612531D8D21C400E37CE6 /* AccomplishWatch-Bridging-Header.h */,
 				C7E1B05F1D8C7A9600554B11 /* Info.plist */,
 				C7E1B0551D8C7A9600554B11 /* Supporting Files */,
@@ -1370,6 +1377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */,
+				C78C47CB1D904161009CE56B /* WatchAssets.xcassets in Resources */,
 				C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1575,11 +1583,13 @@
 				C70612581D8D21DB00E37CE6 /* MMWormholeSessionContextTransiting.m in Sources */,
 				C70612661D8D67FB00E37CE6 /* DTTimePeriodCollection.m in Sources */,
 				C70612541D8D21DB00E37CE6 /* MMWormhole.m in Sources */,
+				C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */,
 				C706125E1D8D67B700E37CE6 /* NSDate+Convenient.swift in Sources */,
 				C70612621D8D67F400E37CE6 /* DTConstants.m in Sources */,
 				C70612631D8D67F400E37CE6 /* DTError.m in Sources */,
 				C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */,
 				C7E2D9571D8F05000080D283 /* WatchConstants.swift in Sources */,
+				C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */,
 				C70612641D8D67F700E37CE6 /* DTTimePeriod.m in Sources */,
 				C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				C706125A1D8D21DB00E37CE6 /* MMWormholeSessionMessageTransiting.m in Sources */,

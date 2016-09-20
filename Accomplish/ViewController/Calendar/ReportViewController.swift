@@ -149,7 +149,17 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return ScheduleTableViewCell.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return ScheduleTableViewCell.rowHeight
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId) as! ScheduleTableViewCell
+        
+        if let task = self.taskList?[indexPath.row] {
+            cell.config(task)
+        }
+        return cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
     }
 }

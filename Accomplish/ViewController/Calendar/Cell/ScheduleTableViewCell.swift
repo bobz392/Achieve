@@ -13,7 +13,7 @@ class ScheduleTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
     static let reuseId = "scheduleTableViewCell"
-    static let rowHeight: CGFloat = 65
+    static let rowHeight: CGFloat = 60
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
@@ -38,6 +38,8 @@ class ScheduleTableViewCell: UITableViewCell {
         self.createdTimeLabel.textColor = colors.cloudColor
         self.amLabel.textColor = colors.cloudColor
         self.completedLabel.textColor = colors.cloudColor
+        
+        self.tasksLabel.preferredMaxLayoutWidth = screenBounds.width - 101
     }
     
     func setTop(_ isTop: Bool) {
@@ -45,7 +47,7 @@ class ScheduleTableViewCell: UITableViewCell {
     }
     
     func setBottom(_ isBottom: Bool) {
-        self.lineViewBottomConstraint.constant = isBottom ? ScheduleTableViewCell.rowHeight - 10 : 0
+        self.lineViewBottomConstraint.constant = isBottom ? self.contentView.frame.height - 10 : 0
     }
     
     func config(_ task: Task) {

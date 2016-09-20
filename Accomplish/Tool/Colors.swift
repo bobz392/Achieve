@@ -68,7 +68,7 @@ enum MainColorType: Int {
         case .belizeHole:
             return UIColor(red:0.16, green:0.50, blue:0.73, alpha:1.00)
         case .redWine:
-            return UIColor(red:0.67, green:0.16, blue:0.18, alpha:1.00)
+            return UIColor(red:0.86, green:0.27, blue:0.33, alpha:1.00)
         case .wetAsphalt:
             return UIColor(red:0.20, green:0.29, blue:0.37, alpha:1.00)
         case .teal:
@@ -89,7 +89,7 @@ enum MainColorType: Int {
         case .belizeHole:
             return UIColor(red:0.16, green:0.50, blue:0.73, alpha:0.3)
         case .redWine:
-            return UIColor(red:0.67, green:0.16, blue:0.18, alpha:0.3)
+            return UIColor(red:0.86, green:0.27, blue:0.33, alpha:0.4)
         case .wetAsphalt:
             return UIColor(red:0.20, green:0.29, blue:0.37, alpha:0.3)
         case .teal:

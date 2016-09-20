@@ -26,7 +26,7 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        self.titleLabel.setText("Achieve")
+        self.setTitle("Achieve")
         self.titleLabel.setTextColor(WatchColors().titleColor)
         
         if WCSession.isSupported() {

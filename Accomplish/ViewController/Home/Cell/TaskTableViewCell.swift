@@ -24,6 +24,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var overTimeLabel: UILabel!
+    @IBOutlet weak var settingWidthConstraint: NSLayoutConstraint!
     
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
@@ -47,9 +48,10 @@ class TaskTableViewCell: UITableViewCell {
         
         self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), for: .touchUpInside)
+    
+        self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
         self.overTimeLabel.text = Localized("overTime")
-        self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -102,12 +104,13 @@ class TaskTableViewCell: UITableViewCell {
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
             self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-square-o",
                                                    color: colors.mainGreenColor, status: .normal)
+            self.settingWidthConstraint.constant = 35
             self.taskSettingButton.isHidden = false
             
             if let create = task.createdDate {
                 let now = Date()
-                if (create as NSDate).isEarlierThan(now) {
-                    self.taskDateLabel.text = (create as NSDate).timeAgo(since: now)
+                if create.isEarlierThan(now) {
+                    self.taskDateLabel.text = create.timeAgo(since: now)
                 } else {
                     self.taskDateLabel.text = create.timeDateString()
                 }
@@ -120,6 +123,7 @@ class TaskTableViewCell: UITableViewCell {
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
+            self.settingWidthConstraint.constant = 10
             self.taskSettingButton.isHidden = true
             
         default:
@@ -128,18 +132,19 @@ class TaskTableViewCell: UITableViewCell {
                                                    color: colors.mainGreenColor, status: .normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor
             
+            self.settingWidthConstraint.constant = 10
             self.taskSettingButton.isHidden = true
         }
         
         self.overTimeLabel.isHidden = true
         if let estimateDate = task.estimateDate {
-            if (estimateDate as NSDate).isEarlierThan(Date()) {
-                self.overTimeLabel.isHidden = false
-                
-                self.overTimeLabel.textColor = colors.mainGreenColor
+            if estimateDate.isEarlierThan(Date()) {
+                let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
+                self.overTimeLabel.textColor = color
                 self.overTimeLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
-                self.overTimeLabel.layer.borderColor = colors.mainGreenColor.cgColor
+                self.overTimeLabel.layer.borderColor = color.cgColor
                 self.overTimeLabel.layer.borderWidth = 1
+                self.overTimeLabel.isHidden = false
             }
         }
     }

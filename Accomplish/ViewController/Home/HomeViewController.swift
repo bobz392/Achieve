@@ -83,7 +83,6 @@ class HomeViewController: BaseViewController {
         self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRow(at: indexPath, animated: true)
-        self.taskTableView.reloadRows(at: [indexPath], with: .automatic)
         self.selectedIndex = nil
     }
     

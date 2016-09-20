@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="64.5"/>
+                <frame key="frameInset" width="320" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQw-Bj-5fl">
@@ -53,7 +53,7 @@
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <state key="normal" title="bob"/>
                     </button>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="over time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Ed-xfX">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Ed-xfX">
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="OeG-U5-eGV"/>
                         </constraints>
@@ -94,6 +94,7 @@
             <connections>
                 <outlet property="overTimeLabel" destination="Pvh-Ed-xfX" id="89F-gm-GmQ"/>
                 <outlet property="priorityView" destination="nRC-r3-d8A" id="4q3-8l-HWg"/>
+                <outlet property="settingWidthConstraint" destination="aDW-of-jNN" id="R5Z-OO-eIa"/>
                 <outlet property="taskDateLabel" destination="j4a-ig-DCb" id="tdA-3a-lzh"/>
                 <outlet property="taskInfoButton" destination="TnC-Re-QZp" id="fui-Az-tQy"/>
                 <outlet property="taskSettingButton" destination="ZQw-Bj-5fl" id="3Dn-3w-Ghk"/>

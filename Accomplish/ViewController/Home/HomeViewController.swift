@@ -64,9 +64,7 @@ class HomeViewController: BaseViewController {
         self.initializeControl()
         self.configMainButton()
         
-        self.finishTasks = RealmManager.shareManager.queryTodayTaskList(finished: true)
-        self.runningTasks = RealmManager.shareManager.queryTodayTaskList(finished: false)
-        self.realmNoticationToken()
+        self.queryTodayTask()
         self.addNotification()
         
         self.initTimer()
@@ -279,7 +277,7 @@ class HomeViewController: BaseViewController {
         self.calendarButton.layer.cornerRadius = 16
         self.tagButton.layer.cornerRadius = 16
         
-        doSwitchScreen(false)
+        self.doSwitchScreen(false)
     }
     
     fileprivate func realmNoticationToken() {
@@ -331,35 +329,44 @@ class HomeViewController: BaseViewController {
     fileprivate func handleUpdate(_ deletions: [Int], insertions: [Int], modifications: [Int]) {
         self.taskTableView.beginUpdates()
         if insertions.count > 0 {
-            self.taskTableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+            self.taskTableView
+                .insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         
         if modifications.count > 0 {
-            self.taskTableView.reloadRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+            self.taskTableView
+                .reloadRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         
         if deletions.count > 0 {
-            self.taskTableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+            self.taskTableView
+                .deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         self.taskTableView.endUpdates()
     }
     
     // 当新的一天到来的时候调用， 来处理新的数据
-    // TODO - handle due today
+    // handle due today
     func handleNewDay() {
-        let shareManager = RealmManager.shareManager
-        self.finishTasks = shareManager.queryTodayTaskList(finished: true)
-        self.runningTasks = shareManager.queryTodayTaskList(finished: false)
-        self.realmNoticationToken()
-        
-        self.handleUpdateTodayGroup()
+        self.queryTodayTask()
         if !AppUserDefault().readBool(kCloseDueTodayKey) {
             self.handleMoveTaskToToday()
         }
         
+        self.handleUpdateTodayGroup()
+        
         if #available(iOS 9.0, *) {
             SpotlightManager().addDateTaskToIndex()
         }
+    }
+    
+    fileprivate func queryTodayTask(tagUUID: String? = nil) {
+        let shareManager = RealmManager.shareManager
+        
+        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kCurrentTagUUIDKey)
+        self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
+        self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
+        self.realmNoticationToken()
     }
     
     fileprivate func handleMoveTaskToToday() {
@@ -416,6 +423,7 @@ class HomeViewController: BaseViewController {
     
     func tagAction() {
         let tagVC = TagViewController()
+        tagVC.delegate = self
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(tagVC, animated: true)
@@ -576,11 +584,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
-            RealmManager.shareManager.deleteTask(task)
-            
+
             if #available(iOS 9.0, *) {
                 SpotlightManager().removeFromIndex(task: task)
             }
+            
+            RealmManager.shareManager.deleteTask(task)
         }
         alert.addAction(deleteAction)
         
@@ -598,6 +607,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - switch tag delegate
+extension HomeViewController: SwitchTagDelegate {
+    func switchTagTo(tag: Tag?) {
+        self.queryTodayTask(tagUUID: tag?.tagUUID)
+//        self.taskTableView.reloadData()
     }
 }
 

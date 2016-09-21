@@ -99,7 +99,7 @@ struct RepeaterManager {
         newTask.notifyDate = task.notifyDate
         newTask.subTaskCount = task.subTaskCount
         newTask.status = kTaskRunning
-        newTask.tag = task.tag
+        newTask.tagUUID = task.tagUUID
         newTask.taskNote = task.taskNote
         newTask.taskType = task.taskType
         newTask.trigger = nil

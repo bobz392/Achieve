@@ -71,7 +71,7 @@ class TaskDateTableViewCell: UITableViewCell {
             
         case TaskDetailType.tag:
             RealmManager.shareManager.updateObject({ 
-                task.tag = nil
+                task.tagUUID = nil
             })
             
         default:
@@ -170,7 +170,7 @@ class TaskDateTableViewCell: UITableViewCell {
         case TaskTagIcon:
             let hasTag: Bool
             // MARK: -- to do
-            if let tagUUID = task.tag {
+            if let tagUUID = task.tagUUID {
                 // 检查 tag 是否还在，如果不在则删除 task 的 tag
                 if let tag = RealmManager.shareManager.queryTag(usingName: false, query: tagUUID) {
                     hasTag = true
@@ -179,7 +179,7 @@ class TaskDateTableViewCell: UITableViewCell {
                     hasTag = false
                     self.infoLabel.text = Localized("noTag")
                     RealmManager.shareManager.updateObject({ 
-                        self.task?.tag = nil
+                        self.task?.tagUUID = nil
                     })
                 }
             } else {

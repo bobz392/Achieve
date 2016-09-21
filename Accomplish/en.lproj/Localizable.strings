@@ -45,6 +45,7 @@
 "setRepeat"="Set repeat";
 "setTag"="Set tag";
 "noneTag"="None";
+"allTask"="All tasks";
 "writeNote"="write something...";
 
 "high"="High";
@@ -76,6 +77,7 @@
 "tag"="Tag ";
 "newTag"="Creat Tag";
 "tagToday"="(%d task)";
+"currentTag"="  current  ";
 "noTag"="Add tag";
 "tagExist"="Tag already exists";
 "taskNote"="Add a note";

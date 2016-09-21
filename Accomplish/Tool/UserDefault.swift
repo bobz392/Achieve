@@ -15,6 +15,7 @@ let kCloseDueTodayKey = "com.due.today"
 let kCloseHintKey = "com.close.hint"
 let kBackgroundKey = "com.background"
 let kWatchDateHasNewKey = "com.watch.date.is.new"
+let kCurrentTagUUIDKey = "com.current.tag"
 
 struct AppUserDefault {
     let def = UserDefaults.standard

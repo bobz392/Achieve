@@ -49,7 +49,7 @@ class SettingsViewController: BaseViewController {
         self.titleLabel.textColor = colors.cloudColor
         
         self.settingTableView.clearView()
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.clearView()//.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
@@ -66,7 +66,7 @@ class SettingsViewController: BaseViewController {
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
-        self.cardView.addShadow()
+//        self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleLabel.text = Localized("setting")
@@ -206,6 +206,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.clearView()
+//        view.backgroundColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
         return view
     }
     
@@ -215,8 +216,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (indexPath as NSIndexPath).section == 0 {
-            switch (indexPath as NSIndexPath).row {
+        if indexPath.section == 0 {
+            switch indexPath.row {
             case 0:
                 self.selectedIndex = indexPath
                 let backgroundVC = BackgroundViewController()
@@ -240,7 +241,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
         } else {
-            switch (indexPath as NSIndexPath).row {
+            switch indexPath.row {
             case 0:
                 break
                 

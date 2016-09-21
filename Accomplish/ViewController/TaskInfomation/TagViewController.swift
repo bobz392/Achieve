@@ -23,16 +23,18 @@ class TagViewController: BaseViewController {
     @IBOutlet weak var holderView: UIView!
     
     fileprivate var allTags = RealmManager.shareManager.allTags()
-    
     fileprivate let noTag = "noneTag"
     fileprivate var bagDict = Dictionary<String, Int>()
+    fileprivate var currentSelectedIndex: IndexPath? = nil
+    fileprivate var tagChange: Bool = false
+    
+    var delegate: SwitchTagDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        debugPrint(RealmManager.shareManager.allTags())
+    
         self.configMainUI()
         self.initializeControl()
     }
@@ -59,14 +61,23 @@ class TagViewController: BaseViewController {
         let tasks = RealmManager.shareManager.queryTaskList(NSDate())
         
         for task in tasks {
-            if let tag = task.tag {
-                self.bagDict[tag] = (self.bagDict[tag] ?? 0) + 1
-            } else {
-                self.bagDict[noTag] = (self.bagDict[noTag] ?? 0) + 1
+            if let tagUUID = task.tagUUID {
+                self.bagDict[tagUUID] = (self.bagDict[tagUUID] ?? 0) + 1
             }
         }
+        self.bagDict[noTag] = tasks.count
         
         self.tagTableView.reloadData()
+        
+        let indexPath: IndexPath
+        if let selectedTag = AppUserDefault().readString(kCurrentTagUUIDKey),
+            let index = self.allTags.indexOfObject(for: "tagUUID = '\(selectedTag)'") {
+            indexPath = IndexPath(row: index + 1, section: 0)
+        } else {
+            indexPath = IndexPath(row: 0, section: 0)
+        }
+        self.currentSelectedIndex = indexPath
+        self.tagTableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,6 +98,9 @@ class TagViewController: BaseViewController {
                                          icon: backButtonIconString, color: colors.mainGreenColor,
                                          status: .normal)
         self.newTagButton.tintColor = colors.linkTextColor
+        self.newTagButton.backgroundColor = colors.cloudColor
+        self.newTagButton.addTopShadow()
+        
         self.titleLabel.text = Localized("tag")
         
         self.newTagTextField.tintColor = colors.mainGreenColor
@@ -104,9 +118,7 @@ class TagViewController: BaseViewController {
         
         self.newTagButton.setTitle(Localized("newTag"), for: .normal)
         self.newTagButton.addTarget(self, action: #selector(self.newTagAction), for: .touchUpInside)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeNewTagAction))
-        self.newTagShadowView.addGestureRecognizer(tap)
+
         self.holderView.layer.cornerRadius = kCardViewCornerRadius
         
         self.newTagTextField.placeholder = Localized("newTag")
@@ -117,6 +129,17 @@ class TagViewController: BaseViewController {
         guard let nav = self.navigationController else {
             return
         }
+        
+        if self.tagChange {
+            if let index = self.currentSelectedIndex {
+                if index.row == 0 {
+                    self.delegate?.switchTagTo(tag: nil)
+                } else {
+                    self.delegate?.switchTagTo(tag: self.allTags[index.row - 1])
+                }
+            }
+        }
+        
         nav.popViewController(animated: true)
     }
     
@@ -132,6 +155,8 @@ class TagViewController: BaseViewController {
             self.view.layoutIfNeeded()
         }) { [unowned self] (finish) in
             self.newTagTextField.becomeFirstResponder()
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeNewTagAction))
+            self.newTagShadowView.addGestureRecognizer(tap)
         }
     }
     
@@ -139,6 +164,9 @@ class TagViewController: BaseViewController {
         self.textFieldHolderTopConstraint.constant = -44
         self.newTagTextField.text = nil
         self.newTagTextField.resignFirstResponder()
+        if let tap = self.newTagShadowView.gestureRecognizers?.first {
+            self.newTagShadowView.removeGestureRecognizer(tap)
+        }
         
         UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { [unowned self] in
             self.view.layoutIfNeeded()
@@ -169,7 +197,7 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! TagTableViewCell
         
         if indexPath.row == 0 {
-            cell.tagLabel.text = Localized(noTag)
+            cell.tagLabel.text = Localized("allTask")
             if let count = self.bagDict[noTag] {
                 cell.todayCountLabel.text = String(format: Localized("tagToday"), count)
             }
@@ -187,7 +215,34 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        if self.checkCurrentTagHasTask(row: indexPath.row) {
+            if let current = self.currentSelectedIndex {
+                tableView.deselectRow(at: current, animated: true)
+            }
+            
+            self.currentSelectedIndex = indexPath
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    fileprivate func checkCurrentTagHasTask(row: Int) -> Bool {
+        if row == 0 {
+            if let _ = self.bagDict[noTag] {
+                self.tagChange = true
+                AppUserDefault().remove(kCurrentTagUUIDKey)
+                return true
+            }
+        } else {
+            let tag = allTags[row - 1]
+            if let _ = self.bagDict[tag.tagUUID] {
+                self.tagChange = true
+                AppUserDefault().write(kCurrentTagUUIDKey, value: tag.tagUUID)
+                return true
+            }
+        }
+        
+        return false
     }
 }
 
@@ -200,6 +255,8 @@ extension TagViewController: UITextFieldDelegate {
         let tag = Tag()
         tag.tagUUID = NSDate().createTagUUID()
         tag.name = text
+        tag.createdAt = NSDate()
+        
         let canSave = RealmManager.shareManager.saveTag(tag)
         if !canSave {
             HUD.sharedHUD.showOnce(Localized("tagExist"))
@@ -211,4 +268,8 @@ extension TagViewController: UITextFieldDelegate {
             return textField.resignFirstResponder()
         }
     }
+}
+
+protocol SwitchTagDelegate {
+    func switchTagTo(tag: Tag?)
 }

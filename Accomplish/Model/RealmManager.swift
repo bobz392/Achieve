@@ -50,12 +50,21 @@ class RealmManager {
         debugPrint(result)
     }
     
-    func queryTodayTaskList(finished: Bool) -> Results<Task> {
+    func queryTodayTaskList(finished: Bool, tagUUID: String?) -> Results<Task> {
         let queryDate = NSDate().createdFormatedDateString()
         
+        let queryWithTag: String
+        if let uuid = tagUUID {
+            queryWithTag = "AND tagUUID = '\(uuid)'"
+        } else {
+            queryWithTag = ""
+        }
+        
+        let queryFormatted = "createdFormattedDate = '\(queryDate)'"
+        let queryStatues = "status \(finished ? "!=" : "==") \(kTaskRunning)"
         let tasks = realm
             .allObjects(ofType: Task.self)
-            .filter(using: "createdFormattedDate = '\(queryDate)' AND status \(finished ? "!=" : "==") \(kTaskRunning)")
+            .filter(using: "\(queryFormatted) AND \(queryStatues) \(queryWithTag)")
             .sorted(onProperty: "createdDate")
         
         return tasks

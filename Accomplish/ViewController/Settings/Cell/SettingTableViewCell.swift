@@ -20,11 +20,12 @@ class SettingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let colors = Colors()
         
         self.contentView.clearView()
-        self.clearView()
+        self.backgroundColor = colors.cloudColor
         self.settingTitleLabel.textColor =
-            Colors().mainTextColor
+            colors.mainTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

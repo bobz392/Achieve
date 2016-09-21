@@ -422,7 +422,7 @@ extension TaskDetailViewController {
         case TagIndex:
             let tagUUID = taskPickerView.selectedTagUUID()
             RealmManager.shareManager.updateObject({
-                self.task.tag = tagUUID
+                self.task.tagUUID = tagUUID
             })
             
         default:

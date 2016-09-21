@@ -44,6 +44,7 @@
 "setRepeat"="设置重复";
 "setTag"="设置标签";
 "noneTag"="无标签";
+"tagExist"="已存在此标签";
 "writeNote"="写点什么吧...";
 
 "high"="高";
@@ -73,7 +74,9 @@
 "repeat"="重复 ";
 "noRepeat"="不重复";
 "tag"="标签 ";
+"tagToday"="(%d个任务)";
 "noTag"="添加标签";
+"newTag"="添加新标签";
 "taskNote"="添加备注";
 "detailAddSubtask"="添加子任务";
 "overTime"="  超时  ";

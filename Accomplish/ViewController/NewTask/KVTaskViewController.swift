@@ -53,7 +53,6 @@ class KVTaskViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.setShowHander { [unowned self] in
-            KeyboardManager.sharedManager.closeNotification()
             self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animate(withDuration: KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
@@ -62,6 +61,12 @@ class KVTaskViewController: BaseViewController {
         }
         
         self.titleTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        KeyboardManager.sharedManager.closeNotification()
     }
     
     override func didReceiveMemoryWarning() {

@@ -47,6 +47,7 @@ class NoteViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        KeyboardManager.sharedManager.closeNotification()
         KeyboardManager.sharedManager.setHideHander { [unowned self] in
             self.toolViewBottomConstraint.constant = 0
             UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in

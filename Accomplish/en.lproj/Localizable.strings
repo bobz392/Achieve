@@ -74,7 +74,10 @@
 "repeat"="Repeat ";
 "noRepeat"="Repeat";
 "tag"="Tag ";
+"newTag"="Creat Tag";
+"tagToday"="(%d task)";
 "noTag"="Add tag";
+"tagExist"="Tag already exists";
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
 "overTime"="  overtime  ";

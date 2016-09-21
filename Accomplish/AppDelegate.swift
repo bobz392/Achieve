@@ -102,14 +102,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let repeaterManager = RepeaterManager()
         if repeaterManager.isNewDay() {
             completionHandler(.newData)
-            
-            guard let nav = application.keyWindow?.rootViewController as? UINavigationController else {
-                return
-            }
-            guard let vc = nav.viewControllers.first as? HomeViewController else {
-                return
-            }
-            vc.handleNewDay()
+//            
+//            guard let nav = application.keyWindow?.rootViewController as? UINavigationController else {
+//                return
+//            }
+//            guard let vc = nav.viewControllers.first as? HomeViewController else {
+//                return
+//            }
+//            vc.handleNewDay()
         } else {
             completionHandler(.noData)
         }

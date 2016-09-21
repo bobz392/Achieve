@@ -36,7 +36,6 @@ struct SpotlightManager {
             let data = UIImagePNGRepresentation(image){
             attributes.thumbnailData = data
         }
-        attributes.contentCreationDate = task.createdDate as Date?
         return CSSearchableItem(uniqueIdentifier: task.uuid, domainIdentifier: "achieve.today.task", attributeSet: attributes)
     }
     

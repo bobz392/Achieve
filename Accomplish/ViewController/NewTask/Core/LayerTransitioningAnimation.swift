@@ -10,7 +10,7 @@ import UIKit
 
 final class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
     
-    internal let animationDuration: TimeInterval = 0.5
+    internal let animationDuration: TimeInterval = 0.35
     var reverse = false
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

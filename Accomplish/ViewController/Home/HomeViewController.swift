@@ -83,6 +83,7 @@ class HomeViewController: BaseViewController {
         self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRow(at: indexPath, animated: true)
+        self.taskTableView.reloadRows(at: [indexPath], with: .none)
         self.selectedIndex = nil
     }
     
@@ -415,6 +416,8 @@ class HomeViewController: BaseViewController {
     
     func tagAction() {
         let tagVC = TagViewController()
+        self.navigationController?.delegate = self
+        self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(tagVC, animated: true)
     }
     

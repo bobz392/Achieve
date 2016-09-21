@@ -76,7 +76,8 @@ class RealmManager {
     }
     
     func queryTaskList(_ date: NSDate) -> Results<Task> {
-        return realm.allObjects(ofType: Task.self).filter(using: "createdFormattedDate = '\(date.createdFormatedDateString())'")
+        return realm.allObjects(ofType: Task.self)
+            .filter(using: "createdFormattedDate = '\(date.createdFormatedDateString())'")
     }
     
     func querySubtask(_ rootUUID: String, sorted: Bool = true) -> Results<Subtask> {
@@ -160,7 +161,9 @@ class RealmManager {
 // 以后为多个年的 check in 优化
 extension RealmManager {
     func queryFirstCheckIn() -> CheckIn? {
-        return realm.allObjects(ofType: CheckIn.self).sorted(onProperty: "checkInDate", ascending: true).first
+        return realm.allObjects(ofType: CheckIn.self)
+            .sorted(onProperty: "checkInDate", ascending: true)
+            .first
     }
     
     func queryCheckIn(_ formatedDate: String) -> CheckIn? {
@@ -184,12 +187,13 @@ extension RealmManager {
 
 // MARK: -  Tag model
 extension RealmManager {
-    func saveTag(_ tag: Tag) {
+    func saveTag(_ tag: Tag) -> Bool {
         if let old = queryTag(usingName: true, query: tag.name) {
-            deleteObject(old)
+            return false
         }
         
         writeObject(tag)
+        return true
     }
     
     func queryTag(usingName name: Bool, query: String) -> Tag? {
@@ -203,5 +207,6 @@ extension RealmManager {
     
     func allTags() -> Results<Tag> {
         return realm.allObjects(ofType: Tag.self)
+            .sorted(onProperty: "createdAt")
     }
 }

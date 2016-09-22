@@ -25,7 +25,6 @@ class SettingsViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         self.configMainUI()
         self.initializeControl()
     }
@@ -49,7 +48,7 @@ class SettingsViewController: BaseViewController {
         self.titleLabel.textColor = colors.cloudColor
         
         self.settingTableView.clearView()
-        self.cardView.clearView()//.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
@@ -66,7 +65,7 @@ class SettingsViewController: BaseViewController {
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         
-//        self.cardView.addShadow()
+        self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
         self.titleLabel.text = Localized("setting")
@@ -94,8 +93,8 @@ class SettingsViewController: BaseViewController {
             Localized("hintClose")
         ]
         
-        titles.append(general)
-        titles.append(extras)
+        self.titles.append(general)
+        self.titles.append(extras)
         
         
         let eIcons = [
@@ -146,23 +145,36 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return titles[section].count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                return SettingTableViewCell.rowHeight
+            } else {
+                return SettingDetialTableViewCell.rowHeight
+            }
+        } else {
+            return SettingTableViewCell.rowHeight
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return titles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let size = self.sizes[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
-        let icon = try! FAKFontAwesome(identifier: self.icons[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row], size: size)
+        let size = self.sizes[indexPath.section][indexPath.row]
+        let icon = try! FAKFontAwesome(identifier:
+            self.icons[indexPath.section][indexPath.row], size: size)
         icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
         
-        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row != 0 {
+        if indexPath.section == 0 && indexPath.row != 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingDetialTableViewCell.reuseId, for: indexPath) as! SettingDetialTableViewCell
-            cell.settingTitleLabel.text = self.titles[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+            cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
             cell.iconLabel.attributedText = icon.attributedString()
             cell.accessoryType = .none
-            // todo
+            
             let ud = AppUserDefault()
-            if (indexPath as NSIndexPath).row == 1 {
+            if indexPath.row == 1 {
                 let weekStart = ud.readInt(kWeekStartKey)
                 let weeks: DaysOfWeek
                 if let ws = DaysOfWeek(rawValue: weekStart) {
@@ -182,7 +194,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     break
                 }
-            } else if (indexPath as NSIndexPath).row == 2 {
+            } else if indexPath.row == 2 {
                 let closeDue = ud.readBool(kCloseDueTodayKey)
                 cell.detailLabel.text = closeDue ? Localized("close") : Localized("open")
                 
@@ -195,7 +207,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseId, for: indexPath) as! SettingTableViewCell
-            cell.settingTitleLabel.text = self.titles[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+            cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
             cell.iconLabel.attributedText = icon.attributedString()
             cell.accessoryType = .disclosureIndicator
             
@@ -204,14 +216,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.clearView()
-//        view.backgroundColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
+        let view = SettingHeaderView.loadNib(self)
+        view?.headerTitleLabel.text =
+            section == 0 ? Localized("general") : Localized("extra")
         return view
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -119,6 +119,8 @@
 // setting
 "setting"="Settings";
 "background"="Background";
+"general"="General";
+"extra"="Extra";
 
 // calendar
 "calendarReport"="Check Schedule";

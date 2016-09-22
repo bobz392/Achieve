@@ -13,7 +13,7 @@ class SettingDetialTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "SettingDetialTableViewCell", bundle: nil)
     static let reuseId = "settingDetialTableViewCell"
-    static let rowHeight: CGFloat = 44
+    static let rowHeight: CGFloat = 48
     
     
     @IBOutlet weak var settingTitleLabel: UILabel!

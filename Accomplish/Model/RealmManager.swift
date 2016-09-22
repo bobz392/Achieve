@@ -142,6 +142,10 @@ class RealmManager {
                 task.createdDate = task.createdDate?.addingDays(1) as NSDate?
                 task.createdFormattedDate = todayDateString
                 task.notifyDate = nil
+                
+                if #available(iOS 9.0, *) {
+                    SpotlightManager().addTaskToIndex(task: task)
+                }
             }
         }
     }

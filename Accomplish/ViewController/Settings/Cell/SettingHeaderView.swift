@@ -11,13 +11,17 @@ import UIKit
 class SettingHeaderView: UIView {
 
     @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!
  
     class func loadNib(_ target: AnyObject) -> SettingHeaderView? {
         return Bundle.main.loadNibNamed("SettingHeaderView", owner: target, options: nil)?.first as? SettingHeaderView
     }
     
     override func awakeFromNib() {
-        self.headerTitleLabel.textColor = Colors().secondaryTextColor
+        let colors = Colors()
+        self.headerTitleLabel.textColor = colors.secondaryTextColor
+        self.separatorView.backgroundColor = colors.separatorColor
+        self.clearView()
         super.awakeFromNib()
     }
 }

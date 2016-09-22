@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -13,19 +13,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-Eg-YXg">
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVb-ne-qjO">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="1Pg-aJ-DDv"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fVb-ne-qjO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F8Y-hh-tB1"/>
+                <constraint firstAttribute="trailing" secondItem="fVb-ne-qjO" secondAttribute="trailing" id="PUI-r0-E3z"/>
                 <constraint firstItem="oxh-Eg-YXg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="dni-Oc-kKV"/>
                 <constraint firstAttribute="bottom" secondItem="oxh-Eg-YXg" secondAttribute="bottom" constant="5" id="lsF-ic-Fhh"/>
+                <constraint firstAttribute="bottom" secondItem="fVb-ne-qjO" secondAttribute="bottom" id="zLM-n4-UtT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="headerTitleLabel" destination="oxh-Eg-YXg" id="LQK-kr-4GG"/>
+                <outlet property="separatorView" destination="fVb-ne-qjO" id="prb-jI-gMX"/>
             </connections>
             <point key="canvasLocation" x="413" y="944.5"/>
         </view>

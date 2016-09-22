@@ -100,7 +100,13 @@ class SubtaskTableViewCell: BaseTableViewCell {
     }
 }
 
-extension SubtaskTableViewCell: UITextFieldDelegate {    
+extension SubtaskTableViewCell: UITextFieldDelegate {
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.text = nil
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let task = self.task,
             let text = textField.text {
@@ -111,7 +117,6 @@ extension SubtaskTableViewCell: UITextFieldDelegate {
                     })
                 } else {
                     createSubtask(text, task: task)
-                    textField.text = ""
                 }
             }
         }

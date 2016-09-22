@@ -225,7 +225,6 @@ extension RealmManager {
             .first
     }
     
-    
     func allTags() -> Results<Tag> {
         return realm.allObjects(ofType: Tag.self)
             .sorted(onProperty: "createdAt")

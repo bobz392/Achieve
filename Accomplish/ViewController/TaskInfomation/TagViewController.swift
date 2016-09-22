@@ -198,6 +198,39 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row != 0
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let tag = self.allTags[indexPath.row - 1]
+        switch editingStyle {
+        case .delete:
+            let alert = UIAlertController(title: tag.name, message: nil, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: Localized("deleteTag"), style: .destructive, handler: { (action) in
+                RealmManager.shareManager.deleteObject(tag)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            })
+            alert.addAction(deleteAction)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        default:
+            break
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.checkCurrentTagHasTask(row: indexPath.row) {
             if let current = self.currentSelectedIndex {

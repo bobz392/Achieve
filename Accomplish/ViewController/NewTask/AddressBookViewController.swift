@@ -199,11 +199,7 @@ extension AddressBookViewController {
         
         for (i, person) in people.enumerated() {
             let personNameInLatin = person.name.uppercaseStrippedLatinFullName
-            
-            #if debug
-                print("=====> \(i+1) \(personNameInLatin)")
-            #endif
-            
+            SystemInfo.log("=====> \(i+1) \(personNameInLatin)")
             guard let firstChar = personNameInLatin.characters.first else {
                 continue
             }

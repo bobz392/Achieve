@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 9.0, *) {
             self.configureDynamicShortcuts()
             let re = self.watchManger.session?.isReachable
-            debugPrint("watchManger.session?.isReachable = \(re)")
+            SystemInfo.log("watchManger.session?.isReachable = \(re)")
         }
         
         HUD.sharedHUD.config()
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MRAK: - todo handle notify
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        debugPrint("didReceiveLocalNotification = \(notification)")
+        SystemInfo.log("didReceiveLocalNotification = \(notification)")
         application.applicationIconBadgeNumber -= 1
     }
     

@@ -20,17 +20,17 @@ extension RealmManager {
             updateObject({
                 repeater.repeatType = repeaterTimeType.rawValue
             })
-            debugPrint("update type = \(repeaterTimeType.getCalendarUnit())")
+            SystemInfo.log("update type = \(repeaterTimeType.getCalendarUnit())")
         } else {
             let repeater = Repeater()
             repeater.repeatTaskUUID = task.uuid
             repeater.repeatType = repeaterTimeType.rawValue
             writeObject(repeater)
             
-            debugPrint("create type = \(repeaterTimeType.getCalendarUnit())")
+            SystemInfo.log("create type = \(repeaterTimeType.getCalendarUnit())")
         }
         LocalNotificationManager().updateNotify(task, repeatInterval: repeaterTimeType.getCalendarUnit())
-        print("notfiy = \(LocalNotificationManager().notifyWithUUID(task.uuid))")
+        SystemInfo.log("notfiy = \(LocalNotificationManager().notifyWithUUID(task.uuid))")
     }
     
     func queryRepeaterWithTask(_ taskUUID: String) -> Repeater? {

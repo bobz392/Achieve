@@ -21,7 +21,7 @@ struct AppUserDefault {
     let def = UserDefaults.standard
     
     func write(_ key: String, value: Any) {
-        debugPrint("write to user default with key = \(key) and value = \(value)")
+        SystemInfo.log("write to user default with key = \(key) and value = \(value)")
         def.set(value, forKey: key)
         def.synchronize()
     }

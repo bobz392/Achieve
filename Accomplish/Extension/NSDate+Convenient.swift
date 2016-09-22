@@ -30,7 +30,9 @@ extension NSDate {
         guard let formateDate = self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US")) else {
             fatalError()
         }
-        debugPrint("created formated date string = \(formateDate)")
+//        if #available(iOS 8.0, *) {
+//            SystemInfo.log("created formated date string = \(formateDate)")
+//        }
         
         return formateDate
     }

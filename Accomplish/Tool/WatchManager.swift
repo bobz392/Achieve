@@ -30,7 +30,7 @@ class WatchManager: NSObject, WCSessionDelegate {
             
             self.session = session
         } else {
-            debugPrint("Watch does not support WCSession")
+            SystemInfo.log("Watch does not support WCSession")
         }
     }
     
@@ -47,7 +47,7 @@ class WatchManager: NSObject, WCSessionDelegate {
             guard let session = self.session else { return }
             if session.isReachable == true {
                 session.sendMessage([kAppTellWatchQueryKey : ""], replyHandler: nil, errorHandler: { (error) in
-                    debugPrint("error = \(error)")
+                    SystemInfo.log("error = \(error)")
                 })
             }
         }
@@ -55,7 +55,7 @@ class WatchManager: NSObject, WCSessionDelegate {
     
     @available(iOS 9.3, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        debugPrint("activationDidCompleteWith activationState = \(activationState.rawValue)")
+        SystemInfo.log("activationDidCompleteWith activationState = \(activationState.rawValue)")
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
@@ -93,15 +93,15 @@ class WatchManager: NSObject, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        debugPrint("didReceiveMessage = \(message)")
+        SystemInfo.log("didReceiveMessage = \(message)")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        debugPrint("app sessionDidBecomeInactive")
+        SystemInfo.log("app sessionDidBecomeInactive")
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        debugPrint("app sessionDidDeactivate")
+        SystemInfo.log("app sessionDidDeactivate")
     }
     
     func sessionWatchStateDidChange(_ session: WCSession) {

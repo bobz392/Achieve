@@ -43,7 +43,7 @@ final class KeyboardManager {
     
     
     func closeNotification() {
-        print("keyboard manager remove and handle")
+        SystemInfo.log("keyboard manager remove and handle")
         keyboardShowHandler = nil
         keyboardHideHandler = nil
     }
@@ -52,7 +52,7 @@ final class KeyboardManager {
         if let userInfo = (notification as NSNotification).userInfo,
             let frameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
-            debugPrint("change frame height to \(frameValue.height)")
+            SystemInfo.log("change frame height to \(frameValue.height)")
             if frameValue.height > 0 {
                 KeyboardManager.keyboardHeight = frameValue.height
                 KeyboardManager.duration = durationValue

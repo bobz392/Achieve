@@ -1777,6 +1777,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_SWIFT_FLAGS = "-D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "87e3a800-fee8-4726-bf65-db42f493e1ab";

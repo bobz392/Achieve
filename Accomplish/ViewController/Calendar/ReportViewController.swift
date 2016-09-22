@@ -91,8 +91,8 @@ class ReportViewController: BaseViewController {
         }
         
         let myblock: UIActivityViewControllerCompletionHandler = {(activityType: UIActivityType?, completed: Bool) -> Void in
-            debugPrint(activityType)
-            debugPrint(completed)
+            SystemInfo.log(activityType)
+            SystemInfo.log(completed)
         }
         activeViewController.completionHandler = myblock
     }

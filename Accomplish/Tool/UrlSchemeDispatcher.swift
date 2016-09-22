@@ -11,13 +11,13 @@ import Foundation
 struct UrlSchemeDispatcher {
  
     func handleUrl(_ url: URL) -> Bool {
-//        debugPrint(url)
-//        debugPrint("url.baseURL = \(url.baseURL)")
-//        debugPrint("absoluteString = \(url.absoluteString)")
-//        debugPrint("pathComponents = \(url.pathComponents)")
-//        debugPrint("relativeString = \(url.relativeString)")
-//        debugPrint("lastPathComponent = \(url.lastPathComponent)")
-//        debugPrint("query = \(url.query)")
+//        SystemInfo.log(url)
+//        SystemInfo.log("url.baseURL = \(url.baseURL)")
+//        SystemInfo.log("absoluteString = \(url.absoluteString)")
+//        SystemInfo.log("pathComponents = \(url.pathComponents)")
+//        SystemInfo.log("relativeString = \(url.relativeString)")
+//        SystemInfo.log("lastPathComponent = \(url.lastPathComponent)")
+//        SystemInfo.log("query = \(url.query)")
         
         if url.absoluteString.contains(kTaskDetailPath) {
             let uuid = url.lastPathComponent

@@ -61,11 +61,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    deinit {
-        print("deinit")
-    }
-    
+
     override func configMainUI() {
         let colors = Colors()
         self.cardView.backgroundColor = colors.cloudColor

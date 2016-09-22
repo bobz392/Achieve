@@ -33,7 +33,7 @@ struct LocalNotificationManager {
         for n in notify {
             UIApplication.shared.cancelLocalNotification(n)
         }
-        debugPrint("clear local notifycation task uuid = \(taskUUID) success")
+        SystemInfo.log("clear local notifycation task uuid = \(taskUUID) success")
     }
     
     func updateNotify(_ task: Task, repeatInterval: NSCalendar.Unit) {

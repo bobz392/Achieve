@@ -294,7 +294,7 @@ class HomeViewController: BaseViewController {
                 self.handleUpdateTodayGroup()
                 
             case .Error(let error):
-                debugPrint("finishToken realmNoticationToken error = \(error)")
+                SystemInfo.log("finishToken realmNoticationToken error = \(error)")
                 break
             }
             })
@@ -319,7 +319,7 @@ class HomeViewController: BaseViewController {
                 }
                 
             case .Error(let error):
-                debugPrint("runningToken realmNoticationToken error = \(error)")
+                SystemInfo.log("runningToken realmNoticationToken error = \(error)")
                 break
             }
             
@@ -400,7 +400,7 @@ class HomeViewController: BaseViewController {
     // MARK: - actions
     func settingAction() {
         let notifications = UIApplication.shared.scheduledLocalNotifications
-        print(notifications)
+        SystemInfo.log("notifications = \(notifications)")
         
         let settingVC = SettingsViewController()
         self.navigationController?.delegate = self
@@ -409,9 +409,8 @@ class HomeViewController: BaseViewController {
     }
     
     func switchScreenAction() {
-        print(RealmManager.shareManager.queryAll(clz: Repeater.self))
         UIApplication.shared.cancelAllLocalNotifications()
-        doSwitchScreen(true)
+        self.doSwitchScreen(true)
     }
     
     func calendarAction() {

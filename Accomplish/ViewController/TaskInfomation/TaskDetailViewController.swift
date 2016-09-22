@@ -231,7 +231,7 @@ class TaskDetailViewController: BaseViewController {
                 self.detailTableView.endUpdates()
                 
             case .Error(let error):
-                print(error)
+                SystemInfo.log("error in realm token = \(error)")
                 break
             }
             })

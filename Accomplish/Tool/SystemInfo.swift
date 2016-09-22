@@ -16,12 +16,12 @@ struct SystemInfo {
     fileprivate let aboveOS10: Bool
     
     func isAboveOS9() -> Bool {
-        debugPrint("SystemInfo.isAboveOS9   ======> \(self.aboveOS9)")
+        SystemInfo.log("SystemInfo.isAboveOS9   ======> \(self.aboveOS9)")
         return aboveOS9
     }
     
     func isAboveOS10() -> Bool {
-        debugPrint("SystemInfo.isAboveOS10   ======> \(self.aboveOS10)")
+        SystemInfo.log("SystemInfo.isAboveOS10   ======> \(self.aboveOS10)")
         return aboveOS10
     }
     
@@ -31,5 +31,14 @@ struct SystemInfo {
         self.aboveOS8 = version == 8
         self.aboveOS9 = version == 9
         self.aboveOS10 = version >= 10
+    }
+    
+    static func log(_ log: Any) {
+        #if debug
+            print("------------------------------------------")
+            print(#function, #file, #line)
+            print()
+            print(log)
+        #endif
     }
 }

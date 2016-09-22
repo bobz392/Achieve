@@ -31,7 +31,7 @@ extension GroupUserDefault {
             tasksArr.append(taskArray)
         }
         
-        debugPrint("write new task count = \(tasks.count)")
+        SystemInfo.log("write new task count = \(tasks.count)")
         self.groupDefault.set(tasksArr, forKey: tasksKey)
         
         self.setTaskChanged(true)

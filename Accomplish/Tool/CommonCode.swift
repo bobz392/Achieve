@@ -19,18 +19,6 @@ func nowDate() -> Date {
     return Date()
 }
 
-func beginDebugPrint(_ someTag: String = "") {
-    debugPrint("")
-    debugPrint("")
-    debugPrint("========================\(someTag) begin============================")
-}
-
-func endDebugPrint(_ someTag: String = "") {
-    debugPrint("========================\(someTag) end==============================")
-    debugPrint("")
-    debugPrint("")
-}
-
 /**
  延迟若干秒。
  */

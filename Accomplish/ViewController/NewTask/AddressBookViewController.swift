@@ -31,7 +31,7 @@ final class AddressBookViewController: BaseViewController {
         return address
     }
     
-    fileprivate var indexingQueue = DispatchQueue(label: "achieve.addressBook.indexing", attributes: [])
+    fileprivate var indexingQueue = DispatchQueue(label: "achieve.addressBook.indexing")
     
     fileprivate var indexes: Indexes = []
     fileprivate var data: IndexedData = [:]

@@ -8,13 +8,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="QmO-P5-Rih" id="sWa-4T-pvN"/>
                 <outlet property="searchHolderView" destination="LTp-E9-t54" id="Onr-Nq-BlN"/>
                 <outlet property="searchIconLabel" destination="9Fd-DF-9ps" id="f9c-hE-9rD"/>
                 <outlet property="searchTableView" destination="2aJ-UT-sdb" id="ZYX-fP-3HL"/>
                 <outlet property="searchTextField" destination="mMy-W7-pwz" id="xEy-DA-Yh7"/>
-                <outlet property="toolView" destination="T1a-HM-aoF" id="Vzn-P9-g6K"/>
-                <outlet property="toolViewBottomConstraint" destination="wxW-0N-shn" id="GEf-fZ-89d"/>
+                <outlet property="tableViewBottomConstraint" destination="65G-nk-GLM" id="STV-nI-bww"/>
                 <outlet property="topHolderView" destination="37O-y4-PKi" id="lb4-7a-DuJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,7 +38,10 @@
                                 <textField autoresizesSubviews="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="mMy-W7-pwz">
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="4e2-Be-cI7"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,19 +63,6 @@
                         <constraint firstItem="LTp-E9-t54" firstAttribute="top" secondItem="37O-y4-PKi" secondAttribute="top" constant="50" id="fjQ-ba-8KT"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-HM-aoF">
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-P5-Rih">
-                            <state key="normal" title="cancel"/>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="QmO-P5-Rih" firstAttribute="centerY" secondItem="T1a-HM-aoF" secondAttribute="centerY" id="HcH-1Q-D2F"/>
-                        <constraint firstAttribute="height" constant="44" id="ZKj-vb-E7s"/>
-                        <constraint firstAttribute="trailing" secondItem="QmO-P5-Rih" secondAttribute="trailing" constant="20" id="foJ-Op-GSO"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-UT-sdb">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -85,16 +73,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="2aJ-UT-sdb" secondAttribute="bottom" id="65G-nk-GLM"/>
                 <constraint firstItem="37O-y4-PKi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6wx-kv-bQN"/>
-                <constraint firstItem="T1a-HM-aoF" firstAttribute="top" secondItem="2aJ-UT-sdb" secondAttribute="bottom" id="bzb-VL-ALD"/>
                 <constraint firstAttribute="trailing" secondItem="2aJ-UT-sdb" secondAttribute="trailing" id="fI4-TJ-dgO"/>
-                <constraint firstItem="T1a-HM-aoF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iRR-at-7tG"/>
                 <constraint firstItem="2aJ-UT-sdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kGq-Ox-IBD"/>
                 <constraint firstItem="37O-y4-PKi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="l3b-sf-sTA"/>
                 <constraint firstItem="2aJ-UT-sdb" firstAttribute="top" secondItem="37O-y4-PKi" secondAttribute="bottom" id="lRW-sG-Wcu"/>
-                <constraint firstAttribute="trailing" secondItem="T1a-HM-aoF" secondAttribute="trailing" id="p2P-Sm-fx9"/>
                 <constraint firstAttribute="trailing" secondItem="37O-y4-PKi" secondAttribute="trailing" id="ukg-fu-hSQ"/>
-                <constraint firstAttribute="bottom" secondItem="T1a-HM-aoF" secondAttribute="bottom" id="wxW-0N-shn"/>
             </constraints>
             <point key="canvasLocation" x="50.5" y="53.5"/>
         </view>

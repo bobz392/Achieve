@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchViewController: BaseViewController {
     
@@ -17,13 +18,15 @@ class SearchViewController: BaseViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
     
-    @IBOutlet weak var toolView: UIView!
-    @IBOutlet weak var backButton: UIButton!
-    
-    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     private let searchCorner: CGFloat = 16
-    private var searchResult = [Any]()
+    fileprivate var searchResult: Results<Task>? = nil
+    fileprivate var searchInProgress = false
+    
+    fileprivate let searchDispatch =
+        DispatchQueue.init(label: "search.dispatch.queue", qos:
+            DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 0))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,7 @@ class SearchViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.setShowHander { [unowned self] in
-            self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
+            self.tableViewBottomConstraint.constant = KeyboardManager.keyboardHeight
             
             UIView.animate(withDuration: KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
                 self.view.layoutIfNeeded()
@@ -45,6 +48,11 @@ class SearchViewController: BaseViewController {
         }
         
         self.searchTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        KeyboardManager.sharedManager.closeNotification()
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,21 +77,14 @@ class SearchViewController: BaseViewController {
         self.searchHolderView.backgroundColor = colors.placeHolderTextColor
         self.searchTextField.tintColor = colors.mainGreenColor
         self.searchTextField.textColor = colors.mainTextColor
-     
-        self.toolView.addTopShadow()
-        self.toolView.backgroundColor = colors.cloudColor
         
-        self.backButton.tintColor = colors.mainGreenColor
+        self.searchTableView.separatorColor = colors.cloudColor
     }
     
     fileprivate func initializeControl() {
         self.searchHolderView.layer.cornerRadius = self.searchCorner
         
         self.searchTextField.placeholder = Localized("searchHolder")
-        
-        self.backButton.setTitle(Localized("cancel"), for: .normal)
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
-        
         self.configTableView()
     }
     
@@ -101,6 +102,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         self.searchTableView
             .register(SearchTableViewCell.nib, forCellReuseIdentifier: SearchTableViewCell.reuseId)
         self.searchTableView.clearView()
+        self.searchTableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -108,12 +110,52 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.searchResult?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseId, for: indexPath) as! SearchTableViewCell
         
+        if let task = self.searchResult?[indexPath.row] {
+            cell.taskTitleLabel.text = task.getNormalDisplayTitle()
+            cell.taskStartLabel.text =
+                task.createdDate?.formattedDate(with: DateFormatter.Style.medium)
+        }
+        
         return cell
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.cancelAction()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var text = textField.text
+        text?.replace(range, replacement: string)
+        guard let realString = text else {
+            return true
+        }
+        
+        if !self.searchInProgress {
+            self.queryResult(queryString: realString)
+        }
+        return true
+    }
+    
+    fileprivate func queryResult(queryString: String) {
+        self.searchInProgress = true
+        
+        self.searchDispatch.async {
+            let tasks = RealmManager.shareManager
+                .searchTasks(queryString: queryString, realmInThatThread: try! Realm())
+            dispatch_async_main { [unowned self] in
+                self.searchResult? = tasks
+                self.searchTableView.reloadData()
+                self.searchInProgress = false
+            }
+        }
     }
 }

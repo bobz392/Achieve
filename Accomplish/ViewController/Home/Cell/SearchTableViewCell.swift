@@ -14,9 +14,18 @@ class SearchTableViewCell: BaseTableViewCell {
     static let reuseId = "searchTableViewCell"
     static let rowHeight: CGFloat = 65
     
+    @IBOutlet weak var taskTitleLabel: UILabel!
+    @IBOutlet weak var taskStartLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let colors = Colors()
+        self.clearView()
+        self.contentView.clearView()
+        self.taskTitleLabel.textColor = colors.cloudColor
+        self.taskStartLabel.textColor = colors.cloudColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

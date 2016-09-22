@@ -74,7 +74,7 @@
 "repeat"="Repeat ";
 "noRepeat"="Repeat";
 "tag"="Tag ";
-"newTag"="Creat Tag";
+"newTag"="Create Tag";
 "tagToday"="(%d task)";
 "currentTag"="  current  ";
 "noTag"="Add tag";

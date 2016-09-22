@@ -163,3 +163,5 @@
 
 // search
 "searchHolder"="Search";
+"searchStart"="Please input your search keyword";
+"searchNoResult"="No results were found";

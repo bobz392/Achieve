@@ -34,7 +34,7 @@ class TagViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-    
+        
         self.configMainUI()
         self.initializeControl()
     }
@@ -102,7 +102,7 @@ class TagViewController: BaseViewController {
         
         self.newTagButton.setTitle(Localized("newTag"), for: .normal)
         self.newTagButton.addTarget(self, action: #selector(self.newTagAction), for: .touchUpInside)
-
+        
         self.holderView.layer.cornerRadius = kCardViewCornerRadius
         
         self.newTagTextField.placeholder = Localized("newTag")

@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="hintLabel" destination="naS-eU-XNS" id="Jki-zR-kcr"/>
                 <outlet property="searchHolderView" destination="LTp-E9-t54" id="Onr-Nq-BlN"/>
                 <outlet property="searchIconLabel" destination="9Fd-DF-9ps" id="f9c-hE-9rD"/>
                 <outlet property="searchTableView" destination="2aJ-UT-sdb" id="ZYX-fP-3HL"/>
@@ -70,15 +71,22 @@
                         <outlet property="delegate" destination="-1" id="T7T-RI-Mxl"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naS-eU-XNS">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2aJ-UT-sdb" secondAttribute="bottom" id="65G-nk-GLM"/>
                 <constraint firstItem="37O-y4-PKi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6wx-kv-bQN"/>
+                <constraint firstItem="naS-eU-XNS" firstAttribute="centerY" secondItem="2aJ-UT-sdb" secondAttribute="centerY" id="dE6-H1-5al"/>
                 <constraint firstAttribute="trailing" secondItem="2aJ-UT-sdb" secondAttribute="trailing" id="fI4-TJ-dgO"/>
                 <constraint firstItem="2aJ-UT-sdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kGq-Ox-IBD"/>
                 <constraint firstItem="37O-y4-PKi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="l3b-sf-sTA"/>
                 <constraint firstItem="2aJ-UT-sdb" firstAttribute="top" secondItem="37O-y4-PKi" secondAttribute="bottom" id="lRW-sG-Wcu"/>
+                <constraint firstItem="naS-eU-XNS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tca-5h-i0s"/>
                 <constraint firstAttribute="trailing" secondItem="37O-y4-PKi" secondAttribute="trailing" id="ukg-fu-hSQ"/>
             </constraints>
             <point key="canvasLocation" x="50.5" y="53.5"/>

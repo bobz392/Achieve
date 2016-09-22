@@ -45,7 +45,7 @@ class TaskDetailViewController: BaseViewController {
     fileprivate let subtaskSection = 1
     
     var task: Task
-    // only running task can change
+    // only today running task can change
     var canChange: Bool = true
     fileprivate var subtasks: Results<Subtask>?
     fileprivate var subtasksToken: RealmSwift.NotificationToken?
@@ -53,6 +53,13 @@ class TaskDetailViewController: BaseViewController {
     init(task: Task, canChange: Bool) {
         self.task = task
         self.canChange = canChange
+//        if !canChange {
+//            self.iconList[1].remove(at: 0)
+//            if task.tagUUID == nil {
+//                self.iconList[1].remove(at: 4)
+//            }
+//        }
+        
         super.init(nibName: "TaskDetailViewController", bundle: nil)
     }
     
@@ -65,13 +72,13 @@ class TaskDetailViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
         self.configMainUI()
         self.initializeControl()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        KeyboardManager.sharedManager.closeNotification()
         
         guard let count = subtasks?.count
             , self.task.subTaskCount != count

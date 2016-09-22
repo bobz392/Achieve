@@ -171,10 +171,12 @@ class RealmManager {
     
     //MARK: tasks search
     //note: this realm must create new one in other thread
-    func searchTasks(queryString: String, realmInThatThread: Realm) -> Results<Task> {
-        return realm.allObjects(ofType: Task.self)
+    func searchTasks(queryString: String) -> Results<Task> {
+        let tasks = realm.allObjects(ofType: Task.self)
             .filter(using: "taskToDo CONTAINS '\(queryString)'")
             .sorted(onProperty: "createdDate", ascending: false)
+        
+        return tasks
     }
 }
 

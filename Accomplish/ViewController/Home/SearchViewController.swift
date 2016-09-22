@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SearchViewController: BaseViewController {
     
@@ -20,13 +19,13 @@ class SearchViewController: BaseViewController {
     
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var hintLabel: UILabel!
+    
     private let searchCorner: CGFloat = 16
-    fileprivate var searchResult: Results<Task>? = nil
+    fileprivate var searchResult = Array<Task>()
     fileprivate var searchInProgress = false
     
-    fileprivate let searchDispatch =
-        DispatchQueue.init(label: "search.dispatch.queue", qos:
-            DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 0))
+    fileprivate var selectedIndex: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class SearchViewController: BaseViewController {
         self.configMainUI()
         self.initializeControl()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -48,6 +47,10 @@ class SearchViewController: BaseViewController {
         }
         
         self.searchTextField.becomeFirstResponder()
+        
+        guard let indexPath = self.selectedIndex else { return }
+        self.searchTableView.deselectRow(at: indexPath, animated: true)
+        self.selectedIndex = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +82,8 @@ class SearchViewController: BaseViewController {
         self.searchTextField.textColor = colors.mainTextColor
         
         self.searchTableView.separatorColor = colors.cloudColor
+        
+        self.hintLabel.textColor = colors.cloudColor
     }
     
     fileprivate func initializeControl() {
@@ -86,6 +91,8 @@ class SearchViewController: BaseViewController {
         
         self.searchTextField.placeholder = Localized("searchHolder")
         self.configTableView()
+        
+        self.hintLabel.text = Localized("searchStart")
     }
     
     // MARK: - actions
@@ -94,6 +101,11 @@ class SearchViewController: BaseViewController {
             return
         }
         nav.popViewController(animated: true)
+    }
+    
+    fileprivate func enterTask(_ task: Task) {
+        let taskVC = TaskDetailViewController(task: task, canChange: false)
+        self.navigationController?.pushViewController(taskVC, animated: true)
     }
 }
 
@@ -106,21 +118,27 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.selectedIndex = indexPath
+        let task = self.searchResult[indexPath.row]
+        self.enterTask(task)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchResult?.count ?? 0
+        return self.searchResult.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return SearchTableViewCell.rowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseId, for: indexPath) as! SearchTableViewCell
         
-        if let task = self.searchResult?[indexPath.row] {
-            cell.taskTitleLabel.text = task.getNormalDisplayTitle()
-            cell.taskStartLabel.text =
-                task.createdDate?.formattedDate(with: DateFormatter.Style.medium)
-        }
+        let task = self.searchResult[indexPath.row]
+        cell.taskTitleLabel.text = task.getNormalDisplayTitle()
+        cell.taskStartLabel.text =
+            task.createdDate?.formattedDate(with: DateFormatter.Style.medium)
+        
         
         return cell
     }
@@ -133,9 +151,20 @@ extension SearchViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        self.hintLabel.text = Localized("searchNoResult")
+        self.hintLabel.isHidden = true
+        
         var text = textField.text
         text?.replace(range, replacement: string)
         guard let realString = text else {
+            return true
+        }
+        
+        guard realString.length() > 0 else {
+            self.searchResult.removeAll()
+            self.searchTableView.reloadData()
+            self.hintLabel.isHidden = false
             return true
         }
         
@@ -148,14 +177,13 @@ extension SearchViewController: UITextFieldDelegate {
     fileprivate func queryResult(queryString: String) {
         self.searchInProgress = true
         
-        self.searchDispatch.async {
-            let tasks = RealmManager.shareManager
-                .searchTasks(queryString: queryString, realmInThatThread: try! Realm())
-            dispatch_async_main { [unowned self] in
-                self.searchResult? = tasks
-                self.searchTableView.reloadData()
-                self.searchInProgress = false
-            }
-        }
+        let tasks = RealmManager.shareManager
+            .searchTasks(queryString: queryString)
+        
+        self.searchResult.removeAll()
+        self.searchResult.append(contentsOf: tasks)
+        self.searchTableView.reloadData()
+        self.searchInProgress = false
+        self.hintLabel.isHidden = self.searchResult.count > 0
     }
 }

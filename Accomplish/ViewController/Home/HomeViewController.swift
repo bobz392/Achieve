@@ -525,10 +525,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
-            showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
+            self.showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
             return self.runningTasks?.count ?? 0
         } else {
-            showEmptyHint(self.finishTasks?.count ?? 0 <= 0)
+            self.showEmptyHint(self.finishTasks?.count ?? 0 <= 0)
             return self.finishTasks?.count ?? 0
         }
     }
@@ -542,11 +542,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath
+        self.selectedIndex = indexPath
         
         let task: Task?
         let canChange: Bool
-        if inRunningTasksTable() {
+        if self.inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
             canChange = true
         } else {

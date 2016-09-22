@@ -160,3 +160,5 @@
 
 // search
 "searchHolder"="搜索";
+"searchStart"="请输入您搜索的关键词";
+"searchNoResult"="没有查询到结果";

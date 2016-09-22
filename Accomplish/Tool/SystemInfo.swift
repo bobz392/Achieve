@@ -33,12 +33,14 @@ struct SystemInfo {
         self.aboveOS10 = version >= 10
     }
     
-    static func log(_ log: Any) {
+    static func log(_ log: Any, function: String = #function,
+                    file: String = #file, line: Int = #line) {
         #if debug
             print("------------------------------------------")
-            print(#function, #file, #line)
+            print( function, file, line)
             print()
             print(log)
+            print()
         #endif
     }
 }

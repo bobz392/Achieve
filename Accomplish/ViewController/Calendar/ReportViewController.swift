@@ -146,7 +146,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId, for: indexPath) as! ScheduleTableViewCell
         
-        cell.setTop((indexPath as NSIndexPath).row == 0)
+        cell.setTop(indexPath.row == 0)
         cell.setBottom(indexPath.row == (self.taskList?.count ?? 0) - 1)
         if let task = self.taskList?[indexPath.row] {
             cell.config(task)

@@ -558,8 +558,8 @@ public class JTAppleCalendarView: UIView {
                     if indexPathOfLastDayOfPreviousMonth.count > 0 {
                         let LastDayIndexPath = indexPathOfLastDayOfPreviousMonth[0]
                         
-                        var section = (LastDayIndexPath as NSIndexPath).section
-                        var itemIndex = (LastDayIndexPath as NSIndexPath).item + dayIndex
+                        var section = LastDayIndexPath.section
+                        var itemIndex = LastDayIndexPath.item + dayIndex
                         
                         // Determine if the sections/item needs to be adjusted
                         let extraSection = itemIndex / numberOfItemsPerSection

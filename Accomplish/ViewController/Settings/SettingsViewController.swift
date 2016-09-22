@@ -245,11 +245,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.deselectRow(at: indexPath, animated: true)
                 
             case 2:
-                self.handleOpenCloseCell((indexPath as NSIndexPath).row)
+                self.handleOpenCloseCell(indexPath.row)
                 tableView.deselectRow(at: indexPath, animated: true)
             
             case 3:
-                self.handleOpenCloseCell((indexPath as NSIndexPath).row)
+                self.handleOpenCloseCell(indexPath.row)
                 tableView.deselectRow(at: indexPath, animated: true)
                 
             default:

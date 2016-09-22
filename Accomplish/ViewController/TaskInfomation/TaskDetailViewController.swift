@@ -293,7 +293,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if (indexPath as NSIndexPath).section == self.subtaskSection {
+        if indexPath.section == self.subtaskSection {
             return nil
         } else {
             return indexPath
@@ -302,27 +302,27 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableCell: UITableViewCell
-        if (indexPath as NSIndexPath).row > self.iconList[(indexPath as NSIndexPath).section].count - 1 {
+        if indexPath.row > self.iconList[indexPath.section].count - 1 {
             tableCell = tableView.dequeueReusableCell(withIdentifier: SectionTableViewCell.reuseId, for: indexPath)
             tableCell.isUserInteractionEnabled = false
             return tableCell
         }
         
-        if  (indexPath as NSIndexPath).section == 0 {
+        if  indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: TaskDateTableViewCell.reuseId, for: indexPath) as! TaskDateTableViewCell
-            cell.configCell(task, iconString: iconList[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row])
-            cell.clearButton.tag = (indexPath as NSIndexPath).row
+            cell.configCell(task, iconString: iconList[indexPath.section][indexPath.row])
+            cell.clearButton.tag = indexPath.row
             cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), for: .touchUpInside)
             tableCell = cell
             tableCell.isUserInteractionEnabled = canChange
-        } else if (indexPath as NSIndexPath).section == 2 {
+        } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: TaskNoteTableViewCell.reuseId, for: indexPath) as! TaskNoteTableViewCell
             cell.configCell(task)
             tableCell = cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: SubtaskTableViewCell.reuseId, for: indexPath) as! SubtaskTableViewCell
-            let row = (indexPath as NSIndexPath).row
-            if iconList[(indexPath as NSIndexPath).section][row] == SubtaskIconAdd {
+            let row = indexPath.row
+            if iconList[indexPath.section][row] == SubtaskIconAdd {
                 cell.configCell(task, subtask: nil, iconString: SubtaskIconAdd)
             } else {
                 cell.configCell(task, subtask: self.subtasks?[row], iconString: iconList[indexPath.section][indexPath.row])
@@ -336,13 +336,13 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath as NSIndexPath).row > self.iconList[(indexPath as NSIndexPath).section].count - 1 {
+        if indexPath.row > self.iconList[indexPath.section].count - 1 {
             return SectionTableViewCell.rowHeight
         }
         
-        if (indexPath as NSIndexPath).section == 0 {
+        if indexPath.section == 0 {
             return TaskDateTableViewCell.rowHeight
-        } else if (indexPath as NSIndexPath).section == 2 {
+        } else if indexPath.section == 2 {
             return TaskNoteTableViewCell.rowHeight
         } else {
             return SubtaskTableViewCell.rowHeight
@@ -350,13 +350,13 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 0 {
+        if indexPath.section == 0 {
             dispatch_delay(kSmallAnimationDuration, closure: { [unowned self] in
-                self.taskPickerView?.setIndex(index: (indexPath as NSIndexPath).row)
+                self.taskPickerView?.setIndex(index: indexPath.row)
                 self.showDatePickerView(show: true)
             })
             
-        } else if (indexPath as NSIndexPath).section == 2 {
+        } else if indexPath.section == 2 {
             let noteVC = NoteViewController(task: self.task, noteDelegate: self)
             self.navigationController?.pushViewController(noteVC, animated: true)
             self.view.endEditing(true)

@@ -86,7 +86,7 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SystemTaskTableViewCell.reuseId, for: indexPath) as! SystemTaskTableViewCell
-        let action = actionBuilder.allActions[(indexPath as NSIndexPath).row]
+        let action = actionBuilder.allActions[indexPath.row]
         cell.iconImage.image = UIImage(named: action.actionImage)
         cell.taskTitle.text = Localized(action.hintString)
         
@@ -99,7 +99,7 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let actionType = actionBuilder.allActions[(indexPath as NSIndexPath).row].type
+        let actionType = actionBuilder.allActions[indexPath.row].type
         selectedActionType = actionType
         guard let present = selectedActionType?.actionPresent() else { return }
         

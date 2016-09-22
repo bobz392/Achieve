@@ -82,18 +82,18 @@ extension BackgroundViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: BackgroundCollectionViewCell.reuseId, for: indexPath) as! BackgroundCollectionViewCell
-        let type = MainColorType(rawValue: (indexPath as NSIndexPath).row) ?? MainColorType.greenSea
+        let type = MainColorType(rawValue: indexPath.row) ?? MainColorType.greenSea
         cell.contentView.backgroundColor = type.mianColor()
         cell.contentView.layer.cornerRadius = 10
         let selectedType = AppUserDefault().readInt(kBackgroundKey)
-        cell.checkImageView.isHidden = selectedType != (indexPath as NSIndexPath).row
+        cell.checkImageView.isHidden = selectedType != indexPath.row
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        Colors.backgroundType = MainColorType(rawValue: (indexPath as NSIndexPath).row) ?? MainColorType.greenSea
+        Colors.backgroundType = MainColorType(rawValue: indexPath.row) ?? MainColorType.greenSea
         collectionView.reloadData()
         NotificationCenter.default.post(name: Notification.Name(rawValue: kBackgroundNeedRefreshNotification), object: nil)
     }

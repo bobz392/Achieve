@@ -133,9 +133,9 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let index = indexes[(indexPath as NSIndexPath).section]
+        let index = indexes[indexPath.section]
         
-        if let person = data[index]?[(indexPath as NSIndexPath).row] {
+        if let person = data[index]?[indexPath.row] {
             if readPhoneType {
                 delegate?.actionData(person.name.fullName, info: person.phoneNumbers.first?.phoneNumberString ?? "")
             } else {
@@ -154,9 +154,9 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
         
-        let index = indexes[(indexPath as NSIndexPath).section]
+        let index = indexes[indexPath.section]
         
-        if let person = data[index]?[(indexPath as NSIndexPath).row] {
+        if let person = data[index]?[indexPath.row] {
             if readPhoneType {
                 cell.nameLabel.text = person.name.fullName
                 cell.phoneNumberLabel.text = person.phoneNumbers.first?.displayName ?? ""

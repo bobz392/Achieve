@@ -99,10 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let repeaterManager = RepeaterManager()
-        if repeaterManager.isNewDay() {
-            completionHandler(.newData)
-//            
+        completionHandler(.noData)
+//        let repeaterManager = RepeaterManager()
+//        if repeaterManager.isNewDay() {
+//            completionHandler(.newData)
+//
 //            guard let nav = application.keyWindow?.rootViewController as? UINavigationController else {
 //                return
 //            }
@@ -110,9 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                return
 //            }
 //            vc.handleNewDay()
-        } else {
-            completionHandler(.noData)
-        }
+//        } else {
+//            completionHandler(.noData)
+//        }
     }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {

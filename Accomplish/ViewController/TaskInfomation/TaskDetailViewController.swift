@@ -32,7 +32,11 @@ class TaskDetailViewController: BaseViewController {
     
     fileprivate var taskPickerView: TaskPickerView?
     
-    fileprivate var iconList: [[String]]
+    fileprivate var iconList = [
+        [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
+        [SubtaskIconAdd],
+        [TaskIconNote]
+    ]
     fileprivate let subtaskSection = 1
     
     var task: Task
@@ -44,38 +48,11 @@ class TaskDetailViewController: BaseViewController {
     init(task: Task, canChange: Bool) {
         self.task = task
         self.canChange = canChange
-        self.iconList = [[], [], []]
-        if !canChange {
-            
-            self.iconList[0].append(TaskIconCalendar)
-            if let _ = task.finishedDate {
-                self.iconList[0].append(TaskDueIconCalendar)
-            }
-            if let _ = task.notifyDate {
-                self.iconList[0].append(TaskIconBell)
-            }
-            if let _ = RealmManager.shareManager.queryRepeaterWithTask(task.uuid) {
-                self.iconList[0].append(TaskIconRepeat)
-            }
-            if let _ = task.tagUUID {
-                self.iconList[0].append(TaskTagIcon)
-            }
-            self.iconList[2].append(TaskIconNote)
-        } else {
-            self.iconList.append(contentsOf: [
-                [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
-                [SubtaskIconAdd],
-                [TaskIconNote]
-                ]
-            )
-        }
-        
         super.init(nibName: "TaskDetailViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.task = Task()
-        self.iconList = [[String]]()
         super.init(coder: aDecoder)
     }
     

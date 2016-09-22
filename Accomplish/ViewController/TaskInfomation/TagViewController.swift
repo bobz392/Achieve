@@ -215,7 +215,14 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
         let tag = self.allTags[indexPath.row - 1]
         switch editingStyle {
         case .delete:
-            let alert = UIAlertController(title: tag.name, message: nil, preferredStyle: .actionSheet)
+            let message: String?
+            if let count = self.bagDict[tag.tagUUID] {
+                message = String(format: Localized("tagToday"), count)
+            } else {
+                message = nil
+            }
+            
+            let alert = UIAlertController(title: tag.name, message: message, preferredStyle: .actionSheet)
             
             let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
                 alert.dismiss(animated: true, completion: nil)

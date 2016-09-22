@@ -13,7 +13,7 @@ let kTaskClearCellIconSize: CGFloat = 16
 let kNoteCellIconSize: CGFloat =  19
 let kTaskButtonIconSize: CGFloat = 20
 
-class TaskDateTableViewCell: UITableViewCell {
+class TaskDateTableViewCell: BaseTableViewCell {
     
     static let nib = UINib(nibName: "TaskDateTableViewCell", bundle: nil)
     static let reuseId = "taskDateTableViewCell"
@@ -43,9 +43,6 @@ class TaskDateTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        selectedBackgroundView = UIView(frame: frame)
-        selectedBackgroundView?.backgroundColor = Colors().selectedColor
-        
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }

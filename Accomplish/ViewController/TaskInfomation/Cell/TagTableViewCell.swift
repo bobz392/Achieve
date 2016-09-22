@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TagTableViewCell: UITableViewCell {
+class TagTableViewCell: BaseTableViewCell {
 
     static let nib = UINib(nibName: "TagTableViewCell", bundle: nil)
     static let reuseId = "tagTableViewCell"
@@ -38,9 +38,6 @@ class TagTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        selectedBackgroundView = UIView(frame: frame)
-        selectedBackgroundView?.backgroundColor = Colors().selectedColor
-        
         self.currentLabel.isHidden = !selected
         self.tagLabel.font =
             selected ? UIFont.boldSystemFont(ofSize: 14) : UIFont.systemFont(ofSize: 14)

@@ -8,10 +8,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="cqi-5O-vQJ" id="DSO-Ci-IxT"/>
+                <outlet property="backButton" destination="QmO-P5-Rih" id="sWa-4T-pvN"/>
                 <outlet property="searchHolderView" destination="LTp-E9-t54" id="Onr-Nq-BlN"/>
                 <outlet property="searchIconLabel" destination="9Fd-DF-9ps" id="f9c-hE-9rD"/>
+                <outlet property="searchTableView" destination="2aJ-UT-sdb" id="ZYX-fP-3HL"/>
                 <outlet property="searchTextField" destination="mMy-W7-pwz" id="xEy-DA-Yh7"/>
+                <outlet property="toolView" destination="T1a-HM-aoF" id="Vzn-P9-g6K"/>
+                <outlet property="toolViewBottomConstraint" destination="wxW-0N-shn" id="GEf-fZ-89d"/>
                 <outlet property="topHolderView" destination="37O-y4-PKi" id="lb4-7a-DuJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,7 +48,7 @@
                                 <constraint firstAttribute="trailing" secondItem="mMy-W7-pwz" secondAttribute="trailing" constant="16" id="17s-LI-Uqq"/>
                                 <constraint firstItem="9Fd-DF-9ps" firstAttribute="centerY" secondItem="LTp-E9-t54" secondAttribute="centerY" id="AD3-Sc-DQ8"/>
                                 <constraint firstItem="9Fd-DF-9ps" firstAttribute="leading" secondItem="LTp-E9-t54" secondAttribute="leading" constant="16" id="Du1-WW-Pc5"/>
-                                <constraint firstItem="mMy-W7-pwz" firstAttribute="leading" secondItem="9Fd-DF-9ps" secondAttribute="trailing" constant="5" id="Ea9-ng-3fd"/>
+                                <constraint firstItem="mMy-W7-pwz" firstAttribute="leading" secondItem="9Fd-DF-9ps" secondAttribute="trailing" id="Ea9-ng-3fd"/>
                                 <constraint firstItem="mMy-W7-pwz" firstAttribute="centerY" secondItem="LTp-E9-t54" secondAttribute="centerY" id="F8Z-PI-muh"/>
                                 <constraint firstAttribute="height" constant="32" id="SBC-58-Rc3"/>
                             </constraints>
@@ -53,30 +56,45 @@
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="LTp-E9-t54" secondAttribute="trailing" constant="10" id="ElG-EC-HBF"/>
-                        <constraint firstItem="LTp-E9-t54" firstAttribute="leading" secondItem="37O-y4-PKi" secondAttribute="leading" constant="10" id="QHG-9L-AYC"/>
+                        <constraint firstAttribute="trailing" secondItem="LTp-E9-t54" secondAttribute="trailing" constant="8" id="ElG-EC-HBF"/>
+                        <constraint firstItem="LTp-E9-t54" firstAttribute="leading" secondItem="37O-y4-PKi" secondAttribute="leading" constant="8" id="QHG-9L-AYC"/>
                         <constraint firstAttribute="height" constant="90" id="eqs-2a-2MT"/>
-                        <constraint firstAttribute="bottom" secondItem="LTp-E9-t54" secondAttribute="bottom" constant="10" id="phF-hr-Ctx"/>
+                        <constraint firstItem="LTp-E9-t54" firstAttribute="top" secondItem="37O-y4-PKi" secondAttribute="top" constant="50" id="fjQ-ba-8KT"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqi-5O-vQJ" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-HM-aoF">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-P5-Rih">
+                            <state key="normal" title="cancel"/>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="42" id="Ey5-mq-sBe"/>
-                        <constraint firstAttribute="width" constant="42" id="xYs-r0-Hy9"/>
+                        <constraint firstItem="QmO-P5-Rih" firstAttribute="centerY" secondItem="T1a-HM-aoF" secondAttribute="centerY" id="HcH-1Q-D2F"/>
+                        <constraint firstAttribute="height" constant="44" id="ZKj-vb-E7s"/>
+                        <constraint firstAttribute="trailing" secondItem="QmO-P5-Rih" secondAttribute="trailing" constant="20" id="foJ-Op-GSO"/>
                     </constraints>
-                    <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
-                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
-                </button>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-UT-sdb">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="S8G-WU-edl"/>
+                        <outlet property="delegate" destination="-1" id="T7T-RI-Mxl"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="cqi-5O-vQJ" secondAttribute="bottom" constant="10" id="3De-Ag-kIs"/>
                 <constraint firstItem="37O-y4-PKi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6wx-kv-bQN"/>
-                <constraint firstItem="cqi-5O-vQJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dPd-sK-pyJ"/>
+                <constraint firstItem="T1a-HM-aoF" firstAttribute="top" secondItem="2aJ-UT-sdb" secondAttribute="bottom" id="bzb-VL-ALD"/>
+                <constraint firstAttribute="trailing" secondItem="2aJ-UT-sdb" secondAttribute="trailing" id="fI4-TJ-dgO"/>
+                <constraint firstItem="T1a-HM-aoF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iRR-at-7tG"/>
+                <constraint firstItem="2aJ-UT-sdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kGq-Ox-IBD"/>
                 <constraint firstItem="37O-y4-PKi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="l3b-sf-sTA"/>
+                <constraint firstItem="2aJ-UT-sdb" firstAttribute="top" secondItem="37O-y4-PKi" secondAttribute="bottom" id="lRW-sG-Wcu"/>
+                <constraint firstAttribute="trailing" secondItem="T1a-HM-aoF" secondAttribute="trailing" id="p2P-Sm-fx9"/>
                 <constraint firstAttribute="trailing" secondItem="37O-y4-PKi" secondAttribute="trailing" id="ukg-fu-hSQ"/>
+                <constraint firstAttribute="bottom" secondItem="T1a-HM-aoF" secondAttribute="bottom" id="wxW-0N-shn"/>
             </constraints>
             <point key="canvasLocation" x="50.5" y="53.5"/>
         </view>

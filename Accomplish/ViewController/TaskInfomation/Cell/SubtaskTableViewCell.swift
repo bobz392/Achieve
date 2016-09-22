@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubtaskTableViewCell: UITableViewCell {
+class SubtaskTableViewCell: BaseTableViewCell {
     
     static let nib = UINib(nibName: "SubtaskTableViewCell", bundle: nil)
     static let reuseId = "subtaskTableViewCell"
@@ -40,9 +40,6 @@ class SubtaskTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        selectedBackgroundView = UIView(frame: frame)
-        selectedBackgroundView?.backgroundColor = Colors().selectedColor
-        
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }

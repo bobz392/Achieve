@@ -288,7 +288,7 @@ class HomeViewController: BaseViewController {
     }
     
     fileprivate func realmNoticationToken() {
-        finishToken = finishTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
+        self.finishToken = finishTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == 0 {
                 return
             }
@@ -306,7 +306,7 @@ class HomeViewController: BaseViewController {
             }
             })
         
-        runningToken = runningTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
+        self.runningToken = runningTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == 1 {
                 return
             }

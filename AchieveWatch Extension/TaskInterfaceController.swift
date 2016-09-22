@@ -21,9 +21,9 @@ class TaskInterfaceController: WKInterfaceController {
         
         
         self.fullTitleLabel.setText(task[GroupTaskTitleIndex])
-        if let estimate = task[GroupTaskEstimateIndex].optionalDateFromString(TimeDateFormat) {
-        
-        }
+//        if let estimate = task[GroupTaskEstimateIndex].optionalDateFromString(TimeDateFormat) {
+//        
+//        }
     }
     
     override func willActivate() {

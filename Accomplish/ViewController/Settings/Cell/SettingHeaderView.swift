@@ -21,7 +21,7 @@ class SettingHeaderView: UIView {
         let colors = Colors()
         self.headerTitleLabel.textColor = colors.secondaryTextColor
         self.separatorView.backgroundColor = colors.separatorColor
-        self.clearView()
+        self.backgroundColor = colors.cloudColor
         super.awakeFromNib()
     }
 }

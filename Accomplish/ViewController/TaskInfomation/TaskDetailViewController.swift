@@ -20,11 +20,6 @@ let TaskIconNote = "fa-pencil-square-o"
 let SubtaskIconSquare = "fa-square-o"
 let SubtaskIconChecked = "fa-check-square-o"
 
-let TaskDueIndex = 1
-let TaskReminderIndex = 2
-let TaskRepeatIndex = 3
-let TagIndex = 4
-
 class TaskDetailViewController: BaseViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -37,11 +32,7 @@ class TaskDetailViewController: BaseViewController {
     
     fileprivate var taskPickerView: TaskPickerView?
     
-    fileprivate var iconList = [
-        [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
-        [SubtaskIconAdd],
-        [TaskIconNote]
-    ]
+    fileprivate var iconList: [[String]]
     fileprivate let subtaskSection = 1
     
     var task: Task
@@ -53,18 +44,38 @@ class TaskDetailViewController: BaseViewController {
     init(task: Task, canChange: Bool) {
         self.task = task
         self.canChange = canChange
-//        if !canChange {
-//            self.iconList[1].remove(at: 0)
-//            if task.tagUUID == nil {
-//                self.iconList[1].remove(at: 4)
-//            }
-//        }
+        self.iconList = [[], [], []]
+        if !canChange {
+            
+            self.iconList[0].append(TaskIconCalendar)
+            if let _ = task.finishedDate {
+                self.iconList[0].append(TaskDueIconCalendar)
+            }
+            if let _ = task.notifyDate {
+                self.iconList[0].append(TaskIconBell)
+            }
+            if let _ = RealmManager.shareManager.queryRepeaterWithTask(task.uuid) {
+                self.iconList[0].append(TaskIconRepeat)
+            }
+            if let _ = task.tagUUID {
+                self.iconList[0].append(TaskTagIcon)
+            }
+            self.iconList[2].append(TaskIconNote)
+        } else {
+            self.iconList.append(contentsOf: [
+                [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
+                [SubtaskIconAdd],
+                [TaskIconNote]
+                ]
+            )
+        }
         
         super.init(nibName: "TaskDetailViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.task = Task()
+        self.iconList = [[String]]()
         super.init(coder: aDecoder)
     }
     
@@ -138,7 +149,7 @@ class TaskDetailViewController: BaseViewController {
         
         guard let taskPickerView = Bundle.main.loadNibNamed("TaskPickerView", owner: self, options: nil)?.last as? TaskPickerView else { return }
         self.datePickerHolderView.addSubview(taskPickerView)
-    
+        
         taskPickerView.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.bottom.equalTo(0)
@@ -359,9 +370,10 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             dispatch_delay(kSmallAnimationDuration, closure: { [unowned self] in
-                self.taskPickerView?.setIndex(index: indexPath.row)
+                let indexString = self.iconList[indexPath.section][indexPath.row]
+                self.taskPickerView?.setIndex(index: indexString)
                 self.showDatePickerView(show: true)
-            })
+                })
             
         } else if indexPath.section == 2 {
             let noteVC = NoteViewController(task: self.task, noteDelegate: self)
@@ -388,31 +400,39 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - task data picker
 extension TaskDetailViewController {
+    //    [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
+    //    [SubtaskIconAdd],
+    //    [TaskIconNote]
+    fileprivate func getIndexPathFrom(indexString: String) -> IndexPath? {
+        guard let index = self.iconList[0].index(of: indexString) else { return nil }
+        return IndexPath(row: index, section: 0)
+    }
     
     func cancelDatePickerAction() {
         guard let datePicker = self.taskPickerView else { return }
         showDatePickerView(show: false)
-        let index = IndexPath(row: datePicker.getIndex(), section: 0)
-        self.detailTableView.reloadRows(at: [index], with: .automatic)
+        guard let indexPath =
+            self.getIndexPathFrom(indexString: datePicker.getIndex()) else { return }
+        self.detailTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func setDatePickerAction() {
         guard let taskPickerView = self.taskPickerView else { return }
         
         switch taskPickerView.getIndex() {
-        case 0:
+        case TaskIconCalendar:
             guard let date = taskPickerView.datePicker.date as NSDate? else { break }
             RealmManager.shareManager.updateObject {
                 self.task.createdDate = date
                 self.task.createdFormattedDate = date.createdFormatedDateString()
             }
             
-        case TaskDueIndex:
+        case TaskDueIconCalendar:
             RealmManager.shareManager.updateObject {
                 self.task.estimateDate = taskPickerView.datePicker.date as NSDate
             }
             
-        case TaskReminderIndex:
+        case TaskIconBell:
             RealmManager.shareManager.updateObject {
                 let date = taskPickerView.datePicker.date
                 let fireDate = NSDate(year: (date as NSDate).year(), month: (date as NSDate).month(), day: (date as NSDate).day(), hour: (date as NSDate).hour(), minute: (date as NSDate).minute(), second: 5)
@@ -421,12 +441,12 @@ extension TaskDetailViewController {
             }
             LocalNotificationManager().createNotify(self.task)
             
-        case TaskRepeatIndex:
+        case TaskIconRepeat:
             let repeatTimeType = taskPickerView.repeatTimeType()
             RealmManager.shareManager
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
             
-        case TagIndex:
+        case TaskTagIcon:
             let tagUUID = taskPickerView.selectedTagUUID()
             RealmManager.shareManager.updateObject({
                 self.task.tagUUID = tagUUID
@@ -436,9 +456,10 @@ extension TaskDetailViewController {
             break
         }
         
-        showDatePickerView(show: false)
-        let index = IndexPath(row: taskPickerView.getIndex(), section: 0)
-        self.detailTableView.reloadRows(at: [index], with: .automatic)
+        self.showDatePickerView(show: false)
+        guard let indexPath =
+            self.getIndexPathFrom(indexString: taskPickerView.getIndex()) else { return }
+        self.detailTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     // to-do
@@ -447,7 +468,8 @@ extension TaskDetailViewController {
             if KeyboardManager.keyboardShow {
                 self.view.endEditing(true)
                 guard let datePickerView = self.taskPickerView else { return }
-                let selectedIndex = IndexPath(row: datePickerView.getIndex(), section: 0)
+                guard let selectedIndex =
+                    self.getIndexPathFrom(indexString: datePickerView.getIndex()) else { return }
                 self.detailTableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
             }
             if (self.taskPickerView?.viewIsShow() == true) {

@@ -22,8 +22,11 @@ class TaskPickerView: UIView {
     fileprivate let allTags = RealmManager.shareManager.allTags()
     
     var task: Task?
-    fileprivate var index: Int = 0
+    fileprivate var index: String = ""
     fileprivate var viewShow = false
+    
+    fileprivate let TaskRepeatTag = 998
+    fileprivate let TaskTagTag = 999
     
     override func awakeFromNib() {
         let colors = Colors()
@@ -46,7 +49,7 @@ class TaskPickerView: UIView {
         self.viewShow = false
     }
     
-    func getIndex() -> Int {
+    func getIndex() -> String {
         return self.index
     }
     
@@ -66,8 +69,8 @@ class TaskPickerView: UIView {
             return self.allTags[selectedRow - 1].tagUUID
         }
     }
-    
-    func setIndex(index: Int) {
+
+    func setIndex(index: String) {
         guard let task = self.task else { return }
         self.index = index
         self.viewShow = true
@@ -77,21 +80,21 @@ class TaskPickerView: UIView {
         self.datePicker.date = task.createdDate as Date? ?? now
         
         switch index {
-        case 0:
+        case TaskIconCalendar:
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = now
             self.datePicker.datePickerMode = .dateAndTime
             self.rightButton.setTitle(Localized("setCreateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskDueIndex:
+        case TaskDueIconCalendar:
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = ((task.createdDate as NSDate?)?.addingMinutes(15)) ?? now
             self.datePicker.datePickerMode = .time
             self.rightButton.setTitle(Localized("setEstimateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskReminderIndex:
+        case TaskIconBell:
             guard let createDate = task.createdDate else { break }
             self.datePicker.date = now
             self.datePicker.isHidden = false
@@ -108,17 +111,17 @@ class TaskPickerView: UIView {
             self.rightButton.setTitle(Localized("setReminder"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskRepeatIndex:
+        case TaskIconRepeat:
             self.pickerView.isHidden = false
             self.rightButton.setTitle(Localized("setRepeat"), for: .normal)
-            self.pickerView.tag = TaskRepeatIndex
+            self.pickerView.tag = self.TaskRepeatTag
             self.pickerView.reloadAllComponents()
             break
             
-        case TagIndex:
+        case TaskTagIcon:
             self.pickerView.isHidden = false
             self.rightButton.setTitle(Localized("setTag"), for: .normal)
-            self.pickerView.tag = TagIndex
+            self.pickerView.tag = self.TaskTagTag
             self.pickerView.reloadAllComponents()
             
         default:
@@ -134,7 +137,7 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == TaskRepeatIndex {
+        if pickerView.tag == self.TaskRepeatTag {
             return self.repeatTypes.count
         } else {
             return self.allTags.count + 1
@@ -144,7 +147,7 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         let title: String
-        if pickerView.tag == TaskRepeatIndex {
+        if pickerView.tag == TaskRepeatTag {
             guard let createDate = self.task?.createdDate else { return pickerLabel }
             title = self.repeatTypes[row].repeaterTitle(createDate: createDate)
         } else {

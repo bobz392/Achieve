@@ -206,6 +206,10 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
         return .delete
     }
     
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        tableView.selectRow(at: self.currentSelectedIndex, animated: true, scrollPosition: .none)
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         let tag = self.allTags[indexPath.row - 1]

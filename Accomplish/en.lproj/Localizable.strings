@@ -52,17 +52,16 @@
 "normal"="Normal";
 "low"="Low";
 
-"selectAction"="Built-in Action";
+"selectAction"="Built-in Task";
 "callAction"="Call ";
 "sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";
 "mailAction"="Send mail to ";
 
-"addPhoneCall"="Create a phone call action";
-"addMessage"="Create a message action";
-"addFaceTime"="Create a Face Time action";
-"addMail"="Create a mail action";
-
+"addPhoneCall"="Create a phone call task";
+"addMessage"="Create a message task";
+"addFaceTime"="Create a Face Time task";
+"addMail"="Create a mail task";
 "addSubtask"="Create a task with subtask";
 "subtaskTitle"="Enter your task name";
 "subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
@@ -114,7 +113,7 @@
 
 // hint
 "repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your shoud prepare to complete it each day, but you can remove repeat of this task.";
-"systemTaskHint"="In the built-in action you can quickly add a task. For example, make phone call or send message, or create a shopping list, and so on. And you can directly carry out your action by clicking on the push notification.";
+"systemTaskHint"="In the built-in task you can quickly add a task. For example, make phone call or send message, or create a shopping list, and so on. And you can directly carry out your action by clicking on the push notification or in list.";
 
 // setting
 "setting"="Settings";

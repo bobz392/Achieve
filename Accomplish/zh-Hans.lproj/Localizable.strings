@@ -52,17 +52,16 @@
 "normal"="普通";
 "low"="低";
 
-"selectAction"="选择内置动作";
+"selectAction"="选择内置任务";
 "callAction"="打电话给 ";
 "sendMessageAction"="发短讯给 ";
 "faceTimeAction"="Face Time给 ";
 "mailAction"="发邮件给 ";
 
-"addPhoneCall"="添加一个拨号动作";
-"addMessage"="添加一个短信动作";
-"addFaceTime"="添加一个Face Time动作";
-"addMail"="添加一个发送邮件动作";
-
+"addPhoneCall"="添加一个拨号任务";
+"addMessage"="添加一个短信任务";
+"addFaceTime"="添加一个Face Time任务";
+"addMail"="添加一个发送邮件任务";
 "addSubtask"="创建一个有子任务的任务";
 "subtaskTitle"="输入您的任务名";
 "subtaskInfo"="输入您的多个子任务，子任务之间以回车分隔";

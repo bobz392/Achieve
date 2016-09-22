@@ -158,3 +158,5 @@
 // hint
 "help"="Help";
 
+// search
+"searchHolder"="Search";

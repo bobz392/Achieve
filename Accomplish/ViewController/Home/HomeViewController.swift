@@ -187,15 +187,22 @@ class HomeViewController: BaseViewController {
         self.currentDateLabel.text = (Date() as NSDate).formattedDate(with: .medium)
         self.emptyHintLabel.text = Localized("emptyTask")
         
-        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
+        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction),
+                                     for: .touchUpInside)
         
-        self.calendarButton.addTarget(self, action: #selector(self.calendarAction), for: .touchUpInside)
+        self.calendarButton.addTarget(self, action: #selector(self.calendarAction),
+                                      for: .touchUpInside)
         
-        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction), for: .touchUpInside)
+        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction),
+                                        for: .touchUpInside)
         
-        self.settingButton.addTarget(self, action: #selector(self.settingAction), for: .touchUpInside)
+        self.settingButton.addTarget(self, action: #selector(self.settingAction),
+                                     for: .touchUpInside)
         
         self.tagButton.addTarget(self, action: #selector(self.tagAction), for: .touchUpInside)
+        
+        self.searchButton.addTarget(self, action: #selector(self.searchAction),
+                                    for: .touchUpInside)
     }
     
     // 在app 进入前台的时候需要检查三种种状态
@@ -228,9 +235,9 @@ class HomeViewController: BaseViewController {
         self.timer = SecondTimer(handle: { [weak self] () -> Void in
             guard let ws = self else { return }
             if ws.repeaterManager.isNewDay() {
-//                if NSDate().isMorning() {
-//                    HUD.sharedHUD.showOnce(Localized("newDay"))
-//                }
+                //                if NSDate().isMorning() {
+                //                    HUD.sharedHUD.showOnce(Localized("newDay"))
+                //                }
                 ws.handleNewDay()
             }
             ws.taskTableView.reloadData()
@@ -420,6 +427,13 @@ class HomeViewController: BaseViewController {
         self.navigationController?.pushViewController(calendarVC, animated: true)
     }
     
+    func searchAction() {
+        let searchVC = SearchViewController()
+        self.navigationController?.delegate = self
+        self.toViewControllerAnimationType = 0
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
     func tagAction() {
         let tagVC = TagViewController()
         tagVC.delegate = self
@@ -583,7 +597,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
-
+            
             if #available(iOS 9.0, *) {
                 SpotlightManager().removeFromIndex(task: task)
             }
@@ -613,7 +627,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.queryTodayTask(tagUUID: tag?.tagUUID)
-//        self.taskTableView.reloadData()
+        //        self.taskTableView.reloadData()
     }
 }
 

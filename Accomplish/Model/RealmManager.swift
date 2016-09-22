@@ -201,7 +201,7 @@ extension RealmManager {
 // MARK: -  Tag model
 extension RealmManager {
     func saveTag(_ tag: Tag) -> Bool {
-        if let old = queryTag(usingName: true, query: tag.name) {
+        if let _ = queryTag(usingName: true, query: tag.name) {
             return false
         }
         

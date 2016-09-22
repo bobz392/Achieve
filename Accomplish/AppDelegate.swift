@@ -150,23 +150,30 @@ extension AppDelegate {
     }
     
     func configureDynamicShortcuts() {
-        let shortcutItem1 = UIApplicationShortcutItem(
+        let createTaskItem = UIApplicationShortcutItem(
             type: QuickActionType.Create.rawValue,
             localizedTitle: Localized("shortCutCreate"),
             localizedSubtitle: "",
             icon: UIApplicationShortcutIcon(type: .add),
             userInfo: nil)
         
-        let icon = UIApplicationShortcutIcon(templateImageName: "Calendar")
-        let shortcutItem2 = UIApplicationShortcutItem(
+        let calendarIcon = UIApplicationShortcutIcon(templateImageName: "Calendar")
+        let calendarItem = UIApplicationShortcutItem(
             type: QuickActionType.Calendar.rawValue,
             localizedTitle: Localized("shortCutCalendar"),
             localizedSubtitle: "",
-            icon: icon,
+            icon: calendarIcon,
+            userInfo: nil)
+        
+        let searchTaskItem = UIApplicationShortcutItem(
+            type: QuickActionType.Search.rawValue,
+            localizedTitle: Localized("searchHolder"),
+            localizedSubtitle: "",
+            icon: UIApplicationShortcutIcon(type: .search),
             userInfo: nil)
         
         UIApplication.shared.shortcutItems =
-            [ shortcutItem1, shortcutItem2 ]
+            [ createTaskItem, calendarItem, searchTaskItem ]
     }
 
 }

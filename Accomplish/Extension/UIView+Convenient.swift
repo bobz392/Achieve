@@ -12,9 +12,10 @@ extension UIView {
     func addCorner(_ rectCorner: UIRectCorner, value: CGFloat) {
         let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: rectCorner, cornerRadii: CGSize(width: value, height: value))
         let maskLayer = CAShapeLayer()
-        maskLayer.frame = bounds
+        maskLayer.frame = self.bounds
         maskLayer.path = maskPath.cgPath
-        layer.mask = maskLayer
+        self.layer.masksToBounds = true
+        self.layer.mask = maskLayer
     }
     
     func convertViewToImage() -> UIImage {

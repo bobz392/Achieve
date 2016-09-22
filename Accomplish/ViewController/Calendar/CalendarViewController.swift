@@ -64,11 +64,7 @@ class CalendarViewController: BaseViewController {
             self.toTodayAlleady = true
         }
     }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
-    
+
     override func configMainUI() {
         let colors = Colors()
         

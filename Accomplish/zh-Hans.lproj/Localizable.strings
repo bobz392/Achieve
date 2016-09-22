@@ -154,3 +154,6 @@
 
 // hint
 "help"="帮助";
+
+// search
+"searchHolder"="搜索";

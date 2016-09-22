@@ -9,8 +9,9 @@
 import Foundation
 
 enum QuickActionType: String {
-    case Create = "com.zhoubo.Accomplish.new"
-    case Calendar = "com.zhoubo.Accomplish.calendar"
+    case Create = "com.zhoubo.Achieve.new"
+    case Calendar = "com.zhoubo.Achieve.calendar"
+    case Search = "com.zhoub.Achieve.search"
 }
 
 @available(iOS 9.0, *)
@@ -25,6 +26,9 @@ struct QuickActionDispatcher {
             
         case QuickActionType.Calendar.rawValue:
             self.handleCalender()
+    
+        case QuickActionType.Search.rawValue:
+            self.handleSearch()
             
         default:
             break
@@ -47,5 +51,12 @@ struct QuickActionDispatcher {
         rootNavigationController.popToRootViewController(animated: false)
         let calendar = CalendarViewController()
         rootNavigationController.pushViewController(calendar, animated: true)
+    }
+    
+    fileprivate func handleSearch() {
+        guard let rootNavigationController = rootViewController() else { return }
+        rootNavigationController.popToRootViewController(animated: false)
+        let search = SearchViewController()
+        rootNavigationController.pushViewController(search, animated: true)
     }
 }

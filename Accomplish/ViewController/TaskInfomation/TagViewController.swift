@@ -242,9 +242,18 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if indexPath.row == self.currentSelectedIndex?.row {
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.checkCurrentTagHasTask(row: indexPath.row) {
             if let current = self.currentSelectedIndex {
+                if current == indexPath {
+                    return
+                }
                 tableView.deselectRow(at: current, animated: true)
             }
             

@@ -91,6 +91,7 @@
 		C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A893D1D941071008E15CA /* SearchTableViewCell.xib */; };
 		C74A89411D94109E008E15CA /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89401D94109E008E15CA /* BaseTableViewCell.swift */; };
 		C74A89431D949058008E15CA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74A89421D949058008E15CA /* CloudKit.framework */; };
+		C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896B1D949A6B008E15CA /* CloudKitManager.swift */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
@@ -434,6 +435,7 @@
 		C74A893D1D941071008E15CA /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A89421D949058008E15CA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 				C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */,
 				C76AE2CE1D8E892F00930D43 /* WatchManager.swift */,
 				C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */,
+				C74A896B1D949A6B008E15CA /* CloudKitManager.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1540,6 +1543,7 @@
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
 				C79806F71D8180CD0011DE19 /* ScheduleHeaderView.swift in Sources */,
+				C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */,
 				C79807391D8507F20011DE19 /* UIView+Icon.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
 				C7821EC81D7BF1820056623D /* MMWormholeSessionMessageTransiting.m in Sources */,

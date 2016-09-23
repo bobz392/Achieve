@@ -1299,6 +1299,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -1993,7 +1996,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "ee2aa312-20cb-4eb6-8183-82e132b011a6";
+				PROVISIONING_PROFILE = "39a0b1ca-2424-459e-8a91-17acb9630810";
 				PROVISIONING_PROFILE_SPECIFIER = ltestWatchEx;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

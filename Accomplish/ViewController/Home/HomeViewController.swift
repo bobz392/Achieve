@@ -541,6 +541,32 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return TaskTableViewCell.rowHeight
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let _ = AppUserDefault().readString(kCurrentTagUUIDKey) else { return 0 }
+        return 25
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let tagUUID = AppUserDefault().readString(kCurrentTagUUIDKey) else { return nil }
+        guard let tag = RealmManager.shareManager.queryTag(usingName: false, query: tagUUID)
+            else { return nil }
+        
+        let view = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: tableView.frame.width, height: 25)))
+        view.backgroundColor = UIColor(red:0.91, green:0.92, blue:0.93, alpha:1.00)
+        
+        let label = UILabel()
+        view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.centerY.equalTo(view)
+            make.leading.equalTo(view).offset(5)
+        }
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = Colors().mainTextColor
+        label.text = tag.name
+        
+        return view
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndex = indexPath
         
@@ -627,7 +653,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.queryTodayTask(tagUUID: tag?.tagUUID)
-        //        self.taskTableView.reloadData()
     }
 }
 

@@ -101,7 +101,7 @@ enum SystemActionType: Int {
             }
             let application = UIApplication.shared
             guard application.canOpenURL(url) == true else {
-                SystemInfo.log("can not call")
+                Logger.log("can not call")
                 return
             }
             

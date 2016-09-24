@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 let kNotifyFinishAction = "notify.finish"
 let kNotifyReschedulingAction = "notify.rescheduling"
@@ -33,7 +34,7 @@ struct LocalNotificationManager {
         for n in notify {
             UIApplication.shared.cancelLocalNotification(n)
         }
-        SystemInfo.log("clear local notifycation task uuid = \(taskUUID) success")
+        Logger.log("clear local notifycation task uuid = \(taskUUID) success")
     }
     
     func updateNotify(_ task: Task, repeatInterval: NSCalendar.Unit) {
@@ -69,7 +70,7 @@ struct LocalNotificationManager {
                 let fireDate = notify.first?.fireDate as NSDate?
                 notify.first?.fireDate =
                     (skip ? fireDate?.addingYears(1) : fireDate?.subtractingYears(1)) as Date?
-            
+                
             case .everyMonth:
                 let fireDate = notify.first?.fireDate as NSDate?
                 notify.first?.fireDate =
@@ -79,7 +80,7 @@ struct LocalNotificationManager {
                 let fireDate = notify.first?.fireDate as NSDate?
                 notify.first?.fireDate =
                     (skip ? fireDate?.addingWeeks(1) : fireDate?.subtractingWeeks(1)) as Date?
-             
+                
             case .daily:
                 let fireDate = notify.first?.fireDate as NSDate?
                 notify.first?.fireDate =
@@ -152,5 +153,33 @@ struct LocalNotificationManager {
             }
         }
     }
+    
+    func requestAuthorization() {
+        let ud = AppUserDefault()
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+                granted, error in
+                if granted,
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.register(UIApplication.shared)
+                    ud.write(kUserFirstTimeCallNoitification, value: true)
+                }
+            }
+        } else {
+            if !ud.readBool(kUserFirstTimeCallNoitification) {
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.register(UIApplication.shared)
+                    ud.write(kUserFirstTimeCallNoitification, value: true)
+                }
+            }
+            
+        }
+        
+    }
+}
+
+@available (iOS 10.0, *)
+extension LocalNotificationManager {
 }
 

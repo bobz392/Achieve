@@ -22,9 +22,9 @@ final class AddressBook: NSObject {
             
             DispatchQueue.global().async {
                 let addressBook = ABAddressBookCreateWithOptions(nil, nil)?.takeUnretainedValue()
-                SystemInfo.log("addressBook = \(addressBook)")
+                Logger.log("addressBook = \(addressBook)")
                 ABAddressBookRequestAccessWithCompletion(addressBook, { (granted, error) in
-                    SystemInfo.log("granted = \(granted), error = \(error)")
+                    Logger.log("granted = \(granted), error = \(error)")
                     DispatchQueue.main.async {
                         completion(granted)
                     }
@@ -65,12 +65,12 @@ final class AddressBook: NSObject {
                         let name = Name(record: record)
                         let person = Person(name: name, phoneNumbers: phoneNumbers, mails: [])
                         result.append(person)
-//                      SystemInfo.log("Added: \(name) - \(phoneNumbers)")
+//                      Logger.log("Added: \(name) - \(phoneNumbers)")
                     }
                 }
             }
             
-//            SystemInfo.log("\(result.count) contacts are added.")
+//            Logger.log("\(result.count) contacts are added.")
             
             DispatchQueue.main.async {
                 completion(result)

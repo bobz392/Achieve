@@ -91,9 +91,9 @@ class ReportViewController: BaseViewController {
         }
         
         let activeBlock: UIActivityViewControllerCompletionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error:Swift.Error?) -> Swift.Void in
-                SystemInfo.log("returnedItems = \(returnedItems)")
-                SystemInfo.log("activityType = \(activityType?.rawValue)")
-                SystemInfo.log("completed = \(completed)")
+                Logger.log("returnedItems = \(returnedItems)")
+                Logger.log("activityType = \(activityType?.rawValue)")
+                Logger.log("completed = \(completed)")
         }
         
         activeViewController.completionWithItemsHandler = activeBlock

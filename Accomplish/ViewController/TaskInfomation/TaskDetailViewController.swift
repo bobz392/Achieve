@@ -62,6 +62,8 @@ class TaskDetailViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
+        
+        LocalNotificationManager().requestAuthorization()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -226,7 +228,7 @@ class TaskDetailViewController: BaseViewController {
                 self.detailTableView.endUpdates()
                 
             case .Error(let error):
-                SystemInfo.log("error in realm token = \(error)")
+                Logger.log("error in realm token = \(error)")
                 break
             }
             })

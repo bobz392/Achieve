@@ -47,7 +47,7 @@ class RealmManager {
     
     func queryAll(clz: AnyClass) {
         let result = realm.allObjects(ofType: clz as! Object.Type)
-        SystemInfo.log("result = \(result)")
+        Logger.log("result = \(result)")
     }
     
     func queryTodayTaskList(finished: Bool, tagUUID: String?) -> Results<Task> {

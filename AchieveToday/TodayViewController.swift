@@ -34,7 +34,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         self.todayTableView.tableFooterView = UIView()
         
-        if SystemInfo.shareSystemInfo.isAboveOS10() {
+        if #available(iOS 10.0, *) {
             self.infoLabel.textColor = mainTextColor
             self.allButton.tintColor = cloudColor
             self.allButton.setTitleColor(mainTextColor, for: UIControlState())

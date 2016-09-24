@@ -8,31 +8,7 @@
 
 import Foundation
 
-struct SystemInfo {
-    static let shareSystemInfo = SystemInfo()
-    
-    fileprivate let aboveOS8: Bool
-    fileprivate let aboveOS9: Bool
-    fileprivate let aboveOS10: Bool
-    
-    func isAboveOS9() -> Bool {
-        SystemInfo.log("SystemInfo.isAboveOS9   ======> \(self.aboveOS9)")
-        return aboveOS9
-    }
-    
-    func isAboveOS10() -> Bool {
-        SystemInfo.log("SystemInfo.isAboveOS10   ======> \(self.aboveOS10)")
-        return aboveOS10
-    }
-    
-    private init() {
-        let systemVersion = UIDevice.current.systemVersion.components(separatedBy: ".")
-        let version = NSString(string: systemVersion[0]).intValue
-        self.aboveOS8 = version == 8
-        self.aboveOS9 = version == 9
-        self.aboveOS10 = version >= 10
-    }
-    
+struct Logger {
     static func log(_ log: Any, function: String = #function,
                     file: String = #file, line: Int = #line) {
         #if debug

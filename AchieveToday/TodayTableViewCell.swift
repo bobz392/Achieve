@@ -36,7 +36,7 @@ class TodayTableViewCell: UITableViewCell {
         let hImage = hIcon.image(with: CGSize(width: 22, height: 22))
         self.checkButton.setImage(hImage, for: .highlighted)
         
-        if SystemInfo.shareSystemInfo.isAboveOS10() {
+        if #available(iOS 10.0, *) {
             self.titleLabel.textColor = mainTextColor
             self.checkButton.tintColor = mainTextColor
         } else {
@@ -47,7 +47,7 @@ class TodayTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
-        if SystemInfo.shareSystemInfo.isAboveOS10() {
+        if #available(iOS 10.0, *) {
             selectedBackgroundView?.backgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:0.4)
         } else {
             selectedBackgroundView?.backgroundColor = UIColor(red:0.34, green:0.40, blue:0.47, alpha:1.00)

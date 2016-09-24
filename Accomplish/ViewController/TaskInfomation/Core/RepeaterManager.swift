@@ -23,7 +23,7 @@ struct RepeaterManager {
         
         let lastDate: NSDate = lastDateString.dateFromCreatedFormatString() as NSDate
         
-        SystemInfo.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now as Date!))")
+        Logger.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now as Date!))")
         if !lastDate.isToday() && lastDate.isEarlierThan(now as Date!) {
 //             do some use repeater create todays task
             self.repeaterTaskCreate()
@@ -51,7 +51,7 @@ struct RepeaterManager {
     }
     
     fileprivate func repeaterTaskCreate() {
-        SystemInfo.log("repeater task create")
+        Logger.log("repeater task create")
         let manager = RealmManager.shareManager
         let all = manager.allRepeater()
         let today = NSDate()
@@ -113,7 +113,7 @@ struct RepeaterManager {
             subtask.uuid = subtaskCreateDate.createTaskUUID()
             shareManager.writeObject(subtask)
         }
-        SystemInfo.log("copy task with name = \(task.taskToDo) and subtask count = \(task.subTaskCount)")
+        Logger.log("copy task with name = \(task.taskToDo) and subtask count = \(task.subTaskCount)")
         
         return newTask
 

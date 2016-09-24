@@ -301,7 +301,7 @@ class HomeViewController: BaseViewController {
                 self.handleUpdateTodayGroup()
                 
             case .Error(let error):
-                SystemInfo.log("finishToken realmNoticationToken error = \(error)")
+                Logger.log("finishToken realmNoticationToken error = \(error)")
                 break
             }
             })
@@ -326,7 +326,7 @@ class HomeViewController: BaseViewController {
                 }
                 
             case .Error(let error):
-                SystemInfo.log("runningToken realmNoticationToken error = \(error)")
+                Logger.log("runningToken realmNoticationToken error = \(error)")
                 break
             }
             
@@ -407,7 +407,7 @@ class HomeViewController: BaseViewController {
     // MARK: - actions
     func settingAction() {
         let notifications = UIApplication.shared.scheduledLocalNotifications
-        SystemInfo.log("notifications = \(notifications)")
+        Logger.log("notifications = \(notifications)")
         
         let settingVC = SettingsViewController()
         self.navigationController?.delegate = self

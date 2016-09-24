@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 47;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -92,6 +92,9 @@
 		C74A89411D94109E008E15CA /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89401D94109E008E15CA /* BaseTableViewCell.swift */; };
 		C74A89431D949058008E15CA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74A89421D949058008E15CA /* CloudKit.framework */; };
 		C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896B1D949A6B008E15CA /* CloudKitManager.swift */; };
+		C74A896E1D9636F4008E15CA /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* SystemInfo.swift */; };
+		C74A896F1D9636F4008E15CA /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* SystemInfo.swift */; };
+		C74A89701D9636F4008E15CA /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* SystemInfo.swift */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
@@ -262,8 +265,6 @@
 		C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
-		C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
-		C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -436,6 +437,7 @@
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A89421D949058008E15CA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		C74A896D1D9636F3008E15CA /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
@@ -598,7 +600,6 @@
 		C7E2D9561D8F05000080D283 /* WatchConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
 		C7E2D9591D8F06B70080D283 /* GroupTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTasks.swift; sourceTree = "<group>"; };
 		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -679,9 +680,9 @@
 				C77193F71D6E488F00437560 /* UserDefault.swift */,
 				C77194AA1D6FF1A200437560 /* AddressBook.swift */,
 				C7E2D9591D8F06B70080D283 /* GroupTasks.swift */,
+				C74A896D1D9636F3008E15CA /* SystemInfo.swift */,
 				C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */,
 				C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */,
-				C7E3C3AA1D8AF55F00087C77 /* SystemInfo.swift */,
 				C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */,
 				C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */,
 				C76AE2CE1D8E892F00930D43 /* WatchManager.swift */,
@@ -1300,14 +1301,14 @@
 								enabled = 0;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 				};
 			};
 			buildConfigurationList = C7860E381D6C23FF000281FA /* Build configuration list for PBXProject "Accomplish" */;
-			compatibilityVersion = "Xcode 6.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1500,6 +1501,7 @@
 				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
 				C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */,
+				C74A896E1D9636F4008E15CA /* SystemInfo.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
 				C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */,
@@ -1555,7 +1557,6 @@
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
 				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
-				C7E3C3AB1D8AF55F00087C77 /* SystemInfo.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
@@ -1607,11 +1608,11 @@
 				C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C78ED87C1D7A7D3100031B4D /* TodayViewController.swift in Sources */,
 				C7821ECA1D7BF18E0056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
-				C7E3C3AC1D8AF8FE00087C77 /* SystemInfo.swift in Sources */,
 				C78ED89D1D7A800D00031B4D /* DTTimePeriod.m in Sources */,
 				C78ED8A11D7A800D00031B4D /* NSDate+DateTools.m in Sources */,
 				C78ED8A41D7A80F900031B4D /* NSDate+Convenient.swift in Sources */,
 				C7821EC91D7BF18E0056623D /* MMWormhole.m in Sources */,
+				C74A896F1D9636F4008E15CA /* SystemInfo.swift in Sources */,
 				C78ED8A51D7A80FF00031B4D /* String+Convenient.swift in Sources */,
 				C78ED89B1D7A800D00031B4D /* DTConstants.m in Sources */,
 				C7821ECD1D7BF18E0056623D /* MMWormholeSessionContextTransiting.m in Sources */,
@@ -1644,6 +1645,7 @@
 				C706125F1D8D67BE00E37CE6 /* CommonCode.swift in Sources */,
 				C7E2D9571D8F05000080D283 /* WatchConstants.swift in Sources */,
 				C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */,
+				C74A89701D9636F4008E15CA /* SystemInfo.swift in Sources */,
 				C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */,
 				C70612641D8D67F700E37CE6 /* DTTimePeriod.m in Sources */,
 				C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */,
@@ -1967,12 +1969,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "AchieveWatch Extension/AchieveWatch Extension.entitlements";
 				DEVELOPMENT_TEAM = M396DA7L3B;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "ee2aa312-20cb-4eb6-8183-82e132b011a6";
+				PROVISIONING_PROFILE = "39a0b1ca-2424-459e-8a91-17acb9630810";
 				PROVISIONING_PROFILE_SPECIFIER = ltestWatchEx;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1991,6 +1994,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "AchieveWatch Extension/AchieveWatch Extension.entitlements";
 				DEVELOPMENT_TEAM = M396DA7L3B;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

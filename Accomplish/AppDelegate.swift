@@ -27,12 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         RealmManager.configMainRealm()
-        self.register(application)
+//        self.register(application)
+        // background fetch
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         if #available(iOS 9.0, *) {
             self.configureDynamicShortcuts()
             let re = self.watchManger.session?.isReachable
-            SystemInfo.log("watchManger.session?.isReachable = \(re)")
+            Logger.log("watchManger.session?.isReachable = \(re)")
         }
         
         HUD.sharedHUD.config()
@@ -45,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MRAK: - todo handle notify
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        SystemInfo.log("didReceiveLocalNotification = \(notification)")
+        Logger.log("didReceiveLocalNotification = \(notification)")
         application.applicationIconBadgeNumber -= 1
     }
     
@@ -67,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    fileprivate func register(_ application: UIApplication) {
+    func register(_ application: UIApplication) {
         let action = UIMutableUserNotificationAction()
         action.identifier = kNotifyFinishAction
         action.title = Localized("finishTask")
@@ -94,8 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let settings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: [catrgory])
         application.registerUserNotificationSettings(settings)
-        
-        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

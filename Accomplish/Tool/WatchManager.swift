@@ -63,22 +63,13 @@ class WatchManager: NSObject, WCSessionDelegate {
             
             // 如果是请求新数据
             if let _ = message[kWatchQueryTodayTaskKey] as? String  {
-//                // 如果没有新数据则直接返回， watch 会直接使用 cache data
-//                let userdefault = AppUserDefault()
-//                if userdefault.readBool(kWatchDateHasNewKey) == false {
-//                    replyHandler([kAppSentTaskKey: kNoData])
-//                    return
-//                }
-                
                 // 如果有新数据，则发送新数据后标记为没有新数据
                 guard let group = GroupUserDefault() else {
                     replyHandler([kAppSentTaskKey: kNoData])
                     return
                 }
                 let tasks = group.allTaskArray()
-//                userdefault.write(kWatchDateHasNewKey, value: false)
                 replyHandler([kAppSentTaskKey: tasks])
-                
                 // 如果是设置任务完成的key
             } else if let uuid = message[kWatchSetTaskFinishKey] as? String {
                 guard let task = RealmManager.shareManager.queryTask(uuid) else { return }

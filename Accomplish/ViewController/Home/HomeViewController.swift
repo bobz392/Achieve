@@ -58,7 +58,7 @@ class HomeViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         
-        isFullScreenSize = AppUserDefault().readBool(kIsFullScreenSizeKey)
+        self.isFullScreenSize = AppUserDefault().readBool(kIsFullScreenSizeKey)
         
         self.configMainUI()
         self.initializeControl()
@@ -219,6 +219,7 @@ class HomeViewController: BaseViewController {
                 if self.repeaterManager.isNewDay() {
                     self.handleNewDay()
                     self.handleUpdateTodayGroup()
+                    self.checkNeedMoveUnfinishTaskToday()
                 }
                 self.timer?.resume()
         }
@@ -356,14 +357,19 @@ class HomeViewController: BaseViewController {
     // handle due today
     func handleNewDay() {
         self.queryTodayTask()
-        if !AppUserDefault().readBool(kCloseDueTodayKey) {
-            self.handleMoveTaskToToday()
-        }
         
         self.handleUpdateTodayGroup()
         
         if #available(iOS 9.0, *) {
             SpotlightManager().addDateTaskToIndex()
+        }
+    }
+    
+    fileprivate func checkNeedMoveUnfinishTaskToday() {
+        let ud = AppUserDefault()
+        if ud.readBool(kCloseDueTodayKey)
+            && ud.readBool(kNeedMoveUnfinishTaskToToday) {
+            self.handleMoveUnfinishTaskToToday()
         }
     }
     
@@ -376,7 +382,7 @@ class HomeViewController: BaseViewController {
         self.realmNoticationToken()
     }
     
-    fileprivate func handleMoveTaskToToday() {
+    fileprivate func handleMoveUnfinishTaskToToday() {
         let shareManager = RealmManager.shareManager
         let s = shareManager.queryTaskCount(date: NSDate().subtractingDays(1) as NSDate)
         if (s.created - s.complete) > 0 {

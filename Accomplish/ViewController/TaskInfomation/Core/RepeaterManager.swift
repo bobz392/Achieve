@@ -30,8 +30,8 @@ struct RepeaterManager {
             userDefault.write(kLastFetchDateKey, value: now.createdFormatedDateString())
             // 加入昨天的check in
             // 以及任务完成率
-            createCheckIn(now: now)
-            
+            self.createCheckIn(now: now)
+            AppUserDefault().write(kNeedMoveUnfinishTaskToToday, value: true)
             return true
         } else {
             return false

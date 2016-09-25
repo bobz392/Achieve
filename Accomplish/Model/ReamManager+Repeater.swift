@@ -13,30 +13,31 @@ import RealmSwift
 extension RealmManager {
 
     // 更新指定的update，如果不存在直接创建一个
-    // 暂时没有考虑notify date
     func repeaterUpdate(_ task: Task, repeaterTimeType: RepeaterTimeType) {
         // 返回指定 task uuid 的repeater， 如果不存在创建一个
-        if let repeater = queryRepeaterWithTask(task.uuid) {
-            updateObject({
+        if let repeater = self.queryRepeaterWithTask(task.uuid) {
+            self.updateObject({
                 repeater.repeatType = repeaterTimeType.rawValue
             })
             Logger.log("update type = \(repeaterTimeType.getCalendarUnit())")
         } else {
             let repeater = Repeater()
             repeater.repeatTaskUUID = task.uuid
+            repeater.repeatQueryTaskUUID = task.uuid
             repeater.repeatType = repeaterTimeType.rawValue
-            writeObject(repeater)
+            self.writeObject(repeater)
             
             Logger.log("create type = \(repeaterTimeType.getCalendarUnit())")
         }
-        LocalNotificationManager().updateNotify(task, repeatInterval: repeaterTimeType.getCalendarUnit())
-        Logger.log("notfiy = \(LocalNotificationManager().notifyWithUUID(task.uuid))")
+        LocalNotificationManager().update(task)
     }
     
     func queryRepeaterWithTask(_ taskUUID: String) -> Repeater? {
         let repeater = realm.allObjects(ofType: Repeater.self)
             .filter(using: "repeatTaskUUID = '\(taskUUID)'")
             .first
+        
+        Logger.log("queryRepeaterWithTask = \(repeater)")
         return repeater
     }
     
@@ -45,14 +46,10 @@ extension RealmManager {
     }
     
     func deleteRepeater(_ task: Task) {
-        if let repeater = queryRepeaterWithTask(task.uuid) {
-            deleteObject(repeater)
+        guard let repeater = self.queryRepeaterWithTask(task.uuid) else {
+            return
         }
         
-        LocalNotificationManager().updateNotify(task, repeatInterval: NSCalendar.Unit(rawValue: 0))
-    }
-    
-    func updateRepeater(_ repeater: Repeater) {
-        
+        self.deleteObject(repeater)
     }
 }

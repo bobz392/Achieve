@@ -8,6 +8,7 @@
 
 import Foundation
 
+let FullStyleFormat = "yy/MM/dd/HH:mm:ss"
 let UUIDFormat: String = "yyMMddHHmmssZ"
 let CreatedDateFormat: String = "yyyy.MM.dd"
 let TimeDateFormat: String = "hh: mm a"
@@ -67,5 +68,11 @@ extension NSDate {
         let newDate = NSDate(year: self.year(), month: self.month(),
                              day: self.day(), hour: self.hour(), minute: self.minute(), second: 0)
         return newDate ?? self
+    }
+    
+    func secAndHourMoveNow(min: Int, hour: Int) -> NSDate? {
+        let newDate = NSDate(year: self.year(), month: self.month(),
+                             day: self.day(), hour: hour, minute: min, second: 0)
+        return newDate
     }
 }

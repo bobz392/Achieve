@@ -55,7 +55,8 @@ struct RepeaterManager {
         let manager = RealmManager.shareManager
         let all = manager.allRepeater()
         let today = NSDate()
-        let _ = all.map({ (repeater) -> Void in
+        
+        for repeater in all {
             guard let task = manager.queryTask(repeater.repeatTaskUUID),
                 let createDate = task.createdDate,
                 let repeatTime = RepeaterTimeType(rawValue: repeater.repeatType)
@@ -77,24 +78,26 @@ struct RepeaterManager {
             
             if createTask {
                 let newTask = self.copyTask(task)
-                manager.updateObject({ 
+                manager.updateObject({
                     repeater.repeatTaskUUID = newTask.uuid
                 })
                 manager.writeObject(newTask)
             }
-            
-        })
+        }
     }
     
     fileprivate func copyTask(_ task: Task) -> Task {
         let newTask = Task()
         let now = NSDate()
         let createDate = task.createdDate ?? now
-        newTask.createdDate = NSDate(year: (now as NSDate).year(), month: (now as NSDate).month(), day: (now as NSDate).day(), hour: (createDate as NSDate).hour(), minute: (createDate as NSDate).minute(), second: (createDate as NSDate).second())
+        
+        newTask.createdDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: createDate.hour(), minute: createDate.minute(), second: createDate.second())
         newTask.createDefaultTask(task.taskToDo, priority: task.priority)
         newTask.canPostpone = task.canPostpone
         newTask.finishedDate = nil
-        newTask.notifyDate = task.notifyDate
+        if let notify = task.notifyDate {
+            newTask.notifyDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: notify.hour(), minute: notify.minute(), second: notify.second())
+        }
         newTask.subTaskCount = task.subTaskCount
         newTask.status = kTaskRunning
         newTask.tagUUID = task.tagUUID

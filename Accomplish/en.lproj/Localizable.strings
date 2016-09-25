@@ -21,6 +21,7 @@
 
 "newTask"="Add task";
 "rescheduling"="Rescheduling";
+"taskReminding"="Task Reminding";
 "finishTask"="Finish Task";
 "cancel"="Cancel";
 "deleteTask"="Delete Task";

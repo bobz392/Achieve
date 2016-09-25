@@ -413,12 +413,12 @@ extension TaskDetailViewController {
             
         case TaskIconBell:
             RealmManager.shareManager.updateObject {
-                let date = taskPickerView.datePicker.date
-                let fireDate = NSDate(year: (date as NSDate).year(), month: (date as NSDate).month(), day: (date as NSDate).day(), hour: (date as NSDate).hour(), minute: (date as NSDate).minute(), second: 5)
+                let date = taskPickerView.datePicker.date as NSDate
+                let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 0)
                 
                 self.task.notifyDate = fireDate
             }
-            LocalNotificationManager().createNotify(self.task)
+            LocalNotificationManager().create(self.task)
             
         case TaskIconRepeat:
             let repeatTimeType = taskPickerView.repeatTimeType()

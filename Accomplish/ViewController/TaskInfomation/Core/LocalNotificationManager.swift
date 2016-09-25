@@ -14,93 +14,240 @@ let kNotifyReschedulingAction = "notify.rescheduling"
 let kNotificationCategory = "notify.category"
 let kNotifyUserInfoKey = "com.zhou.achieve.task"
 
-struct LocalNotificationManager {
+
+class LocalNotificationManager: NSObject {
     
     let repeaterKey = "com.zhou.achieve.repeater"
     
-    func notifyWithUUID(_ taskUUID: String) -> [UILocalNotification] {
-        let notifications = UIApplication.shared.scheduledLocalNotifications
-        guard let notifys = notifications else { return [] }
-        return notifys.filter { (n) -> Bool in
-            guard let userInfo = n.userInfo else { return false }
-            guard let name = userInfo[kNotifyUserInfoKey] as? String else { return false }
-            return name == taskUUID
-        }
+    func create(_ task: Task) {
+        //        if #available(iOS 10.0, *) {
+        //            self.createUNNotify(task)
+        //        } else {
+        self.createNotify(task)
+        //        }
     }
     
-    func cancelNotify(_ taskUUID: String) {
-        let notify = notifyWithUUID(taskUUID)
+    func cancel(_ task: Task) {
+        //        if #available(iOS 10.0, *) {
+        //            self.cancelUNNotify(task)
+        //        } else {
+        self.cancelNotify(task)
+        //        }
+        
+        Logger.log("clear local notifycation task uuid = \(task.uuid) success")
+    }
+    
+    func update(_ task: Task) {
+        //        if #available(iOS 10.0, *) {
+        //            self.updateUNNotify(task)
+        //        } else {
+        self.updateNotify(task)
+        //        }
+    }
+    
+    func deleteRepeater(_ task: Task) -> Bool {
+        //        if #available(iOS 10.0, *) {
+        //            self.deleteUNTaskRepeater(task)
+        //        } else {
+        return self.deleteTaskRepeater(task)
+        //    }
+    }
+    
+    func skipFireToday(skip: Bool, task: Task) {
+        //        if #available(iOS 10.0, *) {
+        //            self.skipUNToday(skip: skip, task: task)
+        //        } else {
+        self.skipToday(skip: skip, task: task)
+        //        }
+    }
+    
+    // MARK: -  private
+    fileprivate func notifyWithUUID(_ taskUUID: String) -> [UILocalNotification] {
+        let notifications = UIApplication.shared.scheduledLocalNotifications
+        guard let notifys = notifications else { return [] }
+        RealmManager.shareManager.queryAll(clz: Repeater.self)
+        
+        var uuidSet: Set<String>
+        if let repeater = RealmManager.shareManager.queryRepeaterWithTask(taskUUID) {
+            if repeater.repeatType == RepeaterTimeType.weekday.rawValue {
+                let uuidArray = (2..<7).map({ (weekday) -> String in
+                    return repeater.repeatQueryTaskUUID + "\(weekday)"
+                })
+                uuidSet = Set<String>(uuidArray)
+            } else {
+                uuidSet = Set<String>()
+                uuidSet.insert(repeater.repeatQueryTaskUUID)
+            }
+        } else {
+            uuidSet = Set<String>()
+            uuidSet.insert(taskUUID)
+        }
+        
+        return notifys.filter({ (n) -> Bool in
+            guard let userInfo = n.userInfo else { return false }
+            guard let name = userInfo[kNotifyUserInfoKey]
+                as? String else { return false }
+            return uuidSet.contains(name)
+        })
+    }
+    
+    fileprivate func cancelNotify(_ task: Task) {
+        let notify = self.notifyWithUUID(task.uuid)
         guard notify.count > 0 else { return }
         for n in notify {
             UIApplication.shared.cancelLocalNotification(n)
         }
-        Logger.log("clear local notifycation task uuid = \(taskUUID) success")
     }
     
-    func updateNotify(_ task: Task, repeatInterval: NSCalendar.Unit) {
+    /**
+     仅仅删除 repeater 的时候调用
+     返回是否删除成功
+     **/
+    fileprivate func deleteTaskRepeater(_ task: Task) -> Bool {
+        let notify = self.notifyWithUUID(task.uuid)
+        guard notify.count > 0 else { return false}
+        
+        // 备份一份 fire date，以便创建一个今日通知
+        guard let firedate = notify.first?.fireDate as NSDate? else { return false }
+        
+        // 不论如何，删掉 repeater 的时候，需要删除所有通知
+        for n in notify {
+            UIApplication.shared.cancelLocalNotification(n)
+        }
+        
+        // 删除通知以后，删除 repeater 本身
+        RealmManager.shareManager.deleteRepeater(task)
+        
+        // 如果 fire date 还没到，创建一个今日通知
+        // 同时因为已经删除 repeater 所以只需要 create 即可
+        if firedate.isEarlierThan(Date()) {
+            self.createNotify(task)
+        }
+        
+        return true
+    }
+    
+    fileprivate func updateNotify(_ task: Task) {
         guard let _ = task.notifyDate else  { return }
         
         let notify = self.notifyWithUUID(task.uuid)
         guard notify.count > 0 else {
-            createNotify(task)
+            self.createNotify(task)
             return
         }
         
         for n in notify {
             UIApplication.shared.cancelLocalNotification(n)
         }
-        createNotify(task)
+        self.createNotify(task)
     }
     
-    func skipFireToday(skip: Bool, task: Task) {
+    fileprivate func skipToday(skip: Bool, task: Task) {
         guard let repeater =
             RealmManager.shareManager.queryRepeaterWithTask(task.uuid) else {
                 if skip {
-                    self.cancelNotify(task.uuid)
+                    self.cancelNotify(task)
                 } else {
                     self.createNotify(task)
                 }
                 return
         }
-        let notify = self.notifyWithUUID(task.uuid)
+        
+        let notifys = self.notifyWithUUID(task.uuid)
+        
+        var notify: UILocalNotification?
+        var datecomponents: DateComponents?
+        let calendar = Calendar.current
+        let now = NSDate()
         
         if let type = RepeaterTimeType(rawValue: repeater.repeatType) {
             switch type {
             case .annual:
-                let fireDate = notify.first?.fireDate as NSDate?
-                notify.first?.fireDate =
-                    (skip ? fireDate?.addingYears(1) : fireDate?.subtractingYears(1)) as Date?
+                notify = notifys.first
+                guard let firedate = notify?.fireDate else { break }
+                datecomponents =
+                    calendar.dateComponents([.hour, .minute], from: firedate)
+                datecomponents?.day = now.day()
+                datecomponents?.month = now.month()
+                datecomponents?.year = skip ? now.year() + 1 : now.year()
+                
                 
             case .everyMonth:
-                let fireDate = notify.first?.fireDate as NSDate?
-                notify.first?.fireDate =
-                    (skip ? fireDate?.addingMonths(1) : fireDate?.subtractingMonths(1)) as Date?
+                notify = notifys.first
+                guard let firedate = notify?.fireDate else { break }
+                datecomponents =
+                    calendar.dateComponents([.hour, .minute], from: firedate)
+                datecomponents?.day = now.day()
+                datecomponents?.month = skip ? now.month() + 1 : now.month()
+                datecomponents?.year = now.year()
+                
                 
             case .everyWeek:
-                let fireDate = notify.first?.fireDate as NSDate?
-                notify.first?.fireDate =
-                    (skip ? fireDate?.addingWeeks(1) : fireDate?.subtractingWeeks(1)) as Date?
+                notify = notifys.first
+                guard let firedate = notify?.fireDate else { break }
+                datecomponents =
+                    calendar.dateComponents([.hour, .minute], from: firedate)
+                datecomponents?.weekday = now.weekday()
+                datecomponents?.year = now.year()
+                datecomponents?.month = now.month()
+                datecomponents?.weekOfYear = skip ? now.weekOfYear() + 1 : now.weekOfYear()
                 
             case .daily:
-                let fireDate = notify.first?.fireDate as NSDate?
-                notify.first?.fireDate =
-                    (skip ? fireDate?.addingDays(1) : fireDate?.subtractingDays(1)) as Date?
+                notify = notifys.first
+                guard let firedate = notify?.fireDate else { break }
+                datecomponents =
+                    calendar.dateComponents([.hour, .minute], from: firedate)
+                datecomponents?.day = skip ? now.day() + 1 : now.day()
+                datecomponents?.month = now.month()
+                datecomponents?.year = now.year()
                 
             case .weekday:
-                guard let notify = notify.filter({ (localNotify) -> Bool in
-                    return (localNotify.fireDate as NSDate?)?.isToday() ?? false
-                }).first else { break }
+                guard let notif = notifys.filter({ (n) -> Bool in
+                    guard let firedate = n.fireDate as NSDate? else { return false }
+                    return firedate.weekday() == NSDate().weekday()
+                }).first else { return }
                 
-                let fireDate = notify.fireDate as NSDate?
-                notify.fireDate =
-                    (skip ? fireDate?.addingDays(7) : fireDate?.subtractingDays(7)) as Date?
+                notify = notif
+                guard let firedate = notify?.fireDate else { break }
+                datecomponents =
+                    calendar.dateComponents([.hour, .minute], from: firedate)
+                datecomponents?.day = skip ? now.day() + 7 : now.day()
+                datecomponents?.month = now.month()
+                datecomponents?.year = now.year()
             }
+            
+            guard let n = notify,
+                let dc = datecomponents,
+                let notifyUUID = n.userInfo?[kNotifyUserInfoKey] as? String else {
+                    return
+            }
+            
+            let nextfireDate = calendar.date(from: dc)
+            
+            UIApplication.shared.cancelLocalNotification(n)
+            
+            let newLocalNotify = UILocalNotification()
+            newLocalNotify.repeatInterval = type.getCalendarUnit()
+            newLocalNotify.fireDate = nextfireDate
+            newLocalNotify.alertTitle = Localized("taskReminding")
+            newLocalNotify.alertBody = task.getNormalDisplayTitle()
+            newLocalNotify.soundName = UILocalNotificationDefaultSoundName
+            newLocalNotify.category = kNotificationCategory
+            newLocalNotify.applicationIconBadgeNumber =
+                UIApplication.shared.applicationIconBadgeNumber + 1
+            newLocalNotify.timeZone = TimeZone.current
+            let info = [kNotifyUserInfoKey: notifyUUID]
+            newLocalNotify.userInfo = info
+            
+            UIApplication.shared.scheduleLocalNotification(newLocalNotify)
+            Logger.log("new fire date = \(newLocalNotify.fireDate)")
         }
         
     }
     
-    func createNotify(_ task: Task) {
+    fileprivate func createNotify(_ task: Task) {
         guard let notifyDate = task.notifyDate else { return }
+        
         let notify = UILocalNotification()
         
         let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid)
@@ -116,9 +263,10 @@ struct LocalNotificationManager {
             notify.repeatInterval = NSCalendar.Unit(rawValue: 0)
         }
         
+        notify.alertTitle = Localized("taskReminding")
+        notify.alertBody = task.getNormalDisplayTitle()
         notify.fireDate = notifyDate.clearSecond() as Date
         notify.soundName = UILocalNotificationDefaultSoundName
-        notify.alertBody = task.getNormalDisplayTitle()
         notify.category = kNotificationCategory
         notify.applicationIconBadgeNumber =
             UIApplication.shared.applicationIconBadgeNumber + 1
@@ -146,7 +294,7 @@ struct LocalNotificationManager {
                 notify.repeatInterval = .weekOfYear
                 notify.applicationIconBadgeNumber =
                     UIApplication.shared.applicationIconBadgeNumber + 1
-                let info = [kNotifyUserInfoKey: task.uuid]
+                let info = [kNotifyUserInfoKey: task.uuid + "\(fireDate.weekday())"]
                 notify.userInfo = info
                 
                 UIApplication.shared.scheduleLocalNotification(notify)
@@ -154,32 +302,297 @@ struct LocalNotificationManager {
         }
     }
     
+    // MARK: - authorization and reigster
     func requestAuthorization() {
         let ud = AppUserDefault()
+        if !ud.readBool(kUserFirstTimeCallNoitification) {
+            self.register()
+            ud.write(kUserFirstTimeCallNoitification, value: true)
+        }
+    }
+    
+    fileprivate func register() {
         
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-                granted, error in
-                if granted,
-                    let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.register(UIApplication.shared)
-                    ud.write(kUserFirstTimeCallNoitification, value: true)
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                if granted {
+                    let actionFinish = UNNotificationAction(
+                        identifier: kNotifyFinishAction,
+                        title: Localized("finishTask"),
+                        options: UNNotificationActionOptions.foreground
+                    )
+                    
+                    let actionRescheduling = UNNotificationAction(
+                        identifier: kNotifyReschedulingAction,
+                        title: Localized("rescheduling"),
+                        options: .foreground)
+                    
+                    let category = UNNotificationCategory(identifier: kNotificationCategory, actions: [actionFinish, actionRescheduling], intentIdentifiers: [], options: .customDismissAction)
+                    
+                    UNUserNotificationCenter.current().setNotificationCategories([category])
+                    UNUserNotificationCenter.current().delegate = self
                 }
             }
         } else {
-            if !ud.readBool(kUserFirstTimeCallNoitification) {
-                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appDelegate.register(UIApplication.shared)
-                    ud.write(kUserFirstTimeCallNoitification, value: true)
-                }
+            let action = UIMutableUserNotificationAction()
+            action.identifier = kNotifyFinishAction
+            action.title = Localized("finishTask")
+            action.activationMode = .foreground
+            if #available(iOS 9.0, *) {
+                action.behavior = .default
             }
+            action.isAuthenticationRequired = false
+            action.isDestructive = false
             
+            let action2 = UIMutableUserNotificationAction()
+            action2.identifier = kNotifyReschedulingAction
+            action2.title = Localized("rescheduling")
+            action2.activationMode = .foreground
+            if #available(iOS 9.0, *) {
+                action.behavior = .default
+            }
+            action2.isAuthenticationRequired = false
+            action2.isDestructive = false
+            
+            let category = UIMutableUserNotificationCategory()
+            category.identifier = kNotificationCategory
+            category.setActions([action, action2], for: .default)
+            
+            let settings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: [category])
+            UIApplication.shared.registerUserNotificationSettings(settings)
         }
         
     }
 }
 
 @available (iOS 10.0, *)
-extension LocalNotificationManager {
+extension LocalNotificationManager: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        UIApplication.shared.applicationIconBadgeNumber -= 1
+        
+        guard let uuid = response.notification.request.content.userInfo[kNotifyUserInfoKey] as? String else {
+            return
+        }
+        switch response.actionIdentifier {
+        case kNotifyFinishAction:
+            guard let task = RealmManager.shareManager.queryTask(uuid) else {
+                return
+            }
+            
+            RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+            
+        case kNotifyReschedulingAction:
+            UrlSchemeDispatcher().checkTaskDetail(uuid)
+            
+        default:
+            break
+        }
+        
+        completionHandler()
+    }
+    
+    func logAllUNNotify() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (request) in
+            Logger.log(request)
+        }
+        
+        
+        
+    }
+    
+    fileprivate func cancelUNNotify(_ task: Task) {
+        var weekdayUUIDs = (2..<7).map { (index) -> String in
+            return task.uuid + "\(index)"
+        }
+        weekdayUUIDs.append(task.uuid)
+        UNUserNotificationCenter.current()
+            .removePendingNotificationRequests(withIdentifiers: weekdayUUIDs)
+    }
+    
+    fileprivate func updateUNNotify(_ task: Task) {
+        guard let _ = task.notifyDate else  { return }
+        
+        self.cancelUNNotify(task)
+        self.createUNNotify(task)
+    }
+    
+    fileprivate func skipUNToday(skip: Bool, task: Task) {
+        guard let repeater =
+            RealmManager.shareManager.queryRepeaterWithTask(task.uuid) else {
+                if skip {
+                    self.cancelUNNotify(task)
+                } else {
+                    self.createUNNotify(task)
+                }
+                return
+        }
+        
+        debugPrint(RealmManager.shareManager.queryAll(clz: Task.self))
+        
+        let repeatType = repeater.repeatType
+        guard let type = RepeaterTimeType(rawValue: repeatType) else { return }
+        
+        let uuid =
+            type == .weekday ?
+                repeater.repeatQueryTaskUUID + "day\(NSDate().weekday())" :
+                repeater.repeatQueryTaskUUID
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
+            Logger.log("requests.count = \(requests.count)")
+            for request in requests {
+                if request.identifier == uuid {
+                    let content = request.content
+                    
+                    guard
+                        let trigger = request.trigger as? UNCalendarNotificationTrigger,
+                        let fireDate = trigger.nextTriggerDate() as NSDate?
+                        else { break }
+                    debugPrint("fireDate = \(fireDate)")
+                    debugPrint("fireDate adding 1 day= \(fireDate.addingDays(1))")
+                    let newFireDate: Date?
+                    let components: Set<Calendar.Component>
+                    
+                    switch type {
+                    case .annual:
+                        newFireDate =
+                            skip ? fireDate.addingYears(1) : fireDate.subtractingYears(1)
+                        
+                        components =
+                            skip ? type.getCalendarSkipTodayComponent() : type.getCalendarComponent()
+                        
+                    case .everyMonth:
+                        newFireDate =
+                            skip ? fireDate.addingMonths(1) : fireDate.subtractingMonths(1)
+                        
+                        components =
+                            skip ? type.getCalendarSkipTodayComponent() : type.getCalendarComponent()
+                        
+                    case .everyWeek:
+                        newFireDate =
+                            skip ? fireDate.addingWeeks(1) : fireDate.subtractingWeeks(1)
+                        
+                        components =
+                            skip ? type.getCalendarSkipTodayComponent() : type.getCalendarComponent()
+                        
+                    case .daily:
+                        newFireDate =
+                            skip ? fireDate.addingDays(1) : fireDate.subtractingDays(1)
+                        components =
+                            skip ? type.getCalendarSkipTodayComponent() : type.getCalendarComponent()
+                        
+                    case .weekday:
+                        newFireDate =
+                            skip ? fireDate.addingDays(7) : fireDate.subtractingDays(7)
+                        
+                        components =
+                            skip ? type.getCalendarSkipTodayComponent() : type.getCalendarComponent()
+                    }
+                    
+                    guard let newDate = newFireDate else { return }
+                    
+                    let dateComponents = Calendar.current
+                        .dateComponents(components, from: newDate)
+                    
+                    let newTrigger =
+                        UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                    
+                    debugPrint("new Date = \(newDate)")
+                    debugPrint("newTrigger.nextTriggerDate = \(newTrigger.nextTriggerDate())")
+                    
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [uuid])
+                    let newRequest = UNNotificationRequest(identifier: uuid, content: content, trigger: newTrigger)
+                    UNUserNotificationCenter.current().add(newRequest)
+                    
+                }
+            }
+        }
+    }
+    
+    fileprivate func createUNNotify(_ task: Task) {
+        //        guard let notifyDate = task.notifyDate else { return }
+        let notifyDate = NSDate().clearSecond() as NSDate
+        
+        let trigger: UNCalendarNotificationTrigger
+        var dateComponents: DateComponents
+        
+        let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid)
+        if let repeater = repeater,
+            let type = RepeaterTimeType(rawValue: repeater.repeatType) {
+            
+            if type == .weekday {
+                self.createUNWeekday(task: task, type: type)
+                return
+            } else {
+                let component = type.getCalendarComponent()
+                dateComponents = Calendar.current
+                    .dateComponents(component, from: notifyDate as Date)
+                
+            }
+            
+            trigger = UNCalendarNotificationTrigger.init(dateMatching: dateComponents, repeats: true)
+        } else {
+            dateComponents = Calendar.current
+                .dateComponents([.nanosecond, .second, .minute], from: notifyDate as Date)
+            trigger = UNCalendarNotificationTrigger.init(dateMatching: dateComponents, repeats: false)
+        }
+        
+        let content = self.createUNNotificationContent(task: task)
+        let request = UNNotificationRequest(identifier: task.uuid, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if error == nil {
+                Logger.log("Notification scheduled success \(request.identifier)")
+            }
+        }
+    }
+    
+    fileprivate func createUNNotificationContent(task: Task) -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = Localized("taskReminding")
+        content.body = task.getNormalDisplayTitle()
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = kNotificationCategory
+        let info = [kNotifyUserInfoKey: task.uuid]
+        content.userInfo = info
+        
+        return content
+    }
+    
+    fileprivate func createUNWeekday(task: Task, type: RepeaterTimeType) {
+        guard let notifyDate = task.notifyDate?.clearSecond() else { return }
+        
+        for i in 0 ..< 7 {
+            let fireDate = notifyDate.addingDays(i) as NSDate
+            if fireDate.isWeekend() {
+                continue
+            }else {
+                let content = self.createUNNotificationContent(task: task)
+                let component = type.getCalendarComponent()
+                let dateComponents = Calendar.current
+                    .dateComponents(component, from: fireDate as Date)
+                
+                let trigger =
+                    UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let request =
+                    UNNotificationRequest(identifier: task.uuid + "\(fireDate.weekday())", content: content, trigger: trigger)
+                
+                UNUserNotificationCenter.current().add(request) { error in
+                    if error == nil {
+                        Logger.log("Notification scheduled success \(request.identifier)")
+                    }
+                }
+            }
+        }
+    }
+    
+    func testClearUNNoitifcation() {
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+    
 }
-

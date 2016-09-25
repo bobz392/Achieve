@@ -73,6 +73,10 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if #available(iOS 10.0, *) {
+            LocalNotificationManager().logAllUNNotify()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -174,17 +178,13 @@ class HomeViewController: BaseViewController {
         self.tagButton.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-        if #available(iOS 9, *) {
-            self.taskTableView.cellLayoutMarginsFollowReadableWidth = false
-        }
-        
         self.statusSegment.setTitle(Localized("progess"), forSegmentAt: 0)
         self.statusSegment.setTitle(Localized("finished"), forSegmentAt: 1)
         self.statusSegment.addTarget(self, action: #selector(self.segmentValueChangeAction(_:)), for: .valueChanged)
         
         taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
-        self.currentDateLabel.text = (Date() as NSDate).formattedDate(with: .medium)
+        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
         self.emptyHintLabel.text = Localized("emptyTask")
         
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction),
@@ -218,8 +218,9 @@ class HomeViewController: BaseViewController {
                 
                 if self.repeaterManager.isNewDay() {
                     self.handleNewDay()
-                    self.handleUpdateTodayGroup()
                     self.checkNeedMoveUnfinishTaskToday()
+                    self.selectedIndex = nil
+                    self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
                 }
                 self.timer?.resume()
         }
@@ -357,9 +358,7 @@ class HomeViewController: BaseViewController {
     // handle due today
     func handleNewDay() {
         self.queryTodayTask()
-        
         self.handleUpdateTodayGroup()
-        
         if #available(iOS 9.0, *) {
             SpotlightManager().addDateTaskToIndex()
         }
@@ -367,8 +366,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate func checkNeedMoveUnfinishTaskToday() {
         let ud = AppUserDefault()
-        if ud.readBool(kCloseDueTodayKey)
-            && ud.readBool(kNeedMoveUnfinishTaskToToday) {
+        if !ud.readBool(kCloseDueTodayKey) {
             self.handleMoveUnfinishTaskToToday()
         }
     }
@@ -412,9 +410,6 @@ class HomeViewController: BaseViewController {
     
     // MARK: - actions
     func settingAction() {
-        let notifications = UIApplication.shared.scheduledLocalNotifications
-        Logger.log("notifications = \(notifications)")
-        
         let settingVC = SettingsViewController()
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
@@ -422,8 +417,10 @@ class HomeViewController: BaseViewController {
     }
     
     func switchScreenAction() {
-        UIApplication.shared.cancelAllLocalNotifications()
         self.doSwitchScreen(true)
+        
+        debugPrint(RealmManager.shareManager.queryAll(clz: Task.self))
+        debugPrint(RealmManager.shareManager.queryAll(clz: Repeater.self))
     }
     
     func calendarAction() {
@@ -446,10 +443,16 @@ class HomeViewController: BaseViewController {
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(tagVC, animated: true)
+        
+        if #available(iOS 10.0, *) {
+            LocalNotificationManager().testClearUNNoitifcation()
+        } else {
+            UIApplication.shared.cancelAllLocalNotifications()
+        }
     }
     
     fileprivate func doSwitchScreen(_ animation: Bool) {
-        if !isFullScreenSize {
+        if !self.isFullScreenSize {
             self.cardViewLeftConstraint.constant = 20
             self.cardViewRightConstraint.constant = 20
             self.cardViewBottomConstraint.constant = 15

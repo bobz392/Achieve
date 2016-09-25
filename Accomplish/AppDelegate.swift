@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         RealmManager.configMainRealm()
-//        self.register(application)
+
         // background fetch
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
@@ -69,51 +69,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func register(_ application: UIApplication) {
-        let action = UIMutableUserNotificationAction()
-        action.identifier = kNotifyFinishAction
-        action.title = Localized("finishTask")
-        action.activationMode = .foreground
-        if #available(iOS 9.0, *) {
-            action.behavior = .default
-        }
-        action.isAuthenticationRequired = false
-        action.isDestructive = false
-        
-        let action2 = UIMutableUserNotificationAction()
-        action2.identifier = kNotifyReschedulingAction
-        action2.title = Localized("rescheduling")
-        action2.activationMode = .foreground
-        if #available(iOS 9.0, *) {
-            action.behavior = .default
-        }
-        action2.isAuthenticationRequired = false
-        action2.isDestructive = false
-        
-        let catrgory = UIMutableUserNotificationCategory()
-        catrgory.identifier = kNotificationCategory
-        catrgory.setActions([action, action2], for: .default)
-        
-        let settings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: [catrgory])
-        application.registerUserNotificationSettings(settings)
-    }
-    
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.noData)
-        let repeaterManager = RepeaterManager()
-        if repeaterManager.isNewDay() {
-            completionHandler(.newData)
-
-            guard let nav = application.keyWindow?.rootViewController as? UINavigationController else {
-                return
-            }
-            guard let vc = nav.viewControllers.first as? HomeViewController else {
-                return
-            }
-            vc.handleNewDay()
-        } else {
-            completionHandler(.noData)
-        }
+//        let repeaterManager = RepeaterManager()
+//        if repeaterManager.isNewDay() {
+//            completionHandler(.newData)
+//
+//            guard let nav = application.keyWindow?.rootViewController as? UINavigationController else {
+//                return
+//            }
+//            guard let vc = nav.viewControllers.first as? HomeViewController else {
+//                return
+//            }
+//            vc.handleNewDay()
+//        } else {
+//            completionHandler(.noData)
+//        }
     }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {

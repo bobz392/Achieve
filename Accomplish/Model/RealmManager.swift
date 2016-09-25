@@ -124,7 +124,7 @@ class RealmManager {
         self.updateObject {
             task.notifyDate = nil
         }
-        LocalNotificationManager().cancelNotify(task.uuid)
+        LocalNotificationManager().cancel(task)
     }
     
     func moveYesterdayTaskToToday() {

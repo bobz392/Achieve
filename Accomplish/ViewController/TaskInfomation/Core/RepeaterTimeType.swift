@@ -20,13 +20,43 @@ enum RepeaterTimeType: Int {
         case .daily:
             return .day
         case .weekday:
-            return .weekdayOrdinal
+            return .weekOfYear
         case .everyWeek:
             return .weekOfYear
         case .everyMonth:
             return .month
         case .annual:
             return .year
+        }
+    }
+    
+    func getCalendarComponent() -> Set<Calendar.Component> {
+        switch self {
+        case .daily:
+            return [.hour, .minute, .second, .nanosecond]
+        case .weekday:
+            return [.weekday, .hour, .minute, .second, .nanosecond]
+        case .everyWeek:
+            return [.weekday, .hour, .minute, .second, .nanosecond]
+        case .everyMonth:
+            return [.day, .hour, .minute, .second, .nanosecond]
+        case .annual:
+            return [.month, .day, .hour, .minute, .second, .nanosecond]
+        }
+    }
+    
+    func getCalendarSkipTodayComponent() -> Set<Calendar.Component> {
+        switch self {
+        case .daily:
+            return [.day, .hour, .minute, .second, .nanosecond]
+        case .weekday:
+            return [.weekday, .hour, .minute, .second, .nanosecond]
+        case .everyWeek:
+            return [.weekday, .hour, .minute, .second, .nanosecond]
+        case .everyMonth:
+            return [.day, .hour, .minute, .second, .nanosecond]
+        case .annual:
+            return [.month, .day, .hour, .minute, .second, .nanosecond]
         }
     }
     

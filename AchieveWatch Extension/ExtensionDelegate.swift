@@ -25,7 +25,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
     
     func handleAction(withIdentifier identifier: String?, for localNotification: UILocalNotification, withResponseInfo responseInfo: [AnyHashable : Any]) {
-        
+
     }
 
     @available(watchOSApplicationExtension 3.0, *)

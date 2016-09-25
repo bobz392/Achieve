@@ -13,10 +13,11 @@ struct Logger {
                     file: String = #file, line: Int = #line) {
         #if debug
             print("------------------------------------------")
-            print( function, file, line)
-            print()
+            print("|", function, file, line)
+            print("|")
             print(log)
-            print()
+            print("------------------------------------------")
+            print("\n")
         #endif
     }
 }

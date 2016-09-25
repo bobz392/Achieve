@@ -43,7 +43,7 @@ final class KeyboardManager {
     
     
     func closeNotification() {
-        Logger.log("keyboard manager remove and handle")
+//        Logger.log("keyboard manager remove and handle")
         keyboardShowHandler = nil
         keyboardHideHandler = nil
     }

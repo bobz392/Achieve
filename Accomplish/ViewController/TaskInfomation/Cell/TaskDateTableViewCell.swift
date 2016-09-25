@@ -111,7 +111,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
             self.clearButton.isHidden = true
             self.iconImageView.isHighlighted = true
             
-        case TaskIconBell:
+        case TaskIconReminder:
             self.infoLabel.isHighlighted = task.notifyDate != nil
             
             if let notifyDate = task.notifyDate {

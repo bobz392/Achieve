@@ -11,7 +11,7 @@ import RealmSwift
 
 let TaskIconCalendar = "fa-calendar-plus-o"
 let TaskDueIconCalendar = "fa-calendar-minus-o"
-let TaskIconBell = "fa-bell-o"
+let TaskIconReminder = "fa-bell-o"
 let TaskIconRepeat = "fa-repeat"
 let SubtaskIconAdd = "fa-plus"
 let TaskTagIcon = "fa-tag"
@@ -33,7 +33,7 @@ class TaskDetailViewController: BaseViewController {
     fileprivate var taskPickerView: TaskPickerView?
     
     fileprivate var iconList = [
-        [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
+        [TaskIconCalendar, TaskDueIconCalendar, TaskIconReminder, TaskIconRepeat, TaskTagIcon],
         [SubtaskIconAdd],
         [TaskIconNote]
     ]
@@ -411,7 +411,7 @@ extension TaskDetailViewController {
                 self.task.estimateDate = taskPickerView.datePicker.date as NSDate
             }
             
-        case TaskIconBell:
+        case TaskIconReminder:
             RealmManager.shareManager.updateObject {
                 let date = taskPickerView.datePicker.date as NSDate
                 let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 0)

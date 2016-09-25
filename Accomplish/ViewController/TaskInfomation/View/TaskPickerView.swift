@@ -82,27 +82,28 @@ class TaskPickerView: UIView {
         switch index {
         case TaskIconCalendar:
             self.datePicker.isHidden = false
-            self.datePicker.minimumDate = now
+            let nsnow = NSDate().secAndHourMoveNow(min: 0, hour: 0)
+            self.datePicker.minimumDate = (nsnow as? Date) ?? now
             self.datePicker.datePickerMode = .dateAndTime
             self.rightButton.setTitle(Localized("setCreateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case TaskDueIconCalendar:
             self.datePicker.isHidden = false
-            self.datePicker.minimumDate = ((task.createdDate as NSDate?)?.addingMinutes(15)) ?? now
+            self.datePicker.minimumDate = task.createdDate?.addingMinutes(15) ?? now
             self.datePicker.datePickerMode = .time
             self.rightButton.setTitle(Localized("setEstimateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskIconBell:
+        case TaskIconReminder:
             guard let createDate = task.createdDate else { break }
-            self.datePicker.date = now
+            self.datePicker.date = (task.estimateDate as Date?) ?? now
             self.datePicker.isHidden = false
             self.datePicker.datePickerMode = .time
             
             // 如果是今天的任务那么只能添加后面的提醒
             // 如果是今天以后的任务，那么一天随时都可以
-            if (createDate as NSDate).isToday() {
+            if createDate.isToday() {
                 self.datePicker.minimumDate = now
             } else {
                 self.datePicker.minimumDate = nil

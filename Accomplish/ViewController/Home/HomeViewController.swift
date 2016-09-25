@@ -448,6 +448,7 @@ class HomeViewController: BaseViewController {
             LocalNotificationManager().testClearUNNoitifcation()
         } else {
             UIApplication.shared.cancelAllLocalNotifications()
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     

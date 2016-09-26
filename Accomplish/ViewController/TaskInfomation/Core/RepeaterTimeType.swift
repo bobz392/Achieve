@@ -33,15 +33,15 @@ enum RepeaterTimeType: Int {
     func getCalendarComponent() -> Set<Calendar.Component> {
         switch self {
         case .daily:
-            return [.hour, .minute, .second, .nanosecond]
+            return [.hour, .minute]
         case .weekday:
-            return [.weekOfYear, .hour, .minute, .second, .nanosecond]
+            return [.weekday, .hour, .minute]
         case .everyWeek:
-            return [.weekOfYear, .hour, .minute, .second, .nanosecond]
+            return [.weekday, .hour, .minute]
         case .everyMonth:
-            return [.day, .hour, .minute, .second, .nanosecond]
+            return [.day, .hour, .minute]
         case .annual:
-            return [.month, .day, .hour, .minute, .second, .nanosecond]
+            return [.month, .day, .hour, .minute]
         }
     }
     

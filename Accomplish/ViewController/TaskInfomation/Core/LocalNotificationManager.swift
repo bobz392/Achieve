@@ -18,6 +18,7 @@ let kNotifyUserInfoKey = "com.zhou.achieve.task"
 class LocalNotificationManager: NSObject {
     
     let repeaterKey = "com.zhou.achieve.repeater"
+    private let enableUN = false
     
     static let shared = LocalNotificationManager()
     
@@ -30,7 +31,7 @@ class LocalNotificationManager: NSObject {
     }
     
     func create(_ task: Task) {
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) , enableUN {
             self.createUNNotify(task)
         } else {
             self.createNotify(task)
@@ -38,7 +39,7 @@ class LocalNotificationManager: NSObject {
     }
     
     func cancel(_ task: Task) {
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) , enableUN {
             self.cancelUNNotify(task)
         } else {
             self.cancelNotify(task)
@@ -48,7 +49,7 @@ class LocalNotificationManager: NSObject {
     }
     
     func update(_ task: Task) {
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) , enableUN{
             self.updateUNNotify(task)
         } else {
             self.updateNotify(task)
@@ -56,7 +57,7 @@ class LocalNotificationManager: NSObject {
     }
     
     func removeRepeater(_ task: Task) -> Bool {
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) , enableUN {
             //            self.deleteUNTaskRepeater(task)
             return false
         } else {
@@ -65,7 +66,7 @@ class LocalNotificationManager: NSObject {
     }
     
     func skipFireToday(skip: Bool, task: Task) {
-        if #available(iOS 10.0, *) {
+        if #available(iOS 10.0, *) , enableUN {
             self.skipUNToday(skip: skip, task: task)
         } else {
             self.skipToday(skip: skip, task: task)
@@ -378,7 +379,7 @@ class LocalNotificationManager: NSObject {
 extension LocalNotificationManager: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
+        debugPrint("userNotificationCenter willPresent =\(notification)")
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -448,6 +449,8 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
             type == .weekday ?
                 repeater.repeatQueryTaskUUID + "\(NSDate().weekday())" :
                 repeater.repeatQueryTaskUUID
+        
+        
         UNUserNotificationCenter.current().getPendingNotificationRequests { (requests) in
             Logger.log("requests.count = \(requests.count)")
             for request in requests {
@@ -461,23 +464,23 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                     
                     let nsfiredate = firedate as NSDate
                     
-                    guard let movefiredate = nsfiredate
-                        .secAndHourMoveNow(min: nsfiredate.minute(), hour: nsfiredate.second())
-                        else { return }
+//                    guard let movefiredate = nsfiredate
+//                        .secAndHourMoveNow(min: nsfiredate.minute(), hour: nsfiredate.hour())
+//                        else { return }
                     
                     var newfiredate: Date
 
                     switch type {
                     case .annual:
                         newfiredate =
-                            skip ? movefiredate.addingYears(1) : (movefiredate as Date)
+                            skip ? nsfiredate.addingYears(1) : (nsfiredate as Date)
 //                        datecomponents.day = now.day()
 //                        datecomponents.month = now.month()
 //                        datecomponents.year = skip ? now.year() + 1 : now.year()
                         
                     case .everyMonth:
                         newfiredate =
-                            skip ? movefiredate.addingMonths(1) : (movefiredate as Date)
+                            skip ? nsfiredate.addingMonths(1) : (nsfiredate as Date)
 //                        datecomponents.day = now.day()
 //                        datecomponents.month = skip ? now.month() + 1 : now.month()
 //                        datecomponents.year = now.year()
@@ -485,7 +488,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                         
                     case .everyWeek:
                         newfiredate =
-                            skip ? movefiredate.addingWeeks(1) : (movefiredate as Date)
+                            skip ? nsfiredate.addingWeeks(1) : (nsfiredate as Date)
 //                        datecomponents.weekday = now.weekday()
 //                        datecomponents.year = now.year()
 //                        datecomponents.month = now.month()
@@ -494,14 +497,14 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                         
                     case .daily:
                         newfiredate =
-                            skip ? movefiredate.addingDays(1) : (movefiredate as Date)
+                            skip ? nsfiredate.addingDays(1) : (nsfiredate as Date)
 //                        datecomponents.day = skip ? now.day() + 1 : now.day()
 //                        datecomponents.month = now.month()
 //                        datecomponents.year = now.year()
                         
                     case .weekday:
                         newfiredate =
-                            skip ? movefiredate.addingDays(7) : (movefiredate as Date)
+                            skip ? nsfiredate.addingDays(7) : (nsfiredate as Date)
 //                        datecomponents.day = skip ? now.day() + 7 : now.day()
 //                        datecomponents.month = now.month()
 //                        datecomponents.year = now.year()
@@ -511,13 +514,13 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                     let datecomponents =
                         calendar.dateComponents(type.getCalendarComponent(), from: newfiredate)
                     
-                    
-                    
                     let newTrigger =
                         UNCalendarNotificationTrigger(dateMatching: datecomponents, repeats: true)
                     
                     debugPrint("newTrigger.nextTriggerDate = \(newTrigger.nextTriggerDate())")
                 
+//                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [uuid])
+                    
                     let newRequest = UNNotificationRequest(identifier: uuid, content: content, trigger: newTrigger)
                     UNUserNotificationCenter.current().add(newRequest)
                 }

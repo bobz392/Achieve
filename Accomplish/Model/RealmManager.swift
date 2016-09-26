@@ -124,7 +124,7 @@ class RealmManager {
         self.updateObject {
             task.notifyDate = nil
         }
-        LocalNotificationManager().cancel(task)
+        LocalNotificationManager.shared.cancel(task)
     }
     
     func moveYesterdayTaskToToday() {
@@ -161,10 +161,10 @@ class RealmManager {
                 }
                 task.finishedDate = updateDate ?? now
                 
-                LocalNotificationManager().skipFireToday(skip: true, task: task)
+                LocalNotificationManager.shared.skipFireToday(skip: true, task: task)
             } else if status == kTaskRunning {
                 task.finishedDate = nil
-                LocalNotificationManager().skipFireToday(skip: false, task: task)
+                LocalNotificationManager.shared.skipFireToday(skip: false, task: task)
             }
         })
     }

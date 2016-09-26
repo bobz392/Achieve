@@ -29,7 +29,7 @@ extension RealmManager {
             
             Logger.log("create type = \(repeaterTimeType.getCalendarUnit())")
         }
-        LocalNotificationManager().update(task)
+        LocalNotificationManager.shared.update(task)
     }
     
     func queryRepeaterWithTask(_ taskUUID: String) -> Repeater? {

@@ -63,7 +63,7 @@ class TaskDetailViewController: BaseViewController {
         self.configMainUI()
         self.initializeControl()
         
-        LocalNotificationManager().requestAuthorization()
+        LocalNotificationManager.shared.requestAuthorization()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -418,7 +418,7 @@ extension TaskDetailViewController {
                 
                 self.task.notifyDate = fireDate
             }
-            LocalNotificationManager().create(self.task)
+            LocalNotificationManager.shared.create(self.task)
             
         case TaskIconRepeat:
             let repeatTimeType = taskPickerView.repeatTimeType()

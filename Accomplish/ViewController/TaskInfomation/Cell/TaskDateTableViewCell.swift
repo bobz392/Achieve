@@ -52,8 +52,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         
         switch self.detailType {
         case TaskDetailType.repeat:
-            let delete = LocalNotificationManager().deleteRepeater(task)
-            if delete {
+            if LocalNotificationManager.shared.removeRepeater(task) {
                 RealmManager.shareManager.updateObject {
                     task.canPostpone = !task.canPostpone
                 }
@@ -63,8 +62,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
             RealmManager.shareManager.updateObject {
                 task.notifyDate = nil
             }
-            
-            LocalNotificationManager().cancel(task)
+            LocalNotificationManager.shared.cancel(task)
             
         case TaskDetailType.estimate:
             RealmManager.shareManager.updateObject({ 

@@ -35,24 +35,9 @@ enum RepeaterTimeType: Int {
         case .daily:
             return [.hour, .minute, .second, .nanosecond]
         case .weekday:
-            return [.weekday, .hour, .minute, .second, .nanosecond]
+            return [.weekOfYear, .hour, .minute, .second, .nanosecond]
         case .everyWeek:
-            return [.weekday, .hour, .minute, .second, .nanosecond]
-        case .everyMonth:
-            return [.day, .hour, .minute, .second, .nanosecond]
-        case .annual:
-            return [.month, .day, .hour, .minute, .second, .nanosecond]
-        }
-    }
-    
-    func getCalendarSkipTodayComponent() -> Set<Calendar.Component> {
-        switch self {
-        case .daily:
-            return [.day, .hour, .minute, .second, .nanosecond]
-        case .weekday:
-            return [.weekday, .hour, .minute, .second, .nanosecond]
-        case .everyWeek:
-            return [.weekday, .hour, .minute, .second, .nanosecond]
+            return [.weekOfYear, .hour, .minute, .second, .nanosecond]
         case .everyMonth:
             return [.day, .hour, .minute, .second, .nanosecond]
         case .annual:

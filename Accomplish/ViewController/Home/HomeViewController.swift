@@ -74,7 +74,7 @@ class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         if #available(iOS 10.0, *) {
-            LocalNotificationManager().logAllUNNotify()
+            LocalNotificationManager.shared.logAllUNNotify()
         }
         
     }
@@ -444,12 +444,15 @@ class HomeViewController: BaseViewController {
         self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(tagVC, animated: true)
         
-        if #available(iOS 10.0, *) {
-            LocalNotificationManager().testClearUNNoitifcation()
-        } else {
-            UIApplication.shared.cancelAllLocalNotifications()
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        }
+        #if debug
+            if #available(iOS 10.0, *) {
+                LocalNotificationManager.shared.testClearUNNoitifcation()
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            } else {
+                UIApplication.shared.cancelAllLocalNotifications()
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            }
+        #endif
     }
     
     fileprivate func doSwitchScreen(_ animation: Bool) {

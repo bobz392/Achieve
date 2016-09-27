@@ -25,6 +25,8 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var lineViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var lineViewBottomConstraint: NSLayoutConstraint!
     
+    weak var task: Task? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -72,5 +74,15 @@ class ScheduleTableViewCell: UITableViewCell {
             }
         }
         
+        self.task = task
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        selectedBackgroundView = UIView(frame: frame)
+        selectedBackgroundView?.clearView()
+        
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
 }

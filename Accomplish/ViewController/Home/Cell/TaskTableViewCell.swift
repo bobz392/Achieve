@@ -148,6 +148,7 @@ class TaskTableViewCell: BaseTableViewCell {
                 self.overTimeLabel.layer.borderWidth = 1
                 self.overTimeLabel.isHidden = false
                 self.reminderLeftConstraint.constant = 4
+                self.overTimeLabel.setNeedsLayout()
             }
         }
         
@@ -159,9 +160,8 @@ class TaskTableViewCell: BaseTableViewCell {
             self.reminderLabel.layer.borderColor = color.cgColor
             self.reminderLabel.layer.borderWidth = 1
             self.reminderLabel.isHidden = false
+            self.reminderLabel.setNeedsLayout()
         }
-        
-        self.layoutIfNeeded()
     }
     
     func settingsAction() {

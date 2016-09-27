@@ -143,6 +143,14 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         return self.taskList?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let task = self.taskList?[indexPath.row] {
+            let taskVC = TaskDetailViewController(task: task, canChange: task.createdDate?.isToday() ?? false)
+            self.navigationController?.pushViewController(taskVC, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId, for: indexPath) as! ScheduleTableViewCell
         

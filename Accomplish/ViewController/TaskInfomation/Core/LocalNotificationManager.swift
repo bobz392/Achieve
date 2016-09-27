@@ -376,7 +376,7 @@ class LocalNotificationManager: NSObject {
 extension LocalNotificationManager: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        debugPrint("userNotificationCenter willPresent =\(notification)")
+        Logger.log("userNotificationCenter willPresent =\(notification)")
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -514,10 +514,8 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                     let newTrigger =
                         UNCalendarNotificationTrigger(dateMatching: datecomponents, repeats: true)
                     
-                    debugPrint("newTrigger.nextTriggerDate = \(newTrigger.nextTriggerDate())")
-                
-//                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [uuid])
-                    
+                    Logger.log("newTrigger.nextTriggerDate = \(newTrigger.nextTriggerDate())")
+
                     let newRequest = UNNotificationRequest(identifier: uuid, content: content, trigger: newTrigger)
                     UNUserNotificationCenter.current().add(newRequest)
                 }

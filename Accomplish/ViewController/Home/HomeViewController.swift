@@ -426,8 +426,8 @@ class HomeViewController: BaseViewController {
     func switchScreenAction() {
         self.doSwitchScreen(true)
         
-        debugPrint(RealmManager.shareManager.queryAll(clz: Task.self))
-        debugPrint(RealmManager.shareManager.queryAll(clz: Repeater.self))
+        Logger.log(RealmManager.shareManager.queryAll(clz: Task.self))
+        Logger.log(RealmManager.shareManager.queryAll(clz: Repeater.self))
     }
     
     func calendarAction() {

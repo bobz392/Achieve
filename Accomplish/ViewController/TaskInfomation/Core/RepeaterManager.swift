@@ -13,41 +13,48 @@ struct RepeaterManager {
     // 检查最后一次检查时间，并创建重复task
     func isNewDay() -> Bool {
         // check last check is today or not
-        let userDefault = AppUserDefault()
-        let now = NSDate()
+//        let userDefault = AppUserDefault()
+//        let now = NSDate()
+//        
+//        guard let lastDateString = userDefault.readString(kLastFetchDateKey) else {
+//            userDefault.write(kLastFetchDateKey, value:now.createdFormatedDateString())
+//            return false
+//        }
         
-        guard let lastDateString = userDefault.readString(kLastFetchDateKey) else {
-            userDefault.write(kLastFetchDateKey, value:now.createdFormatedDateString())
-            return false
+        guard let checkIn =
+            RealmManager.shareManager.queryCheckIn(first: false) else {
+                self.createCheckIn()
+                return true
         }
         
-        let lastDate: NSDate = lastDateString.dateFromCreatedFormatString() as NSDate
+        guard let lastDate = checkIn.checkInDate else {
+            self.createCheckIn()
+            return true
+        }
         
-        Logger.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now as Date!))")
-        if !lastDate.isToday() && lastDate.isEarlierThan(now as Date!) {
+        let now = Date()
+        
+        Logger.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
+        if !lastDate.isToday() && lastDate.isEarlierThan(now) {
+            self.createCheckIn()
 //             do some use repeater create todays task
             self.repeaterTaskCreate()
-            userDefault.write(kLastFetchDateKey, value: now.createdFormatedDateString())
-            // 加入昨天的check in
-            // 以及任务完成率
-            self.createCheckIn(now: now)
-            AppUserDefault().write(kNeedMoveUnfinishTaskToToday, value: true)
+//            userDefault.write(kLastFetchDateKey, value: now.createdFormatedDateString())
             return true
         } else {
             return false
         }
     }
     
-    fileprivate func createCheckIn(now: NSDate) {
-        let checkIn = CheckIn()
-        let checkInDate = now.subtractingDays(1) as NSDate
-        checkIn.checkInDate = checkInDate
-        checkIn.formatedDate = checkInDate.createdFormatedDateString()
-        let task = RealmManager.shareManager.queryTaskCount(date: checkInDate)
-        checkIn.completedCount = task.complete
-        checkIn.createdCount = task.created
-        
-        RealmManager.shareManager.saveCheckIn(checkIn)
+    fileprivate func createCheckIn() {
+            let checkIn = CheckIn()
+            let checkInDate = NSDate()
+            checkIn.checkInDate = checkInDate
+            checkIn.formatedDate = checkInDate.createdFormatedDateString()
+            //        let task = RealmManager.shareManager.queryTaskCount(date: checkInDate)
+            //        checkIn.completedCount = task.complete
+            //        checkIn.createdCount = task.created
+            RealmManager.shareManager.saveCheckIn(checkIn)
     }
     
     fileprivate func repeaterTaskCreate() {
@@ -55,35 +62,34 @@ struct RepeaterManager {
         let manager = RealmManager.shareManager
         let all = manager.allRepeater()
         let today = NSDate()
-        
-        for repeater in all {
-            guard let task = manager.queryTask(repeater.repeatTaskUUID),
-                let createDate = task.createdDate,
-                let repeatTime = RepeaterTimeType(rawValue: repeater.repeatType)
-                else { return }
-            
-            let createTask: Bool
-            switch repeatTime {
-            case .daily:
-                createTask = true
-            case .annual:
-                createTask = today.month() == createDate.month() && createDate.day() == today.day()
-            case .everyMonth:
-                createTask = today.day() == createDate.day()
-            case .weekday:
-                createTask = !today.isWeekend()
-            case .everyWeek:
-                createTask = today.weekday() == createDate.weekday()
-            }
-            
-            if createTask {
-                let newTask = self.copyTask(task)
-                newTask.repeaterUUID = repeater.uuid
-                manager.updateObject({
-                    repeater.repeatTaskUUID = newTask.uuid
-                })
-                manager.writeObject(newTask)
-            }
+            for repeater in all {
+                guard let task = manager.queryTask(repeater.repeatTaskUUID),
+                    let createDate = task.createdDate,
+                    let repeatTime = RepeaterTimeType(rawValue: repeater.repeatType)
+                    else { return }
+                
+                let createTask: Bool
+                switch repeatTime {
+                case .daily:
+                    createTask = true
+                case .annual:
+                    createTask = today.month() == createDate.month() && createDate.day() == today.day()
+                case .everyMonth:
+                    createTask = today.day() == createDate.day()
+                case .weekday:
+                    createTask = !today.isWeekend()
+                case .everyWeek:
+                    createTask = today.weekday() == createDate.weekday()
+                }
+                
+                if createTask {
+                    let newTask = self.copyTask(task)
+                    newTask.repeaterUUID = repeater.uuid
+                    manager.updateObject({
+                        repeater.repeatTaskUUID = newTask.uuid
+                    })
+                    manager.writeObject(newTask)
+                }
         }
     }
     

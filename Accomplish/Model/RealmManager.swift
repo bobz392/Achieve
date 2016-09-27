@@ -70,7 +70,7 @@ class RealmManager {
         return tasks
     }
     
-    func queryTaskCount(date: NSDate) -> (complete: Int, created: Int) {
+    func queryTaskCount(date: NSDate) -> (completed: Int, created: Int) {
         let task = realm.allObjects(ofType: Task.self)
             .filter(using: "createdFormattedDate = '\(date.createdFormatedDateString())'")
         
@@ -187,9 +187,10 @@ class RealmManager {
 // MARK: - CheckIn model
 // 以后为多个年的 check in 优化
 extension RealmManager {
-    func queryFirstCheckIn() -> CheckIn? {
+    func queryCheckIn(first: Bool = true) -> CheckIn? {
+        self.queryAll(clz: CheckIn.self)
         return realm.allObjects(ofType: CheckIn.self)
-            .sorted(onProperty: "checkInDate", ascending: true)
+            .sorted(onProperty: "checkInDate", ascending: first)
             .first
     }
     

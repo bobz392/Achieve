@@ -80,6 +80,10 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
 
     func start(_ total: Int, finish: Int) {
         guard total > 0 && finish > 0 && total >= finish else {
+            self.inAnimation = true
+            dispatch_delay(1, closure: { [weak self] in
+                self?.inAnimation = false
+            })
             self.progressLayer.strokeEnd = 0
             return
         }

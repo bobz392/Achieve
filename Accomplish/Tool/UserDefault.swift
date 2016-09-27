@@ -9,7 +9,6 @@
 import Foundation
 
 let kIsFullScreenSizeKey = "com.zhoubo.currentScreenSizeKey"
-let kLastFetchDateKey = "com.zhoubo.last.fetch"
 let kWeekStartKey = "com.date.start"
 let kCloseDueTodayKey = "com.due.today"
 let kCloseHintKey = "com.close.hint"
@@ -17,7 +16,6 @@ let kBackgroundKey = "com.background"
 let kWatchDateHasNewKey = "com.watch.date.is.new"
 let kCurrentTagUUIDKey = "com.current.tag"
 let kUserFirstTimeCallNoitification = "com.call.notification"
-let kNeedMoveUnfinishTaskToToday = "move.task.to.today"
 
 struct AppUserDefault {
     let def = UserDefaults.standard

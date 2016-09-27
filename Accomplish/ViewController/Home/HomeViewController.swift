@@ -205,23 +205,19 @@ class HomeViewController: BaseViewController {
                                     for: .touchUpInside)
     }
     
-    // 在app 进入前台的时候需要检查三种种状态
-    // 第一种就是 today 中是否有勾选完成的任务
-    // 然后就是 timer
-    // 最后就是 new day 处理
+    /**
+     - 在app 进入前台的时候需要检查三种种状态
+     - 第一种就是 today 中是否有勾选完成的任务
+     - 然后就是 timer
+     - 最后就是 new day 处理
+     */
     fileprivate func addNotification() {
         NotificationCenter.default.addObserver(
             forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil,
             queue: OperationQueue.main) { [unowned self] notification in
                 
                 self.handelTodayFinish()
-                
-                if self.repeaterManager.isNewDay() {
-                    self.handleNewDay()
-                    self.checkNeedMoveUnfinishTaskToday()
-                    self.selectedIndex = nil
-                    self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
-                }
+                self.checkNewDay()
                 self.timer?.resume()
         }
         
@@ -233,16 +229,22 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    fileprivate func checkNewDay() {
+        if self.repeaterManager.isNewDay() {
+            self.handleNewDay()
+            self.checkNeedMoveUnfinishTaskToday()
+            self.selectedIndex = nil
+            self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
+        }
+    }
+    
     fileprivate func initTimer() {
         self.timer = SecondTimer(handle: { [weak self] () -> Void in
             guard let ws = self else { return }
-            if ws.repeaterManager.isNewDay() {
-                //                if NSDate().isMorning() {
-                //                    HUD.sharedHUD.showOnce(Localized("newDay"))
-                //                }
-                ws.handleNewDay()
+            dispatch_async_main {
+                ws.checkNewDay()
+                ws.taskTableView.reloadData()
             }
-            ws.taskTableView.reloadData()
             })
         
         self.timer?.start()
@@ -354,8 +356,11 @@ class HomeViewController: BaseViewController {
         self.taskTableView.endUpdates()
     }
     
-    // 当新的一天到来的时候调用， 来处理新的数据
-    // handle due today
+    /**
+     - 当新的一天到来的时候调用， 来处理新的数据
+     - 首先查询今天的任务，可能是重复任务，可能是分配到今天的任务
+     - 添加今天的任务到索引
+     */
     func handleNewDay() {
         self.queryTodayTask()
         self.handleUpdateTodayGroup()
@@ -364,9 +369,11 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    /**
+     如果开启的移动未完成的任务到今天
+     */
     fileprivate func checkNeedMoveUnfinishTaskToday() {
-        let ud = AppUserDefault()
-        if !ud.readBool(kCloseDueTodayKey) {
+        if !AppUserDefault().readBool(kCloseDueTodayKey) {
             self.handleMoveUnfinishTaskToToday()
         }
     }

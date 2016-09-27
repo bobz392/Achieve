@@ -26,7 +26,7 @@ class CalendarViewController: BaseViewController {
     
     lazy fileprivate var checkInManager = CheckInManager()
     lazy fileprivate var firstDate =
-        RealmManager.shareManager.queryFirstCheckIn()?.checkInDate ?? NSDate()
+        RealmManager.shareManager.queryCheckIn()?.checkInDate ?? NSDate()
     lazy fileprivate var row = 6
     fileprivate var toTodayAlleady = false
     
@@ -174,14 +174,16 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         
+        let createCount = self.checkInManager.taskCount(date: date).created
+        
         cell.setupCellBeforeDisplay(cellState, date: date,
-                                    hasTask: (checkInManager.checkInWithDate(date: date as NSDate)?.createdCount ?? 0) > 0)
+                                    hasTask: createCount > 0)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
-        self.showInfoWhenNeed(date as NSDate)
+        self.showInfoWhenNeed(date)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
@@ -198,10 +200,10 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     // 选中当前的date的进度 和 任务数量的动画
-    fileprivate func showInfoWhenNeed(_ date: NSDate) {
-        let task = RealmManager.shareManager.queryTaskCount(date: date)
-        let created = task.created
-        let completed = task.complete
+    fileprivate func showInfoWhenNeed(_ date: Date) {
+        let counts = self.checkInManager.taskCount(date: date)
+        let created = counts.created
+        let completed = counts.completed
         self.circleView.start(completed: completed, created: created)
         self.createdLabel.count(from: 0, to: CGFloat(created))
         self.completedLabel.count(from: 0, to: CGFloat(completed))

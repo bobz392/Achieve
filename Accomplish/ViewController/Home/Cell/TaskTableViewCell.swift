@@ -26,6 +26,7 @@ class TaskTableViewCell: BaseTableViewCell {
     @IBOutlet weak var overTimeLabel: UILabel!
     @IBOutlet weak var reminderLabel: UILabel!
     @IBOutlet weak var settingWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var reminderLeftConstraint: NSLayoutConstraint!
     
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
@@ -136,6 +137,7 @@ class TaskTableViewCell: BaseTableViewCell {
         
         self.overTimeLabel.isHidden = true
         self.overTimeLabel.text = nil
+        self.reminderLeftConstraint.constant = 0
         if let estimateDate = task.estimateDate {
             if estimateDate.isEarlierThan(Date()) {
                 self.overTimeLabel.text = Localized("overTime")
@@ -145,7 +147,7 @@ class TaskTableViewCell: BaseTableViewCell {
                 self.overTimeLabel.layer.borderColor = color.cgColor
                 self.overTimeLabel.layer.borderWidth = 1
                 self.overTimeLabel.isHidden = false
-                self.layoutIfNeeded()
+                self.reminderLeftConstraint.constant = 4
             }
         }
         
@@ -158,6 +160,8 @@ class TaskTableViewCell: BaseTableViewCell {
             self.reminderLabel.layer.borderWidth = 1
             self.reminderLabel.isHidden = false
         }
+        
+        self.layoutIfNeeded()
     }
     
     func settingsAction() {

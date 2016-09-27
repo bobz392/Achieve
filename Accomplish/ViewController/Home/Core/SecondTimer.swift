@@ -18,7 +18,7 @@ final class SecondTimer {
     
     fileprivate var timerRunning = false
     
-    init(handle: @escaping () -> Void, fetchSecondInterval: Int = 10 * 60) {
+    init(handle: @escaping () -> Void, fetchSecondInterval: Int = 60) {
         self.handle = handle
         self.fetchSecondInterval = fetchSecondInterval
         
@@ -28,7 +28,9 @@ final class SecondTimer {
     
     func start() {
         let interval = Double(fetchSecondInterval)
-        timer.scheduleRepeating(deadline: DispatchTime.now(), interval: interval, leeway: DispatchTimeInterval.seconds(60))
+        timer.scheduleRepeating(deadline: DispatchTime.now(),
+                                interval: interval,
+                                leeway: DispatchTimeInterval.seconds(60))
         
         timer.setEventHandler { () -> Void in
             dispatch_async_main({ () -> Void in

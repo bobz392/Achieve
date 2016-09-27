@@ -52,11 +52,11 @@ class TaskDateTableViewCell: BaseTableViewCell {
         
         switch self.detailType {
         case TaskDetailType.repeat:
-            if LocalNotificationManager.shared.removeRepeater(task) {
-                RealmManager.shareManager.updateObject {
-                    task.repeaterUUID = nil
-                }
+            LocalNotificationManager.shared.removeRepeater(task)
+            RealmManager.shareManager.updateObject {
+                task.repeaterUUID = nil
             }
+            
             
         case TaskDetailType.notify:
             RealmManager.shareManager.updateObject {
@@ -65,12 +65,12 @@ class TaskDateTableViewCell: BaseTableViewCell {
             LocalNotificationManager.shared.cancel(task)
             
         case TaskDetailType.estimate:
-            RealmManager.shareManager.updateObject({ 
+            RealmManager.shareManager.updateObject({
                 task.estimateDate = nil
             })
             
         case TaskDetailType.tag:
-            RealmManager.shareManager.updateObject({ 
+            RealmManager.shareManager.updateObject({
                 task.tagUUID = nil
             })
             
@@ -178,7 +178,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
                 } else {
                     hasTag = false
                     self.infoLabel.text = Localized("noTag")
-                    RealmManager.shareManager.updateObject({ 
+                    RealmManager.shareManager.updateObject({
                         self.task?.tagUUID = nil
                     })
                 }

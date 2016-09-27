@@ -56,12 +56,11 @@ class LocalNotificationManager: NSObject {
         }
     }
     
-    func removeRepeater(_ task: Task) -> Bool {
+    func removeRepeater(_ task: Task) {
         if #available(iOS 10.0, *) , enableUN {
             //            self.deleteUNTaskRepeater(task)
-            return false
         } else {
-            return self.deleteTaskRepeater(task)
+            self.deleteTaskRepeater(task)
         }
     }
     
@@ -114,28 +113,26 @@ class LocalNotificationManager: NSObject {
      仅仅删除 repeater 的时候调用
      返回是否删除成功
      **/
-    fileprivate func deleteTaskRepeater(_ task: Task) -> Bool {
+    fileprivate func deleteTaskRepeater(_ task: Task) {
+        // 删除 repeater 本身
+        RealmManager.shareManager.deleteRepeater(task)
+        
         let notify = self.notifyWithUUID(task.uuid)
-        guard notify.count > 0 else { return false}
+        guard notify.count > 0 else { return }
         
         // 备份一份 fire date，以便创建一个今日通知
-        guard let firedate = notify.first?.fireDate as NSDate? else { return false }
+        guard let firedate = notify.first?.fireDate as NSDate? else { return }
         
         // 不论如何，删掉 repeater 的时候，需要删除所有通知
         for n in notify {
             UIApplication.shared.cancelLocalNotification(n)
         }
         
-        // 删除通知以后，删除 repeater 本身
-        RealmManager.shareManager.deleteRepeater(task)
-        
         // 如果 fire date 还没到，创建一个今日通知
         // 同时因为已经删除 repeater 所以只需要 create 即可
         if firedate.isEarlierThan(Date()) {
             self.createNotify(task)
         }
-        
-        return true
     }
     
     fileprivate func updateNotify(_ task: Task) {

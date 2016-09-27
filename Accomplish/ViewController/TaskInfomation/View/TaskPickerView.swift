@@ -89,7 +89,7 @@ class TaskPickerView: UIView {
             
         case TaskDueIconCalendar:
             self.datePicker.isHidden = false
-            let date = (task.createdDate as? Date) ?? now
+            let date = task.createdDate?.addingMinutes(1) ?? now
             self.datePicker.minimumDate = date
             self.datePicker.date = date
             self.datePicker.datePickerMode = .time

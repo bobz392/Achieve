@@ -105,6 +105,7 @@
                 <outlet property="overTimeLabel" destination="Pvh-Ed-xfX" id="89F-gm-GmQ"/>
                 <outlet property="priorityView" destination="nRC-r3-d8A" id="4q3-8l-HWg"/>
                 <outlet property="reminderLabel" destination="uJP-H0-cPb" id="hso-1m-Gby"/>
+                <outlet property="reminderLeftConstraint" destination="sE8-3S-zCU" id="d38-d7-5rM"/>
                 <outlet property="settingWidthConstraint" destination="aDW-of-jNN" id="R5Z-OO-eIa"/>
                 <outlet property="taskDateLabel" destination="j4a-ig-DCb" id="tdA-3a-lzh"/>
                 <outlet property="taskInfoButton" destination="TnC-Re-QZp" id="fui-Az-tQy"/>

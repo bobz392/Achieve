@@ -76,6 +76,7 @@
 "taskNote"="添加备注";
 "detailAddSubtask"="添加子任务";
 "overTime"="  超时  ";
+"repeatHint"="  重复  ";
 
 "addressBook"="通讯录";
 

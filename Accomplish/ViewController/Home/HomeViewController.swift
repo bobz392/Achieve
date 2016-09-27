@@ -382,11 +382,11 @@ class HomeViewController: BaseViewController {
     
     fileprivate func handleMoveUnfinishTaskToToday() {
         let shareManager = RealmManager.shareManager
-        let s = shareManager.queryTaskCount(date: NSDate().subtractingDays(1) as NSDate)
-        if (s.created - s.complete) > 0 {
+        let movetasks = shareManager.hasUnfinishTaskMoveToday()
+        if movetasks.count > 0 {
             let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .alert)
             let moveAction = UIAlertAction(title: Localized("move"), style: .default) { (action) in
-                shareManager.moveYesterdayTaskToToday()
+                shareManager.moveYesterdayTaskToToday(movedtasks: movetasks)
             }
             let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
                 alert.dismiss(animated: true, completion: nil)

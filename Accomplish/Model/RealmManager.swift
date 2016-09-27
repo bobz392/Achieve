@@ -127,16 +127,20 @@ class RealmManager {
         LocalNotificationManager.shared.cancel(task)
     }
     
-    func moveYesterdayTaskToToday() {
-        let today = NSDate()
-        let todayDateString = today.createdFormatedDateString()
-        let yesterday = (today.subtractingDays(1) as NSDate).createdFormatedDateString()
-        let movedtasks = realm.allObjects(ofType: Task.self)
+    func hasUnfinishTaskMoveToday() -> [Task] {
+        let yesterday = (NSDate().subtractingDays(1) as NSDate).createdFormatedDateString()
+        let yesterdayTask = realm.allObjects(ofType: Task.self)
             .filter(using: "createdFormattedDate = '\(yesterday)' AND status = \(kTaskRunning)")
-            .filter { (task) -> Bool in
-                return self.queryRepeaterWithTask(task.uuid) == nil
+        let taskArr = Array(yesterdayTask)
+        let movedtasks = taskArr.filter { (task) -> Bool in
+            return task.repeaterUUID == nil
         }
         
+        return movedtasks
+    }
+    
+    func moveYesterdayTaskToToday(movedtasks: [Task]) {
+        let todayDateString = NSDate().createdFormatedDateString()
         self.updateObject {
             for task in movedtasks {
                 task.createdDate = task.createdDate?.addingDays(1) as NSDate?

@@ -77,6 +77,7 @@
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
 "overTime"="  overtime  ";
+"repeatHint"="  repeat  ";
 
 "addressBook"="Address Book";
 

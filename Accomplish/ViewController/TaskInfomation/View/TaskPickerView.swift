@@ -82,22 +82,23 @@ class TaskPickerView: UIView {
         switch index {
         case TaskIconCalendar:
             self.datePicker.isHidden = false
-            let nsnow = NSDate().secAndHourMoveNow(min: 0, hour: 0)
-            self.datePicker.minimumDate = (nsnow as? Date) ?? now
+            self.datePicker.minimumDate = now
             self.datePicker.datePickerMode = .dateAndTime
             self.rightButton.setTitle(Localized("setCreateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case TaskDueIconCalendar:
             self.datePicker.isHidden = false
-            self.datePicker.minimumDate = task.createdDate?.addingMinutes(15) ?? now
+            let date = (task.createdDate as? Date) ?? now
+            self.datePicker.minimumDate = date
+            self.datePicker.date = date
             self.datePicker.datePickerMode = .time
             self.rightButton.setTitle(Localized("setEstimateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case TaskIconReminder:
             guard let createDate = task.createdDate else { break }
-            self.datePicker.date = (task.estimateDate as Date?) ?? now
+            self.datePicker.date = (task.estimateDate as? Date) ?? now
             self.datePicker.isHidden = false
             self.datePicker.datePickerMode = .time
             

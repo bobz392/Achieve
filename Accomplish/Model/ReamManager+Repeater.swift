@@ -18,6 +18,7 @@ extension RealmManager {
         if let repeater = self.queryRepeaterWithTask(task.uuid) {
             self.updateObject({
                 repeater.repeatType = repeaterTimeType.rawValue
+                task.repeaterUUID = repeater.uuid
             })
             Logger.log("update type = \(repeaterTimeType.getCalendarUnit())")
         } else {
@@ -26,6 +27,9 @@ extension RealmManager {
             repeater.repeatQueryTaskUUID = task.uuid
             repeater.repeatType = repeaterTimeType.rawValue
             self.writeObject(repeater)
+            self.updateObject {
+                task.repeaterUUID = repeater.uuid
+            }
             
             Logger.log("create type = \(repeaterTimeType.getCalendarUnit())")
         }
@@ -37,7 +41,6 @@ extension RealmManager {
             .filter(using: "repeatTaskUUID = '\(taskUUID)'")
             .first
         
-        Logger.log("queryRepeaterWithTask = \(repeater)")
         return repeater
     }
     

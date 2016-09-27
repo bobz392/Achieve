@@ -24,6 +24,7 @@ class TaskTableViewCell: BaseTableViewCell {
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var overTimeLabel: UILabel!
+    @IBOutlet weak var reminderLabel: UILabel!
     @IBOutlet weak var settingWidthConstraint: NSLayoutConstraint!
     
     var systemActionContent: SystemActionContent? = nil
@@ -51,7 +52,7 @@ class TaskTableViewCell: BaseTableViewCell {
         
         self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
-        self.overTimeLabel.text = Localized("overTime")
+        self.reminderLabel.text = Localized("repeatHint")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -134,15 +135,28 @@ class TaskTableViewCell: BaseTableViewCell {
         }
         
         self.overTimeLabel.isHidden = true
+        self.overTimeLabel.text = nil
         if let estimateDate = task.estimateDate {
             if estimateDate.isEarlierThan(Date()) {
+                self.overTimeLabel.text = Localized("overTime")
                 let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
                 self.overTimeLabel.textColor = color
                 self.overTimeLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
                 self.overTimeLabel.layer.borderColor = color.cgColor
                 self.overTimeLabel.layer.borderWidth = 1
                 self.overTimeLabel.isHidden = false
+                self.layoutIfNeeded()
             }
+        }
+        
+        self.reminderLabel.isHidden = true
+        if let _ = task.repeaterUUID {
+            let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
+            self.reminderLabel.textColor = color
+            self.reminderLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
+            self.reminderLabel.layer.borderColor = color.cgColor
+            self.reminderLabel.layer.borderWidth = 1
+            self.reminderLabel.isHidden = false
         }
     }
     

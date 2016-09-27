@@ -54,7 +54,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         case TaskDetailType.repeat:
             if LocalNotificationManager.shared.removeRepeater(task) {
                 RealmManager.shareManager.updateObject {
-                    task.canPostpone = !task.canPostpone
+                    task.repeaterUUID = nil
                 }
             }
             

@@ -78,6 +78,7 @@ struct RepeaterManager {
             
             if createTask {
                 let newTask = self.copyTask(task)
+                newTask.repeaterUUID = repeater.uuid
                 manager.updateObject({
                     repeater.repeatTaskUUID = newTask.uuid
                 })

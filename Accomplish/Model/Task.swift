@@ -41,6 +41,7 @@ class Task: Object {
     dynamic var tagUUID: String?
     
     dynamic var trigger: Trigger?
+    dynamic var repeaterUUID: String?
     dynamic var subTaskCount: Int = 0
     
     override class func primaryKey() -> String? {

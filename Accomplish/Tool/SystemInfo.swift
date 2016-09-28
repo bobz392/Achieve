@@ -12,11 +12,12 @@ struct Logger {
     static func log(_ log: Any, function: String = #function,
                     file: String = #file, line: Int = #line) {
         #if debug
-            print("------------------------------------------")
-            print("|", function, file, line)
-            print("|")
-            print(log)
-            print("------------------------------------------")
+            print("╔═══════════════════════════════════════════════════════════")
+            print("║", function, line)
+            print("║", file)
+            print("╟───────────────────────────────────────────────────────────")
+            print("║ \(log)")
+            print("╚═══════════════════════════════════════════════════════════")
             print("\n")
         #endif
     }

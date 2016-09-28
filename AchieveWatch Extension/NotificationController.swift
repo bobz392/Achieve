@@ -29,8 +29,12 @@ class NotificationController: WKUserNotificationInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    override func didReceive(_ localNotification: UILocalNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Void) {
+        
+    }
 
-    /*
+    @available(watchOSApplicationExtension 3.0, *)
     override func didReceive(_ notification: UNNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Swift.Void) {
         // This method is called when a notification needs to be presented.
         // Implement it if you use a dynamic notification interface.
@@ -39,5 +43,5 @@ class NotificationController: WKUserNotificationInterfaceController {
         // After populating your dynamic notification interface call the completion block.
         completionHandler(.custom)
     }
-    */
+
 }

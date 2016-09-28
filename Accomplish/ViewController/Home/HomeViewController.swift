@@ -215,9 +215,9 @@ class HomeViewController: BaseViewController {
         NotificationCenter.default.addObserver(
             forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil,
             queue: OperationQueue.main) { [unowned self] notification in
-                
-                self.handelTodayFinish()
+                self.handelTodayExtensionFinish()
                 self.checkNewDay()
+                self.checkNeedMoveUnfinishTaskToday()
                 self.timer?.resume()
         }
         
@@ -232,7 +232,6 @@ class HomeViewController: BaseViewController {
     fileprivate func checkNewDay() {
         if self.repeaterManager.isNewDay() {
             self.handleNewDay()
-            self.checkNeedMoveUnfinishTaskToday()
             self.selectedIndex = nil
             self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
         }
@@ -243,6 +242,7 @@ class HomeViewController: BaseViewController {
             guard let ws = self else { return }
             dispatch_async_main {
                 ws.checkNewDay()
+                ws.checkNeedMoveUnfinishTaskToday()
                 ws.taskTableView.reloadData()
             }
             })
@@ -250,7 +250,10 @@ class HomeViewController: BaseViewController {
         self.timer?.start()
     }
     
-    fileprivate func handelTodayFinish() {
+    /**
+     处理 today extension 中完成的任务
+     */
+    fileprivate func handelTodayExtensionFinish() {
         guard let group = GroupUserDefault() else { return }
         let finishTasks = group.getAllFinishTask()
         
@@ -373,9 +376,12 @@ class HomeViewController: BaseViewController {
      如果开启的移动未完成的任务到今天
      */
     fileprivate func checkNeedMoveUnfinishTaskToday() {
-        if !AppUserDefault().readBool(kCloseDueTodayKey) {
+        let appUD = AppUserDefault()
+        if !appUD.readBool(kCloseDueTodayKey) && appUD.readBool(kCheckMoveUnfinishTaskKey) {
             self.handleMoveUnfinishTaskToToday()
         }
+        
+        appUD.write(kCheckMoveUnfinishTaskKey, value: false)
     }
     
     fileprivate func queryTodayTask(tagUUID: String? = nil) {

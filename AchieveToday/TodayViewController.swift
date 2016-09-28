@@ -198,7 +198,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         self.allGroupTasks.remove(at: btn.tag)
         self.todayTableView.deleteRows(at: [IndexPath(row: btn.tag, section: 0)], with: .automatic)
         self.updateContent()
-        group.moveTaskFinish(btn.tag)
+        group.todayExtensionMoveTaskFinish(btn.tag)
         let reloadIndexs =
             (btn.tag..<self.allGroupTasks.count).map( { IndexPath(row: $0, section: 0) } )
         self.todayTableView.reloadRows(at: reloadIndexs, with: .none)

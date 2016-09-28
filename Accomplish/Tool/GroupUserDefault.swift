@@ -9,7 +9,6 @@
 import Foundation
 
 let GroupIdentifier = "group.bob.achieve"
-let WormholeNewTaskIdentifier = "wormhole.new.task"
 
 struct GroupUserDefault {
     let groupDefault: UserDefaults
@@ -71,7 +70,7 @@ struct GroupUserDefault {
         return (self.groupDefault.array(forKey: TodayExtensionFinishTaskKey) as? [[String]]) ?? [[String]]()
     }
     
-    fileprivate func setTaskFinish(_ finish: [String]) {
+    internal func setTaskFinish(_ finish: [String]) {
         var tasks = self.groupDefault.object(forKey: TodayExtensionFinishTaskKey) as? [[String]]
         if tasks == nil {
             tasks = [[String]]()
@@ -86,13 +85,4 @@ struct GroupUserDefault {
         self.groupDefault.synchronize()
     }
     
-    func moveTaskFinish(_ taskIndex: Int) {
-        guard var tasks = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
-            else { return }
-        
-        var finishTask = tasks.remove(at: taskIndex)
-        finishTask.append(NSDate().formattedDate(withFormat: UUIDFormat))
-        self.setTaskFinish(finishTask)
-        self.writeTasks(tasks)
-    }
 }

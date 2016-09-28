@@ -14,6 +14,7 @@ let GroupTaskPriorityIndex = 2
 let GroupTaskEstimateIndex = 3
 let GroupTaskFinishDateIndex = 4
 let GroupTaskTagIndex = 5
+let GroupTaskCreateDateIndex = 6
 
 struct GroupTask {
     let taskUUID: String
@@ -21,6 +22,7 @@ struct GroupTask {
     let taskTitle: String
     var taskEstimateDate: String? = nil
     var taskFinishDate: String? = nil
+    var taskCreateDate: String? = nil
     
     static func showTaskCountTitle(taskCount: Int) -> String {
         if taskCount == 0 {

@@ -11,12 +11,26 @@ import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
     
+    @IBOutlet weak var messageTableView: UITableView!
+    @IBOutlet weak var messageTitleLabel: UILabel!
+    @IBOutlet weak var messageInfoLabel: UILabel!
+    
+    fileprivate var runningTasks = [GroupTask]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        guard let allTasks = GroupUserDefault()?.getAllFinishTask() else { return }
-        Logger.log(allTasks)
+        self.uiConfig()
+    }
+    
+    fileprivate func uiConfig() {
+        self.configMessageTableView()
+        
+        let colors = MessageColors()
+        
+        self.messageInfoLabel.text = Localized("messageUseage")
+        self.messageInfoLabel.textColor = colors.secondaryTextColor
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,6 +45,12 @@ class MessagesViewController: MSMessagesAppViewController {
         // This will happen when the extension is about to present UI.
         
         // Use this method to configure the extension and restore previously stored state.
+        
+        guard let allTasks = GroupUserDefault()?.runningTasksForExtension() else { return }
+        Logger.log(allTasks)
+        self.runningTasks.removeAll()
+        self.runningTasks.append(contentsOf: allTasks)
+        self.messageTableView.reloadData()
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -70,6 +90,35 @@ class MessagesViewController: MSMessagesAppViewController {
         // Called after the extension transitions to a new presentation style.
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
+    }
+}
+
+extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    fileprivate func configMessageTableView() {
+        self.messageTableView
+            .register(MessageTableViewCell.nib, forCellReuseIdentifier: MessageTableViewCell.reuseId)
+        self.messageTableView.tableFooterView = UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.runningTasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return MessageTableViewCell.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView
+            .dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseId,
+                                 for: indexPath) as! MessageTableViewCell
+        
+        let groupTask = self.runningTasks[indexPath.row]
+        cell.taskTitleLabel.text = groupTask.taskTitle
+        cell.taskDateLabel.text = groupTask.taskCreateDate
+        
+        return cell
     }
 
 }

@@ -167,3 +167,6 @@
 "searchHolder"="Search";
 "searchStart"="Please input your search keyword";
 "searchNoResult"="No results were found";
+
+// message
+"messageUseage"="Share your schedules of today";

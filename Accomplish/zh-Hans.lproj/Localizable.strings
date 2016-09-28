@@ -164,3 +164,6 @@
 "searchHolder"="搜索";
 "searchStart"="请输入您搜索的关键词";
 "searchNoResult"="没有查询到结果";
+
+// message
+"messageUseage"="分享您今天的日程安排";

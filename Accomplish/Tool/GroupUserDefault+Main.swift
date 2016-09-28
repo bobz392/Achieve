@@ -28,6 +28,7 @@ extension GroupUserDefault {
             let priority = task.priority
             let estimate = task.estimateDate?.formattedDate(withFormat: TimeDateFormat) ?? ""
             let finish = task.finishedDate?.formattedDate(withFormat: TimeDateFormat) ?? ""
+            let create = task.createdDate?.formattedDate(withFormat: TimeDateFormat) ?? ""
             
             let tagName: String
             if let tagUUID = task.tagUUID,
@@ -37,7 +38,7 @@ extension GroupUserDefault {
                 tagName = ""
             }
             
-            let taskArray = [uuid, title, "\(priority)", estimate, finish, tagName]
+            let taskArray = [uuid, title, "\(priority)", estimate, finish, tagName, create]
             tasksArr.append(taskArray)
         }
         

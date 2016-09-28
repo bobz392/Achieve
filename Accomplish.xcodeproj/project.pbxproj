@@ -257,6 +257,10 @@
 		C7CAF0B11D9C46980046D756 /* CommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192971D6D18BF00437560 /* CommonCode.swift */; };
 		C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0B21D9C46E30046D756 /* GroupUserDefault+Today.swift */; };
 		C7CAF0B41D9C46ED0046D756 /* GroupUserDefault+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0B21D9C46E30046D756 /* GroupUserDefault+Today.swift */; };
+		C7CAF0B71D9C50850046D756 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0B51D9C50850046D756 /* MessageTableViewCell.swift */; };
+		C7CAF0B81D9C50850046D756 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */; };
+		C7CAF0BA1D9C54260046D756 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0B91D9C54260046D756 /* MessageColors.swift */; };
+		C7CAF0BB1D9C554F0046D756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
 		C7D933881D85908D00F0A759 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933871D85908D00F0A759 /* SearchView.swift */; };
 		C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D933891D85909400F0A759 /* SearchView.xib */; };
@@ -277,7 +281,6 @@
 		C7E1B05C1D8C7A9600554B11 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1B05B1D8C7A9600554B11 /* NotificationController.swift */; };
 		C7E1B0621D8C7A9600554B11 /* AchieveWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C7E1B0441D8C7A9600554B11 /* AchieveWatch.app */; };
 		C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
-		C7E1B06D1D8C7D5C00554B11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7E2D9571D8F05000080D283 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9561D8F05000080D283 /* WatchConstants.swift */; };
 		C7E2D9581D8F05080080D283 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9561D8F05000080D283 /* WatchConstants.swift */; };
 		C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
@@ -620,6 +623,9 @@
 		C7CAF0A21D9C3FE80046D756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7CAF0A91D9C439D0046D756 /* AchieveMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AchieveMessage.entitlements; sourceTree = "<group>"; };
 		C7CAF0B21D9C46E30046D756 /* GroupUserDefault+Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Today.swift"; sourceTree = "<group>"; };
+		C7CAF0B51D9C50850046D756 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		C7CAF0B91D9C54260046D756 /* MessageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
 		C7D933871D85908D00F0A759 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C7D933891D85909400F0A759 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
@@ -1180,8 +1186,11 @@
 			isa = PBXGroup;
 			children = (
 				C7CAF0A91D9C439D0046D756 /* AchieveMessage.entitlements */,
-				C7CAF09B1D9C3FE80046D756 /* MessagesViewController.swift */,
 				C7CAF09D1D9C3FE80046D756 /* MainInterface.storyboard */,
+				C7CAF09B1D9C3FE80046D756 /* MessagesViewController.swift */,
+				C7CAF0B51D9C50850046D756 /* MessageTableViewCell.swift */,
+				C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */,
+				C7CAF0B91D9C54260046D756 /* MessageColors.swift */,
 				C7CAF0A01D9C3FE80046D756 /* Assets.xcassets */,
 				C7CAF0A21D9C3FE80046D756 /* Info.plist */,
 			);
@@ -1561,6 +1570,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7CAF0A11D9C3FE80046D756 /* Assets.xcassets in Resources */,
+				C7CAF0BB1D9C554F0046D756 /* Localizable.strings in Resources */,
+				C7CAF0B81D9C50850046D756 /* MessageTableViewCell.xib in Resources */,
 				C7CAF09F1D9C3FE80046D756 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1570,7 +1581,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7B74DB51D8D9277002EE15E /* WatchAssets.xcassets in Resources */,
-				C7E1B06D1D8C7D5C00554B11 /* Localizable.strings in Resources */,
 				C7E1B0481D8C7A9600554B11 /* Interface.storyboard in Resources */,
 				C70612611D8D67EF00E37CE6 /* DateTools.bundle in Resources */,
 			);
@@ -1801,11 +1811,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7CAF0BA1D9C54260046D756 /* MessageColors.swift in Sources */,
 				C7CAF0AA1D9C45E20046D756 /* GroupUserDefault.swift in Sources */,
 				C7CAF0AB1D9C45FF0046D756 /* Logger.swift in Sources */,
 				C7CAF0AE1D9C464E0046D756 /* GroupTasks.swift in Sources */,
 				C7CAF09C1D9C3FE80046D756 /* MessagesViewController.swift in Sources */,
 				C7CAF0B11D9C46980046D756 /* CommonCode.swift in Sources */,
+				C7CAF0B71D9C50850046D756 /* MessageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

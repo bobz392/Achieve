@@ -33,7 +33,7 @@ struct GroupUserDefault {
         self.groupDefault.synchronize()
     }
     
-    func allTasksForTodayExtension() -> [GroupTask] {
+    func runningTasksForExtension() -> [GroupTask] {
         var tasks = [GroupTask]()
         guard let tasksArr = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
             else { return tasks }
@@ -44,9 +44,10 @@ struct GroupUserDefault {
             let title = task[GroupTaskTitleIndex]
             let estimateDate = task[GroupTaskEstimateIndex]
             let finishDate = task[GroupTaskFinishDateIndex]
+            let createDate = task[GroupTaskCreateDateIndex]
             let groupTask = GroupTask(taskUUID: uuid, taskPriority: prority,
                                       taskTitle: title, taskEstimateDate: estimateDate,
-                                      taskFinishDate: finishDate)
+                                      taskFinishDate: finishDate, taskCreateDate: createDate)
             
             tasks.append(groupTask)
         }

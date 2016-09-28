@@ -141,7 +141,8 @@
 "about"="About";
 "writeReview"="Write review";
 "theme"="Background";
-"enabDueNextDay"="Postpone unfinished tasks to today";
+"enabDueNextDay"="Postpone unfinished tasks";
+"finishSound"="Task finished sound";
 "hintClose"="Show hint button";
 "startDay"="Week start on";
 "about"="About";

@@ -182,7 +182,9 @@ class TaskTableViewCell: BaseTableViewCell {
         if task.status == kTaskFinish {
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
         } else {
-            self.dingSound()
+            if !AppUserDefault().readBool(kCloseSoundKey) {
+                self.dingSound()
+            }
             RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
         }
         

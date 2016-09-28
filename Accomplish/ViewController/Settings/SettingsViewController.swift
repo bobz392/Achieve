@@ -83,15 +83,16 @@ class SettingsViewController: BaseViewController {
         let extras = [
             Localized("emailUs"),
             Localized("about"),
-            Localized("writeReview")
-        ]
+            Localized("writeReview"),
+            ]
         
         let general = [
             Localized("theme"),
             Localized("startDay"),
             Localized("enabDueNextDay"),
-            Localized("hintClose")
-        ]
+            Localized("finishSound"),
+            Localized("hintClose"),
+            ]
         
         self.titles.append(general)
         self.titles.append(extras)
@@ -107,6 +108,7 @@ class SettingsViewController: BaseViewController {
             "fa-paint-brush",
             "fa-calendar",
             "fa-retweet",
+            "fa-music",
             "fa-question-circle",
             ]
         self.icons.append(gIcons)
@@ -122,6 +124,7 @@ class SettingsViewController: BaseViewController {
             16,
             17,
             25,
+            18,
             20
         ]
         
@@ -194,11 +197,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     break
                 }
+                
             } else if indexPath.row == 2 {
                 let closeDue = ud.readBool(kCloseDueTodayKey)
                 cell.detailLabel.text = closeDue ? Localized("close") : Localized("open")
                 
-            } else {
+            } else if indexPath.row == 3 {
+                let closeSound = ud.readBool(kCloseSoundKey)
+                cell.detailLabel.text = closeSound ? Localized("close") : Localized("open")
+            } else if indexPath.row == 4 {
                 let closeHint = ud.readBool(kCloseHintKey)
                 cell.detailLabel.text = closeHint ? Localized("close") : Localized("open")
             }
@@ -225,7 +232,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1.0
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
@@ -244,16 +251,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.handleWeekOfDay()
                 tableView.deselectRow(at: indexPath, animated: true)
                 
-            case 2:
-                self.handleOpenCloseCell(indexPath.row)
-                tableView.deselectRow(at: indexPath, animated: true)
-            
-            case 3:
-                self.handleOpenCloseCell(indexPath.row)
-                tableView.deselectRow(at: indexPath, animated: true)
-                
             default:
-                break
+                self.handleOpenCloseCell(indexPath.row)
+                tableView.deselectRow(at: indexPath, animated: true)
             }
             
         } else {
@@ -274,10 +274,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
+
     fileprivate func handleOpenCloseCell(_ index: Int) {
         let ud = AppUserDefault()
-        let key = index == 2 ? kCloseDueTodayKey : kCloseHintKey
+        let key: String
+        switch index {
+        case 2:
+            key = kCloseDueTodayKey
+        case 3:
+            key = kCloseSoundKey
+        case 4:
+            key = kCloseHintKey
+        default:
+            return
+        }
         let closeDue = ud.readBool(key)
         ud.write(key, value: !closeDue)
         

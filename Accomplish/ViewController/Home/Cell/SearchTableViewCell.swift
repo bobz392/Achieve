@@ -12,7 +12,7 @@ class SearchTableViewCell: BaseTableViewCell {
 
     static let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
     static let reuseId = "searchTableViewCell"
-    static let rowHeight: CGFloat = 55
+    static let rowHeight: CGFloat = 50
     
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var taskStartLabel: UILabel!

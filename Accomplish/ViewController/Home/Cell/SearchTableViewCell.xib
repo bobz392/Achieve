@@ -16,21 +16,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhd-Xq-kP8">
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYL-jP-OkA">
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="hYL-jP-OkA" secondAttribute="bottom" constant="6" id="DKS-Ci-WkW"/>
                     <constraint firstItem="Zhd-Xq-kP8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="N5W-yZ-34M"/>
                     <constraint firstItem="hYL-jP-OkA" firstAttribute="leading" secondItem="Zhd-Xq-kP8" secondAttribute="leading" id="RHT-5V-YQM"/>
                     <constraint firstItem="Zhd-Xq-kP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Z5Q-gx-Sst"/>
-                    <constraint firstItem="hYL-jP-OkA" firstAttribute="top" secondItem="Zhd-Xq-kP8" secondAttribute="bottom" constant="4" id="jfh-uh-QZk"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>

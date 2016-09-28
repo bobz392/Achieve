@@ -29,6 +29,7 @@ class InterfaceController: WKInterfaceController {
         super.willActivate()
         
         self.setTitle("Achieve")
+        
         self.titleLabel.setTextColor(WatchColors().titleColor)
         
         if WCSession.isSupported() {
@@ -40,6 +41,32 @@ class InterfaceController: WKInterfaceController {
             
             if (session.isReachable == true) {
                 self.queryTaskFromApp(session: session)
+            }
+        }
+    }
+    
+    override func didDeactivate() {
+        ///    // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
+    override func handleAction(withIdentifier identifier: String?, for localNotification: UILocalNotification) {
+        Logger.log("withIdentifier = \(identifier), localNotification = \(localNotification)")
+        guard let uuid = localNotification.userInfo?[kNotifyUserInfoKey] as? String else {
+            return
+        }
+        
+        if identifier == kNotifyFinishAction {
+            self.setTaskFinish(uuid: uuid)
+        } else if identifier == kNotifyReschedulingAction {
+            for i in 0..<self.watchTable.numberOfRows {
+                guard let row = self.watchTable.rowController(at: i) as? TaskRowType
+                    else { continue }
+                if row.taskUUID == uuid {
+                    guard let task = self.alltasks?[i] else { return }
+                    self.pushController(withName: "taskInterfaceController", context: task)
+                    break
+                }
             }
         }
     }
@@ -86,16 +113,10 @@ class InterfaceController: WKInterfaceController {
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        debugPrint(rowIndex)
+        Logger.log(rowIndex)
         guard let task = self.alltasks?[rowIndex] else { return }
         self.pushController(withName: "taskInterfaceController", context: task)
     }
-    
-    override func didDeactivate() {
-        ///    // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-    
 }
 
 extension InterfaceController: WatchTaskRowDelegate {

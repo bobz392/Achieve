@@ -13,6 +13,8 @@ import UserNotifications
 
 class NotificationController: WKUserNotificationInterfaceController {
 
+    @IBOutlet var testLabel: WKInterfaceLabel!
+    
     override init() {
         // Initialize variables here.
         super.init()
@@ -31,7 +33,8 @@ class NotificationController: WKUserNotificationInterfaceController {
     }
     
     override func didReceive(_ localNotification: UILocalNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Void) {
-        
+        Logger.log("localNotification = \(localNotification)")
+        completionHandler(.custom)
     }
 
     @available(watchOSApplicationExtension 3.0, *)

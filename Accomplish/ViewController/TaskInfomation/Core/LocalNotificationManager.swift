@@ -9,11 +9,7 @@
 import Foundation
 import UserNotifications
 
-let kNotifyFinishAction = "notify.finish"
-let kNotifyReschedulingAction = "notify.rescheduling"
 let kNotificationCategory = "notify.category"
-let kNotifyUserInfoKey = "com.zhou.achieve.task"
-
 
 class LocalNotificationManager: NSObject {
     

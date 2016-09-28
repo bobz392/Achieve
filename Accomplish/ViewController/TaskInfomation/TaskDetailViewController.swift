@@ -418,12 +418,16 @@ extension TaskDetailViewController {
                 
                 self.task.notifyDate = fireDate
             }
+            if let _ = self.task.notifyDate {
+                LocalNotificationManager.shared.cancel(self.task)
+            }
             LocalNotificationManager.shared.create(self.task)
             
         case TaskIconRepeat:
             let repeatTimeType = taskPickerView.repeatTimeType()
             RealmManager.shareManager
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
+            LocalNotificationManager.shared.update(self.task)
             
         case TaskTagIcon:
             let tagUUID = taskPickerView.selectedTagUUID()

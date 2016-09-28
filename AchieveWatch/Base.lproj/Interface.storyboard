@@ -118,7 +118,14 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="AchieveWatch" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="AchieveWatch" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="haha new task" id="7uF-bw-xg8"/>
+                    </items>
+                    <connections>
+                        <outlet property="testLabel" destination="7uF-bw-xg8" id="FTW-6u-Knc"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

@@ -8,6 +8,10 @@
 
 import Foundation
 
+let kNotifyFinishAction = "notify.finish"
+let kNotifyReschedulingAction = "notify.rescheduling"
+let kNotifyUserInfoKey = "com.zhou.achieve.task"
+
 /**
  ** 本地化
  **/

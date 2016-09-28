@@ -109,9 +109,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.priorityLabel.text = Localized("priority")
         
         self.prioritySegmental.selectedSegmentIndex = 1
-        self.prioritySegmental.setTitle(Localized("low"), forSegmentAt: 0)
-        self.prioritySegmental.setTitle(Localized("normal"), forSegmentAt: 1)
-        self.prioritySegmental.setTitle(Localized("high"), forSegmentAt: 2)
+        self.prioritySegmental.setTitle(Localized("priority0"), forSegmentAt: 0)
+        self.prioritySegmental.setTitle(Localized("priority1"), forSegmentAt: 1)
+        self.prioritySegmental.setTitle(Localized("priority2"), forSegmentAt: 2)
         
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         self.clockButton.addTarget(self, action: #selector(self.scheduleAction), for: .touchUpInside)

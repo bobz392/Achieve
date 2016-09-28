@@ -193,7 +193,7 @@ class TaskTableViewCell: BaseTableViewCell {
             } else {
                 manager.addTaskToIndex(task: task)
             }
-//                WatchManager.shareManager.tellWatchQueryNewTask()
+            WatchManager.shareManager.tellWatchQueryNewTask()
         }
     }
     

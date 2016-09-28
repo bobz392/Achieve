@@ -48,9 +48,9 @@
 "allTask"="所有任务";
 "writeNote"="写点什么吧...";
 
-"high"="高";
-"normal"="普通";
-"low"="低";
+"priority2"="高";
+"priority1"="普通";
+"priority0"="低";
 
 "selectAction"="选择内置任务";
 "callAction"="打电话给 ";

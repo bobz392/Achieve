@@ -92,10 +92,10 @@ class InterfaceController: WKInterfaceController {
     }
     
     override func didDeactivate() {
-    ///    // This method is called when watch view controller is no longer visible
+        ///    // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
 }
 
 extension InterfaceController: WatchTaskRowDelegate {
@@ -149,6 +149,26 @@ extension InterfaceController: WCSessionDelegate {
             guard let _ = message[kAppTellWatchQueryKey] as? String else { return }
             
             self.queryTaskFromApp(session: session)
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        dispatch_async_main {
+            Logger.log("didReceiveUserInfo userInfo = \(userInfo)")
+        }
+        
+    }
+    
+    func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
+        dispatch_async_main {
+            Logger.log(userInfoTransfer)
+            Logger.log(error)
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        dispatch_async_main {
+            Logger.log("didReceiveApplicationContext \(applicationContext)")
         }
     }
 }

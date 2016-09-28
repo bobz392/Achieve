@@ -49,9 +49,9 @@
 "allTask"="All tasks";
 "writeNote"="write something...";
 
-"high"="High";
-"normal"="Normal";
-"low"="Low";
+"priority2"="High";
+"priority1"="Normal";
+"priority0"="Low";
 
 "selectAction"="Built-in Task";
 "callAction"="Call ";

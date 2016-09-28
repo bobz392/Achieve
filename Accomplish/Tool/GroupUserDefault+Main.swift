@@ -12,27 +12,37 @@ import RealmSwift
 extension GroupUserDefault {
     
     func clearAllTask() {
-        groupDefault.removeObject(forKey: tasksKey)
+        groupDefault.removeObject(forKey: ExtensionTasksKey)
     }
     
     func updateTask(_ task: Task) {
-        groupDefault.array(forKey: tasksKey)
+        groupDefault.array(forKey: ExtensionTasksKey)
     }
     
     func writeTasks(_ tasks: Results<Task>) {
         var tasksArr = [[String]]()
+        let realmManager = RealmManager.shareManager
         for task in tasks {
             let title = task.getNormalDisplayTitle()
             let uuid = task.uuid
             let priority = task.priority
-            let estimate = task.estimateDate?.formattedDate(withFormat: UUIDFormat) ?? ""
+            let estimate = task.estimateDate?.formattedDate(withFormat: TimeDateFormat) ?? ""
+            let finish = task.finishedDate?.formattedDate(withFormat: TimeDateFormat) ?? ""
             
-            let taskArray = [uuid, title, "\(priority)", estimate]
+            let tagName: String
+            if let tagUUID = task.tagUUID,
+                let tag = realmManager.queryTag(usingName: false, query: tagUUID) {
+                tagName = tag.name
+            } else {
+                tagName = ""
+            }
+            
+            let taskArray = [uuid, title, "\(priority)", estimate, finish, tagName]
             tasksArr.append(taskArray)
         }
         
-//        Logger.log("write new task count = \(tasks.count)")
-        self.groupDefault.set(tasksArr, forKey: tasksKey)
+        Logger.log("write new task count = \(tasks.count)")
+        self.groupDefault.set(tasksArr, forKey: ExtensionTasksKey)
         
         self.setTaskChanged(true)
     }

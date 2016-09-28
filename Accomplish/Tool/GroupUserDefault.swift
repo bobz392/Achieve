@@ -13,9 +13,9 @@ let WormholeNewTaskIdentifier = "wormhole.new.task"
 
 struct GroupUserDefault {
     let groupDefault: UserDefaults
-    let tasksKey = "all.task.today"
-    let taskChangeKey = "task.changed.today"
-    let todayFinishTaskKey = "task.finish.by.today"
+    let ExtensionTasksKey = "all.task.today"
+    let ExtensionTaskChangeKey = "task.changed.today"
+    let TodayExtensionFinishTaskKey = "task.finish.by.today"
     
     init?() {
         guard let groupDefault = UserDefaults(suiteName: GroupIdentifier) else {
@@ -26,17 +26,17 @@ struct GroupUserDefault {
     }
     
     func taskHasChanged() -> Bool {
-        return self.groupDefault.bool(forKey: taskChangeKey)
+        return self.groupDefault.bool(forKey: ExtensionTaskChangeKey)
     }
     
     func setTaskChanged(_ changed: Bool) {
-        self.groupDefault.set(changed, forKey: taskChangeKey)
+        self.groupDefault.set(changed, forKey: ExtensionTaskChangeKey)
         self.groupDefault.synchronize()
     }
     
-    func allTasks() -> [GroupTask] {        
+    func allTasksForTodayExtension() -> [GroupTask] {
         var tasks = [GroupTask]()
-        guard let tasksArr = self.groupDefault.array(forKey: tasksKey) as? [[String]]
+        guard let tasksArr = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
             else { return tasks }
         
         for task in tasksArr {
@@ -44,9 +44,10 @@ struct GroupUserDefault {
             let prority = Int(task[GroupTaskPriorityIndex]) ?? 0
             let title = task[GroupTaskTitleIndex]
             let estimateDate = task[GroupTaskEstimateIndex]
+            let finishDate = task[GroupTaskFinishDateIndex]
             let groupTask = GroupTask(taskUUID: uuid, taskPriority: prority,
                                       taskTitle: title, taskEstimateDate: estimateDate,
-                                      taskFinishDate: nil)
+                                      taskFinishDate: finishDate)
             
             tasks.append(groupTask)
         }
@@ -54,39 +55,39 @@ struct GroupUserDefault {
         return tasks
     }
     
-    func allTaskArray() -> [[String]] {
-        guard let tasksArray = self.groupDefault.array(forKey: tasksKey) as? [[String]]
+    func allTaskArrayForWatchExtension() -> [[String]] {
+        guard let tasksArray = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
             else { return [[String]]() }
         
         return tasksArray
     }
     
     func writeTasks(_ tasks: [[String]]) {
-        self.groupDefault.set(tasks, forKey: tasksKey)
+        self.groupDefault.set(tasks, forKey: ExtensionTasksKey)
         self.groupDefault.synchronize()
     }
     
     func getAllFinishTask() -> [[String]] {
-        return (self.groupDefault.array(forKey: todayFinishTaskKey) as? [[String]]) ?? [[String]]()
+        return (self.groupDefault.array(forKey: TodayExtensionFinishTaskKey) as? [[String]]) ?? [[String]]()
     }
     
     fileprivate func setTaskFinish(_ finish: [String]) {
-        var tasks = self.groupDefault.object(forKey: todayFinishTaskKey) as? [[String]]
+        var tasks = self.groupDefault.object(forKey: TodayExtensionFinishTaskKey) as? [[String]]
         if tasks == nil {
             tasks = [[String]]()
         }
         
         tasks?.append(finish)
-        self.groupDefault.set(tasks, forKey: todayFinishTaskKey)
+        self.groupDefault.set(tasks, forKey: TodayExtensionFinishTaskKey)
     }
     
     func clearTaskFinish() {
-        self.groupDefault.set(nil, forKey: todayFinishTaskKey)
+        self.groupDefault.set(nil, forKey: TodayExtensionFinishTaskKey)
         self.groupDefault.synchronize()
     }
     
     func moveTaskFinish(_ taskIndex: Int) {
-        guard var tasks = self.groupDefault.array(forKey: tasksKey) as? [[String]]
+        guard var tasks = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
             else { return }
         
         var finishTask = tasks.remove(at: taskIndex)

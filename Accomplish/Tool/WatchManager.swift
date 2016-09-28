@@ -41,11 +41,15 @@ class WatchManager: NSObject, WCSessionDelegate {
     }
     
     func tellWatchQueryNewTask() {
+        Logger.log("self.session?.isReachable = \(self.session?.isReachable)")
         AppUserDefault().write(kWatchDateHasNewKey, value: true)
         
-        if supported() {
+        if self.supported() {
             guard let session = self.session else { return }
             if session.isReachable == true {
+                session.transferUserInfo([kAppTellWatchQueryKey : ""])
+                session.transferCurrentComplicationUserInfo([kAppTellWatchQueryKey : ""])
+                try! session.updateApplicationContext([kAppTellWatchQueryKey : ""])
                 session.sendMessage([kAppTellWatchQueryKey : ""], replyHandler: nil, errorHandler: { (error) in
                     Logger.log("error = \(error)")
                 })
@@ -68,7 +72,7 @@ class WatchManager: NSObject, WCSessionDelegate {
                     replyHandler([kAppSentTaskKey: kNoData])
                     return
                 }
-                let tasks = group.allTaskArray()
+                let tasks = group.allTaskArrayForWatchExtension()
                 replyHandler([kAppSentTaskKey: tasks])
                 // 如果是设置任务完成的key
             } else if let uuid = message[kWatchSetTaskFinishKey] as? String {

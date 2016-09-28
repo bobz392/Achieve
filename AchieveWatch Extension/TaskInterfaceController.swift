@@ -12,18 +12,40 @@ import Foundation
 
 class TaskInterfaceController: WKInterfaceController {
     @IBOutlet var fullTitleLabel: WKInterfaceLabel!
+    @IBOutlet var detailTable: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
         guard let task = context as? [String] else { return }
-        
-        
         self.fullTitleLabel.setText(task[GroupTaskTitleIndex])
-//        if let estimate = task[GroupTaskEstimateIndex].optionalDateFromString(TimeDateFormat) {
-//        
-//        }
+        
+        var infoArray = [[String]]()
+        
+        let estimate = task[GroupTaskEstimateIndex]
+        if estimate.length() > 0 {
+            infoArray.append([Localized("estimeateAt"), estimate])
+        }
+        
+        let tag = task[GroupTaskTagIndex]
+        if tag.length() > 0 {
+            infoArray.append([Localized("tag"), tag])
+        }
+        
+        if let priority = Int(task[GroupTaskPriorityIndex]) {
+            infoArray.append([Localized("priority"), Localized("priority\(priority)")])
+        }
+        
+        self.detailTable.setNumberOfRows(infoArray.count, withRowType: "detailRowType")
+        
+        for i in 0..<infoArray.count {
+            guard let row: DetailRowType =
+                self.detailTable.rowController(at: i) as? DetailRowType else { break }
+            
+            row.titleLabel.setText(infoArray[i][0])
+            row.detailLabel.setText(infoArray[i][1])
+        }
     }
     
     override func willActivate() {
@@ -31,6 +53,8 @@ class TaskInterfaceController: WKInterfaceController {
         super.willActivate()
         
         self.setTitle(Localized("today"))
+        
+        
     }
     
     override func didDeactivate() {

@@ -13,6 +13,7 @@ let GroupTaskTitleIndex = 1
 let GroupTaskPriorityIndex = 2
 let GroupTaskEstimateIndex = 3
 let GroupTaskFinishDateIndex = 4
+let GroupTaskTagIndex = 5
 
 struct GroupTask {
     let taskUUID: String

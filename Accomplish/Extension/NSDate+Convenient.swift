@@ -9,11 +9,11 @@
 import Foundation
 
 let FullStyleFormat = "yy/MM/dd/HH:mm:ss"
-let UUIDFormat: String = "yyMMddHHmmssZ"
-let CreatedDateFormat: String = "yyyy.MM.dd"
-let TimeDateFormat: String = "hh: mm a"
-let MonthDayFormat: String = "MM/dd"
-let MonthFormat: String = "MMM YYYY"
+let UUIDFormat = "yyMMddHHmmssZ"
+let CreatedDateFormat = "yyyy.MM.dd"
+let TimeDateFormat = "hh: mm a"
+let MonthDayFormat = "MM/dd"
+let MonthFormat = "MMM YYYY"
 let OnlyTimeFormat = "hh:mm"
 let OnlyAmFormat = "a"
 
@@ -31,9 +31,6 @@ extension NSDate {
         guard let formateDate = self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US")) else {
             fatalError()
         }
-//        if #available(iOS 8.0, *) {
-//            SystemInfo.log("created formated date string = \(formateDate)")
-//        }
         
         return formateDate
     }

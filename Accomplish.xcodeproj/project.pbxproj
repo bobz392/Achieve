@@ -238,6 +238,7 @@
 		C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */; };
 		C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */; };
 		C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */; };
+		C7CAF0671D9B0C310046D756 /* DetailRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0661D9B0C310046D756 /* DetailRowType.swift */; };
 		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
 		C7D933881D85908D00F0A759 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933871D85908D00F0A759 /* SearchView.swift */; };
 		C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D933891D85909400F0A759 /* SearchView.xib */; };
@@ -575,6 +576,7 @@
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
 		C7C5C5BD1D752F2A001168A4 /* TaskNoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNoteTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5BE1D752F2A001168A4 /* TaskNoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskNoteTableViewCell.xib; sourceTree = "<group>"; };
+		C7CAF0661D9B0C310046D756 /* DetailRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailRowType.swift; sourceTree = "<group>"; };
 		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
 		C7D933871D85908D00F0A759 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C7D933891D85909400F0A759 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
@@ -1139,6 +1141,7 @@
 			children = (
 				C70612691D8D690500E37CE6 /* AchieveWatch Extension.entitlements */,
 				C7E2D9561D8F05000080D283 /* WatchConstants.swift */,
+				C7CAF0661D9B0C310046D756 /* DetailRowType.swift */,
 				C706125B1D8D258F00E37CE6 /* TaskRowType.swift */,
 				C7E1B0571D8C7A9600554B11 /* InterfaceController.swift */,
 				C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */,
@@ -1655,6 +1658,7 @@
 				C70612651D8D67F700E37CE6 /* DTTimePeriodChain.m in Sources */,
 				C7E1B0581D8C7A9600554B11 /* InterfaceController.swift in Sources */,
 				C70612561D8D21DB00E37CE6 /* MMWormholeFileTransiting.m in Sources */,
+				C7CAF0671D9B0C310046D756 /* DetailRowType.swift in Sources */,
 				C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */,
 				C70612571D8D21DB00E37CE6 /* MMWormholeSession.m in Sources */,
 				C70612681D8D67FD00E37CE6 /* NSDate+DateTools.m in Sources */,

@@ -106,7 +106,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             return
         }
         
-        self.allGroupTasks = group.allTasks()
+        self.allGroupTasks = group.allTasksForTodayExtension()
         self.todayTableView.reloadData()
         
         if group.taskHasChanged() {
@@ -139,7 +139,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             group.setTaskChanged(false)
         }
         
-        self.allGroupTasks = group.allTasks()
+        self.allGroupTasks = group.allTasksForTodayExtension()
         self.todayTableView.reloadData()
         
         self.updateContent()

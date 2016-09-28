@@ -170,3 +170,4 @@
 
 // message
 "messageUseage"="Share your schedules of today";
+"shareMessage"="%@ at %@, join with me?";

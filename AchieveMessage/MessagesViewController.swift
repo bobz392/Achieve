@@ -28,7 +28,6 @@ class MessagesViewController: MSMessagesAppViewController {
         self.configMessageTableView()
         
         let colors = MessageColors()
-        
         self.messageInfoLabel.text = Localized("messageUseage")
         self.messageInfoLabel.textColor = colors.secondaryTextColor
     }
@@ -61,6 +60,8 @@ class MessagesViewController: MSMessagesAppViewController {
         // Use this method to release shared resources, save user data, invalidate timers,
         // and store enough state information to restore your extension to its current state
         // in case it is terminated later.
+        
+        Logger.log("didResignActive = \(conversation)")
     }
    
     override func didReceive(_ message: MSMessage, conversation: MSConversation) {
@@ -68,28 +69,37 @@ class MessagesViewController: MSMessagesAppViewController {
         // extension on a remote device.
         
         // Use this method to trigger UI updates in response to the message.
+        
+        Logger.log("didReceive message = \(message)")
     }
     
     override func didStartSending(_ message: MSMessage, conversation: MSConversation) {
         // Called when the user taps the send button.
+        Logger.log("didStartSending message = \(message)")
     }
     
     override func didCancelSending(_ message: MSMessage, conversation: MSConversation) {
         // Called when the user deletes the message without sending it.
     
         // Use this to clean up state related to the deleted message.
+        Logger.log("didCancelSending message = \(message)")
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         // Called before the extension transitions to a new presentation style.
     
         // Use this method to prepare for the change in presentation style.
+        
+        
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
         // Called after the extension transitions to a new presentation style.
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.messageTableView.contentInset = .zero
     }
 }
 
@@ -99,6 +109,8 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         self.messageTableView
             .register(MessageTableViewCell.nib, forCellReuseIdentifier: MessageTableViewCell.reuseId)
         self.messageTableView.tableFooterView = UIView()
+        
+        self.messageTableView.contentInset = .zero
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,6 +121,14 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         return MessageTableViewCell.rowHeight
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView
             .dequeueReusableCell(withIdentifier: MessageTableViewCell.reuseId,
@@ -117,6 +137,11 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         let groupTask = self.runningTasks[indexPath.row]
         cell.taskTitleLabel.text = groupTask.taskTitle
         cell.taskDateLabel.text = groupTask.taskCreateDate
+        cell.messageBlock = { [unowned self] (text) -> Void in
+            self.activeConversation?.insertText(text, completionHandler: { (error) in
+                Logger.log("insert text = \(text), and error = \(error)")
+            })
+        }
         
         return cell
     }

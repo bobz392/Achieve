@@ -9,7 +9,9 @@
 import UIKit
 
 class MessageTableViewCell: UITableViewCell {
-
+    
+    typealias MessageBlock = (_ text: String) -> Void
+    
     static let nib = UINib(nibName: "MessageTableViewCell", bundle: nil)
     static let reuseId = "messageTableViewCell"
     static let rowHeight: CGFloat = 60
@@ -18,6 +20,8 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var selectButton: UIButton!
+    
+    var messageBlock: MessageBlock?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,11 +43,18 @@ class MessageTableViewCell: UITableViewCell {
             .setBackgroundImage(self.colorToImage(color: colors.selectedColor),
                                 for: .highlighted)
         
-        self.selectButton.addTarget(self, action: #selector(self.test), for: .touchUpInside)
+        self.selectButton.addTarget(self, action: #selector(self.sendAction), for: .touchUpInside)
+        
+        self.layoutMargins = UIEdgeInsets.zero
     }
-
-    func test() {
-        print("sdasd")
+    
+    func sendAction() {
+        guard let title = self.taskTitleLabel.text,
+            let date = self.taskDateLabel.text else {
+                return
+        }
+        let text = String(format: Localized("shareMessage"), title, date)
+        self.messageBlock?(text)
     }
     
     func colorToImage(color: UIColor) -> UIImage? {
@@ -62,7 +73,7 @@ class MessageTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 }

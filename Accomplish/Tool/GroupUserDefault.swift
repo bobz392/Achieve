@@ -8,7 +8,7 @@
 
 import Foundation
 
-let GroupIdentifier = "group.bob.accomplish"
+let GroupIdentifier = "group.bob.achieve"
 let WormholeNewTaskIdentifier = "wormhole.new.task"
 
 struct GroupUserDefault {

@@ -94,7 +94,6 @@
 		C74A896E1D9636F4008E15CA /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* SystemInfo.swift */; };
 		C74A896F1D9636F4008E15CA /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* SystemInfo.swift */; };
 		C74A89701D9636F4008E15CA /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* SystemInfo.swift */; };
-		C74A89721D967990008E15CA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74A89711D967990008E15CA /* CloudKit.framework */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
@@ -244,6 +243,11 @@
 		C7CAF0711D9C20E60046D756 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0701D9C20E60046D756 /* NotificationViewController.swift */; };
 		C7CAF0741D9C20E60046D756 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF0721D9C20E60046D756 /* MainInterface.storyboard */; };
 		C7CAF0781D9C20E60046D756 /* AchieveNotificationContent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7CAF06C1D9C20E50046D756 /* AchieveNotificationContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C7CAF0991D9C3FE80046D756 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7CAF0981D9C3FE80046D756 /* Messages.framework */; };
+		C7CAF09C1D9C3FE80046D756 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF09B1D9C3FE80046D756 /* MessagesViewController.swift */; };
+		C7CAF09F1D9C3FE80046D756 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF09D1D9C3FE80046D756 /* MainInterface.storyboard */; };
+		C7CAF0A11D9C3FE80046D756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF0A01D9C3FE80046D756 /* Assets.xcassets */; };
+		C7CAF0A51D9C3FE80046D756 /* AchieveMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7CAF0971D9C3FE80046D756 /* AchieveMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
 		C7D933881D85908D00F0A759 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933871D85908D00F0A759 /* SearchView.swift */; };
 		C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D933891D85909400F0A759 /* SearchView.xib */; };
@@ -288,6 +292,13 @@
 			remoteGlobalIDString = C7CAF06B1D9C20E50046D756;
 			remoteInfo = AchieveNotificationContent;
 		};
+		C7CAF0A31D9C3FE80046D756 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7860E351D6C23FF000281FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7CAF0961D9C3FE80046D756;
+			remoteInfo = AchieveMessage;
+		};
 		C7E1B0521D8C7A9600554B11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C7860E351D6C23FF000281FA /* Project object */;
@@ -312,6 +323,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				C7CAF0781D9C20E60046D756 /* AchieveNotificationContent.appex in Embed App Extensions */,
+				C7CAF0A51D9C3FE80046D756 /* AchieveMessage.appex in Embed App Extensions */,
 				C78ED8831D7A7D3100031B4D /* AchieveToday.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -449,7 +461,6 @@
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C74A896D1D9636F3008E15CA /* SystemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
-		C74A89711D967990008E15CA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
@@ -592,6 +603,12 @@
 		C7CAF0701D9C20E60046D756 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		C7CAF0731D9C20E60046D756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C7CAF0751D9C20E60046D756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7CAF0971D9C3FE80046D756 /* AchieveMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AchieveMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7CAF0981D9C3FE80046D756 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		C7CAF09B1D9C3FE80046D756 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		C7CAF09E1D9C3FE80046D756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C7CAF0A01D9C3FE80046D756 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C7CAF0A21D9C3FE80046D756 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
 		C7D933871D85908D00F0A759 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C7D933891D85909400F0A759 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
@@ -625,7 +642,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
-				C74A89721D967990008E15CA /* CloudKit.framework in Frameworks */,
 				C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */,
 				C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */,
 			);
@@ -645,6 +661,14 @@
 			files = (
 				C7CAF06E1D9C20E50046D756 /* UserNotificationsUI.framework in Frameworks */,
 				C7CAF06D1D9C20E50046D756 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7CAF0941D9C3FE80046D756 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7CAF0991D9C3FE80046D756 /* Messages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,7 +704,6 @@
 		C7105E9C1D6C7AD60096A1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C74A89711D967990008E15CA /* CloudKit.framework */,
 				C77194BA1D6FF62E00437560 /* AddressBookUI.framework */,
 				C77194B81D6FF3E600437560 /* libicucore.tbd */,
 				C77194B21D6FF28300437560 /* Security.framework */,
@@ -690,6 +713,7 @@
 				C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */,
 				C7145ACD1D91208F000FAC18 /* UserNotifications.framework */,
 				C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */,
+				C7CAF0981D9C3FE80046D756 /* Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1000,6 +1024,7 @@
 				C7E1B0451D8C7A9600554B11 /* AchieveWatch */,
 				C7E1B0541D8C7A9600554B11 /* AchieveWatch Extension */,
 				C7CAF06F1D9C20E50046D756 /* AchieveNotificationContent */,
+				C7CAF09A1D9C3FE80046D756 /* AchieveMessage */,
 				C7105E9C1D6C7AD60096A1A3 /* Frameworks */,
 				C7860E3E1D6C23FF000281FA /* Products */,
 			);
@@ -1014,6 +1039,7 @@
 				C7E1B0441D8C7A9600554B11 /* AchieveWatch.app */,
 				C7E1B0501D8C7A9600554B11 /* AchieveWatch Extension.appex */,
 				C7CAF06C1D9C20E50046D756 /* AchieveNotificationContent.appex */,
+				C7CAF0971D9C3FE80046D756 /* AchieveMessage.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1138,6 +1164,17 @@
 			path = AchieveNotificationContent;
 			sourceTree = "<group>";
 		};
+		C7CAF09A1D9C3FE80046D756 /* AchieveMessage */ = {
+			isa = PBXGroup;
+			children = (
+				C7CAF09B1D9C3FE80046D756 /* MessagesViewController.swift */,
+				C7CAF09D1D9C3FE80046D756 /* MainInterface.storyboard */,
+				C7CAF0A01D9C3FE80046D756 /* Assets.xcassets */,
+				C7CAF0A21D9C3FE80046D756 /* Info.plist */,
+			);
+			path = AchieveMessage;
+			sourceTree = "<group>";
+		};
 		C7DDA5B31D75FAD30054154C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1256,7 @@
 				C78ED8821D7A7D3100031B4D /* PBXTargetDependency */,
 				C7E1B0611D8C7A9600554B11 /* PBXTargetDependency */,
 				C7CAF0771D9C20E60046D756 /* PBXTargetDependency */,
+				C7CAF0A41D9C3FE80046D756 /* PBXTargetDependency */,
 			);
 			name = Accomplish;
 			productName = Accomplish;
@@ -1258,6 +1296,23 @@
 			productName = AchieveNotificationContent;
 			productReference = C7CAF06C1D9C20E50046D756 /* AchieveNotificationContent.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		C7CAF0961D9C3FE80046D756 /* AchieveMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7CAF0A61D9C3FE80046D756 /* Build configuration list for PBXNativeTarget "AchieveMessage" */;
+			buildPhases = (
+				C7CAF0931D9C3FE80046D756 /* Sources */,
+				C7CAF0941D9C3FE80046D756 /* Frameworks */,
+				C7CAF0951D9C3FE80046D756 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AchieveMessage;
+			productName = AchieveMessage;
+			productReference = C7CAF0971D9C3FE80046D756 /* AchieveMessage.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
 		};
 		C7E1B0431D8C7A9600554B11 /* AchieveWatch */ = {
 			isa = PBXNativeTarget;
@@ -1316,13 +1371,13 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Siri = {
 								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1339,7 +1394,11 @@
 					};
 					C7CAF06B1D9C20E50046D756 = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+					};
+					C7CAF0961D9C3FE80046D756 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Manual;
 					};
 					C7E1B0431D8C7A9600554B11 = {
 						CreatedOnToolsVersion = 8.0;
@@ -1385,6 +1444,7 @@
 				C7E1B0431D8C7A9600554B11 /* AchieveWatch */,
 				C7E1B04F1D8C7A9600554B11 /* AchieveWatch Extension */,
 				C7CAF06B1D9C20E50046D756 /* AchieveNotificationContent */,
+				C7CAF0961D9C3FE80046D756 /* AchieveMessage */,
 			);
 		};
 /* End PBXProject section */
@@ -1475,6 +1535,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7CAF0741D9C20E60046D756 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7CAF0951D9C3FE80046D756 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7CAF0A11D9C3FE80046D756 /* Assets.xcassets in Resources */,
+				C7CAF09F1D9C3FE80046D756 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,6 +1774,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7CAF0931D9C3FE80046D756 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7CAF09C1D9C3FE80046D756 /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7E1B04C1D8C7A9600554B11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1752,6 +1829,11 @@
 			target = C7CAF06B1D9C20E50046D756 /* AchieveNotificationContent */;
 			targetProxy = C7CAF0761D9C20E60046D756 /* PBXContainerItemProxy */;
 		};
+		C7CAF0A41D9C3FE80046D756 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7CAF0961D9C3FE80046D756 /* AchieveMessage */;
+			targetProxy = C7CAF0A31D9C3FE80046D756 /* PBXContainerItemProxy */;
+		};
 		C7E1B0531D8C7A9600554B11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C7E1B04F1D8C7A9600554B11 /* AchieveWatch Extension */;
@@ -1786,6 +1868,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				C7CAF0731D9C20E60046D756 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		C7CAF09D1D9C3FE80046D756 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7CAF09E1D9C3FE80046D756 /* Base */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -1895,7 +1985,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1908,10 +1998,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-D debug";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "87e3a800-fee8-4726-bf65-db42f493e1ab";
-				PROVISIONING_PROFILE_SPECIFIER = ltest;
+				PROVISIONING_PROFILE = "4bcb83f1-9af5-467c-89a5-f39e8a1d51f2";
+				PROVISIONING_PROFILE_SPECIFIER = lxz;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Accomplish/Accomplish-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
@@ -1926,7 +2016,7 @@
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1938,10 +2028,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "87e3a800-fee8-4726-bf65-db42f493e1ab";
-				PROVISIONING_PROFILE_SPECIFIER = ltest;
+				PROVISIONING_PROFILE = "4bcb83f1-9af5-467c-89a5-f39e8a1d51f2";
+				PROVISIONING_PROFILE_SPECIFIER = lxz;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Accomplish/Accomplish-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
@@ -1954,7 +2044,7 @@
 				CODE_SIGN_ENTITLEMENTS = AchieveToday/AchieveToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1963,10 +2053,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.today;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d32ff28c-36ff-48e9-8a07-44e108c73e7b";
-				PROVISIONING_PROFILE_SPECIFIER = ltestToday;
+				PROVISIONING_PROFILE = "01977e00-2757-467d-a602-c2215e4593a3";
+				PROVISIONING_PROFILE_SPECIFIER = lxztoday;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveToday/AchieveToday-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1980,7 +2070,7 @@
 				CODE_SIGN_ENTITLEMENTS = AchieveToday/AchieveToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1989,10 +2079,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.today;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2d81614c-c18a-4ac0-b01c-557fe9afe1a8";
-				PROVISIONING_PROFILE_SPECIFIER = ltestToday;
+				PROVISIONING_PROFILE = "01977e00-2757-467d-a602-c2215e4593a3";
+				PROVISIONING_PROFILE_SPECIFIER = lxztoday;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveToday/AchieveToday-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -2008,12 +2098,14 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				INFOPLIST_FILE = AchieveNotificationContent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.AchieveNotificationContent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.notification.content;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b7a46257-a483-4e26-90f9-d6c1513e1f66";
+				PROVISIONING_PROFILE_SPECIFIER = lzxnotification;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
@@ -2028,12 +2120,60 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				INFOPLIST_FILE = AchieveNotificationContent/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.AchieveNotificationContent;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.notification.content;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b7a46257-a483-4e26-90f9-d6c1513e1f66";
+				PROVISIONING_PROFILE_SPECIFIER = lzxnotification;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C7CAF0A71D9C3FE80046D756 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HZW5ST6E95;
+				INFOPLIST_FILE = AchieveMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.message;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "af38e7fe-1daa-4c45-9e8a-39585ee07761";
+				PROVISIONING_PROFILE_SPECIFIER = lxmessage;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C7CAF0A81D9C3FE80046D756 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = HZW5ST6E95;
+				INFOPLIST_FILE = AchieveMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.message;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "af38e7fe-1daa-4c45-9e8a-39585ee07761";
+				PROVISIONING_PROFILE_SPECIFIER = lxmessage;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -2050,13 +2190,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				IBSC_MODULE = AchieveWatch_Extension;
 				INFOPLIST_FILE = AchieveWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "044efa69-be8d-4db5-bb4e-8813ef080ac2";
-				PROVISIONING_PROFILE_SPECIFIER = ltestWatch;
+				PROVISIONING_PROFILE = "c054585c-017a-4d36-a74d-0287659a0998";
+				PROVISIONING_PROFILE_SPECIFIER = lzxwatch;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2076,13 +2216,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				IBSC_MODULE = AchieveWatch_Extension;
 				INFOPLIST_FILE = AchieveWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "044efa69-be8d-4db5-bb4e-8813ef080ac2";
-				PROVISIONING_PROFILE_SPECIFIER = ltestWatch;
+				PROVISIONING_PROFILE = "c054585c-017a-4d36-a74d-0287659a0998";
+				PROVISIONING_PROFILE_SPECIFIER = lzxwatch;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -2099,13 +2239,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "39a0b1ca-2424-459e-8a91-17acb9630810";
-				PROVISIONING_PROFILE_SPECIFIER = ltestWatchEx;
+				PROVISIONING_PROFILE = "777ce57e-c14c-4cfe-989d-f11418297de2";
+				PROVISIONING_PROFILE_SPECIFIER = lzxwatchex;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2123,13 +2263,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = M396DA7L3B;
+				DEVELOPMENT_TEAM = HZW5ST6E95;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.Accomplish.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "39a0b1ca-2424-459e-8a91-17acb9630810";
-				PROVISIONING_PROFILE_SPECIFIER = ltestWatchEx;
+				PROVISIONING_PROFILE = "777ce57e-c14c-4cfe-989d-f11418297de2";
+				PROVISIONING_PROFILE_SPECIFIER = lzxwatchex;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveWatch Extension/AccomplishWatch-Bridging-Header.h";
@@ -2175,6 +2315,15 @@
 			buildConfigurations = (
 				C7CAF07A1D9C20E60046D756 /* Debug */,
 				C7CAF07B1D9C20E60046D756 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C7CAF0A61D9C3FE80046D756 /* Build configuration list for PBXNativeTarget "AchieveMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7CAF0A71D9C3FE80046D756 /* Debug */,
+				C7CAF0A81D9C3FE80046D756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

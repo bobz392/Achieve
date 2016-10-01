@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarCell: JTAppleDayCellView {
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var selectedView: AnimationView!
+    @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var hasTaskView: UIView!
     
     override func awakeFromNib() {
@@ -19,6 +19,7 @@ class CalendarCell: JTAppleDayCellView {
         self.clearView()
         self.hasTaskView.layer.cornerRadius = 2
         self.hasTaskView.backgroundColor = Colors().priorityLowColor
+        self.selectedView.layer.cornerRadius = 15
     }
     
     func setupCellBeforeDisplay(_ cellState: CellState, date: Date, hasTask: Bool) {
@@ -54,8 +55,7 @@ class CalendarCell: JTAppleDayCellView {
     func cellSelectionChanged(_ cellState: CellState, date: Date) {
         if cellState.isSelected == true {
             configueViewIntoBubbleView(cellState)
-            selectedView.animateWithBounceEffect(withCompletionHandler: { })
-            
+            self.cellBounceEffectAnimation(view: self.selectedView)
         } else {
             configueViewIntoBubbleView(cellState, animateDeselection: true)
         }
@@ -65,40 +65,18 @@ class CalendarCell: JTAppleDayCellView {
     
     fileprivate func configueViewIntoBubbleView(_ cellState: CellState, animateDeselection: Bool = false) {
         if cellState.isSelected {
-            self.selectedView.layer.cornerRadius =  self.selectedView.frame.width  / 2
-            self.selectedView.isHidden = false
+            self.selectedView.alpha = 1
             
         } else {
-            if animateDeselection {
-                if selectedView.isHidden == false {
-                    selectedView.animateWithFadeEffect(withCompletionHandler: { () -> Void in
-                        self.selectedView.isHidden = true
-                        self.selectedView.alpha = 1
-                    })
-                }
-            } else {
-                selectedView.isHidden = true
-            }
+            self.selectedView.alpha = 0
         }
     }
-}
-
-
-class AnimationView: UIView {
     
-    func animateWithFlipEffect(withCompletionHandler completionHandler:(()->Void)?) {
-        AnimationClass.flipAnimation(self, completion: completionHandler)
-    }
-    func animateWithBounceEffect(withCompletionHandler completionHandler:(()->Void)?) {
-        let viewAnimation = AnimationClass.BounceEffect()
-        viewAnimation(self){ _ in
-            completionHandler?()
-        }
-    }
-    func animateWithFadeEffect(withCompletionHandler completionHandler:(()->Void)?) {
-        let viewAnimation = AnimationClass.FadeOutEffect()
-        viewAnimation(self) { _ in
-            completionHandler?()
-        }
+    fileprivate func cellBounceEffectAnimation(view: UIView) {
+        view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.beginFromCurrentState, animations: {
+            view.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
     }
 }

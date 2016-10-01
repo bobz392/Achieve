@@ -28,7 +28,7 @@ class CalendarViewController: BaseViewController {
     lazy fileprivate var firstDate =
         RealmManager.shareManager.queryCheckIn()?.checkInDate ?? NSDate()
     lazy fileprivate var row = 6
-    fileprivate var toTodayAlleady = false
+    fileprivate var inTodayAlleady = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class CalendarViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if self.toTodayAlleady == false {
+        if self.inTodayAlleady == false {
             let now = Date()
             self.calendarView.selectDates([now])
             self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil) {
@@ -60,7 +60,7 @@ class CalendarViewController: BaseViewController {
                     self.calendarView.alpha = 1
                     })
             }
-            self.toTodayAlleady = true
+            self.inTodayAlleady = true
         }
     }
 

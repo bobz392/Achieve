@@ -82,7 +82,7 @@ class TaskTableViewCell: BaseTableViewCell {
         switch task.taskType {
         case kSystemTaskType:
             if let actionContent = TaskManager().parseTaskToDoText(task.taskToDo) {
-                systemActionContent = actionContent
+                self.systemActionContent = actionContent
                 taskTitle = actionContent.type.ationNameWithType()
                 self.taskInfoButton.isEnabled = true
                 self.taskInfoButton.setTitle(actionContent.name, for: .normal)

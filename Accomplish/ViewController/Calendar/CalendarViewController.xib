@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="Accomplish" customModuleProvider="target">
@@ -18,72 +19,64 @@
                 <outlet property="createdLabel" destination="kYH-Ed-2rT" id="gqE-em-tiY"/>
                 <outlet property="createdTitleLable" destination="sIG-WB-n4S" id="OC9-VK-9ZL"/>
                 <outlet property="scheduleButton" destination="sIN-iL-ftt" id="fY6-d5-nYM"/>
-                <outlet property="titleLabel" destination="7gR-ye-a0D" id="zeG-oi-9Th"/>
+                <outlet property="titleButton" destination="fbC-Q7-4I1" id="0l0-fa-StO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekView" destination="m29-D1-27Q" id="ljX-09-ouT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-ye-a0D">
-                    <rect key="frame" x="5" y="34" width="54" height="26"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbC-Q7-4I1">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="0Pf-Sc-glB"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <state key="normal" title="Button"/>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-Wo-nZo">
-                    <rect key="frame" x="5" y="70" width="590" height="240"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m29-D1-27Q">
-                            <rect key="frame" x="5" y="5" width="580" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTi-3q-rHV">
-                                    <rect key="frame" x="497" y="7" width="83" height="16"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIo-Mb-1MJ">
-                                    <rect key="frame" x="332" y="7" width="82.5" height="16"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBg-AI-LeJ">
-                                    <rect key="frame" x="249" y="7" width="82.5" height="16"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlX-5d-A5g">
-                                    <rect key="frame" x="166" y="7" width="83" height="16"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ig-q0-aXa">
-                                    <rect key="frame" x="414" y="7" width="83" height="16"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5b-AO-fni">
-                                    <rect key="frame" x="83" y="7" width="83" height="17"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-d2-udL">
-                                    <rect key="frame" x="0.0" y="7" width="83" height="16"/>
                                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="kBg-AI-LeJ" firstAttribute="leading" secondItem="qlX-5d-A5g" secondAttribute="trailing" id="4Zd-BT-eFO"/>
                                 <constraint firstItem="UTi-3q-rHV" firstAttribute="leading" secondItem="6ig-q0-aXa" secondAttribute="trailing" id="6Ny-7Z-aIu"/>
@@ -111,11 +104,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzf-lB-vyJ" customClass="JTAppleCalendarView" customModule="Accomplish" customModuleProvider="target">
-                            <rect key="frame" x="5" y="35" width="580" height="200"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="m29-D1-27Q" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="top" constant="5" id="37N-vN-RKv"/>
                         <constraint firstAttribute="trailing" secondItem="Mzf-lB-vyJ" secondAttribute="trailing" constant="5" id="5C0-RB-k8i"/>
@@ -128,64 +120,55 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-Sg-hIY" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
-                    <rect key="frame" x="279" y="548" width="42" height="42"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="42" id="Odh-k6-fbS"/>
                         <constraint firstAttribute="height" constant="42" id="azD-Ho-z9p"/>
                     </constraints>
                     <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
-                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykf-Pj-aTB" customClass="CircleProgressView" customModule="Accomplish" customModuleProvider="target">
-                    <rect key="frame" x="210.5" y="350" width="178" height="178"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="1:1" id="iNt-r2-SdQ"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-iL-ftt">
-                    <rect key="frame" x="228.5" y="395" width="142" height="89"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="Daily Report">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <variation key="heightClass=regular" misplaced="YES">
-                        <rect key="frame" x="259" y="524" width="80" height="29"/>
-                    </variation>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIG-WB-n4S">
-                    <rect key="frame" x="474" y="517" width="42" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYH-Ed-2rT" customClass="UICountingLabel">
-                    <rect key="frame" x="483" y="492" width="24.5" height="20"/>
                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPLETED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUt-8r-SET">
-                    <rect key="frame" x="76" y="517" width="57" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-4T-ld4" customClass="UICountingLabel">
-                    <rect key="frame" x="93" y="492" width="24.5" height="20"/>
                     <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="20"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="top" secondItem="6qq-4T-ld4" secondAttribute="bottom" constant="5" id="0Xx-hD-w7O"/>
                 <constraint firstItem="ykf-Pj-aTB" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="40" id="56l-Qv-qe8"/>
                 <constraint firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" constant="5" id="8HG-kc-QuE"/>
                 <constraint firstItem="9jR-Sg-hIY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9pQ-ZV-68M"/>
+                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="fbC-Q7-4I1" secondAttribute="bottom" id="Bj2-lF-HQX"/>
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="height" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="0.5" id="DiZ-Ia-57Z"/>
                 <constraint firstItem="kYH-Ed-2rT" firstAttribute="centerX" secondItem="sIG-WB-n4S" secondAttribute="centerX" id="Duf-8W-ZoF"/>
                 <constraint firstItem="ykf-Pj-aTB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Dzo-IH-z78"/>
@@ -193,13 +176,12 @@
                 <constraint firstItem="6qq-4T-ld4" firstAttribute="centerX" secondItem="KUt-8r-SET" secondAttribute="centerX" id="Kcm-ws-5wV"/>
                 <constraint firstAttribute="bottom" secondItem="9jR-Sg-hIY" secondAttribute="bottom" constant="10" id="RkC-ij-2oO"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="bottom" secondItem="ykf-Pj-aTB" secondAttribute="bottom" id="Srh-fO-TgK"/>
+                <constraint firstItem="fbC-Q7-4I1" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" id="UbN-iY-IRX"/>
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="width" multiplier="0.8" id="WJJ-Ol-jVU"/>
-                <constraint firstItem="7gR-ye-a0D" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" id="Xmk-Zl-Y7O"/>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="centerY" secondItem="sIG-WB-n4S" secondAttribute="centerY" id="cRs-JP-Lzt"/>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.35" id="lzi-nv-fLw"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="mhE-De-zRU"/>
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="centerY" secondItem="ykf-Pj-aTB" secondAttribute="centerY" id="nGY-r4-Jao"/>
-                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="7gR-ye-a0D" secondAttribute="bottom" constant="10" id="qF2-mC-VkY"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.65" id="roj-Yz-02v"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="sqz-87-6su"/>
                 <constraint firstItem="9jR-Sg-hIY" firstAttribute="top" secondItem="ykf-Pj-aTB" secondAttribute="bottom" constant="20" id="v8K-v7-OWV"/>

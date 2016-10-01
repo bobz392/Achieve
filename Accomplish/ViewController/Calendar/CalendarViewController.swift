@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -34,7 +34,6 @@ class CalendarViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         self.configMainUI()
         self.initializeControl()
     }
@@ -68,7 +67,7 @@ class CalendarViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleButton.tintColor = colors.cloudColor
         self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         self.navigationController?.view.backgroundColor = colors.mainGreenColor
@@ -93,7 +92,7 @@ class CalendarViewController: BaseViewController {
     }
     
     fileprivate func initializeControl() {
-        self.titleLabel.text = Localized("calendar")
+        self.titleButton.setTitle(Localized("calendar"), for: .normal)
         
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
@@ -115,6 +114,8 @@ class CalendarViewController: BaseViewController {
         self.configCountingLabel(self.createdLabel)
         self.configCountingLabel(self.completedLabel)
         self.calendarView.reloadData()
+        
+        self.titleButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
     }
     
     func configCountingLabel(_ countLabel: UICountingLabel) {
@@ -160,6 +161,12 @@ class CalendarViewController: BaseViewController {
         let reportVC = ReportViewController(checkInDate: checkDate as NSDate)
         self.navigationController?.pushViewController(reportVC, animated: true)
     }
+    
+    func returnTodayAction() {
+        let now = Date()
+        self.calendarView.selectDates([now])
+        self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, preferredScrollPosition: nil, completionHandler: nil)
+    }
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
@@ -192,7 +199,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
-        self.titleLabel.text = Localized("calendar") + "-" + (startDate as NSDate).formattedDate(withFormat: MonthFormat)
+        let newTitle = Localized("calendar") + "-" + (startDate as NSDate).formattedDate(withFormat: MonthFormat)
+        self.titleButton.setTitle(newTitle, for: .normal)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {

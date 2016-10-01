@@ -139,7 +139,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.taskStartLabel.text =
             task.createdDate?.getDateString()
         
-        
         return cell
     }
 }

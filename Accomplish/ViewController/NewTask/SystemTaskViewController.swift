@@ -25,12 +25,10 @@ class SystemTaskViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        configMainUI()
-        initControl()
+        self.configMainUI()
+        self.initControl()
         
         self.navigationController?.delegate = self
-        //        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,9 +53,6 @@ class SystemTaskViewController: BaseViewController {
     }
     
     fileprivate func initControl() {
-        if #available(iOS 9, *) {
-            self.taskTableView.cellLayoutMarginsFollowReadableWidth = false
-        }
         self.taskTableView.tableFooterView = UIView()
         self.taskTableView.register(SystemTaskTableViewCell.nib, forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
         
@@ -146,7 +141,6 @@ extension SystemTaskViewController: TaskActionDataDelegate {
         guard let type = selectedActionType else { return }
         // 返回task 信息
         let task = Task()
-        task.taskType = kSystemTaskType
         // 用于 text field 显示用
         let attrText = NSMutableAttributedString()
         
@@ -162,14 +156,14 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             let nameAttrText = NSAttributedString(string: name, attributes: [
                 NSForegroundColorAttributeName: Colors().linkTextColor
                 ])
-            
+            task.taskType = kSystemTaskType
             attrText.append(nameAttrText)
             newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)
             
         case .createSubtasks:
             let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: nil)
             task.taskToDo = taskToText.components(separatedBy: kSpliteTaskIdentity).last ?? ""
-            
+            task.taskType = kCustomTaskType
             let nameAttrText = NSAttributedString(string: name)
             attrText.append(nameAttrText)
             newTaskDelegate?.toDoForSystemSubtask(text: attrText, task: task, subtasks: info)

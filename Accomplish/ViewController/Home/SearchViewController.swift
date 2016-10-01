@@ -137,7 +137,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let task = self.searchResult[indexPath.row]
         cell.taskTitleLabel.text = task.getNormalDisplayTitle()
         cell.taskStartLabel.text =
-            task.createdDate?.formattedDate(with: DateFormatter.Style.medium)
+            task.createdDate?.getDateString()
         
         
         return cell

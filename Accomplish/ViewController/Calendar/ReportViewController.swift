@@ -120,16 +120,8 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         guard let headerView = ScheduleHeaderView.loadNib(self) else { return }
         
         headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screenBounds.width, height: 50))
-        if checkInDate.isToday() {
-            headerView.titleLableView.text = Localized("schedule") + Localized("today")
-        } else if checkInDate.isTomorrow() {
-            headerView.titleLableView.text = Localized("schedule") + Localized("tomorrow")
-        } else if checkInDate.isYesterday() {
-            headerView.titleLableView.text = Localized("schedule") + Localized("yesterday")
-        } else {
-            headerView.titleLableView.text = Localized("schedule") + " "
-                + checkInDate.formattedDate(with: .medium)
-        }
+        
+        headerView.titleLableView.text = self.checkInDate.getDateString()
         self.scheduleTableView.tableHeaderView = headerView
         self.scheduleTableView.tableHeaderView?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.scheduleTableView)

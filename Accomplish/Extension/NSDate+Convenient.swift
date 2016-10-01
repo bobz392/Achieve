@@ -72,4 +72,17 @@ extension NSDate {
                              day: self.day(), hour: hour, minute: min, second: 0)
         return newDate
     }
+    
+    func getDateString() -> String {
+        if self.isToday() {
+            return Localized("schedule") + Localized("today")
+        } else if self.isTomorrow() {
+            return Localized("schedule") + Localized("tomorrow")
+        } else if self.isYesterday() {
+            return Localized("schedule") + Localized("yesterday")
+        } else {
+            return Localized("schedule") + " "
+                + self.formattedDate(with: .medium)
+        }
+    }
 }

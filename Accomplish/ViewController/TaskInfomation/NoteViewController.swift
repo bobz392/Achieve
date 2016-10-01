@@ -129,7 +129,7 @@ class NoteViewController: BaseViewController {
             }
             nav.popViewController(animated: true)
         } else {
-            HUD.sharedHUD.error(Localized("errorInfos"))
+            HUD.shared.error(Localized("errorInfos"))
         }
     }
 }

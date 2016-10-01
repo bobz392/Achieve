@@ -48,13 +48,13 @@ final class AddressBookViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        HUD.sharedHUD.show(Localized("loading"))
+        HUD.shared.show(Localized("loading"))
         
         AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
             self.indexingQueue.async {
                 (self.indexes, self.data) = self.processPeople(people)
                 DispatchQueue.main.async { [unowned self] in
-                    HUD.sharedHUD.dismiss()
+                    HUD.shared.dismiss()
                     self.tableView.reloadData()
                     if self.data.count == 0 {
                         guard let emptyView = EmptyView.loadNib(self) else { return }

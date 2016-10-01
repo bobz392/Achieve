@@ -10,13 +10,13 @@ import SVProgressHUD
 
 final class HUD {
     
-    static let sharedHUD = HUD()
+    static let shared = HUD()
     
     func config() {
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.light)
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.custom)
+        SVProgressHUD.setDefaultStyle(.light)
+        SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setMinimumDismissTimeInterval(1)
-        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
+        SVProgressHUD.setDefaultAnimationType(.flat)
     }
     
     func show(_ status: String = "") {

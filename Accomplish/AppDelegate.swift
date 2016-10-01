@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Logger.log("watchManger.session?.isReachable = \(re)")
         }
         
-        HUD.sharedHUD.config()
+        HUD.shared.config()
         
         Fabric.with([Crashlytics.self])
         Crashlytics.sharedInstance().debugMode = true

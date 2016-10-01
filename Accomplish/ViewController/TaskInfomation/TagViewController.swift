@@ -296,7 +296,7 @@ extension TagViewController: UITextFieldDelegate {
         
         let canSave = RealmManager.shareManager.saveTag(tag)
         if !canSave {
-            HUD.sharedHUD.showOnce(Localized("tagExist"))
+            HUD.shared.showOnce(Localized("tagExist"))
             return canSave
         } else {
             let index = IndexPath(row: self.allTags.count, section: 0)

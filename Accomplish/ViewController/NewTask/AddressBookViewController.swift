@@ -48,7 +48,7 @@ final class AddressBookViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        HUD.sharedHUD.show()
+        HUD.sharedHUD.show(Localized("loading"))
         
         AddressBook.fetchAllPeopleInAddressBook(self.readPhoneType, completion: { [unowned self] people in
             self.indexingQueue.async {

@@ -85,6 +85,7 @@
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
+		C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBDE1DA04A7200099C87 /* HomeTableView.swift */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
 		C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A89391D93F972008E15CA /* SearchViewController.xib */; };
 		C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A893C1D941071008E15CA /* SearchTableViewCell.swift */; };
@@ -261,9 +262,9 @@
 		C7CAF0B81D9C50850046D756 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */; };
 		C7CAF0BA1D9C54260046D756 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0B91D9C54260046D756 /* MessageColors.swift */; };
 		C7CAF0BB1D9C554F0046D756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
+		C7CAF0BD1DA0458A0046D756 /* HomePulldownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0BC1DA0458A0046D756 /* HomePulldownView.swift */; };
+		C7CAF0BF1DA045990046D756 /* HomePulldownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF0BE1DA045990046D756 /* HomePulldownView.xib */; };
 		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
-		C7D933881D85908D00F0A759 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933871D85908D00F0A759 /* SearchView.swift */; };
-		C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D933891D85909400F0A759 /* SearchView.xib */; };
 		C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */; };
 		C7DB5D151D91A2A100719CB3 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB5D131D91A2A100719CB3 /* TagTableViewCell.swift */; };
 		C7DB5D161D91A2A100719CB3 /* TagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DB5D141D91A2A100719CB3 /* TagTableViewCell.xib */; };
@@ -466,6 +467,7 @@
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
+		C738CBDE1DA04A7200099C87 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		C74A89381D93F972008E15CA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C74A89391D93F972008E15CA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C74A893C1D941071008E15CA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -626,9 +628,9 @@
 		C7CAF0B51D9C50850046D756 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		C7CAF0B91D9C54260046D756 /* MessageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
+		C7CAF0BC1DA0458A0046D756 /* HomePulldownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePulldownView.swift; sourceTree = "<group>"; };
+		C7CAF0BE1DA045990046D756 /* HomePulldownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePulldownView.xib; sourceTree = "<group>"; };
 		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
-		C7D933871D85908D00F0A759 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		C7D933891D85909400F0A759 /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotlightManager.swift; sourceTree = "<group>"; };
 		C7DB5D131D91A2A100719CB3 /* TagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
 		C7DB5D141D91A2A100719CB3 /* TagTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagTableViewCell.xib; sourceTree = "<group>"; };
@@ -921,6 +923,7 @@
 				C77192451D6CEE4E00437560 /* HomeViewController.xib */,
 				C74A89381D93F972008E15CA /* SearchViewController.swift */,
 				C74A89391D93F972008E15CA /* SearchViewController.xib */,
+				C738CBDE1DA04A7200099C87 /* HomeTableView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1151,8 +1154,8 @@
 				C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */,
 				C79806F41D81586F0011DE19 /* EmptyView.swift */,
 				C79806F21D8158610011DE19 /* EmptyView.xib */,
-				C7D933871D85908D00F0A759 /* SearchView.swift */,
-				C7D933891D85909400F0A759 /* SearchView.xib */,
+				C7CAF0BC1DA0458A0046D756 /* HomePulldownView.swift */,
+				C7CAF0BE1DA045990046D756 /* HomePulldownView.xib */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1519,6 +1522,7 @@
 				C715A6B51D8AB09500B4CAB9 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */,
 				C7DB5D161D91A2A100719CB3 /* TagTableViewCell.xib in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
+				C7CAF0BF1DA045990046D756 /* HomePulldownView.xib in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
@@ -1537,7 +1541,6 @@
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
 				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
-				C7D9338A1D85909400F0A759 /* SearchView.xib in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
 				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,
@@ -1642,6 +1645,7 @@
 				C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */,
 				C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */,
 				C77193F61D6DE9C000437560 /* Constants.swift in Sources */,
+				C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */,
 				C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */,
 				C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */,
 				C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */,
@@ -1649,7 +1653,6 @@
 				C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
-				C7D933881D85908D00F0A759 /* SearchView.swift in Sources */,
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
 				C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */,
 				C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */,
@@ -1724,6 +1727,7 @@
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
+				C7CAF0BD1DA0458A0046D756 /* HomePulldownView.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
@@ -2367,6 +2371,7 @@
 				C7CAF0A81D9C3FE80046D756 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		C7E1B0671D8C7A9600554B11 /* Build configuration list for PBXNativeTarget "AchieveWatch Extension" */ = {
 			isa = XCConfigurationList;

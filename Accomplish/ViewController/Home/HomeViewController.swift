@@ -21,7 +21,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var fullScreenButton: UIButton!
-    @IBOutlet weak var taskTableView: UITableView!
+    @IBOutlet weak var taskTableView: HomeTableView!
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var emptyHintLabel: UILabel!
     @IBOutlet weak var emptyCoffeeLabel: UILabel!
@@ -50,6 +50,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate var toViewControllerAnimationType = 0
     
+//    fileprivate var pulldownView: HomePulldownView? = nil
     fileprivate weak var newTaskVC: NewTaskViewController? = nil
     
     // MARK: - life circle
@@ -153,8 +154,12 @@ class HomeViewController: BaseViewController {
         self.searchButton.tintColor = colors.mainGreenColor
         
         self.configFullSizeButton(colors)
-        
         self.taskTableView.reloadData()
+        
+//        guard let pulldownView = HomePulldownView.loadNib(self) else { return }
+//        self.taskTableView.addSubview(pulldownView)
+//        pulldownView.layout(superview: self.taskTableView)
+//        self.pulldownView = pulldownView
     }
     
     fileprivate func configFullSizeButton(_ colors: Colors) {

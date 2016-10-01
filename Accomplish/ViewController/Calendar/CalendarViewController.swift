@@ -91,9 +91,7 @@ class CalendarViewController: BaseViewController {
         self.completedTitleLabel.textColor = colors.cloudColor
     }
     
-    fileprivate func initializeControl() {
-        self.titleButton.setTitle(Localized("calendar"), for: .normal)
-        
+    fileprivate func initializeControl() {        
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)

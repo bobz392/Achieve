@@ -234,6 +234,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         let priority = self.prioritySegmental.selectedSegmentIndex
         self.task.createDefaultTask(taskToDo, priority:  priority)
         
+        let tagUUID = AppUserDefault().readString(kCurrentTagUUIDKey)
+        self.task.tagUUID = tagUUID
+        
         self.saveSubtasks()
         RealmManager.shareManager.writeObject(self.task)
         

@@ -49,8 +49,6 @@ class HomeViewController: BaseViewController {
                                                optionalDirectory: nil)
     
     fileprivate var toViewControllerAnimationType = 0
-    
-//    fileprivate var pulldownView: HomePulldownView? = nil
     fileprivate weak var newTaskVC: NewTaskViewController? = nil
     
     // MARK: - life circle
@@ -155,11 +153,6 @@ class HomeViewController: BaseViewController {
         
         self.configFullSizeButton(colors)
         self.taskTableView.reloadData()
-        
-//        guard let pulldownView = HomePulldownView.loadNib(self) else { return }
-//        self.taskTableView.addSubview(pulldownView)
-//        pulldownView.layout(superview: self.taskTableView)
-//        self.pulldownView = pulldownView
     }
     
     fileprivate func configFullSizeButton(_ colors: Colors) {
@@ -208,6 +201,8 @@ class HomeViewController: BaseViewController {
         
         self.searchButton.addTarget(self, action: #selector(self.searchAction),
                                     for: .touchUpInside)
+        
+//        self.taskTableView.layout(holderView: self.statusSegment)
     }
     
     /**
@@ -301,7 +296,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate func realmNoticationToken() {
         self.finishToken = finishTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
-            if self.statusSegment.selectedSegmentIndex == 0 {
+            if self.statusSegment.selectedSegmentIndex == kRunningSegmentIndex {
                 return
             }
             switch changes {
@@ -319,7 +314,7 @@ class HomeViewController: BaseViewController {
             })
         
         self.runningToken = runningTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
-            if self.statusSegment.selectedSegmentIndex == 1 {
+            if self.statusSegment.selectedSegmentIndex == kFinishSegmentIndex {
                 return
             }
             switch changes {
@@ -552,7 +547,16 @@ class HomeViewController: BaseViewController {
 }
 
 // MARK: - table view
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource/**, UIScrollViewDelegate**/ {
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY: CGFloat = scrollView.contentOffset.y >= -70.0 ? scrollView.contentOffset.y : -70.0
+//        
+//        if offsetY <= 0 {
+//            self.taskTableView.setAnimation(progress: -offsetY / 70.0, current: self.statusSegment.selectedSegmentIndex)
+//        }
+//        
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {

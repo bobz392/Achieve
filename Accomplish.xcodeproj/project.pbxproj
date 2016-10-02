@@ -86,6 +86,7 @@
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
 		C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBDE1DA04A7200099C87 /* HomeTableView.swift */; };
+		C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBE01DA13BB500099C87 /* ReportGenerator.swift */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
 		C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A89391D93F972008E15CA /* SearchViewController.xib */; };
 		C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A893C1D941071008E15CA /* SearchTableViewCell.swift */; };
@@ -468,6 +469,7 @@
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
 		C738CBDE1DA04A7200099C87 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
+		C738CBE01DA13BB500099C87 /* ReportGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
 		C74A89381D93F972008E15CA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C74A89391D93F972008E15CA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C74A893C1D941071008E15CA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -1135,6 +1137,7 @@
 			isa = PBXGroup;
 			children = (
 				C79806E41D8006580011DE19 /* CheckInManager.swift */,
+				C738CBE01DA13BB500099C87 /* ReportGenerator.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1754,6 +1757,7 @@
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
+				C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */,
 				C79805C81D7D4E610011DE19 /* JTAppleViews.swift in Sources */,
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */,

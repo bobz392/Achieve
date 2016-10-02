@@ -125,6 +125,14 @@
 "completedAt"="completed at ";
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
+"reportFinish"="finished task: %@ at %@";
+"reportUnfinish"="task: %@ started at %@";
+"reportOvertime"=", %@ overtime.";
+"reportEarlier"=", %@ earlier finish task.";
+"reportEstimate"=", estimate finish at %@.";
+"hour"="hour";
+"hours"="hours";
+"mins"="minutes";
 
 // today
 "noTaskToday"="You have no task due today.";

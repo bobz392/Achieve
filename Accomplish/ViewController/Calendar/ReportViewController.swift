@@ -17,16 +17,20 @@ class ReportViewController: BaseViewController {
     @IBOutlet weak var exportButton: UIButton!
     
     fileprivate let checkInDate: NSDate
-    fileprivate var taskList: Results<Task>? = nil
-    fileprivate var cellHeightCache = Array<CGFloat>()
+    fileprivate var taskList: Results<Task>
+    fileprivate var cellHeightCache: Array<CGFloat>
     
     init(checkInDate: NSDate) {
         self.checkInDate = checkInDate
+        self.taskList = RealmManager.shareManager.queryTaskList(checkInDate)
+        self.cellHeightCache = Array(repeating: 0, count: self.taskList.count)
         super.init(nibName: "ReportViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.checkInDate = NSDate()
+        self.taskList = RealmManager.shareManager.queryTaskList(self.checkInDate)
+        self.cellHeightCache = [CGFloat]()
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -37,9 +41,8 @@ class ReportViewController: BaseViewController {
         self.configMainUI()
         self.initializeControl()
         
-        let tasks = RealmManager.shareManager.queryTaskList(self.checkInDate)
-        self.taskList = tasks
-        self.cellHeightCache = Array(repeating: 0, count: tasks.count)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,29 +87,21 @@ class ReportViewController: BaseViewController {
     }
     
     func extportAction() {
-        let activeViewController = UIActivityViewController(activityItems: [self.generateReport()], applicationActivities: nil)
+        let report = ReportGenerator().generateReport(taskList: self.taskList)
+        let activeViewController =
+            UIActivityViewController(activityItems: [report], applicationActivities: nil)
         
         self.present(activeViewController, animated: true) {
             
         }
         
         let activeBlock: UIActivityViewControllerCompletionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error:Swift.Error?) -> Swift.Void in
-                Logger.log("returnedItems = \(returnedItems)")
-                Logger.log("activityType = \(activityType?.rawValue)")
-                Logger.log("completed = \(completed)")
+            Logger.log("returnedItems = \(returnedItems)")
+            Logger.log("activityType = \(activityType?.rawValue)")
+            Logger.log("completed = \(completed)")
         }
         
         activeViewController.completionWithItemsHandler = activeBlock
-    }
-    
-    fileprivate func generateReport() -> String {
-        let string = self.taskList?.reduce("", { (content, task) -> String in
-            return content + task.getNormalDisplayTitle() + "\n"
-        })
-        guard let report = string else {
-            return "No report today"
-        }
-        return report
     }
 }
 
@@ -132,25 +127,24 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.taskList?.count ?? 0
+        return self.taskList.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let task = self.taskList?[indexPath.row] {
-            let taskVC = TaskDetailViewController(task: task, canChange: task.createdDate?.isToday() ?? false)
-            self.navigationController?.pushViewController(taskVC, animated: true)
-        }
+        let task = self.taskList[indexPath.row]
+        let taskVC = TaskDetailViewController(task: task, canChange: task.createdDate?.isToday() ?? false)
+        self.navigationController?.pushViewController(taskVC, animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId, for: indexPath) as! ScheduleTableViewCell
         
         cell.setTop(indexPath.row == 0)
-        cell.setBottom(indexPath.row == (self.taskList?.count ?? 0) - 1)
-        if let task = self.taskList?[indexPath.row] {
-            cell.config(task)
-        }
+        cell.setBottom( indexPath.row == (self.taskList.count - 1) )
+        
+        cell.config(self.taskList[indexPath.row])
         
         return cell
     }
@@ -165,10 +159,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
             return self.cellHeightCache[indexPath.row]
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId) as! ScheduleTableViewCell
-            
-            if let task = self.taskList?[indexPath.row] {
-                cell.config(task)
-            }
+            cell.config(self.taskList[indexPath.row])
             let height = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
             self.cellHeightCache[indexPath.row] = height
             return height

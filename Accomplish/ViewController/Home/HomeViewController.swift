@@ -202,7 +202,14 @@ class HomeViewController: BaseViewController {
         self.searchButton.addTarget(self, action: #selector(self.searchAction),
                                     for: .touchUpInside)
         
-//        self.taskTableView.layout(holderView: self.statusSegment)
+        self.taskTableView.getCurrentIndex = { [unowned self] () -> Int in
+            return self.statusSegment.selectedSegmentIndex
+        }
+        
+        self.taskTableView.changeCallBack = { [unowned self] (changeIndex) -> Void in
+            self.statusSegment.selectedSegmentIndex = changeIndex
+            self.taskTableView.reloadData()
+        }
     }
     
     /**
@@ -547,17 +554,8 @@ class HomeViewController: BaseViewController {
 }
 
 // MARK: - table view
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource/**, UIScrollViewDelegate**/ {
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offsetY: CGFloat = scrollView.contentOffset.y >= -70.0 ? scrollView.contentOffset.y : -70.0
-//        
-//        if offsetY <= 0 {
-//            self.taskTableView.setAnimation(progress: -offsetY / 70.0, current: self.statusSegment.selectedSegmentIndex)
-//        }
-//        
-//    }
-    
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
             self.showEmptyHint(self.runningTasks?.count ?? 0 <= 0)

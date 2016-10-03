@@ -36,6 +36,8 @@
 "customTask"="新任务";
 "dependTask"="关联任务";
 "systemTask"="系统任务";
+"switchRunning"="切换到进行中";
+"switchFinish"="切换到已完成";
 
 "goingDo"="准备做点什么呢?";
 "priority"="优先级";

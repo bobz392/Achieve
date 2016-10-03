@@ -13,7 +13,7 @@ let UUIDFormat = "yyMMddHHmmssZ"
 let CreatedDateFormat = "yyyy.MM.dd"
 let TimeDateFormat = "hh: mm a"
 let MonthDayFormat = "MM/dd"
-let MonthFormat = "MMM YYYY"
+let MonthFormat = "YYYY MMM"
 let OnlyTimeFormat = "hh:mm"
 let OnlyAmFormat = "a"
 

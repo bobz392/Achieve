@@ -6,7 +6,7 @@
 	Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 */
 
-"progess"="In progress";
+"progess"="Proceed";
 "finished"="Finished";
 "completed"="Completed";
 "emptyTask"="No new task, Enjoy the day :)";
@@ -36,6 +36,8 @@
 "customTask"="Custom task";
 "dependTask"="Associated task";
 "systemTask"="System task";
+"switchRunning"="Switch to proceed";
+"switchFinish"="Switch to finish";
 
 "goingDo"="What would you like to do?";
 "priority"="Priority";

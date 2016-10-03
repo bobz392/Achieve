@@ -13,26 +13,19 @@ let kFinishSegmentIndex = 1
 
 class HomeTableView: UITableView, UIGestureRecognizerDelegate {
     
-    fileprivate var pulldownView: HomePulldownView? = nil
-    fileprivate var canchange = false
+    fileprivate let changeLength: CGFloat = 50
+    var initLocationX: CGFloat = 0
+    var endLocationX: CGFloat = 0
+    var canChange = false
     
-    fileprivate var currentX: CGFloat = -1
-    fileprivate var currentSelect: Int = -1
-    fileprivate var nowSelect: Int = -1
+    var getCurrentIndex: ( () -> Int )?
+    var changeCallBack: ( (Int) -> Void )?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(pan:)))
-//        self.addGestureRecognizer(pan)
-//        
-//        guard let pulldownView = HomePulldownView.loadNib(self) else { return }
-//        self.addSubview(pulldownView)
-//        self.pulldownView = pulldownView
-    }
-    
-    func layout(holderView: UIView) {
-        pulldownView?.layout(superview: self, holderView: holderView)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(pan:)))
+        self.addGestureRecognizer(pan)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -40,31 +33,51 @@ class HomeTableView: UITableView, UIGestureRecognizerDelegate {
     }
     
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        print(gestureRecognizer)
         return true
     }
 
     func panAction(pan: UIPanGestureRecognizer) {
-        guard  let pulldownView = self.pulldownView else { return }
-        guard self.canchange == true else { return }
-        
-        let location = pan.location(in: self)
-        print(location)
+        if pan.state == .ended {
+            HUD.shared.dismiss()
+            
+            if self.canChange {
+                self.changeCallBack?( self.getCurrentIndex?() == 0 ? 1 : 0 )
+            }
+            
+        } else if pan.state == .began {
+            self.initLocationX = 0
+            self.canChange = false
+            self.initLocationX = pan.location(in: self).x
+            
+        } else {
+            guard self.initLocationX != 0 else { return }
+            
+            let locationX = pan.location(in: self).x
+            let currentIndex = getCurrentIndex?()
+            
+            if locationX > self.initLocationX {
+                guard currentIndex == kRunningSegmentIndex else { return }
+                
+                self.endLocationX = locationX
+                if locationX - self.initLocationX > self.changeLength {
+                    HUD.shared.showSwitch(Localized("switchFinish"), left: false)
+                    self.canChange = true
+                } else {
+                    HUD.shared.dismiss()
+                    self.canChange = false
+                }
+            } else {
+                guard currentIndex == kFinishSegmentIndex else { return }
+                
+                self.endLocationX = locationX
+                if self.initLocationX - locationX > self.changeLength {
+                    HUD.shared.showSwitch(Localized("switchRunning"), left: true)
+                    self.canChange = true
+                } else {
+                    HUD.shared.dismiss()
+                    self.canChange = false
+                }
+            }
+        }
     }
-    
-    func setAnimation(progress: CGFloat, current: Int) {
-        guard  let pulldownView = self.pulldownView else { return }
-        
-        pulldownView.setConstraint(current: current)
-        
-        self.currentSelect = current
-        self.nowSelect = current
-        self.canchange = progress >= 1.0
-    }
-    
-    func reset() {
-        self.canchange = false
-        self.currentX = -1
-    }
-    
 }

@@ -302,34 +302,34 @@ class HomeViewController: BaseViewController {
     }
     
     fileprivate func realmNoticationToken() {
-        self.finishToken = finishTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
+        self.finishToken = finishTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == kRunningSegmentIndex {
                 return
             }
             switch changes {
-            case .Initial:
+            case .initial(_):
                 self.taskTableView.reloadData()
                 
-            case .Update(_, let deletions, let insertions, let modifications):
+            case .update(_, let deletions, let insertions, let modifications):
                 self.handleUpdate(deletions, insertions: insertions, modifications: modifications)
                 self.handleUpdateTodayGroup()
                 
-            case .Error(let error):
+            case .error(let error):
                 Logger.log("finishToken realmNoticationToken error = \(error)")
                 break
             }
             })
         
-        self.runningToken = runningTasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
+        self.runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == kFinishSegmentIndex {
                 return
             }
             switch changes {
-            case .Initial:
+            case .initial(_):
                 self.taskTableView.reloadData()
                 self.handleUpdateTodayGroup()
                 
-            case .Update(_, let deletions, let insertions, let modifications):
+            case .update(_, let deletions, let insertions, let modifications):
                 self.handleUpdate(deletions, insertions: insertions, modifications: modifications)
                 self.handleUpdateTodayGroup()
                 
@@ -339,7 +339,7 @@ class HomeViewController: BaseViewController {
                     self.selectedIndex = nil
                 }
                 
-            case .Error(let error):
+            case .error(let error):
                 Logger.log("runningToken realmNoticationToken error = \(error)")
                 break
             }

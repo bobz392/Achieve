@@ -1,3 +1,4 @@
 github "SnapKit/SnapKit" ~> 3.0
 github "realm/realm-cocoa" "master"
 github "SVProgressHUD/SVProgressHUD"
+github "danielgindi/Charts" "master"

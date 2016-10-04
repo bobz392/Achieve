@@ -36,15 +36,15 @@ extension RealmManager {
     }
     
     func queryRepeaterWithTask(_ taskUUID: String) -> Repeater? {
-        let repeater = realm.allObjects(ofType: Repeater.self)
-            .filter(using: "repeatTaskUUID = '\(taskUUID)'")
+        let repeater = realm.objects(Repeater.self)
+            .filter("repeatTaskUUID = '\(taskUUID)'")
             .first
         
         return repeater
     }
     
     func allRepeater() -> Results<Repeater> {
-        return realm.allObjects(ofType: Repeater.self)
+        return realm.objects(Repeater.self)
     }
     
     func deleteRepeater(_ task: Task) {

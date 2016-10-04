@@ -54,8 +54,9 @@ class TagViewController: BaseViewController {
         self.tagTableView.reloadData()
         
         let indexPath: IndexPath
+        
         if let selectedTag = AppUserDefault().readString(kCurrentTagUUIDKey),
-            let index = self.allTags.indexOfObject(for: "tagUUID = '\(selectedTag)'") {
+            let index = self.allTags.index(matching: "tagUUID = '\(selectedTag)'") {
             indexPath = IndexPath(row: index + 1, section: 0)
         } else {
             indexPath = IndexPath(row: 0, section: 0)

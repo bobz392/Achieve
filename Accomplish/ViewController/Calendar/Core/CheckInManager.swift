@@ -16,7 +16,7 @@ struct CheckInManager {
     
     func checkInWithDate(date: NSDate) -> CheckIn? {
         return allCheckIn
-            .filter(using: "formatedDate == '\(date.createdFormatedDateString())'")
+            .filter("formatedDate == '\(date.createdFormatedDateString())'")
             .first
     }
     

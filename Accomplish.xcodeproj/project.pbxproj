@@ -65,21 +65,6 @@
 		C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */; };
 		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
 		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
-		C715A6B11D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */; };
-		C715A6B21D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */; };
-		C715A6B31D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */; };
-		C715A6B41D8AB09500B4CAB9 /* 9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A01D8AB09500B4CAB9 /* 9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap */; };
-		C715A6B51D8AB09500B4CAB9 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A11D8AB09500B4CAB9 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */; };
-		C715A6B61D8AB09500B4CAB9 /* BCC4B579-0155-3926-8B85-3D484F171F0F.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A21D8AB09500B4CAB9 /* BCC4B579-0155-3926-8B85-3D484F171F0F.bcsymbolmap */; };
-		C715A6B71D8AB09500B4CAB9 /* C425EE04-0481-36E7-AB54-5EFD7864DD24.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A31D8AB09500B4CAB9 /* C425EE04-0481-36E7-AB54-5EFD7864DD24.bcsymbolmap */; };
-		C715A6B81D8AB09500B4CAB9 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A41D8AB09500B4CAB9 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */; };
-		C715A6B91D8AB09600B4CAB9 /* F6BA6C82-47A8-3AFF-83AD-7B9B86FF8A57.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A51D8AB09500B4CAB9 /* F6BA6C82-47A8-3AFF-83AD-7B9B86FF8A57.bcsymbolmap */; };
-		C715A6BA1D8AB09600B4CAB9 /* FB78BDA6-E944-3E65-874C-CCE5BACCE33A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C715A6A61D8AB09500B4CAB9 /* FB78BDA6-E944-3E65-874C-CCE5BACCE33A.bcsymbolmap */; };
-		C715A6C51D8AB0A600B4CAB9 /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C715A6A81D8AB09500B4CAB9 /* PlaygroundFrameworkWrapper.framework.dSYM */; };
-		C715A6C61D8AB0A600B4CAB9 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C715A6AA1D8AB09500B4CAB9 /* Realm.framework.dSYM */; };
-		C715A6C71D8AB0A600B4CAB9 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C715A6AC1D8AB09500B4CAB9 /* RealmSwift.framework.dSYM */; };
-		C715A6C81D8AB0A600B4CAB9 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C715A6AE1D8AB09500B4CAB9 /* SnapKit.framework.dSYM */; };
-		C715A6C91D8AB0A600B4CAB9 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C715A6B01D8AB09500B4CAB9 /* SVProgressHUD.framework.dSYM */; };
 		C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D586F1D746A7800E76E91 /* SystemActionType.swift */; };
 		C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D58751D74910400E76E91 /* TaskDetailViewController.swift */; };
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
@@ -289,6 +274,25 @@
 		C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
+		C7F7099C1DA40E0B005D7B67 /* 0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709801DA40E0B005D7B67 /* 0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap */; };
+		C7F7099D1DA40E0B005D7B67 /* 10C693F1-E658-3F35-BEDE-83AEEB0771F9.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709811DA40E0B005D7B67 /* 10C693F1-E658-3F35-BEDE-83AEEB0771F9.bcsymbolmap */; };
+		C7F7099E1DA40E0B005D7B67 /* 3176657C-FACD-30C4-B933-8B5440714E40.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709821DA40E0B005D7B67 /* 3176657C-FACD-30C4-B933-8B5440714E40.bcsymbolmap */; };
+		C7F7099F1DA40E0B005D7B67 /* 4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709831DA40E0B005D7B67 /* 4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap */; };
+		C7F709A01DA40E0B005D7B67 /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709841DA40E0B005D7B67 /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap */; };
+		C7F709A11DA40E0B005D7B67 /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709851DA40E0B005D7B67 /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap */; };
+		C7F709A21DA40E0B005D7B67 /* 8735FF06-3F4B-3BE8-A7DC-2F911E64E6DD.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709861DA40E0B005D7B67 /* 8735FF06-3F4B-3BE8-A7DC-2F911E64E6DD.bcsymbolmap */; };
+		C7F709A31DA40E0B005D7B67 /* 92F3773F-73F8-365C-B3EB-FBCEBC49596A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709871DA40E0B005D7B67 /* 92F3773F-73F8-365C-B3EB-FBCEBC49596A.bcsymbolmap */; };
+		C7F709A41DA40E0B005D7B67 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709881DA40E0B005D7B67 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */; };
+		C7F709A51DA40E0B005D7B67 /* B8F642B0-1BC6-3066-BD7D-46E76C8EBDF1.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709891DA40E0B005D7B67 /* B8F642B0-1BC6-3066-BD7D-46E76C8EBDF1.bcsymbolmap */; };
+		C7F709AA1DA40E0B005D7B67 /* D1C7C90D-6AC2-33AE-93AA-E17F53501FA8.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F7098E1DA40E0B005D7B67 /* D1C7C90D-6AC2-33AE-93AA-E17F53501FA8.bcsymbolmap */; };
+		C7F709AB1DA40E0B005D7B67 /* EFED1536-50E7-3B64-B37E-DD5A5D47DD7C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F7098F1DA40E0B005D7B67 /* EFED1536-50E7-3B64-B37E-DD5A5D47DD7C.bcsymbolmap */; };
+		C7F709AC1DA40E0B005D7B67 /* F4E778B1-9907-3617-9099-F0A4D0C56A6F.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709901DA40E0B005D7B67 /* F4E778B1-9907-3617-9099-F0A4D0C56A6F.bcsymbolmap */; };
+		C7F709AD1DA40E0B005D7B67 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7F709911DA40E0B005D7B67 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */; };
+		C7F709B81DA40E40005D7B67 /* Charts.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F7098B1DA40E0B005D7B67 /* Charts.framework.dSYM */; };
+		C7F709BB1DA40E40005D7B67 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F709951DA40E0B005D7B67 /* Realm.framework.dSYM */; };
+		C7F709BC1DA40E40005D7B67 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F709971DA40E0B005D7B67 /* RealmSwift.framework.dSYM */; };
+		C7F709BD1DA40E40005D7B67 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F709991DA40E0B005D7B67 /* SnapKit.framework.dSYM */; };
+		C7F709BE1DA40E40005D7B67 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F7099B1DA40E0B005D7B67 /* SVProgressHUD.framework.dSYM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -349,11 +353,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				C715A6C51D8AB0A600B4CAB9 /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */,
-				C715A6C61D8AB0A600B4CAB9 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
-				C715A6C71D8AB0A600B4CAB9 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
-				C715A6C81D8AB0A600B4CAB9 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
-				C715A6C91D8AB0A600B4CAB9 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
+				C7F709B81DA40E40005D7B67 /* Charts.framework.dSYM in Copy Carthage dSYMs */,
+				C7F709BB1DA40E40005D7B67 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
+				C7F709BC1DA40E40005D7B67 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
+				C7F709BD1DA40E40005D7B67 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
+				C7F709BE1DA40E40005D7B67 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
 			);
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,26 +447,6 @@
 		C7145AC51D90506D000FAC18 /* WatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchColors.swift; sourceTree = "<group>"; };
 		C7145ACD1D91208F000FAC18 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A01D8AB09500B4CAB9 /* 9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A11D8AB09500B4CAB9 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A21D8AB09500B4CAB9 /* BCC4B579-0155-3926-8B85-3D484F171F0F.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BCC4B579-0155-3926-8B85-3D484F171F0F.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A31D8AB09500B4CAB9 /* C425EE04-0481-36E7-AB54-5EFD7864DD24.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C425EE04-0481-36E7-AB54-5EFD7864DD24.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A41D8AB09500B4CAB9 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A51D8AB09500B4CAB9 /* F6BA6C82-47A8-3AFF-83AD-7B9B86FF8A57.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "F6BA6C82-47A8-3AFF-83AD-7B9B86FF8A57.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A61D8AB09500B4CAB9 /* FB78BDA6-E944-3E65-874C-CCE5BACCE33A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FB78BDA6-E944-3E65-874C-CCE5BACCE33A.bcsymbolmap"; sourceTree = "<group>"; };
-		C715A6A71D8AB09500B4CAB9 /* PlaygroundFrameworkWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlaygroundFrameworkWrapper.framework; sourceTree = "<group>"; };
-		C715A6A81D8AB09500B4CAB9 /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<group>"; };
-		C715A6A91D8AB09500B4CAB9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		C715A6AA1D8AB09500B4CAB9 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
-		C715A6AB1D8AB09500B4CAB9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		C715A6AC1D8AB09500B4CAB9 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RealmSwift.framework.dSYM; sourceTree = "<group>"; };
-		C715A6AD1D8AB09500B4CAB9 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
-		C715A6AE1D8AB09500B4CAB9 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
-		C715A6AF1D8AB09500B4CAB9 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
-		C715A6B01D8AB09500B4CAB9 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C71D586F1D746A7800E76E91 /* SystemActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionType.swift; sourceTree = "<group>"; };
 		C71D58751D74910400E76E91 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
@@ -655,6 +639,30 @@
 		C7E2D9561D8F05000080D283 /* WatchConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
 		C7E2D9591D8F06B70080D283 /* GroupTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTasks.swift; sourceTree = "<group>"; };
 		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		C7F709801DA40E0B005D7B67 /* 0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709811DA40E0B005D7B67 /* 10C693F1-E658-3F35-BEDE-83AEEB0771F9.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "10C693F1-E658-3F35-BEDE-83AEEB0771F9.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709821DA40E0B005D7B67 /* 3176657C-FACD-30C4-B933-8B5440714E40.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3176657C-FACD-30C4-B933-8B5440714E40.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709831DA40E0B005D7B67 /* 4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709841DA40E0B005D7B67 /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709851DA40E0B005D7B67 /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709861DA40E0B005D7B67 /* 8735FF06-3F4B-3BE8-A7DC-2F911E64E6DD.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "8735FF06-3F4B-3BE8-A7DC-2F911E64E6DD.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709871DA40E0B005D7B67 /* 92F3773F-73F8-365C-B3EB-FBCEBC49596A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "92F3773F-73F8-365C-B3EB-FBCEBC49596A.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709881DA40E0B005D7B67 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709891DA40E0B005D7B67 /* B8F642B0-1BC6-3066-BD7D-46E76C8EBDF1.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B8F642B0-1BC6-3066-BD7D-46E76C8EBDF1.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F7098A1DA40E0B005D7B67 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
+		C7F7098B1DA40E0B005D7B67 /* Charts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Charts.framework.dSYM; sourceTree = "<group>"; };
+		C7F7098E1DA40E0B005D7B67 /* D1C7C90D-6AC2-33AE-93AA-E17F53501FA8.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D1C7C90D-6AC2-33AE-93AA-E17F53501FA8.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F7098F1DA40E0B005D7B67 /* EFED1536-50E7-3B64-B37E-DD5A5D47DD7C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EFED1536-50E7-3B64-B37E-DD5A5D47DD7C.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709901DA40E0B005D7B67 /* F4E778B1-9907-3617-9099-F0A4D0C56A6F.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "F4E778B1-9907-3617-9099-F0A4D0C56A6F.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709911DA40E0B005D7B67 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap"; sourceTree = "<group>"; };
+		C7F709941DA40E0B005D7B67 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		C7F709951DA40E0B005D7B67 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
+		C7F709961DA40E0B005D7B67 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		C7F709971DA40E0B005D7B67 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RealmSwift.framework.dSYM; sourceTree = "<group>"; };
+		C7F709981DA40E0B005D7B67 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
+		C7F709991DA40E0B005D7B67 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		C7F7099A1DA40E0B005D7B67 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
+		C7F7099B1DA40E0B005D7B67 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -841,34 +849,6 @@
 			path = FontAwesomeKit;
 			sourceTree = "<group>";
 		};
-		C715A69C1D8AB09500B4CAB9 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C715A69D1D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap */,
-				C715A69E1D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap */,
-				C715A69F1D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap */,
-				C715A6A01D8AB09500B4CAB9 /* 9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap */,
-				C715A6A11D8AB09500B4CAB9 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */,
-				C715A6A21D8AB09500B4CAB9 /* BCC4B579-0155-3926-8B85-3D484F171F0F.bcsymbolmap */,
-				C715A6A31D8AB09500B4CAB9 /* C425EE04-0481-36E7-AB54-5EFD7864DD24.bcsymbolmap */,
-				C715A6A41D8AB09500B4CAB9 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */,
-				C715A6A51D8AB09500B4CAB9 /* F6BA6C82-47A8-3AFF-83AD-7B9B86FF8A57.bcsymbolmap */,
-				C715A6A61D8AB09500B4CAB9 /* FB78BDA6-E944-3E65-874C-CCE5BACCE33A.bcsymbolmap */,
-				C715A6A71D8AB09500B4CAB9 /* PlaygroundFrameworkWrapper.framework */,
-				C715A6A81D8AB09500B4CAB9 /* PlaygroundFrameworkWrapper.framework.dSYM */,
-				C715A6A91D8AB09500B4CAB9 /* Realm.framework */,
-				C715A6AA1D8AB09500B4CAB9 /* Realm.framework.dSYM */,
-				C715A6AB1D8AB09500B4CAB9 /* RealmSwift.framework */,
-				C715A6AC1D8AB09500B4CAB9 /* RealmSwift.framework.dSYM */,
-				C715A6AD1D8AB09500B4CAB9 /* SnapKit.framework */,
-				C715A6AE1D8AB09500B4CAB9 /* SnapKit.framework.dSYM */,
-				C715A6AF1D8AB09500B4CAB9 /* SVProgressHUD.framework */,
-				C715A6B01D8AB09500B4CAB9 /* SVProgressHUD.framework.dSYM */,
-			);
-			name = iOS;
-			path = Carthage/Build/iOS;
-			sourceTree = "<group>";
-		};
 		C71D58741D748D2F00E76E91 /* TaskInfomation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,7 +1019,7 @@
 		C7860E341D6C23FF000281FA = {
 			isa = PBXGroup;
 			children = (
-				C715A69C1D8AB09500B4CAB9 /* iOS */,
+				C7F7097F1DA40E0B005D7B67 /* iOS */,
 				C79807191D82B97E0011DE19 /* Fabric.framework */,
 				C798071A1D82B97E0011DE19 /* Crashlytics.framework */,
 				C7860E3F1D6C23FF000281FA /* Accomplish */,
@@ -1260,6 +1240,38 @@
 				C7E1B0561D8C7A9600554B11 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7F7097F1DA40E0B005D7B67 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C7F709801DA40E0B005D7B67 /* 0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap */,
+				C7F709811DA40E0B005D7B67 /* 10C693F1-E658-3F35-BEDE-83AEEB0771F9.bcsymbolmap */,
+				C7F709821DA40E0B005D7B67 /* 3176657C-FACD-30C4-B933-8B5440714E40.bcsymbolmap */,
+				C7F709831DA40E0B005D7B67 /* 4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap */,
+				C7F709841DA40E0B005D7B67 /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap */,
+				C7F709851DA40E0B005D7B67 /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap */,
+				C7F709861DA40E0B005D7B67 /* 8735FF06-3F4B-3BE8-A7DC-2F911E64E6DD.bcsymbolmap */,
+				C7F709871DA40E0B005D7B67 /* 92F3773F-73F8-365C-B3EB-FBCEBC49596A.bcsymbolmap */,
+				C7F709881DA40E0B005D7B67 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */,
+				C7F709891DA40E0B005D7B67 /* B8F642B0-1BC6-3066-BD7D-46E76C8EBDF1.bcsymbolmap */,
+				C7F7098A1DA40E0B005D7B67 /* Charts.framework */,
+				C7F7098B1DA40E0B005D7B67 /* Charts.framework.dSYM */,
+				C7F7098E1DA40E0B005D7B67 /* D1C7C90D-6AC2-33AE-93AA-E17F53501FA8.bcsymbolmap */,
+				C7F7098F1DA40E0B005D7B67 /* EFED1536-50E7-3B64-B37E-DD5A5D47DD7C.bcsymbolmap */,
+				C7F709901DA40E0B005D7B67 /* F4E778B1-9907-3617-9099-F0A4D0C56A6F.bcsymbolmap */,
+				C7F709911DA40E0B005D7B67 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */,
+				C7F709941DA40E0B005D7B67 /* Realm.framework */,
+				C7F709951DA40E0B005D7B67 /* Realm.framework.dSYM */,
+				C7F709961DA40E0B005D7B67 /* RealmSwift.framework */,
+				C7F709971DA40E0B005D7B67 /* RealmSwift.framework.dSYM */,
+				C7F709981DA40E0B005D7B67 /* SnapKit.framework */,
+				C7F709991DA40E0B005D7B67 /* SnapKit.framework.dSYM */,
+				C7F7099A1DA40E0B005D7B67 /* SVProgressHUD.framework */,
+				C7F7099B1DA40E0B005D7B67 /* SVProgressHUD.framework.dSYM */,
+			);
+			name = iOS;
+			path = Carthage/Build/iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1487,22 +1499,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F709A11DA40E0B005D7B67 /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap in Resources */,
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
-				C715A6B71D8AB09500B4CAB9 /* C425EE04-0481-36E7-AB54-5EFD7864DD24.bcsymbolmap in Resources */,
 				C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */,
 				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
-				C715A6B21D8AB09500B4CAB9 /* 451DC79D-8C91-390D-9D73-B7469F75D319.bcsymbolmap in Resources */,
+				C7F7099D1DA40E0B005D7B67 /* 10C693F1-E658-3F35-BEDE-83AEEB0771F9.bcsymbolmap in Resources */,
 				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
-				C715A6B81D8AB09500B4CAB9 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
-				C715A6B91D8AB09600B4CAB9 /* F6BA6C82-47A8-3AFF-83AD-7B9B86FF8A57.bcsymbolmap in Resources */,
 				C79806FB1D818E660011DE19 /* HintView.xib in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */,
 				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
-				C715A6B11D8AB09500B4CAB9 /* 3D5D83C7-7CA9-39DB-A4B6-C47D23F9B726.bcsymbolmap in Resources */,
-				C715A6BA1D8AB09600B4CAB9 /* FB78BDA6-E944-3E65-874C-CCE5BACCE33A.bcsymbolmap in Resources */,
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
 				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
 				C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */,
@@ -1516,34 +1524,42 @@
 				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,
+				C7F709A21DA40E0B005D7B67 /* 8735FF06-3F4B-3BE8-A7DC-2F911E64E6DD.bcsymbolmap in Resources */,
 				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
+				C7F709A01DA40E0B005D7B67 /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap in Resources */,
 				C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */,
 				C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
-				C715A6B51D8AB09500B4CAB9 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */,
 				C7DB5D161D91A2A100719CB3 /* TagTableViewCell.xib in Resources */,
+				C7F709AB1DA40E0B005D7B67 /* EFED1536-50E7-3B64-B37E-DD5A5D47DD7C.bcsymbolmap in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
+				C7F709AD1DA40E0B005D7B67 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */,
 				C7CAF0BF1DA045990046D756 /* HomePulldownView.xib in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
+				C7F7099C1DA40E0B005D7B67 /* 0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
 				C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */,
-				C715A6B31D8AB09500B4CAB9 /* 805EBF0F-10F2-37B5-8E4F-FD079ED143F4.bcsymbolmap in Resources */,
-				C715A6B41D8AB09500B4CAB9 /* 9E9E918E-0424-38B8-81C7-691C6ACEB3ED.bcsymbolmap in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
 				C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */,
-				C715A6B61D8AB09500B4CAB9 /* BCC4B579-0155-3926-8B85-3D484F171F0F.bcsymbolmap in Resources */,
+				C7F709AA1DA40E0B005D7B67 /* D1C7C90D-6AC2-33AE-93AA-E17F53501FA8.bcsymbolmap in Resources */,
+				C7F709A31DA40E0B005D7B67 /* 92F3773F-73F8-365C-B3EB-FBCEBC49596A.bcsymbolmap in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
+				C7F709A51DA40E0B005D7B67 /* B8F642B0-1BC6-3066-BD7D-46E76C8EBDF1.bcsymbolmap in Resources */,
 				C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
+				C7F7099F1DA40E0B005D7B67 /* 4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap in Resources */,
+				C7F709A41DA40E0B005D7B67 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
+				C7F7099E1DA40E0B005D7B67 /* 3176657C-FACD-30C4-B933-8B5440714E40.bcsymbolmap in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
 				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
+				C7F709AC1DA40E0B005D7B67 /* F4E778B1-9907-3617-9099-F0A4D0C56A6F.bcsymbolmap in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
 				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,
@@ -1615,6 +1631,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -2192,6 +2209,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HZW5ST6E95;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = AchieveMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -2216,6 +2234,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HZW5ST6E95;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = AchieveMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

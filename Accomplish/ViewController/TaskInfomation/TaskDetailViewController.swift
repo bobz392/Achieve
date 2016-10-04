@@ -192,12 +192,12 @@ class TaskDetailViewController: BaseViewController {
     }
     
     fileprivate func realmNoticationToken() {
-        self.subtasksToken = subtasks?.addNotificationBlock(block: { [unowned self] (changes: RealmCollectionChange) in
+        self.subtasksToken = subtasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
             switch changes {
-            case .Initial:
+            case .initial(_):
                 self.detailTableView.reloadData()
                 
-            case .Update(_, let deletions, let insertions, let modifications):
+            case .update(_, let deletions, let insertions, let modifications):
                 self.detailTableView.beginUpdates()
                 if insertions.count > 0 {
                     for index in insertions {
@@ -227,7 +227,7 @@ class TaskDetailViewController: BaseViewController {
                 
                 self.detailTableView.endUpdates()
                 
-            case .Error(let error):
+            case .error(let error):
                 Logger.log("error in realm token = \(error)")
                 break
             }
@@ -482,7 +482,7 @@ extension TaskDetailViewController: TaskNoteDataDelegate {
     func taskNoteAdd(_ newNote: String) {
         RealmManager.shareManager.updateObject {
             self.task.taskNote = newNote
-            let index = IndexPath(row: 0, section: iconList.count - 1)
+            let index = IndexPath(row: 0, section: self.iconList.count - 1)
             self.detailTableView.reloadRows(at: [index], with: .automatic)
         }
     }

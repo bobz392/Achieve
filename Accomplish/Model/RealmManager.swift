@@ -145,6 +145,7 @@ class RealmManager {
             for task in movedtasks {
                 task.createdDate = task.createdDate?.addingDays(1) as NSDate?
                 task.createdFormattedDate = todayDateString
+                task.postponeTimes += 1
                 task.notifyDate = nil
                 
                 if #available(iOS 9.0, *) {

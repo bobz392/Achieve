@@ -93,7 +93,6 @@ struct RepeaterManager {
         
         newTask.createdDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: createDate.hour(), minute: createDate.minute(), second: createDate.second())
         newTask.createDefaultTask(task.taskToDo, priority: task.priority)
-        newTask.canPostpone = task.canPostpone
         newTask.finishedDate = nil
         if let notify = task.notifyDate {
             newTask.notifyDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: notify.hour(), minute: notify.minute(), second: notify.second())

@@ -33,6 +33,7 @@
 "save"="Save";
 "ok"="Ok";
 "done"="Done";
+"search"="Start Search";
 "customTask"="Custom task";
 "dependTask"="Associated task";
 "systemTask"="System task";

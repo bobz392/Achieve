@@ -17,15 +17,22 @@ class HomeTableView: UITableView, UIGestureRecognizerDelegate {
     var initLocationX: CGFloat = 0
     var endLocationX: CGFloat = 0
     var canChange = false
+    let homeRefreshControl = UIRefreshControl()
     
     var getCurrentIndex: ( () -> Int )?
     var changeCallBack: ( (Int) -> Void )?
+    var searchCallBack: ( () -> Void )?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(pan:)))
         self.addGestureRecognizer(pan)
+        
+        self.homeRefreshControl
+            .addTarget(self, action: #selector(self.searchAction), for: .valueChanged)
+
+        self.addSubview(self.homeRefreshControl)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -34,6 +41,11 @@ class HomeTableView: UITableView, UIGestureRecognizerDelegate {
     
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    func searchAction() {
+        self.initLocationX = 0
+        self.searchCallBack?()
     }
 
     func panAction(pan: UIPanGestureRecognizer) {
@@ -49,7 +61,7 @@ class HomeTableView: UITableView, UIGestureRecognizerDelegate {
             self.canChange = false
             self.initLocationX = pan.location(in: self).x
             
-        } else {
+        } else if pan.state == .changed {
             guard self.initLocationX != 0 else { return }
             
             let locationX = pan.location(in: self).x

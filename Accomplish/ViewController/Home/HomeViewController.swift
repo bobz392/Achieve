@@ -72,6 +72,7 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.taskTableView.homeRefreshControl.endRefreshing()
         if #available(iOS 10.0, *) {
             LocalNotificationManager.shared.logAllUNNotify()
         }
@@ -153,6 +154,11 @@ class HomeViewController: BaseViewController {
         
         self.configFullSizeButton(colors)
         self.taskTableView.reloadData()
+        
+        self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
+        self.taskTableView.homeRefreshControl.attributedTitle =
+            NSAttributedString(string: Localized("search"),
+                        attributes: [NSForegroundColorAttributeName : Colors().mainGreenColor])
     }
     
     fileprivate func configFullSizeButton(_ colors: Colors) {
@@ -180,7 +186,7 @@ class HomeViewController: BaseViewController {
         self.statusSegment.setTitle(Localized("finished"), forSegmentAt: 1)
         self.statusSegment.addTarget(self, action: #selector(self.segmentValueChangeAction(_:)), for: .valueChanged)
         
-        taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
+        self.taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
         self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
         self.emptyHintLabel.text = Localized("emptyTask")
@@ -209,6 +215,10 @@ class HomeViewController: BaseViewController {
         self.taskTableView.changeCallBack = { [unowned self] (changeIndex) -> Void in
             self.statusSegment.selectedSegmentIndex = changeIndex
             self.taskTableView.reloadData()
+        }
+        
+        self.taskTableView.searchCallBack = { [unowned self] () -> Void in
+            self.searchAction()
         }
     }
     
@@ -438,9 +448,6 @@ class HomeViewController: BaseViewController {
     
     func switchScreenAction() {
         self.doSwitchScreen(true)
-        
-        Logger.log(RealmManager.shareManager.queryAll(clz: Task.self))
-        Logger.log(RealmManager.shareManager.queryAll(clz: Repeater.self))
     }
     
     func calendarAction() {
@@ -555,7 +562,7 @@ class HomeViewController: BaseViewController {
 
 // MARK: - table view
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inRunningTasksTable() {
             self.showEmptyHint(self.runningTasks?.count ?? 0 <= 0)

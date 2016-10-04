@@ -116,7 +116,7 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         
         headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screenBounds.width, height: 50))
         
-        headerView.titleLableView.text = self.checkInDate.getDateString()
+        headerView.titleLableView.text = Localized("schedule") + self.checkInDate.getDateString()
         self.scheduleTableView.tableHeaderView = headerView
         self.scheduleTableView.tableHeaderView?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.scheduleTableView)

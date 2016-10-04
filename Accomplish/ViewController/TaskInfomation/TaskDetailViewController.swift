@@ -62,8 +62,6 @@ class TaskDetailViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
-        
-        LocalNotificationManager.shared.requestAuthorization()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -353,6 +351,10 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
                 self.taskPickerView?.setIndex(index: indexString)
                 self.showDatePickerView(show: true)
                 })
+            
+            if indexPath.row == 2 {
+                LocalNotificationManager.shared.requestAuthorization()
+            }
             
         } else if indexPath.section == 2 {
             let noteVC = NoteViewController(task: self.task, noteDelegate: self)

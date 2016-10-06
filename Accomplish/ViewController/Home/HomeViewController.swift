@@ -448,6 +448,8 @@ class HomeViewController: BaseViewController {
     
     func switchScreenAction() {
         self.doSwitchScreen(true)
+        
+        CloudKitManager().fetchTestData()
     }
     
     func calendarAction() {

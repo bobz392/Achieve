@@ -293,6 +293,7 @@
 		C7F709BC1DA40E40005D7B67 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F709971DA40E0B005D7B67 /* RealmSwift.framework.dSYM */; };
 		C7F709BD1DA40E40005D7B67 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F709991DA40E0B005D7B67 /* SnapKit.framework.dSYM */; };
 		C7F709BE1DA40E40005D7B67 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7F7099B1DA40E0B005D7B67 /* SVProgressHUD.framework.dSYM */; };
+		C7F709C01DA44A47005D7B67 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F709BF1DA44A47005D7B67 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -663,6 +664,7 @@
 		C7F709991DA40E0B005D7B67 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
 		C7F7099A1DA40E0B005D7B67 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		C7F7099B1DA40E0B005D7B67 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
+		C7F709BF1DA44A47005D7B67 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -671,6 +673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
+				C7F709C01DA44A47005D7B67 /* CloudKit.framework in Frameworks */,
 				C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */,
 				C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */,
 			);
@@ -733,6 +736,7 @@
 		C7105E9C1D6C7AD60096A1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7F709BF1DA44A47005D7B67 /* CloudKit.framework */,
 				C77194BA1D6FF62E00437560 /* AddressBookUI.framework */,
 				C77194B81D6FF3E600437560 /* libicucore.tbd */,
 				C77194B21D6FF28300437560 /* Security.framework */,
@@ -1411,13 +1415,13 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Siri = {
 								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};

@@ -137,7 +137,7 @@ class TagViewController: BaseViewController {
         self.newTagTextField.becomeFirstResponder()
         
         self.textFieldHolderTopConstraint.constant = 20
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: UIViewAnimationOptions(), animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: UIViewAnimationOptions(), animations: { [unowned self] in
             self.view.layoutIfNeeded()
         }) { [unowned self] (finish) in
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeNewTagAction))

@@ -131,11 +131,13 @@
 "completedAt"="completed at ";
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
-"reportFinish"="finished task: %@ at %@";
-"reportUnfinish"="task: %@ started at %@";
+
+"reportFinish"="%@-%@ %@";
+"reportUnfinish"="%@ %@";
 "reportOvertime"=", %@ overtime.";
-"reportEarlier"=", %@ earlier finish task.";
+"reportEarlier"=", %@ earlier finish.";
 "reportEstimate"=", estimate finish at %@.";
+
 "hour"="hour";
 "hours"="hours";
 "mins"="minutes";

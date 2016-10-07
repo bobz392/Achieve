@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTableViewCell: BaseTableViewCell {
+class SearchTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
     static let reuseId = "searchTableViewCell"
@@ -28,10 +28,4 @@ class SearchTableViewCell: BaseTableViewCell {
         self.taskStartLabel.textColor = colors.cloudColor
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

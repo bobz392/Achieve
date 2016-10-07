@@ -75,7 +75,7 @@ class SearchViewController: BaseViewController {
         self.topHolderView.layer.cornerRadius = self.searchCorner
         
         self.searchIconLabel
-            .createIconText(iconSize: 20, icon: "fa-search", color: colors.cloudColor)
+            .createIconText(iconSize: 20, icon: "fa-search", color: colors.mainGreenColor)
         
         self.searchHolderView.backgroundColor = colors.placeHolderTextColor
         self.searchTextField.tintColor = colors.mainGreenColor

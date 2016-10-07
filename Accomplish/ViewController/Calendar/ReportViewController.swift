@@ -40,9 +40,6 @@ class ReportViewController: BaseViewController {
         // Do any additional setup after loading the view.
         self.configMainUI()
         self.initializeControl()
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

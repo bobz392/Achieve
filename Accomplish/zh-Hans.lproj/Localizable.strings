@@ -128,11 +128,19 @@
 "completedAt"="完成于 ";
 "notCompleted"="没有完成";
 "notComoletedYet"="还未完成";
-"reportFinish"="完成任务: %@ 于 %@";
-"reportUnfinish"="任务: %@ 开始于 %@";
+
+"reportFinish"="%@-%@ %@";
+"reportUnfinish"="%@ %@";
+"reportOvertime"=", %@ overtime.";
+"reportEarlier"=", %@ earlier finish task.";
+"reportEstimate"=", estimate finish at %@.";
+
+"reportFinish"="%@-%@ %@";
+"reportUnfinish"="%@ %@";
 "reportOvertime"="，超出预期 %@。";
-"reportEarlier"="，提前 %@ 完成任务。";
-"reportEstimate"="，预计在 %@ 完成。";
+"reportEarlier"="，提前 %@ 完成。";
+"reportEstimate"="，预计完成于 %@。";
+
 "hour"="小时";
 "hours"="小时";
 "mins"="分钟";

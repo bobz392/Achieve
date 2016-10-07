@@ -12,6 +12,12 @@ import RealmSwift
 struct ReportGenerator {
     // @task 开始于 @time, 预计在 @time 完成
     // @task started at @time, estimate finish at @time
+    
+//    "reportFinish"="%@-%@ %@";
+//    "reportUnfinish"="%@ %@";
+//    "reportOvertime"="，超出预期 %@。";
+//    "reportEarlier"="，提前 %@ 完成。";
+//    "reportEstimate"="，预计于 %@ 完成。";
     func generateReport(taskList: Results<Task>) -> String {
         let string = taskList.reduce("", { (content, task) -> String in
             
@@ -20,10 +26,10 @@ struct ReportGenerator {
             
             
             if let startDate =
-                task.createdDate?.formattedDate(withFormat: TimeDateFormat) {
+                task.createdDate?.formattedDate(withFormat: ReportDateFormat) {
                 
-                if let finishDate = task.finishedDate?.formattedDate(withFormat: TimeDateFormat) {
-                    newTaskContent += String(format: Localized("reportFinish"), taskTodo, finishDate)
+                if let finishDate = task.finishedDate?.formattedDate(withFormat: ReportDateFormat) {
+                    newTaskContent += String(format: Localized("reportFinish"), startDate, finishDate, taskTodo)
                     
                     if let estimateDate = task.estimateDate,
                         let finishDate = task.finishedDate as? Date {
@@ -56,18 +62,12 @@ struct ReportGenerator {
                             String(format: Localized( isEarlier ? "reportEarlier" : "reportOvertime" ), time)
                     }
                 } else {
-                    newTaskContent += String(format: Localized("reportUnfinish"), taskTodo, startDate)
-                    if let estimateDate = task.estimateDate?.formattedDate(withFormat: TimeDateFormat) {
+                    newTaskContent += String(format: Localized("reportUnfinish"), startDate, taskTodo)
+                    if let estimateDate = task.estimateDate?.formattedDate(withFormat: ReportDateFormat) {
                         newTaskContent += String(format: Localized("reportEstimate"), estimateDate)
                     }
                 }
             }
-            
-            //            "reportFinish"="完成了 %@ 于 %@;
-            //            "reportUnfinish"="%@ 开始于 %@";
-            //            "reportOvertime"=", 超出预期 %@";
-            //            "reportEarlier"="提前 %@ 完成任务";
-            //            "reportEstimate"=", 预计在 %@ 完成";
             
             return content + newTaskContent + "\n"
         })

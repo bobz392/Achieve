@@ -366,7 +366,7 @@ class HomeViewController: BaseViewController {
         
         if modifications.count > 0 {
             self.taskTableView
-                .reloadRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                .reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
         }
         
         if deletions.count > 0 {

@@ -76,12 +76,12 @@ class SystemTaskViewController: BaseViewController {
 extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actionBuilder.allActions.count
+        return self.actionBuilder.allActions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SystemTaskTableViewCell.reuseId, for: indexPath) as! SystemTaskTableViewCell
-        let action = actionBuilder.allActions[indexPath.row]
+        let action = self.actionBuilder.allActions[indexPath.row]
         cell.iconImage.image = UIImage(named: action.actionImage)
         cell.taskTitle.text = Localized(action.hintString)
         
@@ -112,7 +112,7 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
-        case .createSubtasks:
+        case .createSubtasks, .createCustomScheme:
             let task = KVTaskViewController(actionType: actionType, delegate: self)
             self.navigationController?.pushViewController(task, animated: true)
             break
@@ -143,30 +143,53 @@ extension SystemTaskViewController: TaskActionDataDelegate {
         let task = Task()
         // 用于 text field 显示用
         let attrText = NSMutableAttributedString()
+        let colors = Colors()
         
         switch type.actionPresent() {
         case .addressBook, .addressBookEmail:
-            let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: info)
+            let taskToText = TaskManager()
+                .createTaskText(type.rawValue, name: name, info: info)
             task.taskToDo = taskToText
             
             attrText.append(
                 NSAttributedString(string: type.ationNameWithType(), attributes:[
-                    NSForegroundColorAttributeName: Colors().mainTextColor
+                    NSForegroundColorAttributeName: colors.mainTextColor
                     ]))
             let nameAttrText = NSAttributedString(string: name, attributes: [
-                NSForegroundColorAttributeName: Colors().linkTextColor
+                NSForegroundColorAttributeName: colors.linkTextColor
                 ])
             task.taskType = kSystemTaskType
             attrText.append(nameAttrText)
             newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)
             
         case .createSubtasks:
-            let taskToText = TaskManager().createTaskText(type.rawValue, name: name, info: nil)
-            task.taskToDo = taskToText.components(separatedBy: kSpliteTaskIdentity).last ?? ""
+            task.taskToDo = name
             task.taskType = kCustomTaskType
-            let nameAttrText = NSAttributedString(string: name)
-            attrText.append(nameAttrText)
+            
+            attrText.append(
+                NSAttributedString(string: name, attributes:[
+                    NSForegroundColorAttributeName: colors.mainTextColor
+                    ]))
+            let subtaskCountString =
+                NSAttributedString(string: Localized("subtaskCount"), attributes: [
+                    NSForegroundColorAttributeName: colors.secondaryTextColor
+                    ])
+            
+            attrText.append(subtaskCountString)
             newTaskDelegate?.toDoForSystemSubtask(text: attrText, task: task, subtasks: info)
+            
+        case .createCustomScheme:
+            let taskToText = TaskManager()
+                .createTaskText(type.rawValue, name: name, info: info)
+            task.taskToDo = taskToText
+            task.taskType = kSystemTaskType
+            
+            attrText.append(
+                NSAttributedString(string: name, attributes:[
+                    NSForegroundColorAttributeName: colors.linkTextColor
+                    ]))
+            
+            newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)
             
         default:
             return

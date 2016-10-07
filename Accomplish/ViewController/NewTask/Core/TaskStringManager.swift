@@ -17,13 +17,12 @@ let kSpliteTaskIdentity = "$$"
 
 struct TaskManager {
     
-    // 生成系统任务的字符串
-    func createTaskText(_ type: Int, name: String, info: String?) -> String {
-        if let info = info {
-            return "\(type)$$\(name)$$\(info)"
-        } else {
-            return "\(type)$$\(name)"
-        }
+    // 生成系统任务的字符串, 3 个的时候是
+    // such as name = zhoubo info = 18827420512
+    // taskToText = 1$$zhoubo$$18827420512
+    // show = call zhoubo
+    func createTaskText(_ type: Int, name: String, info: String) -> String {
+        return "\(type)$$\(name)$$\(info)"
     }
     
     func parseTaskToDoText(_ text: String) -> SystemActionContent? {

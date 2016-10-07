@@ -62,14 +62,18 @@
 "sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";
 "mailAction"="Send mail to ";
+"customSchemeAction"="Execute ";
 
-"addPhoneCall"="Create a phone call task";
-"addMessage"="Create a message task";
-"addFaceTime"="Create a Face Time task";
-"addMail"="Create a mail task";
-"addSubtask"="Create a task with subtask";
-"subtaskTitle"="Enter your task name";
+"addPhoneCall"="Create phone call task";
+"addMessage"="Create message task";
+"addFaceTime"="Create Face Time task";
+"addMail"="Create mail task";
+"addSubtask"="Create task with subtask";
+"addCustomScheme"="Create custom launcher task";
+"taskTitle"="Enter your task name";
 "subtaskInfo"="Enter your subtasks, subtasks are separated to enter";
+"subtaskCount"=" (Subtask) ";
+"customSchemeTask"="Enter url of your custom launcher task";
 
 "noReminder"="Reminder";
 "reminderMe"="Reminder me at ";
@@ -82,10 +86,9 @@
 "detailAddSubtask"="Add a subtask";
 "overTime"="  overtime  ";
 "repeatHint"="  repeat  ";
-
 "addressBook"="Address Book";
-
-"errorInfos"="Please perfect information";
+"errorInfos"="Please improve content";
+"errorURL"="Invalid url";
 
 "scheduled"="Started in ";
 "willScheduled"="Will start in ";

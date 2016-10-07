@@ -17,9 +17,10 @@ enum SystemActionType: Int {
     case faceTime
     case mailTo
     case subtask
+    case customScheme
     case none
     
-    // action 本地化的 key， 用于显示文本
+    // action 本地化的 key， 用于显示文本，例如 home vc 的cell中的title 以及，kv vc 的title label
     func ationNameWithType() -> String {
         switch self {
         case .phoneCall:
@@ -30,18 +31,22 @@ enum SystemActionType: Int {
             return Localized("faceTimeAction")
         case .mailTo:
             return Localized("mailAction")
-        case .subtask:
-            return Localized("addSubtask")
+        case .customScheme:
+            return Localized("customSchemeAction")
             
-        case .none:
+        default:
             return ""
         }
     }
     
+    // 输入 scheme 或者 detail 的 placeholder 字符串
     func hintNameWithType() -> (String, String)? {
         switch self {
         case .subtask:
-            return ("subtaskTitle", "subtaskInfo")
+            return ("taskTitle", "subtaskInfo")
+        
+        case .customScheme:
+            return ("taskTitle", "customSchemeTask")
             
         default:
             return nil
@@ -62,6 +67,9 @@ enum SystemActionType: Int {
         case .subtask:
             // 跳转到创建任务清单
             return .createSubtasks
+        
+        case .customScheme:
+            return .createCustomScheme
             
         case .none:
             return .none
@@ -83,7 +91,7 @@ enum SystemActionType: Int {
         case .mailTo:
             urlScheme = "mailto:"
             
-        case .subtask, .none:
+        case .subtask, .none, .customScheme:
             return nil
         }
         
@@ -118,5 +126,17 @@ enum ActionFeaturePresent {
     case addressBook
     case addressBookEmail
     case createSubtasks
+    case createCustomScheme
     case none
+    
+    func presentTitle() -> String {
+        switch self {
+        case .createSubtasks:
+            return Localized("addSubtask")
+        case .createCustomScheme:
+            return Localized("addCustomScheme")
+        default:
+            return ""
+        }
+    }
 }

@@ -19,13 +19,12 @@ struct SystemAction {
 }
 
 struct SystemActionBuilder {
-    
     let allActions = [
         SystemAction(type: .phoneCall, actionImage: "app_phone", hintString: "addPhoneCall"),
         SystemAction(type: .messageTo, actionImage: "app_imessage", hintString: "addMessage"),
         SystemAction(type: .faceTime, actionImage: "app_facetime", hintString: "addFaceTime"),
         SystemAction(type: .mailTo, actionImage: "app_mail", hintString: "addMail"),
         SystemAction(type: .subtask, actionImage: "app_subtask", hintString: "addSubtask"),
-        ]
-    
+        SystemAction(type: .customScheme, actionImage: "app_scheme", hintString: "addCustomScheme")
+    ]
 }

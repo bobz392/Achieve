@@ -61,14 +61,18 @@
 "sendMessageAction"="发短讯给 ";
 "faceTimeAction"="Face Time给 ";
 "mailAction"="发邮件给 ";
+"customSchemeAction"="执行 ";
 
-"addPhoneCall"="添加一个拨号任务";
-"addMessage"="添加一个短信任务";
-"addFaceTime"="添加一个Face Time任务";
-"addMail"="添加一个发送邮件任务";
-"addSubtask"="创建一个有子任务的任务";
-"subtaskTitle"="输入您的任务名";
+"addPhoneCall"="添加拨号任务";
+"addMessage"="添加短信任务";
+"addFaceTime"="添加Face Time任务";
+"addMail"="添加发送邮件任务";
+"addSubtask"="创建有子任务的任务";
+"addCustomScheme"="创建自定义启动器的任务";
+"taskTitle"="输入您的任务名";
 "subtaskInfo"="输入您的多个子任务，子任务之间以回车分隔";
+"subtaskCount"=" (子任务) ";
+"customSchemeTask"="输入您的自定义启动器的 url";
 
 "noEstimate"="预计完成时间";
 "estimeateAt"="预计完成于 ";
@@ -81,10 +85,9 @@
 "detailAddSubtask"="添加子任务";
 "overTime"="  超时  ";
 "repeatHint"="  重复  ";
-
 "addressBook"="通讯录";
-
-"errorInfos"="请完善信息";
+"errorInfos"="请完善内容";
+"errorURL"="无效的url";
 
 "scheduled"="开始于 ";
 "willScheduled"="将开始于  ";

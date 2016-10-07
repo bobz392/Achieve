@@ -25,16 +25,15 @@ class SystemTaskTableViewCell: BaseTableViewCell {
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
         self.taskTitle.textColor = colors.mainTextColor
+        
+        self.iconImage.layer.cornerRadius = 10
+        self.iconImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func configCell() {
-        
     }
     
 }

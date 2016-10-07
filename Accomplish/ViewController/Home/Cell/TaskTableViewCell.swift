@@ -54,6 +54,10 @@ class TaskTableViewCell: BaseTableViewCell {
         self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
         self.reminderLabel.text = Localized("repeatHint")
+        
+        self.taskSettingButton
+            .createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v",
+                              color: colors.mainGreenColor, status: .normal)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,23 +65,20 @@ class TaskTableViewCell: BaseTableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCellUse(_ task: Task) {
-        self.task = task
-        let colors = Colors()
-        
-        self.taskSettingButton.createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v", color: colors.mainGreenColor, status: .normal)
-        
-        switch task.priority {
+    private func configTaskPriority(priority: Int, colors: Colors) {
+        switch priority {
         case kTaskPriorityLow:
             self.priorityView.backgroundColor = colors.priorityLowColor
             
-        case kTaskPriorityNormal:
-            self.priorityView.backgroundColor = colors.priorityNormalColor
+        case kTaskPriorityHigh:
+            self.priorityView.backgroundColor = colors.priorityHighColor
             
         default:
-            self.priorityView.backgroundColor = colors.priorityHighColor
+            self.priorityView.backgroundColor = colors.priorityNormalColor
         }
-        
+    }
+    
+    private func configTaskStatus(task: Task, colors: Colors) {
         var taskTitle: String
         switch task.taskType {
         case kSystemTaskType:
@@ -134,6 +135,14 @@ class TaskTableViewCell: BaseTableViewCell {
             self.settingWidthConstraint.constant = 10
             self.taskSettingButton.isHidden = true
         }
+    }
+    
+    func configCellUse(_ task: Task) {
+        self.task = task
+        let colors = Colors()
+        
+        self.configTaskPriority(priority: task.priority, colors: colors)
+        self.configTaskStatus(task: task, colors: colors)
         
         self.overTimeLabel.isHidden = true
         self.overTimeLabel.text = nil
@@ -172,9 +181,15 @@ class TaskTableViewCell: BaseTableViewCell {
     }
     
     func systemAction() {
-        guard let actionContent = systemActionContent else { return }
-        let block = actionContent.type.actionBlockWithType()
-        block?(actionContent.urlSchemeInfo)
+        guard let actionContent = self.systemActionContent else { return }
+        if actionContent.type == .customScheme {
+            guard let url =
+                URL(string: actionContent.urlSchemeInfo) else { return }
+            UIApplication.shared.openURL(url)
+        } else {
+            let block = actionContent.type.actionBlockWithType()
+            block?(actionContent.urlSchemeInfo)
+        }
     }
     
     func markTask(_ btn: UIButton) {

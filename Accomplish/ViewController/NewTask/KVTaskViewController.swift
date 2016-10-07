@@ -99,8 +99,9 @@ class KVTaskViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-        self.titleLabel.text = Localized(actionType.ationNameWithType())
-        if let hint = actionType.hintNameWithType() {
+        self.titleLabel.text = self.actionType.actionPresent().presentTitle()
+        
+        if let hint = self.actionType.hintNameWithType() {
             self.titleTextField.placeholder = Localized(hint.0)
             self.placeholderLabel.text = Localized(hint.1)
         }
@@ -127,19 +128,19 @@ class KVTaskViewController: BaseViewController {
     
     func saveAction() {
         guard let title = self.titleTextField.text,
-            let content = self.contentTextView.text else { return }
-        if title.characters.count > 0 && content.characters.count > 0 {
-            self.view.endEditing(true)
-            dispatch_delay(0.25, closure: { [unowned self] in
-                self.delegate?.actionData(title, info: content)
-                guard let nav = self.navigationController else {
-                    return
-                }
-                nav.popViewController(animated: true)
-                })
-        } else {
-            HUD.shared.error(Localized("errorInfos"))
+            let content = self.contentTextView.text,
+            !title.isEmpty,
+            !content.isEmpty else {
+                HUD.shared.error(Localized("errorInfos"))
+                return
         }
+        
+        self.view.endEditing(true)
+        dispatch_delay(0.25, closure: { [unowned self] in
+            self.delegate?.actionData(title, info: content)
+            guard let nav = self.navigationController else { return }
+            nav.popViewController(animated: true)
+            })
     }
 }
 

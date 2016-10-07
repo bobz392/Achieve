@@ -11,11 +11,10 @@ import UIKit
 extension UIImageView {
     
     func createIconImage(iconSize: CGFloat, imageSize: CGFloat,
-                                   icon: String, color: UIColor) {
+                         icon: String, color: UIColor) {
         let icon = try! FAKFontAwesome(identifier: icon, size: iconSize)
         icon.addAttribute(NSForegroundColorAttributeName, value: color)
         let iconImage = icon.image(with: CGSize(width: imageSize, height: imageSize))
         self.image = iconImage
     }
-    
 }

@@ -61,7 +61,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func configMainUI() {
         let colors = Colors()
         self.cardView.backgroundColor = colors.cloudColor
@@ -271,11 +271,10 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: - textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
+        guard let text = textField.text,
+            !text.isEmpty() else { return true }
         
-        saveNewTask(text)
+        self.saveNewTask(text)
         return true
     }
     

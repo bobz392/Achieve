@@ -32,7 +32,8 @@ extension String {
 // counting
 extension String {
     func isEmpty() -> Bool {
-        return self.characters.count <= 0
+        let trimString = self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
+        return trimString.characters.count <= 0
     }
     
     func length() -> Int {

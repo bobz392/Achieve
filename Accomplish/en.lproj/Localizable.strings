@@ -135,8 +135,8 @@
 "reportFinish"="%@-%@ %@";
 "reportUnfinish"="%@ %@";
 "reportOvertime"=", %@ overtime.";
-"reportEarlier"=", %@ earlier finish.";
-"reportEstimate"=", estimate finish at %@.";
+"reportEarlier"=", finished ahead of %@.";
+"reportEstimate"=", estimated finish at %@.";
 
 "hour"="hour";
 "hours"="hours";

@@ -237,6 +237,10 @@ class TaskDetailViewController: BaseViewController {
 extension TaskDetailViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         KeyboardManager.sharedManager.closeNotification()
+        if self.taskPickerView?.viewIsShow() == true {
+            self.cancelDatePickerAction()
+        }
+        
         return true
     }
     

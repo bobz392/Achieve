@@ -91,7 +91,7 @@ class SettingsViewController: BaseViewController {
             Localized("startDay"),
             Localized("enabDueNextDay"),
             Localized("finishSound"),
-            Localized("hintClose"),
+//            Localized("hintClose"),
             ]
         
         self.titles.append(general)
@@ -109,7 +109,7 @@ class SettingsViewController: BaseViewController {
             "fa-calendar",
             "fa-retweet",
             "fa-music",
-            "fa-question-circle",
+//            "fa-question-circle",
             ]
         self.icons.append(gIcons)
         self.icons.append(eIcons)
@@ -117,7 +117,7 @@ class SettingsViewController: BaseViewController {
         let eSize: [CGFloat] = [
             16,
             20,
-            18
+            18,
         ]
         
         let gSize: [CGFloat] = [
@@ -125,7 +125,7 @@ class SettingsViewController: BaseViewController {
             17,
             25,
             18,
-            20
+//            20,
         ]
         
         self.sizes.append(gSize)

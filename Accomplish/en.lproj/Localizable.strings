@@ -131,6 +131,7 @@
 "completedAt"="completed at ";
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
+"monthly"="  Monthly statistics  ";
 
 "reportFinish"="%@-%@ %@";
 "reportUnfinish"="%@ %@";

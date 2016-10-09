@@ -18,6 +18,7 @@
                 <outlet property="completedTitleLabel" destination="KUt-8r-SET" id="pfC-yc-JrR"/>
                 <outlet property="createdLabel" destination="kYH-Ed-2rT" id="gqE-em-tiY"/>
                 <outlet property="createdTitleLable" destination="sIG-WB-n4S" id="OC9-VK-9ZL"/>
+                <outlet property="monthButton" destination="z6c-BF-Vfq" id="0Pe-GK-bJF"/>
                 <outlet property="scheduleButton" destination="sIN-iL-ftt" id="fY6-d5-nYM"/>
                 <outlet property="titleButton" destination="fbC-Q7-4I1" id="0l0-fa-StO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -118,6 +119,13 @@
                         <constraint firstItem="Mzf-lB-vyJ" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" constant="5" id="wM9-xA-YoO"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-BF-Vfq">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="iyI-du-szm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Button"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-Sg-hIY" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -172,6 +180,7 @@
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="height" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="0.5" id="DiZ-Ia-57Z"/>
                 <constraint firstItem="kYH-Ed-2rT" firstAttribute="centerX" secondItem="sIG-WB-n4S" secondAttribute="centerX" id="Duf-8W-ZoF"/>
                 <constraint firstItem="ykf-Pj-aTB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Dzo-IH-z78"/>
+                <constraint firstItem="z6c-BF-Vfq" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="4" id="Fbk-WM-pj2"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="top" secondItem="kYH-Ed-2rT" secondAttribute="bottom" constant="5" id="JfC-D2-od5"/>
                 <constraint firstItem="6qq-4T-ld4" firstAttribute="centerX" secondItem="KUt-8r-SET" secondAttribute="centerX" id="Kcm-ws-5wV"/>
                 <constraint firstAttribute="bottom" secondItem="9jR-Sg-hIY" secondAttribute="bottom" constant="10" id="RkC-ij-2oO"/>
@@ -182,6 +191,7 @@
                 <constraint firstItem="KUt-8r-SET" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.35" id="lzi-nv-fLw"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="mhE-De-zRU"/>
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="centerY" secondItem="ykf-Pj-aTB" secondAttribute="centerY" id="nGY-r4-Jao"/>
+                <constraint firstItem="z6c-BF-Vfq" firstAttribute="trailing" secondItem="Mzf-lB-vyJ" secondAttribute="trailing" id="pAk-f1-fBf"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.65" id="roj-Yz-02v"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="sqz-87-6su"/>
                 <constraint firstItem="9jR-Sg-hIY" firstAttribute="top" secondItem="ykf-Pj-aTB" secondAttribute="bottom" constant="20" id="v8K-v7-OWV"/>

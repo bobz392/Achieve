@@ -16,6 +16,7 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var circleView: CircleProgressView!
+    @IBOutlet weak var monthButton: UIButton!
     
     @IBOutlet weak var createdLabel: UICountingLabel!
     @IBOutlet weak var completedLabel: UICountingLabel!
@@ -89,6 +90,9 @@ class CalendarViewController: BaseViewController {
         self.completedLabel.textColor = colors.cloudColor
         self.createdTitleLable.textColor = colors.cloudColor
         self.completedTitleLabel.textColor = colors.cloudColor
+        
+        self.monthButton.backgroundColor = colors.cloudColor
+        self.monthButton.setTitleColor(colors.mainGreenColor, for: .normal)
     }
     
     fileprivate func initializeControl() {        
@@ -98,7 +102,6 @@ class CalendarViewController: BaseViewController {
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
-        
         
         let startDay = AppUserDefault().readInt(kWeekStartKey)
         self.calendarView.firstDayOfWeek = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.sunday
@@ -114,6 +117,9 @@ class CalendarViewController: BaseViewController {
         self.calendarView.reloadData()
         
         self.titleButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
+        
+        self.monthButton.setTitle(Localized("monthly"), for: .normal)
+        self.monthButton.layer.cornerRadius = 14
     }
     
     func configCountingLabel(_ countLabel: UICountingLabel) {

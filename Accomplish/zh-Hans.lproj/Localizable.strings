@@ -128,6 +128,7 @@
 "completedAt"="完成于 ";
 "notCompleted"="没有完成";
 "notComoletedYet"="还未完成";
+"monthly"="  本月统计  ";
 
 "reportFinish"="%@-%@ %@";
 "reportUnfinish"="%@ %@";

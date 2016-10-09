@@ -19,6 +19,7 @@
                 <outlet property="createdLabel" destination="kYH-Ed-2rT" id="gqE-em-tiY"/>
                 <outlet property="createdTitleLable" destination="sIG-WB-n4S" id="OC9-VK-9ZL"/>
                 <outlet property="monthButton" destination="z6c-BF-Vfq" id="0Pe-GK-bJF"/>
+                <outlet property="monthButtonRightConstraint" destination="kpA-sf-skk" id="dtK-pe-zbn"/>
                 <outlet property="scheduleButton" destination="sIN-iL-ftt" id="fY6-d5-nYM"/>
                 <outlet property="titleButton" destination="fbC-Q7-4I1" id="0l0-fa-StO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -188,10 +189,10 @@
                 <constraint firstItem="fbC-Q7-4I1" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" id="UbN-iY-IRX"/>
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="width" multiplier="0.8" id="WJJ-Ol-jVU"/>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="centerY" secondItem="sIG-WB-n4S" secondAttribute="centerY" id="cRs-JP-Lzt"/>
+                <constraint firstItem="z6c-BF-Vfq" firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" id="kpA-sf-skk"/>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.35" id="lzi-nv-fLw"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="mhE-De-zRU"/>
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="centerY" secondItem="ykf-Pj-aTB" secondAttribute="centerY" id="nGY-r4-Jao"/>
-                <constraint firstItem="z6c-BF-Vfq" firstAttribute="trailing" secondItem="Mzf-lB-vyJ" secondAttribute="trailing" id="pAk-f1-fBf"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.65" id="roj-Yz-02v"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="sqz-87-6su"/>
                 <constraint firstItem="9jR-Sg-hIY" firstAttribute="top" secondItem="ykf-Pj-aTB" secondAttribute="bottom" constant="20" id="v8K-v7-OWV"/>

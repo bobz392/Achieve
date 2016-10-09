@@ -17,6 +17,7 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var circleView: CircleProgressView!
     @IBOutlet weak var monthButton: UIButton!
+    @IBOutlet weak var monthButtonRightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var createdLabel: UICountingLabel!
     @IBOutlet weak var completedLabel: UICountingLabel!
@@ -30,6 +31,7 @@ class CalendarViewController: BaseViewController {
         RealmManager.shareManager.queryCheckIn()?.checkInDate ?? NSDate()
     lazy fileprivate var row = 6
     fileprivate var inTodayAlleady = false
+    fileprivate var monthButtonRight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +65,10 @@ class CalendarViewController: BaseViewController {
             }
             self.inTodayAlleady = true
         }
+        
+        self.monthButtonRight = self.monthButton.frame.width * 0.9 + 5
     }
-
+    
     override func configMainUI() {
         let colors = Colors()
         
@@ -75,9 +79,9 @@ class CalendarViewController: BaseViewController {
         
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: backButtonIconString, color: colors.mainGreenColor,
-                                           status: .normal)
-    
+                                         icon: backButtonIconString, color: colors.mainGreenColor,
+                                         status: .normal)
+        
         
         self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)
         self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
@@ -95,7 +99,7 @@ class CalendarViewController: BaseViewController {
         self.monthButton.setTitleColor(colors.mainGreenColor, for: .normal)
     }
     
-    fileprivate func initializeControl() {        
+    fileprivate func initializeControl() {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
@@ -203,8 +207,20 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
-        let newTitle = Localized("calendar") + "-" + (startDate as NSDate).formattedDate(withFormat: MonthFormat)
-        self.titleButton.setTitle(newTitle, for: .normal)
+        let nsStartDate = startDate as NSDate
+        
+        let inMonth = nsStartDate.month() == NSDate().month()
+        self.monthButton.isEnabled = inMonth
+        self.monthButtonRightConstraint.constant =
+            inMonth ? 0 : self.monthButtonRight
+        
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .beginFromCurrentState, animations: { [unowned self] in
+            self.view.layoutIfNeeded()
+        }) { [unowned self] (finish) in
+            let newTitle = Localized("calendar")
+                + "-" + nsStartDate.formattedDate(withFormat: MonthFormat)
+            self.titleButton.setTitle(newTitle, for: .normal)
+        }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {

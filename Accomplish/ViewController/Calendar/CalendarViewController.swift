@@ -216,11 +216,11 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .beginFromCurrentState, animations: { [unowned self] in
             self.view.layoutIfNeeded()
-        }) { [unowned self] (finish) in
-            let newTitle = Localized("calendar")
-                + "-" + nsStartDate.formattedDate(withFormat: MonthFormat)
-            self.titleButton.setTitle(newTitle, for: .normal)
-        }
+        }) { (finish) in }
+        
+        let newTitle = Localized("calendar")
+            + "-" + nsStartDate.formattedDate(withFormat: MonthFormat)
+        self.titleButton.setTitle(newTitle, for: .normal)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {

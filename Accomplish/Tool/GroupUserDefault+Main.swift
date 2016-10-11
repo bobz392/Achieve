@@ -21,7 +21,7 @@ extension GroupUserDefault {
     
     func writeTasks(_ tasks: Results<Task>) {
         var tasksArr = [[String]]()
-        let realmManager = RealmManager.shareManager
+        let realmManager = RealmManager.shared
         for task in tasks {
             let title = task.getNormalDisplayTitle()
             let uuid = task.uuid

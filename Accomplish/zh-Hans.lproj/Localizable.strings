@@ -130,6 +130,9 @@
 "notComoletedYet"="还未完成";
 "monthly"="  本月统计  ";
 
+"completionRates"="本月完成率";
+"monthlyWeek"="第%d周";
+
 "reportFinish"="%@-%@ %@";
 "reportUnfinish"="%@ %@";
 "reportOvertime"=", %@ overtime.";

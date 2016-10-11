@@ -16,7 +16,7 @@ struct SpotlightManager {
     func addDateTaskToIndex(date: NSDate = NSDate()) {
         self.removeAllFromIndex()
         
-        let tasks = RealmManager.shareManager.queryTaskList(date)
+        let tasks = RealmManager.shared.queryTaskList(date)
         let items: [CSSearchableItem] = tasks.map { (task) -> CSSearchableItem in
             return self.createSearchableItem(task: task)
         }

@@ -7,12 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct CheckInManager {
-    fileprivate let allCheckIn = RealmManager.shareManager.allCheckIn()
+    fileprivate let allCheckIn = RealmManager.shared.allCheckIn()
     fileprivate var cacheTaskData
         = Dictionary<Date, (completed:Int, created: Int)>()
-    
     
     func checkInWithDate(date: NSDate) -> CheckIn? {
         return allCheckIn
@@ -23,12 +23,20 @@ struct CheckInManager {
     mutating func taskCount(date: Date) -> (completed: Int, created: Int) {
         guard let counts = self.cacheTaskData[date] else {
             let newCounts =
-                RealmManager.shareManager.queryTaskCount(date: date as NSDate)
+                RealmManager.shared.queryTaskCount(date: date as NSDate)
             self.cacheTaskData[date] = newCounts
-            return newCounts 
+            return newCounts
         }
         
         return counts
+    }
+    
+    func getMonthCheckIn() -> Array<CheckIn> {
+        let checkIns = RealmManager.shared.monthlyCheckIn()
+        
+        return checkIns.map { (c) -> CheckIn in
+            c
+        }
     }
     
 }

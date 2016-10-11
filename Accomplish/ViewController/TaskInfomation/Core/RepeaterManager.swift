@@ -14,13 +14,11 @@ struct RepeaterManager {
     func isNewDay() -> Bool {
         // check last check is today or not
         guard let checkIn =
-            RealmManager.shareManager.queryCheckIn(first: false) else {
-                self.createCheckIn()
+            RealmManager.shared.queryCheckIn(first: false) else {
                 return true
         }
         
         guard let lastDate = checkIn.checkInDate else {
-            self.createCheckIn()
             return true
         }
         
@@ -28,31 +26,30 @@ struct RepeaterManager {
         
         Logger.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
         if !lastDate.isToday() && lastDate.isEarlierThan(now) {
-            self.createCheckIn()
-            self.repeaterTaskCreate()
             AppUserDefault().write(kCheckMoveUnfinishTaskKey, value: true)
             return true
         } else {
+            self.createCheckIn()
             return false
         }
     }
     
-    fileprivate func createCheckIn() {
+    func createCheckIn() {
         let checkIn = CheckIn()
         let checkInDate = NSDate()
         checkIn.checkInDate = checkInDate
         checkIn.formatedDate = checkInDate.createdFormatedDateString()
-        //        let task = RealmManager.shareManager.queryTaskCount(date: checkInDate)
-        //        checkIn.completedCount = task.complete
-        //        checkIn.createdCount = task.created
-        RealmManager.shareManager.saveCheckIn(checkIn)
+        let task = RealmManager.shared.queryTaskCount(date: checkInDate)
+        checkIn.completedCount = task.completed
+        checkIn.createdCount = task.created
+        RealmManager.shared.saveCheckIn(checkIn)
     }
     /**
      do some use repeater create todays task
      */
     fileprivate func repeaterTaskCreate() {
         Logger.log("repeater task create")
-        let manager = RealmManager.shareManager
+        let manager = RealmManager.shared
         let all = manager.allRepeater()
         let today = NSDate()
         for repeater in all {
@@ -104,7 +101,7 @@ struct RepeaterManager {
         newTask.taskType = task.taskType
         newTask.trigger = nil
         
-        let shareManager = RealmManager.shareManager
+        let shareManager = RealmManager.shared
         let subtasks = shareManager.querySubtask(task.uuid)
         for (index, sub) in subtasks.enumerated() {
             let subtask = Subtask()

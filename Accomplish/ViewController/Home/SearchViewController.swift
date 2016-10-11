@@ -178,7 +178,7 @@ extension SearchViewController: UITextFieldDelegate {
     fileprivate func queryResult(queryString: String) {
         self.searchInProgress = true
         
-        let tasks = RealmManager.shareManager
+        let tasks = RealmManager.shared
             .searchTasks(queryString: queryString)
         
         self.searchResult.removeAll()

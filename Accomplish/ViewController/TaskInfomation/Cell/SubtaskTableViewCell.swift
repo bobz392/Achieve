@@ -84,13 +84,13 @@ class SubtaskTableViewCell: BaseTableViewCell {
     
     func deleteSubtask() {
         guard let subtask = self.subtask else { return }
-        RealmManager.shareManager.deleteObject(subtask)
+        RealmManager.shared.deleteObject(subtask)
     }
     
     func subtaskChecked() {
         guard let subtask = self.subtask else { return }
         
-        RealmManager.shareManager.updateObject {
+        RealmManager.shared.updateObject {
             if subtask.finishedDate == nil {
                 subtask.finishedDate = NSDate()
             } else {
@@ -112,7 +112,7 @@ extension SubtaskTableViewCell: UITextFieldDelegate {
             let text = textField.text {
             if text.characters.count > 0 {
                 if let subtask = self.subtask {
-                    RealmManager.shareManager.updateObject({
+                    RealmManager.shared.updateObject({
                         subtask.taskToDo = text
                     })
                 } else {
@@ -130,6 +130,6 @@ extension SubtaskTableViewCell: UITextFieldDelegate {
         subtask.taskToDo = title
         subtask.rootUUID = task.uuid
         subtask.uuid = now.createTaskUUID()
-        RealmManager.shareManager.writeObject(subtask)
+        RealmManager.shared.writeObject(subtask)
     }
 }

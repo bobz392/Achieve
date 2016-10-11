@@ -19,7 +19,7 @@ class TaskPickerView: UIView {
     static let height: CGFloat = 245
     
     fileprivate let repeatTypes: [RepeaterTimeType] = [.daily, .weekday, .everyWeek, .everyMonth, .annual]
-    fileprivate let allTags = RealmManager.shareManager.allTags()
+    fileprivate let allTags = RealmManager.shared.allTags()
     
     var task: Task?
     fileprivate var index: String = ""

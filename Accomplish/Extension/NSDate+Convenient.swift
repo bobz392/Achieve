@@ -85,4 +85,11 @@ extension NSDate {
             return " " + self.formattedDate(with: .medium)
         }
     }
+    
+    func dayCountsInMonth() -> Int? {
+        let c = NSCalendar.current
+        let days =
+            c.range(of: .day, in: .month, for: self as Date)
+        return days?.count
+    }
 }

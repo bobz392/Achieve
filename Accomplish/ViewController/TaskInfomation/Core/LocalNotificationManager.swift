@@ -74,7 +74,7 @@ class LocalNotificationManager: NSObject {
         guard let notifys = notifications else { return [] }
         
         var uuidSet: Set<String>
-        if let repeater = RealmManager.shareManager.queryRepeaterWithTask(taskUUID) {
+        if let repeater = RealmManager.shared.queryRepeaterWithTask(taskUUID) {
             if repeater.repeatType == RepeaterTimeType.weekday.rawValue {
                 let uuidArray = (2..<7).map({ (weekday) -> String in
                     return repeater.repeatQueryTaskUUID + "\(weekday)"
@@ -111,7 +111,7 @@ class LocalNotificationManager: NSObject {
      **/
     fileprivate func deleteTaskRepeater(_ task: Task) {
         // 删除 repeater 本身
-        RealmManager.shareManager.deleteRepeater(task)
+        RealmManager.shared.deleteRepeater(task)
         
         let notify = self.notifyWithUUID(task.uuid)
         guard notify.count > 0 else { return }
@@ -148,7 +148,7 @@ class LocalNotificationManager: NSObject {
     
     fileprivate func skipToday(skip: Bool, task: Task) {
         guard let repeater =
-            RealmManager.shareManager.queryRepeaterWithTask(task.uuid) else {
+            RealmManager.shared.queryRepeaterWithTask(task.uuid) else {
                 if skip {
                     self.cancelNotify(task)
                 } else {
@@ -254,7 +254,7 @@ class LocalNotificationManager: NSObject {
         
         let notify = UILocalNotification()
         
-        let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid)
+        let repeater = RealmManager.shared.queryRepeaterWithTask(task.uuid)
         if let repeater = repeater,
             let type = RepeaterTimeType(rawValue: repeater.repeatType) {
             if type == .weekday {
@@ -383,11 +383,11 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
         }
         switch response.actionIdentifier {
         case kNotifyFinishAction:
-            guard let task = RealmManager.shareManager.queryTask(uuid) else {
+            guard let task = RealmManager.shared.queryTask(uuid) else {
                 return
             }
             
-            RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+            RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
             
         case kNotifyReschedulingAction:
             UrlSchemeDispatcher().checkTaskDetail(uuid)
@@ -426,7 +426,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
     
     fileprivate func skipUNToday(skip: Bool, task: Task) {
         guard let repeater =
-            RealmManager.shareManager.queryRepeaterWithTask(task.uuid) else {
+            RealmManager.shared.queryRepeaterWithTask(task.uuid) else {
                 if skip {
                     self.cancelUNNotify(task)
                 } else {
@@ -525,7 +525,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
         let trigger: UNCalendarNotificationTrigger
         var dateComponents: DateComponents
         
-        let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid)
+        let repeater = RealmManager.shared.queryRepeaterWithTask(task.uuid)
         if let repeater = repeater,
             let type = RepeaterTimeType(rawValue: repeater.repeatType) {
             

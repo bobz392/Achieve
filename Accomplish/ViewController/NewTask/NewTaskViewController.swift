@@ -238,7 +238,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.task.tagUUID = tagUUID
         
         self.saveSubtasks()
-        RealmManager.shareManager.writeObject(self.task)
+        RealmManager.shared.writeObject(self.task)
         
         if #available(iOS 9.0, *) {
             SpotlightManager().addTaskToIndex(task: self.task)
@@ -266,7 +266,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             
         })
         
-        RealmManager.shareManager.writeObjects(tasks)
+        RealmManager.shared.writeObjects(tasks)
     }
     
     // MARK: - textfield

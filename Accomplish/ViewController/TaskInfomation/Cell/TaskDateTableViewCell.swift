@@ -53,24 +53,24 @@ class TaskDateTableViewCell: BaseTableViewCell {
         switch self.detailType {
         case TaskDetailType.repeat:
             LocalNotificationManager.shared.removeRepeater(task)
-            RealmManager.shareManager.updateObject {
+            RealmManager.shared.updateObject {
                 task.repeaterUUID = nil
             }
             
             
         case TaskDetailType.notify:
-            RealmManager.shareManager.updateObject {
+            RealmManager.shared.updateObject {
                 task.notifyDate = nil
             }
             LocalNotificationManager.shared.cancel(task)
             
         case TaskDetailType.estimate:
-            RealmManager.shareManager.updateObject({
+            RealmManager.shared.updateObject({
                 task.estimateDate = nil
             })
             
         case TaskDetailType.tag:
-            RealmManager.shareManager.updateObject({
+            RealmManager.shared.updateObject({
                 task.tagUUID = nil
             })
             
@@ -148,7 +148,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
             
         case TaskIconRepeat:
             let hasRepeater: Bool
-            if let repeater = RealmManager.shareManager.queryRepeaterWithTask(task.uuid) {
+            if let repeater = RealmManager.shared.queryRepeaterWithTask(task.uuid) {
                 hasRepeater = true
                 if let type = RepeaterTimeType(rawValue: repeater.repeatType),
                     let createDate = task.createdDate {
@@ -172,13 +172,13 @@ class TaskDateTableViewCell: BaseTableViewCell {
             // MARK: -- to do
             if let tagUUID = task.tagUUID {
                 // 检查 tag 是否还在，如果不在则删除 task 的 tag
-                if let tag = RealmManager.shareManager.queryTag(usingName: false, query: tagUUID) {
+                if let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID) {
                     hasTag = true
                     self.infoLabel.text = Localized("tag") + tag.name
                 } else {
                     hasTag = false
                     self.infoLabel.text = Localized("noTag")
-                    RealmManager.shareManager.updateObject({
+                    RealmManager.shared.updateObject({
                         self.task?.tagUUID = nil
                     })
                 }

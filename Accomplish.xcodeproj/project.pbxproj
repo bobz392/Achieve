@@ -217,6 +217,9 @@
 		C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798073B1D8538C00011DE19 /* BackgroundViewController.xib */; };
 		C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */; };
 		C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */; };
+		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
+		C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */; };
+		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
 		C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C7B74DB51D8D9277002EE15E /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
@@ -594,6 +597,9 @@
 		C798073B1D8538C00011DE19 /* BackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundViewController.xib; sourceTree = "<group>"; };
 		C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundCollectionViewCell.xib; sourceTree = "<group>"; };
+		C7B579291DAACEDC003B6D92 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
+		C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthViewController.xib; sourceTree = "<group>"; };
+		C7B579321DAD79A3003B6D92 /* TestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
 		C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WatchAssets.xcassets; sourceTree = "<group>"; };
 		C7C5C5B71D752136001168A4 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		C7C5C5B81D752136001168A4 /* SubtaskTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubtaskTableViewCell.xib; sourceTree = "<group>"; };
@@ -772,6 +778,7 @@
 				C76AE2CE1D8E892F00930D43 /* WatchManager.swift */,
 				C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */,
 				C74A896B1D949A6B008E15CA /* CloudKitManager.swift */,
+				C7B579321DAD79A3003B6D92 /* TestManager.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1000,6 +1007,8 @@
 				C7821ED41D7C076B0056623D /* CalendarViewController.xib */,
 				C79806E61D8011E20011DE19 /* ReportViewController.swift */,
 				C79806E71D8011E20011DE19 /* ReportViewController.xib */,
+				C7B579291DAACEDC003B6D92 /* MonthViewController.swift */,
+				C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1545,6 +1554,7 @@
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7F7099C1DA40E0B005D7B67 /* 0708DA5F-B11C-34C8-B158-BF045E9C0167.bcsymbolmap in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
+				C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */,
 				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
 				C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
@@ -1722,6 +1732,7 @@
 				C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */,
 				C7DB5D151D91A2A100719CB3 /* TagTableViewCell.swift in Sources */,
 				C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */,
+				C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */,
 				C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */,
 				C79805C51D7D4E610011DE19 /* JTAppleCalendarView.swift in Sources */,
 				C79805C21D7D4E610011DE19 /* GlobalFunctionsAndExtensions.swift in Sources */,
@@ -1783,6 +1794,7 @@
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */,
 				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,
+				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
 				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,

@@ -195,12 +195,12 @@ class TaskTableViewCell: BaseTableViewCell {
     func markTask(_ btn: UIButton) {
         guard let task = self.task else { return }
         if task.status == kTaskFinish {
-            RealmManager.shareManager.updateTaskStatus(task, status: kTaskRunning)
+            RealmManager.shared.updateTaskStatus(task, status: kTaskRunning)
         } else {
             if !AppUserDefault().readBool(kCloseSoundKey) {
                 self.dingSound()
             }
-            RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+            RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
         }
         
         if #available(iOS 9.0, *) {
@@ -210,7 +210,7 @@ class TaskTableViewCell: BaseTableViewCell {
             } else {
                 manager.addTaskToIndex(task: task)
             }
-            WatchManager.shareManager.tellWatchQueryNewTask()
+            WatchManager.shared.tellWatchQueryNewTask()
         }
     }
     

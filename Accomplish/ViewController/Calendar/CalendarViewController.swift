@@ -28,7 +28,7 @@ class CalendarViewController: BaseViewController {
     
     lazy fileprivate var checkInManager = CheckInManager()
     lazy fileprivate var firstDate =
-        RealmManager.shareManager.queryCheckIn()?.checkInDate ?? NSDate()
+        RealmManager.shared.queryCheckIn()?.checkInDate ?? NSDate()
     lazy fileprivate var row = 6
     fileprivate var inTodayAlleady = false
     fileprivate var monthButtonRight: CGFloat = 0
@@ -124,6 +124,7 @@ class CalendarViewController: BaseViewController {
         
         self.monthButton.setTitle(Localized("monthly"), for: .normal)
         self.monthButton.layer.cornerRadius = 14
+        self.monthButton.addTarget(self, action: #selector(self.monthAction), for: .touchUpInside)
     }
     
     func configCountingLabel(_ countLabel: UICountingLabel) {
@@ -174,6 +175,12 @@ class CalendarViewController: BaseViewController {
         let now = Date()
         self.calendarView.selectDates([now])
         self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, preferredScrollPosition: nil, completionHandler: nil)
+    }
+    
+    func monthAction() {
+        let monthVC =
+            MonthViewController(checkIns: self.checkInManager.getMonthCheckIn())
+        self.navigationController?.pushViewController(monthVC, animated: true)
     }
 }
 

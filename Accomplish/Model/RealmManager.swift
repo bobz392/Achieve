@@ -14,7 +14,7 @@ class RealmManager {
     typealias RealmBlock = () -> Void
     internal let realm = try! Realm()
     
-    static let shareManager = RealmManager()
+    static let shared = RealmManager()
     
     static func configMainRealm() {
         let config = Realm.Configuration()
@@ -211,6 +211,14 @@ extension RealmManager {
     
     func allCheckIn() -> Results<CheckIn> {
         return realm.objects(CheckIn.self)
+    }
+    
+    func monthlyCheckIn() -> Results<CheckIn> {
+        let month = NSDate().month()
+        let year = NSDate().year()
+        
+        return realm.objects(CheckIn.self)
+            .filter("year == \(year) AND month == \(month)")
     }
 }
 

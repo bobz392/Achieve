@@ -72,7 +72,7 @@ class TaskDetailViewController: BaseViewController {
             , self.task.subTaskCount != count
             else { return }
         
-        RealmManager.shareManager.updateObject {
+        RealmManager.shared.updateObject {
             self.task.subTaskCount = count
         }
     }
@@ -252,7 +252,7 @@ extension TaskDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let title = textField.text {
             if !title.isEmpty {
-                RealmManager.shareManager.updateObject({
+                RealmManager.shared.updateObject({
                     self.task.taskToDo = title
                 })
             }
@@ -264,7 +264,7 @@ extension TaskDetailViewController: UITextFieldDelegate {
 // MARK: - table view
 extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     fileprivate func initializeTableView() {
-        let sts = RealmManager.shareManager.querySubtask(task.uuid)
+        let sts = RealmManager.shared.querySubtask(task.uuid)
         self.subtasks = sts
         for index in 0..<sts.count {
             if sts[index].finishedDate == nil {
@@ -407,18 +407,18 @@ extension TaskDetailViewController {
         switch taskPickerView.getIndex() {
         case TaskIconCalendar:
             guard let date = taskPickerView.datePicker.date as NSDate? else { break }
-            RealmManager.shareManager.updateObject {
+            RealmManager.shared.updateObject {
                 self.task.createdDate = date
                 self.task.createdFormattedDate = date.createdFormatedDateString()
             }
             
         case TaskDueIconCalendar:
-            RealmManager.shareManager.updateObject {
+            RealmManager.shared.updateObject {
                 self.task.estimateDate = taskPickerView.datePicker.date as NSDate
             }
             
         case TaskIconReminder:
-            RealmManager.shareManager.updateObject {
+            RealmManager.shared.updateObject {
                 let date = taskPickerView.datePicker.date as NSDate
                 let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 0)
                 
@@ -431,13 +431,13 @@ extension TaskDetailViewController {
             
         case TaskIconRepeat:
             let repeatTimeType = taskPickerView.repeatTimeType()
-            RealmManager.shareManager
+            RealmManager.shared
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
             LocalNotificationManager.shared.update(self.task)
             
         case TaskTagIcon:
             let tagUUID = taskPickerView.selectedTagUUID()
-            RealmManager.shareManager.updateObject({
+            RealmManager.shared.updateObject({
                 self.task.tagUUID = tagUUID
             })
             
@@ -486,7 +486,7 @@ extension TaskDetailViewController {
 // MARK: - TaskNoteDataDelegate
 extension TaskDetailViewController: TaskNoteDataDelegate {
     func taskNoteAdd(_ newNote: String) {
-        RealmManager.shareManager.updateObject {
+        RealmManager.shared.updateObject {
             self.task.taskNote = newNote
             let index = IndexPath(row: 0, section: self.iconList.count - 1)
             self.detailTableView.reloadRows(at: [index], with: .automatic)

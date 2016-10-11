@@ -14,7 +14,7 @@ class WatchManager: NSObject, WCSessionDelegate {
     
     var session : WCSession?
     
-    static let shareManager = WatchManager()
+    static let shared = WatchManager()
     
     override fileprivate init() {
         super.init()
@@ -76,8 +76,8 @@ class WatchManager: NSObject, WCSessionDelegate {
                 replyHandler([kAppSentTaskKey: tasks])
                 // 如果是设置任务完成的key
             } else if let uuid = message[kWatchSetTaskFinishKey] as? String {
-                guard let task = RealmManager.shareManager.queryTask(uuid) else { return }
-                RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+                guard let task = RealmManager.shared.queryTask(uuid) else { return }
+                RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
                 replyHandler([kAppSetTaskFinishOkKey: uuid])
                 
             } else {

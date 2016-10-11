@@ -274,7 +274,7 @@ class HomeViewController: BaseViewController {
         guard let group = GroupUserDefault() else { return }
         let finishTasks = group.getAllFinishTask()
         
-        let manager = RealmManager.shareManager
+        let manager = RealmManager.shared
         
         let _ = finishTasks.map({ (taskInfoArr) -> Void in
             let uuid = taskInfoArr[GroupTaskUUIDIndex]
@@ -399,11 +399,12 @@ class HomeViewController: BaseViewController {
         }
         
         appUD.write(kCheckMoveUnfinishTaskKey, value: false)
+        
+        self.repeaterManager.createCheckIn()
     }
     
     fileprivate func queryTodayTask(tagUUID: String? = nil) {
-        let shareManager = RealmManager.shareManager
-        
+        let shareManager = RealmManager.shared
         let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kCurrentTagUUIDKey)
         self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
         self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
@@ -411,7 +412,7 @@ class HomeViewController: BaseViewController {
     }
     
     fileprivate func handleMoveUnfinishTaskToToday() {
-        let shareManager = RealmManager.shareManager
+        let shareManager = RealmManager.shared
         let movetasks = shareManager.hasUnfinishTaskMoveToday()
         if movetasks.count > 0 {
             let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .alert)
@@ -449,7 +450,8 @@ class HomeViewController: BaseViewController {
     func switchScreenAction() {
         self.doSwitchScreen(true)
         
-        CloudKitManager().fetchTestData()
+//        CloudKitManager().fetchTestData()
+//        TestManager().addTestCheckIn()
     }
     
     func calendarAction() {
@@ -590,7 +592,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let tagUUID = AppUserDefault().readString(kCurrentTagUUIDKey) else { return nil }
-        guard let tag = RealmManager.shareManager.queryTag(usingName: false, query: tagUUID)
+        guard let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID)
             else { return nil }
         
         let view = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: tableView.frame.width, height: 25)))
@@ -658,7 +660,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func showSettings(taskUUID: String) {
-        guard  let task = RealmManager.shareManager.queryTask(taskUUID) else {
+        guard  let task = RealmManager.shared.queryTask(taskUUID) else {
             return
         }
         
@@ -670,13 +672,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 SpotlightManager().removeFromIndex(task: task)
             }
             
-            RealmManager.shareManager.deleteTask(task)
+            RealmManager.shared.deleteTask(task)
         }
         alert.addAction(deleteAction)
         
         if let _ = task.notifyDate {
             let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .default, handler: { (action) in
-                RealmManager.shareManager.deleteTaskReminder(task)
+                RealmManager.shared.deleteTaskReminder(task)
                 
             })
             alert.addAction(deleteReminderAction)

@@ -59,11 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if identifier == kNotifyFinishAction {
-            guard let task = RealmManager.shareManager.queryTask(uuid) else {
+            guard let task = RealmManager.shared.queryTask(uuid) else {
                 return
             }
             
-            RealmManager.shareManager.updateTaskStatus(task, status: kTaskFinish)
+            RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
         } else if identifier == kNotifyReschedulingAction {
             UrlSchemeDispatcher().checkTaskDetail(uuid)
         }
@@ -153,7 +153,7 @@ extension AppDelegate {
 extension AppDelegate {
     var watchManger: WatchManager {
         get {
-            return WatchManager.shareManager
+            return WatchManager.shared
         }
     }
 }

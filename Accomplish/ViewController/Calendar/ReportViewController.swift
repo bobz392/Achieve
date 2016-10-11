@@ -22,14 +22,14 @@ class ReportViewController: BaseViewController {
     
     init(checkInDate: NSDate) {
         self.checkInDate = checkInDate
-        self.taskList = RealmManager.shareManager.queryTaskList(checkInDate)
+        self.taskList = RealmManager.shared.queryTaskList(checkInDate)
         self.cellHeightCache = Array(repeating: 0, count: self.taskList.count)
         super.init(nibName: "ReportViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.checkInDate = NSDate()
-        self.taskList = RealmManager.shareManager.queryTaskList(self.checkInDate)
+        self.taskList = RealmManager.shared.queryTaskList(self.checkInDate)
         self.cellHeightCache = [CGFloat]()
         fatalError("init(coder:) has not been implemented")
     }

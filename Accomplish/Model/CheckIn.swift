@@ -15,4 +15,7 @@ class CheckIn: Object {
     
     dynamic var createdCount: Int = 0
     dynamic var completedCount: Int = 0
+    
+    dynamic var month: Int = 0
+    dynamic var year: Int = 0
 }

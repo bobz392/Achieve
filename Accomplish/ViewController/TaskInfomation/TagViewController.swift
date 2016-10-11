@@ -22,7 +22,7 @@ class TagViewController: BaseViewController {
     @IBOutlet weak var realShadowView: UIView!
     @IBOutlet weak var holderView: UIView!
     
-    fileprivate var allTags = RealmManager.shareManager.allTags()
+    fileprivate var allTags = RealmManager.shared.allTags()
     fileprivate let noTag = "noneTag"
     fileprivate var bagDict = Dictionary<String, Int>()
     fileprivate var currentSelectedIndex: IndexPath? = nil
@@ -42,7 +42,7 @@ class TagViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let tasks = RealmManager.shareManager.queryTaskList(NSDate())
+        let tasks = RealmManager.shared.queryTaskList(NSDate())
         
         for task in tasks {
             if let tagUUID = task.tagUUID {
@@ -231,7 +231,7 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
             alert.addAction(cancelAction)
             
             let deleteAction = UIAlertAction(title: Localized("deleteTag"), style: .destructive, handler: { (action) in
-                RealmManager.shareManager.deleteObject(tag)
+                RealmManager.shared.deleteObject(tag)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             })
             alert.addAction(deleteAction)
@@ -295,7 +295,7 @@ extension TagViewController: UITextFieldDelegate {
         tag.name = text
         tag.createdAt = NSDate()
         
-        let canSave = RealmManager.shareManager.saveTag(tag)
+        let canSave = RealmManager.shared.saveTag(tag)
         if !canSave {
             HUD.shared.showOnce(Localized("tagExist"))
             return canSave

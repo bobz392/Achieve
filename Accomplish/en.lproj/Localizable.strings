@@ -139,6 +139,9 @@
 "reportEarlier"=", finished ahead of %@.";
 "reportEstimate"=", estimated finish at %@.";
 
+"completionRates"="Current Month Completion Rates";
+"monthlyWeek"="Week %d";
+
 "hour"="hour";
 "hours"="hours";
 "mins"="minutes";

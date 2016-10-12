@@ -12,6 +12,9 @@ import Charts
 class MonthViewController: BaseViewController, ChartViewDelegate {
     
     @IBOutlet weak var chartCardView: UIView!
+    @IBOutlet weak var monthTableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
+    
     fileprivate let chartView = LineChartView()
     fileprivate let checkIns: Array<CheckIn>
     fileprivate var needAdjustChartWeek = false
@@ -48,18 +51,61 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.chartView.chartDescription?.textColor = colors.mainTextColor
         self.chartView.leftAxis.labelTextColor = colors.mainTextColor
         self.chartView.xAxis.labelTextColor = colors.mainTextColor
+        
+        self.monthTableView.clearView()
+        
+        self.backButton.buttonColor(colors)
+        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
+                                         icon: backButtonIconString, color: colors.mainGreenColor,
+                                         status: .normal)
     }
     
     fileprivate func initializeControl() {
         self.chartCardView.layer.cornerRadius = kCardViewCornerRadius
         self.initChart()
+        self.initTableView()
+        
+        self.backButton.addShadow()
+        self.backButton.layer.cornerRadius = kBackButtonCorner
+        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
     }
     
+    // MARK: - actions
+    func backAction() {
+        guard let nav = self.navigationController else {
+            return
+        }
+        nav.popViewController(animated: true)
+    }
 }
+
+extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
+    fileprivate func initTableView() {
+        self.monthTableView
+            .register(MonthTableViewCell.nib, forCellReuseIdentifier: MonthTableViewCell.reuseId)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MonthTableViewCell.reuseId,
+                                                 for: indexPath) as! MonthTableViewCell
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return MonthTableViewCell.rowHeight
+    }
+}
+
 
 extension MonthViewController: IAxisValueFormatter {
     fileprivate func initChart() {
         self.chartCardView.addSubview(chartView)
+        self.chartCardView.addShadow()
         self.chartView.snp.makeConstraints { (make) in
             make.top.equalTo(self.chartCardView).offset(5)
             make.leading.equalTo(self.chartCardView)
@@ -82,6 +128,7 @@ extension MonthViewController: IAxisValueFormatter {
         self.chartView.leftAxis.valueFormatter =
             DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         self.chartView.leftAxis.axisMaximum = 100
+        self.chartView.leftAxis.axisMinimum = 0
         self.chartView.leftAxis.drawGridLinesEnabled = false
         self.chartView.rightAxis.enabled = false
         self.chartView.xAxis.drawGridLinesEnabled = false
@@ -91,20 +138,23 @@ extension MonthViewController: IAxisValueFormatter {
         self.chartView.animate(yAxisDuration: 1.5)
         
         self.setMonthData()
-        
     }
     
     fileprivate func setMonthData() {
         guard let count = NSDate().dayCountsInMonth() else { return }
-        self.chartView.xAxis.axisMaximum = Double(count)
         self.chartView.xAxis.setLabelCount(count, force: true)
+        self.chartView.xAxis.labelCount = count
         
         var values = Array<ChartDataEntry>()
         
         if self.checkIns.count > 0 {
             var rats = self.checkIns.map { (c) -> Double in
-                let rat = Double(c.completedCount) / Double(c.createdCount)
-                return rat * 100
+                if c.createdCount == 0 {
+                    return 0
+                } else {
+                    let rat = Double(c.completedCount) / Double(c.createdCount)
+                    return rat * 100
+                }
             }
             let appendCount = count - rats.count
             let appendArray = Array<Double>(repeating: 0.0, count: appendCount)
@@ -128,7 +178,7 @@ extension MonthViewController: IAxisValueFormatter {
         dataSets.append(set1)
         
         let data = LineChartData(dataSets: dataSets)
-        chartView.data = data
+        self.chartView.data = data
     }
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
@@ -145,13 +195,15 @@ extension MonthViewController: IAxisValueFormatter {
         }
         
         if nd.weekday() == 1 {
-            return
-                String(format: Localized("monthlyWeek"),
-                       nd.weekOfMonth() - (self.needAdjustChartWeek ? 1 : 0))
+            let s = nd.weekOfMonth() - (self.needAdjustChartWeek ? 1 : 0)
+            if s > 4 {
+                return ""
+            } else {
+                return String(format: Localized("monthlyWeek"), s)
+            }
         } else {
             return ""
         }
     }
-    
 }
 

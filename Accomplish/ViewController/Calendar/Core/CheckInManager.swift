@@ -34,9 +34,7 @@ struct CheckInManager {
     func getMonthCheckIn() -> Array<CheckIn> {
         let checkIns = RealmManager.shared.monthlyCheckIn()
         
-        return checkIns.map { (c) -> CheckIn in
-            c
-        }
+        return Array<CheckIn>(checkIns)
     }
     
 }

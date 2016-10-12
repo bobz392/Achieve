@@ -72,7 +72,7 @@ class RealmManager {
     
     func queryTaskCount(date: NSDate) -> (completed: Int, created: Int) {
         let task = realm.objects(Task.self)
-            .filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
+            .filter("createdFormattedDate == '\(date.createdFormatedDateString())'")
         
         let created = task.count
         let complete = task.filter("status == \(kTaskFinish)").count
@@ -82,6 +82,15 @@ class RealmManager {
     
     func queryTask(_ taskUUID: String) -> Task? {
         return realm.objects(Task.self).filter("uuid = '\(taskUUID)'").first
+    }
+    
+    /**
+     查询本月需要 report 的 task
+     */
+    func queryMonthlyTask() -> Results<Task> {
+        let month = NSDate().formattedDate(withFormat: "yyyy.MM")!
+        return realm.objects(Task.self)
+            .filter("(repeaterUUID != nil) OR (postponeTimes > 0) AND (createdFormattedDate BEGINSWITH '\(month)')")
     }
     
     func queryTaskList(_ date: NSDate) -> Results<Task> {
@@ -214,11 +223,10 @@ extension RealmManager {
     }
     
     func monthlyCheckIn() -> Results<CheckIn> {
-        let month = NSDate().month()
-        let year = NSDate().year()
-        
-        return realm.objects(CheckIn.self)
-            .filter("year == \(year) AND month == \(month)")
+        let month = NSDate().formattedDate(withFormat: "yyyy.MM")!
+        let checkIns = realm.objects(CheckIn.self)
+            .filter("formatedDate BEGINSWITH '\(month)'")
+        return checkIns
     }
 }
 

@@ -17,12 +17,10 @@ struct TestManager {
             let checkIn = CheckIn()
             let date = NSDate(year: 2016, month: 10, day: i)!
             checkIn.checkInDate = date
-            checkIn.formatedDate = date.formattedDate(withFormat: UUIDFormat)
+            checkIn.formatedDate = date.createdFormatedDateString()
             
-            let create = Int(arc4random() % 100)
+            let create = Int(arc4random() % 100) + 1
             checkIn.createdCount = create
-            checkIn.year = 2016
-            checkIn.month = 10
             
             checkIn.completedCount = Int(arc4random() % UInt32(create))
             

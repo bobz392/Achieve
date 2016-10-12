@@ -72,6 +72,8 @@
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
 		C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBDE1DA04A7200099C87 /* HomeTableView.swift */; };
 		C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBE01DA13BB500099C87 /* ReportGenerator.swift */; };
+		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
+		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
 		C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A89391D93F972008E15CA /* SearchViewController.xib */; };
 		C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A893C1D941071008E15CA /* SearchTableViewCell.swift */; };
@@ -458,6 +460,8 @@
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
 		C738CBDE1DA04A7200099C87 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		C738CBE01DA13BB500099C87 /* ReportGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
+		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
+		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
 		C74A89381D93F972008E15CA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C74A89391D93F972008E15CA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C74A893C1D941071008E15CA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -1105,6 +1109,8 @@
 				C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */,
 				C79806F61D8180CD0011DE19 /* ScheduleHeaderView.swift */,
 				C79806F81D8180DA0011DE19 /* ScheduleHeaderView.xib */,
+				C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */,
+				C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1566,6 +1572,7 @@
 				C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
 				C7F7099F1DA40E0B005D7B67 /* 4DF756E4-E523-3A13-A43A-1B1ACDB6638E.bcsymbolmap in Resources */,
+				C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */,
 				C7F709A41DA40E0B005D7B67 /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
@@ -1787,6 +1794,7 @@
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
 				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
+				C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
 				C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */,

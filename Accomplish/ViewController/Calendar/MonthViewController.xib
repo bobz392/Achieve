@@ -2,13 +2,15 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="Ggm-cV-8nI" id="vxA-5O-7wT"/>
                 <outlet property="chartCardView" destination="FI8-cy-GEM" id="Kfb-E2-fkV"/>
+                <outlet property="monthTableView" destination="Z97-gI-ZPY" id="VuH-Ih-1MH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,12 +25,35 @@
                         <constraint firstAttribute="height" constant="150" id="zG4-TP-aL2"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggm-cV-8nI" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
+                    <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="HAp-jV-mOB"/>
+                        <constraint firstAttribute="height" constant="42" id="PTT-SR-yi3"/>
+                    </constraints>
+                    <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                    <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z97-gI-ZPY">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Rnn-cG-0An"/>
+                        <outlet property="delegate" destination="-1" id="r1T-m0-WfF"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="FI8-cy-GEM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="AK1-ch-WAC"/>
+                <constraint firstAttribute="trailing" secondItem="Z97-gI-ZPY" secondAttribute="trailing" constant="10" id="CCO-ow-hot"/>
+                <constraint firstItem="Ggm-cV-8nI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NE3-ap-O86"/>
                 <constraint firstAttribute="trailing" secondItem="FI8-cy-GEM" secondAttribute="trailing" constant="10" id="WaG-HL-N9g"/>
+                <constraint firstItem="Ggm-cV-8nI" firstAttribute="top" secondItem="Z97-gI-ZPY" secondAttribute="bottom" constant="10" id="e0b-KP-MHH"/>
+                <constraint firstItem="Z97-gI-ZPY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="jQt-q1-Uvu"/>
+                <constraint firstAttribute="bottom" secondItem="Ggm-cV-8nI" secondAttribute="bottom" constant="10" id="l16-eY-Ym5"/>
                 <constraint firstItem="FI8-cy-GEM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="uI4-3r-n27"/>
+                <constraint firstItem="Z97-gI-ZPY" firstAttribute="top" secondItem="FI8-cy-GEM" secondAttribute="bottom" constant="10" id="v76-um-1AN"/>
             </constraints>
         </view>
     </objects>

@@ -31,6 +31,7 @@ class MonthTableViewCell: UITableViewCell {
         self.monthCardView.backgroundColor = colors.cloudColor
         self.monthCardView.layer.cornerRadius = kCardViewCornerRadius
         self.taskNameLabel.textColor = colors.mainTextColor
+        self.infoLabel.textColor = colors.secondaryTextColor
         self.leftDetailLabel.textColor = colors.secondaryTextColor
         self.rightDetailLabel.textColor = colors.secondaryTextColor
     }
@@ -41,9 +42,17 @@ class MonthTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    func configCell(task: Task) {
+    func configPostpone(task: Task) {
+        self.infoLabel.text = Localized("postponeTask")
+        self.leftDetailLabel.text =
+            String(format: Localized("postponeTimes"), task.postponeTimes)
         
+        if let finishDate = task.finishedDate {
+            self.rightDetailLabel.text =
+                String(format: Localized("postponeFinishAt"),
+                       finishDate.formattedDate(with: .medium))
+        } else {
+            self.rightDetailLabel.text = Localized("progess")
+        }
     }
-    
 }

@@ -35,6 +35,14 @@ extension RealmManager {
         }
     }
     
+    func queryRepeaterWithUUID(repeatUUID uuid: String) -> Repeater? {
+        let repeater = realm.objects(Repeater.self)
+            .filter("uuid = '\(uuid)'")
+            .first
+        
+        return repeater
+    }
+    
     func queryRepeaterWithTask(_ taskUUID: String) -> Repeater? {
         let repeater = realm.objects(Repeater.self)
             .filter("repeatTaskUUID = '\(taskUUID)'")

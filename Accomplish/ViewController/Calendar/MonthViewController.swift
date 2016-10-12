@@ -18,7 +18,11 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     fileprivate let chartView = LineChartView()
     fileprivate let checkIns: Array<CheckIn>
     fileprivate var needAdjustChartWeek = false
+    fileprivate var monthlyTasks = Array<Task>()
+    fileprivate var taskDict = Dictionary<String, Array<Int>>()
     
+    let monthRepeatFormat = NumberFormatter()
+
     init(checkIns: Array<CheckIn>) {
         self.checkIns = checkIns
         super.init(nibName: "MonthViewController", bundle: nil)
@@ -35,6 +39,12 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         // Do any additional setup after loading the view.
         self.configMainUI()
         self.initializeControl()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.fetchMonthlyTasks()
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,6 +78,9 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        
+        self.monthRepeatFormat.numberStyle = .decimal
+        self.monthRepeatFormat.maximumFractionDigits = 2
     }
     
     // MARK: - actions
@@ -76,6 +89,42 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
             return
         }
         nav.popViewController(animated: true)
+    }
+    
+    fileprivate func fetchMonthlyTasks() {
+        let tasks = RealmManager.shared.queryMonthlyTask()
+
+        for task in tasks {
+            // 如果是重复任务
+            if let repeatUUID = task.repeaterUUID {
+                if self.taskDict[repeatUUID] == nil {
+                    var array: [Int]
+                    if task.status == kTaskFinish {
+                        array = [1, 1]
+                    } else {
+                        array = [0, 1]
+                    }
+                    self.taskDict[repeatUUID] = array
+                    self.monthlyTasks.append(task)
+                } else {
+                    if var array = self.taskDict[repeatUUID],
+                        array.count == 2 {
+                        if task.status == kTaskFinish {
+                            array[0] = 1 + array[0]
+                            array[1] = 1 + array[1]
+                        } else {
+                            array[1] = 1 + array[1]
+                        }
+                        
+                        self.taskDict[repeatUUID] = array
+                    }
+                }
+            } else {
+                self.monthlyTasks.append(task)
+            }
+        }
+        
+        self.monthTableView.reloadData()
     }
 }
 
@@ -86,12 +135,41 @@ extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.monthlyTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MonthTableViewCell.reuseId,
                                                  for: indexPath) as! MonthTableViewCell
+        
+        let task = self.monthlyTasks[indexPath.row]
+        cell.taskNameLabel.text = task.getNormalDisplayTitle()
+        
+        if let repeaterUUID = task.repeaterUUID {
+            if let repeater = RealmManager.shared.queryRepeaterWithUUID(repeatUUID: repeaterUUID),
+                let createdDate = task.createdDate,
+                let repeaterType = RepeaterTimeType(rawValue: repeater.repeatType) {
+                
+                cell.infoLabel.text =
+                    repeaterType.repeaterTitle(createDate: createdDate)
+                if let arr = self.taskDict[repeaterUUID],
+                    arr.count == 2 {
+                    cell.leftDetailLabel.text =
+                        String(format: Localized("repeaterTimes"), arr[1])
+                    
+                    let rateInt = Int(Double(arr[0]) / Double(arr[1]) * 100)
+                    let rate = NSNumber(value: rateInt)
+                    let rateString = (self.monthRepeatFormat.string(from: rate) ?? "") + "%"
+                    cell.rightDetailLabel.text =
+                        String(format: Localized("repeaterRates"), rateString)
+                } else {
+                    cell.leftDetailLabel.text = ""
+                    cell.rightDetailLabel.text = ""
+                }
+            }
+        } else {
+            cell.configPostpone(task: task)
+        }
         
         return cell
     }

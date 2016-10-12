@@ -451,8 +451,7 @@ class HomeViewController: BaseViewController {
         self.doSwitchScreen(true)
         
 //        CloudKitManager().fetchTestData()
-        TestManager().addTestCheckIn()
-        Logger.log(RealmManager.shared.queryMonthlyTask())
+//        TestManager().addTestCheckIn()
     }
     
     func calendarAction() {

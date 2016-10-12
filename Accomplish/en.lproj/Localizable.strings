@@ -142,6 +142,7 @@
 "completionRates"="Current Month Completion Rates";
 "monthlyWeek"="Week %d";
 "postponeTask"="Postponed task";
+"repeaterMonth"="Repeater %@";
 "postponeTimes"="Postpone: %d Times";
 "repeaterTimes"="Repeat: %d Times";
 "repeaterRates"="Completion Rates: %@";

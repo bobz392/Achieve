@@ -49,14 +49,14 @@
                             <constraint firstItem="E3z-96-fSR" firstAttribute="trailing" secondItem="pyg-iy-n54" secondAttribute="trailing" id="bxG-Fm-BCf"/>
                             <constraint firstItem="E3z-96-fSR" firstAttribute="leading" secondItem="PdZ-QS-Tph" secondAttribute="trailing" id="kAR-Dx-0JY"/>
                             <constraint firstAttribute="trailing" secondItem="pyg-iy-n54" secondAttribute="trailing" constant="10" id="kQB-Fc-97h"/>
-                            <constraint firstItem="K7p-EE-Va0" firstAttribute="top" secondItem="pql-zd-aHt" secondAttribute="top" constant="4" id="rHi-zv-Qsd"/>
+                            <constraint firstItem="K7p-EE-Va0" firstAttribute="top" secondItem="pql-zd-aHt" secondAttribute="top" constant="6" id="rHi-zv-Qsd"/>
                             <constraint firstItem="pyg-iy-n54" firstAttribute="leading" secondItem="pql-zd-aHt" secondAttribute="leading" constant="10" id="wBA-iA-L3u"/>
                             <constraint firstItem="E3z-96-fSR" firstAttribute="width" secondItem="PdZ-QS-Tph" secondAttribute="width" id="xIV-xO-NlL"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="pql-zd-aHt" secondAttribute="bottom" constant="10" id="4jc-R5-aw9"/>
+                    <constraint firstAttribute="bottom" secondItem="pql-zd-aHt" secondAttribute="bottom" constant="5" id="4jc-R5-aw9"/>
                     <constraint firstAttribute="trailing" secondItem="pql-zd-aHt" secondAttribute="trailing" id="ABa-n2-tHm"/>
                     <constraint firstItem="pql-zd-aHt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Icc-18-xmK"/>
                     <constraint firstItem="pql-zd-aHt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Ybm-G6-0jF"/>

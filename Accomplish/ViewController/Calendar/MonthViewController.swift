@@ -151,7 +151,8 @@ extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
                 let repeaterType = RepeaterTimeType(rawValue: repeater.repeatType) {
                 
                 cell.infoLabel.text =
-                    repeaterType.repeaterTitle(createDate: createdDate)
+                    String(format: Localized("repeaterMonth"), repeaterType.repeaterTitle(createDate: createdDate))
+                
                 if let arr = self.taskDict[repeaterUUID],
                     arr.count == 2 {
                     cell.leftDetailLabel.text =

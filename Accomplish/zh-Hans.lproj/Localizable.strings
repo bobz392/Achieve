@@ -129,6 +129,7 @@
 "notCompleted"="没有完成";
 "notComoletedYet"="还未完成";
 "monthly"="  本月统计  ";
+"noMonthlyData"="没有重复以及推迟过的任务";
 
 "completionRates"="本月完成率";
 "monthlyWeek"="第%d周";

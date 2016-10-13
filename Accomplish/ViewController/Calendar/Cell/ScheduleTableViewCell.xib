@@ -34,6 +34,9 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfX-Yw-NKh">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天吃法" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZc-vq-JvP">
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -60,21 +63,25 @@
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstItem="OfX-Yw-NKh" firstAttribute="top" secondItem="twg-oN-Ae8" secondAttribute="top" id="4C2-lh-a0p"/>
                     <constraint firstItem="lsp-63-ljx" firstAttribute="leading" secondItem="fZc-vq-JvP" secondAttribute="leading" id="9FL-xl-pKh"/>
                     <constraint firstItem="O7z-6e-Afw" firstAttribute="trailing" secondItem="YUb-QW-nsg" secondAttribute="trailing" id="EXt-GN-12P"/>
+                    <constraint firstItem="OfX-Yw-NKh" firstAttribute="leading" secondItem="twg-oN-Ae8" secondAttribute="trailing" constant="8" id="FSH-H3-UF0"/>
                     <constraint firstItem="O7z-6e-Afw" firstAttribute="top" secondItem="YUb-QW-nsg" secondAttribute="bottom" id="HDP-Ev-QmK"/>
                     <constraint firstAttribute="trailing" secondItem="fZc-vq-JvP" secondAttribute="trailing" constant="5" id="Ht2-Bo-zS6"/>
-                    <constraint firstItem="YUb-QW-nsg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="IpJ-Ml-VtQ"/>
+                    <constraint firstItem="YUb-QW-nsg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IpJ-Ml-VtQ"/>
                     <constraint firstItem="twg-oN-Ae8" firstAttribute="leading" secondItem="YUb-QW-nsg" secondAttribute="trailing" constant="10" id="KXx-ma-ETC"/>
-                    <constraint firstItem="fZc-vq-JvP" firstAttribute="leading" secondItem="WAn-HE-Swi" secondAttribute="trailing" constant="20" id="Pj3-ha-Gbw"/>
                     <constraint firstItem="WAn-HE-Swi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Q9F-h7-ORb"/>
+                    <constraint firstItem="lsp-63-ljx" firstAttribute="bottom" secondItem="OfX-Yw-NKh" secondAttribute="bottom" constant="-4" id="RId-Rv-iZH"/>
+                    <constraint firstAttribute="trailing" secondItem="OfX-Yw-NKh" secondAttribute="trailing" constant="5" id="TOK-cz-an7"/>
                     <constraint firstAttribute="bottom" secondItem="WAn-HE-Swi" secondAttribute="bottom" id="Wo2-9i-em9"/>
-                    <constraint firstItem="YUb-QW-nsg" firstAttribute="centerY" secondItem="twg-oN-Ae8" secondAttribute="centerY" id="dEP-yZ-UAh"/>
-                    <constraint firstItem="lsp-63-ljx" firstAttribute="top" secondItem="fZc-vq-JvP" secondAttribute="bottom" constant="5" id="fgC-80-dbO"/>
+                    <constraint firstItem="fZc-vq-JvP" firstAttribute="top" secondItem="OfX-Yw-NKh" secondAttribute="top" constant="4" id="X2a-wM-tfx"/>
+                    <constraint firstItem="fZc-vq-JvP" firstAttribute="leading" secondItem="OfX-Yw-NKh" secondAttribute="leading" constant="10" id="fft-dD-IYM"/>
+                    <constraint firstItem="lsp-63-ljx" firstAttribute="top" secondItem="fZc-vq-JvP" secondAttribute="bottom" constant="2" id="fgC-80-dbO"/>
+                    <constraint firstAttribute="bottom" secondItem="OfX-Yw-NKh" secondAttribute="bottom" constant="5" id="flm-2i-mgI"/>
+                    <constraint firstItem="YUb-QW-nsg" firstAttribute="top" secondItem="twg-oN-Ae8" secondAttribute="top" id="h1c-o9-luJ"/>
                     <constraint firstItem="twg-oN-Ae8" firstAttribute="centerX" secondItem="WAn-HE-Swi" secondAttribute="centerX" id="jrT-xN-9RD"/>
-                    <constraint firstItem="fZc-vq-JvP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="neY-FX-dFJ"/>
                     <constraint firstItem="twg-oN-Ae8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="voa-er-ivO"/>
-                    <constraint firstAttribute="bottom" secondItem="lsp-63-ljx" secondAttribute="bottom" constant="15" id="xBm-HR-Zxc"/>
                     <constraint firstItem="O7z-6e-Afw" firstAttribute="leading" secondItem="YUb-QW-nsg" secondAttribute="leading" id="zTP-vI-ThQ"/>
                 </constraints>
             </tableViewCellContentView>
@@ -87,6 +94,7 @@
                 <outlet property="lineViewBottomConstraint" destination="Wo2-9i-em9" id="pzi-rs-cFC"/>
                 <outlet property="lineViewTopConstraint" destination="Q9F-h7-ORb" id="Pac-32-bFS"/>
                 <outlet property="statusLabel" destination="twg-oN-Ae8" id="fkf-6v-Qdv"/>
+                <outlet property="taskCardView" destination="OfX-Yw-NKh" id="7N8-h9-7uk"/>
                 <outlet property="tasksLabel" destination="fZc-vq-JvP" id="SOi-2F-uBB"/>
             </connections>
             <point key="canvasLocation" x="204" y="187"/>

@@ -13,13 +13,14 @@ class ScheduleTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
     static let reuseId = "scheduleTableViewCell"
-    static let rowHeight: CGFloat = 60
+    static let rowHeight: CGFloat = 57
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var createdTimeLabel: UILabel!
     @IBOutlet weak var amLabel: UILabel!
     @IBOutlet weak var tasksLabel: UILabel!
+    @IBOutlet weak var taskCardView: UIView!
     @IBOutlet weak var completedLabel: UILabel!
     
     @IBOutlet weak var lineViewTopConstraint: NSLayoutConstraint!
@@ -36,12 +37,17 @@ class ScheduleTableViewCell: UITableViewCell {
         
         self.statusLabel.layer.cornerRadius = 10
         self.statusLabel.backgroundColor = colors.cloudColor
-        self.tasksLabel.textColor = colors.cloudColor
         self.createdTimeLabel.textColor = colors.cloudColor
         self.amLabel.textColor = colors.cloudColor
-        self.completedLabel.textColor = colors.cloudColor
+        
+        self.tasksLabel.textColor = colors.mainTextColor
+        self.completedLabel.textColor = colors.secondaryTextColor
         
         self.tasksLabel.preferredMaxLayoutWidth = screenBounds.width - 101
+        
+        self.taskCardView.backgroundColor = colors.cloudColor
+        self.taskCardView.layer.cornerRadius = 4
+        self.taskCardView.addShadow()
     }
     
     func setTop(_ isTop: Bool) {
@@ -79,7 +85,7 @@ class ScheduleTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
-        selectedBackgroundView?.backgroundColor = UIColor.clear
+        selectedBackgroundView?.backgroundColor = Colors().selectedColor
         
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

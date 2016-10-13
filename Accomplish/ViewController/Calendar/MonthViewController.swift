@@ -14,6 +14,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     @IBOutlet weak var chartCardView: UIView!
     @IBOutlet weak var monthTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var emptyDataLabel: UILabel!
     
     fileprivate let chartView = LineChartView()
     fileprivate let checkIns: Array<CheckIn>
@@ -22,7 +23,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     fileprivate var taskDict = Dictionary<String, Array<Int>>()
     
     let monthRepeatFormat = NumberFormatter()
-
+    
     init(checkIns: Array<CheckIn>) {
         self.checkIns = checkIns
         super.init(nibName: "MonthViewController", bundle: nil)
@@ -68,6 +69,8 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
                                          icon: backButtonIconString, color: colors.mainGreenColor,
                                          status: .normal)
+        
+        self.emptyDataLabel.textColor = colors.cloudColor
     }
     
     fileprivate func initializeControl() {
@@ -81,6 +84,8 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         
         self.monthRepeatFormat.numberStyle = .decimal
         self.monthRepeatFormat.maximumFractionDigits = 2
+        
+        self.emptyDataLabel.text = Localized("noMonthlyData")
     }
     
     // MARK: - actions
@@ -93,7 +98,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     fileprivate func fetchMonthlyTasks() {
         let tasks = RealmManager.shared.queryMonthlyTask()
-
+        
         for task in tasks {
             // 如果是重复任务
             if let repeatUUID = task.repeaterUUID {
@@ -124,7 +129,12 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
             }
         }
         
-        self.monthTableView.reloadData()
+        if tasks.count > 0 {
+            self.monthTableView.reloadData()
+            self.emptyDataLabel.isHidden = true
+        } else {
+            self.emptyDataLabel.isHidden = false
+        }
     }
 }
 

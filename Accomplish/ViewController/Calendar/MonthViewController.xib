@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="backButton" destination="Ggm-cV-8nI" id="vxA-5O-7wT"/>
                 <outlet property="chartCardView" destination="FI8-cy-GEM" id="Kfb-E2-fkV"/>
+                <outlet property="emptyDataLabel" destination="Aad-fl-RZ1" id="7kw-qu-XPb"/>
                 <outlet property="monthTableView" destination="Z97-gI-ZPY" id="VuH-Ih-1MH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,14 +43,21 @@
                         <outlet property="delegate" destination="-1" id="r1T-m0-WfF"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aad-fl-RZ1">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="FI8-cy-GEM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="AK1-ch-WAC"/>
                 <constraint firstAttribute="trailing" secondItem="Z97-gI-ZPY" secondAttribute="trailing" constant="10" id="CCO-ow-hot"/>
+                <constraint firstItem="Aad-fl-RZ1" firstAttribute="centerY" secondItem="Z97-gI-ZPY" secondAttribute="centerY" id="HSO-Fu-IrZ"/>
                 <constraint firstItem="Ggm-cV-8nI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NE3-ap-O86"/>
                 <constraint firstAttribute="trailing" secondItem="FI8-cy-GEM" secondAttribute="trailing" constant="10" id="WaG-HL-N9g"/>
                 <constraint firstItem="Ggm-cV-8nI" firstAttribute="top" secondItem="Z97-gI-ZPY" secondAttribute="bottom" constant="10" id="e0b-KP-MHH"/>
+                <constraint firstItem="Aad-fl-RZ1" firstAttribute="centerX" secondItem="Z97-gI-ZPY" secondAttribute="centerX" id="eKE-oA-02s"/>
                 <constraint firstItem="Z97-gI-ZPY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="jQt-q1-Uvu"/>
                 <constraint firstAttribute="bottom" secondItem="Ggm-cV-8nI" secondAttribute="bottom" constant="10" id="l16-eY-Ym5"/>
                 <constraint firstItem="FI8-cy-GEM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="uI4-3r-n27"/>

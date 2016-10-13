@@ -132,6 +132,7 @@
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
 "monthly"="  Monthly statistics  ";
+"noMonthlyData"="No repeat and postponed tasks";
 
 "reportFinish"="%@-%@ %@";
 "reportUnfinish"="%@ %@";

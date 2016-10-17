@@ -8,7 +8,7 @@
 
 import Foundation
 
-let GroupIdentifier = "group.bob.achieve"
+let GroupIdentifier = "group.zhoubo.achieve"
 
 struct GroupUserDefault {
     let groupDefault: UserDefaults

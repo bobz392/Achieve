@@ -9,7 +9,6 @@
 #ifndef Accomplish_Bridging_Header_h
 #define Accomplish_Bridging_Header_h
 
-#import "MMWormhole.h"
 #import "DateTools.h"
 
 #endif /* Accomplish_Bridging_Header_h */

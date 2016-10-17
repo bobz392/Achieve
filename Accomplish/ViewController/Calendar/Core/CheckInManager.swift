@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct CheckInManager {
     fileprivate let allCheckIn = RealmManager.shared.allCheckIn()

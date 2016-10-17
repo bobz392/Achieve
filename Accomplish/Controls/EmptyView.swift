@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 class EmptyView: UIView {
     @IBOutlet weak var hintLabel: UILabel!

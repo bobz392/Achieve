@@ -291,8 +291,6 @@
 		C7E39B001DB55B3500FE2588 /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7E39AE41DB55B3500FE2588 /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap */; };
 		C7E39B011DB55B3500FE2588 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C7E39AE51DB55B3500FE2588 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */; };
 		C7E39B0D1DB55BCE00FE2588 /* Charts.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7E39AE01DB55B3500FE2588 /* Charts.framework.dSYM */; };
-		C7E39B0E1DB55BCE00FE2588 /* ChartsRealm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7E39AE21DB55B3500FE2588 /* ChartsRealm.framework.dSYM */; };
-		C7E39B0F1DB55BCE00FE2588 /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7E39AE71DB55B3500FE2588 /* PlaygroundFrameworkWrapper.framework.dSYM */; };
 		C7E39B101DB55BCE00FE2588 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7E39AE91DB55B3500FE2588 /* Realm.framework.dSYM */; };
 		C7E39B111DB55BCE00FE2588 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7E39AEB1DB55B3500FE2588 /* RealmSwift.framework.dSYM */; };
 		C7E39B121DB55BCE00FE2588 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C7E39AED1DB55B3500FE2588 /* SnapKit.framework.dSYM */; };
@@ -373,8 +371,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				C7E39B0D1DB55BCE00FE2588 /* Charts.framework.dSYM in Copy Carthage dSYMs */,
-				C7E39B0E1DB55BCE00FE2588 /* ChartsRealm.framework.dSYM in Copy Carthage dSYMs */,
-				C7E39B0F1DB55BCE00FE2588 /* PlaygroundFrameworkWrapper.framework.dSYM in Copy Carthage dSYMs */,
 				C7E39B101DB55BCE00FE2588 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
 				C7E39B111DB55BCE00FE2588 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
 				C7E39B121DB55BCE00FE2588 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
@@ -662,13 +658,9 @@
 		C7E39ADE1DB55B3500FE2588 /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap"; sourceTree = "<group>"; };
 		C7E39ADF1DB55B3500FE2588 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
 		C7E39AE01DB55B3500FE2588 /* Charts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Charts.framework.dSYM; sourceTree = "<group>"; };
-		C7E39AE11DB55B3500FE2588 /* ChartsRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChartsRealm.framework; sourceTree = "<group>"; };
-		C7E39AE21DB55B3500FE2588 /* ChartsRealm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = ChartsRealm.framework.dSYM; sourceTree = "<group>"; };
 		C7E39AE31DB55B3500FE2588 /* E32F5F72-4033-3BED-8657-20DDA4CE11D9.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "E32F5F72-4033-3BED-8657-20DDA4CE11D9.bcsymbolmap"; sourceTree = "<group>"; };
 		C7E39AE41DB55B3500FE2588 /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap"; sourceTree = "<group>"; };
 		C7E39AE51DB55B3500FE2588 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap"; sourceTree = "<group>"; };
-		C7E39AE61DB55B3500FE2588 /* PlaygroundFrameworkWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlaygroundFrameworkWrapper.framework; sourceTree = "<group>"; };
-		C7E39AE71DB55B3500FE2588 /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<group>"; };
 		C7E39AE81DB55B3500FE2588 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		C7E39AE91DB55B3500FE2588 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
 		C7E39AEA1DB55B3500FE2588 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -1277,13 +1269,9 @@
 				C7E39ADE1DB55B3500FE2588 /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap */,
 				C7E39ADF1DB55B3500FE2588 /* Charts.framework */,
 				C7E39AE01DB55B3500FE2588 /* Charts.framework.dSYM */,
-				C7E39AE11DB55B3500FE2588 /* ChartsRealm.framework */,
-				C7E39AE21DB55B3500FE2588 /* ChartsRealm.framework.dSYM */,
 				C7E39AE31DB55B3500FE2588 /* E32F5F72-4033-3BED-8657-20DDA4CE11D9.bcsymbolmap */,
 				C7E39AE41DB55B3500FE2588 /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap */,
 				C7E39AE51DB55B3500FE2588 /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */,
-				C7E39AE61DB55B3500FE2588 /* PlaygroundFrameworkWrapper.framework */,
-				C7E39AE71DB55B3500FE2588 /* PlaygroundFrameworkWrapper.framework.dSYM */,
 				C7E39AE81DB55B3500FE2588 /* Realm.framework */,
 				C7E39AE91DB55B3500FE2588 /* Realm.framework.dSYM */,
 				C7E39AEA1DB55B3500FE2588 /* RealmSwift.framework */,
@@ -1637,8 +1625,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ChartsRealm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PlaygroundFrameworkWrapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",

@@ -65,8 +65,9 @@ class HomeViewController: BaseViewController {
         
         self.queryTodayTask()
         self.addNotification()
-        
         self.initTimer()
+        
+        CloudKitManager().asyncFromCloudIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {

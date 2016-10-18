@@ -117,4 +117,105 @@ class CloudKitManager: NSObject {
             })
         }
     }
+    
+    func asyncFromCloudIfNeeded() {
+        let appUD = AppUserDefault()
+        if (appUD.readBool(kUserSyncCloudDataKey) != true) {
+            let privateDB = container.privateCloudDatabase
+            
+            let query = CKQuery(recordType: "Task", predicate: NSPredicate(value: true))
+            var tasks = [Task]()
+            privateDB.perform(query, inZoneWith: nil) { [unowned self] (records, error) in
+                if let rs = records {
+                    HUD.shared.showProgress("")
+                    for r in rs {
+                        let task = Task()
+                        task.createdDate = r["createdDate"] as? NSDate
+                        task.estimateDate = r["estimateDate"] as? NSDate
+                        task.finishedDate = r["finishedDate"] as? NSDate
+                        task.notifyDate = r["notifyDate"] as? NSDate
+                        task.subTaskCount = (r["subTaskCount"] as? Int) ?? 0
+                        task.createdFormattedDate = (r["createdFormattedDate"] as? String) ?? ""
+                        task.uuid = (r["uuid"] as? String) ?? ""
+                        task.postponeTimes = (r["postponeTimes"] as? Int) ?? 0
+                        task.priority = (r["priority"] as? Int) ?? 0
+                        task.status = (r["status"] as? Int) ?? 0
+                        
+                        task.taskNote = (r["taskNote"] as? String) ?? ""
+                        task.taskToDo = (r["taskToDo"] as? String) ?? ""
+                        task.taskType = (r["taskType"] as? Int) ?? 0
+                        
+                        tasks.append(task)
+                        
+                        dispatch_async_main {
+                            RealmManager.shared.writeObjects(tasks)
+                        }
+                        
+                        self.asyncSubtask(db: privateDB)
+                    }
+                }
+            }
+            
+            appUD.write(kUserSyncCloudDataKey, value: true)
+        }
+    }
+    
+    fileprivate func asyncSubtask(db: CKDatabase) {
+        let query = CKQuery(recordType: "SubTask", predicate: NSPredicate(value: true))
+        var subtasks = [Subtask]()
+        
+        db.perform(query, inZoneWith: nil) { [unowned self] (records, error) in
+            if let rs = records {
+                for r in rs {
+                    let subtask = Subtask()
+                    if let rootUUID = r["rootUUID"] as? String,
+                        let uuid = r["uuid"] as? String {
+                        subtask.rootUUID = rootUUID
+                        subtask.uuid = uuid
+                    }
+                    subtask.taskToDo = (r["taskToDo"] as? String) ?? ""
+                    subtask.createdDate = r["createdDate"] as? NSDate
+                    subtask.finishedDate = r["finishedDate"] as? NSDate
+                    subtasks.append(subtask)
+                    
+                    dispatch_async_main {
+                        RealmManager.shared.writeObjects(subtasks)
+                    }
+                    
+                    self.asyncCheckIn(db: db)
+                }
+            } else {
+                self.asyncCheckIn(db: db)
+            }
+        }
+    }
+    
+    fileprivate func asyncCheckIn(db: CKDatabase) {
+        let query = CKQuery(recordType: "CheckIn", predicate: NSPredicate(value: true))
+        var checkIns = [CheckIn]()
+        
+        db.perform(query, inZoneWith: nil) { (records, error) in
+            if let rs = records {
+                for r in rs {
+                    let checkIn = CheckIn()
+                    if let formatedDate = r["formatedDate"] as? String {
+                        checkIn.formatedDate = formatedDate
+                    }
+                    
+                    checkIn.completedCount = (r["completedCount"] as? Int) ?? 0
+                    checkIn.createdCount = (r["createdCount"] as? Int) ?? 0
+                    checkIn.checkInDate = r["checkInDate"] as? NSDate
+                    
+                    checkIns.append(checkIn)
+                    
+                    dispatch_async_main {
+                        RealmManager.shared.writeObjects(checkIns)
+                        HUD.shared.dismiss()
+                    }
+                }
+            } else {
+                HUD.shared.dismiss()
+            }
+        }
+    }
 }

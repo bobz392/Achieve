@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         RealmManager.configMainRealm()
-
+        
         // background fetch
         application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
@@ -40,7 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         HUD.shared.config()
         
         Fabric.with([Crashlytics.self])
-        Crashlytics.sharedInstance().debugMode = true
+        #if debug
+            Crashlytics.sharedInstance().debugMode = true
+        #else
+            Crashlytics.sharedInstance().debugMode = false
+        #endif
         
         return true
     }
@@ -138,7 +142,7 @@ extension AppDelegate {
         UIApplication.shared.shortcutItems =
             [ createTaskItem, calendarItem, searchTaskItem ]
     }
-
+    
 }
 
 // MARK: - watch kit

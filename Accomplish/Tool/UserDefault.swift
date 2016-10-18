@@ -18,6 +18,7 @@ let kWatchDateHasNewKey = "com.watch.date.is.new"
 let kCurrentTagUUIDKey = "com.current.tag"
 let kUserFirstTimeCallNoitification = "com.call.notification"
 let kCheckMoveUnfinishTaskKey = "com.check.unfinish.task"
+let kUserSyncCloudDataKey = "com.sync.cloud.data"
 
 struct AppUserDefault {
     let def = UserDefaults.standard

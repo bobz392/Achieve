@@ -11,8 +11,9 @@ import CloudKit
 
 class CloudKitManager: NSObject {
     
-    let container = CKContainer(identifier: "iCloud.com.test.achieve")
+    typealias iCloudEnableBlock = (Bool) -> Void
     
+    let container = CKContainer(identifier: "iCloud.com.zhou.bob.achieve")
     
     func fetchTestData() {
         let publicDB = container.privateCloudDatabase
@@ -21,20 +22,99 @@ class CloudKitManager: NSObject {
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
             debugPrint(records)
         }
-
-//        publicDB.fetchAllRecordZones { (zones, error) in
-//            debugPrint(zones)
-//        }
         
-//        let record = CKRecord(recordType: "Task")
-//        record["uuid"] = NSString(string: "asd")
-//        record["priority"] = NSNumber(integerLiteral: 1)
-//        record["status"] = NSNumber(integerLiteral: 2)
-//        record["taskNote"] = NSString(string: "asd")
-//        record["taskToDo"] = NSString(string: "asd")
-//        record["taskType"] = NSNumber(integerLiteral: 2)
-//        publicDB.save(record) { (record, error) in
-//            debugPrint(record)
-//        }
+        //        publicDB.fetchAllRecordZones { (zones, error) in
+        //            debugPrint(zones)
+        //        }
+        
+        //        let record = CKRecord(recordType: "Task")
+        //        record["uuid"] = NSString(string: "asd")
+        //        record["priority"] = NSNumber(integerLiteral: 1)
+        //        record["status"] = NSNumber(integerLiteral: 2)
+        //        record["taskNote"] = NSString(string: "asd")
+        //        record["taskToDo"] = NSString(string: "asd")
+        //        record["taskType"] = NSNumber(integerLiteral: 2)
+        //        publicDB.save(record) { (record, error) in
+        //            debugPrint(record)
+        //        }
+    }
+    
+    func iCloudEnable(block: @escaping iCloudEnableBlock) {
+        CKContainer.default().accountStatus { (accountStatus, error) in
+            block(accountStatus == .available)
+        }
+    }
+    
+    func uploadYesterdayTasks() {
+        let privateDB = container.privateCloudDatabase
+        let yesterday = NSDate().subtractingDays(1) as NSDate
+        if let format = yesterday.formattedDate(withFormat: queryDateFormat) {
+            let predicate = NSPredicate(format: "formatedDate = '\(format)'")
+            let query = CKQuery(recordType: "CheckIn", predicate: predicate)
+            privateDB.perform(query, inZoneWith: nil) { [unowned self] (checkIns, error) in
+                Logger.log("checkIns in \(yesterday) == \(checkIns)")
+                if checkIns == nil {
+                    self.uploadToICloud(date: yesterday, format: format, privateDB: privateDB)
+                }
+            }
+        }
+    }
+    
+    private func uploadToICloud(date: NSDate, format: String, privateDB: CKDatabase) {
+        var subtaskRecords = [CKRecord]()
+        
+        let tasks = RealmManager.shared.queryTaskList(date)
+        let taskRecords = tasks.map { (task) -> CKRecord in
+            let recordId = CKRecordID(recordName: task.uuid)
+            let record = CKRecord(recordType: "Task", recordID: recordId)
+            record["createdDate"] = task.createdDate
+            record["estimateDate"] = task.estimateDate
+            record["finishedDate"] = task.finishedDate
+            record["notifyDate"] = task.notifyDate
+            record["subTaskCount"] = NSNumber(integerLiteral: task.subTaskCount)
+            record["createdFormattedDate"] = NSString(string: task.createdFormattedDate)
+            record["uuid"] = NSString(string: task.uuid)
+            record["postponeTimes"] = NSNumber(integerLiteral: task.postponeTimes)
+            record["priority"] = NSNumber(integerLiteral: task.priority)
+            record["status"] = NSNumber(integerLiteral: task.status)
+            record["taskNote"] = NSString(string: task.taskNote)
+            record["taskToDo"] = NSString(string: task.taskToDo)
+            record["taskType"] = NSNumber(integerLiteral: task.taskType)
+            
+            if task.subTaskCount > 0 {
+                let subtasks = RealmManager.shared.querySubtask(task.uuid)
+                let subRecords = subtasks.map({ (subtask) -> CKRecord in
+                    let recordId = CKRecordID(recordName: subtask.uuid)
+                    let record = CKRecord(recordType: "SubTask", recordID: recordId)
+                    record["rootUUID"] = NSString(string: subtask.rootUUID)
+                    record["taskToDo"] = NSString(string: subtask.taskToDo)
+                    record["uuid"] = NSString(string: subtask.uuid)
+                    record["createdDate"] = subtask.createdDate
+                    record["finishedDate"] = subtask.finishedDate
+                    return record
+                })
+                subtaskRecords.append(contentsOf: subRecords)
+            }
+            
+            return record
+        }
+        
+        if let checkIn = RealmManager.shared.queryCheckIn(format) {
+            let recordId = CKRecordID(recordName: checkIn.formatedDate)
+            let checkInRecord = CKRecord(recordType: "CheckIn", recordID: recordId)
+            
+            checkInRecord["formatedDate"] = NSString(string: checkIn.formatedDate)
+            checkInRecord["completedCount"] = NSNumber(integerLiteral: checkIn.completedCount)
+            checkInRecord["createdCount"] = NSNumber(integerLiteral: checkIn.createdCount)
+            checkInRecord["checkInDate"] = checkIn.checkInDate
+            subtaskRecords.append(checkInRecord)
+        }
+        
+        subtaskRecords.append(contentsOf: taskRecords)
+        for record in subtaskRecords {
+            privateDB.save(record, completionHandler: { (record, error) in
+                Logger.log("save = \(record), error = \(error)")
+            })
+        }
     }
 }

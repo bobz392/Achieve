@@ -3,7 +3,7 @@
     {
       "size" : "24x24",
       "idiom" : "watch",
-      "filename" : "38mm Notification.png",
+      "filename" : "Background + Achieve Mask24.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "38mm"
@@ -11,7 +11,7 @@
     {
       "size" : "27.5x27.5",
       "idiom" : "watch",
-      "filename" : "42mm Notification.png",
+      "filename" : "42mm Notification55.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "42mm"
@@ -19,14 +19,14 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "Background + Achieve Mask-1.png",
+      "filename" : "Background + Achieve Mask2.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "Background + Achieve Mask2.png",
+      "filename" : "Background + Achieve Mask3.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },

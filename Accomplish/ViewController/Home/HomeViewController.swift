@@ -158,7 +158,7 @@ class HomeViewController: BaseViewController {
         self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
         self.taskTableView.homeRefreshControl.attributedTitle =
             NSAttributedString(string: Localized("search"),
-                        attributes: [NSForegroundColorAttributeName : Colors().mainGreenColor])
+                               attributes: [NSForegroundColorAttributeName : Colors().mainGreenColor])
     }
     
     fileprivate func configFullSizeButton(_ colors: Colors) {
@@ -234,7 +234,6 @@ class HomeViewController: BaseViewController {
             queue: OperationQueue.main) { [unowned self] notification in
                 self.handelTodayExtensionFinish()
                 self.checkNewDay()
-                self.checkNeedMoveUnfinishTaskToday()
                 self.timer?.resume()
         }
         
@@ -252,6 +251,8 @@ class HomeViewController: BaseViewController {
             self.selectedIndex = nil
             self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
         }
+        
+        self.checkNeedMoveUnfinishTaskToday()
     }
     
     fileprivate func initTimer() {
@@ -259,7 +260,6 @@ class HomeViewController: BaseViewController {
             guard let ws = self else { return }
             dispatch_async_main {
                 ws.checkNewDay()
-                ws.checkNeedMoveUnfinishTaskToday()
                 ws.taskTableView.reloadData()
             }
             })
@@ -394,13 +394,24 @@ class HomeViewController: BaseViewController {
      */
     fileprivate func checkNeedMoveUnfinishTaskToday() {
         let appUD = AppUserDefault()
-        if !appUD.readBool(kCloseDueTodayKey) && appUD.readBool(kCheckMoveUnfinishTaskKey) {
+        if !appUD.readBool(kCloseDueTodayKey)
+            && appUD.readBool(kCheckMoveUnfinishTaskKey) {
             self.handleMoveUnfinishTaskToToday()
         }
         
         appUD.write(kCheckMoveUnfinishTaskKey, value: false)
-        
         self.repeaterManager.createCheckIn()
+        self.uploadToiCloud()
+    }
+    
+    fileprivate func uploadToiCloud() {
+        let icloudManager = CloudKitManager()
+        
+        icloudManager.iCloudEnable { (enable) in
+            if enable {
+                icloudManager.uploadYesterdayTasks()
+            }
+        }
     }
     
     fileprivate func queryTodayTask(tagUUID: String? = nil) {
@@ -450,8 +461,8 @@ class HomeViewController: BaseViewController {
     func switchScreenAction() {
         self.doSwitchScreen(true)
         
-//        CloudKitManager().fetchTestData()
-//        TestManager().addTestCheckIn()
+        //        CloudKitManager().fetchTestData()
+        //        TestManager().addTestCheckIn()
     }
     
     func calendarAction() {

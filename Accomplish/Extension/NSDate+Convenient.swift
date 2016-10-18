@@ -18,6 +18,8 @@ let MonthFormat = "YYYY MMM"
 let OnlyTimeFormat = "hh:mm"
 let OnlyAmFormat = "a"
 
+let queryDateFormat = "yyyy.MM"
+
 // TASK
 extension NSDate {
     func createTaskUUID() -> String {

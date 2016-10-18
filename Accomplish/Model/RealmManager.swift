@@ -88,7 +88,7 @@ class RealmManager {
      查询本月需要 report 的 task
      */
     func queryMonthlyTask() -> Results<Task> {
-        let month = NSDate().formattedDate(withFormat: "yyyy.MM")!
+        let month = NSDate().formattedDate(withFormat: queryDateFormat)!
         return realm.objects(Task.self)
             .filter("(repeaterUUID != nil) OR (postponeTimes > 0) AND (createdFormattedDate BEGINSWITH '\(month)')")
     }
@@ -108,7 +108,7 @@ class RealmManager {
             return subtasks
         }
     }
-    
+
     /**
      删除子任务， 删除通知， 删除重复
      **/
@@ -223,7 +223,7 @@ extension RealmManager {
     }
     
     func monthlyCheckIn() -> Results<CheckIn> {
-        let month = NSDate().formattedDate(withFormat: "yyyy.MM")!
+        let month = NSDate().formattedDate(withFormat: queryDateFormat)!
         let checkIns = realm.objects(CheckIn.self)
             .filter("formatedDate BEGINSWITH '\(month)'")
         return checkIns

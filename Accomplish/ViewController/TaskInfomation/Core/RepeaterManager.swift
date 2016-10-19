@@ -15,6 +15,7 @@ struct RepeaterManager {
         // check last check is today or not
         guard let checkIn =
             RealmManager.shared.queryCheckIn(first: false) else {
+                self.createCheckIn()
                 return true
         }
         
@@ -26,6 +27,7 @@ struct RepeaterManager {
         
         Logger.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
         if !lastDate.isToday() && lastDate.isEarlierThan(now) {
+            self.createCheckIn()
             AppUserDefault().write(kCheckMoveUnfinishTaskKey, value: true)
             self.repeaterTaskCreate()
             return true
@@ -34,14 +36,11 @@ struct RepeaterManager {
         }
     }
     
-    func createCheckIn() {
+    fileprivate func createCheckIn() {
         let checkIn = CheckIn()
         let checkInDate = NSDate()
         checkIn.checkInDate = checkInDate
         checkIn.formatedDate = checkInDate.createdFormatedDateString()
-        let task = RealmManager.shared.queryTaskCount(date: checkInDate)
-        checkIn.completedCount = task.completed
-        checkIn.createdCount = task.created
         RealmManager.shared.saveCheckIn(checkIn)
     }
     /**

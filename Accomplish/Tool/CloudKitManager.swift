@@ -41,27 +41,47 @@ class CloudKitManager: NSObject {
     
     func iCloudEnable(block: @escaping iCloudEnableBlock) {
         CKContainer.default().accountStatus { (accountStatus, error) in
-            block(accountStatus == .available)
+            dispatch_async_main {
+                block(accountStatus == .available)
+            }
         }
     }
     
-    func uploadYesterdayTasks() {
+    func uploadTasks(date: NSDate) {
         let privateDB = container.privateCloudDatabase
-        let yesterday = NSDate().subtractingDays(1) as NSDate
-        if let format = yesterday.formattedDate(withFormat: queryDateFormat) {
-            let predicate = NSPredicate(format: "formatedDate = '\(format)'")
-            let query = CKQuery(recordType: "CheckIn", predicate: predicate)
-            privateDB.perform(query, inZoneWith: nil) { [unowned self] (checkIns, error) in
-                Logger.log("checkIns in \(yesterday) == \(checkIns)")
-                if checkIns == nil {
-                    self.uploadToICloud(date: yesterday, format: format, privateDB: privateDB)
+        
+        let format = date.createdFormatedDateString()
+        let predicate = NSPredicate(format: "formatedDate = '\(format)'")
+        let query = CKQuery(recordType: "CheckIn", predicate: predicate)
+        privateDB.perform(query, inZoneWith: nil) { [weak self] (checkIns, error) in
+            guard let weakSelf = self else { return }
+            Logger.log("checkIns in \(date) == \(checkIns)")
+            if (checkIns?.count ?? 0) <= 0 {
+                dispatch_async_main {
+                    weakSelf.uploadToICloud(date: date, format: format, privateDB: privateDB)
                 }
+                
             }
         }
     }
     
     private func uploadToICloud(date: NSDate, format: String, privateDB: CKDatabase) {
         var subtaskRecords = [CKRecord]()
+        
+        let todayCheckIn: CheckIn
+        if let checkIn = RealmManager.shared.queryCheckIn(format) {
+            todayCheckIn = checkIn
+            let recordId = CKRecordID(recordName: checkIn.formatedDate)
+            let checkInRecord = CKRecord(recordType: "CheckIn", recordID: recordId)
+            
+            checkInRecord["formatedDate"] = NSString(string: checkIn.formatedDate)
+            checkInRecord["completedCount"] = NSNumber(integerLiteral: checkIn.completedCount)
+            checkInRecord["createdCount"] = NSNumber(integerLiteral: checkIn.createdCount)
+            checkInRecord["checkInDate"] = checkIn.checkInDate
+            subtaskRecords.append(checkInRecord)
+        } else {
+            return
+        }
         
         let tasks = RealmManager.shared.queryTaskList(date)
         let taskRecords = tasks.map { (task) -> CKRecord in
@@ -99,22 +119,15 @@ class CloudKitManager: NSObject {
             return record
         }
         
-        if let checkIn = RealmManager.shared.queryCheckIn(format) {
-            let recordId = CKRecordID(recordName: checkIn.formatedDate)
-            let checkInRecord = CKRecord(recordType: "CheckIn", recordID: recordId)
-            
-            checkInRecord["formatedDate"] = NSString(string: checkIn.formatedDate)
-            checkInRecord["completedCount"] = NSNumber(integerLiteral: checkIn.completedCount)
-            checkInRecord["createdCount"] = NSNumber(integerLiteral: checkIn.createdCount)
-            checkInRecord["checkInDate"] = checkIn.checkInDate
-            subtaskRecords.append(checkInRecord)
-        }
-        
         subtaskRecords.append(contentsOf: taskRecords)
         for record in subtaskRecords {
             privateDB.save(record, completionHandler: { (record, error) in
                 Logger.log("save = \(record), error = \(error)")
             })
+        }
+        
+        RealmManager.shared.updateObject {
+            todayCheckIn.asynced = true
         }
     }
     

@@ -76,7 +76,7 @@ class RealmManager {
         
         let created = task.count
         let complete = task.filter("status == \(kTaskFinish)").count
-        
+        Logger.log("created = \(created), complete = \(complete)")
         return (complete, created)
     }
     
@@ -226,6 +226,13 @@ extension RealmManager {
         let month = NSDate().formattedDate(withFormat: queryDateFormat)!
         let checkIns = realm.objects(CheckIn.self)
             .filter("formatedDate BEGINSWITH '\(month)'")
+        return checkIns
+    }
+    
+    func waitForUploadCheckIns() -> Results<CheckIn> {
+        let today = NSDate().createdFormatedDateString()
+        let checkIns = realm.objects(CheckIn.self)
+            .filter("asynced == false AND formatedDate != '\(today)'")
         return checkIns
     }
 }

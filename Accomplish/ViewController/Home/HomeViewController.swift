@@ -51,6 +51,8 @@ class HomeViewController: BaseViewController {
     fileprivate var toViewControllerAnimationType = 0
     fileprivate weak var newTaskVC: NewTaskViewController? = nil
     
+    fileprivate var icloudManager = CloudKitManager()
+    
     // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -251,9 +253,9 @@ class HomeViewController: BaseViewController {
             self.handleNewDay()
             self.selectedIndex = nil
             self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
+            
+            self.checkNeedMoveUnfinishTaskToday()
         }
-        
-        self.checkNeedMoveUnfinishTaskToday()
     }
     
     fileprivate func initTimer() {
@@ -398,19 +400,32 @@ class HomeViewController: BaseViewController {
         if !appUD.readBool(kCloseDueTodayKey)
             && appUD.readBool(kCheckMoveUnfinishTaskKey) {
             self.handleMoveUnfinishTaskToToday()
+        } else {
+            self.uploadToiCloud()
         }
         
         appUD.write(kCheckMoveUnfinishTaskKey, value: false)
-        self.repeaterManager.createCheckIn()
-        self.uploadToiCloud()
     }
     
     fileprivate func uploadToiCloud() {
-        let icloudManager = CloudKitManager()
-        
-        icloudManager.iCloudEnable { (enable) in
+        self.icloudManager.iCloudEnable { [unowned self] (enable) in
             if enable {
-                icloudManager.uploadYesterdayTasks()
+                let waitForUploadCheckIns = RealmManager.shared.waitForUploadCheckIns()
+                for checkIn in waitForUploadCheckIns {
+                    if let date = checkIn.checkInDate {
+                        let taskCount = RealmManager.shared.queryTaskCount(date: date)
+                        RealmManager.shared.updateObject {
+                            checkIn.createdCount = taskCount.created
+                            checkIn.completedCount = taskCount.completed
+                        }
+                        
+                        self.icloudManager.uploadTasks(date: date)
+                    }
+                }
+            } else {
+                if NSDate().weekday() == 1 {
+                    HUD.shared.showOnce(Localized("icloud"))
+                }
             }
         }
     }
@@ -430,14 +445,18 @@ class HomeViewController: BaseViewController {
             let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .alert)
             let moveAction = UIAlertAction(title: Localized("move"), style: .default) { (action) in
                 shareManager.moveYesterdayTaskToToday(movedtasks: movetasks)
+                self.uploadToiCloud()
             }
             let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
                 alert.dismiss(animated: true, completion: nil)
+                self.uploadToiCloud()
             }
             
             alert.addAction(moveAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
+        } else {
+            self.uploadToiCloud()
         }
     }
     

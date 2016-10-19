@@ -161,13 +161,12 @@ class CloudKitManager: NSObject {
                         task.taskType = (r["taskType"] as? Int) ?? 0
                         
                         tasks.append(task)
-                        
-                        dispatch_async_main {
-                            RealmManager.shared.writeObjects(tasks)
-                        }
-                        
-                        self.asyncSubtask(db: privateDB)
                     }
+                    
+                    dispatch_async_main {
+                        RealmManager.shared.writeObjects(tasks)
+                    }
+                    self.asyncSubtask(db: privateDB)
                 }
             }
             
@@ -192,16 +191,14 @@ class CloudKitManager: NSObject {
                     subtask.createdDate = r["createdDate"] as? NSDate
                     subtask.finishedDate = r["finishedDate"] as? NSDate
                     subtasks.append(subtask)
-                    
-                    dispatch_async_main {
-                        RealmManager.shared.writeObjects(subtasks)
-                    }
-                    
-                    self.asyncCheckIn(db: db)
                 }
-            } else {
-                self.asyncCheckIn(db: db)
+               
+                dispatch_async_main {
+                    RealmManager.shared.writeObjects(subtasks)
+                }
             }
+            
+            self.asyncCheckIn(db: db)
         }
     }
     
@@ -211,6 +208,7 @@ class CloudKitManager: NSObject {
         
         db.perform(query, inZoneWith: nil) { (records, error) in
             if let rs = records {
+                Logger.log("async from icloud checkin = \(records)")
                 for r in rs {
                     let checkIn = CheckIn()
                     if let formatedDate = r["formatedDate"] as? String {
@@ -222,11 +220,11 @@ class CloudKitManager: NSObject {
                     checkIn.checkInDate = r["checkInDate"] as? NSDate
                     
                     checkIns.append(checkIn)
-                    
-                    dispatch_async_main {
-                        RealmManager.shared.writeObjects(checkIns)
-                        HUD.shared.dismiss()
-                    }
+                }
+                
+                dispatch_async_main {
+                    RealmManager.shared.writeObjects(checkIns)
+                    HUD.shared.dismiss()
                 }
             } else {
                 HUD.shared.dismiss()

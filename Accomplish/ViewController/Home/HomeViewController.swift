@@ -69,7 +69,7 @@ class HomeViewController: BaseViewController {
         self.addNotification()
         self.initTimer()
         
-        CloudKitManager().asyncFromCloudIfNeeded()
+        self.icloudManager.asyncFromCloudIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {

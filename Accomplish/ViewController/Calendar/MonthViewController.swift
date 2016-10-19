@@ -233,7 +233,6 @@ extension MonthViewController: IAxisValueFormatter {
         guard let count = NSDate().dayCountsInMonth() else { return }
         self.chartView.xAxis.setLabelCount(count, force: true)
         self.chartView.xAxis.labelCount = count
-        
         var values = Array<ChartDataEntry>()
         
         if self.checkIns.count > 0 {
@@ -245,9 +244,16 @@ extension MonthViewController: IAxisValueFormatter {
                     return rat * 100
                 }
             }
-            let appendCount = count - rats.count
-            let appendArray = Array<Double>(repeating: 0.0, count: appendCount)
-            rats.append(contentsOf: appendArray)
+            
+            if let firstDay = self.checkIns[0].checkInDate?.day() {
+                let insertArray = Array<Double>(repeating: 0.0, count: firstDay - 1)
+                rats.insert(contentsOf: insertArray, at: 0)
+            }
+            
+            if let lastDay = self.checkIns.last?.checkInDate?.day() {
+                let appendArray = Array<Double>(repeating: 0.0, count: count - lastDay)
+                rats.append(contentsOf: appendArray)
+            }
             
             for i in 0..<count {
                 values.append(ChartDataEntry(x: Double(i), y: rats[i]))

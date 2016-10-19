@@ -226,6 +226,7 @@ extension RealmManager {
         let month = NSDate().formattedDate(withFormat: queryDateFormat)!
         let checkIns = realm.objects(CheckIn.self)
             .filter("formatedDate BEGINSWITH '\(month)'")
+            .sorted(byProperty: "checkInDate", ascending: true)
         return checkIns
     }
     

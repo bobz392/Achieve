@@ -70,6 +70,10 @@ class CloudKitManager: NSObject {
         
         let todayCheckIn: CheckIn
         if let checkIn = RealmManager.shared.queryCheckIn(format) {
+            if checkIn.asynced == true {
+                return
+            }
+            
             todayCheckIn = checkIn
             let recordId = CKRecordID(recordName: checkIn.formatedDate)
             let checkInRecord = CKRecord(recordType: "CheckIn", recordID: recordId)
@@ -218,6 +222,7 @@ class CloudKitManager: NSObject {
                     checkIn.completedCount = (r["completedCount"] as? Int) ?? 0
                     checkIn.createdCount = (r["createdCount"] as? Int) ?? 0
                     checkIn.checkInDate = r["checkInDate"] as? NSDate
+                    checkIn.asynced = true
                     
                     checkIns.append(checkIn)
                 }

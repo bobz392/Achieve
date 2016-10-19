@@ -13,8 +13,10 @@ let kFinishSegmentIndex = 1
 
 class HomeTableView: UITableView, UIGestureRecognizerDelegate {
     
-    fileprivate let changeLength: CGFloat = 50
+    fileprivate let changeLength: CGFloat = 70
+    fileprivate let changeYLength: CGFloat = 50
     var initLocationX: CGFloat = 0
+    var initLocationY: CGFloat = 0
     var endLocationX: CGFloat = 0
     var canChange = false
     let homeRefreshControl = UIRefreshControl()
@@ -59,13 +61,22 @@ class HomeTableView: UITableView, UIGestureRecognizerDelegate {
         } else if pan.state == .began {
             self.initLocationX = 0
             self.canChange = false
-            self.initLocationX = pan.location(in: self).x
+            let location = pan.location(in: self)
+            self.initLocationX = location.x
+            self.initLocationY = location.y
             
         } else if pan.state == .changed {
             guard self.initLocationX != 0 else { return }
             
-            let locationX = pan.location(in: self).x
-            let currentIndex = getCurrentIndex?()
+            let location = pan.location(in: self)
+            let locationX = location.x
+            let locationY = location.y
+            let currentIndex = self.getCurrentIndex?()
+            
+            if abs(locationY - self.initLocationY) > self.changeYLength {
+                self.initLocationX = 0
+                return
+            }
             
             if locationX > self.initLocationX {
                 guard currentIndex == kRunningSegmentIndex else { return }

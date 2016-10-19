@@ -11,7 +11,7 @@ final class HUD {
     static let shared = HUD()
     
     func config() {
-        SVProgressHUD.setDefaultStyle(.light)
+        SVProgressHUD.setDefaultStyle(.dark)
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setMinimumDismissTimeInterval(1)
         SVProgressHUD.setDefaultAnimationType(.flat)

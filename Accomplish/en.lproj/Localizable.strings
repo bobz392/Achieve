@@ -14,6 +14,7 @@
 "emptyHint"="Nothing here";
 "detailIncomplete"="Yesterday unfinished tasks postponed to today";
 "move"="Move";
+"asyncing"="synchronizing";
 
 "noPermission"="No access permission";
 "abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";

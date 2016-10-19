@@ -127,7 +127,9 @@ class CloudKitManager: NSObject {
             var tasks = [Task]()
             privateDB.perform(query, inZoneWith: nil) { [unowned self] (records, error) in
                 if let rs = records {
-                    HUD.shared.showProgress("")
+                    if rs.count > 0 {
+                        HUD.shared.showProgress(Localized("asyncing"))
+                    }
                     for r in rs {
                         let task = Task()
                         task.createdDate = r["createdDate"] as? NSDate

@@ -65,7 +65,7 @@ class RealmManager {
         let tasks = realm
             .objects(Task.self)
             .filter("\(queryFormatted) AND \(queryStatues) \(queryWithTag)")
-            .sorted(byProperty: "createdDate")
+            .sorted(byProperty: "createdDate", ascending: false)
         
         return tasks
     }

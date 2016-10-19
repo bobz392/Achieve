@@ -14,6 +14,7 @@
 "emptyHint"="空空如也";
 "detailIncomplete"="把昨天未完成的任务移到今天";
 "move"="移动";
+"asyncing"="同步中";
 
 "noPermission"="没有权限";
 "abPermission"="目前没有读取通讯录的权限，该权限可以在“系统设置 > 隐私 > 联系人”中开启";

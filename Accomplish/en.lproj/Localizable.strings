@@ -94,6 +94,7 @@
 
 "scheduled"="Started in ";
 "willScheduled"="Will start in ";
+"Today"="Today";
 "today"="today";
 "tomorrow"="tomorrow";
 "yesterday"="yesterday";
@@ -145,7 +146,7 @@
 "completionRates"="Current Month Completion Rates";
 "monthlyWeek"="Week %d";
 "postponeTask"="Postponed task";
-"repeaterMonth"="Repeater %@";
+"repeaterMonth"="Repeat %@";
 "postponeTimes"="Postpone: %d Times";
 "repeaterTimes"="Repeat: %d Times";
 "repeaterRates"="Completion Rates: %@";

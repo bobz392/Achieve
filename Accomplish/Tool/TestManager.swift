@@ -28,4 +28,32 @@ struct TestManager {
         }
     }
     
+    func addAppStoreData() {
+        let date = NSDate()
+        guard let count = date.dayCountsInMonth() else { return }
+        let month = date.month()
+        let year = date.year()
+        
+        var checkins = [CheckIn]()
+        for index in 0..<count {
+            let checkIn = CheckIn()
+            let checkInDate = NSDate(year: year, month: month, day: index + 1)
+            checkIn.checkInDate = checkInDate
+            checkIn.formatedDate = checkInDate?.createdFormatedDateString() ?? ""
+            checkIn.createdCount = Int(arc4random_uniform(100))
+            checkIn.completedCount = Int(arc4random_uniform(UInt32(checkIn.createdCount)))
+            checkIn.asynced = true
+            
+            checkins.append(checkIn)
+        }
+        RealmManager.shared.writeObjects(checkins)
+        
+        let postTask = Task()
+        //Read Harry Potter
+        postTask.createDefaultTask("读三国演义")
+        postTask.postponeTimes = 6
+        postTask.createdDate = date.subtractingDays(8) as NSDate
+        postTask.finishedDate = date.subtractingDays(4) as NSDate
+        RealmManager.shared.writeObject(postTask)
+    }
 }

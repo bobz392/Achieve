@@ -259,6 +259,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             switch indexPath.row {
             case 0:
+                guard let url = URL(string: "mailto:achieveappteam@gmail.com") else { return }
+                UIApplication.shared.openURL(url)
                 break
                 
             case 1:
@@ -267,6 +269,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(aboutVC, animated: true)
                 
             case 2:
+                let url = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&id=1166332931"
+                guard let u = URL(string: url) else { return }
+
+                UIApplication.shared.openURL(u)
                 break
                 
             default:

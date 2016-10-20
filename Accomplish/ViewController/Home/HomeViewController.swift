@@ -70,6 +70,8 @@ class HomeViewController: BaseViewController {
         self.initTimer()
         
         self.icloudManager.asyncFromCloudIfNeeded()
+        
+//        TestManager().addAppStoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -480,7 +482,6 @@ class HomeViewController: BaseViewController {
     
     func switchScreenAction() {
         self.doSwitchScreen(true)
-        
         //        CloudKitManager().fetchTestData()
         //        TestManager().addTestCheckIn()
     }

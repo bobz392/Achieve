@@ -81,6 +81,7 @@
 "reminderMe"="Reminder me at ";
 "noEstimate"="Estimate finish time";
 "estimeateAt"="Estimate finish at ";
+"createdAt"="Started at ";
 "finishAt"="Finished at ";
 "repeat"="Repeat ";
 "noRepeat"="Repeat";
@@ -160,7 +161,7 @@
 "noTaskToday"="You have no task due today.";
 "taskToday"="You have %d task due today.";
 "taskTodays"="You have %d tasks due today.";
-"showAll"="All tasks";
+"showAll"="All Tasks";
 "showPriority"="Show task with priority";
 
 // Shortcut

@@ -78,6 +78,7 @@
 
 "noEstimate"="预计完成时间";
 "estimeateAt"="预计完成于 ";
+"createdAt"="开始于 ";
 "finishAt"="完成于 ";
 "noReminder"="没有提醒";
 "reminderMe"="提醒我在 ";

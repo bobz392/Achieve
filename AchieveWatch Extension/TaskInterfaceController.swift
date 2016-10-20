@@ -23,6 +23,11 @@ class TaskInterfaceController: WKInterfaceController {
         
         var infoArray = [[String]]()
         
+        let create = task[GroupTaskCreateDateIndex]
+        if create.length() > 0 {
+            infoArray.append([Localized("createdAt"), create])
+        }
+        
         let estimate = task[GroupTaskEstimateIndex]
         if estimate.length() > 0 {
             infoArray.append([Localized("estimeateAt"), estimate])
@@ -53,8 +58,6 @@ class TaskInterfaceController: WKInterfaceController {
         super.willActivate()
         
         self.setTitle(Localized("Today"))
-        
-        
     }
     
     override func didDeactivate() {

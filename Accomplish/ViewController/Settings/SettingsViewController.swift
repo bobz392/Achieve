@@ -91,7 +91,7 @@ class SettingsViewController: BaseViewController {
             Localized("startDay"),
             Localized("enabDueNextDay"),
             Localized("finishSound"),
-//            Localized("hintClose"),
+//            Localized("taskSort"),
             ]
         
         self.titles.append(general)
@@ -109,6 +109,7 @@ class SettingsViewController: BaseViewController {
             "fa-calendar",
             "fa-retweet",
             "fa-music",
+//            "fa-sort",
 //            "fa-question-circle",
             ]
         self.icons.append(gIcons)
@@ -205,9 +206,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             } else if indexPath.row == 3 {
                 let closeSound = ud.readBool(kCloseSoundKey)
                 cell.detailLabel.text = closeSound ? Localized("close") : Localized("open")
-            } else if indexPath.row == 4 {
-                let closeHint = ud.readBool(kCloseHintKey)
-                cell.detailLabel.text = closeHint ? Localized("close") : Localized("open")
+            }
+            else if indexPath.row == 4 {
+                let sortByPriority = ud.readBool(kSortByPriority)
+                cell.detailLabel.text = sortByPriority ? Localized("sortPriority") : Localized("sortCreated")
             }
             
             return cell
@@ -290,7 +292,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             key = kCloseSoundKey
         case 4:
-            key = kCloseHintKey
+            key = kSortByPriority
         default:
             return
         }

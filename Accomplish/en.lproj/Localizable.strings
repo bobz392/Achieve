@@ -176,6 +176,9 @@
 "enabDueNextDay"="Postpone unfinished tasks";
 "finishSound"="Task finished sound";
 "hintClose"="Show hint button";
+"taskSort"="Tasks sorted by";
+"sortPriority"="Sorted by priority";
+"sortCreated"="Sorted by created date";
 "startDay"="Week start on";
 "about"="About";
 "licenses"="Licenses";

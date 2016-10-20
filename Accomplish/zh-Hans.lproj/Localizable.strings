@@ -178,7 +178,10 @@
 "theme"="背景";
 "enabDueNextDay"="推迟未完成的任务";
 "finishSound"="任务完成提示音";
+"taskSort"="任务排序";
 "hintClose"="显示提示按钮";
+"sortPriority"="按照优先级排序";
+"sortCreated"="按照创建日期排序";
 "startDay"="每周开始于";
 "about"="关于";
 "licenses"="开源许可";

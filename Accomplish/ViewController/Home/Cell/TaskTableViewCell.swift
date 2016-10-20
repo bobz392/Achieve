@@ -53,10 +53,6 @@ class TaskTableViewCell: BaseTableViewCell {
         self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
         self.reminderLabel.text = Localized("repeatHint")
-        
-        self.taskSettingButton
-            .createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v",
-                              color: colors.mainGreenColor, status: .normal)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -139,6 +135,10 @@ class TaskTableViewCell: BaseTableViewCell {
     func configCellUse(_ task: Task) {
         self.task = task
         let colors = Colors()
+        
+        self.taskSettingButton
+            .createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v",
+                              color: colors.mainGreenColor, status: .normal)
         
         self.configTaskPriority(priority: task.priority, colors: colors)
         self.configTaskStatus(task: task, colors: colors)

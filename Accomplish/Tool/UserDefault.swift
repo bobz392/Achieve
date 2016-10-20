@@ -11,7 +11,7 @@ import Foundation
 let kIsFullScreenSizeKey = "com.zhoubo.currentScreenSizeKey"
 let kWeekStartKey = "com.date.start"
 let kCloseDueTodayKey = "com.due.today"
-let kCloseHintKey = "com.close.hint"
+let kSortByPriority = "com.sort.priority"
 let kCloseSoundKey = "com.close.finish.sound"
 let kBackgroundKey = "com.background"
 let kWatchDateHasNewKey = "com.watch.date.is.new"

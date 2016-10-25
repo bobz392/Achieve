@@ -139,8 +139,8 @@
 "monthlyWeek"="第%d周";
 "postponeTask"="推迟过的任务";
 "repeaterMonth"="%@重复";
-"postponeTimes"="推迟: %d次";
-"repeaterTimes"="重复: %d次";
+"postponeTimes"="推迟: %d天";
+"repeaterTimes"="重复: %d天";
 "repeaterRates"="完成率: %@";
 "postponeFinishAt"="完成于 %@";
 

@@ -135,7 +135,7 @@
 "completedAt"="completed at ";
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
-"monthly"="  Monthly statistics  ";
+"monthly"="  Monthly Statistics  ";
 "noMonthlyData"="No repeat and postponed tasks";
 
 "reportFinish"="%@-%@ %@";
@@ -148,8 +148,8 @@
 "monthlyWeek"="Week %d";
 "postponeTask"="Postponed task";
 "repeaterMonth"="Repeat %@";
-"postponeTimes"="Postpone: %d Times";
-"repeaterTimes"="Repeat: %d Times";
+"postponeTimes"="Postpone: %d Days";
+"repeaterTimes"="Repeat: %d Days";
 "repeaterRates"="Completion Rates: %@";
 "postponeFinishAt"="Finish at %@";
 

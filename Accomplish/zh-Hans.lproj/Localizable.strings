@@ -197,7 +197,7 @@
 "tag"="标签 ";
 "currentTag"="  当前  ";
 "tagToday"="(%d个任务)";
-"noTag"="添加标签";
+"noTag"="标签";
 "newTag"="添加新标签";
 "tagExist"="已存在此标签";
 "deleteTag"="删除标签";

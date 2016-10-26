@@ -192,7 +192,7 @@
 "newTag"="Create Tag";
 "tagToday"="(%d task)";
 "currentTag"="  current  ";
-"noTag"="Add tag";
+"noTag"="Tag";
 "tagExist"="Tag already exists";
 "deleteTag"="Delete tag";
 

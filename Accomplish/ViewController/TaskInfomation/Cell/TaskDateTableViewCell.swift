@@ -174,7 +174,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
                 // 检查 tag 是否还在，如果不在则删除 task 的 tag
                 if let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID) {
                     hasTag = true
-                    self.infoLabel.text = Localized("tag") + tag.name
+                    self.infoLabel.text = tag.name
                 } else {
                     hasTag = false
                     self.infoLabel.text = Localized("noTag")

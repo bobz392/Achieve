@@ -1,4 +1,4 @@
 github "SVProgressHUD/SVProgressHUD" "2.0.3"
 github "SnapKit/SnapKit" "3.1.1"
-github "realm/realm-cocoa" "68919bc859347b7c15e5722dfad9a0f448a29b42"
-github "danielgindi/Charts" "912142e8c323d6aa0e500c8e2067a33f8a8a5563"
+github "realm/realm-cocoa" "eb4c36f2b7e287f82bb1ca67602fff20ac030a1a"
+github "danielgindi/Charts" "8ef870a6fa21ba585236096ac0ddc71d12d16204"

@@ -25,8 +25,9 @@ class TaskNoteTableViewCell: BaseTableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsets.zero
         
-        self.iconButton.createIconButton(iconSize: kNoteCellIconSize, imageSize: kNoteCellIconSize,
-                                           icon: TaskIconNote, color: colors.mainGreenColor, status: .normal)
+        self.iconButton.createIconButton(iconSize: kNoteCellIconSize,
+                                         icon: TaskIconNote,
+                                         color: colors.mainGreenColor, status: .normal)
         
         self.noteLabel.highlightedTextColor = colors.mainTextColor
         self.noteLabel.textColor = colors.secondaryTextColor

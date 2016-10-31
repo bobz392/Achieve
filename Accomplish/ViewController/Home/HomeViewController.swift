@@ -135,25 +135,23 @@ class HomeViewController: BaseViewController {
         self.emptyCoffeeLabel.attributedText = coffeeIcon?.attributedString()
         
         let iconSize: CGFloat = 20
-        self.settingButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                            icon: "fa-cog", color: colors.mainGreenColor,
-                                            status: .normal)
+        //fa-cog
+        self.settingButton.createIconButton(iconSize: iconSize, icon: "fa-cog",
+                                            color: colors.mainGreenColor, status: .normal)
         
-        self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70,
-                                            icon: "fa-plus", color: colors.mainGreenColor,
-                                            status: .normal)
+        //fa-plus
+        self.newTaskButton.createIconButton(iconSize: 50, icon: "fa-plus",
+                                            color: colors.mainGreenColor, status: .normal)
+        //fa-calendar
+        self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",
+                                             color: colors.mainGreenColor, status: .normal)
+        //fa-tag
+        self.tagButton.createIconButton(iconSize: iconSize, icon: "fa-tag",
+                                        color: colors.mainGreenColor, status: .normal)
         
-        self.calendarButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                             icon: "fa-calendar", color: colors.mainGreenColor,
-                                             status: .normal)
-        
-        self.tagButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                        icon: "fa-tag", color: colors.mainGreenColor,
-                                        status: .normal)
-        
-        self.searchButton.createIconButton(iconSize: iconSize, imageSize: iconSize,
-                                           icon: "fa-search", color: colors.cloudColor,
-                                           status: .normal)
+        //fa-search
+        self.searchButton.createIconButton(iconSize: 24, icon: "fa-search",
+                                           color: colors.cloudColor, status: .normal)
         
         self.searchButton.tintColor = colors.mainGreenColor
         
@@ -167,11 +165,15 @@ class HomeViewController: BaseViewController {
     }
     
     fileprivate func configFullSizeButton(_ colors: Colors) {
+        
+        let iconSize: CGFloat = 20
+        //fa-compress
         if self.isFullScreenSize {
-            self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-compress",
+            self.fullScreenButton.createIconButton(iconSize: iconSize, icon: "fa-compress",
                                                    color: colors.mainGreenColor, status: .normal)
         } else {
-            self.fullScreenButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-expand",
+            //fa-expand
+            self.fullScreenButton.createIconButton(iconSize: iconSize, icon: "fa-expand",
                                                    color: colors.mainGreenColor, status: .normal)
         }
     }

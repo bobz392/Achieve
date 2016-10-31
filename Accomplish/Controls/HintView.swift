@@ -45,9 +45,9 @@ class HintView: UIView {
         
         let colors = Colors()
         self.titleLabel.textColor = colors.mainTextColor
-        self.closeButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-times", color: colors.mainGreenColor, status: .normal)
-        
-        self.nextButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-arrow-right", color: colors.mainGreenColor, status: .normal)
+//        self.closeButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-times", color: colors.mainGreenColor, status: .normal)
+//        
+//        self.nextButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-arrow-right", color: colors.mainGreenColor, status: .normal)
         
         self.pageControl.tintColor = colors.mainGreenColor
         

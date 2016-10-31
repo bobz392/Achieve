@@ -52,9 +52,9 @@ class SettingsViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                         icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .normal)
+        self.backButton.createIconButton(iconSize: kBackButtonCorner,
+                                         icon: backButtonIconString,
+                                         color: colors.mainGreenColor, status: .normal)
         
         self.settingTableView.separatorColor = colors.separatorColor
         self.settingTableView.reloadData()

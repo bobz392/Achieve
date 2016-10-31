@@ -53,14 +53,13 @@ class ReportViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                         icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .normal)
+        self.backButton.createIconButton(iconSize: kBackButtonCorner,
+                                         icon: backButtonIconString,
+                                         color: colors.mainGreenColor, status: .normal)
         
         self.exportButton.buttonColor(colors)
-        self.exportButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: "fa-share", color: colors.mainGreenColor,
-                                           status: .normal)
+        self.exportButton.createIconButton(iconSize: kBackButtonCorner, icon: "fa-share",
+                                           color: colors.mainGreenColor, status: .normal)
     }
     
     fileprivate func initializeControl() {

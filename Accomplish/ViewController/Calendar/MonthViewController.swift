@@ -66,9 +66,8 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.monthTableView.clearView()
         
         self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                         icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .normal)
+        self.backButton.createIconButton(iconSize: kBackButtonCorner, icon: backButtonIconString,
+                                         color: colors.mainGreenColor, status: .normal)
         
         self.emptyDataLabel.textColor = colors.cloudColor
     }

@@ -80,9 +80,13 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.setDateButton.tintColor = colors.mainGreenColor
         self.cancelDateButton.tintColor = colors.mainGreenColor
         
-        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: TaskIconCalendar, color: colors.secondaryTextColor, status: .normal)
+        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize,
+                                          icon: TaskIconCalendar,
+                                          color: colors.secondaryTextColor, status: .normal)
         
-        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskDetailCellIconSize, icon: SystemIcon, color: colors.mainGreenColor, status: .normal)
+        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize,
+                                           icon: SystemIcon,
+                                           color: colors.mainGreenColor, status: .normal)
     }
     
     fileprivate func initializeControl() {

@@ -48,13 +48,6 @@
 		C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m */; };
 		C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA71D6CDBFD0096A1A3 /* DTTimePeriodGroup.m */; };
 		C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA91D6CDBFD0096A1A3 /* NSDate+DateTools.m */; };
-		C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */; };
-		C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */; };
-		C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB21D6CDBFD0096A1A3 /* FAKIonIcons.m */; };
-		C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB41D6CDBFD0096A1A3 /* FAKMaterialIcons.m */; };
-		C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */; };
-		C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBC1D6CDBFD0096A1A3 /* ionicons.ttf */; };
-		C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */; };
 		C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */; };
 		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
 		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
@@ -69,6 +62,11 @@
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74751A61DC741C700831DB1 /* StartTimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* StartTimeManagementViewController.swift */; };
 		C74751A71DC741C700831DB1 /* StartTimeManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751A51DC741C700831DB1 /* StartTimeManagementViewController.xib */; };
+		C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */; };
+		C74751B01DC760B000831DB1 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AC1DC760B000831DB1 /* FAKIcon.m */; };
+		C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
+		C74751B31DC760D700831DB1 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */; };
+		C74751B41DC760D700831DB1 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AC1DC760B000831DB1 /* FAKIcon.m */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
 		C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A89391D93F972008E15CA /* SearchViewController.xib */; };
 		C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A893C1D941071008E15CA /* SearchTableViewCell.swift */; };
@@ -185,11 +183,8 @@
 		C78ED8A91D7A85E600031B4D /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
 		C78ED8AC1D7A916700031B4D /* GroupUserDefault+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */; };
 		C78ED8AE1D7A91C200031B4D /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
-		C78ED8AF1D7A932E00031B4D /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */; };
-		C78ED8B01D7A932E00031B4D /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */; };
 		C78ED8B31D7A958F00031B4D /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */; };
 		C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */; };
-		C78ED8B51D7A984300031B4D /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */; };
 		C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805521D7CC8740011DE19 /* CheckIn.swift */; };
 		C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798056D1D7CD8C90011DE19 /* CalendarCell.swift */; };
 		C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798056F1D7CD8D50011DE19 /* CalendarCell.xib */; };
@@ -416,18 +411,6 @@
 		C7105FA71D6CDBFD0096A1A3 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTimePeriodGroup.m; sourceTree = "<group>"; };
 		C7105FA81D6CDBFD0096A1A3 /* NSDate+DateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateTools.h"; sourceTree = "<group>"; };
 		C7105FA91D6CDBFD0096A1A3 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
-		C7105FAB1D6CDBFD0096A1A3 /* FAKFontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFontAwesome.h; sourceTree = "<group>"; };
-		C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFontAwesome.m; sourceTree = "<group>"; };
-		C7105FAF1D6CDBFD0096A1A3 /* FAKIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIcon.h; sourceTree = "<group>"; };
-		C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIcon.m; sourceTree = "<group>"; };
-		C7105FB11D6CDBFD0096A1A3 /* FAKIonIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIonIcons.h; sourceTree = "<group>"; };
-		C7105FB21D6CDBFD0096A1A3 /* FAKIonIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIonIcons.m; sourceTree = "<group>"; };
-		C7105FB31D6CDBFD0096A1A3 /* FAKMaterialIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKMaterialIcons.h; sourceTree = "<group>"; };
-		C7105FB41D6CDBFD0096A1A3 /* FAKMaterialIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKMaterialIcons.m; sourceTree = "<group>"; };
-		C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		C7105FBA1D6CDBFD0096A1A3 /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
-		C7105FBC1D6CDBFD0096A1A3 /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
-		C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
 		C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		C7145AC51D90506D000FAC18 /* WatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchColors.swift; sourceTree = "<group>"; };
 		C7145ACD1D91208F000FAC18 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -443,6 +426,12 @@
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
 		C74751A41DC741C700831DB1 /* StartTimeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTimeManagementViewController.swift; sourceTree = "<group>"; };
 		C74751A51DC741C700831DB1 /* StartTimeManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartTimeManagementViewController.xib; sourceTree = "<group>"; };
+		C74751A91DC760B000831DB1 /* FAKFontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFontAwesome.h; sourceTree = "<group>"; };
+		C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFontAwesome.m; sourceTree = "<group>"; };
+		C74751AB1DC760B000831DB1 /* FAKIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIcon.h; sourceTree = "<group>"; };
+		C74751AC1DC760B000831DB1 /* FAKIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIcon.m; sourceTree = "<group>"; };
+		C74751AD1DC760B000831DB1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		C74751AE1DC760B000831DB1 /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
 		C74A89381D93F972008E15CA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C74A89391D93F972008E15CA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C74A893C1D941071008E15CA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -788,11 +777,11 @@
 		C7105F981D6CDBFD0096A1A3 /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C74751A81DC760B000831DB1 /* FontAwesome */,
 				C7E39AA21DB5481600FE2588 /* SVProgressHUD */,
 				C79805B71D7D4E610011DE19 /* JTAppleCalendar */,
 				C7821EB21D7BF1820056623D /* MMWormhole */,
 				C7105F991D6CDBFD0096A1A3 /* DateTools */,
-				C7105FAA1D6CDBFD0096A1A3 /* FontAwesomeKit */,
 			);
 			path = Vander;
 			sourceTree = "<group>";
@@ -818,25 +807,6 @@
 				C7105FA91D6CDBFD0096A1A3 /* NSDate+DateTools.m */,
 			);
 			path = DateTools;
-			sourceTree = "<group>";
-		};
-		C7105FAA1D6CDBFD0096A1A3 /* FontAwesomeKit */ = {
-			isa = PBXGroup;
-			children = (
-				C7105FAB1D6CDBFD0096A1A3 /* FAKFontAwesome.h */,
-				C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */,
-				C7105FAF1D6CDBFD0096A1A3 /* FAKIcon.h */,
-				C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */,
-				C7105FB11D6CDBFD0096A1A3 /* FAKIonIcons.h */,
-				C7105FB21D6CDBFD0096A1A3 /* FAKIonIcons.m */,
-				C7105FB31D6CDBFD0096A1A3 /* FAKMaterialIcons.h */,
-				C7105FB41D6CDBFD0096A1A3 /* FAKMaterialIcons.m */,
-				C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */,
-				C7105FBA1D6CDBFD0096A1A3 /* FontAwesomeKit.h */,
-				C7105FBC1D6CDBFD0096A1A3 /* ionicons.ttf */,
-				C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */,
-			);
-			path = FontAwesomeKit;
 			sourceTree = "<group>";
 		};
 		C71D58741D748D2F00E76E91 /* TaskInfomation */ = {
@@ -870,6 +840,19 @@
 				C7DB5D141D91A2A100719CB3 /* TagTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C74751A81DC760B000831DB1 /* FontAwesome */ = {
+			isa = PBXGroup;
+			children = (
+				C74751A91DC760B000831DB1 /* FAKFontAwesome.h */,
+				C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */,
+				C74751AB1DC760B000831DB1 /* FAKIcon.h */,
+				C74751AC1DC760B000831DB1 /* FAKIcon.m */,
+				C74751AD1DC760B000831DB1 /* FontAwesome.otf */,
+				C74751AE1DC760B000831DB1 /* FontAwesomeKit.h */,
+			);
+			path = FontAwesome;
 			sourceTree = "<group>";
 		};
 		C74F1E1D1DC3215B00F7D37D /* WorkFlow */ = {
@@ -1496,7 +1479,6 @@
 				C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */,
 				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
 				C74F1E401DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap in Resources */,
-				C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */,
 				C74F1E441DC5B52B00F7D37D /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap in Resources */,
 				C74F1E481DC5B52B00F7D37D /* B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
@@ -1521,6 +1503,7 @@
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,
 				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
+				C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */,
 				C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
@@ -1533,7 +1516,6 @@
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
 				C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */,
-				C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */,
 				C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */,
 				C74F1E4A1DC5B52B00F7D37D /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
@@ -1551,7 +1533,6 @@
 				C74F1E501DC5B52B00F7D37D /* EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap in Resources */,
 				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
-				C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
@@ -1566,7 +1547,6 @@
 				C78ED87F1D7A7D3100031B4D /* MainInterface.storyboard in Resources */,
 				C78ED8A21D7A801200031B4D /* Localizable.strings in Resources */,
 				C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */,
-				C78ED8B01D7A932E00031B4D /* FontAwesome.otf in Resources */,
 				C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */,
 				C78ED89A1D7A800600031B4D /* DateTools.bundle in Resources */,
 			);
@@ -1669,6 +1649,7 @@
 				C70528371D8B07320036FCC1 /* TagViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
 				C7821EC61D7BF1820056623D /* MMWormholeSessionContextTransiting.m in Sources */,
+				C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */,
 				C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */,
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
@@ -1680,6 +1661,7 @@
 				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
 				C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
+				C74751B01DC760B000831DB1 /* FAKIcon.m in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
 				C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */,
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
@@ -1730,7 +1712,6 @@
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C771949C1D6FEA1000437560 /* TriggerTableViewCell.swift in Sources */,
 				C71D58771D74910400E76E91 /* TaskDetailViewController.swift in Sources */,
-				C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
@@ -1738,7 +1719,6 @@
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
-				C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
@@ -1760,7 +1740,6 @@
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C7E39AAE1DB5481600FE2588 /* SVProgressAnimatedView.m in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
-				C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */,
 				C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
@@ -1771,7 +1750,6 @@
 				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
-				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,
 				C79806FD1D818E6F0011DE19 /* HintView.swift in Sources */,
 			);
@@ -1789,6 +1767,7 @@
 				C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C78ED87C1D7A7D3100031B4D /* TodayViewController.swift in Sources */,
 				C7821ECA1D7BF18E0056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
+				C74751B41DC760D700831DB1 /* FAKIcon.m in Sources */,
 				C78ED89D1D7A800D00031B4D /* DTTimePeriod.m in Sources */,
 				C7CAF0B41D9C46ED0046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C78ED8A11D7A800D00031B4D /* NSDate+DateTools.m in Sources */,
@@ -1804,8 +1783,7 @@
 				C78ED89C1D7A800D00031B4D /* DTError.m in Sources */,
 				C78ED89F1D7A800D00031B4D /* DTTimePeriodCollection.m in Sources */,
 				C78ED8981D7A7FBE00031B4D /* CommonCode.swift in Sources */,
-				C78ED8AF1D7A932E00031B4D /* FAKFontAwesome.m in Sources */,
-				C78ED8B51D7A984300031B4D /* FAKIcon.m in Sources */,
+				C74751B31DC760D700831DB1 /* FAKFontAwesome.m in Sources */,
 				C798066A1D7E33BE0011DE19 /* UIView+Convenient.swift in Sources */,
 				C7821ED01D7C01940056623D /* Constants.swift in Sources */,
 			);

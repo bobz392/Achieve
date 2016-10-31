@@ -42,8 +42,9 @@ class AboutViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                         icon: backButtonIconString, color: colors.mainGreenColor,
+        self.backButton.createIconButton(iconSize: kBackButtonCorner,
+                                         icon: backButtonIconString,
+                                         color: colors.mainGreenColor,
                                          status: .normal)
         
         self.versionLabel.textColor = colors.cloudColor

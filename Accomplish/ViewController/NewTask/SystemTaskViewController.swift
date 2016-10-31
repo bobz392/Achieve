@@ -47,8 +47,9 @@ class SystemTaskViewController: BaseViewController {
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)
-        self.cancelButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                           icon: backButtonIconString, color: colors.mainGreenColor, status: .normal)
+        self.cancelButton.createIconButton(iconSize: kBackButtonCorner,
+                                           icon: backButtonIconString,
+                                           color: colors.mainGreenColor, status: .normal)
         self.taskTableView.reloadData()
     }
     

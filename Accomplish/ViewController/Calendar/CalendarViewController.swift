@@ -78,9 +78,9 @@ class CalendarViewController: BaseViewController {
         self.navigationController?.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, imageSize: kBackButtonCorner,
-                                         icon: backButtonIconString, color: colors.mainGreenColor,
-                                         status: .normal)
+        self.backButton.createIconButton(iconSize: kBackButtonCorner,
+                                         icon: backButtonIconString,
+                                         color: colors.mainGreenColor, status: .normal)
         
         
         self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)

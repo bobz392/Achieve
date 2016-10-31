@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -131,7 +131,7 @@
                     <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="contentEdgeInsets" minX="2" minY="2" maxX="0.0" maxY="0.0"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMY-YW-vhg">
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMY-YW-vhg">
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="09j-ti-TP2"/>
@@ -157,7 +157,7 @@
                 <constraint firstItem="YMY-YW-vhg" firstAttribute="trailing" secondItem="AHa-FE-BbB" secondAttribute="trailing" id="ewA-F9-Dkg"/>
                 <constraint firstItem="llZ-dS-8AD" firstAttribute="centerY" secondItem="KZ9-9w-5A8" secondAttribute="centerY" id="fbj-tt-8iq"/>
                 <constraint firstItem="Cd5-mt-tzm" firstAttribute="centerY" secondItem="52C-5O-sGk" secondAttribute="centerY" id="lye-hE-f4l"/>
-                <constraint firstItem="AHa-FE-BbB" firstAttribute="top" secondItem="YMY-YW-vhg" secondAttribute="bottom" constant="10" id="okO-7q-lOo"/>
+                <constraint firstItem="AHa-FE-BbB" firstAttribute="top" secondItem="YMY-YW-vhg" secondAttribute="bottom" constant="7" id="okO-7q-lOo"/>
                 <constraint firstItem="Cd5-mt-tzm" firstAttribute="leading" secondItem="52C-5O-sGk" secondAttribute="trailing" constant="15" id="tkB-Yb-Vv9"/>
                 <constraint firstItem="AHa-FE-BbB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="tvE-hf-0fN"/>
                 <constraint firstItem="52C-5O-sGk" firstAttribute="top" secondItem="AHa-FE-BbB" secondAttribute="bottom" constant="15" id="vxY-vJ-I8d"/>

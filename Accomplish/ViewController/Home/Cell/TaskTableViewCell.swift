@@ -97,7 +97,8 @@ class TaskTableViewCell: BaseTableViewCell {
         switch task.status {
         case kTaskRunning:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
-            self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-square-o",
+            self.taskStatusButton.createIconButton(iconSize: 20,
+                                                   icon: "fa-square-o",
                                                    color: colors.mainGreenColor, status: .normal)
             self.settingWidthConstraint.constant = 35
             self.taskSettingButton.isHidden = false
@@ -113,8 +114,9 @@ class TaskTableViewCell: BaseTableViewCell {
             
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
-            self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-check-square-o",
-                                                   color: colors.secondaryTextColor, status: .normal)
+            self.taskStatusButton.createIconButton(iconSize: 20, icon: "fa-check-square-o",
+                                                   color: colors.secondaryTextColor,
+                                                   status: .normal)
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
@@ -123,7 +125,7 @@ class TaskTableViewCell: BaseTableViewCell {
             
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
-            self.taskStatusButton.createIconButton(iconSize: 20, imageSize: 20, icon: "fa-close",
+            self.taskStatusButton.createIconButton(iconSize: 20, icon: "fa-close",
                                                    color: colors.mainGreenColor, status: .normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor
             
@@ -137,7 +139,7 @@ class TaskTableViewCell: BaseTableViewCell {
         let colors = Colors()
         
         self.taskSettingButton
-            .createIconButton(iconSize: 18, imageSize: 18, icon: "fa-ellipsis-v",
+            .createIconButton(iconSize: 18, icon: "fa-ellipsis-v",
                               color: colors.mainGreenColor, status: .normal)
         
         self.configTaskPriority(priority: task.priority, colors: colors)

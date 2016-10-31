@@ -29,9 +29,9 @@ class SubtaskTableViewCell: BaseTableViewCell {
         self.contentView.backgroundColor = colors.cloudColor
         self.layoutMargins = UIEdgeInsets.zero
         
-        self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize, imageSize: kTaskClearCellIconSize,
-                                          icon: "fa-trash-o", color: colors.mainGreenColor,
-                                          status: .normal)
+        self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize,
+                                          icon: "fa-trash-o",
+                                          color: colors.mainGreenColor, status: .normal)
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
         self.subtaskTextField.textColor = colors.mainTextColor
@@ -49,7 +49,9 @@ class SubtaskTableViewCell: BaseTableViewCell {
         self.subtask = subtask
         let colors = Colors()
         
-        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize, imageSize: kTaskButtonIconSize, icon: iconString, color: colors.mainGreenColor, status: .normal)
+        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize,
+                                         icon: iconString,
+                                         color: colors.mainGreenColor, status: .normal)
         
         self.subtaskTextField.attributedText = nil
         

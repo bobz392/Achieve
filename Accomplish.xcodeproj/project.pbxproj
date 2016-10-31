@@ -49,18 +49,12 @@
 		C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA71D6CDBFD0096A1A3 /* DTTimePeriodGroup.m */; };
 		C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FA91D6CDBFD0096A1A3 /* NSDate+DateTools.m */; };
 		C7105FC81D6CDBFD0096A1A3 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */; };
-		C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FAE1D6CDBFD0096A1A3 /* FAKFoundationIcons.m */; };
 		C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */; };
 		C7105FCB1D6CDBFD0096A1A3 /* FAKIonIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB21D6CDBFD0096A1A3 /* FAKIonIcons.m */; };
 		C7105FCC1D6CDBFD0096A1A3 /* FAKMaterialIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB41D6CDBFD0096A1A3 /* FAKMaterialIcons.m */; };
-		C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB61D6CDBFD0096A1A3 /* FAKOcticons.m */; };
-		C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */ = {isa = PBXBuildFile; fileRef = C7105FB81D6CDBFD0096A1A3 /* FAKZocial.m */; };
 		C7105FCF1D6CDBFD0096A1A3 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */; };
-		C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBB1D6CDBFD0096A1A3 /* foundation-icons.ttf */; };
 		C7105FD11D6CDBFD0096A1A3 /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBC1D6CDBFD0096A1A3 /* ionicons.ttf */; };
 		C7105FD21D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */; };
-		C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */; };
-		C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */; };
 		C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */; };
 		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
 		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
@@ -73,6 +67,8 @@
 		C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBE01DA13BB500099C87 /* ReportGenerator.swift */; };
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
+		C74751A61DC741C700831DB1 /* StartTimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* StartTimeManagementViewController.swift */; };
+		C74751A71DC741C700831DB1 /* StartTimeManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751A51DC741C700831DB1 /* StartTimeManagementViewController.xib */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
 		C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A89391D93F972008E15CA /* SearchViewController.xib */; };
 		C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A893C1D941071008E15CA /* SearchTableViewCell.swift */; };
@@ -82,8 +78,6 @@
 		C74A896E1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A896F1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A89701D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
-		C74F1E201DC3218700F7D37D /* WorkFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74F1E1E1DC3218700F7D37D /* WorkFlowViewController.swift */; };
-		C74F1E211DC3218700F7D37D /* WorkFlowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E1F1DC3218700F7D37D /* WorkFlowViewController.xib */; };
 		C74F1E401DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E241DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap */; };
 		C74F1E411DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E251DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap */; };
 		C74F1E421DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E261DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap */; };
@@ -424,25 +418,16 @@
 		C7105FA91D6CDBFD0096A1A3 /* NSDate+DateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateTools.m"; sourceTree = "<group>"; };
 		C7105FAB1D6CDBFD0096A1A3 /* FAKFontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFontAwesome.h; sourceTree = "<group>"; };
 		C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFontAwesome.m; sourceTree = "<group>"; };
-		C7105FAD1D6CDBFD0096A1A3 /* FAKFoundationIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFoundationIcons.h; sourceTree = "<group>"; };
-		C7105FAE1D6CDBFD0096A1A3 /* FAKFoundationIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFoundationIcons.m; sourceTree = "<group>"; };
 		C7105FAF1D6CDBFD0096A1A3 /* FAKIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIcon.h; sourceTree = "<group>"; };
 		C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIcon.m; sourceTree = "<group>"; };
 		C7105FB11D6CDBFD0096A1A3 /* FAKIonIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIonIcons.h; sourceTree = "<group>"; };
 		C7105FB21D6CDBFD0096A1A3 /* FAKIonIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIonIcons.m; sourceTree = "<group>"; };
 		C7105FB31D6CDBFD0096A1A3 /* FAKMaterialIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKMaterialIcons.h; sourceTree = "<group>"; };
 		C7105FB41D6CDBFD0096A1A3 /* FAKMaterialIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKMaterialIcons.m; sourceTree = "<group>"; };
-		C7105FB51D6CDBFD0096A1A3 /* FAKOcticons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKOcticons.h; sourceTree = "<group>"; };
-		C7105FB61D6CDBFD0096A1A3 /* FAKOcticons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKOcticons.m; sourceTree = "<group>"; };
-		C7105FB71D6CDBFD0096A1A3 /* FAKZocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKZocial.h; sourceTree = "<group>"; };
-		C7105FB81D6CDBFD0096A1A3 /* FAKZocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKZocial.m; sourceTree = "<group>"; };
 		C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		C7105FBA1D6CDBFD0096A1A3 /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
-		C7105FBB1D6CDBFD0096A1A3 /* foundation-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "foundation-icons.ttf"; sourceTree = "<group>"; };
 		C7105FBC1D6CDBFD0096A1A3 /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
 		C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Material-Design-Iconic-Font.ttf"; sourceTree = "<group>"; };
-		C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
-		C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
 		C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInterfaceController.swift; sourceTree = "<group>"; };
 		C7145AC51D90506D000FAC18 /* WatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchColors.swift; sourceTree = "<group>"; };
 		C7145ACD1D91208F000FAC18 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -456,6 +441,8 @@
 		C738CBE01DA13BB500099C87 /* ReportGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
+		C74751A41DC741C700831DB1 /* StartTimeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTimeManagementViewController.swift; sourceTree = "<group>"; };
+		C74751A51DC741C700831DB1 /* StartTimeManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartTimeManagementViewController.xib; sourceTree = "<group>"; };
 		C74A89381D93F972008E15CA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C74A89391D93F972008E15CA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C74A893C1D941071008E15CA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -463,8 +450,6 @@
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C74A896D1D9636F3008E15CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		C74F1E1E1DC3218700F7D37D /* WorkFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkFlowViewController.swift; sourceTree = "<group>"; };
-		C74F1E1F1DC3218700F7D37D /* WorkFlowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkFlowViewController.xib; sourceTree = "<group>"; };
 		C74F1E241DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap"; sourceTree = "<group>"; };
 		C74F1E251DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap"; sourceTree = "<group>"; };
 		C74F1E261DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap"; sourceTree = "<group>"; };
@@ -840,25 +825,16 @@
 			children = (
 				C7105FAB1D6CDBFD0096A1A3 /* FAKFontAwesome.h */,
 				C7105FAC1D6CDBFD0096A1A3 /* FAKFontAwesome.m */,
-				C7105FAD1D6CDBFD0096A1A3 /* FAKFoundationIcons.h */,
-				C7105FAE1D6CDBFD0096A1A3 /* FAKFoundationIcons.m */,
 				C7105FAF1D6CDBFD0096A1A3 /* FAKIcon.h */,
 				C7105FB01D6CDBFD0096A1A3 /* FAKIcon.m */,
 				C7105FB11D6CDBFD0096A1A3 /* FAKIonIcons.h */,
 				C7105FB21D6CDBFD0096A1A3 /* FAKIonIcons.m */,
 				C7105FB31D6CDBFD0096A1A3 /* FAKMaterialIcons.h */,
 				C7105FB41D6CDBFD0096A1A3 /* FAKMaterialIcons.m */,
-				C7105FB51D6CDBFD0096A1A3 /* FAKOcticons.h */,
-				C7105FB61D6CDBFD0096A1A3 /* FAKOcticons.m */,
-				C7105FB71D6CDBFD0096A1A3 /* FAKZocial.h */,
-				C7105FB81D6CDBFD0096A1A3 /* FAKZocial.m */,
 				C7105FB91D6CDBFD0096A1A3 /* FontAwesome.otf */,
 				C7105FBA1D6CDBFD0096A1A3 /* FontAwesomeKit.h */,
-				C7105FBB1D6CDBFD0096A1A3 /* foundation-icons.ttf */,
 				C7105FBC1D6CDBFD0096A1A3 /* ionicons.ttf */,
 				C7105FBD1D6CDBFD0096A1A3 /* Material-Design-Iconic-Font.ttf */,
-				C7105FBE1D6CDBFD0096A1A3 /* octicons.ttf */,
-				C7105FBF1D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf */,
 			);
 			path = FontAwesomeKit;
 			sourceTree = "<group>";
@@ -900,8 +876,8 @@
 			isa = PBXGroup;
 			children = (
 				C74F1E221DC3219400F7D37D /* Cell */,
-				C74F1E1E1DC3218700F7D37D /* WorkFlowViewController.swift */,
-				C74F1E1F1DC3218700F7D37D /* WorkFlowViewController.xib */,
+				C74751A41DC741C700831DB1 /* StartTimeManagementViewController.swift */,
+				C74751A51DC741C700831DB1 /* StartTimeManagementViewController.xib */,
 			);
 			path = WorkFlow;
 			sourceTree = "<group>";
@@ -1529,7 +1505,6 @@
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */,
 				C74F1E4F1DC5B52B00F7D37D /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap in Resources */,
-				C7105FD41D6CDBFD0096A1A3 /* zocial-regular-webfont.ttf in Resources */,
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
 				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
 				C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */,
@@ -1537,7 +1512,6 @@
 				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
 				C74F1E431DC5B52B00F7D37D /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap in Resources */,
 				C74F1E421DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap in Resources */,
-				C7105FD01D6CDBFD0096A1A3 /* foundation-icons.ttf in Resources */,
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
 				C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */,
 				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
@@ -1548,7 +1522,6 @@
 				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,
 				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
 				C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */,
-				C7105FD31D6CDBFD0096A1A3 /* octicons.ttf in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
@@ -1566,8 +1539,8 @@
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
 				C74F1E461DC5B52B00F7D37D /* A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap in Resources */,
 				C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */,
-				C74F1E211DC3218700F7D37D /* WorkFlowViewController.xib in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
+				C74751A71DC741C700831DB1 /* StartTimeManagementViewController.xib in Resources */,
 				C74F1E451DC5B52B00F7D37D /* 96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap in Resources */,
 				C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
@@ -1700,10 +1673,8 @@
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
-				C7105FCD1D6CDBFD0096A1A3 /* FAKOcticons.m in Sources */,
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
 				C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */,
-				C74F1E201DC3218700F7D37D /* WorkFlowViewController.swift in Sources */,
 				C74A896E1D9636F4008E15CA /* Logger.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
@@ -1726,7 +1697,6 @@
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C74A89411D94109E008E15CA /* BaseTableViewCell.swift in Sources */,
 				C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */,
-				C7105FC91D6CDBFD0096A1A3 /* FAKFoundationIcons.m in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
 				C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */,
 				C7105FC11D6CDBFD0096A1A3 /* DTConstants.m in Sources */,
@@ -1774,6 +1744,7 @@
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
 				C79807291D83D04F0011DE19 /* CircleProgressView.swift in Sources */,
 				C79805C61D7D4E610011DE19 /* JTAppleCollectionReusableView.swift in Sources */,
+				C74751A61DC741C700831DB1 /* StartTimeManagementViewController.swift in Sources */,
 				C7DDA5BC1D7673FF0054154C /* NoteViewController.swift in Sources */,
 				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
 				C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */,
@@ -1799,7 +1770,6 @@
 				C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */,
 				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
-				C7105FCE1D6CDBFD0096A1A3 /* FAKZocial.m in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C7105FCA1D6CDBFD0096A1A3 /* FAKIcon.m in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,

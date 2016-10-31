@@ -207,3 +207,6 @@
 // message
 "messageUseage"="Share your schedules of today";
 "shareMessage"="%@ at %@, join with me?";
+
+// time management
+"timeManagement"="Start Time Management";

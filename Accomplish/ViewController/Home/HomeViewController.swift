@@ -692,9 +692,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func showSettings(taskUUID: String) {
-        guard  let task = RealmManager.shared.queryTask(taskUUID) else {
-            return
-        }
+        guard let task =
+            RealmManager.shared.queryTask(taskUUID) else { return }
         
         let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
         
@@ -709,12 +708,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(deleteAction)
         
         if let _ = task.notifyDate {
-            let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .default, handler: { (action) in
+            let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .destructive, handler: { (action) in
                 RealmManager.shared.deleteTaskReminder(task)
                 
             })
             alert.addAction(deleteReminderAction)
         }
+        
+        let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { (action) in
+            
+        }
+        alert.addAction(workflowAction)
         
         let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
             alert.dismiss(animated: true, completion: nil)

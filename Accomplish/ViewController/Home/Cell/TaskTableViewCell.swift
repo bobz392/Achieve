@@ -172,6 +172,7 @@ class TaskTableViewCell: BaseTableViewCell {
         }
     }
     
+    // MARK: - actions
     func settingsAction() {
         guard let task = self.task,
             let block = self.settingBlock else { return }

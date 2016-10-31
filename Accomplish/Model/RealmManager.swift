@@ -208,7 +208,6 @@ class RealmManager {
 // 以后为多个年的 check in 优化
 extension RealmManager {
     func queryCheckIn(first: Bool = true) -> CheckIn? {
-        self.queryAll(clz: CheckIn.self)
         return realm.objects(CheckIn.self)
             .sorted(byProperty: "checkInDate", ascending: first)
             .first

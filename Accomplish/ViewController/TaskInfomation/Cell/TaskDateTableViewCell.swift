@@ -12,6 +12,7 @@ let kTaskDetailCellIconSize: CGFloat = 18
 let kTaskClearCellIconSize: CGFloat = 16
 let kNoteCellIconSize: CGFloat =  19
 let kTaskButtonIconSize: CGFloat = 20
+let kSystemTaskButtonIconSize: CGFloat = 20
 
 class TaskDateTableViewCell: BaseTableViewCell {
     

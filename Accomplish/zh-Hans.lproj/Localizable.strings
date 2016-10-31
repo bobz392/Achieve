@@ -210,3 +210,6 @@
 // message
 "messageUseage"="分享您今天的日程安排";
 "shareMessage"="%@ 在 %@ ，一起吧";
+
+// time management
+"timeManagement"="开始时间管理";

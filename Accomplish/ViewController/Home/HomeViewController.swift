@@ -71,7 +71,7 @@ class HomeViewController: BaseViewController {
         
         self.icloudManager.asyncFromCloudIfNeeded()
         
-//        TestManager().addAppStoreData()
+        //        TestManager().addAppStoreData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,7 +140,7 @@ class HomeViewController: BaseViewController {
                                             color: colors.mainGreenColor, status: .normal)
         
         //fa-plus
-        self.newTaskButton.createIconButton(iconSize: 50, icon: "fa-plus",
+        self.newTaskButton.createIconButton(iconSize: 40, icon: "fa-plus",
                                             color: colors.mainGreenColor, status: .normal)
         //fa-calendar
         self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",
@@ -475,11 +475,14 @@ class HomeViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func settingAction() {
-        let settingVC = SettingsViewController()
+    fileprivate func animationNavgationTo(vc: UIViewController) {
         self.navigationController?.delegate = self
         self.toViewControllerAnimationType = 0
-        self.navigationController?.pushViewController(settingVC, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func settingAction() {
+        self.animationNavgationTo(vc: SettingsViewController())
     }
     
     func switchScreenAction() {
@@ -489,25 +492,17 @@ class HomeViewController: BaseViewController {
     }
     
     func calendarAction() {
-        let calendarVC = CalendarViewController()
-        self.navigationController?.delegate = self
-        self.toViewControllerAnimationType = 0
-        self.navigationController?.pushViewController(calendarVC, animated: true)
+        self.animationNavgationTo(vc: CalendarViewController())
     }
     
     func searchAction() {
-        let searchVC = SearchViewController()
-        self.navigationController?.delegate = self
-        self.toViewControllerAnimationType = 0
-        self.navigationController?.pushViewController(searchVC, animated: true)
+        self.animationNavgationTo(vc: SearchViewController())
     }
     
     func tagAction() {
         let tagVC = TagViewController()
         tagVC.delegate = self
-        self.navigationController?.delegate = self
-        self.toViewControllerAnimationType = 0
-        self.navigationController?.pushViewController(tagVC, animated: true)
+        self.animationNavgationTo(vc: tagVC)
         
         #if debug
             if #available(iOS 10.0, *) {
@@ -524,13 +519,14 @@ class HomeViewController: BaseViewController {
         if !self.isFullScreenSize {
             self.cardViewLeftConstraint.constant = 20
             self.cardViewRightConstraint.constant = 20
-            self.cardViewBottomConstraint.constant = 15
+            self.cardViewBottomConstraint.constant = 10
             self.cardViewTopConstraint.constant = 70
             self.addTaskWidthConstraint.constant = 70
             self.addTaskHeightConstraint.constant = 70
             self.addTaskBottomConstraint.constant = 10
             if (animation) {
-                self.newTaskButton.addCornerRadiusAnimation(16, to: 35, duration: kNormalAnimationDuration)
+                self.newTaskButton.addCornerRadiusAnimation(20, to: 35, duration: kNormalAnimationDuration)
+                
                 UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 1
@@ -541,6 +537,9 @@ class HomeViewController: BaseViewController {
                 self.currentDateLabel.alpha = 1
                 self.searchButton.alpha = 1
             }
+            
+            self.newTaskButton.createIconButton(iconSize: 40, icon: "fa-plus",
+                                                color: Colors().mainGreenColor, status: .normal)
         } else {
             self.cardViewLeftConstraint.constant = 5
             self.cardViewRightConstraint.constant = 5
@@ -549,8 +548,9 @@ class HomeViewController: BaseViewController {
             self.addTaskWidthConstraint.constant = 40
             self.addTaskHeightConstraint.constant = 40
             self.addTaskBottomConstraint.constant = 5
+            
             if (animation) {
-                self.newTaskButton.addCornerRadiusAnimation(40, to: 20, duration: kNormalAnimationDuration)
+                self.newTaskButton.addCornerRadiusAnimation(35, to: 20, duration: kNormalAnimationDuration)
                 UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 0
@@ -561,11 +561,13 @@ class HomeViewController: BaseViewController {
                 self.currentDateLabel.alpha = 0
                 self.searchButton.alpha = 0
             }
+            self.newTaskButton.createIconButton(iconSize: 30, icon: "fa-plus",
+                                                color: Colors().mainGreenColor, status: .normal)
         }
         
-        configFullSizeButton(Colors())
+        self.configFullSizeButton(Colors())
         AppUserDefault().write(kIsFullScreenSizeKey, value: isFullScreenSize)
-        isFullScreenSize = !isFullScreenSize
+        self.isFullScreenSize = !self.isFullScreenSize
     }
     
     func newTaskAction() {
@@ -664,9 +666,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func enterTask(_ task: Task, canChange: Bool) {
         let taskVC = TaskDetailViewController(task: task, canChange: canChange)
-        self.navigationController?.delegate = self
-        self.toViewControllerAnimationType = 0
-        self.navigationController?.pushViewController(taskVC, animated: true)
+        self.animationNavgationTo(vc: taskVC)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -717,7 +717,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             alert.addAction(deleteReminderAction)
         }
         
-        let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { (action) in
+        let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
+//            let timeVC = TimeManagementViewController()
+//            self.animationNavgationTo(vc: timeVC)
+            guard let view = TimeManagementView.loadNib(self) else { return }
+            view.moveIn(view: self.view)
             
         }
         alert.addAction(workflowAction)

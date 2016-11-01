@@ -160,7 +160,7 @@
                 <constraint firstItem="AHa-FE-BbB" firstAttribute="top" secondItem="YMY-YW-vhg" secondAttribute="bottom" constant="7" id="okO-7q-lOo"/>
                 <constraint firstItem="Cd5-mt-tzm" firstAttribute="leading" secondItem="52C-5O-sGk" secondAttribute="trailing" constant="15" id="tkB-Yb-Vv9"/>
                 <constraint firstItem="AHa-FE-BbB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="tvE-hf-0fN"/>
-                <constraint firstItem="52C-5O-sGk" firstAttribute="top" secondItem="AHa-FE-BbB" secondAttribute="bottom" constant="15" id="vxY-vJ-I8d"/>
+                <constraint firstItem="52C-5O-sGk" firstAttribute="top" secondItem="AHa-FE-BbB" secondAttribute="bottom" constant="10" id="vxY-vJ-I8d"/>
             </constraints>
             <point key="canvasLocation" x="321" y="458"/>
         </view>

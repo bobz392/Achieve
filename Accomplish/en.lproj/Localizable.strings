@@ -64,7 +64,7 @@
 "sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";
 "mailAction"="Send mail to ";
-"customSchemeAction"="Execute ";
+"customSchemeAction"="Proceed to ";
 
 "addPhoneCall"="Create phone call task";
 "addMessage"="Create message task";
@@ -209,4 +209,6 @@
 "shareMessage"="%@ at %@, join with me?";
 
 // time management
+"timeManagementSetting"="Time Management Method";
 "timeManagement"="Start Time Management";
+"createTimeManagement"="Create New Method";

@@ -19,8 +19,6 @@ class SettingsViewController: BaseViewController {
     fileprivate var icons = [[String]]()
     fileprivate var sizes = [[CGFloat]]()
     
-    fileprivate var selectedIndex: IndexPath? = nil
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,10 +29,6 @@ class SettingsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard let s = selectedIndex else { return }
-        self.settingTableView.deselectRow(at: s, animated: true)
-        self.selectedIndex = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,6 +82,7 @@ class SettingsViewController: BaseViewController {
         
         let general = [
             Localized("theme"),
+            Localized("timeManagementSetting"),
             Localized("startDay"),
             Localized("enabDueNextDay"),
             Localized("finishSound"),
@@ -106,6 +101,7 @@ class SettingsViewController: BaseViewController {
         
         let gIcons = [
             "fa-paint-brush",
+            "fa-bullseye",
             "fa-calendar",
             "fa-retweet",
             "fa-music",
@@ -123,6 +119,7 @@ class SettingsViewController: BaseViewController {
         
         let gSize: [CGFloat] = [
             16,
+            20,
             17,
             25,
             18,
@@ -171,14 +168,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             self.icons[indexPath.section][indexPath.row], size: size)
         icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
         
-        if indexPath.section == 0 && indexPath.row != 0 {
+        if indexPath.section == 0 && indexPath.row != 0 && indexPath.row != 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingDetialTableViewCell.reuseId, for: indexPath) as! SettingDetialTableViewCell
             cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
             cell.iconLabel.attributedText = icon.attributedString()
             cell.accessoryType = .none
             
             let ud = AppUserDefault()
-            if indexPath.row == 1 {
+            if indexPath.row == 2 {
                 let weekStart = ud.readInt(kWeekStartKey)
                 let weeks: DaysOfWeek
                 if let ws = DaysOfWeek(rawValue: weekStart) {
@@ -198,16 +195,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     break
                 }
-                
-            } else if indexPath.row == 2 {
+            } else if indexPath.row == 3 {
                 let closeDue = ud.readBool(kCloseDueTodayKey)
                 cell.detailLabel.text = closeDue ? Localized("close") : Localized("open")
-                
-            } else if indexPath.row == 3 {
+            } else if indexPath.row == 4 {
                 let closeSound = ud.readBool(kCloseSoundKey)
                 cell.detailLabel.text = closeSound ? Localized("close") : Localized("open")
-            }
-            else if indexPath.row == 4 {
+            } else if indexPath.row == 5 {
                 let sortByPriority = ud.readBool(kSortByPriority)
                 cell.detailLabel.text = sortByPriority ? Localized("sortPriority") : Localized("sortCreated")
             }
@@ -244,18 +238,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                self.selectedIndex = indexPath
                 let backgroundVC = BackgroundViewController()
                 self.navigationController?.pushViewController(backgroundVC, animated: true)
-                
-            // first day of week
+            
             case 1:
+                let timeVC = TimeManagementViewController()
+                self.navigationController?.pushViewController(timeVC, animated: true)
+            
+            // first day of week
+            case 2:
                 self.handleWeekOfDay()
-                tableView.deselectRow(at: indexPath, animated: true)
                 
             default:
                 self.handleOpenCloseCell(indexPath.row)
-                tableView.deselectRow(at: indexPath, animated: true)
             }
             
         } else {
@@ -266,7 +261,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 break
                 
             case 1:
-                self.selectedIndex = indexPath
                 let aboutVC = AboutViewController()
                 self.navigationController?.pushViewController(aboutVC, animated: true)
                 
@@ -281,17 +275,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 break
             }
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     fileprivate func handleOpenCloseCell(_ index: Int) {
         let ud = AppUserDefault()
         let key: String
         switch index {
-        case 2:
-            key = kCloseDueTodayKey
         case 3:
-            key = kCloseSoundKey
+            key = kCloseDueTodayKey
         case 4:
+            key = kCloseSoundKey
+        case 5:
             key = kSortByPriority
         default:
             return
@@ -327,8 +323,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
         
-        
-        let reloadIndex = IndexPath(row: 1, section: 0)
+        let reloadIndex = IndexPath(row: 2, section: 0)
         self.settingTableView.reloadRows(at: [reloadIndex], with: .automatic)
     }
 }

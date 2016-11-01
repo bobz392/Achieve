@@ -85,9 +85,7 @@ class TagViewController: BaseViewController {
         self.newTagButton.tintColor = colors.linkTextColor
         self.newTagButton.backgroundColor = colors.cloudColor
         self.newTagButton.addTopShadow()
-        
-        self.titleLabel.text = Localized("tag")
-        
+
         self.newTagTextField.tintColor = colors.mainGreenColor
     }
     
@@ -107,6 +105,7 @@ class TagViewController: BaseViewController {
         self.holderView.layer.cornerRadius = kCardViewCornerRadius
         
         self.newTagTextField.placeholder = Localized("newTag")
+        self.titleLabel.text = Localized("tag")
     }
     
     // MARK: - actions

@@ -212,4 +212,6 @@
 "shareMessage"="%@ 在 %@ ，一起吧";
 
 // time management
-"timeManagement"="开始时间管理";
+"timeManagementSetting"="管理工作法";
+"timeManagement"="开始工作法";
+"createTimeManagement"="创建新的工作法";

@@ -87,7 +87,7 @@
 "noRepeat"="Repeat";
 "taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
-"overTime"="  overtime  ";
+"overTime"="  overdue  ";
 "repeatHint"="  repeat  ";
 "addressBook"="Address Book";
 "errorInfos"="Please improve content";
@@ -212,3 +212,9 @@
 "timeManagementSetting"="Time Management Method";
 "timeManagement"="Start Time Management";
 "createTimeManagement"="Create New Method";
+"useTime"="Use %d time";
+"useTimes"="Use %d times";
+"pomodoro"="Pomodoro Technique";
+"pomodoroWork"="Working";
+"pomodoroRest"="Take a Break";
+"pomodoroLongRest"="Four pomodoros! Take a longer Break";

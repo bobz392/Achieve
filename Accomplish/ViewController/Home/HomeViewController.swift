@@ -58,8 +58,8 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        self.isFullScreenSize = AppUserDefault().readBool(kIsFullScreenSizeKey)
+        let appDefault = AppUserDefault()
+        self.isFullScreenSize = appDefault.readBool(kIsFullScreenSizeKey)
         
         self.configMainUI()
         self.initializeControl()
@@ -70,7 +70,10 @@ class HomeViewController: BaseViewController {
         self.initTimer()
         
         self.icloudManager.asyncFromCloudIfNeeded()
-        
+        if appDefault.readBool(kBuildInTimeMethodCreatedKey) != true {
+            BuildInTimeMethodCreator().pomodoroCreator()
+            appDefault.write(kBuildInTimeMethodCreatedKey, value: true)
+        }
         //        TestManager().addAppStoreData()
     }
     
@@ -489,6 +492,10 @@ class HomeViewController: BaseViewController {
         self.doSwitchScreen(true)
         //        CloudKitManager().fetchTestData()
         //        TestManager().addTestCheckIn()
+        
+        RealmManager.shared.queryAll(clz: TimeMethod.self)
+        RealmManager.shared.queryAll(clz: TimeMethodItem.self)
+        RealmManager.shared.queryAll(clz: TimeMethodGroup.self)
     }
     
     func calendarAction() {

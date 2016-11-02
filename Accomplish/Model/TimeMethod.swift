@@ -18,11 +18,11 @@ class TimeMethod: Object {
 }
 
 class TimeMethodGroup: Object {
-    let items = List<TimeMethodItems>()
+    let items = List<TimeMethodItem>()
     dynamic var repeatTimes: Int = 0
 }
 
-class TimeMethodItems: Object {
+class TimeMethodItem: Object {
     dynamic var name: String = ""
     dynamic var interval: Int = 0
 }

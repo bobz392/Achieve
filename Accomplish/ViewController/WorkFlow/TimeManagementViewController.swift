@@ -16,6 +16,8 @@ class TimeManagementViewController: BaseViewController {
     @IBOutlet weak var methodTableView: UITableView!
     @IBOutlet weak var createMethodButton: UIButton!
     
+    fileprivate let timeMethods = RealmManager.shared.allTimeMethods()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +61,8 @@ class TimeManagementViewController: BaseViewController {
         self.createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
         
         self.titleLabel.text = Localized("timeManagementSetting")
+        
+        self.configMethodTableView()
     }
     
     // MARK: - actions
@@ -75,11 +79,26 @@ class TimeManagementViewController: BaseViewController {
 }
 
 extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSource {
+    fileprivate func configMethodTableView() {
+        self.methodTableView.clearView()
+        self.methodTableView.register(TimeMethodTableViewCell.nib,
+                                      forCellReuseIdentifier: TimeMethodTableViewCell.reuseId)
+        self.methodTableView.tableFooterView = UIView()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.timeMethods.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TimeMethodTableViewCell.reuseId,
+                                                 for: indexPath) as! TimeMethodTableViewCell
+        cell.configCell(method: self.timeMethods[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return TimeMethodTableViewCell.rowHeight
     }
 }

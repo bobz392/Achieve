@@ -19,6 +19,7 @@ let kCurrentTagUUIDKey = "com.current.tag"
 let kUserFirstTimeCallNoitification = "com.call.notification"
 let kCheckMoveUnfinishTaskKey = "com.check.unfinish.task"
 let kUserSyncCloudDataKey = "com.sync.cloud.data"
+let kBuildInTimeMethodCreatedKey = "com.build.in.time.method"
 
 struct AppUserDefault {
     let def = UserDefaults.standard

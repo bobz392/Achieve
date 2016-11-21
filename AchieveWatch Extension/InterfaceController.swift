@@ -182,7 +182,7 @@ extension InterfaceController: WCSessionDelegate {
     func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
         dispatch_async_main {
             Logger.log(userInfoTransfer)
-            Logger.log(error)
+            Logger.log(error ?? "no error")
         }
     }
     

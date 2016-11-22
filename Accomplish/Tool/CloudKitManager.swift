@@ -20,7 +20,7 @@ class CloudKitManager: NSObject {
         
         let query = CKQuery(recordType: "Task", predicate: NSPredicate(value: true))
         publicDB.perform(query, inZoneWith: nil) { (records, error) in
-            debugPrint(records)
+            debugPrint(records ?? "icloud no test data")
         }
         
         //        publicDB.fetchAllRecordZones { (zones, error) in

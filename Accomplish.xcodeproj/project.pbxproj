@@ -83,30 +83,6 @@
 		C74A896E1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A896F1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A89701D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
-		C74F1E401DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E241DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap */; };
-		C74F1E411DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E251DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap */; };
-		C74F1E421DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E261DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap */; };
-		C74F1E431DC5B52B00F7D37D /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E271DC5B52B00F7D37D /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap */; };
-		C74F1E441DC5B52B00F7D37D /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E281DC5B52B00F7D37D /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap */; };
-		C74F1E451DC5B52B00F7D37D /* 96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E291DC5B52B00F7D37D /* 96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap */; };
-		C74F1E461DC5B52B00F7D37D /* A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E2A1DC5B52B00F7D37D /* A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap */; };
-		C74F1E471DC5B52B00F7D37D /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E2B1DC5B52B00F7D37D /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */; };
-		C74F1E481DC5B52B00F7D37D /* B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E2C1DC5B52B00F7D37D /* B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap */; };
-		C74F1E491DC5B52B00F7D37D /* BD0E4544-2D03-3072-8EDB-2C612403E8F1.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E2D1DC5B52B00F7D37D /* BD0E4544-2D03-3072-8EDB-2C612403E8F1.bcsymbolmap */; };
-		C74F1E4A1DC5B52B00F7D37D /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E2E1DC5B52B00F7D37D /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap */; };
-		C74F1E4B1DC5B52B00F7D37D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74F1E2F1DC5B52B00F7D37D /* Charts.framework */; };
-		C74F1E4F1DC5B52B00F7D37D /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E331DC5B52B00F7D37D /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap */; };
-		C74F1E501DC5B52B00F7D37D /* EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E341DC5B52B00F7D37D /* EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap */; };
-		C74F1E511DC5B52B00F7D37D /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C74F1E351DC5B52B00F7D37D /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */; };
-		C74F1E541DC5B52B00F7D37D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74F1E381DC5B52B00F7D37D /* Realm.framework */; };
-		C74F1E561DC5B52B00F7D37D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74F1E3A1DC5B52B00F7D37D /* RealmSwift.framework */; };
-		C74F1E581DC5B52B00F7D37D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74F1E3C1DC5B52B00F7D37D /* SnapKit.framework */; };
-		C74F1E5A1DC5B52B00F7D37D /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74F1E3E1DC5B52B00F7D37D /* SVProgressHUD.framework */; };
-		C74F1E5C1DC5B55C00F7D37D /* Charts.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C74F1E301DC5B52B00F7D37D /* Charts.framework.dSYM */; };
-		C74F1E5D1DC5B55C00F7D37D /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C74F1E391DC5B52B00F7D37D /* Realm.framework.dSYM */; };
-		C74F1E5E1DC5B55C00F7D37D /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C74F1E3B1DC5B52B00F7D37D /* RealmSwift.framework.dSYM */; };
-		C74F1E5F1DC5B55C00F7D37D /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C74F1E3D1DC5B52B00F7D37D /* SnapKit.framework.dSYM */; };
-		C74F1E601DC5B55C00F7D37D /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C74F1E3F1DC5B52B00F7D37D /* SVProgressHUD.framework.dSYM */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
@@ -147,6 +123,32 @@
 		C77195791D71D0F800437560 /* Subtask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195781D71D0F800437560 /* Subtask.swift */; };
 		C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771957A1D71ED6400437560 /* KVTaskViewController.swift */; };
 		C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771957B1D71ED6400437560 /* KVTaskViewController.xib */; };
+		C77DE33B1DE3E27A00F098F4 /* 018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE31F1DE3E27A00F098F4 /* 018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap */; };
+		C77DE33C1DE3E27A00F098F4 /* 1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3201DE3E27A00F098F4 /* 1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap */; };
+		C77DE33D1DE3E27A00F098F4 /* 2EC34B29-1AE3-3F81-B630-E5088A2EEF7A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3211DE3E27A00F098F4 /* 2EC34B29-1AE3-3F81-B630-E5088A2EEF7A.bcsymbolmap */; };
+		C77DE33E1DE3E27A00F098F4 /* 59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3221DE3E27A00F098F4 /* 59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap */; };
+		C77DE33F1DE3E27A00F098F4 /* 6E3BE1D2-3404-3BE9-A47E-47488D76EDE9.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3231DE3E27A00F098F4 /* 6E3BE1D2-3404-3BE9-A47E-47488D76EDE9.bcsymbolmap */; };
+		C77DE3401DE3E27A00F098F4 /* 7942A7BF-737C-3DBD-B323-F8BA36CCA13C.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3241DE3E27A00F098F4 /* 7942A7BF-737C-3DBD-B323-F8BA36CCA13C.bcsymbolmap */; };
+		C77DE3411DE3E27A00F098F4 /* 88EDF587-BCEE-36E1-B009-C7000F55186E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3251DE3E27A00F098F4 /* 88EDF587-BCEE-36E1-B009-C7000F55186E.bcsymbolmap */; };
+		C77DE3421DE3E27A00F098F4 /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3261DE3E27A00F098F4 /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap */; };
+		C77DE3431DE3E27A00F098F4 /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3271DE3E27A00F098F4 /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap */; };
+		C77DE3441DE3E27A00F098F4 /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3281DE3E27A00F098F4 /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap */; };
+		C77DE3451DE3E27A00F098F4 /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3291DE3E27A00F098F4 /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap */; };
+		C77DE3461DE3E27A00F098F4 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE32A1DE3E27A00F098F4 /* Charts.framework */; };
+		C77DE3481DE3E27A00F098F4 /* ChartsRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE32C1DE3E27A00F098F4 /* ChartsRealm.framework */; };
+		C77DE34A1DE3E27A00F098F4 /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE32E1DE3E27A00F098F4 /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap */; };
+		C77DE34B1DE3E27A00F098F4 /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE32F1DE3E27A00F098F4 /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap */; };
+		C77DE34C1DE3E27A00F098F4 /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3301DE3E27A00F098F4 /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap */; };
+		C77DE34D1DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE3311DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework */; };
+		C77DE34F1DE3E27A00F098F4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE3331DE3E27A00F098F4 /* Realm.framework */; };
+		C77DE3511DE3E27A00F098F4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE3351DE3E27A00F098F4 /* RealmSwift.framework */; };
+		C77DE3531DE3E27A00F098F4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE3371DE3E27A00F098F4 /* SnapKit.framework */; };
+		C77DE3551DE3E27A00F098F4 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77DE3391DE3E27A00F098F4 /* SVProgressHUD.framework */; };
+		C77DE3571DE3E29800F098F4 /* Charts.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77DE32B1DE3E27A00F098F4 /* Charts.framework.dSYM */; };
+		C77DE3581DE3E29800F098F4 /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77DE3341DE3E27A00F098F4 /* Realm.framework.dSYM */; };
+		C77DE3591DE3E29800F098F4 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77DE3361DE3E27A00F098F4 /* RealmSwift.framework.dSYM */; };
+		C77DE35A1DE3E29800F098F4 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77DE3381DE3E27A00F098F4 /* SnapKit.framework.dSYM */; };
+		C77DE35B1DE3E29800F098F4 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77DE33A1DE3E27A00F098F4 /* SVProgressHUD.framework.dSYM */; };
 		C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
 		C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
 		C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
@@ -372,11 +374,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				C74F1E5C1DC5B55C00F7D37D /* Charts.framework.dSYM in Copy Carthage dSYMs */,
-				C74F1E5D1DC5B55C00F7D37D /* Realm.framework.dSYM in Copy Carthage dSYMs */,
-				C74F1E5E1DC5B55C00F7D37D /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
-				C74F1E5F1DC5B55C00F7D37D /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
-				C74F1E601DC5B55C00F7D37D /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
+				C77DE3571DE3E29800F098F4 /* Charts.framework.dSYM in Copy Carthage dSYMs */,
+				C77DE3581DE3E29800F098F4 /* Realm.framework.dSYM in Copy Carthage dSYMs */,
+				C77DE3591DE3E29800F098F4 /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
+				C77DE35A1DE3E29800F098F4 /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
+				C77DE35B1DE3E29800F098F4 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
 			);
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,30 +455,6 @@
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C74A896D1D9636F3008E15CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		C74F1E241DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E251DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E261DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E271DC5B52B00F7D37D /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E281DC5B52B00F7D37D /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E291DC5B52B00F7D37D /* 96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E2A1DC5B52B00F7D37D /* A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E2B1DC5B52B00F7D37D /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E2C1DC5B52B00F7D37D /* B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E2D1DC5B52B00F7D37D /* BD0E4544-2D03-3072-8EDB-2C612403E8F1.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BD0E4544-2D03-3072-8EDB-2C612403E8F1.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E2E1DC5B52B00F7D37D /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E2F1DC5B52B00F7D37D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
-		C74F1E301DC5B52B00F7D37D /* Charts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Charts.framework.dSYM; sourceTree = "<group>"; };
-		C74F1E331DC5B52B00F7D37D /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E341DC5B52B00F7D37D /* EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E351DC5B52B00F7D37D /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap"; sourceTree = "<group>"; };
-		C74F1E381DC5B52B00F7D37D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		C74F1E391DC5B52B00F7D37D /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
-		C74F1E3A1DC5B52B00F7D37D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		C74F1E3B1DC5B52B00F7D37D /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RealmSwift.framework.dSYM; sourceTree = "<group>"; };
-		C74F1E3C1DC5B52B00F7D37D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
-		C74F1E3D1DC5B52B00F7D37D /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
-		C74F1E3E1DC5B52B00F7D37D /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
-		C74F1E3F1DC5B52B00F7D37D /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
@@ -523,6 +501,34 @@
 		C77195781D71D0F800437560 /* Subtask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subtask.swift; sourceTree = "<group>"; };
 		C771957A1D71ED6400437560 /* KVTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVTaskViewController.swift; sourceTree = "<group>"; };
 		C771957B1D71ED6400437560 /* KVTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVTaskViewController.xib; sourceTree = "<group>"; };
+		C77DE31F1DE3E27A00F098F4 /* 018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3201DE3E27A00F098F4 /* 1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3211DE3E27A00F098F4 /* 2EC34B29-1AE3-3F81-B630-E5088A2EEF7A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2EC34B29-1AE3-3F81-B630-E5088A2EEF7A.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3221DE3E27A00F098F4 /* 59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3231DE3E27A00F098F4 /* 6E3BE1D2-3404-3BE9-A47E-47488D76EDE9.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "6E3BE1D2-3404-3BE9-A47E-47488D76EDE9.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3241DE3E27A00F098F4 /* 7942A7BF-737C-3DBD-B323-F8BA36CCA13C.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "7942A7BF-737C-3DBD-B323-F8BA36CCA13C.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3251DE3E27A00F098F4 /* 88EDF587-BCEE-36E1-B009-C7000F55186E.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "88EDF587-BCEE-36E1-B009-C7000F55186E.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3261DE3E27A00F098F4 /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3271DE3E27A00F098F4 /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3281DE3E27A00F098F4 /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3291DE3E27A00F098F4 /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE32A1DE3E27A00F098F4 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
+		C77DE32B1DE3E27A00F098F4 /* Charts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Charts.framework.dSYM; sourceTree = "<group>"; };
+		C77DE32C1DE3E27A00F098F4 /* ChartsRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChartsRealm.framework; sourceTree = "<group>"; };
+		C77DE32D1DE3E27A00F098F4 /* ChartsRealm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = ChartsRealm.framework.dSYM; sourceTree = "<group>"; };
+		C77DE32E1DE3E27A00F098F4 /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE32F1DE3E27A00F098F4 /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3301DE3E27A00F098F4 /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap"; sourceTree = "<group>"; };
+		C77DE3311DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlaygroundFrameworkWrapper.framework; sourceTree = "<group>"; };
+		C77DE3321DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<group>"; };
+		C77DE3331DE3E27A00F098F4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		C77DE3341DE3E27A00F098F4 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
+		C77DE3351DE3E27A00F098F4 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		C77DE3361DE3E27A00F098F4 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = RealmSwift.framework.dSYM; sourceTree = "<group>"; };
+		C77DE3371DE3E27A00F098F4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
+		C77DE3381DE3E27A00F098F4 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		C77DE3391DE3E27A00F098F4 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
+		C77DE33A1DE3E27A00F098F4 /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C7821EB31D7BF1820056623D /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormhole.h; sourceTree = "<group>"; };
 		C7821EB41D7BF1820056623D /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormhole.m; sourceTree = "<group>"; };
 		C7821EB51D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeCoordinatedFileTransiting.h; sourceTree = "<group>"; };
@@ -672,15 +678,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C74F1E5A1DC5B52B00F7D37D /* SVProgressHUD.framework in Frameworks */,
+				C77DE3551DE3E27A00F098F4 /* SVProgressHUD.framework in Frameworks */,
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
 				C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */,
-				C74F1E561DC5B52B00F7D37D /* RealmSwift.framework in Frameworks */,
-				C74F1E4B1DC5B52B00F7D37D /* Charts.framework in Frameworks */,
-				C74F1E541DC5B52B00F7D37D /* Realm.framework in Frameworks */,
+				C77DE3511DE3E27A00F098F4 /* RealmSwift.framework in Frameworks */,
+				C77DE3461DE3E27A00F098F4 /* Charts.framework in Frameworks */,
+				C77DE34D1DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework in Frameworks */,
+				C77DE34F1DE3E27A00F098F4 /* Realm.framework in Frameworks */,
+				C77DE3481DE3E27A00F098F4 /* ChartsRealm.framework in Frameworks */,
 				C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */,
 				C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */,
-				C74F1E581DC5B52B00F7D37D /* SnapKit.framework in Frameworks */,
+				C77DE3531DE3E27A00F098F4 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,38 +917,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C74F1E231DC5B52B00F7D37D /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C74F1E241DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap */,
-				C74F1E251DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap */,
-				C74F1E261DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap */,
-				C74F1E271DC5B52B00F7D37D /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap */,
-				C74F1E281DC5B52B00F7D37D /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap */,
-				C74F1E291DC5B52B00F7D37D /* 96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap */,
-				C74F1E2A1DC5B52B00F7D37D /* A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap */,
-				C74F1E2B1DC5B52B00F7D37D /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap */,
-				C74F1E2C1DC5B52B00F7D37D /* B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap */,
-				C74F1E2D1DC5B52B00F7D37D /* BD0E4544-2D03-3072-8EDB-2C612403E8F1.bcsymbolmap */,
-				C74F1E2E1DC5B52B00F7D37D /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap */,
-				C74F1E2F1DC5B52B00F7D37D /* Charts.framework */,
-				C74F1E301DC5B52B00F7D37D /* Charts.framework.dSYM */,
-				C74F1E331DC5B52B00F7D37D /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap */,
-				C74F1E341DC5B52B00F7D37D /* EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap */,
-				C74F1E351DC5B52B00F7D37D /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap */,
-				C74F1E381DC5B52B00F7D37D /* Realm.framework */,
-				C74F1E391DC5B52B00F7D37D /* Realm.framework.dSYM */,
-				C74F1E3A1DC5B52B00F7D37D /* RealmSwift.framework */,
-				C74F1E3B1DC5B52B00F7D37D /* RealmSwift.framework.dSYM */,
-				C74F1E3C1DC5B52B00F7D37D /* SnapKit.framework */,
-				C74F1E3D1DC5B52B00F7D37D /* SnapKit.framework.dSYM */,
-				C74F1E3E1DC5B52B00F7D37D /* SVProgressHUD.framework */,
-				C74F1E3F1DC5B52B00F7D37D /* SVProgressHUD.framework.dSYM */,
-			);
-			name = iOS;
-			path = Carthage/Build/iOS;
-			sourceTree = "<group>";
-		};
 		C77192421D6CEE4E00437560 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1025,6 +1001,42 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		C77DE31E1DE3E27A00F098F4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C77DE31F1DE3E27A00F098F4 /* 018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap */,
+				C77DE3201DE3E27A00F098F4 /* 1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap */,
+				C77DE3211DE3E27A00F098F4 /* 2EC34B29-1AE3-3F81-B630-E5088A2EEF7A.bcsymbolmap */,
+				C77DE3221DE3E27A00F098F4 /* 59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap */,
+				C77DE3231DE3E27A00F098F4 /* 6E3BE1D2-3404-3BE9-A47E-47488D76EDE9.bcsymbolmap */,
+				C77DE3241DE3E27A00F098F4 /* 7942A7BF-737C-3DBD-B323-F8BA36CCA13C.bcsymbolmap */,
+				C77DE3251DE3E27A00F098F4 /* 88EDF587-BCEE-36E1-B009-C7000F55186E.bcsymbolmap */,
+				C77DE3261DE3E27A00F098F4 /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap */,
+				C77DE3271DE3E27A00F098F4 /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap */,
+				C77DE3281DE3E27A00F098F4 /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap */,
+				C77DE3291DE3E27A00F098F4 /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap */,
+				C77DE32A1DE3E27A00F098F4 /* Charts.framework */,
+				C77DE32B1DE3E27A00F098F4 /* Charts.framework.dSYM */,
+				C77DE32C1DE3E27A00F098F4 /* ChartsRealm.framework */,
+				C77DE32D1DE3E27A00F098F4 /* ChartsRealm.framework.dSYM */,
+				C77DE32E1DE3E27A00F098F4 /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap */,
+				C77DE32F1DE3E27A00F098F4 /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap */,
+				C77DE3301DE3E27A00F098F4 /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap */,
+				C77DE3311DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework */,
+				C77DE3321DE3E27A00F098F4 /* PlaygroundFrameworkWrapper.framework.dSYM */,
+				C77DE3331DE3E27A00F098F4 /* Realm.framework */,
+				C77DE3341DE3E27A00F098F4 /* Realm.framework.dSYM */,
+				C77DE3351DE3E27A00F098F4 /* RealmSwift.framework */,
+				C77DE3361DE3E27A00F098F4 /* RealmSwift.framework.dSYM */,
+				C77DE3371DE3E27A00F098F4 /* SnapKit.framework */,
+				C77DE3381DE3E27A00F098F4 /* SnapKit.framework.dSYM */,
+				C77DE3391DE3E27A00F098F4 /* SVProgressHUD.framework */,
+				C77DE33A1DE3E27A00F098F4 /* SVProgressHUD.framework.dSYM */,
+			);
+			name = iOS;
+			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
 		C7821EB21D7BF1820056623D /* MMWormhole */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,7 +1093,7 @@
 		C7860E341D6C23FF000281FA = {
 			isa = PBXGroup;
 			children = (
-				C74F1E231DC5B52B00F7D37D /* iOS */,
+				C77DE31E1DE3E27A00F098F4 /* iOS */,
 				C79807191D82B97E0011DE19 /* Fabric.framework */,
 				C798071A1D82B97E0011DE19 /* Crashlytics.framework */,
 				C7860E3F1D6C23FF000281FA /* Accomplish */,
@@ -1413,7 +1425,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = zhoubo;
 				TargetAttributes = {
 					C7860E3C1D6C23FF000281FA = {
@@ -1515,64 +1527,64 @@
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
 				C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */,
 				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
-				C74F1E401DC5B52B00F7D37D /* 0355F880-82DD-396E-A5D1-7940C3F1F4FC.bcsymbolmap in Resources */,
-				C74F1E441DC5B52B00F7D37D /* 5E87E6D7-346B-3CCC-91FB-4D6F050973D1.bcsymbolmap in Resources */,
-				C74F1E481DC5B52B00F7D37D /* B5F05ACE-6A93-30CC-817B-530A3A080FA6.bcsymbolmap in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
+				C77DE33D1DE3E27A00F098F4 /* 2EC34B29-1AE3-3F81-B630-E5088A2EEF7A.bcsymbolmap in Resources */,
+				C77DE34C1DE3E27A00F098F4 /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap in Resources */,
 				C74751BB1DC840D100831DB1 /* TimeManagementView.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
 				C79806FB1D818E660011DE19 /* HintView.xib in Resources */,
+				C77DE3431DE3E27A00F098F4 /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap in Resources */,
+				C77DE34B1DE3E27A00F098F4 /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap in Resources */,
 				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */,
-				C74F1E4F1DC5B52B00F7D37D /* EE4C5D56-6D3D-3591-94D4-99A008A925EC.bcsymbolmap in Resources */,
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
+				C77DE3411DE3E27A00F098F4 /* 88EDF587-BCEE-36E1-B009-C7000F55186E.bcsymbolmap in Resources */,
 				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
+				C77DE3401DE3E27A00F098F4 /* 7942A7BF-737C-3DBD-B323-F8BA36CCA13C.bcsymbolmap in Resources */,
 				C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */,
-				C74F1E511DC5B52B00F7D37D /* F6576A11-9EDB-360B-B0A0-451ED768459C.bcsymbolmap in Resources */,
 				C771949D1D6FEA1000437560 /* TriggerTableViewCell.xib in Resources */,
-				C74F1E431DC5B52B00F7D37D /* 59AD7B6B-0488-33D4-B768-5EA87E6D728A.bcsymbolmap in Resources */,
-				C74F1E421DC5B52B00F7D37D /* 45EB375F-87F9-37A9-B2E8-8F59D8573B96.bcsymbolmap in Resources */,
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
 				C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */,
+				C77DE33E1DE3E27A00F098F4 /* 59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap in Resources */,
 				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
-				C74F1E411DC5B52B00F7D37D /* 3B5EC3DA-AAFD-37A7-8201-089DDD83478C.bcsymbolmap in Resources */,
 				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,
+				C77DE3441DE3E27A00F098F4 /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap in Resources */,
+				C77DE33F1DE3E27A00F098F4 /* 6E3BE1D2-3404-3BE9-A47E-47488D76EDE9.bcsymbolmap in Resources */,
 				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
 				C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */,
 				C7DDA5C21D7683030054154C /* TaskPickerView.xib in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
+				C77DE33C1DE3E27A00F098F4 /* 1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap in Resources */,
 				C7DB5D161D91A2A100719CB3 /* TagTableViewCell.xib in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C7CAF0BF1DA045990046D756 /* HomePulldownView.xib in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
-				C74F1E471DC5B52B00F7D37D /* B3ACBC74-14F2-3640-A356-EAB3719C3C75.bcsymbolmap in Resources */,
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7DDA5BD1D7673FF0054154C /* NoteViewController.xib in Resources */,
 				C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */,
 				C70528381D8B07320036FCC1 /* TagViewController.xib in Resources */,
-				C74F1E4A1DC5B52B00F7D37D /* CC56EF0A-9384-3B2A-8FE0-12016BD61848.bcsymbolmap in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
-				C74F1E461DC5B52B00F7D37D /* A9931B85-6DAE-3D13-B71C-B7011A7AFF2E.bcsymbolmap in Resources */,
 				C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
 				C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */,
-				C74F1E451DC5B52B00F7D37D /* 96CC0258-EC56-34CF-97E9-6F370D0B19AD.bcsymbolmap in Resources */,
 				C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
+				C77DE3451DE3E27A00F098F4 /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap in Resources */,
 				C7E39AAF1DB5481600FE2588 /* SVProgressHUD.bundle in Resources */,
 				C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
-				C74F1E491DC5B52B00F7D37D /* BD0E4544-2D03-3072-8EDB-2C612403E8F1.bcsymbolmap in Resources */,
-				C74F1E501DC5B52B00F7D37D /* EE5B22CE-2331-3FA8-9637-BA6205EB4B95.bcsymbolmap in Resources */,
+				C77DE34A1DE3E27A00F098F4 /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap in Resources */,
 				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
+				C77DE33B1DE3E27A00F098F4 /* 018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
+				C77DE3421DE3E27A00F098F4 /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
 				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,
 				C74751BF1DC97FE100831DB1 /* TimeMethodTableViewCell.xib in Resources */,
@@ -1947,6 +1959,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1957,13 +1970,16 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1993,6 +2009,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2003,13 +2020,16 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2023,6 +2043,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2038,7 +2059,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2069,7 +2089,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

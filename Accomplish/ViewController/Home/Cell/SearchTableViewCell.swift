@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
+class SearchTableViewCell: BaseTableViewCell {
 
     static let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
     static let reuseId = "searchTableViewCell"
@@ -25,7 +25,8 @@ class SearchTableViewCell: UITableViewCell {
         self.clearView()
         self.contentView.clearView()
         self.taskTitleLabel.textColor = colors.cloudColor
+        self.taskTitleLabel.highlightedTextColor = colors.secondaryTextColor
         self.taskStartLabel.textColor = colors.cloudColor
+        self.taskStartLabel.highlightedTextColor = colors.secondaryTextColor
     }
-
 }

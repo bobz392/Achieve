@@ -25,16 +25,10 @@ class TimeMethodTableViewCell: BaseTableViewCell {
         self.nameLabel.textColor = colors.mainTextColor
         self.timesLabel.textColor = colors.secondaryTextColor
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func configCell(method: TimeMethod) {
         self.nameLabel.text = method.name
         self.timesLabel.text =
-            Localized(method.useTimes > 1 ? "useTimes" : "useTime")
+            String(format: Localized(method.useTimes > 1 ? "useTimes" : "useTime"), method.useTimes)
     }
 }

@@ -42,7 +42,7 @@ class TimeManagementView: UIView {
         view.countLabel.delegate = view
         
         view.titleLabel.textColor = colors.secondaryTextColor
-            
+        
         view.statusButton.setTitleColor(colors.cloudColor, for: .normal)
         view.statusButton.addTarget(view, action: #selector(view.start), for: .touchUpInside)
         view.statusButton.tag = 0
@@ -50,7 +50,16 @@ class TimeManagementView: UIView {
         
         view.method = method
         
+        NotificationCenter.default
+            .addObserver(view, selector: #selector(view.saveTimeManage),
+                         name: NSNotification.Name.UIApplicationWillTerminate,
+                         object: nil)
+        
         return view
+    }
+    
+    func saveTimeManage() {
+    
     }
     
     func moveIn(view: UIView) {
@@ -108,7 +117,11 @@ extension TimeManagementView: MZTimerLabelDelegate {
             self.finish()
         } else {
             self.titleLabel.text = item.name
-            self.countLabel.setCountDownTime(5)
+            #if debug
+                self.countLabel.setCountDownTime(5)
+            #else
+                self.countLabel.setCountDownTime(item.interval)
+            #endif
             self.countLabel.start()
             
             // 每次时间到了 itemIndex + 1

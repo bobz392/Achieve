@@ -254,7 +254,7 @@ extension MonthViewController: IAxisValueFormatter {
                 rats.append(contentsOf: appendArray)
             }
             
-            for i in 0..<count {
+            for i in 0..<rats.count {
                 values.append(ChartDataEntry(x: Double(i), y: rats[i]))
             }
         }

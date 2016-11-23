@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 class TaskTableViewCell: BaseTableViewCell {
     
@@ -30,6 +29,7 @@ class TaskTableViewCell: BaseTableViewCell {
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
     var settingBlock: TaskSettingBlock? = nil
+    fileprivate let soundManager = SoundManager()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -200,7 +200,7 @@ class TaskTableViewCell: BaseTableViewCell {
             RealmManager.shared.updateTaskStatus(task, status: kTaskRunning)
         } else {
             if !AppUserDefault().readBool(kCloseSoundKey) {
-                self.dingSound()
+                self.soundManager.systemDing()
             }
             RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
         }
@@ -214,14 +214,5 @@ class TaskTableViewCell: BaseTableViewCell {
             }
             WatchManager.shared.tellWatchQueryNewTask()
         }
-    }
-    
-    fileprivate func dingSound() {
-        guard let url =
-            URL(string: "/System/Library/Audio/UISounds/Modern/sms_alert_note.caf")
-                as CFURL? else { return }
-        let d = UnsafeMutablePointer<SystemSoundID>.allocate(capacity: 32)
-        AudioServicesCreateSystemSoundID(url, d)
-        AudioServicesPlaySystemSound(d.move())
     }
 }

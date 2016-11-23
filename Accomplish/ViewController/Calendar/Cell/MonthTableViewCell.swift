@@ -52,7 +52,11 @@ class MonthTableViewCell: UITableViewCell {
                 String(format: Localized("postponeFinishAt"),
                        finishDate.formattedDate(with: .medium))
         } else {
-            self.rightDetailLabel.text = Localized("progess")
+            if task.postponeTimes > 0 {
+                self.rightDetailLabel.text = Localized("notComoletedYet")
+            } else {
+                self.rightDetailLabel.text = Localized("progess")
+            }
         }
     }
 }

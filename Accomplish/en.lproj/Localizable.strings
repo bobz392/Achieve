@@ -209,6 +209,8 @@
 "shareMessage"="%@ at %@, join with me?";
 
 // time management
+"startTimeManage"="Start";
+"endTimeManage"="Stop";
 "timeManagementSetting"="Time Management Method";
 "timeManagement"="Start Time Management";
 "createTimeManagement"="Create New Method";

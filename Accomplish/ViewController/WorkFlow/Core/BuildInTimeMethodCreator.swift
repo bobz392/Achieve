@@ -13,6 +13,7 @@ struct BuildInTimeMethodCreator {
     func pomodoroCreator() {
         
         let timeMethod = TimeMethod()
+        timeMethod.repeatTimes = -1
         timeMethod.name = Localized("pomodoro")
         
         let group1 = TimeMethodGroup()

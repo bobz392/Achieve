@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,9 +17,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esM-0J-v4o">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YwB-AS-iV9">
-                        <frame key="frameInset"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw8-1M-to7" customClass="MZTimerLabel">
+                                <rect key="frame" x="167" y="223" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF2-W4-fO9">
+                                <rect key="frame" x="187" y="60" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-pV-Unq">
+                                <rect key="frame" x="164" y="573" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="NuA-pV-Unq" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="SDy-FN-Gl4"/>
+                            <constraint firstItem="Lw8-1M-to7" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="jMT-4B-mIs"/>
+                            <constraint firstItem="mF2-W4-fO9" firstAttribute="top" secondItem="YwB-AS-iV9" secondAttribute="top" constant="60" id="mw3-0r-AeZ"/>
+                            <constraint firstAttribute="bottom" secondItem="NuA-pV-Unq" secondAttribute="bottom" constant="64" id="ndn-p0-8ud"/>
+                            <constraint firstItem="Lw8-1M-to7" firstAttribute="centerY" secondItem="YwB-AS-iV9" secondAttribute="centerY" multiplier="0.7" id="okB-Tt-nh8"/>
+                            <constraint firstItem="mF2-W4-fO9" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="vjW-zS-dwf"/>
+                        </constraints>
                     </view>
                     <blurEffect style="dark"/>
                 </visualEffectView>
@@ -27,6 +58,11 @@
                 <constraint firstAttribute="bottom" secondItem="esM-0J-v4o" secondAttribute="bottom" id="ey1-fp-tPO"/>
                 <constraint firstItem="esM-0J-v4o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iWb-cP-5UN"/>
             </constraints>
+            <connections>
+                <outlet property="countLabel" destination="Lw8-1M-to7" id="rX6-7q-TPS"/>
+                <outlet property="statusButton" destination="NuA-pV-Unq" id="Z8r-ex-Q0M"/>
+                <outlet property="titleLabel" destination="mF2-W4-fO9" id="hTb-nt-Cct"/>
+            </connections>
         </view>
     </objects>
 </document>

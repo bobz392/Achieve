@@ -727,9 +727,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
 //            let timeVC = TimeManagementViewController()
 //            self.animationNavgationTo(vc: timeVC)
-            guard let view = TimeManagementView.loadNib(self) else { return }
-            view.moveIn(view: self.view)
+            guard let t = RealmManager.shared.allTimeMethods().first else { return }
             
+            guard let view = TimeManagementView.loadNib(self, method: t) else { return }
+            view.moveIn(view: self.view)
         }
         alert.addAction(workflowAction)
         

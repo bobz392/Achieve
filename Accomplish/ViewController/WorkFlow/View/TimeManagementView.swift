@@ -9,13 +9,52 @@
 import UIKit
 
 class TimeManagementView: UIView {
-
-    class func loadNib(_ target: AnyObject) -> TimeManagementView? {
-        return Bundle.main.loadNibNamed("TimeManagementView", owner: target, options: nil)?
-            .first as? TimeManagementView
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var countLabel: MZTimerLabel!
+    @IBOutlet weak var statusButton: UIButton!
+    
+    fileprivate var method: TimeMethod!
+    // 当前所在的 group 的 index
+    fileprivate var groupIndex = 0
+    // 当前 method 的 repeat 的数量
+    fileprivate var methodRepeatTimes = 0
+    // 当前所在的 item 的 index
+    fileprivate var itemIndex = 0
+    // 当前 group 的 repeat 的数量
+    fileprivate var groupRepeatTimes = 0
+    
+    fileprivate let soundManager = SoundManager()
+    
+    class func loadNib(_ target: AnyObject, method: TimeMethod) -> TimeManagementView? {
+        guard let view =
+            Bundle.main.loadNibNamed("TimeManagementView", owner: target, options: nil)?
+                .first as? TimeManagementView else {
+                    return nil
+        }
+        
+        let colors = Colors()
+        
+        view.countLabel.timerType = MZTimerLabelType.init(1)
+        view.countLabel.timeFormat = "HH:mm:ss"
+        view.countLabel.font = UIFont(name: "Courier", size: 30)
+        view.countLabel.textColor = colors.cloudColor
+        view.countLabel.delegate = view
+        
+        view.titleLabel.textColor = colors.secondaryTextColor
+            
+        view.statusButton.setTitleColor(colors.cloudColor, for: .normal)
+        view.statusButton.addTarget(view, action: #selector(view.start), for: .touchUpInside)
+        view.statusButton.tag = 0
+        view.statusButton.setTitle(Localized("startTimeManage"), for: .normal)
+        
+        view.method = method
+        
+        return view
     }
-
+    
     func moveIn(view: UIView) {
+        UIApplication.shared.isIdleTimerDisabled = true
         view.addSubview(self)
         
         self.snp.makeConstraints({ (make) in
@@ -28,18 +67,73 @@ class TimeManagementView: UIView {
         UIView.animate(withDuration: kSmallAnimationDuration) { [unowned self] in
             self.alpha = 1
         }
-        
-        // Test Remember delete
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.moveOut))
-        self.addGestureRecognizer(tap)
     }
     
     func moveOut() {
+        UIApplication.shared.isIdleTimerDisabled = false
         UIView.animate(withDuration: kSmallAnimationDuration, animations: {
             self.alpha = 0
-            }) { (finish) in
-                self.removeFromSuperview()
+        }) { (finish) in
+            self.removeFromSuperview()
         }
     }
+    
+    func start() {
+        if self.statusButton.tag == 0 {
+            self.statusButton.setTitle(Localized("endTimeManage"), for: .normal)
+            self.statusButton.tag = 1
+            self.nextStatus()
+        } else {
+            self.statusButton.setTitle(Localized("startTimeManage"), for: .normal)
+            self.statusButton.tag = 0
+            self.finish()
+        }
+    }
+}
 
+extension TimeManagementView: MZTimerLabelDelegate {
+    func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval) {
+        Logger.log("finish")
+        
+        self.soundManager.systemDing()
+        self.nextStatus()
+    }
+    
+    fileprivate func nextStatus() {
+        let group = self.method.groups[self.groupIndex]
+        let item = group.items[self.itemIndex]
+        
+        // 如果当前的 method 的重复已经完成了，则结束
+        if self.methodRepeatTimes > self.method.repeatTimes && self.method.repeatTimes != -1 {
+            self.finish()
+        } else {
+            self.titleLabel.text = item.name
+            self.countLabel.setCountDownTime(5)
+            self.countLabel.start()
+            
+            // 每次时间到了 itemIndex + 1
+            // 如果 itemIndex 加一后，已经超过 group 中 item 的 count，那么 groupRepeatTimes + 1
+            // 如果 groupRepeatTimes 超过了 group 的 repeat count 那么 groupIndex + 1
+            // 如果 groupIndex 超过了 method 中 group count 那么 methodRepeatTimes + 1, 并且 index 都恢复为最初状态
+            self.itemIndex += 1
+            if self.itemIndex >= group.items.count {
+                self.itemIndex = 0
+                self.groupRepeatTimes += 1
+                if self.groupRepeatTimes >= group.repeatTimes {
+                    self.groupRepeatTimes = 0
+                    self.groupIndex += 1
+                    
+                    if self.groupIndex >= method.groups.count {
+                        self.methodRepeatTimes += 1
+                        self.groupIndex = 0
+                        self.itemIndex = 0
+                    }
+                }
+            }
+        }
+    }
+    
+    fileprivate func finish() {
+        self.moveOut()
+    }
 }

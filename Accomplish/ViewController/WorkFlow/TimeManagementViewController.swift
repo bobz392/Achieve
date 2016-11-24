@@ -74,7 +74,9 @@ class TimeManagementViewController: BaseViewController {
     }
 
     func newMethodAction() {
-    
+        let timeManagerEditorVC =
+            TimeManagerEditorViewController(method: self.timeMethods[0], canChange: true)
+        self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
     }
 }
 
@@ -107,7 +109,6 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
         
         let timeManagerEditorVC =
             TimeManagerEditorViewController(method: self.timeMethods[indexPath.row], canChange: false)
-        
         self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
     }
 }

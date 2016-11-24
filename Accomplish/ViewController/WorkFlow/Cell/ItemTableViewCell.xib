@@ -24,7 +24,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqE-zc-I88">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaU-06-vJT">
                         <rect key="frame" x="15" y="14.5" width="31" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
@@ -32,15 +32,15 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="eqE-zc-I88" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="37u-C4-brY"/>
                     <constraint firstAttribute="trailing" secondItem="xob-dh-c3e" secondAttribute="trailing" constant="8" id="9dB-M6-42F"/>
-                    <constraint firstItem="xob-dh-c3e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eqE-zc-I88" secondAttribute="trailing" constant="10" id="X8u-ZH-coB"/>
+                    <constraint firstItem="xob-dh-c3e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qaU-06-vJT" secondAttribute="trailing" constant="10" id="9sx-0G-aw6"/>
+                    <constraint firstItem="qaU-06-vJT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Nbq-9j-6QI"/>
                     <constraint firstItem="xob-dh-c3e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bZF-YZ-TFc"/>
-                    <constraint firstItem="eqE-zc-I88" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mXW-oh-3bQ"/>
+                    <constraint firstItem="qaU-06-vJT" firstAttribute="centerY" secondItem="xob-dh-c3e" secondAttribute="centerY" id="wrj-Qh-Wnb"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="itemNameLabel" destination="eqE-zc-I88" id="dMJ-ag-RGc"/>
+                <outlet property="itemNameLabel" destination="qaU-06-vJT" id="LgW-PI-aES"/>
                 <outlet property="itemTimeLabel" destination="xob-dh-c3e" id="0Ls-it-SpV"/>
             </connections>
         </tableViewCell>

@@ -38,8 +38,8 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2fb-KE-Rqg">
-                                <rect key="frame" x="8" y="40" width="296" height="0.0"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2fb-KE-Rqg">
+                                <rect key="frame" x="8" y="40" width="296" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="KGk-i7-Jjw" id="Nzd-Gd-3M1"/>
@@ -47,9 +47,16 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LN2-d4-cfr">
-                                <rect key="frame" x="258" y="44" width="46" height="30"/>
+                                <rect key="frame" x="261" y="45" width="43" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aN-1s-SoD">
+                                <rect key="frame" x="230" y="53" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -60,10 +67,12 @@
                             <constraint firstAttribute="bottom" secondItem="LN2-d4-cfr" secondAttribute="bottom" constant="4" id="W7g-KR-N82"/>
                             <constraint firstItem="2fb-KE-Rqg" firstAttribute="trailing" secondItem="8dW-nN-P1v" secondAttribute="trailing" id="X97-u2-HJT"/>
                             <constraint firstItem="2fb-KE-Rqg" firstAttribute="leading" secondItem="xsg-Jt-7oz" secondAttribute="leading" id="bS9-02-40j"/>
+                            <constraint firstItem="LN2-d4-cfr" firstAttribute="leading" secondItem="1aN-1s-SoD" secondAttribute="trailing" id="dvT-Uf-xfw"/>
                             <constraint firstAttribute="trailing" secondItem="8dW-nN-P1v" secondAttribute="trailing" constant="8" id="lf1-zw-dxt"/>
                             <constraint firstItem="LN2-d4-cfr" firstAttribute="top" secondItem="2fb-KE-Rqg" secondAttribute="bottom" constant="4" id="m9N-Qu-f8s"/>
                             <constraint firstItem="xsg-Jt-7oz" firstAttribute="top" secondItem="79f-Ts-klB" secondAttribute="top" constant="4" id="qhH-0Z-eCk"/>
                             <constraint firstItem="2fb-KE-Rqg" firstAttribute="top" secondItem="xsg-Jt-7oz" secondAttribute="bottom" constant="4" id="uJP-mH-B6r"/>
+                            <constraint firstItem="1aN-1s-SoD" firstAttribute="centerY" secondItem="LN2-d4-cfr" secondAttribute="centerY" id="yO7-j8-icx"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -81,6 +90,7 @@
                 <outlet property="deleteGroupButton" destination="8dW-nN-P1v" id="fJl-tV-ouc"/>
                 <outlet property="groupNameLabel" destination="xsg-Jt-7oz" id="LIc-n5-crK"/>
                 <outlet property="groupRepeatButton" destination="LN2-d4-cfr" id="NAe-rR-fJA"/>
+                <outlet property="groupRepeatLabel" destination="1aN-1s-SoD" id="bGw-GQ-acd"/>
                 <outlet property="itemsTableView" destination="2fb-KE-Rqg" id="57U-6n-jhg"/>
             </connections>
             <point key="canvasLocation" x="50" y="149.5"/>

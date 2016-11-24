@@ -225,4 +225,5 @@
 
 // time management editor
 "timeManageGroupName"="Work Group %d";
+"enterItemName"="Enter Work Item Name";
 

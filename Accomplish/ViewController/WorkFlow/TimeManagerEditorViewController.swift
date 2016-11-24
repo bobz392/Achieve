@@ -9,7 +9,7 @@
 import UIKit
 
 class TimeManagerEditorViewController: BaseViewController {
-
+    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var methodNameTextFieldHolderView: UIView!
     @IBOutlet weak var methodNameTextField: UITextField!
@@ -35,12 +35,12 @@ class TimeManagerEditorViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.configMainUI()
         self.initializeControl()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,6 +52,7 @@ class TimeManagerEditorViewController: BaseViewController {
         self.cardView.backgroundColor = colors.cloudColor
         
         self.view.backgroundColor = colors.mainGreenColor
+        self.methodRepeatButton.tintColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner,
@@ -70,17 +71,22 @@ class TimeManagerEditorViewController: BaseViewController {
         self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.methodTableView.clearView()
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenBounds.width, height: 15))
+        headerView.clearView()
+        self.methodTableView.tableHeaderView = headerView
         self.methodTableView.register(TimeManagerEditorTableViewCell.nib,
                                       forCellReuseIdentifier: TimeManagerEditorTableViewCell.reuseId)
         
         self.methodNameTextField.isUserInteractionEnabled = self.canChange
         self.methodNameTextField.text = self.timeMethod.name
-        let repeatTitle = self.timeMethod.repeatTimes == kTimeMethodInfiniteRepeat ?
-                Localized("infiniteRepeat") : "\(self.timeMethod.repeatTimes)"
-        self.methodRepeatButton.setTitle(repeatTitle, for: .normal)
         self.methodRepeatLabel.text = Localized("repeatNumber")
+        
+        self.methodRepeatButton.isEnabled = self.canChange
+        let repeatTitle = self.timeMethod.repeatTimes == kTimeMethodInfiniteRepeat ?
+            Localized("infiniteRepeat") : "\(self.timeMethod.repeatTimes)"
+        self.methodRepeatButton.setTitle(repeatTitle, for: .normal)
     }
-
+    
     // MARK: - actions
     func backAction() {
         guard let nav = self.navigationController else {

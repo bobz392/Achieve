@@ -244,6 +244,8 @@
 		C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798073B1D8538C00011DE19 /* BackgroundViewController.xib */; };
 		C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */; };
 		C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */; };
+		C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */; };
+		C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */; };
 		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
 		C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */; };
 		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
@@ -626,6 +628,8 @@
 		C798073B1D8538C00011DE19 /* BackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundViewController.xib; sourceTree = "<group>"; };
 		C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundCollectionViewCell.xib; sourceTree = "<group>"; };
+		C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodCreateTableViewCell.swift; sourceTree = "<group>"; };
+		C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodCreateTableViewCell.xib; sourceTree = "<group>"; };
 		C7B579291DAACEDC003B6D92 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthViewController.xib; sourceTree = "<group>"; };
 		C7B579321DAD79A3003B6D92 /* TestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
@@ -923,6 +927,8 @@
 				C77DE3671DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib */,
 				C77DE36A1DE6FE7000F098F4 /* ItemTableViewCell.swift */,
 				C77DE36B1DE6FE7000F098F4 /* ItemTableViewCell.xib */,
+				C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */,
+				C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1598,6 +1604,7 @@
 				C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */,
 				C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */,
 				C77DE33B1DE3E27A00F098F4 /* 018C7F4E-8CBC-3C44-960F-E19F7C44AEBB.bcsymbolmap in Resources */,
+				C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */,
 				C7C5C5BA1D752136001168A4 /* SubtaskTableViewCell.xib in Resources */,
 				C77DE3421DE3E27A00F098F4 /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap in Resources */,
 				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
@@ -1709,6 +1716,7 @@
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
 				C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */,
 				C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */,
+				C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */,
 				C79805CA1D7D4E610011DE19 /* UserInteractionFunctions.swift in Sources */,
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,

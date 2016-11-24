@@ -23,6 +23,7 @@ class ItemTableViewCell: BaseTableViewCell {
         
         let colors = Colors()
         self.itemNameLabel.textColor = colors.mainTextColor
+        self.itemNameLabel.tintColor = colors.mainGreenColor
         self.itemTimeLabel.textColor = colors.secondaryTextColor
     }
  

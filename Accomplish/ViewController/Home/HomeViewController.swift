@@ -765,6 +765,5 @@ extension HomeViewController: UINavigationControllerDelegate {
             animation.buttonFrame = self.calendarButton.frame
             return animation
         }
-        
     }
 }

@@ -13,6 +13,7 @@ let kNormalAnimationDuration: TimeInterval = 0.35
 let kNormalLongAnimationDuration: TimeInterval = 0.5
 let kLongAnimationDuration: TimeInterval = 1
 let kCardViewCornerRadius: CGFloat = 8
+let kCardViewSmallCornerRadius: CGFloat = 6
 let kKeyboardAnimationDelay: TimeInterval = 0.1
 
 let kBackButtonCorner: CGFloat = 21

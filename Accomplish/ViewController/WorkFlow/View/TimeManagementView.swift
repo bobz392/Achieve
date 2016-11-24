@@ -113,7 +113,8 @@ extension TimeManagementView: MZTimerLabelDelegate {
         let item = group.items[self.itemIndex]
         
         // 如果当前的 method 的重复已经完成了，则结束
-        if self.methodRepeatTimes > self.method.repeatTimes && self.method.repeatTimes != -1 {
+        if self.methodRepeatTimes > self.method.repeatTimes
+            && self.method.repeatTimes != kTimeMethodInfiniteRepeat {
             self.finish()
         } else {
             self.titleLabel.text = item.name

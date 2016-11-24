@@ -144,6 +144,12 @@
 		C77DE35B1DE3E29800F098F4 /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C77DE33A1DE3E27A00F098F4 /* SVProgressHUD.framework.dSYM */; };
 		C77DE35E1DE4419E00F098F4 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */; };
 		C77DE3601DE6125300F098F4 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77DE35F1DE6125300F098F4 /* SoundManager.swift */; };
+		C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77DE3621DE62B3E00F098F4 /* TimeManagerEditorViewController.swift */; };
+		C77DE3651DE62B3E00F098F4 /* TimeManagerEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3631DE62B3E00F098F4 /* TimeManagerEditorViewController.xib */; };
+		C77DE3681DE62D2400F098F4 /* TimeManagerEditorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77DE3661DE62D2400F098F4 /* TimeManagerEditorTableViewCell.swift */; };
+		C77DE3691DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77DE3671DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib */; };
+		C77DE36C1DE6FE7000F098F4 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77DE36A1DE6FE7000F098F4 /* ItemTableViewCell.swift */; };
+		C77DE36D1DE6FE7000F098F4 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77DE36B1DE6FE7000F098F4 /* ItemTableViewCell.xib */; };
 		C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
 		C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
 		C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
@@ -527,6 +533,12 @@
 		C77DE35C1DE4419E00F098F4 /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
 		C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		C77DE35F1DE6125300F098F4 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		C77DE3621DE62B3E00F098F4 /* TimeManagerEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagerEditorViewController.swift; sourceTree = "<group>"; };
+		C77DE3631DE62B3E00F098F4 /* TimeManagerEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeManagerEditorViewController.xib; sourceTree = "<group>"; };
+		C77DE3661DE62D2400F098F4 /* TimeManagerEditorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagerEditorTableViewCell.swift; sourceTree = "<group>"; };
+		C77DE3671DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeManagerEditorTableViewCell.xib; sourceTree = "<group>"; };
+		C77DE36A1DE6FE7000F098F4 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		C77DE36B1DE6FE7000F098F4 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		C7821EB31D7BF1820056623D /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormhole.h; sourceTree = "<group>"; };
 		C7821EB41D7BF1820056623D /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormhole.m; sourceTree = "<group>"; };
 		C7821EB51D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeCoordinatedFileTransiting.h; sourceTree = "<group>"; };
@@ -896,6 +908,8 @@
 				C74F1E221DC3219400F7D37D /* Cell */,
 				C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */,
 				C74751A51DC741C700831DB1 /* TimeManagementViewController.xib */,
+				C77DE3621DE62B3E00F098F4 /* TimeManagerEditorViewController.swift */,
+				C77DE3631DE62B3E00F098F4 /* TimeManagerEditorViewController.xib */,
 			);
 			path = WorkFlow;
 			sourceTree = "<group>";
@@ -905,6 +919,10 @@
 			children = (
 				C74751BC1DC97FE100831DB1 /* TimeMethodTableViewCell.swift */,
 				C74751BD1DC97FE100831DB1 /* TimeMethodTableViewCell.xib */,
+				C77DE3661DE62D2400F098F4 /* TimeManagerEditorTableViewCell.swift */,
+				C77DE3671DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib */,
+				C77DE36A1DE6FE7000F098F4 /* ItemTableViewCell.swift */,
+				C77DE36B1DE6FE7000F098F4 /* ItemTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1526,6 +1544,7 @@
 				C77DE34C1DE3E27A00F098F4 /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap in Resources */,
 				C74751BB1DC840D100831DB1 /* TimeManagementView.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
+				C77DE3651DE62B3E00F098F4 /* TimeManagerEditorViewController.xib in Resources */,
 				C79806FB1D818E660011DE19 /* HintView.xib in Resources */,
 				C77DE3431DE3E27A00F098F4 /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap in Resources */,
 				C77DE34B1DE3E27A00F098F4 /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap in Resources */,
@@ -1554,6 +1573,8 @@
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
 				C77DE33C1DE3E27A00F098F4 /* 1A4756B0-F666-3D33-AA2A-D45FF374CEAC.bcsymbolmap in Resources */,
+				C77DE36D1DE6FE7000F098F4 /* ItemTableViewCell.xib in Resources */,
+				C77DE3691DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib in Resources */,
 				C7DB5D161D91A2A100719CB3 /* TagTableViewCell.xib in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C7CAF0BF1DA045990046D756 /* HomePulldownView.xib in Resources */,
@@ -1725,6 +1746,7 @@
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
 				C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
+				C77DE3681DE62D2400F098F4 /* TimeManagerEditorTableViewCell.swift in Sources */,
 				C74A89411D94109E008E15CA /* BaseTableViewCell.swift in Sources */,
 				C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */,
 				C7C5C5BF1D752F2A001168A4 /* TaskNoteTableViewCell.swift in Sources */,
@@ -1770,6 +1792,7 @@
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
+				C77DE36C1DE6FE7000F098F4 /* ItemTableViewCell.swift in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
@@ -1799,6 +1822,7 @@
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C79805C31D7D4E610011DE19 /* JTAppleCalendarDelegates.swift in Sources */,
 				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,
+				C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,

@@ -29,7 +29,8 @@ class TaskTableViewCell: BaseTableViewCell {
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
     var settingBlock: TaskSettingBlock? = nil
-    fileprivate let soundManager = SoundManager()
+    fileprivate lazy var soundManager = SoundManager()
+    fileprivate lazy var appDefault = AppUserDefault()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -194,12 +195,15 @@ class TaskTableViewCell: BaseTableViewCell {
         }
     }
     
+    /**
+     标记任务完成或者取消完成
+    */
     func markTask(_ btn: UIButton) {
         guard let task = self.task else { return }
         if task.status == kTaskFinish {
             RealmManager.shared.updateTaskStatus(task, status: kTaskRunning)
         } else {
-            if !AppUserDefault().readBool(kCloseSoundKey) {
+            if !appDefault.readBool(kCloseSoundKey) {
                 self.soundManager.systemDing()
             }
             RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)

@@ -101,4 +101,13 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TimeMethodTableViewCell.rowHeight
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let timeManagerEditorVC =
+            TimeManagerEditorViewController(method: self.timeMethods[indexPath.row], canChange: false)
+        
+        self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
+    }
 }

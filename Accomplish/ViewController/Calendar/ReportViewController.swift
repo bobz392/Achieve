@@ -139,7 +139,6 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.setTop(indexPath.row == 0)
         cell.setBottom( indexPath.row == (self.taskList.count - 1) )
-        
         cell.config(self.taskList[indexPath.row])
         
         return cell
@@ -150,7 +149,6 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //        return ScheduleTableViewCell.rowHeight
         if self.cellHeightCache[indexPath.row] != 0 {
             return self.cellHeightCache[indexPath.row]
         } else {

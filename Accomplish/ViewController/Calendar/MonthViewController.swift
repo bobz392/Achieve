@@ -189,7 +189,6 @@ extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
 extension MonthViewController: IAxisValueFormatter {
     fileprivate func initChart() {
         self.chartCardView.addSubview(chartView)

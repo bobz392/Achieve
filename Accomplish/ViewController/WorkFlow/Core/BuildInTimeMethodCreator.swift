@@ -8,12 +8,14 @@
 
 import Foundation
 
+let kTimeMethodInfiniteRepeat = -1
+
 struct BuildInTimeMethodCreator {
     
     func pomodoroCreator() {
         
         let timeMethod = TimeMethod()
-        timeMethod.repeatTimes = -1
+        timeMethod.repeatTimes = kTimeMethodInfiniteRepeat
         timeMethod.name = Localized("pomodoro")
         
         let group1 = TimeMethodGroup()

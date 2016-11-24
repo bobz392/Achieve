@@ -92,10 +92,10 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     fileprivate func initializeControl() {
         self.cardView.addShadow()
         
-        self.titleCardView.layer.cornerRadius = 6.0
+        self.titleCardView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.titleCardView.addSmallShadow()
         
-        self.priorityCardView.layer.cornerRadius = 6.0
+        self.priorityCardView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.priorityCardView.addSmallShadow()
         
         self.dateToolView.isHidden = true

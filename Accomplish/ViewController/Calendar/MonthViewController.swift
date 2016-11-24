@@ -18,7 +18,6 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     fileprivate let chartView = LineChartView()
     fileprivate let checkIns: Array<CheckIn>
-    fileprivate var needAdjustChartWeek = false
     fileprivate var monthlyTasks = Array<Task>()
     fileprivate var taskDict = Dictionary<String, Array<Int>>()
     
@@ -230,32 +229,33 @@ extension MonthViewController: IAxisValueFormatter {
     fileprivate func setMonthData() {
         guard let count = NSDate().dayCountsInMonth() else { return }
         self.chartView.xAxis.setLabelCount(count, force: true)
-        self.chartView.xAxis.labelCount = count
         var values = Array<ChartDataEntry>()
         
-        if self.checkIns.count > 0 {
-            var rats = self.checkIns.map { (c) -> Double in
-                if c.createdCount == 0 {
-                    return 0
-                } else {
-                    let rat = Double(c.completedCount) / Double(c.createdCount)
-                    return rat * 100
-                }
+        var lastDay = 0
+        var monthRats = [Double]()
+        for check in self.checkIns {
+            let day = check.checkInDate?.day() ?? 0
+            if day > lastDay {
+                let appends = Array<Double>(repeating: 0.0, count: day - lastDay - 1)
+                monthRats.append(contentsOf: appends)
             }
-            
-            if let firstDay = self.checkIns[0].checkInDate?.day() {
-                let insertArray = Array<Double>(repeating: 0.0, count: firstDay - 1)
-                rats.insert(contentsOf: insertArray, at: 0)
+            if (check.createdCount == 0) {
+                monthRats.append(0.0)
+            } else {
+                monthRats.append(Double(check.completedCount) / Double(check.createdCount))
             }
-            
-            if let lastDay = self.checkIns.last?.checkInDate?.day() {
-                let appendArray = Array<Double>(repeating: 0.0, count: count - lastDay)
-                rats.append(contentsOf: appendArray)
+            lastDay = day
+        }
+        
+        if let lastDay = self.checkIns.last?.checkInDate?.day() {
+            if lastDay < count {
+                let appends = Array<Double>(repeating: 0.0, count: count - lastDay)
+                monthRats.append(contentsOf: appends)
             }
-            
-            for i in 0..<rats.count {
-                values.append(ChartDataEntry(x: Double(i), y: rats[i]))
-            }
+        }
+        
+        for i in 0..<monthRats.count {
+            values.append(ChartDataEntry(x: Double(i), y: monthRats[i]))
         }
         
         let set1 = LineChartDataSet(values: values, label: "date 1")
@@ -279,21 +279,12 @@ extension MonthViewController: IAxisValueFormatter {
         let d = NSDate()
         let year = d.year()
         let month = d.month()
-        
         guard let nd = NSDate(year: year, month: month, day: v)
             else { return "" }
         
-        if v == 0 {
-            self.needAdjustChartWeek = nd.weekday() != 1
-        }
-        
         if nd.weekday() == 1 {
-            let s = nd.weekOfMonth() - (self.needAdjustChartWeek ? 1 : 0)
-            if s > 4 {
-                return ""
-            } else {
-                return String(format: Localized("monthlyWeek"), s)
-            }
+            let s = nd.weekOfMonth()
+            return String(format: Localized("monthlyWeek"), s)
         } else {
             return ""
         }

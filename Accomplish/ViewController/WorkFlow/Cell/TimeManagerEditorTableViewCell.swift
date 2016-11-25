@@ -13,7 +13,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     
     static let nib = UINib(nibName: "TimeManagerEditorTableViewCell", bundle: nil)
     static let reuseId = "timeManagerEditorTableViewCell"
-    static let defaultHeight: CGFloat = 84.5
+    static let defaultHeight: CGFloat = 72.5
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var groupNameLabel: UILabel!
@@ -46,6 +46,8 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.groupRepeatLabel.textColor = colors.mainTextColor
         self.groupRepeatLabel.text = Localized("repeatNumber")
         self.groupRepeatButton.tintColor = colors.mainGreenColor
+        
+        self.itemsTableView.addLightBorder()
     }
     
     func configCell(methodGroup: TimeMethodGroup, canChange: Bool, groupIndex: Int) {

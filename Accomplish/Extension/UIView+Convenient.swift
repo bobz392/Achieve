@@ -64,6 +64,11 @@ extension UIView {
         self.layer.cornerRadius = to
     }
     
+    func addLightBorder() {
+        self.layer.borderWidth = 0.2
+        self.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
     func clearView() {
         self.backgroundColor = UIColor.clear
     }

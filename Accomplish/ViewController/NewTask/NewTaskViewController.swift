@@ -116,7 +116,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         let segTitles = [Localized("priority0"), Localized("priority1"), Localized("priority2")]
         self.prioritySlideSegmental.setSegmentItems(segTitles)
-        self.prioritySlideSegmental.move(to: 1)
+        self.prioritySlideSegmental.move(to: 1, animation: false)
         
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         self.clockButton.addTarget(self, action: #selector(self.scheduleAction), for: .touchUpInside)

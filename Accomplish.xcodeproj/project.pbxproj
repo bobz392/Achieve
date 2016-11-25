@@ -246,6 +246,7 @@
 		C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */; };
 		C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */; };
 		C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */; };
+		C79963011DE8520A00B4617E /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
 		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
 		C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */; };
 		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
@@ -1619,6 +1620,7 @@
 			files = (
 				C78ED87F1D7A7D3100031B4D /* MainInterface.storyboard in Resources */,
 				C78ED8A21D7A801200031B4D /* Localizable.strings in Resources */,
+				C79963011DE8520A00B4617E /* FontAwesome.otf in Resources */,
 				C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */,
 				C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */,
 				C78ED89A1D7A800600031B4D /* DateTools.bundle in Resources */,

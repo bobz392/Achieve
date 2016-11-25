@@ -70,17 +70,11 @@ class TimeManagerEditorViewController: BaseViewController {
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        self.methodTableView.clearView()
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenBounds.width, height: 15))
-        headerView.clearView()
-        self.methodTableView.tableHeaderView = headerView
-        self.methodTableView.register(TimeManagerEditorTableViewCell.nib,
-                                      forCellReuseIdentifier: TimeManagerEditorTableViewCell.reuseId)
+        self.configTableView()
         
         self.methodNameTextField.isUserInteractionEnabled = self.canChange
         self.methodNameTextField.text = self.timeMethod.name
         self.methodRepeatLabel.text = Localized("repeatNumber")
-        
         self.methodRepeatButton.isEnabled = self.canChange
         let repeatTitle = self.timeMethod.repeatTimes == kTimeMethodInfiniteRepeat ?
             Localized("infiniteRepeat") : "\(self.timeMethod.repeatTimes)"
@@ -97,6 +91,16 @@ class TimeManagerEditorViewController: BaseViewController {
 }
 
 extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataSource {
+    fileprivate func configTableView() {
+        self.methodTableView.clearView()
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenBounds.width, height: 15))
+        headerView.clearView()
+        self.methodTableView.tableHeaderView = headerView
+        self.methodTableView.register(TimeManagerEditorTableViewCell.nib,
+                                      forCellReuseIdentifier: TimeManagerEditorTableViewCell.reuseId)
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.timeMethod.groups.count
     }

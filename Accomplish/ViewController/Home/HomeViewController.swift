@@ -272,7 +272,7 @@ class HomeViewController: BaseViewController {
                 ws.checkNewDay()
                 ws.taskTableView.reloadData()
             }
-            })
+        })
         
         self.timer?.start()
     }
@@ -338,7 +338,7 @@ class HomeViewController: BaseViewController {
                 Logger.log("finishToken realmNoticationToken error = \(error)")
                 break
             }
-            })
+        })
         
         self.runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
             if self.statusSegment.selectedSegmentIndex == kFinishSegmentIndex {
@@ -364,7 +364,7 @@ class HomeViewController: BaseViewController {
                 break
             }
             
-            })
+        })
     }
     
     fileprivate func handleUpdate(_ deletions: [Int], insertions: [Int], modifications: [Int]) {
@@ -538,7 +538,7 @@ class HomeViewController: BaseViewController {
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 1
                     self.searchButton.alpha = 1
-                    })
+                })
             } else {
                 self.newTaskButton.layer.cornerRadius = 35
                 self.currentDateLabel.alpha = 1
@@ -562,7 +562,7 @@ class HomeViewController: BaseViewController {
                     self.view.layoutIfNeeded()
                     self.currentDateLabel.alpha = 0
                     self.searchButton.alpha = 0
-                    })
+                })
             } else {
                 self.newTaskButton.layer.cornerRadius = 20
                 self.currentDateLabel.alpha = 0
@@ -724,15 +724,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             alert.addAction(deleteReminderAction)
         }
         
-        let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
-//            let timeVC = TimeManagementViewController()
-//            self.animationNavgationTo(vc: timeVC)
-            guard let t = RealmManager.shared.allTimeMethods().first else { return }
-            
-            guard let view = TimeManagementView.loadNib(self, method: t) else { return }
-            view.moveIn(view: self.view)
+        if task.taskType == kCustomTaskType {
+            let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
+                //            let timeVC = TimeManagementViewController()
+                //            self.animationNavgationTo(vc: timeVC)
+                guard let t = RealmManager.shared.allTimeMethods().first else { return }
+                
+                guard let view = TimeManagementView.loadNib(self, method: t) else { return }
+                view.moveIn(view: self.view)
+            }
+            alert.addAction(workflowAction)
         }
-        alert.addAction(workflowAction)
         
         let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
             alert.dismiss(animated: true, completion: nil)

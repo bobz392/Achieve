@@ -22,7 +22,7 @@
                 <outlet property="lineView" destination="coJ-xh-ksS" id="gNM-mS-jxf"/>
                 <outlet property="priorityCardView" destination="xOP-iq-T7t" id="CQU-gG-WS9"/>
                 <outlet property="priorityLabel" destination="tts-aO-sIm" id="Sba-oT-DBa"/>
-                <outlet property="prioritySegmental" destination="smr-3j-ASd" id="RJJ-rt-5iH"/>
+                <outlet property="prioritySlideSegmental" destination="f74-r6-RHv" id="3vg-GI-uDV"/>
                 <outlet property="renderImageView" destination="wIO-de-9hY" id="y1M-Y8-DRF"/>
                 <outlet property="saveButton" destination="iHz-Dk-6DR" id="Xvp-9R-cHD"/>
                 <outlet property="setDateButton" destination="Ikr-3W-zki" id="kmH-Bc-l3L"/>
@@ -50,7 +50,7 @@
                             <rect key="frame" x="10" y="10" width="345" height="44"/>
                             <subviews>
                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="justified" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3BC-4a-wUV">
-                                    <rect key="frame" x="5" y="0.0" width="335" height="44"/>
+                                    <rect key="frame" x="12" y="0.0" width="9" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
@@ -69,30 +69,27 @@
                             <rect key="frame" x="10" y="64" width="345" height="76"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优先级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tts-aO-sIm">
-                                    <rect key="frame" x="5" y="10" width="43" height="17"/>
+                                    <rect key="frame" x="12" y="10" width="43" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="smr-3j-ASd">
-                                    <rect key="frame" x="5" y="38" width="335" height="29"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f74-r6-RHv" customClass="TwicketSegmentedControl" customModule="Accomplish" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="31" width="345" height="30"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="28" id="qUu-mQ-Wsl"/>
+                                        <constraint firstAttribute="height" constant="30" id="M4w-V4-jlf"/>
                                     </constraints>
-                                    <segments>
-                                        <segment title="First"/>
-                                        <segment title="Second"/>
-                                        <segment title=""/>
-                                    </segments>
-                                </segmentedControl>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstItem="f74-r6-RHv" firstAttribute="top" secondItem="tts-aO-sIm" secondAttribute="bottom" constant="4" id="0rk-dg-gyq"/>
                                 <constraint firstItem="tts-aO-sIm" firstAttribute="top" secondItem="xOP-iq-T7t" secondAttribute="top" constant="10" id="A7C-Ll-2U5"/>
-                                <constraint firstAttribute="trailing" secondItem="smr-3j-ASd" secondAttribute="trailing" constant="5" id="K3F-2e-N4t"/>
-                                <constraint firstItem="tts-aO-sIm" firstAttribute="leading" secondItem="xOP-iq-T7t" secondAttribute="leading" constant="5" id="Wl1-1P-TQ2"/>
-                                <constraint firstItem="smr-3j-ASd" firstAttribute="leading" secondItem="tts-aO-sIm" secondAttribute="leading" id="bSf-f2-sYs"/>
-                                <constraint firstAttribute="bottom" secondItem="smr-3j-ASd" secondAttribute="bottom" constant="10" id="oTp-gY-L0g"/>
+                                <constraint firstAttribute="trailing" secondItem="f74-r6-RHv" secondAttribute="trailing" id="CjO-bx-wg2"/>
+                                <constraint firstItem="tts-aO-sIm" firstAttribute="leading" secondItem="xOP-iq-T7t" secondAttribute="leading" constant="12" id="Wl1-1P-TQ2"/>
+                                <constraint firstAttribute="bottom" secondItem="f74-r6-RHv" secondAttribute="bottom" constant="15" id="ghF-vy-mUJ"/>
+                                <constraint firstItem="f74-r6-RHv" firstAttribute="leading" secondItem="xOP-iq-T7t" secondAttribute="leading" id="uVH-EW-QHp"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -104,7 +101,6 @@
                         <constraint firstAttribute="height" constant="150" id="boZ-tD-GmM"/>
                         <constraint firstItem="L1X-lI-ffW" firstAttribute="leading" secondItem="z3E-3R-jYr" secondAttribute="leading" constant="10" id="h6r-lI-5ME"/>
                         <constraint firstItem="L1X-lI-ffW" firstAttribute="top" secondItem="z3E-3R-jYr" secondAttribute="top" constant="10" id="hae-2J-5qo"/>
-                        <constraint firstItem="3BC-4a-wUV" firstAttribute="trailing" secondItem="smr-3j-ASd" secondAttribute="trailing" id="ilA-0Y-LZW"/>
                         <constraint firstAttribute="trailing" secondItem="L1X-lI-ffW" secondAttribute="trailing" constant="10" id="jgU-yH-6fp"/>
                         <constraint firstItem="L1X-lI-ffW" firstAttribute="leading" secondItem="xOP-iq-T7t" secondAttribute="leading" id="ulg-KJ-RbW"/>
                         <constraint firstItem="L1X-lI-ffW" firstAttribute="trailing" secondItem="xOP-iq-T7t" secondAttribute="trailing" id="vth-CJ-Usl"/>
@@ -114,7 +110,7 @@
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coJ-xh-ksS">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="VUr-AG-usf"/>
@@ -147,7 +143,7 @@
                             <rect key="frame" x="0.0" y="1" width="375" height="43"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDm-9m-muz">
-                                    <rect key="frame" x="0.0" y="42.5" width="375" height="0.5"/>
+                                    <rect key="frame" x="0.0" y="43" width="375" height="0.0"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="BGb-L5-4en"/>
@@ -236,7 +232,7 @@
                 <constraint firstItem="z3E-3R-jYr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="wrT-z0-jiS"/>
                 <constraint firstItem="Jdt-4n-GAw" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="bottom" id="zWa-oC-CfE"/>
             </constraints>
-            <point key="canvasLocation" x="265" y="460"/>
+            <point key="canvasLocation" x="264.5" y="459.5"/>
         </view>
     </objects>
 </document>

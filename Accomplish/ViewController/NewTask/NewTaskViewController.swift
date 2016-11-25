@@ -15,7 +15,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priorityCardView: UIView!
-    @IBOutlet weak var prioritySegmental: UISegmentedControl!
+    @IBOutlet weak var prioritySlideSegmental: TwicketSegmentedControl!
     @IBOutlet weak var priorityLabel: UILabel!
     @IBOutlet weak var clockButton: UIButton!
     @IBOutlet weak var systemButton: UIButton!
@@ -67,7 +67,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.cardView.backgroundColor = colors.cloudColor
         self.titleTextField.tintColor = colors.mainGreenColor
         
-        self.prioritySegmental.tintColor = colors.mainGreenColor
+//        self.prioritySlideSegmental.tintColor = colors.mainGreenColor
+        
+        self.prioritySlideSegmental.sliderBackgroundColor = colors.mainGreenColor
         self.priorityLabel.textColor = colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
         self.lineView.backgroundColor = colors.separatorColor
@@ -112,10 +114,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         self.priorityLabel.text = Localized("priority")
         
-        self.prioritySegmental.selectedSegmentIndex = 1
-        self.prioritySegmental.setTitle(Localized("priority0"), forSegmentAt: 0)
-        self.prioritySegmental.setTitle(Localized("priority1"), forSegmentAt: 1)
-        self.prioritySegmental.setTitle(Localized("priority2"), forSegmentAt: 2)
+        let segTitles = [Localized("priority0"), Localized("priority1"), Localized("priority2")]
+        self.prioritySlideSegmental.setSegmentItems(segTitles)
+        self.prioritySlideSegmental.move(to: 1)
         
         self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
         self.clockButton.addTarget(self, action: #selector(self.scheduleAction), for: .touchUpInside)
@@ -235,7 +236,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         guard taskToDo.characters.count > 0 else {
             return
         }
-        let priority = self.prioritySegmental.selectedSegmentIndex
+        let priority = self.prioritySlideSegmental.selectedSegmentIndex
         self.task.createDefaultTask(taskToDo, priority:  priority)
         
         let tagUUID = AppUserDefault().readString(kCurrentTagUUIDKey)

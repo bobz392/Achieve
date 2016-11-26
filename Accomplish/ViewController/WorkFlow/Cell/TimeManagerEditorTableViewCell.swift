@@ -95,7 +95,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
             view.firstTextField.isUserInteractionEnabled = true
             if let times = Int(second ?? "") {
                 RealmManager.shared.updateObject { [unowned self] in
-                    methodGroup.repeatTimes = times
+                    methodGroup.repeatTimes = times <= 0 ? 1 : times
                     self.groupRepeatButton.setTitle(second, for: .normal)
                 }
             }

@@ -88,7 +88,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         let titles = [Localized("timeManageGroupName"), Localized("repeatNumber")]
         
         view.firstTextField.isUserInteractionEnabled = false
-        view.moveIn(twoTitles: titles, twoHolders: nil,
+        view.moveIn(twoTitles: titles, twoHolders: ["", Localized("enterGroupRepeatNumber")],
                     twoContent: [self.groupNameLabel.text ?? "", "\(methodGroup.repeatTimes)"],
                     keyboardType: .numberPad)
         { (first, second) in

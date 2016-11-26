@@ -39,6 +39,10 @@ extension String {
     func length() -> Int {
         return self.characters.count
     }
+    
+    func trim() -> String {
+        return self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
+    }
 }
 
 // Subscript

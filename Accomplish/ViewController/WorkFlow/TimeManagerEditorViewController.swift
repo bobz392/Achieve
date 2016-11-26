@@ -109,6 +109,7 @@ class TimeManagerEditorViewController: BaseViewController {
     }
     
     fileprivate func guideUserCreateMethod() {
+        self.timeMethodInputView?.leftButton.isEnabled = false
         self.changeMethodNameAction()
     }
     
@@ -120,8 +121,10 @@ class TimeManagerEditorViewController: BaseViewController {
                     saveBlock: { (first, second) in
                         RealmManager.shared.updateObject { [unowned self] in
                             self.timeMethod.name = first
-                            if let s = second {
-                                self.timeMethod.timeMethodAliase = s
+                            if let s = second?.trim() {
+                                if s.length() > 0 {
+                                    self.timeMethod.timeMethodAliase = s
+                                }
                             }
                             self.methodNameButton.setTitle(first, for: .normal)
                             self.methodRepeatLabel.text = second

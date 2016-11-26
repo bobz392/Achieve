@@ -226,11 +226,13 @@
 "pomodoroLongRest"="Four pomodoros! Take a longer Break";
 
 // time management editor
+"please"="Please ";
 "timeManageGroupName"="Work Group ";
 "enterItemName"="Enter Job Content";
 "min"="Min";
 "enterItemTime"="Enter Working Time";
 "enterMethodName"="Name time management method";
+"enterGroupRepeatNumber"="Set Number Of Repeats";
 "methodName"="Name";
 "aliase"="Aliase";
 "defaultAliase"="Circles";

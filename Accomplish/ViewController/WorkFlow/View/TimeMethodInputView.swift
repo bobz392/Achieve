@@ -92,6 +92,7 @@ class TimeMethodInputView: UIView {
     
     func moveOut() {
         self.cardHolderViewTopConstraint.constant = -self.viewHeight
+        self.leftButton.isEnabled = true
         
         UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { [unowned self] in
             self.layoutIfNeeded()
@@ -106,13 +107,28 @@ class TimeMethodInputView: UIView {
     }
     
     func saveAction() {
-        guard let frist = self.firstTextField.text else {
-            HUD.shared.error("")
+        guard let first = self.firstTextField.text else {
+            HUD.shared.error(Localized("please") + (self.firstTextField.placeholder ?? ""))
             return
         }
-        self.saveBlock?(frist, self.secondTextField.text)
+        
+        let tr = first.trim()
+        if tr.length() <= 0 {
+            HUD.shared.error(Localized("please") + (self.firstTextField.placeholder ?? ""))
+            return
+        }
+        
+        if self.secondTextField.keyboardType == .numberPad {
+            guard let _ = Int(self.secondTextField.text ?? "") else {
+                HUD.shared.error(Localized("please") + (self.secondTextField.placeholder ?? ""))
+                return
+            }
+        }
+        
+        self.saveBlock?(tr, self.secondTextField.text)
         self.moveOut()
     }
+   
 }
 
 extension TimeMethodInputView: UITextFieldDelegate {

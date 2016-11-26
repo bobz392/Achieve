@@ -27,6 +27,7 @@
 "finishTask"="完成任务";
 "taskReminding"="任务提醒";
 "cancel"="取消";
+"delete"="删除";
 "deleteTask"="删除任务";
 "deleteReminder"="删除提醒";
 "permit"="允许";

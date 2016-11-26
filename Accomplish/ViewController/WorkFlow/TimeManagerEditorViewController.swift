@@ -17,7 +17,7 @@ class TimeManagerEditorViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var methodRepeatTitleLabel: UILabel!
     @IBOutlet weak var methodRepeatLabel: UILabel!
-
+    
     internal var timeMethodInputView: TimeMethodInputView? = nil
     
     fileprivate let timeMethod: TimeMethod
@@ -145,6 +145,27 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
                                       forCellReuseIdentifier: TimeManagerEditorTableViewCell.reuseId)
     }
     
+    fileprivate func deleteTimeMethodGroup(indexPath: IndexPath) {
+        let title = Localized("delete") +
+            String(format: Localized("timeManageGroupName"), indexPath.row + 1) + " ?"
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: Localized("delete"), style: .destructive, handler: { [unowned self] (action) in
+            RealmManager.shared.updateObject {
+                self.timeMethod.groups.remove(objectAtIndex: indexPath.row)
+            }
+            self.methodTableView.deleteRows(at: [indexPath], with: .automatic)
+        })
+        alert.addAction(deleteAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.timeMethod.groups.count
     }
@@ -156,6 +177,9 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
                         canChange: self.canChange, groupIndex: indexPath.row)
         cell.timeMethodInputView = self.timeMethodInputView
         cell.methodTableView = self.methodTableView
+        cell.deleteBlock = { [unowned self] () -> Void in
+            self.deleteTimeMethodGroup(indexPath: indexPath)
+        }
         
         return cell
     }
@@ -166,4 +190,5 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
             // 计算高度
             (CGFloat(self.canChange ? 1 : 0) + count) * ItemTableViewCell.rowHeight
     }
+    
 }

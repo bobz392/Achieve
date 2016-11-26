@@ -27,6 +27,7 @@
 "taskReminding"="Task Reminding";
 "finishTask"="Finish Task";
 "cancel"="Cancel";
+"delete"="Delete";
 "deleteTask"="Delete Task";
 "deleteReminder"="Delete Reminder";
 "permit"="Allow";

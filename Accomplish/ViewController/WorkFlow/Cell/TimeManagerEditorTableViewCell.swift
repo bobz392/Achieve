@@ -11,6 +11,8 @@ import UIKit
 
 class TimeManagerEditorTableViewCell: BaseTableViewCell {
     
+    typealias DeleteTimeMethodGroupBlock = () -> Void
+    
     static let nib = UINib(nibName: "TimeManagerEditorTableViewCell", bundle: nil)
     static let reuseId = "timeManagerEditorTableViewCell"
     static let defaultHeight: CGFloat = 72.5
@@ -29,6 +31,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     
     fileprivate var groupIndex: Int = 0
     fileprivate var canChange = false
+    var deleteBlock: DeleteTimeMethodGroupBlock? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +40,8 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.deleteGroupButton.createIconButton(iconSize: kTaskDetailCellIconSize,
                                                 icon: "fa-times",
                                                 color: colors.mainGreenColor, status: .normal)
+        self.deleteGroupButton.addTarget(self,
+                                         action: #selector(self.deleteGroupAction), for: .touchUpInside)
         
         self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.cardView.backgroundColor = colors.cloudColor
@@ -67,6 +72,10 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.groupRepeatButton.setTitle("\(methodTime.groups[groupIndex].repeatTimes)", for: .normal)
         self.itemsTableView.reloadData()
         self.itemsTableView.allowsSelection = canChange
+    }
+    
+    func deleteGroupAction() {
+        self.deleteBlock?()
     }
 }
 
@@ -151,4 +160,27 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let methodGroup = self.methodTime?.groups[self.groupIndex] else { return false }
+        return self.canChange && indexPath.row < methodGroup.items.count
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard let methodGroup = self.methodTime?.groups[self.groupIndex] else { return }
+        switch editingStyle {
+        case .delete:
+            RealmManager.shared.updateObject { [unowned self] in
+                methodGroup.items.remove(objectAtIndex: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .none)
+                let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
+                self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)
+            }
+        default:
+            break
+        }
+    }
 }

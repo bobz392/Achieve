@@ -68,7 +68,7 @@ class TimeManagerEditorViewController: BaseViewController {
     
     fileprivate func initializeControl() {
         self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+        self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.methodNameTextFieldHolderView.addSmallShadow()
         self.methodNameTextFieldHolderView.layer.cornerRadius = kCardViewSmallCornerRadius
         
@@ -83,10 +83,8 @@ class TimeManagerEditorViewController: BaseViewController {
         self.methodNameButton
             .addTarget(self, action: #selector(self.changeMethodNameAction), for: .touchUpInside)
         
-        let repeatTitle = self.timeMethod.repeatTimes == kTimeMethodInfiniteRepeat ?
-            Localized("infiniteRepeat") : "\(self.timeMethod.repeatTimes)"
-        self.methodRepeatTitleLabel.text = Localized("repeatNumber")
-        self.methodRepeatLabel.text = repeatTitle
+        self.methodRepeatTitleLabel.text = Localized("aliase")
+        self.methodRepeatLabel.text = self.timeMethod.timeMethodAliase
         
         self.checkInputViewCreated()
     }
@@ -107,7 +105,9 @@ class TimeManagerEditorViewController: BaseViewController {
                     saveBlock: { (first, second) in
                         RealmManager.shared.updateObject { [unowned self] in
                             self.timeMethod.name = first
-                            self.timeMethod.timeMethodAliase = second
+                            if let s = second {
+                                self.timeMethod.timeMethodAliase = s
+                            }
                             self.methodNameButton.setTitle(first, for: .normal)
                             self.methodRepeatLabel.text = second
                         }
@@ -152,9 +152,10 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
             tableView.dequeueReusableCell(withIdentifier: TimeManagerEditorTableViewCell.reuseId, for: indexPath) as! TimeManagerEditorTableViewCell
-        cell.configCell(methodGroup: self.timeMethod.groups[indexPath.row],
+        cell.configCell(methodTime: self.timeMethod,
                         canChange: self.canChange, groupIndex: indexPath.row)
         cell.timeMethodInputView = self.timeMethodInputView
+        cell.methodTableView = self.methodTableView
         
         return cell
     }

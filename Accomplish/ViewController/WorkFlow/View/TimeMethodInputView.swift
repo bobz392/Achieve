@@ -9,7 +9,7 @@
 import UIKit
 
 class TimeMethodInputView: UIView {
-    typealias SaveBlock = (_ first: String, _ second: String) -> Void
+    typealias SaveBlock = (_ first: String, _ second: String?) -> Void
     
     @IBOutlet weak var realShadowView: UIView!
     @IBOutlet weak var cardHolderView: UIView!
@@ -23,7 +23,8 @@ class TimeMethodInputView: UIView {
     
     fileprivate let viewHeight: CGFloat = 167
     fileprivate let shadowAlpha: CGFloat = 0.85
-
+    fileprivate var saveBlock: SaveBlock? = nil
+    
     class func loadNib(_ target: AnyObject) -> TimeMethodInputView? {
         guard let view =
             Bundle.main.loadNibNamed("TimeMethodInputView", owner: target, options: nil)?
@@ -45,6 +46,7 @@ class TimeMethodInputView: UIView {
         
         view.rightButton.tintColor = colors.mainGreenColor
         view.rightButton.setTitle(Localized("save"), for: .normal)
+        view.rightButton.addTarget(view, action: #selector(view.saveAction), for: .touchUpInside)
         
         view.firstTextField.delegate = view
         view.firstTextField.tintColor = colors.mainGreenColor
@@ -58,11 +60,12 @@ class TimeMethodInputView: UIView {
     }
     
     func moveIn(twoTitles: [String], twoHolders: [String]?,
-                twoContent: [String], saveBlock: SaveBlock) {
+                twoContent: [String], saveBlock: @escaping SaveBlock) {
         self.firstInputTitleLabel.text = twoTitles.first
         self.secondInputTitleLabel.text = twoTitles.last
         self.firstTextField.text = twoContent.first
         self.secondTextField.text = twoContent.last
+        self.saveBlock = saveBlock
         
         if let horders = twoHolders {
             self.firstTextField.placeholder = horders.first
@@ -88,9 +91,19 @@ class TimeMethodInputView: UIView {
         }) { [unowned self] (finish) in
             self.isHidden = true
             self.firstTextField.text = nil
+            self.saveBlock = nil
             self.secondTextField.text = nil
             self.endEditing(true)
         }
+    }
+    
+    func saveAction() {
+        guard let frist = self.firstTextField.text else {
+                HUD.shared.error("")
+                return
+        }
+        self.saveBlock?(frist, self.secondTextField.text)
+        self.moveOut()
     }
 }
 

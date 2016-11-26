@@ -229,8 +229,11 @@
 
 // time management editor
 "timeManageGroupName"="工作组 %d";
-"enterItemName"="输入工作项目的名字";
+"enterItemName"="输入工作内容";
+"enterItemTime"="输入工作时长";
 "enterMethodName"="输入工作法的名字";
 "methodName"="名字";
+"itemName"="工作内容";
+"itemTime"="工作时长(分)";
 "aliase"="别名";
 "enterMethodAliase"="输入工作法的别名(仅用于记录循环次数)";

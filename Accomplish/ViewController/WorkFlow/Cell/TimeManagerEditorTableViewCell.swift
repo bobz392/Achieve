@@ -23,8 +23,11 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     @IBOutlet weak var groupRepeatButton: UIButton!
     
     weak var timeMethodInputView: TimeMethodInputView? = nil
+    weak var methodTableView: UITableView? = nil
     
-    fileprivate var methodGroup: TimeMethodGroup? = nil
+    fileprivate var methodTime: TimeMethod? = nil
+    
+    fileprivate var groupIndex: Int = 0
     fileprivate var canChange = false
     
     override func awakeFromNib() {
@@ -35,7 +38,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
                                                 icon: "fa-times",
                                                 color: colors.mainGreenColor, status: .normal)
         
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+        self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.cardView.backgroundColor = colors.cloudColor
         
         self.itemsTableView.layer.cornerRadius = kCardViewSmallCornerRadius
@@ -53,14 +56,15 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.itemsTableView.addLightBorder()
     }
     
-    func configCell(methodGroup: TimeMethodGroup, canChange: Bool, groupIndex: Int) {
-        self.methodGroup = methodGroup
+    func configCell(methodTime: TimeMethod, canChange: Bool, groupIndex: Int) {
+        self.methodTime = methodTime
         self.canChange = canChange
+        self.groupIndex = groupIndex
         self.deleteGroupButton.isHidden = !canChange
         self.groupRepeatButton.isEnabled = canChange
         
-        self.groupNameLabel.text = String(format: Localized("timeManageGroupName"), groupIndex)
-        self.groupRepeatButton.setTitle("\(methodGroup.repeatTimes)", for: .normal)
+        self.groupNameLabel.text = String(format: Localized("timeManageGroupName"), groupIndex + 1)
+        self.groupRepeatButton.setTitle("\(methodTime.groups[groupIndex].repeatTimes)", for: .normal)
         self.itemsTableView.reloadData()
         self.itemsTableView.allowsSelection = canChange
     }
@@ -69,7 +73,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
 extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let methodGroup = self.methodGroup {
+        if let methodGroup = self.methodTime?.groups[self.groupIndex] {
             return methodGroup.items.count + (self.canChange ? 1 : 0)
         } else {
             return 0
@@ -78,7 +82,7 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let methodGroup = self.methodGroup {
+        if let methodGroup = self.methodTime?.groups[self.groupIndex] {
             if indexPath.row >= methodGroup.items.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: MethodCreateTableViewCell.reuseId,
                                                          for: indexPath) as! MethodCreateTableViewCell
@@ -108,6 +112,43 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let view = self.timeMethodInputView,
+            let methodGroup = self.methodTime?.groups[self.groupIndex] else { return }
+        
+        let titles = [Localized("itemName"), Localized("itemTime")]
+        let holders = [Localized("enterItemName"), Localized("enterItemTime")]
+        
+        if indexPath.row >= methodGroup.items.count {
+            view.moveIn(twoTitles: titles,
+                        twoHolders: holders,
+                        twoContent: ["", ""]) { (first, second) in
+                            if let interval = Int(second ?? "") {
+                                let item = TimeMethodItem()
+                                item.name = first
+                                item.interval = interval
+                                RealmManager.shared.updateObject {
+                                    methodGroup.items.append(item)
+                                    tableView.insertRows(at: [indexPath], with: .none)
+                                    let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
+                                    self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)
+                                }
+                            }
+                            
+            }
+        } else {
+            let item = methodGroup.items[indexPath.row]
+            view.moveIn(twoTitles: titles,
+                        twoHolders: holders,
+                        twoContent: [item.name, "\(item.interval)"]) { (first, second) in
+                            if let interval = Int(second ?? "") {
+                                RealmManager.shared.updateObject {
+                                    item.interval = interval
+                                    item.name = first
+                                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                                }
+                            }
+            }
+        }
     }
     
 }

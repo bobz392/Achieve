@@ -14,7 +14,7 @@ typealias TaskSettingBlock = (String) -> Void
 class HomeViewController: BaseViewController {
     // MARK: - props
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var statusSegment: UISegmentedControl!
+    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var newTaskButton: UIButton!
     @IBOutlet weak var calendarButton: UIButton!
@@ -123,9 +123,11 @@ class HomeViewController: BaseViewController {
         self.taskTableView.separatorColor = colors.separatorColor
         self.cardView.backgroundColor = colors.cloudColor
         
-        self.statusSegment.tintColor = colors.mainGreenColor
-        self.emptyHintLabel.textColor = colors.secondaryTextColor
+        self.statusSlideSegment.sliderBackgroundColor = colors.mainGreenColor
+        self.statusSlideSegment.segmentsBackgroundColor = UIColor.white
+        self.statusSlideSegment.clearView()
         
+        self.emptyHintLabel.textColor = colors.secondaryTextColor
         self.settingButton.buttonColor(colors)
         self.newTaskButton.buttonColor(colors)
         self.calendarButton.buttonColor(colors)
@@ -192,9 +194,9 @@ class HomeViewController: BaseViewController {
         self.tagButton.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-        self.statusSegment.setTitle(Localized("progess"), forSegmentAt: 0)
-        self.statusSegment.setTitle(Localized("finished"), forSegmentAt: 1)
-        self.statusSegment.addTarget(self, action: #selector(self.segmentValueChangeAction(_:)), for: .valueChanged)
+        let segTitles = [Localized("progess"), Localized("finished")]
+        self.statusSlideSegment.setSegmentItems(segTitles)
+        self.statusSlideSegment.delegate = self
         
         self.taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
@@ -219,11 +221,11 @@ class HomeViewController: BaseViewController {
                                     for: .touchUpInside)
         
         self.taskTableView.getCurrentIndex = { [unowned self] () -> Int in
-            return self.statusSegment.selectedSegmentIndex
+            return self.statusSlideSegment.selectedSegmentIndex
         }
         
         self.taskTableView.changeCallBack = { [unowned self] (changeIndex) -> Void in
-            self.statusSegment.selectedSegmentIndex = changeIndex
+            self.statusSlideSegment.move(to: changeIndex)
             self.taskTableView.reloadData()
         }
         
@@ -323,7 +325,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate func realmNoticationToken() {
         self.finishToken = finishTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
-            if self.statusSegment.selectedSegmentIndex == kRunningSegmentIndex {
+            if self.statusSlideSegment.selectedSegmentIndex == kRunningSegmentIndex {
                 return
             }
             switch changes {
@@ -341,7 +343,7 @@ class HomeViewController: BaseViewController {
         })
         
         self.runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
-            if self.statusSegment.selectedSegmentIndex == kFinishSegmentIndex {
+            if self.statusSlideSegment.selectedSegmentIndex == kFinishSegmentIndex {
                 return
             }
             switch changes {
@@ -607,6 +609,12 @@ class HomeViewController: BaseViewController {
     }
 }
 
+extension HomeViewController: TwicketSegmentedControlDelegate {
+    func didSelect(_ segmentIndex: Int) {
+        self.taskTableView.reloadData()
+    }
+}
+
 // MARK: - table view
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -697,7 +705,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     fileprivate func inRunningTasksTable() -> Bool {
-        return self.statusSegment.selectedSegmentIndex == 0
+        return self.statusSlideSegment.selectedSegmentIndex == 0
     }
     
     fileprivate func showSettings(taskUUID: String) {

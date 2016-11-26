@@ -249,6 +249,8 @@
 		C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */; };
 		C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */; };
 		C79963011DE8520A00B4617E /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
+		C79963091DE87A9E00B4617E /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963041DE87A9E00B4617E /* Palette.swift */; };
+		C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */; };
 		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
 		C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */; };
 		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
@@ -630,6 +632,8 @@
 		C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundCollectionViewCell.xib; sourceTree = "<group>"; };
 		C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodCreateTableViewCell.swift; sourceTree = "<group>"; };
 		C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodCreateTableViewCell.xib; sourceTree = "<group>"; };
+		C79963041DE87A9E00B4617E /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwicketSegmentedControl.swift; sourceTree = "<group>"; };
 		C7B579291DAACEDC003B6D92 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthViewController.xib; sourceTree = "<group>"; };
 		C7B579321DAD79A3003B6D92 /* TestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
@@ -799,6 +803,7 @@
 		C7105F981D6CDBFD0096A1A3 /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C79963021DE87A9E00B4617E /* TwicketSegmentedControl */,
 				C74751A81DC760B000831DB1 /* FontAwesome */,
 				C79805B71D7D4E610011DE19 /* JTAppleCalendar */,
 				C7821EB21D7BF1820056623D /* MMWormhole */,
@@ -1238,6 +1243,15 @@
 				C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C79963021DE87A9E00B4617E /* TwicketSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				C79963041DE87A9E00B4617E /* Palette.swift */,
+				C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */,
+			);
+			path = TwicketSegmentedControl;
 			sourceTree = "<group>";
 		};
 		C7CAF09A1D9C3FE80046D756 /* AchieveMessage */ = {
@@ -1691,6 +1705,7 @@
 				C77194CF1D710A8300437560 /* SystemAtions.swift in Sources */,
 				C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */,
 				C79805CA1D7D4E610011DE19 /* UserInteractionFunctions.swift in Sources */,
+				C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */,
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C70528371D8B07320036FCC1 /* TagViewController.swift in Sources */,
@@ -1789,6 +1804,7 @@
 				C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */,
 				C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */,
 				C7105B831DE8BB1000374F78 /* TimeMethodInputView.swift in Sources */,
+				C79963091DE87A9E00B4617E /* Palette.swift in Sources */,
 				C79805C71D7D4E610011DE19 /* JTAppleDayCell.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */,

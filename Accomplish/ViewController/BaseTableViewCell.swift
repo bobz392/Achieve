@@ -17,8 +17,7 @@ class BaseTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-//        let f = frame.insetBy(dx: 0, dy: -1)
-//        selectedBackgroundView = UIView(frame: f)
+//        selectedBackgroundView = UIView()
 //        selectedBackgroundView?.backgroundColor = Colors().selectedColor
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

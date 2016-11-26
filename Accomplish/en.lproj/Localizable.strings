@@ -232,6 +232,7 @@
 "enterMethodName"="Name time management method";
 "methodName"="Name";
 "aliase"="Aliase";
+"defaultAliase"="Circles";
 "itemName"="Job Content";
 "itemTime"="Working Time(Minute)";
 "enterMethodAliase"="Aliase of time management method(Only used to record cycles)";

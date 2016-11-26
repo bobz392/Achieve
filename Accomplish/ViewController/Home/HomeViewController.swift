@@ -416,9 +416,14 @@ class HomeViewController: BaseViewController {
         appUD.write(kCheckMoveUnfinishTaskKey, value: false)
     }
     
+    /**
+     上传用户数据到iCloud
+     -TODO 目前没有利用到 background fetch
+     */
     fileprivate func uploadToiCloud() {
         self.icloudManager.iCloudEnable { [unowned self] (enable) in
             if enable {
+                // 未上传的 checkIn 在这里全部上传
                 let waitForUploadCheckIns = RealmManager.shared.waitForUploadCheckIns()
                 for checkIn in waitForUploadCheckIns {
                     if let date = checkIn.checkInDate {
@@ -432,6 +437,7 @@ class HomeViewController: BaseViewController {
                     }
                 }
             } else {
+                // 每周提示一次 如果用户未登陆iCloud
                 if NSDate().weekday() == 1 {
                     HUD.shared.showOnce(Localized("icloud"))
                 }

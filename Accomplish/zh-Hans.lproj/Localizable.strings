@@ -232,6 +232,7 @@
 "timeManageGroupName"="工作组 ";
 "enterItemName"="输入工作内容";
 "enterItemTime"="输入工作时长";
+"min"="分钟";
 "enterMethodName"="输入工作法的名字";
 "methodName"="名字";
 "itemName"="工作内容";

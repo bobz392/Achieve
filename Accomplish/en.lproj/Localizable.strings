@@ -228,6 +228,7 @@
 // time management editor
 "timeManageGroupName"="Work Group ";
 "enterItemName"="Enter Job Content";
+"min"="Min";
 "enterItemTime"="Enter Working Time";
 "enterMethodName"="Name time management method";
 "methodName"="Name";

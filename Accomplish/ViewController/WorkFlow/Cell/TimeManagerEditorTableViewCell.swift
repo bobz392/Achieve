@@ -69,6 +69,8 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.groupIndex = groupIndex
         self.deleteGroupButton.isHidden = !canChange
         self.groupRepeatButton.isEnabled = canChange
+        // 如果在可以删除的情况下，也禁止第一个 group 删除，因为默认最少有一个group
+        self.deleteGroupButton.isHidden = groupIndex == 0
         
         self.groupNameLabel.text = Localized("timeManageGroupName") + "\(groupIndex + 1)"
         self.groupRepeatButton.setTitle("\(methodTime.groups[groupIndex].repeatTimes)", for: .normal)

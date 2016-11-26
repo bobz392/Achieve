@@ -29,7 +29,7 @@ class ItemTableViewCell: BaseTableViewCell {
  
     func configCell(item: TimeMethodItem) {
         self.itemNameLabel.text = item.name
-        self.itemTimeLabel.text = String(format: Localized("%dm"), item.interval)
+        self.itemTimeLabel.text = "\(item.interval)" + Localized("min")
     }
     
 }

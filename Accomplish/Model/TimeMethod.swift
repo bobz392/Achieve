@@ -20,7 +20,7 @@ class TimeMethod: Object {
 
 class TimeMethodGroup: Object {
     let items = List<TimeMethodItem>()
-    dynamic var repeatTimes: Int = 0
+    dynamic var repeatTimes: Int = 1
 }
 
 class TimeMethodItem: Object {

@@ -22,16 +22,19 @@ class TimeManagerEditorViewController: BaseViewController {
     
     fileprivate let timeMethod: TimeMethod
     fileprivate let canChange: Bool
+    fileprivate let isCreate: Bool
     
-    init(method: TimeMethod, canChange: Bool) {
+    init(method: TimeMethod, canChange: Bool, isCreate: Bool = false) {
         self.timeMethod = method
         self.canChange = canChange
+        self.isCreate = isCreate
         super.init(nibName: "TimeManagerEditorViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.timeMethod = TimeMethod()
         self.canChange = false
+        self.isCreate = false
         super.init(coder: aDecoder)
     }
     
@@ -41,6 +44,14 @@ class TimeManagerEditorViewController: BaseViewController {
         // Do any additional setup after loading the view.
         self.configMainUI()
         self.initializeControl()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.isCreate {
+            self.guideUserCreateMethod()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,6 +106,10 @@ class TimeManagerEditorViewController: BaseViewController {
             return
         }
         nav.popViewController(animated: true)
+    }
+    
+    fileprivate func guideUserCreateMethod() {
+        self.changeMethodNameAction()
     }
     
     func changeMethodNameAction() {

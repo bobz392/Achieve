@@ -74,8 +74,16 @@ class TimeManagementViewController: BaseViewController {
     }
 
     func newMethodAction() {
+        let timeMethod = TimeMethod()
+        let group = TimeMethodGroup()
+        let item = TimeMethodItem()
+        item.name = Localized("enterItemName")
+        item.interval = 10
+        group.items.append(item)
+        timeMethod.groups.append(group)
+        
         let timeManagerEditorVC =
-            TimeManagerEditorViewController(method: self.timeMethods[0], canChange: true)
+            TimeManagerEditorViewController(method: timeMethod, canChange: true, isCreate: true)
         self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
     }
 }

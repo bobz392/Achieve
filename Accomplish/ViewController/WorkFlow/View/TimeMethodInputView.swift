@@ -60,7 +60,8 @@ class TimeMethodInputView: UIView {
     }
     
     func moveIn(twoTitles: [String], twoHolders: [String]?,
-                twoContent: [String], saveBlock: @escaping SaveBlock) {
+                twoContent: [String], keyboardType: UIKeyboardType = .default,
+                saveBlock: @escaping SaveBlock) {
         self.firstInputTitleLabel.text = twoTitles.first
         self.secondInputTitleLabel.text = twoTitles.last
         self.firstTextField.text = twoContent.first
@@ -71,9 +72,16 @@ class TimeMethodInputView: UIView {
             self.firstTextField.placeholder = horders.first
             self.secondTextField.placeholder = horders.last
         }
+        self.secondTextField.keyboardType = keyboardType
         
+        // 进来的时候先隐藏
         self.isHidden = false
-        self.firstTextField.becomeFirstResponder()
+        // 有可能第一个输入框的状态是被禁止的 那么则响应第二个输入框的键盘
+        if self.firstTextField.isUserInteractionEnabled == false {
+            self.secondTextField.becomeFirstResponder()
+        } else {
+            self.firstTextField.becomeFirstResponder()
+        }
         
         self.cardHolderViewTopConstraint.constant = 64
         UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration, usingSpringWithDamping: self.shadowAlpha, initialSpringVelocity: 0.1, options: UIViewAnimationOptions(), animations: { [unowned self] in
@@ -99,8 +107,8 @@ class TimeMethodInputView: UIView {
     
     func saveAction() {
         guard let frist = self.firstTextField.text else {
-                HUD.shared.error("")
-                return
+            HUD.shared.error("")
+            return
         }
         self.saveBlock?(frist, self.secondTextField.text)
         self.moveOut()

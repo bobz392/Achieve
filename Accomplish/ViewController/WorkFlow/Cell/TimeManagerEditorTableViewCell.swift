@@ -57,6 +57,8 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.groupRepeatLabel.textColor = colors.mainTextColor
         self.groupRepeatLabel.text = Localized("repeatNumber")
         self.groupRepeatButton.tintColor = colors.mainGreenColor
+        self.groupRepeatButton.addTarget(self,
+                                         action: #selector(self.groupRepeatAction), for: .touchUpInside)
         
         self.itemsTableView.addLightBorder()
     }
@@ -68,7 +70,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.deleteGroupButton.isHidden = !canChange
         self.groupRepeatButton.isEnabled = canChange
         
-        self.groupNameLabel.text = String(format: Localized("timeManageGroupName"), groupIndex + 1)
+        self.groupNameLabel.text = Localized("timeManageGroupName") + "\(groupIndex + 1)"
         self.groupRepeatButton.setTitle("\(methodTime.groups[groupIndex].repeatTimes)", for: .normal)
         self.itemsTableView.reloadData()
         self.itemsTableView.allowsSelection = canChange
@@ -76,6 +78,26 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     
     func deleteGroupAction() {
         self.deleteBlock?()
+    }
+    
+    func groupRepeatAction() {
+        guard let view = self.timeMethodInputView,
+            let methodGroup = self.methodTime?.groups[self.groupIndex] else { return }
+        let titles = [Localized("timeManageGroupName"), Localized("repeatNumber")]
+        
+        view.firstTextField.isUserInteractionEnabled = false
+        view.moveIn(twoTitles: titles, twoHolders: nil,
+                    twoContent: [self.groupNameLabel.text ?? "", "\(methodGroup.repeatTimes)"],
+                    keyboardType: .numberPad)
+        { (first, second) in
+            view.firstTextField.isUserInteractionEnabled = true
+            if let times = Int(second ?? "") {
+                RealmManager.shared.updateObject { [unowned self] in
+                    methodGroup.repeatTimes = times
+                    self.groupRepeatButton.setTitle(second, for: .normal)
+                }
+            }
+        }
     }
 }
 
@@ -128,34 +150,34 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
         let holders = [Localized("enterItemName"), Localized("enterItemTime")]
         
         if indexPath.row >= methodGroup.items.count {
-            view.moveIn(twoTitles: titles,
-                        twoHolders: holders,
-                        twoContent: ["", ""]) { (first, second) in
-                            if let interval = Int(second ?? "") {
-                                let item = TimeMethodItem()
-                                item.name = first
-                                item.interval = interval
-                                RealmManager.shared.updateObject {
-                                    methodGroup.items.append(item)
-                                    tableView.insertRows(at: [indexPath], with: .none)
-                                    let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
-                                    self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)
-                                }
-                            }
-                            
+            view.moveIn(twoTitles: titles, twoHolders: holders,
+                        twoContent: ["", ""], keyboardType: .numberPad)
+            { (first, second) in
+                if let interval = Int(second ?? "") {
+                    let item = TimeMethodItem()
+                    item.name = first
+                    item.interval = interval
+                    RealmManager.shared.updateObject {
+                        methodGroup.items.append(item)
+                        tableView.insertRows(at: [indexPath], with: .none)
+                        let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
+                        self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)
+                    }
+                }
+                
             }
         } else {
             let item = methodGroup.items[indexPath.row]
-            view.moveIn(twoTitles: titles,
-                        twoHolders: holders,
-                        twoContent: [item.name, "\(item.interval)"]) { (first, second) in
-                            if let interval = Int(second ?? "") {
-                                RealmManager.shared.updateObject {
-                                    item.interval = interval
-                                    item.name = first
-                                    tableView.reloadRows(at: [indexPath], with: .automatic)
-                                }
-                            }
+            view.moveIn(twoTitles: titles, twoHolders: holders,
+                        twoContent: [item.name, "\(item.interval)"], keyboardType: .numberPad)
+            { (first, second) in
+                if let interval = Int(second ?? "") {
+                    RealmManager.shared.updateObject {
+                        item.interval = interval
+                        item.name = first
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
             }
         }
     }

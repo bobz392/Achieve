@@ -229,7 +229,7 @@
 "pomodoroLongRest"="四个番茄了！多休息一会儿吧";
 
 // time management editor
-"timeManageGroupName"="工作组 %d";
+"timeManageGroupName"="工作组 ";
 "enterItemName"="输入工作内容";
 "enterItemTime"="输入工作时长";
 "enterMethodName"="输入工作法的名字";

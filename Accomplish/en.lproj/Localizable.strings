@@ -226,7 +226,7 @@
 "pomodoroLongRest"="Four pomodoros! Take a longer Break";
 
 // time management editor
-"timeManageGroupName"="Work Group %d";
+"timeManageGroupName"="Work Group ";
 "enterItemName"="Enter Job Content";
 "enterItemTime"="Enter Working Time";
 "enterMethodName"="Name time management method";

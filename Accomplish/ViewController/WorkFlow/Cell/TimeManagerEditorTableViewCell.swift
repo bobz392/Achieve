@@ -21,6 +21,9 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     @IBOutlet weak var itemsTableView: UITableView!
     @IBOutlet weak var groupRepeatLabel: UILabel!
     @IBOutlet weak var groupRepeatButton: UIButton!
+    
+    weak var timeMethodInputView: TimeMethodInputView? = nil
+    
     fileprivate var methodGroup: TimeMethodGroup? = nil
     fileprivate var canChange = false
     

@@ -17,7 +17,7 @@ class TimeManagerEditorViewController: BaseViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var methodRepeatTitleLabel: UILabel!
     @IBOutlet weak var methodRepeatLabel: UILabel!
-    
+
     internal var timeMethodInputView: TimeMethodInputView? = nil
     
     fileprivate let timeMethod: TimeMethod
@@ -103,9 +103,20 @@ class TimeManagerEditorViewController: BaseViewController {
         guard let view = self.timeMethodInputView else { return }
         view.moveIn(twoTitles: [Localized("methodName"), Localized("aliase")],
                     twoHolders: [Localized("enterMethodName"), Localized("enterMethodAliase")],
-                    twoContent: [self.timeMethod.name, self.timeMethod.timeMethodAliase])
+                    twoContent: [self.timeMethod.name, self.timeMethod.timeMethodAliase],
+                    saveBlock: { (first, second) in
+                        RealmManager.shared.updateObject { [unowned self] in
+                            self.timeMethod.name = first
+                            self.timeMethod.timeMethodAliase = second
+                            self.methodNameButton.setTitle(first, for: .normal)
+                            self.methodRepeatLabel.text = second
+                        }
+        })
     }
     
+    /**
+     make sure input view created
+     */
     fileprivate func checkInputViewCreated() {
         guard  let _ = self.timeMethodInputView else {
             let view = TimeMethodInputView.loadNib(self)!
@@ -124,6 +135,7 @@ class TimeManagerEditorViewController: BaseViewController {
 }
 
 extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataSource {
+    
     fileprivate func configTableView() {
         self.methodTableView.clearView()
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenBounds.width, height: 15))
@@ -131,7 +143,6 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
         self.methodTableView.tableHeaderView = headerView
         self.methodTableView.register(TimeManagerEditorTableViewCell.nib,
                                       forCellReuseIdentifier: TimeManagerEditorTableViewCell.reuseId)
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,6 +154,8 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
             tableView.dequeueReusableCell(withIdentifier: TimeManagerEditorTableViewCell.reuseId, for: indexPath) as! TimeManagerEditorTableViewCell
         cell.configCell(methodGroup: self.timeMethod.groups[indexPath.row],
                         canChange: self.canChange, groupIndex: indexPath.row)
+        cell.timeMethodInputView = self.timeMethodInputView
+        
         return cell
     }
     

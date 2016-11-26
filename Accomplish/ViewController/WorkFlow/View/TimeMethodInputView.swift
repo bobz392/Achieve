@@ -9,6 +9,8 @@
 import UIKit
 
 class TimeMethodInputView: UIView {
+    typealias SaveBlock = (_ first: String, _ second: String) -> Void
+    
     @IBOutlet weak var realShadowView: UIView!
     @IBOutlet weak var cardHolderView: UIView!
     @IBOutlet weak var cardHolderViewTopConstraint: NSLayoutConstraint!
@@ -55,7 +57,8 @@ class TimeMethodInputView: UIView {
         return view
     }
     
-    func moveIn(twoTitles: [String], twoHolders: [String]?, twoContent: [String]) {
+    func moveIn(twoTitles: [String], twoHolders: [String]?,
+                twoContent: [String], saveBlock: SaveBlock) {
         self.firstInputTitleLabel.text = twoTitles.first
         self.secondInputTitleLabel.text = twoTitles.last
         self.firstTextField.text = twoContent.first

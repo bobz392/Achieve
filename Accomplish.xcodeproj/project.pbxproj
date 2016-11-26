@@ -38,6 +38,8 @@
 		C70BF6211D7951CA006B0C1D /* SectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */; };
 		C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6221D79B9B1006B0C1D /* RealmManager.swift */; };
 		C70BF6271D79CADB006B0C1D /* SecondTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70BF6251D79C58B006B0C1D /* SecondTimer.swift */; };
+		C7105B831DE8BB1000374F78 /* TimeMethodInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105B821DE8BB1000374F78 /* TimeMethodInputView.swift */; };
+		C7105B851DE8BB1600374F78 /* TimeMethodInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7105B841DE8BB1600374F78 /* TimeMethodInputView.xib */; };
 		C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F911D6CD52F0096A1A3 /* Task.swift */; };
 		C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7105F9A1D6CDBFD0096A1A3 /* DateTools.bundle */; };
@@ -298,11 +300,6 @@
 		C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
-		C7E39AAD1DB5481600FE2588 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E39AA41DB5481600FE2588 /* SVIndefiniteAnimatedView.m */; };
-		C7E39AAE1DB5481600FE2588 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E39AA61DB5481600FE2588 /* SVProgressAnimatedView.m */; };
-		C7E39AAF1DB5481600FE2588 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7E39AA81DB5481600FE2588 /* SVProgressHUD.bundle */; };
-		C7E39AB01DB5481600FE2588 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E39AAA1DB5481600FE2588 /* SVProgressHUD.m */; };
-		C7E39AB11DB5481600FE2588 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E39AAC1DB5481600FE2588 /* SVRadialGradientLayer.m */; };
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
 /* End PBXBuildFile section */
 
@@ -404,6 +401,8 @@
 		C70BF61F1D7951CA006B0C1D /* SectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionTableViewCell.xib; sourceTree = "<group>"; };
 		C70BF6221D79B9B1006B0C1D /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C70BF6251D79C58B006B0C1D /* SecondTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTimer.swift; sourceTree = "<group>"; };
+		C7105B821DE8BB1000374F78 /* TimeMethodInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeMethodInputView.swift; sourceTree = "<group>"; };
+		C7105B841DE8BB1600374F78 /* TimeMethodInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeMethodInputView.xib; sourceTree = "<group>"; };
 		C7105E9D1D6C7AD60096A1A3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Accomplish-Bridging-Header.h"; sourceTree = "<group>"; };
 		C7105F8D1D6CCDB00096A1A3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -675,16 +674,6 @@
 		C7E1B05F1D8C7A9600554B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7E2D9561D8F05000080D283 /* WatchConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
 		C7E2D9591D8F06B70080D283 /* GroupTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTasks.swift; sourceTree = "<group>"; };
-		C7E39AA31DB5481600FE2588 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		C7E39AA41DB5481600FE2588 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		C7E39AA51DB5481600FE2588 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
-		C7E39AA61DB5481600FE2588 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
-		C7E39AA71DB5481600FE2588 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		C7E39AA81DB5481600FE2588 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		C7E39AA91DB5481600FE2588 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		C7E39AAA1DB5481600FE2588 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		C7E39AAB1DB5481600FE2588 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
-		C7E39AAC1DB5481600FE2588 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -811,7 +800,6 @@
 			isa = PBXGroup;
 			children = (
 				C74751A81DC760B000831DB1 /* FontAwesome */,
-				C7E39AA21DB5481600FE2588 /* SVProgressHUD */,
 				C79805B71D7D4E610011DE19 /* JTAppleCalendar */,
 				C7821EB21D7BF1820056623D /* MMWormhole */,
 				C7105F991D6CDBFD0096A1A3 /* DateTools */,
@@ -893,6 +881,8 @@
 			children = (
 				C74751B81DC840C700831DB1 /* TimeManagementView.swift */,
 				C74751BA1DC840D100831DB1 /* TimeManagementView.xib */,
+				C7105B821DE8BB1000374F78 /* TimeMethodInputView.swift */,
+				C7105B841DE8BB1600374F78 /* TimeMethodInputView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1324,23 +1314,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C7E39AA21DB5481600FE2588 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				C7E39AA31DB5481600FE2588 /* SVIndefiniteAnimatedView.h */,
-				C7E39AA41DB5481600FE2588 /* SVIndefiniteAnimatedView.m */,
-				C7E39AA51DB5481600FE2588 /* SVProgressAnimatedView.h */,
-				C7E39AA61DB5481600FE2588 /* SVProgressAnimatedView.m */,
-				C7E39AA71DB5481600FE2588 /* SVProgressHUD-Prefix.pch */,
-				C7E39AA81DB5481600FE2588 /* SVProgressHUD.bundle */,
-				C7E39AA91DB5481600FE2588 /* SVProgressHUD.h */,
-				C7E39AAA1DB5481600FE2588 /* SVProgressHUD.m */,
-				C7E39AAB1DB5481600FE2588 /* SVRadialGradientLayer.h */,
-				C7E39AAC1DB5481600FE2588 /* SVRadialGradientLayer.m */,
-			);
-			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1569,6 +1542,7 @@
 				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
 				C77194981D6FE96A00437560 /* AssociateViewController.xib in Resources */,
+				C7105B851DE8BB1600374F78 /* TimeMethodInputView.xib in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,
 				C77DE3441DE3E27A00F098F4 /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap in Resources */,
@@ -1597,7 +1571,6 @@
 				C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
 				C77DE3451DE3E27A00F098F4 /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap in Resources */,
-				C7E39AAF1DB5481600FE2588 /* SVProgressHUD.bundle in Resources */,
 				C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C77DE34A1DE3E27A00F098F4 /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap in Resources */,
@@ -1710,10 +1683,8 @@
 				C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */,
 				C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */,
 				C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */,
-				C7E39AB11DB5481600FE2588 /* SVRadialGradientLayer.m in Sources */,
 				C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
-				C7E39AB01DB5481600FE2588 /* SVProgressHUD.m in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
 				C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */,
 				C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */,
@@ -1751,7 +1722,6 @@
 				C798072E1D83DB3F0011DE19 /* DynamicBlurView.swift in Sources */,
 				C7821EC31D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
 				C79805721D7CDB8D0011DE19 /* UIColor+Convenient.swift in Sources */,
-				C7E39AAD1DB5481600FE2588 /* SVIndefiniteAnimatedView.m in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
 				C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */,
@@ -1818,11 +1788,11 @@
 				C79805C41D7D4E610011DE19 /* JTAppleCalendarLayout.swift in Sources */,
 				C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */,
 				C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */,
+				C7105B831DE8BB1000374F78 /* TimeMethodInputView.swift in Sources */,
 				C79805C71D7D4E610011DE19 /* JTAppleDayCell.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
-				C7E39AAE1DB5481600FE2588 /* SVProgressAnimatedView.m in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
 				C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,

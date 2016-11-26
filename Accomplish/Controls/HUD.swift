@@ -6,6 +6,8 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
+import SVProgressHUD
+
 final class HUD {
     
     static let shared = HUD()

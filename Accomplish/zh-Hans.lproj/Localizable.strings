@@ -222,6 +222,7 @@
 "useTime"="使用%d次";
 "useTimes"="使用%d次";
 "pomodoro"="番茄工作法";
+"pomodoroAliase"="番茄";
 "pomodoroWork"="专心工作中";
 "pomodoroRest"="休息一会儿";
 "pomodoroLongRest"="四个番茄了！多休息一会儿吧";
@@ -229,3 +230,7 @@
 // time management editor
 "timeManageGroupName"="工作组 %d";
 "enterItemName"="输入工作项目的名字";
+"enterMethodName"="输入工作法的名字";
+"methodName"="名字";
+"aliase"="别名";
+"enterMethodAliase"="输入工作法的别名(仅用于记录循环次数)";

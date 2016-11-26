@@ -12,11 +12,13 @@ class TimeManagerEditorViewController: BaseViewController {
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var methodNameTextFieldHolderView: UIView!
-    @IBOutlet weak var methodNameTextField: UITextField!
+    @IBOutlet weak var methodNameButton: UIButton!
     @IBOutlet weak var methodTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var methodRepeatTitleLabel: UILabel!
     @IBOutlet weak var methodRepeatLabel: UILabel!
-    @IBOutlet weak var methodRepeatButton: UIButton!
+    
+    internal var timeMethodInputView: TimeMethodInputView? = nil
     
     fileprivate let timeMethod: TimeMethod
     fileprivate let canChange: Bool
@@ -52,12 +54,16 @@ class TimeManagerEditorViewController: BaseViewController {
         self.cardView.backgroundColor = colors.cloudColor
         
         self.view.backgroundColor = colors.mainGreenColor
-        self.methodRepeatButton.tintColor = colors.mainGreenColor
+        self.methodNameButton.setTitleColor(colors.mainTextColor, for: .normal)
+        self.methodNameButton.setTitleColor(colors.mainTextColor, for: .disabled)
         
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner,
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
+        
+        self.methodRepeatTitleLabel.textColor = colors.mainTextColor
+        self.methodRepeatLabel.textColor = colors.mainGreenColor
     }
     
     fileprivate func initializeControl() {
@@ -72,13 +78,17 @@ class TimeManagerEditorViewController: BaseViewController {
         
         self.configTableView()
         
-        self.methodNameTextField.isUserInteractionEnabled = self.canChange
-        self.methodNameTextField.text = self.timeMethod.name
-        self.methodRepeatLabel.text = Localized("repeatNumber")
-        self.methodRepeatButton.isEnabled = self.canChange
+        self.methodNameButton.isEnabled = self.canChange
+        self.methodNameButton.setTitle(self.timeMethod.name, for: .normal)
+        self.methodNameButton
+            .addTarget(self, action: #selector(self.changeMethodNameAction), for: .touchUpInside)
+        
         let repeatTitle = self.timeMethod.repeatTimes == kTimeMethodInfiniteRepeat ?
             Localized("infiniteRepeat") : "\(self.timeMethod.repeatTimes)"
-        self.methodRepeatButton.setTitle(repeatTitle, for: .normal)
+        self.methodRepeatTitleLabel.text = Localized("repeatNumber")
+        self.methodRepeatLabel.text = repeatTitle
+        
+        self.checkInputViewCreated()
     }
     
     // MARK: - actions
@@ -87,6 +97,29 @@ class TimeManagerEditorViewController: BaseViewController {
             return
         }
         nav.popViewController(animated: true)
+    }
+    
+    func changeMethodNameAction() {
+        guard let view = self.timeMethodInputView else { return }
+        view.moveIn(twoTitles: [Localized("methodName"), Localized("aliase")],
+                    twoHolders: [Localized("enterMethodName"), Localized("enterMethodAliase")],
+                    twoContent: [self.timeMethod.name, self.timeMethod.timeMethodAliase])
+    }
+    
+    fileprivate func checkInputViewCreated() {
+        guard  let _ = self.timeMethodInputView else {
+            let view = TimeMethodInputView.loadNib(self)!
+            self.timeMethodInputView = view
+            self.view.addSubview(view)
+            view.snp.makeConstraints({ (make) in
+                make.top.equalTo(self.view)
+                make.bottom.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.right.equalTo(self.view)
+            })
+            view.layoutIfNeeded()
+            return
+        }
     }
 }
 

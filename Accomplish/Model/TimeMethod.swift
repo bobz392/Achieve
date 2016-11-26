@@ -13,6 +13,7 @@ class TimeMethod: Object {
     dynamic var name: String = ""
     dynamic var useTimes: Int = 0
     dynamic var repeatTimes: Int = 0
+    dynamic var timeMethodAliase: String = "Circles"
     
     let groups = List<TimeMethodGroup>()
 }

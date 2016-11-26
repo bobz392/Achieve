@@ -17,6 +17,7 @@ struct BuildInTimeMethodCreator {
         let timeMethod = TimeMethod()
         timeMethod.repeatTimes = kTimeMethodInfiniteRepeat
         timeMethod.name = Localized("pomodoro")
+        timeMethod.timeMethodAliase = Localized("pomodoroAliase")
         
         let group1 = TimeMethodGroup()
         group1.repeatTimes = 3

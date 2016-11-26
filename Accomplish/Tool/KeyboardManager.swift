@@ -16,8 +16,8 @@ final class KeyboardManager {
     static var duration: Double = 0
     static var keyboardShow: Bool = false
     
-    @objc fileprivate var keyboardShowHandler: KeyboardHandle?
-    @objc fileprivate var keyboardHideHandler: KeyboardHandle?
+    fileprivate var keyboardShowHandler: KeyboardHandle?
+    fileprivate var keyboardHideHandler: KeyboardHandle?
         
     init() {
         NotificationCenter.default.addObserver(
@@ -44,8 +44,8 @@ final class KeyboardManager {
     
     func closeNotification() {
 //        Logger.log("keyboard manager remove and handle")
-        keyboardShowHandler = nil
-        keyboardHideHandler = nil
+        self.keyboardShowHandler = nil
+        self.keyboardHideHandler = nil
     }
     
     fileprivate func handleKeyboardShow(_ notification: Notification) {

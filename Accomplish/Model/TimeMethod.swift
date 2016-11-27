@@ -21,6 +21,13 @@ class TimeMethod: Object {
 class TimeMethodGroup: Object {
     let items = List<TimeMethodItem>()
     dynamic var repeatTimes: Int = 1
+    
+    func addDefaultGroupAndItem() {
+        let item = TimeMethodItem()
+        item.name = Localized("enterItemName")
+        item.interval = 10
+        self.items.append(item)
+    }
 }
 
 class TimeMethodItem: Object {

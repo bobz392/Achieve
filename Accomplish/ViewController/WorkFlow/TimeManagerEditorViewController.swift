@@ -14,9 +14,14 @@ class TimeManagerEditorViewController: BaseViewController {
     @IBOutlet weak var methodNameTextFieldHolderView: UIView!
     @IBOutlet weak var methodNameButton: UIButton!
     @IBOutlet weak var methodTableView: UITableView!
+    @IBOutlet weak var addGroupButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var methodRepeatTitleLabel: UILabel!
     @IBOutlet weak var methodRepeatLabel: UILabel!
+    
+    @IBOutlet weak var backButtonCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addGroupButtonCenterConstraint: NSLayoutConstraint!
+    
     
     internal var timeMethodInputView: TimeMethodInputView? = nil
     
@@ -72,9 +77,26 @@ class TimeManagerEditorViewController: BaseViewController {
         self.backButton.createIconButton(iconSize: kBackButtonCorner,
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
+        self.addGroupButton.buttonColor(colors)
+        self.addGroupButton.createIconButton(iconSize: kBackButtonCorner,
+                                         icon: "fa-plus",
+                                         color: colors.mainGreenColor, status: .normal)
         
         self.methodRepeatTitleLabel.textColor = colors.mainTextColor
         self.methodRepeatLabel.textColor = colors.mainGreenColor
+        
+        if self.isCreate || self.canChange {
+            self.addGroupButtonCenterConstraint.constant = 50
+            self.backButtonCenterConstraint.constant = -50
+            // 进来的时候首先持久化临时创建的 timeMethod，返回的时候根据用户的选择来决定是否删除
+            // 其次是对于后面的所有操作这样可以一致来对待
+            // 最次是可以防止突发情况导致的编辑未保存，例如关app 关机 等
+            RealmManager.shared.writeObject(self.timeMethod)
+        } else {
+            self.addGroupButtonCenterConstraint.constant = 0
+            self.addGroupButton.isHidden = true
+            self.backButtonCenterConstraint.constant = 0
+        }
     }
     
     fileprivate func initializeControl() {
@@ -86,6 +108,11 @@ class TimeManagerEditorViewController: BaseViewController {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        
+        self.addGroupButton.addShadow()
+        self.addGroupButton.layer.cornerRadius = kBackButtonCorner
+        self.addGroupButton
+            .addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
         
         self.configTableView()
         
@@ -102,10 +129,43 @@ class TimeManagerEditorViewController: BaseViewController {
     
     // MARK: - actions
     func backAction() {
+        if self.isCreate {
+            let alert = UIAlertController(title: Localized("saveTimeMethod"),
+                                          message: nil, preferredStyle: .actionSheet)
+            let saveAction = UIAlertAction(title: Localized("save"), style: .destructive,
+                                           handler: { [unowned self] (action) in
+                self.pop()
+            })
+            
+            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
+                RealmManager.shared.deleteObject(self.timeMethod)
+                self.pop()
+            })
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            
+            self.navigationController?.present(alert, animated: true, completion: nil)
+            
+        } else {
+            self.pop()
+        }
+    }
+    
+    fileprivate func pop() {
         guard let nav = self.navigationController else {
             return
         }
         nav.popViewController(animated: true)
+    }
+    
+    func addGroupAction() {
+        RealmManager.shared.updateObject { [unowned self] in
+            let group = TimeMethodGroup()
+            group.addDefaultGroupAndItem()
+            self.timeMethod.groups.append(group)
+            let indexPath = IndexPath(row: self.timeMethod.groups.count - 1, section: 0)
+            self.methodTableView.insertRows(at: [indexPath], with: .automatic)
+        }
     }
     
     fileprivate func guideUserCreateMethod() {

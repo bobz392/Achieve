@@ -49,7 +49,7 @@ class TaskTableViewCell: BaseTableViewCell {
         self.taskSettingButton.clearView()
         
         self.taskStatusButton.clearView()
-        self.taskStatusButton.addTarget(self, action: #selector(self.markTask(_:)), for: .touchUpInside)
+        self.taskStatusButton.addTarget(self, action: #selector(self.markTaskAction(_:)), for: .touchUpInside)
         
         self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
@@ -198,7 +198,7 @@ class TaskTableViewCell: BaseTableViewCell {
     /**
      标记任务完成或者取消完成
     */
-    func markTask(_ btn: UIButton) {
+    func markTaskAction(_ btn: UIButton) {
         guard let task = self.task else { return }
         if task.status == kTaskFinish {
             RealmManager.shared.updateTaskStatus(task, status: kTaskRunning)

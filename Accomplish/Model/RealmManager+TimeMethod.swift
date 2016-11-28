@@ -15,4 +15,7 @@ extension RealmManager {
         return realm.objects(TimeMethod.self)
     }
     
+    func queryTimeMethod(uuid: String) -> TimeMethod? {
+        return realm.objects(TimeMethod.self).filter("uuid = '\(uuid)'").first
+    }
 }

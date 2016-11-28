@@ -51,25 +51,37 @@ class TimeManagementView: UIView {
         view.method = method
         
         NotificationCenter.default
-            .addObserver(view, selector: #selector(view.saveTimeManage),
+            .addObserver(view, selector: #selector(view.saveTimeManager),
                          name: NSNotification.Name.UIApplicationDidEnterBackground,
                          object: nil)
         NotificationCenter.default
-            .addObserver(view, selector: #selector(view.enterTimeManage),
+            .addObserver(view, selector: #selector(view.enterTimeManager),
                          name: NSNotification.Name.UIApplicationDidBecomeActive,
                          object: nil)
         
         return view
     }
     
-    func saveTimeManage() {
-        self.countLabel.pause()
+    func configTimeManager(details: Array<Int>) {
+        self.groupIndex = details[0]
+        self.methodRepeatTimes = details[1]
+        self.itemIndex = details[2]
+        self.groupRepeatTimes = details[3]
     }
     
-    func enterTimeManage() {
+    func saveTimeManager() {
+        self.countLabel.pause()
+
+        AppUserDefault().write(kUserDefaultTMDetailsKey,
+                               value: [groupIndex, methodRepeatTimes, itemIndex, groupRepeatTimes])
+        AppUserDefault().write(kUserDefaultTMUUIDKey, value: self.method.uuid)
+    }
+    
+    func enterTimeManager() {
         self.countLabel.start()
         
         AppUserDefault().remove(kUserDefaultTMDetailsKey)
+        AppUserDefault().remove(kUserDefaultTMUUIDKey)
     }
     
     func moveIn(view: UIView) {

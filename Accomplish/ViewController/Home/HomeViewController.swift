@@ -47,11 +47,13 @@ class HomeViewController: BaseViewController {
     fileprivate var repeaterManager = RepeaterManager()
     fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: GroupIdentifier,
                                                optionalDirectory: nil)
-    
+    // 当前的 转场动画类型
     fileprivate var toViewControllerAnimationType = 0
+    //
     fileprivate weak var newTaskVC: NewTaskViewController? = nil
-    
+    //
     fileprivate var icloudManager = CloudKitManager()
+    fileprivate weak var timeManagementView: TimeManagementView? = nil
     
     // MARK: - life circle
     override func viewDidLoad() {
@@ -246,6 +248,7 @@ class HomeViewController: BaseViewController {
             queue: OperationQueue.main) { [unowned self] notification in
                 self.handelTodayExtensionFinish()
                 self.checkNewDay()
+                self.checkTimeMethodRunning()
                 self.timer?.resume()
         }
         
@@ -257,6 +260,30 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    /**
+     检查上次退出 app 的时候是否还有在运行中的 time method
+     */
+    fileprivate func checkTimeMethodRunning() {
+        // 如果 time manager view 还存在则之前未退出 app， 则直接交给 view 内部通知处理
+        if let _ = self.timeManagementView { return }
+        
+        let app = AppUserDefault()
+        guard let uuid = app.readString(kUserDefaultTMUUIDKey),
+            let details = app.readArray(kUserDefaultTMDetailsKey)  as? Array<Int>,
+            let tm = RealmManager.shared.queryTimeMethod(uuid: uuid) else { return }
+        
+        if details.count == 4 {
+            guard let view = TimeManagementView.loadNib(self, method: tm) else { return }
+            view.configTimeManager(details: details)
+            self.timeManagementView = view
+            
+            view.moveIn(view: self.view)
+        }
+    }
+    
+    /**
+     在进入 app 的时候检查是否是新的一天
+     */
     fileprivate func checkNewDay() {
         if self.repeaterManager.isNewDay() {
             self.handleNewDay()
@@ -714,6 +741,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return self.statusSlideSegment.selectedSegmentIndex == 0
     }
     
+    /**
+     打开 settings 页面，例如删除 或者 工作法
+     */
     fileprivate func showSettings(taskUUID: String) {
         guard let task =
             RealmManager.shared.queryTask(taskUUID) else { return }
@@ -745,6 +775,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let t = RealmManager.shared.allTimeMethods().first else { return }
                 
                 guard let view = TimeManagementView.loadNib(self, method: t) else { return }
+                self.timeManagementView = view
                 view.moveIn(view: self.view)
             }
             alert.addAction(workflowAction)

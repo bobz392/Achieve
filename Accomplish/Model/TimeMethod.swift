@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class TimeMethod: Object {
+    dynamic var uuid: String = NSDate().createTimeManagerUUID()
     dynamic var name: String = ""
     dynamic var useTimes: Int = 0
     dynamic var repeatTimes: Int = 0

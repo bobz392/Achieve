@@ -30,6 +30,10 @@ extension NSDate {
         return self.formattedDate(withFormat: UUIDFormat) + "-tag"
     }
     
+    func createTimeManagerUUID() -> String {
+        return self.formattedDate(withFormat: UUIDFormat) + "-tm"
+    }
+    
     func createdFormatedDateString() -> String {
         guard let formateDate = self.formattedDate(withFormat: CreatedDateFormat, locale: Locale.init(identifier: "en_US")) else {
             fatalError()

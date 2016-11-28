@@ -85,7 +85,7 @@ extension BackgroundViewController: UICollectionViewDelegate, UICollectionViewDa
         let type = MainColorType(rawValue: indexPath.row) ?? MainColorType.greenSea
         cell.contentView.backgroundColor = type.mianColor()
         cell.contentView.layer.cornerRadius = 10
-        let selectedType = AppUserDefault().readInt(kBackgroundKey)
+        let selectedType = AppUserDefault().readInt(kUserDefaultBackgroundKey)
         cell.checkImageView.isHidden = selectedType != indexPath.row
         
         return cell

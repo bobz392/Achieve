@@ -107,7 +107,7 @@ class CalendarViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
         
-        let startDay = AppUserDefault().readInt(kWeekStartKey)
+        let startDay = AppUserDefault().readInt(kUserDefaultWeekStartKey)
         self.calendarView.firstDayOfWeek = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.sunday
         self.calendarView.cellInset = CGPoint(x: 0, y: 0)
         self.calendarView.registerCellViewXib(fileName: "CalendarCell")
@@ -135,7 +135,7 @@ class CalendarViewController: BaseViewController {
     }
     
     func configWeekView() {
-        let startDay = AppUserDefault().readInt(kWeekStartKey)
+        let startDay = AppUserDefault().readInt(kUserDefaultWeekStartKey)
         
         for subview in self.weekView.subviews {
             let colors = Colors()

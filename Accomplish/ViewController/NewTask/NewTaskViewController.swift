@@ -239,7 +239,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         let priority = self.prioritySlideSegmental.selectedSegmentIndex
         self.task.createDefaultTask(taskToDo, priority:  priority)
         
-        let tagUUID = AppUserDefault().readString(kCurrentTagUUIDKey)
+        let tagUUID = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
         self.task.tagUUID = tagUUID
         
         self.saveSubtasks()

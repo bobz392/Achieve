@@ -42,7 +42,7 @@ class WatchManager: NSObject, WCSessionDelegate {
     
     func tellWatchQueryNewTask() {
         Logger.log("self.session?.isReachable = \(self.session?.isReachable)")
-        AppUserDefault().write(kWatchDateHasNewKey, value: true)
+        AppUserDefault().write(kUserDefaultWatchDateHasNewKey, value: true)
         
         if self.supported() {
             guard let session = self.session else { return }

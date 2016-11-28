@@ -28,7 +28,7 @@ struct RepeaterManager {
         Logger.log("last date is today = \(lastDate.isToday()) and is earlier then today = \(lastDate.isEarlierThan(now))")
         if !lastDate.isToday() && lastDate.isEarlierThan(now) {
             self.createCheckIn()
-            AppUserDefault().write(kCheckMoveUnfinishTaskKey, value: true)
+            AppUserDefault().write(kUserDefaultMoveUnfinishTaskKey, value: true)
             self.repeaterTaskCreate()
             return true
         } else {

@@ -63,13 +63,6 @@ class RealmManager {
         let queryFormatted = "createdFormattedDate = '\(queryDate)'"
         let queryStatues = "status \(finished ? "!=" : "==") \(kTaskRunning)"
         
-//        let needSortProperty = AppUserDefault().readBool(kSortByPriority)
-//        var sortPropertys = [SortDescriptor(property: "createdDate", ascending: false)]
-//        if needSortProperty {
-//            let needSort = SortDescriptor(property: "priority", ascending: false)
-//            sortPropertys.append(needSort)
-//        }
-        
         let tasks = realm
             .objects(Task.self)
             .filter("\(queryFormatted) AND \(queryStatues) \(queryWithTag)")

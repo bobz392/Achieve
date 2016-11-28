@@ -176,7 +176,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             
             let ud = AppUserDefault()
             if indexPath.row == 2 {
-                let weekStart = ud.readInt(kWeekStartKey)
+                let weekStart = ud.readInt(kUserDefaultWeekStartKey)
                 let weeks: DaysOfWeek
                 if let ws = DaysOfWeek(rawValue: weekStart) {
                     weeks = ws
@@ -196,14 +196,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     break
                 }
             } else if indexPath.row == 3 {
-                let closeDue = ud.readBool(kCloseDueTodayKey)
+                let closeDue = ud.readBool(kUserDefaultCloseDueTodayKey)
                 cell.detailLabel.text = closeDue ? Localized("close") : Localized("open")
             } else if indexPath.row == 4 {
-                let closeSound = ud.readBool(kCloseSoundKey)
+                let closeSound = ud.readBool(kUserDefaultCloseSoundKey)
                 cell.detailLabel.text = closeSound ? Localized("close") : Localized("open")
-            } else if indexPath.row == 5 {
-                let sortByPriority = ud.readBool(kSortByPriority)
-                cell.detailLabel.text = sortByPriority ? Localized("sortPriority") : Localized("sortCreated")
             }
             
             return cell
@@ -284,11 +281,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let key: String
         switch index {
         case 3:
-            key = kCloseDueTodayKey
+            key = kUserDefaultCloseDueTodayKey
         case 4:
-            key = kCloseSoundKey
-        case 5:
-            key = kSortByPriority
+            key = kUserDefaultCloseSoundKey
         default:
             return
         }
@@ -301,7 +296,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func handleWeekOfDay() {
         let ud = AppUserDefault()
-        let weekStart = ud.readInt(kWeekStartKey)
+        let weekStart = ud.readInt(kUserDefaultWeekStartKey)
         let weeks: DaysOfWeek
         if let ws = DaysOfWeek(rawValue: weekStart) {
             weeks = ws
@@ -311,13 +306,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch weeks {
         case .sunday:
-            ud.write(kWeekStartKey, value: DaysOfWeek.monday.rawValue)
+            ud.write(kUserDefaultWeekStartKey, value: DaysOfWeek.monday.rawValue)
             
         case .monday:
-            ud.write(kWeekStartKey, value: DaysOfWeek.saturday.rawValue)
+            ud.write(kUserDefaultWeekStartKey, value: DaysOfWeek.saturday.rawValue)
             
         case .saturday:
-            ud.write(kWeekStartKey, value: DaysOfWeek.sunday.rawValue)
+            ud.write(kUserDefaultWeekStartKey, value: DaysOfWeek.sunday.rawValue)
             
         default:
             break

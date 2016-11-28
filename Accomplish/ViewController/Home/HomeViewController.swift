@@ -59,7 +59,7 @@ class HomeViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         let appDefault = AppUserDefault()
-        self.isFullScreenSize = appDefault.readBool(kIsFullScreenSizeKey)
+        self.isFullScreenSize = appDefault.readBool(kUserDefaultFullScreenKey)
         
         self.configMainUI()
         self.initializeControl()
@@ -70,9 +70,9 @@ class HomeViewController: BaseViewController {
         self.initTimer()
         
         self.icloudManager.asyncFromCloudIfNeeded()
-        if appDefault.readBool(kBuildInTimeMethodCreatedKey) != true {
+        if appDefault.readBool(kUserDefaultBuildInTMKey) != true {
             BuildInTimeMethodCreator().pomodoroCreator()
-            appDefault.write(kBuildInTimeMethodCreatedKey, value: true)
+            appDefault.write(kUserDefaultBuildInTMKey, value: true)
         }
         //        TestManager().addAppStoreData()
     }
@@ -406,14 +406,14 @@ class HomeViewController: BaseViewController {
      */
     fileprivate func checkNeedMoveUnfinishTaskToday() {
         let appUD = AppUserDefault()
-        if !appUD.readBool(kCloseDueTodayKey)
-            && appUD.readBool(kCheckMoveUnfinishTaskKey) {
+        if !appUD.readBool(kUserDefaultCloseDueTodayKey)
+            && appUD.readBool(kUserDefaultMoveUnfinishTaskKey) {
             self.handleMoveUnfinishTaskToToday()
         } else {
             self.uploadToiCloud()
         }
         
-        appUD.write(kCheckMoveUnfinishTaskKey, value: false)
+        appUD.write(kUserDefaultMoveUnfinishTaskKey, value: false)
     }
     
     /**
@@ -447,7 +447,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate func queryTodayTask(tagUUID: String? = nil) {
         let shareManager = RealmManager.shared
-        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kCurrentTagUUIDKey)
+        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
         self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
         self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
         self.realmNoticationToken()
@@ -581,7 +581,7 @@ class HomeViewController: BaseViewController {
         }
         
         self.configFullSizeButton(Colors())
-        AppUserDefault().write(kIsFullScreenSizeKey, value: isFullScreenSize)
+        AppUserDefault().write(kUserDefaultFullScreenKey, value: isFullScreenSize)
         self.isFullScreenSize = !self.isFullScreenSize
     }
     
@@ -643,12 +643,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let _ = AppUserDefault().readString(kCurrentTagUUIDKey) else { return 0 }
+        guard let _ = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey) else { return 0 }
         return 25
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let tagUUID = AppUserDefault().readString(kCurrentTagUUIDKey) else { return nil }
+        guard let tagUUID = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey) else { return nil }
         guard let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID)
             else { return nil }
         

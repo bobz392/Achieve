@@ -137,7 +137,7 @@ class CloudKitManager: NSObject {
     
     func asyncFromCloudIfNeeded() {
         let appUD = AppUserDefault()
-        if (appUD.readBool(kUserSyncCloudDataKey) != true) {
+        if (appUD.readBool(kUserDefaultSynciCloudKey) != true) {
             let privateDB = container.privateCloudDatabase
             
             let query = CKQuery(recordType: "Task", predicate: NSPredicate(value: true))
@@ -174,7 +174,7 @@ class CloudKitManager: NSObject {
                 }
             }
             
-            appUD.write(kUserSyncCloudDataKey, value: true)
+            appUD.write(kUserDefaultSynciCloudKey, value: true)
         }
     }
     

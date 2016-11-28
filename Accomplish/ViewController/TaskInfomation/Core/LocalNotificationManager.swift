@@ -309,9 +309,9 @@ class LocalNotificationManager: NSObject {
     // MARK: - authorization and reigster
     func requestAuthorization() {
         let ud = AppUserDefault()
-        if !ud.readBool(kUserFirstTimeCallNoitification) {
+        if !ud.readBool(kUserDefaultNeedReisterNoitificationKey) {
             self.register()
-            ud.write(kUserFirstTimeCallNoitification, value: true)
+            ud.write(kUserDefaultNeedReisterNoitificationKey, value: true)
         }
     }
     

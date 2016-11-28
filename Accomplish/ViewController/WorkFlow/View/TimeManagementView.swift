@@ -52,14 +52,24 @@ class TimeManagementView: UIView {
         
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.saveTimeManage),
-                         name: NSNotification.Name.UIApplicationWillTerminate,
+                         name: NSNotification.Name.UIApplicationDidEnterBackground,
+                         object: nil)
+        NotificationCenter.default
+            .addObserver(view, selector: #selector(view.enterTimeManage),
+                         name: NSNotification.Name.UIApplicationDidBecomeActive,
                          object: nil)
         
         return view
     }
     
     func saveTimeManage() {
+        self.countLabel.pause()
+    }
     
+    func enterTimeManage() {
+        self.countLabel.start()
+        
+        AppUserDefault().remove(kUserDefaultTMDetailsKey)
     }
     
     func moveIn(view: UIView) {
@@ -80,6 +90,8 @@ class TimeManagementView: UIView {
     
     func moveOut() {
         UIApplication.shared.isIdleTimerDisabled = false
+        NotificationCenter.default.removeObserver(self)
+        
         UIView.animate(withDuration: kSmallAnimationDuration, animations: {
             self.alpha = 0
         }) { (finish) in

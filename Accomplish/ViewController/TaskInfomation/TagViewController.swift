@@ -55,7 +55,7 @@ class TagViewController: BaseViewController {
         
         let indexPath: IndexPath
         
-        if let selectedTag = AppUserDefault().readString(kCurrentTagUUIDKey),
+        if let selectedTag = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey),
             let index = self.allTags.index(matching: "tagUUID = '\(selectedTag)'") {
             indexPath = IndexPath(row: index + 1, section: 0)
         } else {
@@ -85,7 +85,7 @@ class TagViewController: BaseViewController {
         self.newTagButton.tintColor = colors.linkTextColor
         self.newTagButton.backgroundColor = colors.cloudColor
         self.newTagButton.addTopShadow()
-
+        
         self.newTagTextField.tintColor = colors.mainGreenColor
     }
     
@@ -263,18 +263,21 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    /**
+     当前的选中的row 对应的 tag 下是否含有 task
+     */
     fileprivate func checkCurrentTagHasTask(row: Int) -> Bool {
         if row == 0 {
             if let _ = self.bagDict[noTag] {
                 self.tagChange = true
-                AppUserDefault().remove(kCurrentTagUUIDKey)
+                AppUserDefault().remove(kUserDefaultCurrentTagUUIDKey)
                 return true
             }
         } else {
             let tag = allTags[row - 1]
             if let _ = self.bagDict[tag.tagUUID] {
                 self.tagChange = true
-                AppUserDefault().write(kCurrentTagUUIDKey, value: tag.tagUUID)
+                AppUserDefault().write(kUserDefaultCurrentTagUUIDKey, value: tag.tagUUID)
                 return true
             }
         }

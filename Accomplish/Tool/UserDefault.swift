@@ -29,7 +29,8 @@ let kUserDefaultSynciCloudKey = "com.sync.cloud.data"
 let kUserDefaultBuildInTMKey = "com.build.in.time.method"
 // 工作法的中断保存信息，例如进行情况和 time manager 的 uuid
 let kUserDefaultTMDetailsKey = "com.tm.manager"
-let kUserDefaultTMUUIDKey = "come.tm.uuid"
+let kUserDefaultTMUUIDKey = "com.tm.uuid"
+let kUserDefaultTMTaskUUID = "com.tm.task.uuid"
 
 struct AppUserDefault {
     let def = UserDefaults.standard

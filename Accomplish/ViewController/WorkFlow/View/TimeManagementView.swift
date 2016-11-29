@@ -8,11 +8,19 @@
 
 import UIKit
 
+enum StartTimeStatuType {
+    case Start
+    case Init
+}
+
 class TimeManagementView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loopLabel: UILabel!
     @IBOutlet weak var countLabel: MZTimerLabel!
-    @IBOutlet weak var statusButton: UIButton!
+    @IBOutlet weak var statusShutterButton: KYShutterButton!
+    @IBOutlet weak var cancelTMButton: UIButton!
+    @IBOutlet weak var finishTaskButton: UIButton!
     
     fileprivate var method: TimeMethod!
     // 当前所在的 group 的 index
@@ -24,9 +32,14 @@ class TimeManagementView: UIView {
     // 当前 group 的 repeat 的数量
     fileprivate var groupRepeatTimes = 0
     
+    fileprivate var currentStatusRunning = false
+
+    var startType = StartTimeStatuType.Init
+    var task: Task!
+    
     fileprivate let soundManager = SoundManager()
     
-    class func loadNib(_ target: AnyObject, method: TimeMethod) -> TimeManagementView? {
+    class func loadNib(_ target: AnyObject, method: TimeMethod, task: Task) -> TimeManagementView? {
         guard let view =
             Bundle.main.loadNibNamed("TimeManagementView", owner: target, options: nil)?
                 .first as? TimeManagementView else {
@@ -40,19 +53,29 @@ class TimeManagementView: UIView {
         view.countLabel.font = UIFont(name: "Courier", size: 30)
         view.countLabel.textColor = colors.cloudColor
         view.countLabel.delegate = view
-        
+        view.loopLabel.textColor = colors.secondaryTextColor
         view.titleLabel.textColor = colors.secondaryTextColor
+        view.titleLabel.text = method.name
         
-        view.statusButton.setTitleColor(colors.cloudColor, for: .normal)
-        view.statusButton.addTarget(view, action: #selector(view.start), for: .touchUpInside)
-        view.statusButton.tag = 0
-        view.statusButton.setTitle(Localized("startTimeManage"), for: .normal)
+        view.statusShutterButton.buttonColor = colors.systemGreenColor
+        view.statusShutterButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
+        view.cancelTMButton.setTitle(Localized("cancelTimeManager"), for: .normal)
+        view.cancelTMButton.setTitleColor(colors.cloudColor, for: .normal)
+        view.finishTaskButton.setTitle(Localized("finishTimeManager"), for: .normal)
+        view.finishTaskButton.setTitleColor(colors.cloudColor, for: .normal)
+        view.cancelTMButton.addTarget(view, action: #selector(view.finish), for: .touchUpInside)
+        view.finishTaskButton.addTarget(view, action: #selector(view.finishTaskAndCancelTM), for: .touchUpInside)
         
         view.method = method
+        view.task = task
         
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.saveTimeManager),
                          name: NSNotification.Name.UIApplicationDidEnterBackground,
+                         object: nil)
+        NotificationCenter.default
+            .addObserver(view, selector: #selector(view.saveTimeManager),
+                         name: NSNotification.Name.UIApplicationWillTerminate,
                          object: nil)
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.enterTimeManager),
@@ -67,6 +90,15 @@ class TimeManagementView: UIView {
         self.methodRepeatTimes = details[1]
         self.itemIndex = details[2]
         self.groupRepeatTimes = details[3]
+        
+        if self.methodRepeatTimes > 0 {
+            self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
+        }
+        
+        self.startAction()
+        AppUserDefault().remove(kUserDefaultTMDetailsKey)
+        AppUserDefault().remove(kUserDefaultTMUUIDKey)
+        AppUserDefault().remove(kUserDefaultTMTaskUUID)
     }
     
     func saveTimeManager() {
@@ -75,6 +107,7 @@ class TimeManagementView: UIView {
         AppUserDefault().write(kUserDefaultTMDetailsKey,
                                value: [groupIndex, methodRepeatTimes, itemIndex, groupRepeatTimes])
         AppUserDefault().write(kUserDefaultTMUUIDKey, value: self.method.uuid)
+        AppUserDefault().write(kUserDefaultTMTaskUUID, value: self.task.uuid)
     }
     
     func enterTimeManager() {
@@ -111,14 +144,32 @@ class TimeManagementView: UIView {
         }
     }
     
-    func start() {
-        if self.statusButton.tag == 0 {
-            self.statusButton.setTitle(Localized("endTimeManage"), for: .normal)
-            self.statusButton.tag = 1
-            self.nextStatus()
+    func startAction() {
+        // 点击以后开始计时
+        let colors = Colors()
+        if self.currentStatusRunning == false {
+            self.statusShutterButton.buttonState = .recording
+            self.statusShutterButton.buttonColor = colors.systemRedColor
+            self.countLabel.textColor = colors.cloudColor
+            if self.startType == .Init {
+                self.nextStatus()
+                self.startType = .Start
+            } else {
+                self.countLabel.start()
+            }
         } else {
-            self.statusButton.setTitle(Localized("startTimeManage"), for: .normal)
-            self.statusButton.tag = 0
+            self.countLabel.textColor = colors.secondaryTextColor
+            self.statusShutterButton.buttonState = .normal
+            self.statusShutterButton.buttonColor = Colors().systemGreenColor
+            self.countLabel.pause()
+        }
+        
+        self.currentStatusRunning = !self.currentStatusRunning
+    }
+    
+    func finishTaskAndCancelTM() {
+        RealmManager.shared.updateObject { [unowned self] in
+            RealmManager.shared.updateTaskStatus(self.task, status: kTaskFinish)
             self.finish()
         }
     }
@@ -147,6 +198,7 @@ extension TimeManagementView: MZTimerLabelDelegate {
             #else
                 self.countLabel.setCountDownTime(item.interval)
             #endif
+            self.statusShutterButton.rotateAnimateDuration = Float(item.interval)
             self.countLabel.start()
             
             // 每次时间到了 itemIndex + 1
@@ -165,13 +217,20 @@ extension TimeManagementView: MZTimerLabelDelegate {
                         self.methodRepeatTimes += 1
                         self.groupIndex = 0
                         self.itemIndex = 0
+                        self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
                     }
                 }
             }
         }
     }
     
-    fileprivate func finish() {
+    func finish() {
+        // 如果选择此工作法，那么使用次数 + 1
+        RealmManager.shared.updateObject { [unowned self] in
+            self.method.useTimes += 1
+        }
+        
+        self.countLabel.pause()
         self.moveOut()
     }
 }

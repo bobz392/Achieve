@@ -34,18 +34,49 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-pV-Unq">
-                                <rect key="frame" x="164" y="573" width="46" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lne-r2-6dd">
+                                <rect key="frame" x="187" y="70" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-pV-Unq" customClass="KYShutterButton" customModule="Accomplish" customModuleProvider="target">
+                                <rect key="frame" x="157" y="543" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="dDY-kT-0mZ"/>
+                                    <constraint firstAttribute="width" constant="60" id="q6p-01-QAa"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="typeRaw">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" red="0.26623652142302856" green="1" blue="0.20725515022001584" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEl-Hj-8Fp">
+                                <rect key="frame" x="91" y="558" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTv-vQ-ROA">
+                                <rect key="frame" x="237" y="558" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Lne-r2-6dd" firstAttribute="centerX" secondItem="mF2-W4-fO9" secondAttribute="centerX" id="6p6-UJ-3yd"/>
                             <constraint firstItem="NuA-pV-Unq" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="SDy-FN-Gl4"/>
                             <constraint firstItem="Lw8-1M-to7" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="jMT-4B-mIs"/>
                             <constraint firstItem="mF2-W4-fO9" firstAttribute="top" secondItem="YwB-AS-iV9" secondAttribute="top" constant="60" id="mw3-0r-AeZ"/>
+                            <constraint firstItem="NuA-pV-Unq" firstAttribute="leading" secondItem="ZEl-Hj-8Fp" secondAttribute="trailing" constant="20" id="mwd-OX-pla"/>
                             <constraint firstAttribute="bottom" secondItem="NuA-pV-Unq" secondAttribute="bottom" constant="64" id="ndn-p0-8ud"/>
                             <constraint firstItem="Lw8-1M-to7" firstAttribute="centerY" secondItem="YwB-AS-iV9" secondAttribute="centerY" multiplier="0.7" id="okB-Tt-nh8"/>
+                            <constraint firstItem="MTv-vQ-ROA" firstAttribute="centerY" secondItem="NuA-pV-Unq" secondAttribute="centerY" id="ozR-W5-rjy"/>
+                            <constraint firstItem="ZEl-Hj-8Fp" firstAttribute="centerY" secondItem="NuA-pV-Unq" secondAttribute="centerY" id="sdG-Fn-I26"/>
                             <constraint firstItem="mF2-W4-fO9" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="vjW-zS-dwf"/>
+                            <constraint firstItem="MTv-vQ-ROA" firstAttribute="leading" secondItem="NuA-pV-Unq" secondAttribute="trailing" constant="20" id="vmH-BZ-Mwg"/>
+                            <constraint firstItem="Lne-r2-6dd" firstAttribute="top" secondItem="mF2-W4-fO9" secondAttribute="bottom" constant="10" id="wAx-Kd-Qcb"/>
                         </constraints>
                     </view>
                     <blurEffect style="dark"/>
@@ -59,8 +90,11 @@
                 <constraint firstItem="esM-0J-v4o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iWb-cP-5UN"/>
             </constraints>
             <connections>
+                <outlet property="cancelTMButton" destination="ZEl-Hj-8Fp" id="xLE-oY-Pfx"/>
                 <outlet property="countLabel" destination="Lw8-1M-to7" id="rX6-7q-TPS"/>
-                <outlet property="statusButton" destination="NuA-pV-Unq" id="Z8r-ex-Q0M"/>
+                <outlet property="finishTaskButton" destination="MTv-vQ-ROA" id="JP5-oO-888"/>
+                <outlet property="loopLabel" destination="Lne-r2-6dd" id="lmS-7v-m3P"/>
+                <outlet property="statusShutterButton" destination="NuA-pV-Unq" id="r2Z-1W-Dvd"/>
                 <outlet property="titleLabel" destination="mF2-W4-fO9" id="hTb-nt-Cct"/>
             </connections>
         </view>

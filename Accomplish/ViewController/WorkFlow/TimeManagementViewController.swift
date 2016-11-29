@@ -10,20 +10,36 @@ import UIKit
 
 class TimeManagementViewController: BaseViewController {
     
+    typealias SelectTMBlock = (TimeMethod) -> Void
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var methodTableView: UITableView!
     @IBOutlet weak var createMethodButton: UIButton!
+    @IBOutlet weak var bottomButtonHeightConstraint: NSLayoutConstraint!
     
     // TODO - first come to this page no need to query
     fileprivate var timeMethods = RealmManager.shared.allTimeMethods()
+    // 是是选择一个工作法开始，还是管理工作法
+    fileprivate var isSelectTM: Bool
+    fileprivate var selectTMBlock: SelectTMBlock? = nil
+    
+    init(isSelectTM: Bool = false, selectTMBlock: SelectTMBlock? = nil) {
+        self.isSelectTM = isSelectTM
+        self.selectTMBlock = selectTMBlock
+        super.init(nibName: "TimeManagementViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.isSelectTM = false
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
         self.configMainUI()
         self.initializeControl()
     }
@@ -52,9 +68,14 @@ class TimeManagementViewController: BaseViewController {
         self.backButton.createIconButton(iconSize: kBackButtonCorner,
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
-        self.createMethodButton.tintColor = colors.linkTextColor
-        self.createMethodButton.backgroundColor = colors.cloudColor
-        self.createMethodButton.addTopShadow()
+        
+        if self.isSelectTM == true {
+            self.bottomButtonHeightConstraint.constant = 0
+        } else {
+            self.createMethodButton.tintColor = colors.linkTextColor
+            self.createMethodButton.backgroundColor = colors.cloudColor
+            self.createMethodButton.addTopShadow()
+        }
     }
     
     fileprivate func initializeControl() {
@@ -65,10 +86,14 @@ class TimeManagementViewController: BaseViewController {
         self.backButton.layer.cornerRadius = kBackButtonCorner
         self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        self.createMethodButton.setTitle(Localized("createTimeManagement"), for: .normal)
-        self.createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
-        
-        self.titleLabel.text = Localized("timeManagementSetting")
+        if self.isSelectTM == true {
+            self.titleLabel.text = Localized("selectTimeManagement")
+        } else {
+            self.createMethodButton.setTitle(Localized("createTimeManagement"), for: .normal)
+            self.createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
+            
+            self.titleLabel.text = Localized("timeManagementSetting")
+        }
         
         self.configMethodTableView()
     }
@@ -120,15 +145,20 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let canChange = indexPath.row != 0
-        let timeManagerEditorVC =
-            TimeManagerEditorViewController(method: self.timeMethods[indexPath.row],
-                                            canChange: canChange)
-        self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
+        if self.isSelectTM {
+            self.selectTMBlock?(self.timeMethods[indexPath.row])
+            self.backAction()
+        } else {
+            let canChange = indexPath.row != 0
+            let timeManagerEditorVC =
+                TimeManagerEditorViewController(method: self.timeMethods[indexPath.row],
+                                                canChange: canChange)
+            self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row != 0
+        return indexPath.row != 0 && self.isSelectTM == false
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {

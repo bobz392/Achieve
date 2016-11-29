@@ -77,16 +77,13 @@ class HomeViewController: BaseViewController {
             appDefault.write(kUserDefaultBuildInTMKey, value: true)
         }
         //        TestManager().addAppStoreData()
+        
+        self.checkTimeMethodRunning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.taskTableView.homeRefreshControl.endRefreshing()
-        if #available(iOS 10.0, *) {
-            LocalNotificationManager.shared.logAllUNNotify()
-        }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -248,7 +245,6 @@ class HomeViewController: BaseViewController {
             queue: OperationQueue.main) { [unowned self] notification in
                 self.handelTodayExtensionFinish()
                 self.checkNewDay()
-                self.checkTimeMethodRunning()
                 self.timer?.resume()
         }
         
@@ -266,18 +262,18 @@ class HomeViewController: BaseViewController {
     fileprivate func checkTimeMethodRunning() {
         // 如果 time manager view 还存在则之前未退出 app， 则直接交给 view 内部通知处理
         if let _ = self.timeManagementView { return }
-        
         let app = AppUserDefault()
         guard let uuid = app.readString(kUserDefaultTMUUIDKey),
-            let details = app.readArray(kUserDefaultTMDetailsKey)  as? Array<Int>,
+            let taskUUID = app.readString(kUserDefaultTMTaskUUID),
+            let task = RealmManager.shared.queryTask(taskUUID),
+            let details = app.readArray(kUserDefaultTMDetailsKey) as? Array<Int>,
             let tm = RealmManager.shared.queryTimeMethod(uuid: uuid) else { return }
         
         if details.count == 4 {
-            guard let view = TimeManagementView.loadNib(self, method: tm) else { return }
-            view.configTimeManager(details: details)
+            guard let view = TimeManagementView.loadNib(self, method: tm, task: task) else { return }
             self.timeManagementView = view
-            
             view.moveIn(view: self.view)
+            view.configTimeManager(details: details)
         }
     }
     
@@ -620,10 +616,6 @@ class HomeViewController: BaseViewController {
         self.newTaskVC = newTaskVC
     }
     
-    func segmentValueChangeAction(_ seg: UISegmentedControl) {
-        self.taskTableView.reloadData()
-    }
-    
     // 从today 点击一个 task 进入 detail
     func enterTaskFromToday(_ uuid: String) {
         guard let t = self.runningTasks?.filter({ (task) -> Bool in
@@ -770,13 +762,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if task.taskType == kCustomTaskType {
             let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
-                //            let timeVC = TimeManagementViewController()
-                //            self.animationNavgationTo(vc: timeVC)
-                guard let t = RealmManager.shared.allTimeMethods().first else { return }
+                let selectVC = TimeManagementViewController(isSelectTM: true, selectTMBlock: { [unowned self] (tm) in
+                    dispatch_delay(0.35, closure: {
+                        guard let view =
+                            TimeManagementView.loadNib(self, method: tm, task: task) else { return }
+                        self.timeManagementView = view
+                        view.moveIn(view: self.view)
+                    })
+                })
                 
-                guard let view = TimeManagementView.loadNib(self, method: t) else { return }
-                self.timeManagementView = view
-                view.moveIn(view: self.view)
+                self.navigationController?.pushViewController(selectVC, animated: true)
             }
             alert.addAction(workflowAction)
         }

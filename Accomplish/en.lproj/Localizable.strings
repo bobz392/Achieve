@@ -210,9 +210,10 @@
 "shareMessage"="%@ at %@, join with me?";
 
 // time management
-"startTimeManage"="Start";
-"endTimeManage"="Stop";
+"cancelTimeManager"="Quit Time Manager";
+"finishTimeManager"="Finish Task";
 "timeManagementSetting"="Time Management Method";
+"selectTimeManagement"="Select Time Management Method";
 "timeManagement"="Start Time Management";
 "createTimeManagement"="Create New Method";
 "infiniteRepeat"="Infinite";

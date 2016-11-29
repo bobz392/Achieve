@@ -40,6 +40,8 @@ struct Colors {
     let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
     let linkTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
     let progressColor = UIColor(red:0.98, green:0.75, blue:0.23, alpha:1.00)
+    let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)
+    let systemRedColor = UIColor(red:0.98, green:0.24, blue:0.22, alpha:1.00)
 }
 
 enum MainColorType: Int {

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeManagementViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="Ben-Cv-L2I" id="lYV-Xm-Xwn"/>
+                <outlet property="bottomButtonHeightConstraint" destination="XSi-aT-6P6" id="sP9-l1-3Sz"/>
                 <outlet property="cardView" destination="ZgV-Yh-Xo5" id="qMm-Wd-Uqt"/>
                 <outlet property="createMethodButton" destination="nbw-ec-4gV" id="JbN-8Y-Xdl"/>
                 <outlet property="methodTableView" destination="Fxa-8W-w9V" id="FJG-HP-zdf"/>

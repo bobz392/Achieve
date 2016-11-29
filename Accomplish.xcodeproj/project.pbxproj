@@ -251,6 +251,7 @@
 		C79963011DE8520A00B4617E /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
 		C79963091DE87A9E00B4617E /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963041DE87A9E00B4617E /* Palette.swift */; };
 		C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */; };
+		C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */; };
 		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
 		C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */; };
 		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
@@ -634,6 +635,7 @@
 		C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodCreateTableViewCell.xib; sourceTree = "<group>"; };
 		C79963041DE87A9E00B4617E /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwicketSegmentedControl.swift; sourceTree = "<group>"; };
+		C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYShutterButton.swift; sourceTree = "<group>"; };
 		C7B579291DAACEDC003B6D92 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthViewController.xib; sourceTree = "<group>"; };
 		C7B579321DAD79A3003B6D92 /* TestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
@@ -1220,6 +1222,7 @@
 				C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */,
 				C79806FC1D818E6F0011DE19 /* HintView.swift */,
 				C79806FA1D818E660011DE19 /* HintView.xib */,
+				C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */,
 				C705283D1D8BEEE50036FCC1 /* HintCollectionViewCell.swift */,
 				C705283E1D8BEEE50036FCC1 /* HintCollectionViewCell.xib */,
 				C79806F41D81586F0011DE19 /* EmptyView.swift */,
@@ -1820,6 +1823,7 @@
 				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,
 				C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
+				C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,
 				C77DE3601DE6125300F098F4 /* SoundManager.swift in Sources */,

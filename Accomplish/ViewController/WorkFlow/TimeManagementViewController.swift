@@ -71,6 +71,7 @@ class TimeManagementViewController: BaseViewController {
         
         if self.isSelectTM == true {
             self.bottomButtonHeightConstraint.constant = 0
+            self.createMethodButton.isHidden = true
         } else {
             self.createMethodButton.tintColor = colors.linkTextColor
             self.createMethodButton.backgroundColor = colors.cloudColor

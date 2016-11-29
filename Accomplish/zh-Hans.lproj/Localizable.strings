@@ -215,6 +215,7 @@
 // time management
 "cancelTimeManager"="退出工作法";
 "finishTimeManager"="完成任务";
+"continue"="继续工作";
 "timeManagementSetting"="管理工作法";
 "selectTimeManagement"="选择一个工作法";
 "timeManagement"="开始工作法";

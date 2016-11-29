@@ -20,7 +20,6 @@ class TimeManagementView: UIView {
     @IBOutlet weak var countLabel: MZTimerLabel!
     @IBOutlet weak var statusShutterButton: KYShutterButton!
     @IBOutlet weak var cancelTMButton: UIButton!
-    @IBOutlet weak var finishTaskButton: UIButton!
     
     fileprivate var method: TimeMethod!
     // 当前所在的 group 的 index
@@ -28,14 +27,15 @@ class TimeManagementView: UIView {
     // 当前 method 的 repeat 的数量
     fileprivate var methodRepeatTimes = 0
     // 当前所在的 item 的 index
-    fileprivate var itemIndex = 0
+    fileprivate var itemIndex = -1
     // 当前 group 的 repeat 的数量
     fileprivate var groupRepeatTimes = 0
     
     fileprivate var currentStatusRunning = false
-
+    
     var startType = StartTimeStatuType.Init
     var task: Task!
+    weak var baseVC: BaseViewController!
     
     fileprivate let soundManager = SoundManager()
     
@@ -59,15 +59,16 @@ class TimeManagementView: UIView {
         
         view.statusShutterButton.buttonColor = colors.systemGreenColor
         view.statusShutterButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
-        view.cancelTMButton.setTitle(Localized("cancelTimeManager"), for: .normal)
-        view.cancelTMButton.setTitleColor(colors.cloudColor, for: .normal)
-        view.finishTaskButton.setTitle(Localized("finishTimeManager"), for: .normal)
-        view.finishTaskButton.setTitleColor(colors.cloudColor, for: .normal)
-        view.cancelTMButton.addTarget(view, action: #selector(view.finish), for: .touchUpInside)
-        view.finishTaskButton.addTarget(view, action: #selector(view.finishTaskAndCancelTM), for: .touchUpInside)
+        
+        view.cancelTMButton.createIconButton(iconSize: 16, icon: backButtonIconString,
+                                             color: colors.mainGreenColor, status: .normal)
+        view.cancelTMButton.backgroundColor = UIColor.white
+        view.cancelTMButton.layer.cornerRadius = 16
+        view.cancelTMButton.addTarget(view, action: #selector(view.cancelAction), for: .touchUpInside)
         
         view.method = method
         view.task = task
+        view.baseVC = target as! BaseViewController
         
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.saveTimeManager),
@@ -85,6 +86,7 @@ class TimeManagementView: UIView {
         return view
     }
     
+    // 当从后台进入的时候，此时app已经完全退出，根据 usefdefault 来重新创建
     func configTimeManager(details: Array<Int>) {
         self.groupIndex = details[0]
         self.methodRepeatTimes = details[1]
@@ -95,24 +97,29 @@ class TimeManagementView: UIView {
             self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
         }
         
-        self.startAction()
+        self.nextStatus(false)
+        self.startType = .Start
         AppUserDefault().remove(kUserDefaultTMDetailsKey)
         AppUserDefault().remove(kUserDefaultTMUUIDKey)
         AppUserDefault().remove(kUserDefaultTMTaskUUID)
     }
     
+    /**
+     保存当前的信息，因为app即将进入后台，并且暂停当前count
+     */
     func saveTimeManager() {
-        self.countLabel.pause()
-
+        self.startAction()
+        
         AppUserDefault().write(kUserDefaultTMDetailsKey,
                                value: [groupIndex, methodRepeatTimes, itemIndex, groupRepeatTimes])
         AppUserDefault().write(kUserDefaultTMUUIDKey, value: self.method.uuid)
         AppUserDefault().write(kUserDefaultTMTaskUUID, value: self.task.uuid)
     }
     
+    /**
+     恢复之前保存的信息，此时仅仅用于当app没有彻底退出还在后台的时候
+     */
     func enterTimeManager() {
-        self.countLabel.start()
-        
         AppUserDefault().remove(kUserDefaultTMDetailsKey)
         AppUserDefault().remove(kUserDefaultTMUUIDKey)
     }
@@ -168,10 +175,32 @@ class TimeManagementView: UIView {
     }
     
     func finishTaskAndCancelTM() {
-        RealmManager.shared.updateObject { [unowned self] in
-            RealmManager.shared.updateTaskStatus(self.task, status: kTaskFinish)
+        RealmManager.shared.updateTaskStatus(self.task, status: kTaskFinish)
+        self.finish()
+    }
+    
+    /**
+     弹出退出的选择 action sheet
+     */
+    func cancelAction() {
+        let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: Localized("cancelTimeManager"), style: .default, handler: { [unowned self] (action) -> Void in
             self.finish()
-        }
+        })
+        alertVC.addAction(cancelAction)
+        
+        let finishTaskAction = UIAlertAction(title: Localized("finishTimeManager"), style: .destructive, handler: { [unowned self] (action) -> Void in
+            self.finishTaskAndCancelTM()
+        })
+        alertVC.addAction(finishTaskAction)
+        
+        let continueAction = UIAlertAction(title: Localized("continue"), style: .cancel, handler: { (action) -> Void in
+            alertVC.dismiss(animated: true, completion: nil)
+        })
+        alertVC.addAction(continueAction)
+        
+        self.baseVC.present(alertVC, animated: true, completion: nil)
     }
 }
 
@@ -183,28 +212,14 @@ extension TimeManagementView: MZTimerLabelDelegate {
         self.nextStatus()
     }
     
-    fileprivate func nextStatus() {
+    fileprivate func nextStatus(_ start: Bool = true) {
         let group = self.method.groups[self.groupIndex]
-        let item = group.items[self.itemIndex]
         
-        // 如果当前的 method 的重复已经完成了，则结束
-        if self.methodRepeatTimes > self.method.repeatTimes
-            && self.method.repeatTimes != kTimeMethodInfiniteRepeat {
-            self.finish()
-        } else {
-            self.titleLabel.text = item.name
-            #if debug
-                self.countLabel.setCountDownTime(5)
-            #else
-                self.countLabel.setCountDownTime(item.interval)
-            #endif
-            self.statusShutterButton.rotateAnimateDuration = Float(item.interval)
-            self.countLabel.start()
-            
-            // 每次时间到了 itemIndex + 1
-            // 如果 itemIndex 加一后，已经超过 group 中 item 的 count，那么 groupRepeatTimes + 1
-            // 如果 groupRepeatTimes 超过了 group 的 repeat count 那么 groupIndex + 1
-            // 如果 groupIndex 超过了 method 中 group count 那么 methodRepeatTimes + 1, 并且 index 都恢复为最初状态
+        // 每次时间到了 itemIndex + 1
+        // 如果 itemIndex 加一后，已经超过 group 中 item 的 count，那么 groupRepeatTimes + 1
+        // 如果 groupRepeatTimes 超过了 group 的 repeat count 那么 groupIndex + 1
+        // 如果 groupIndex 超过了 method 中 group count 那么 methodRepeatTimes + 1, 并且 index 都恢复为最初状态
+        if start {
             self.itemIndex += 1
             if self.itemIndex >= group.items.count {
                 self.itemIndex = 0
@@ -217,10 +232,26 @@ extension TimeManagementView: MZTimerLabelDelegate {
                         self.methodRepeatTimes += 1
                         self.groupIndex = 0
                         self.itemIndex = 0
-                        self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
                     }
                 }
             }
+        }
+        let item = group.items[self.itemIndex]
+        
+        if self.methodRepeatTimes > 0 {
+            self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
+        }
+        self.titleLabel.text = item.name
+        #if debug
+            self.countLabel.setCountDownTime(5)
+        #else
+            self.countLabel.setCountDownTime(item.interval)
+        #endif
+        self.statusShutterButton.rotateAnimateDuration = Float(item.interval)
+        if start {
+            self.countLabel.start()
+        } else {
+            return
         }
     }
     

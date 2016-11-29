@@ -2236,6 +2236,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				ENABLE_BITCODE = YES;
 				IBSC_MODULE = AchieveWatch_Extension;
 				INFOPLIST_FILE = AchieveWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp;
@@ -2263,6 +2264,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				ENABLE_BITCODE = YES;
 				IBSC_MODULE = AchieveWatch_Extension;
 				INFOPLIST_FILE = AchieveWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp;
@@ -2286,6 +2288,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp.watchkitextension;
@@ -2311,6 +2314,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "AchieveWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.watchkitapp.watchkitextension;

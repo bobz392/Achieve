@@ -242,11 +242,11 @@ extension TimeManagementView: MZTimerLabelDelegate {
             self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
         }
         self.titleLabel.text = item.name
-        #if debug
-            self.countLabel.setCountDownTime(5)
-        #else
-            self.countLabel.setCountDownTime(item.interval)
-        #endif
+//        #if debug
+//            self.countLabel.setCountDownTime(5)
+//        #else
+            self.countLabel.setCountDownTime(TimeInterval(item.interval * 60))
+//        #endif
         self.statusShutterButton.rotateAnimateDuration = Float(item.interval)
         if start {
             self.countLabel.start()

@@ -257,7 +257,7 @@ class HomeViewController: BaseViewController {
     }
     
     /**
-     检查上次退出 app 的时候是否还有在运行中的 time method
+     检测上次退出 app 的时候是否还有在运行中的 time method
      */
     fileprivate func checkTimeMethodRunning() {
         // 如果 time manager view 还存在则之前未退出 app， 则直接交给 view 内部通知处理

@@ -142,7 +142,6 @@ class HomeViewController: BaseViewController {
         //fa-cog
         self.settingButton.createIconButton(iconSize: iconSize, icon: "fa-cog",
                                             color: colors.mainGreenColor, status: .normal)
-        
         //fa-plus
         self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70, icon: "fa-plus",
                                             color: colors.mainGreenColor, status: .normal)
@@ -152,24 +151,24 @@ class HomeViewController: BaseViewController {
         //fa-tag
         self.tagButton.createIconButton(iconSize: iconSize, icon: "fa-tag",
                                         color: colors.mainGreenColor, status: .normal)
-        
         //fa-search
         self.searchButton.createIconButton(iconSize: 24, icon: "fa-search",
                                            color: colors.cloudColor, status: .normal)
-        
         self.searchButton.tintColor = colors.mainGreenColor
         
         self.configFullSizeButton(colors)
-        self.taskTableView.reloadData()
         
+        self.taskTableView.reloadData()
         self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
         self.taskTableView.homeRefreshControl.attributedTitle =
             NSAttributedString(string: Localized("search"),
-                               attributes: [NSForegroundColorAttributeName : Colors().mainGreenColor])
+                               attributes: [NSForegroundColorAttributeName : colors.mainGreenColor])
     }
     
+    /**
+     配置 全屏和非全屏切换的按钮
+     */
     fileprivate func configFullSizeButton(_ colors: Colors) {
-        
         let iconSize: CGFloat = 20
         //fa-compress
         if self.isFullScreenSize {

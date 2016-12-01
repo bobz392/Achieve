@@ -62,9 +62,8 @@ class AboutViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-//        self.titleLabel.text = Localized("about")
-        
-        self.versionLabel.text = Localized("version") + AppVersion().version
+        let appVersion = AppVersion()
+        self.versionLabel.text = Localized("version") + " \(appVersion.version)" + " (\(appVersion.build))"
         self.acknowledgementsButton.setTitle(Localized("licenses"), for: .normal)
         self.acknowledgementsButton.addTarget(self, action: #selector(self.licensesAction), for: .touchUpInside)
     }

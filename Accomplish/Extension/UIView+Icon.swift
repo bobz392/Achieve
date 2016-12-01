@@ -12,11 +12,12 @@ let backButtonIconString = "fa-arrow-left"
 
 extension UIButton {
     
-    func createIconButton(iconSize: CGFloat, icon: String,
+    func createIconButton(iconSize: CGFloat, imageSize: CGFloat = 0, icon: String,
                           color: UIColor, status: UIControlState) {
         guard let icon = try? FAKFontAwesome(identifier: icon, size: iconSize) else { return }
         icon.addAttribute(NSForegroundColorAttributeName, value: color)
-        let iconImage = icon.image(with: CGSize(width: iconSize, height: iconSize))
+        let size = imageSize > 0 ? CGSize(width: imageSize, height: imageSize) : CGSize(width: iconSize, height: iconSize)
+        let iconImage = icon.image(with: size)
         self.tintColor = color
         self.setImage(iconImage, for: status)
     }

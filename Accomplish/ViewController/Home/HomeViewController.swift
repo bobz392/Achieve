@@ -144,7 +144,7 @@ class HomeViewController: BaseViewController {
                                             color: colors.mainGreenColor, status: .normal)
         
         //fa-plus
-        self.newTaskButton.createIconButton(iconSize: 50, icon: "fa-plus",
+        self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70, icon: "fa-plus",
                                             color: colors.mainGreenColor, status: .normal)
         //fa-calendar
         self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",

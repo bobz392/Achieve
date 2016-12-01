@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
+//    let currentRealmVersion = 1
     
     typealias RealmBlock = () -> Void
     internal let realm = try! Realm()
@@ -17,7 +18,12 @@ class RealmManager {
     static let shared = RealmManager()
     
     static func configMainRealm() {
-        let config = Realm.Configuration()
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) { }
+        })
+        
         Realm.Configuration.defaultConfiguration = config
     }
     

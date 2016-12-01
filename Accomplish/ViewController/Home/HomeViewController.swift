@@ -144,7 +144,7 @@ class HomeViewController: BaseViewController {
                                             color: colors.mainGreenColor, status: .normal)
         
         //fa-plus
-        self.newTaskButton.createIconButton(iconSize: 40, icon: "fa-plus",
+        self.newTaskButton.createIconButton(iconSize: 50, icon: "fa-plus",
                                             color: colors.mainGreenColor, status: .normal)
         //fa-calendar
         self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",
@@ -575,9 +575,6 @@ class HomeViewController: BaseViewController {
                 self.currentDateLabel.alpha = 1
                 self.searchButton.alpha = 1
             }
-            
-            self.newTaskButton.createIconButton(iconSize: 40, icon: "fa-plus",
-                                                color: Colors().mainGreenColor, status: .normal)
         } else {
             self.cardViewLeftConstraint.constant = 5
             self.cardViewRightConstraint.constant = 5
@@ -599,8 +596,6 @@ class HomeViewController: BaseViewController {
                 self.currentDateLabel.alpha = 0
                 self.searchButton.alpha = 0
             }
-            self.newTaskButton.createIconButton(iconSize: 30, icon: "fa-plus",
-                                                color: Colors().mainGreenColor, status: .normal)
         }
         
         self.configFullSizeButton(Colors())

@@ -62,6 +62,12 @@
                                     <constraint firstAttribute="height" constant="32" id="KtS-Gr-dUV"/>
                                 </constraints>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKa-dy-HaD">
+                                <rect key="frame" x="187.5" y="65" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.80023035340000004" green="0.9466013673" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Lne-r2-6dd" firstAttribute="centerX" secondItem="mF2-W4-fO9" secondAttribute="centerX" id="6p6-UJ-3yd"/>
@@ -71,8 +77,10 @@
                             <constraint firstItem="NuA-pV-Unq" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="SDy-FN-Gl4"/>
                             <constraint firstItem="mF2-W4-fO9" firstAttribute="top" secondItem="YwB-AS-iV9" secondAttribute="top" constant="60" id="mw3-0r-AeZ"/>
                             <constraint firstAttribute="bottom" secondItem="NuA-pV-Unq" secondAttribute="bottom" constant="74" id="ndn-p0-8ud"/>
+                            <constraint firstItem="GKa-dy-HaD" firstAttribute="top" secondItem="mF2-W4-fO9" secondAttribute="bottom" constant="5" id="ogG-4u-wOb"/>
                             <constraint firstItem="Lw8-1M-to7" firstAttribute="centerY" secondItem="YwB-AS-iV9" secondAttribute="centerY" multiplier="0.7" id="okB-Tt-nh8"/>
                             <constraint firstItem="ZEl-Hj-8Fp" firstAttribute="top" secondItem="NuA-pV-Unq" secondAttribute="bottom" constant="20" id="sCS-LD-V6i"/>
+                            <constraint firstItem="GKa-dy-HaD" firstAttribute="centerX" secondItem="mF2-W4-fO9" secondAttribute="centerX" id="vhn-Jg-TmD"/>
                             <constraint firstItem="mF2-W4-fO9" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="vjW-zS-dwf"/>
                             <constraint firstItem="Lne-r2-6dd" firstAttribute="top" secondItem="mF2-W4-fO9" secondAttribute="bottom" constant="10" id="wAx-Kd-Qcb"/>
                         </constraints>
@@ -90,11 +98,13 @@
             </constraints>
             <connections>
                 <outlet property="cancelTMButton" destination="ZEl-Hj-8Fp" id="xLE-oY-Pfx"/>
-                <outlet property="countLabel" destination="Lw8-1M-to7" id="rX6-7q-TPS"/>
+                <outlet property="countLabel" destination="Lw8-1M-to7" id="4RI-ds-xsU"/>
                 <outlet property="loopLabel" destination="Lne-r2-6dd" id="lmS-7v-m3P"/>
+                <outlet property="statusLabel" destination="GKa-dy-HaD" id="OHu-Hy-bQj"/>
                 <outlet property="statusShutterButton" destination="NuA-pV-Unq" id="r2Z-1W-Dvd"/>
                 <outlet property="titleLabel" destination="mF2-W4-fO9" id="hTb-nt-Cct"/>
             </connections>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
     </objects>
 </document>

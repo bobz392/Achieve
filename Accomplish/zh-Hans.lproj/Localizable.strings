@@ -231,6 +231,8 @@
 "pomodoroWork"="专心工作中";
 "pomodoroRest"="休息一会儿";
 "pomodoroLongRest"="四个番茄了！多休息一会儿吧";
+"timeMethodPrepar"="(点击开始)";
+"timeMethodPause"="(暂停中)";
 
 // time management editor
 "saveTimeMethod"="保存此工作法?";

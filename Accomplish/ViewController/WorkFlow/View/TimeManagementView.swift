@@ -16,6 +16,7 @@ enum StartTimeStatuType {
 class TimeManagementView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var loopLabel: UILabel!
     @IBOutlet weak var countLabel: MZTimerLabel!
     @IBOutlet weak var statusShutterButton: KYShutterButton!
@@ -55,6 +56,10 @@ class TimeManagementView: UIView {
         view.countLabel.adjustsFontSizeToFitWidth = true
         view.countLabel.textColor = colors.cloudColor
         view.countLabel.delegate = view
+        
+        view.statusLabel.textColor = colors.secondaryTextColor
+        view.statusLabel.text = Localized("timeMethodPrepar")
+        
         view.loopLabel.textColor = colors.secondaryTextColor
         view.titleLabel.textColor = colors.secondaryTextColor
         view.titleLabel.text = method.name
@@ -85,6 +90,10 @@ class TimeManagementView: UIView {
                          name: NSNotification.Name.UIApplicationDidBecomeActive,
                          object: nil)
         
+        if let groupUserDefault = GroupUserDefault() {
+            groupUserDefault.writeRunningTimeMethod(taskName: task.taskToDo)
+        }
+        
         return view
     }
     
@@ -102,22 +111,23 @@ class TimeManagementView: UIView {
         self.nextStatus(false)
         self.startType = .Start
         self.clearTimeManagerUserDefault()
+        
+        self.statusLabel.text = Localized("timeMethodPrepar")
     }
     
     /**
      保存当前的信息，因为app即将进入后台，并且暂停当前count
      */
     func saveTimeManager() {
-        self.startAction()
+        if self.currentStatusRunning == true {
+            self.startAction()
+        }
         
         let appUserDefault = AppUserDefault()
         appUserDefault.write(kUserDefaultTMDetailsKey,
                                value: [groupIndex, methodRepeatTimes, itemIndex, groupRepeatTimes])
         appUserDefault.write(kUserDefaultTMUUIDKey, value: self.method.uuid)
         appUserDefault.write(kUserDefaultTMTaskUUID, value: self.task.uuid)
-        
-        guard let groupUserDefault = GroupUserDefault() else { return }
-        groupUserDefault.writeRunningTimeMethod(taskName: self.task.taskToDo)
     }
     
     /**
@@ -128,9 +138,6 @@ class TimeManagementView: UIView {
         appUserDefault.remove(kUserDefaultTMDetailsKey)
         appUserDefault.remove(kUserDefaultTMUUIDKey)
         appUserDefault.remove(kUserDefaultTMTaskUUID)
-        
-        guard let groupUserDefault = GroupUserDefault() else { return }
-        groupUserDefault.writeRunningTimeMethod(taskName: nil)
     }
     
     func moveIn(view: UIView) {
@@ -157,6 +164,8 @@ class TimeManagementView: UIView {
             self.alpha = 0
         }) { (finish) in
             self.removeFromSuperview()
+            guard let groupUserDefault = GroupUserDefault() else { return }
+            groupUserDefault.writeRunningTimeMethod(taskName: nil)
         }
     }
     
@@ -167,6 +176,7 @@ class TimeManagementView: UIView {
             self.statusShutterButton.buttonState = .recording
             self.statusShutterButton.buttonColor = colors.systemRedColor
             self.countLabel.textColor = colors.cloudColor
+            self.statusLabel.text = ""
             if self.startType == .Init {
                 self.nextStatus()
                 self.startType = .Start
@@ -177,6 +187,7 @@ class TimeManagementView: UIView {
             self.countLabel.textColor = colors.secondaryTextColor
             self.statusShutterButton.buttonState = .normal
             self.statusShutterButton.buttonColor = Colors().systemGreenColor
+            self.statusLabel.text = Localized("timeMethodPause")
             self.countLabel.pause()
         }
         

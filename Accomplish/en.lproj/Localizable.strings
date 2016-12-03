@@ -228,6 +228,8 @@
 "pomodoroWork"="Working";
 "pomodoroRest"="Take a Break";
 "pomodoroLongRest"="Four pomodoros! Take a longer Break";
+"timeMethodPrepar"="(Click to start)";
+"timeMethodPause"="(Pause)";
 
 // time management editor
 "saveTimeMethod"="Save Time Management Method?";
@@ -244,4 +246,3 @@
 "itemName"="Job Content";
 "itemTime"="Working Time(Minute)";
 "enterMethodAliase"="Aliase of time management method(Only used to record cycles)";
-

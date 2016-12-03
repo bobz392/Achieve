@@ -164,6 +164,7 @@
 "taskTodays"="You have %d tasks due today.";
 "showAll"="All Tasks";
 "showPriority"="Show task with priority";
+"timeMethodRunning"="(Working)";
 
 // Shortcut
 "shortCutCreate"="Create Task";

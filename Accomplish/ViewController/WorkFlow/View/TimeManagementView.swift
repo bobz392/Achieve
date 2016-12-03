@@ -101,9 +101,7 @@ class TimeManagementView: UIView {
         
         self.nextStatus(false)
         self.startType = .Start
-        AppUserDefault().remove(kUserDefaultTMDetailsKey)
-        AppUserDefault().remove(kUserDefaultTMUUIDKey)
-        AppUserDefault().remove(kUserDefaultTMTaskUUID)
+        self.clearTimeManagerUserDefault()
     }
     
     /**
@@ -112,18 +110,27 @@ class TimeManagementView: UIView {
     func saveTimeManager() {
         self.startAction()
         
-        AppUserDefault().write(kUserDefaultTMDetailsKey,
+        let appUserDefault = AppUserDefault()
+        appUserDefault.write(kUserDefaultTMDetailsKey,
                                value: [groupIndex, methodRepeatTimes, itemIndex, groupRepeatTimes])
-        AppUserDefault().write(kUserDefaultTMUUIDKey, value: self.method.uuid)
-        AppUserDefault().write(kUserDefaultTMTaskUUID, value: self.task.uuid)
+        appUserDefault.write(kUserDefaultTMUUIDKey, value: self.method.uuid)
+        appUserDefault.write(kUserDefaultTMTaskUUID, value: self.task.uuid)
+        
+        guard let groupUserDefault = GroupUserDefault() else { return }
+        groupUserDefault.writeRunningTimeMethod(taskName: self.task.taskToDo)
     }
     
     /**
      恢复之前保存的信息，此时仅仅用于当app没有彻底退出还在后台的时候
      */
     func clearTimeManagerUserDefault() {
-        AppUserDefault().remove(kUserDefaultTMDetailsKey)
-        AppUserDefault().remove(kUserDefaultTMUUIDKey)
+        let appUserDefault = AppUserDefault()
+        appUserDefault.remove(kUserDefaultTMDetailsKey)
+        appUserDefault.remove(kUserDefaultTMUUIDKey)
+        appUserDefault.remove(kUserDefaultTMTaskUUID)
+        
+        guard let groupUserDefault = GroupUserDefault() else { return }
+        groupUserDefault.writeRunningTimeMethod(taskName: nil)
     }
     
     func moveIn(view: UIView) {

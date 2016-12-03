@@ -18,6 +18,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     fileprivate var allGroupTasks = [GroupTask]()
     fileprivate let bottomHeight: CGFloat = 73
     fileprivate let maxShowTaskCount = 8
+    fileprivate var wrokingTimeMethodName: String? = nil
     
     fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: GroupIdentifier, optionalDirectory: nil)
     
@@ -56,7 +57,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         self.allButton.addBlurEffect()
         self.updateTask()
-    
+        
         if #available(iOS 10.0, *) {
             self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         }
@@ -107,6 +108,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
         
         self.allGroupTasks = group.runningTasksForExtension()
+        self.wrokingTimeMethodName = group.getRunningTimeMethod()
         self.todayTableView.reloadData()
         
         if group.taskHasChanged() {
@@ -178,16 +180,25 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         cell.checkButton.tag = indexPath.row
         cell.titleLabel.text = cell.task?.taskTitle
         cell.checkButton.addTarget(self, action: #selector(self.checkTask(_:)), for: .touchUpInside)
+        if cell.task?.taskTitle == wrokingTimeMethodName {
+            cell.configWithTimeMethod()
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let task = self.allGroupTasks[indexPath.row]
-        let taskUUID = task.taskUUID
         
-        guard let url = URL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
-        self.extensionContext?.open(url, completionHandler: nil)
+        if let _ = self.wrokingTimeMethodName {
+            guard let url = URL(string: kMyRootUrlScheme) else { return }
+            self.extensionContext?.open(url, completionHandler: nil)
+        } else {
+            let task = self.allGroupTasks[indexPath.row]
+            let taskUUID = task.taskUUID
+            guard let url = URL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
+            self.extensionContext?.open(url, completionHandler: nil)
+        }
     }
     
     func checkTask(_ btn: UIButton) {

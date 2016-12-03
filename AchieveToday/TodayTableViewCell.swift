@@ -20,6 +20,7 @@ class TodayTableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,9 +40,11 @@ class TodayTableViewCell: UITableViewCell {
         if #available(iOS 10.0, *) {
             self.titleLabel.textColor = mainTextColor
             self.checkButton.tintColor = mainTextColor
+            self.infoLabel.textColor = mainTextColor
         } else {
             self.titleLabel.textColor = cloudColor
             self.checkButton.tintColor = cloudColor
+            self.infoLabel.textColor = cloudColor
         }
     }
     
@@ -56,4 +59,9 @@ class TodayTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    
+    func configWithTimeMethod() {
+        self.checkButton.isHidden = true
+        self.infoLabel.text = Localized("timeMethodRunning")
+    }
 }

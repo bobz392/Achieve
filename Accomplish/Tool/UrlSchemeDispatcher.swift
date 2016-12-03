@@ -26,6 +26,8 @@ struct UrlSchemeDispatcher {
         } else if url.absoluteString.contains(kTaskAllPath) {
             self.enterDestop()
             return true
+        } else if url.scheme == kMyRootUrlScheme {
+            return true
         }
         
         return false

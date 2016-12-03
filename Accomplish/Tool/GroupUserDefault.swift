@@ -15,6 +15,7 @@ struct GroupUserDefault {
     let ExtensionTasksKey = "all.task.today"
     let ExtensionTaskChangeKey = "task.changed.today"
     let TodayExtensionFinishTaskKey = "task.finish.by.today"
+    let TodayExtensionTimeMethodKey = "today.time.method"
     
     init?() {
         guard let groupDefault = UserDefaults(suiteName: GroupIdentifier) else {
@@ -86,4 +87,17 @@ struct GroupUserDefault {
         self.groupDefault.synchronize()
     }
     
+    func writeRunningTimeMethod(taskName: String? = nil) {
+        Logger.log("writeRunningTimeMethod taskName = \(taskName)")
+        if let name = taskName {
+            self.groupDefault.set(name, forKey: TodayExtensionTimeMethodKey)
+        } else {
+            self.groupDefault.removeObject(forKey: TodayExtensionTimeMethodKey)
+        }
+        self.groupDefault.synchronize()
+    }
+    
+    func getRunningTimeMethod() -> String? {
+        return self.groupDefault.string(forKey: TodayExtensionTimeMethodKey)
+    }
 }

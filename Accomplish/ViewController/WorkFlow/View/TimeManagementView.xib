@@ -22,9 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw8-1M-to7" customClass="MZTimerLabel">
-                                <rect key="frame" x="167" y="223" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lw8-1M-to7" customClass="MZTimerLabel">
+                                <rect key="frame" x="0.0" y="200.5" width="375" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -65,9 +65,10 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Lne-r2-6dd" firstAttribute="centerX" secondItem="mF2-W4-fO9" secondAttribute="centerX" id="6p6-UJ-3yd"/>
+                            <constraint firstItem="Lw8-1M-to7" firstAttribute="leading" secondItem="YwB-AS-iV9" secondAttribute="leading" id="C7W-IK-9t8"/>
+                            <constraint firstAttribute="trailing" secondItem="Lw8-1M-to7" secondAttribute="trailing" id="IAY-jT-58d"/>
                             <constraint firstItem="ZEl-Hj-8Fp" firstAttribute="centerX" secondItem="NuA-pV-Unq" secondAttribute="centerX" id="PpZ-ZY-Djs"/>
                             <constraint firstItem="NuA-pV-Unq" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="SDy-FN-Gl4"/>
-                            <constraint firstItem="Lw8-1M-to7" firstAttribute="centerX" secondItem="YwB-AS-iV9" secondAttribute="centerX" id="jMT-4B-mIs"/>
                             <constraint firstItem="mF2-W4-fO9" firstAttribute="top" secondItem="YwB-AS-iV9" secondAttribute="top" constant="60" id="mw3-0r-AeZ"/>
                             <constraint firstAttribute="bottom" secondItem="NuA-pV-Unq" secondAttribute="bottom" constant="74" id="ndn-p0-8ud"/>
                             <constraint firstItem="Lw8-1M-to7" firstAttribute="centerY" secondItem="YwB-AS-iV9" secondAttribute="centerY" multiplier="0.7" id="okB-Tt-nh8"/>
@@ -84,6 +85,7 @@
                 <constraint firstAttribute="trailing" secondItem="esM-0J-v4o" secondAttribute="trailing" id="9Vf-uG-Tk0"/>
                 <constraint firstItem="esM-0J-v4o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DQJ-u3-wE5"/>
                 <constraint firstAttribute="bottom" secondItem="esM-0J-v4o" secondAttribute="bottom" id="ey1-fp-tPO"/>
+                <constraint firstItem="Lw8-1M-to7" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="hWw-KU-0bP"/>
                 <constraint firstItem="esM-0J-v4o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iWb-cP-5UN"/>
             </constraints>
             <connections>

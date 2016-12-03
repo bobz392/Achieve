@@ -213,6 +213,7 @@
 "shareMessage"="%@ 在 %@ ，一起吧";
 
 // time management
+"defaultTimeManagerName"="工作法";
 "cancelTimeManager"="退出工作法";
 "finishTimeManager"="完成任务";
 "continue"="继续工作";

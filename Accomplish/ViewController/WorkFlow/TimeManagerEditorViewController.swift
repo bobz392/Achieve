@@ -55,7 +55,7 @@ class TimeManagerEditorViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         if self.isCreate {
-            self.guideUserCreateMethod()
+            self.changeMethodNameAction()
         }
     }
     
@@ -166,11 +166,6 @@ class TimeManagerEditorViewController: BaseViewController {
             let indexPath = IndexPath(row: self.timeMethod.groups.count - 1, section: 0)
             self.methodTableView.insertRows(at: [indexPath], with: .automatic)
         }
-    }
-    
-    fileprivate func guideUserCreateMethod() {
-        self.timeMethodInputView?.leftButton.isEnabled = false
-        self.changeMethodNameAction()
     }
     
     func changeMethodNameAction() {

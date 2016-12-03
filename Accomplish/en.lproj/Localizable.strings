@@ -210,6 +210,7 @@
 "shareMessage"="%@ at %@, join with me?";
 
 // time management
+"defaultTimeManagerName"="Time Manager Method";
 "cancelTimeManager"="Quit Time Manager Method";
 "finishTimeManager"="Finish Task";
 "continue"="Continue work";

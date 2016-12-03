@@ -109,6 +109,7 @@ class TimeManagementViewController: BaseViewController {
     
     func newMethodAction() {
         let timeMethod = TimeMethod()
+        timeMethod.name = Localized("defaultTimeManagerName")
         let group = TimeMethodGroup()
         group.addDefaultGroupAndItem()
         timeMethod.groups.append(group)

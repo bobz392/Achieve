@@ -50,7 +50,9 @@ class TimeManagementView: UIView {
         
         view.countLabel.timerType = MZTimerLabelType.init(1)
         view.countLabel.timeFormat = "HH:mm:ss"
-        view.countLabel.font = UIFont(name: "Courier", size: 30)
+        view.countLabel.text = "         "
+        view.countLabel.font = UIFont(name: "Courier", size: 50)
+        view.countLabel.adjustsFontSizeToFitWidth = true
         view.countLabel.textColor = colors.cloudColor
         view.countLabel.delegate = view
         view.loopLabel.textColor = colors.secondaryTextColor
@@ -79,7 +81,7 @@ class TimeManagementView: UIView {
                          name: NSNotification.Name.UIApplicationWillTerminate,
                          object: nil)
         NotificationCenter.default
-            .addObserver(view, selector: #selector(view.enterTimeManager),
+            .addObserver(view, selector: #selector(view.clearTimeManagerUserDefault),
                          name: NSNotification.Name.UIApplicationDidBecomeActive,
                          object: nil)
         
@@ -119,7 +121,7 @@ class TimeManagementView: UIView {
     /**
      恢复之前保存的信息，此时仅仅用于当app没有彻底退出还在后台的时候
      */
-    func enterTimeManager() {
+    func clearTimeManagerUserDefault() {
         AppUserDefault().remove(kUserDefaultTMDetailsKey)
         AppUserDefault().remove(kUserDefaultTMUUIDKey)
     }
@@ -187,11 +189,13 @@ class TimeManagementView: UIView {
         
         let cancelAction = UIAlertAction(title: Localized("cancelTimeManager"), style: .default, handler: { [unowned self] (action) -> Void in
             self.finish()
+            self.clearTimeManagerUserDefault()
         })
         alertVC.addAction(cancelAction)
         
         let finishTaskAction = UIAlertAction(title: Localized("finishTimeManager"), style: .destructive, handler: { [unowned self] (action) -> Void in
             self.finishTaskAndCancelTM()
+            self.clearTimeManagerUserDefault()
         })
         alertVC.addAction(finishTaskAction)
         

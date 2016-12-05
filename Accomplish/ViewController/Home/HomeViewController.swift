@@ -554,10 +554,10 @@ class HomeViewController: BaseViewController {
     
     fileprivate func doSwitchScreen(_ animation: Bool) {
         if !self.isFullScreenSize {
-            self.cardViewLeftConstraint.constant = 20
-            self.cardViewRightConstraint.constant = 20
+            self.cardViewLeftConstraint.constant = 10
+            self.cardViewRightConstraint.constant = 10
             self.cardViewBottomConstraint.constant = 10
-            self.cardViewTopConstraint.constant = 70
+            self.cardViewTopConstraint.constant = 64
             self.addTaskWidthConstraint.constant = 70
             self.addTaskHeightConstraint.constant = 70
             self.addTaskBottomConstraint.constant = 10
@@ -578,7 +578,7 @@ class HomeViewController: BaseViewController {
             self.cardViewLeftConstraint.constant = 5
             self.cardViewRightConstraint.constant = 5
             self.cardViewBottomConstraint.constant = 5
-            self.cardViewTopConstraint.constant = 25
+            self.cardViewTopConstraint.constant = 22
             self.addTaskWidthConstraint.constant = 40
             self.addTaskHeightConstraint.constant = 40
             self.addTaskBottomConstraint.constant = 5

@@ -304,6 +304,9 @@
 		C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E2D95D1D8F0F0C0080D283 /* GroupTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2D9591D8F06B70080D283 /* GroupTasks.swift */; };
 		C7E3C3A91D8AF13500087C77 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E3C3A81D8AF13500087C77 /* Tag.swift */; };
+		C7EFB30F1DF3924F0094B1E0 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EFB30E1DF3924F0094B1E0 /* ShareViewController.swift */; };
+		C7EFB3121DF3924F0094B1E0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7EFB3101DF3924F0094B1E0 /* MainInterface.storyboard */; };
+		C7EFB3161DF3924F0094B1E0 /* AchieveShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C7EFB30C1DF3924E0094B1E0 /* AchieveShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +338,13 @@
 			remoteGlobalIDString = C7E1B0431D8C7A9600554B11;
 			remoteInfo = AchieveWatch;
 		};
+		C7EFB3141DF3924F0094B1E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7860E351D6C23FF000281FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7EFB30B1DF3924E0094B1E0;
+			remoteInfo = AchieveShare;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -346,6 +356,7 @@
 			files = (
 				C7CAF0A51D9C3FE80046D756 /* AchieveMessage.appex in Embed App Extensions */,
 				C78ED8831D7A7D3100031B4D /* AchieveToday.appex in Embed App Extensions */,
+				C7EFB3161DF3924F0094B1E0 /* AchieveShare.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,6 +692,10 @@
 		C7E2D9561D8F05000080D283 /* WatchConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
 		C7E2D9591D8F06B70080D283 /* GroupTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTasks.swift; sourceTree = "<group>"; };
 		C7E3C3A81D8AF13500087C77 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		C7EFB30C1DF3924E0094B1E0 /* AchieveShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AchieveShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7EFB30E1DF3924F0094B1E0 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		C7EFB3111DF3924F0094B1E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C7EFB3131DF3924F0094B1E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,6 +727,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C7E1B04D1D8C7A9600554B11 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7EFB3091DF3924E0094B1E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1115,6 +1137,7 @@
 				C7E1B0451D8C7A9600554B11 /* AchieveWatch */,
 				C7E1B0541D8C7A9600554B11 /* AchieveWatch Extension */,
 				C7CAF09A1D9C3FE80046D756 /* AchieveMessage */,
+				C7EFB30D1DF3924F0094B1E0 /* AchieveShare */,
 				C7105E9C1D6C7AD60096A1A3 /* Frameworks */,
 				C7860E3E1D6C23FF000281FA /* Products */,
 			);
@@ -1129,6 +1152,7 @@
 				C7E1B0441D8C7A9600554B11 /* AchieveWatch.app */,
 				C7E1B0501D8C7A9600554B11 /* AchieveWatch Extension.appex */,
 				C7CAF0971D9C3FE80046D756 /* AchieveMessage.appex */,
+				C7EFB30C1DF3924E0094B1E0 /* AchieveShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1331,6 +1355,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C7EFB30D1DF3924F0094B1E0 /* AchieveShare */ = {
+			isa = PBXGroup;
+			children = (
+				C7EFB30E1DF3924F0094B1E0 /* ShareViewController.swift */,
+				C7EFB3101DF3924F0094B1E0 /* MainInterface.storyboard */,
+				C7EFB3131DF3924F0094B1E0 /* Info.plist */,
+			);
+			path = AchieveShare;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1355,6 +1389,7 @@
 				C78ED8821D7A7D3100031B4D /* PBXTargetDependency */,
 				C7E1B0611D8C7A9600554B11 /* PBXTargetDependency */,
 				C7CAF0A41D9C3FE80046D756 /* PBXTargetDependency */,
+				C7EFB3151DF3924F0094B1E0 /* PBXTargetDependency */,
 			);
 			name = Accomplish;
 			productName = Accomplish;
@@ -1437,13 +1472,30 @@
 			productReference = C7E1B0501D8C7A9600554B11 /* AchieveWatch Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		C7EFB30B1DF3924E0094B1E0 /* AchieveShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7EFB3171DF3924F0094B1E0 /* Build configuration list for PBXNativeTarget "AchieveShare" */;
+			buildPhases = (
+				C7EFB3081DF3924E0094B1E0 /* Sources */,
+				C7EFB3091DF3924E0094B1E0 /* Frameworks */,
+				C7EFB30A1DF3924E0094B1E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AchieveShare;
+			productName = AchieveShare;
+			productReference = C7EFB30C1DF3924E0094B1E0 /* AchieveShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C7860E351D6C23FF000281FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = zhoubo;
 				TargetAttributes = {
@@ -1513,6 +1565,10 @@
 							};
 						};
 					};
+					C7EFB30B1DF3924E0094B1E0 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Manual;
+					};
 				};
 			};
 			buildConfigurationList = C7860E381D6C23FF000281FA /* Build configuration list for PBXProject "Accomplish" */;
@@ -1534,6 +1590,7 @@
 				C7E1B0431D8C7A9600554B11 /* AchieveWatch */,
 				C7E1B04F1D8C7A9600554B11 /* AchieveWatch Extension */,
 				C7CAF0961D9C3FE80046D756 /* AchieveMessage */,
+				C7EFB30B1DF3924E0094B1E0 /* AchieveShare */,
 			);
 		};
 /* End PBXProject section */
@@ -1655,6 +1712,14 @@
 				C7E1B06C1D8C7D5B00554B11 /* Localizable.strings in Resources */,
 				C78C47CB1D904161009CE56B /* WatchAssets.xcassets in Resources */,
 				C70612601D8D67EE00E37CE6 /* DateTools.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7EFB30A1DF3924E0094B1E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7EFB3121DF3924F0094B1E0 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2063,6 +2128,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7EFB3081DF3924E0094B1E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7EFB30F1DF3924F0094B1E0 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2085,6 +2158,11 @@
 			isa = PBXTargetDependency;
 			target = C7E1B0431D8C7A9600554B11 /* AchieveWatch */;
 			targetProxy = C7E1B0601D8C7A9600554B11 /* PBXContainerItemProxy */;
+		};
+		C7EFB3151DF3924F0094B1E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7EFB30B1DF3924E0094B1E0 /* AchieveShare */;
+			targetProxy = C7EFB3141DF3924F0094B1E0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2120,6 +2198,14 @@
 				C7E1B0471D8C7A9600554B11 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		C7EFB3101DF3924F0094B1E0 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7EFB3111DF3924F0094B1E0 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2485,6 +2571,47 @@
 			};
 			name = Release;
 		};
+		C7EFB3181DF3924F0094B1E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				INFOPLIST_FILE = AchieveShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.AchieveShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2eb12c12-3be4-4493-b729-767a7363ff6e";
+				PROVISIONING_PROFILE_SPECIFIER = "AchieveShare-Dev";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C7EFB3191DF3924F0094B1E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = KJUZN22ZS5;
+				INFOPLIST_FILE = AchieveShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve.AchieveShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8322036f-82d9-48bc-a1e2-8ef42e704928";
+				PROVISIONING_PROFILE_SPECIFIER = "AchieveShare-Pro";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2541,6 +2668,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
+		};
+		C7EFB3171DF3924F0094B1E0 /* Build configuration list for PBXNativeTarget "AchieveShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7EFB3181DF3924F0094B1E0 /* Debug */,
+				C7EFB3191DF3924F0094B1E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

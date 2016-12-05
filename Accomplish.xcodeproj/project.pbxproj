@@ -1476,9 +1476,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7EFB3171DF3924F0094B1E0 /* Build configuration list for PBXNativeTarget "AchieveShare" */;
 			buildPhases = (
+				C7EFB31A1DF513570094B1E0 /* Set the build number to the count of Git commits */,
 				C7EFB3081DF3924E0094B1E0 /* Sources */,
 				C7EFB3091DF3924E0094B1E0 /* Frameworks */,
 				C7EFB30A1DF3924E0094B1E0 /* Resources */,
+				C7EFB31C1DF5136C0094B1E0 /* Set the build number to "DEVELOPMENT" */,
 			);
 			buildRules = (
 			);
@@ -1898,6 +1900,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		C7EFB31A1DF513570094B1E0 /* Set the build number to the count of Git commits */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set the build number to the count of Git commits";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the build number to the count of Git commits\nbuildNumber=$(git rev-list HEAD | wc -l | tr -d ' ')\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		C7EFB31C1DF5136C0094B1E0 /* Set the build number to "DEVELOPMENT" */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set the build number to \"DEVELOPMENT\"";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the build number to \"DEVELOPMENT\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion DEVELOPMENT\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oun-En-5kS">
-                    <rect key="frame" x="8" y="86" width="359" height="519"/>
+                    <rect key="frame" x="8" y="82" width="359" height="523"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Nv2-7i-tC1"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evq-Bs-FeN">
-                    <rect key="frame" x="8" y="24" width="359" height="72"/>
+                    <rect key="frame" x="8" y="20" width="359" height="72"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MlJ-qM-rOg">
                             <rect key="frame" x="8" y="8" width="343" height="38"/>
@@ -110,7 +110,7 @@
                 <constraint firstItem="Oun-En-5kS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="5e5-HP-mCP"/>
                 <constraint firstItem="evq-Bs-FeN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="6Vf-HJ-L8P"/>
                 <constraint firstItem="mRa-WF-9K7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9Ag-EK-1cw"/>
-                <constraint firstItem="evq-Bs-FeN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="FAC-7X-3TX"/>
+                <constraint firstItem="evq-Bs-FeN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="FAC-7X-3TX"/>
                 <constraint firstItem="mRa-WF-9K7" firstAttribute="centerY" secondItem="t4v-i2-Pq4" secondAttribute="centerY" id="FcL-HX-NVt"/>
                 <constraint firstAttribute="trailing" secondItem="evq-Bs-FeN" secondAttribute="trailing" constant="8" id="QDC-kW-K4o"/>
                 <constraint firstItem="t4v-i2-Pq4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XSc-Vv-2N2"/>

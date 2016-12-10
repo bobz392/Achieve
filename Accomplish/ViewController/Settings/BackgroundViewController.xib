@@ -35,11 +35,11 @@
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                 </button>
                 <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7J3-U0-aPv">
-                    <rect key="frame" x="5" y="70" width="365" height="535"/>
+                    <rect key="frame" x="5" y="52" width="365" height="553"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VGK-sl-tck">
-                    <rect key="frame" x="25" y="90" width="325" height="525"/>
+                    <rect key="frame" x="25" y="72" width="325" height="543"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eKG-8g-TGl">
                         <size key="itemSize" width="50" height="50"/>
@@ -53,7 +53,7 @@
                     </connections>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDg-uN-nwN">
-                    <rect key="frame" x="5" y="33" width="52.5" height="27"/>
+                    <rect key="frame" x="5" y="20" width="52.5" height="27"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -65,14 +65,14 @@
                 <constraint firstAttribute="trailing" secondItem="7J3-U0-aPv" secondAttribute="trailing" constant="5" id="8O7-DG-wCU"/>
                 <constraint firstItem="ikQ-LY-1Z7" firstAttribute="centerX" secondItem="7J3-U0-aPv" secondAttribute="centerX" id="C9d-lz-wH4"/>
                 <constraint firstItem="cDg-uN-nwN" firstAttribute="leading" secondItem="7J3-U0-aPv" secondAttribute="leading" id="MGn-tx-cmG"/>
-                <constraint firstItem="7J3-U0-aPv" firstAttribute="top" secondItem="cDg-uN-nwN" secondAttribute="bottom" constant="10" id="MgF-a7-oq8"/>
+                <constraint firstItem="7J3-U0-aPv" firstAttribute="top" secondItem="cDg-uN-nwN" secondAttribute="bottom" constant="5" id="MgF-a7-oq8"/>
                 <constraint firstItem="VGK-sl-tck" firstAttribute="bottom" secondItem="7J3-U0-aPv" secondAttribute="bottom" constant="10" id="aeW-Sg-KJl"/>
                 <constraint firstAttribute="bottom" secondItem="ikQ-LY-1Z7" secondAttribute="bottom" constant="10" id="fLB-sX-HCf"/>
                 <constraint firstItem="7J3-U0-aPv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="hzb-lf-7H5"/>
                 <constraint firstItem="VGK-sl-tck" firstAttribute="leading" secondItem="7J3-U0-aPv" secondAttribute="leading" constant="20" id="qkH-6d-XeY"/>
                 <constraint firstItem="ikQ-LY-1Z7" firstAttribute="top" secondItem="7J3-U0-aPv" secondAttribute="bottom" constant="10" id="rnQ-SH-eOg"/>
+                <constraint firstItem="cDg-uN-nwN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="sWs-im-a96"/>
                 <constraint firstItem="VGK-sl-tck" firstAttribute="trailing" secondItem="7J3-U0-aPv" secondAttribute="trailing" constant="-20" id="vuJ-CJ-H2F"/>
-                <constraint firstItem="7J3-U0-aPv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="xBG-Mg-0TB"/>
             </constraints>
         </view>
     </objects>

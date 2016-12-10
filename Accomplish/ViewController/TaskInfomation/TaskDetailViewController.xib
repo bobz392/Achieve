@@ -26,11 +26,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="3z6-t5-Zy6">
+                    <rect key="frame" x="5" y="20" width="365" height="27"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="GyL-Ml-4aS"/>
+                    </connections>
+                </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KrW-ij-tUQ">
-                    <rect key="frame" x="5" y="70" width="365" height="535"/>
+                    <rect key="frame" x="5" y="52" width="365" height="553"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-r7-hP2">
-                            <rect key="frame" x="0.0" y="10" width="365" height="515"/>
+                            <rect key="frame" x="0.0" y="10" width="365" height="533"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <connections>
@@ -48,7 +56,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzj-yx-3Hr" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
-                    <rect key="frame" x="166.5" y="615" width="42" height="42"/>
+                    <rect key="frame" x="166" y="615" width="42" height="42"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="0K8-fg-KPr"/>
@@ -58,14 +66,6 @@
                     <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="3z6-t5-Zy6">
-                    <rect key="frame" x="5" y="33" width="365" height="27"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="GyL-Ml-4aS"/>
-                    </connections>
-                </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjQ-99-yJr">
                     <rect key="frame" x="0.0" y="667" width="375" height="245"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,11 +80,11 @@
                 <constraint firstAttribute="trailing" secondItem="CjQ-99-yJr" secondAttribute="trailing" id="2Uh-Iu-UFH"/>
                 <constraint firstAttribute="bottom" secondItem="CjQ-99-yJr" secondAttribute="bottom" constant="-245" id="3ok-wT-1Me"/>
                 <constraint firstItem="KrW-ij-tUQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="4Za-H6-HoU"/>
+                <constraint firstItem="3z6-t5-Zy6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Bxw-Mz-mSq"/>
                 <constraint firstItem="dzj-yx-3Hr" firstAttribute="top" secondItem="KrW-ij-tUQ" secondAttribute="bottom" constant="10" id="K3q-Td-2C2"/>
-                <constraint firstItem="KrW-ij-tUQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="SOi-Qk-fga"/>
                 <constraint firstItem="dzj-yx-3Hr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ugx-p2-3eS"/>
                 <constraint firstItem="3z6-t5-Zy6" firstAttribute="trailing" secondItem="KrW-ij-tUQ" secondAttribute="trailing" id="VAy-EB-Bta"/>
-                <constraint firstItem="KrW-ij-tUQ" firstAttribute="top" secondItem="3z6-t5-Zy6" secondAttribute="bottom" constant="10" id="aUe-Bi-MwU"/>
+                <constraint firstItem="KrW-ij-tUQ" firstAttribute="top" secondItem="3z6-t5-Zy6" secondAttribute="bottom" constant="5" id="aUe-Bi-MwU"/>
                 <constraint firstAttribute="bottom" secondItem="dzj-yx-3Hr" secondAttribute="bottom" constant="10" id="dkO-Ee-y19"/>
                 <constraint firstItem="CjQ-99-yJr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eb0-BA-pPe"/>
                 <constraint firstAttribute="trailing" secondItem="KrW-ij-tUQ" secondAttribute="trailing" constant="5" id="pAi-S3-gJX"/>

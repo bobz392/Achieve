@@ -77,39 +77,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if RepeaterManager().isNewDay() {
             completionHandler(.noData)
-        } else {
-            completionHandler(.noData)
+            return
         }
+        
+        self.checkHasShareExtensionData()
+        completionHandler(.noData)
     }
     
     private func checkHasShareExtensionData() {
         guard let userDefault = GroupUserDefault() else { return }
         let shares = userDefault.getReadLatersOrTask()
         
-        Logger.log("shares data = \(shares)")
-        userDefault.clearShareData()
-        
-        
-        var tasks = [Task]()
-        var readLaters = [ReadLater]()
-        for share in shares {
-            if share.type == .PlainText {
-                let task = Task()
-                task.createdDate = share.date
-                task.createDefaultTask(share.linkOrContent)
-                tasks.append(task)
-            } else {
-                let readLater = ReadLater()
-                readLater.name = share.name
-                readLater.uuid = share.uuid
-                readLater.link = share.linkOrContent
-                readLater.createdAt = share.date
-                readLaters.append(readLater)
+        if shares.count > 0 {
+            Logger.log("shares data = \(shares)")
+            userDefault.clearShareData()
+            
+            
+            var tasks = [Task]()
+            var readLaters = [ReadLater]()
+            for share in shares {
+                if share.type == .PlainText {
+                    let task = Task()
+                    task.createdDate = share.date
+                    task.createDefaultTask(share.linkOrContent)
+                    tasks.append(task)
+                } else {
+                    let readLater = ReadLater()
+                    readLater.name = share.name
+                    readLater.uuid = share.uuid
+                    readLater.link = share.linkOrContent
+                    readLater.createdAt = share.date
+                    readLaters.append(readLater)
+                }
             }
+            
+            RealmManager.shared.writeObjects(tasks)
+            RealmManager.shared.writeObjects(readLaters)
+        } else {
+            Logger.log("no share extension data created")
         }
-        
-        RealmManager.shared.writeObjects(tasks)
-        RealmManager.shared.writeObjects(readLaters)
     }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {

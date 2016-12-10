@@ -57,7 +57,7 @@ class TaskInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        self.setTitle(Localized("Today"))
+        self.setTitle(Localized("today"))
     }
     
     override func didDeactivate() {

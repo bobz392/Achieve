@@ -29,7 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RealmManager.configMainRealm()
         
         // background fetch
-        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        if application.backgroundRefreshStatus != .available {
+            // to do
+        } else {
+            application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        }
         
         if #available(iOS 9.0, *) {
             self.configureDynamicShortcuts()

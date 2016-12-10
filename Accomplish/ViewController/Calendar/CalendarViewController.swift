@@ -242,8 +242,6 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.circleView.start(completed: completed, created: created)
         self.createdLabel.count(from: 0, to: CGFloat(created))
         self.completedLabel.count(from: 0, to: CGFloat(completed))
-        
         self.scheduleButton.isEnabled = created > 0
     }
 }
-

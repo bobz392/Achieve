@@ -96,10 +96,9 @@
 
 "scheduled"="Started in ";
 "willScheduled"="Will start in ";
-"Today"="Today";
-"today"="today";
-"tomorrow"="tomorrow";
-"yesterday"="yesterday";
+"today"="Today";
+"tomorrow"="Tomorrow";
+"yesterday"="Yesterday";
 
 "everyday"="Daily";
 "weekday"="Every weekday(Mon-Fri)";

@@ -277,7 +277,10 @@ class HomeViewController: BaseViewController {
     }
     
     /**
-     在进入 app 的时候检查是否是新的一天
+     在进入 app 的时候检查是否是新的一天，处理内容顺序为：
+     - 先处理新的一天，切换查询条件为今天，并且把选中的缓存 index 清空
+     - 设置 label 为今天的时间
+     - 检查是否需要移动到今天，并且上传所有未上传的 checkin 的数据到 icloud
      */
     fileprivate func checkNewDay() {
         if self.repeaterManager.isNewDay() {
@@ -411,7 +414,7 @@ class HomeViewController: BaseViewController {
     }
     
     /**
-     - 当新的一天到来的时候调用， 来处理新的数据
+     - 当新的一天到来的时候调用，来处理新的数据
      - 首先查询今天的任务，可能是重复任务，可能是分配到今天的任务
      - 添加今天的任务到索引
      */
@@ -424,7 +427,7 @@ class HomeViewController: BaseViewController {
     }
     
     /**
-     如果开启的移动未完成的任务到今天
+     如果开启的移动未完成的任务到今天，完成后上传 icloud
      */
     fileprivate func checkNeedMoveUnfinishTaskToday() {
         let appUD = AppUserDefault()

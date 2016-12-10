@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReadLaterViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="p4Y-YR-TmZ" id="ELd-cG-VeE"/>
+                <outlet property="cardView" destination="JZH-TJ-r8k" id="uan-nV-gpM"/>
+                <outlet property="readLatersTableView" destination="d03-73-Rwt" id="Nid-bk-ztS"/>
+                <outlet property="titleLabel" destination="9iu-AO-InN" id="sZl-Cd-EIb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

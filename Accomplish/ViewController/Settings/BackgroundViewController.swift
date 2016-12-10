@@ -46,7 +46,7 @@ class BackgroundViewController: BaseViewController {
     fileprivate func initializeControl() {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
@@ -66,11 +66,8 @@ class BackgroundViewController: BaseViewController {
     }
 
     // MARK: - actions
-    func cancelAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
+    func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 }
 

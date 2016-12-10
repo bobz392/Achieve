@@ -96,11 +96,8 @@ class SearchViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func cancelAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
+    func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     fileprivate func enterTask(_ task: Task) {
@@ -145,7 +142,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.cancelAction()
+        self.backAction()
         return true
     }
     

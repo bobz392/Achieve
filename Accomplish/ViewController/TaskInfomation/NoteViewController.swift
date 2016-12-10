@@ -99,7 +99,7 @@ class NoteViewController: BaseViewController {
         self.titleCardView.addSmallShadow()
         
         self.cancelButton.setTitle(Localized("cancel"), for: .normal)
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.saveButton.setTitle(Localized("save"), for: .normal)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
@@ -113,11 +113,8 @@ class NoteViewController: BaseViewController {
     }
     
     // MARK: - action
-    func cancelAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
+    func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     func saveAction() {

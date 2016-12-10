@@ -110,20 +110,16 @@ class KVTaskViewController: BaseViewController {
         self.titleCardView.addSmallShadow()
         
         self.cancelButton.setTitle(Localized("cancel"), for: .normal)
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.saveButton.setTitle(Localized("add"), for: .normal)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
     }
     
     // MARK: - action
-    func cancelAction() {
+    func backAction() {
         self.toolView.isHidden = true
-        
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     func saveAction() {

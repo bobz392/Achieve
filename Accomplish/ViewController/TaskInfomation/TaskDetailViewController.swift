@@ -118,7 +118,7 @@ class TaskDetailViewController: BaseViewController {
         
         self.cancelButton.addShadow()
         self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
@@ -158,11 +158,8 @@ class TaskDetailViewController: BaseViewController {
         detailTableView.reloadRows(at: [index], with: .automatic)
     }
     
-    func cancelAction() {
-        guard  let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
+    func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     fileprivate func keyboardAction() {

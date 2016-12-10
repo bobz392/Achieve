@@ -102,7 +102,7 @@ class CalendarViewController: BaseViewController {
     fileprivate func initializeControl() {
         self.backButton.addShadow()
         self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
@@ -160,9 +160,8 @@ class CalendarViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func cancelAction() {
-        guard let nav = self.navigationController else { return }
-        nav.popViewController(animated: true)
+    func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     func checkReport() {

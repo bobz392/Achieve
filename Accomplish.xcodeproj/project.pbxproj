@@ -1182,6 +1182,7 @@
 		C78C4E091DFC78D0000C289D /* ReadLater */ = {
 			isa = PBXGroup;
 			children = (
+				C78C4EAA1DFCBDE7000C289D /* Cell */,
 				C78C4E0A1DFC78E8000C289D /* ReadLaterViewController.swift */,
 				C78C4E0B1DFC78E8000C289D /* ReadLaterViewController.xib */,
 			);
@@ -1225,6 +1226,13 @@
 			);
 			name = iOS;
 			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		C78C4EAA1DFCBDE7000C289D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C78ED87A1D7A7D3100031B4D /* AchieveToday */ = {

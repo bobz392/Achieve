@@ -176,6 +176,7 @@
 		C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C78C47CB1D904161009CE56B /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
+		C78C4E071DFC71C7000C289D /* ReadLater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4E061DFC71C7000C289D /* ReadLater.swift */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
 		C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */; };
 		C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */; };
@@ -602,6 +603,7 @@
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7860E4C1D6C23FF000281FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C78C4E061DFC71C7000C289D /* ReadLater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLater.swift; sourceTree = "<group>"; };
 		C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterManager.swift; sourceTree = "<group>"; };
 		C78ED8351D7A72CD00031B4D /* Accomplish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Accomplish.entitlements; sourceTree = "<group>"; };
 		C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ConvenientMain.swift"; sourceTree = "<group>"; };
@@ -843,11 +845,12 @@
 				C74751C01DC9884100831DB1 /* RealmManager+TimeMethod.swift */,
 				C7105F911D6CD52F0096A1A3 /* Task.swift */,
 				C77195781D71D0F800437560 /* Subtask.swift */,
+				C79805521D7CC8740011DE19 /* CheckIn.swift */,
 				C77194931D6FD5E600437560 /* Trigger.swift */,
 				C74751B51DC81F8500831DB1 /* TimeMethod.swift */,
 				C70BF6141D77DDE3006B0C1D /* Repeater.swift */,
-				C79805521D7CC8740011DE19 /* CheckIn.swift */,
 				C7E3C3A81D8AF13500087C77 /* Tag.swift */,
+				C78C4E061DFC71C7000C289D /* ReadLater.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2030,6 +2033,7 @@
 				C79805721D7CDB8D0011DE19 /* UIColor+Convenient.swift in Sources */,
 				C77194C51D70988800437560 /* TaskTableViewCell.swift in Sources */,
 				C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */,
+				C78C4E071DFC71C7000C289D /* ReadLater.swift in Sources */,
 				C7821EC71D7BF1820056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */,
 				C77DE3681DE62D2400F098F4 /* TimeManagerEditorTableViewCell.swift in Sources */,

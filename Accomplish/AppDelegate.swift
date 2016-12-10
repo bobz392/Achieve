@@ -84,10 +84,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func checkHasShareExtensionData() {
         guard let userDefault = GroupUserDefault() else { return }
-        let s = userDefault.getReadLatersOrTask()
+        let shares = userDefault.getReadLatersOrTask()
         
-        Logger.log("s = \(s)")
+        Logger.log("shares data = \(shares)")
         userDefault.clearShareData()
+        
+        
+        var tasks = [Task]()
+        var readLaters = [ReadLater]()
+        for share in shares {
+            if share.type == .PlainText {
+                let task = Task()
+                task.createdDate = share.date
+                task.createDefaultTask(share.linkOrContent)
+                tasks.append(task)
+            } else {
+                let readLater = ReadLater()
+                readLater.name = share.name
+                readLater.uuid = share.uuid
+                readLater.link = share.linkOrContent
+                readLater.createdAt = share.date
+                readLaters.append(readLater)
+            }
+        }
+        
+        RealmManager.shared.writeObjects(tasks)
+        RealmManager.shared.writeObjects(readLaters)
     }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {

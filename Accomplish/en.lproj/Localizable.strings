@@ -86,7 +86,7 @@
 "finishAt"="Finished at ";
 "repeat"="Repeat ";
 "noRepeat"="Repeat";
-"taskNote"="Add a note";
+"taskNote"="Add a notse";
 "detailAddSubtask"="Add a subtask";
 "overTime"="  overdue  ";
 "repeatHint"="  repeat  ";
@@ -129,7 +129,7 @@
 "extra"="Extra";
 
 // calendar
-"calendarReport"="Check Schedule";
+"calendarReport"="Schedule";
 "schedule"="Schedule-";
 "noSchedule"="No Schedule";
 "completedAt"="completed at ";

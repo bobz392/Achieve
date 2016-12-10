@@ -182,6 +182,8 @@
 		C78C4EA71DFCAC32000C289D /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E7A1DFCAC13000C289D /* RealmSwift.framework.dSYM */; };
 		C78C4EA81DFCAC32000C289D /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E7C1DFCAC13000C289D /* SnapKit.framework.dSYM */; };
 		C78C4EA91DFCAC32000C289D /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E7E1DFCAC13000C289D /* SVProgressHUD.framework.dSYM */; };
+		C78C4EAD1DFCBFB0000C289D /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */; };
+		C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
 		C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */; };
 		C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */; };
@@ -611,6 +613,8 @@
 		C78C4E7C1DFCAC13000C289D /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
 		C78C4E7D1DFCAC13000C289D /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		C78C4E7E1DFCAC13000C289D /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
+		C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
+		C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
 		C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterManager.swift; sourceTree = "<group>"; };
 		C78ED8351D7A72CD00031B4D /* Accomplish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Accomplish.entitlements; sourceTree = "<group>"; };
 		C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ConvenientMain.swift"; sourceTree = "<group>"; };
@@ -1231,6 +1235,8 @@
 		C78C4EAA1DFCBDE7000C289D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */,
+				C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1687,6 +1693,7 @@
 				C7C5C5C01D752F2A001168A4 /* TaskNoteTableViewCell.xib in Resources */,
 				C78C4E8A1DFCAC13000C289D /* 94F00809-A3B5-3318-98C5-AF130807719A.bcsymbolmap in Resources */,
 				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
+				C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */,
 				C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */,
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
 				C78C4E861DFCAC13000C289D /* 59CCAA32-1C32-3826-B73F-EAB54A780EFF.bcsymbolmap in Resources */,
@@ -2113,6 +2120,7 @@
 				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
 				C77DE36C1DE6FE7000F098F4 /* ItemTableViewCell.swift in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
+				C78C4EAD1DFCBFB0000C289D /* ReadLaterTableViewCell.swift in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
 				C79807291D83D04F0011DE19 /* CircleProgressView.swift in Sources */,

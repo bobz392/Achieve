@@ -59,6 +59,9 @@
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
 		C72AB4F41DFB3FBF00EA0A24 /* ShareColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72AB4F31DFB3FBF00EA0A24 /* ShareColors.swift */; };
+		C72EC3BE1DFC5B1900EA6E97 /* FinishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72EC3BD1DFC5B1900EA6E97 /* FinishView.xib */; };
+		C72EC3C01DFC5B2700EA6E97 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72EC3BF1DFC5B2700EA6E97 /* FinishView.swift */; };
+		C72EC3C11DFC668200EA6E97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
 		C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBDE1DA04A7200099C87 /* HomeTableView.swift */; };
 		C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBE01DA13BB500099C87 /* ReportGenerator.swift */; };
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
@@ -465,6 +468,8 @@
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
 		C72AB4F31DFB3FBF00EA0A24 /* ShareColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareColors.swift; sourceTree = "<group>"; };
+		C72EC3BD1DFC5B1900EA6E97 /* FinishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishView.xib; sourceTree = "<group>"; };
+		C72EC3BF1DFC5B2700EA6E97 /* FinishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
 		C738CBDE1DA04A7200099C87 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		C738CBE01DA13BB500099C87 /* ReportGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
@@ -1384,6 +1389,8 @@
 				C7EFB3231DF8C8930094B1E0 /* AchieveShare.entitlements */,
 				C7EFB30E1DF3924F0094B1E0 /* ShareViewController.swift */,
 				C7EFB3101DF3924F0094B1E0 /* MainInterface.storyboard */,
+				C72EC3BF1DFC5B2700EA6E97 /* FinishView.swift */,
+				C72EC3BD1DFC5B1900EA6E97 /* FinishView.xib */,
 				C7EFB3131DF3924F0094B1E0 /* Info.plist */,
 				C7670A5F1DFA16C600E5E21B /* AchieveShare-Bridging-Header.h */,
 				C72AB4F31DFB3FBF00EA0A24 /* ShareColors.swift */,
@@ -1756,6 +1763,8 @@
 				C7EFB3121DF3924F0094B1E0 /* MainInterface.storyboard in Resources */,
 				C7EFB31D1DF882E80094B1E0 /* Localizable.strings in Resources */,
 				C7EFB3321DFA00AE0094B1E0 /* DateTools.bundle in Resources */,
+				C72EC3BE1DFC5B1900EA6E97 /* FinishView.xib in Resources */,
+				C72EC3C11DFC668200EA6E97 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2204,6 +2213,7 @@
 				C7EFB30F1DF3924F0094B1E0 /* ShareViewController.swift in Sources */,
 				C7EFB3341DFA00B60094B1E0 /* DTTimePeriodChain.m in Sources */,
 				C7EFB3361DFA00B60094B1E0 /* DTTimePeriodGroup.m in Sources */,
+				C72EC3C01DFC5B2700EA6E97 /* FinishView.swift in Sources */,
 				C7EFB3311DFA00AB0094B1E0 /* DTError.m in Sources */,
 				C7EFB32B1DF8D17B0094B1E0 /* GroupTasks.swift in Sources */,
 				C7EFB3331DFA00B60094B1E0 /* DTTimePeriod.m in Sources */,

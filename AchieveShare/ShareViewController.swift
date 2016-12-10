@@ -47,7 +47,7 @@ class ShareViewController: SLComposeServiceViewController {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-
+        
         guard let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
             let provider = extensionItem.attachments?.first as? NSItemProvider,
             let dataType = provider.registeredTypeIdentifiers.first as? String,
@@ -58,10 +58,11 @@ class ShareViewController: SLComposeServiceViewController {
         let type = self.contentType.rawValue
         
         provider.loadItem(forTypeIdentifier: dataType, options: nil, completionHandler: { [unowned self] (text, error) in
-            print("================")
-            print("item type \(dataType), text = \(text)")
-            print("================")
+            debugPrint("================")
+            debugPrint("item type \(dataType), text = \(text)")
+            debugPrint("================")
             var content = ""
+            
             if dataType == String(kUTTypePlainText) {
                 if let t = text as? String {
                     content = t
@@ -75,18 +76,23 @@ class ShareViewController: SLComposeServiceViewController {
                 return
             }
             
-//            print("self.childViewControllers = \(self.childViewControllers)")
-//            if let first = self.childViewControllers.first {
-//                first.removeFromParentViewController()
-//                let shadowView = UIView(frame: )
-//                UIView.animate(withDuration: 0.15, animations: {
-//                    self.shadowView.alpha = 0.8
-//                }, completion: { (finish) in
-//                    
-//                })
-//            }
-            userDefault.writeReadLaterOrTask(name: name, content: content, type: type)
-            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+            print("self.childViewControllers = \(self.childViewControllers)")
+            if let first = self.childViewControllers.first,
+                let window = self.view.window,
+                let finishView = FinishView.loadNib(self) {
+                first.removeFromParentViewController()
+                
+                dispatch_async_main {
+                    finishView.addToWindow(window: window, finishBlock: { [unowned self] in
+                        userDefault.writeReadLaterOrTask(name: name, content: content, type: type)
+                        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+                    })
+                }
+            } else {
+                userDefault.writeReadLaterOrTask(name: name, content: content, type: type)
+                self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+            }
+            
         })
     }
     
@@ -99,12 +105,12 @@ class ShareViewController: SLComposeServiceViewController {
             let itemTask = SLComposeSheetConfigurationItem()!
             itemTask.value = Localized("shareTask")
             
-//            let itemNote = SLComposeSheetConfigurationItem()!
-//            itemNote.title = Localized("shareNote")
-//            itemNote.value = Localized("taskNote")
-//            itemNote.tapHandler = { () -> Void in
-//            
-//            }
+            //            let itemNote = SLComposeSheetConfigurationItem()!
+            //            itemNote.title = Localized("shareNote")
+            //            itemNote.value = Localized("taskNote")
+            //            itemNote.tapHandler = { () -> Void in
+            //
+            //            }
             
             return [itemTask]//, itemNote]
             
@@ -121,7 +127,6 @@ class ShareViewController: SLComposeServiceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         let colors = ShareColors()
         let titleLabel =
             UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 30)))
@@ -131,9 +136,11 @@ class ShareViewController: SLComposeServiceViewController {
         titleLabel.textAlignment = .center
         
         self.navigationItem.titleView = titleLabel
+        self.navigationController?.view.backgroundColor = UIColor.clear
         self.navigationController?.navigationBar.topItem?.titleView = titleLabel
         self.navigationController?.navigationBar.tintColor = colors.cloudColor
+        self.navigationController?.navigationBar.barTintColor = colors.greenColor
         self.navigationController?.navigationBar.backgroundColor = colors.greenColor
     }
- 
+    
 }

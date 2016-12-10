@@ -85,7 +85,7 @@ class RealmManager {
         
         let created = task.count
         let complete = task.filter("status == \(kTaskFinish)").count
-        Logger.log("created = \(created), complete = \(complete)")
+//        Logger.log("created = \(created), complete = \(complete)")
         return (complete, created)
     }
     

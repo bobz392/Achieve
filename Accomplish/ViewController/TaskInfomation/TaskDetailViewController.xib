@@ -60,7 +60,7 @@
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="3z6-t5-Zy6">
                     <rect key="frame" x="5" y="33" width="365" height="27"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="GyL-Ml-4aS"/>

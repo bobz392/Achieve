@@ -19,6 +19,10 @@ class SettingsViewController: BaseViewController {
     fileprivate var icons = [[String]]()
     fileprivate var sizes = [[CGFloat]]()
     
+    fileprivate let weekIndex = 3
+    fileprivate let closeDueIndex = 4
+    fileprivate let closeSoundIndex = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,10 +87,10 @@ class SettingsViewController: BaseViewController {
         let general = [
             Localized("theme"),
             Localized("timeManagementSetting"),
+            Localized("shareSetting"),
             Localized("startDay"),
             Localized("enabDueNextDay"),
             Localized("finishSound"),
-//            Localized("taskSort"),
             ]
         
         self.titles.append(general)
@@ -102,11 +106,10 @@ class SettingsViewController: BaseViewController {
         let gIcons = [
             "fa-paint-brush",
             "fa-bullseye",
+            "fa-bookmark",
             "fa-calendar",
             "fa-retweet",
             "fa-music",
-//            "fa-sort",
-//            "fa-question-circle",
             ]
         self.icons.append(gIcons)
         self.icons.append(eIcons)
@@ -115,16 +118,16 @@ class SettingsViewController: BaseViewController {
             16,
             20,
             18,
-        ]
+            ]
         
         let gSize: [CGFloat] = [
             16,
             20,
+            20,
             17,
             25,
             18,
-//            20,
-        ]
+            ]
         
         self.sizes.append(gSize)
         self.sizes.append(eSize)
@@ -162,20 +165,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return titles.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let size = self.sizes[indexPath.section][indexPath.row]
         let icon = try! FAKFontAwesome(identifier:
             self.icons[indexPath.section][indexPath.row], size: size)
         icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
         
-        if indexPath.section == 0 && indexPath.row != 0 && indexPath.row != 1 {
+        if indexPath.section == 0 && indexPath.row >= self.weekIndex {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingDetialTableViewCell.reuseId, for: indexPath) as! SettingDetialTableViewCell
             cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
             cell.iconLabel.attributedText = icon.attributedString()
             cell.accessoryType = .none
             
             let ud = AppUserDefault()
-            if indexPath.row == 2 {
+            if indexPath.row == self.weekIndex {
                 let weekStart = ud.readInt(kUserDefaultWeekStartKey)
                 let weeks: DaysOfWeek
                 if let ws = DaysOfWeek(rawValue: weekStart) {
@@ -195,10 +200,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 default:
                     break
                 }
-            } else if indexPath.row == 3 {
+            } else if indexPath.row == self.closeDueIndex {
                 let closeDue = ud.readBool(kUserDefaultCloseDueTodayKey)
                 cell.detailLabel.text = closeDue ? Localized("close") : Localized("open")
-            } else if indexPath.row == 4 {
+            } else if indexPath.row == self.closeSoundIndex {
                 let closeSound = ud.readBool(kUserDefaultCloseSoundKey)
                 cell.detailLabel.text = closeSound ? Localized("close") : Localized("open")
             }
@@ -237,13 +242,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case 0:
                 let backgroundVC = BackgroundViewController()
                 self.navigationController?.pushViewController(backgroundVC, animated: true)
-            
+                
+            // 工作法管理
             case 1:
                 let timeVC = TimeManagementViewController()
                 self.navigationController?.pushViewController(timeVC, animated: true)
             
-            // first day of week
             case 2:
+                let readVC = ReadLaterViewController()
+                self.navigationController?.pushViewController(readVC, animated: true)
+                
+            // first day of week
+            case self.weekIndex:
                 self.handleWeekOfDay()
                 
             default:
@@ -264,7 +274,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             case 2:
                 let url = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&id=1166332931"
                 guard let u = URL(string: url) else { return }
-
+                
                 UIApplication.shared.openURL(u)
                 break
                 
@@ -275,14 +285,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    
     fileprivate func handleOpenCloseCell(_ index: Int) {
         let ud = AppUserDefault()
         let key: String
         switch index {
-        case 3:
+        case self.closeDueIndex:
             key = kUserDefaultCloseDueTodayKey
-        case 4:
+        case self.closeSoundIndex:
             key = kUserDefaultCloseSoundKey
         default:
             return

@@ -26,8 +26,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ur1-Yq-dMR">
-                    <rect key="frame" x="5" y="23" width="54" height="27"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <rect key="frame" x="5" y="23" width="52.5" height="27"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -59,6 +59,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="XSi-aT-6P6"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <state key="normal" title="Button"/>
                         </button>
                     </subviews>

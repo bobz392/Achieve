@@ -161,7 +161,7 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         pickerLabel.text = title
         pickerLabel.textColor = Colors().mainTextColor
-        pickerLabel.font = UIFont.systemFont(ofSize: 16)
+        pickerLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightLight)
         pickerLabel.textAlignment = .center
         return pickerLabel
     }

@@ -51,7 +51,7 @@
                             <subviews>
                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="justified" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3BC-4a-wUV">
                                     <rect key="frame" x="12" y="0.0" width="9" height="44"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="Gh7-5d-0eE"/>
@@ -70,7 +70,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优先级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tts-aO-sIm">
                                     <rect key="frame" x="12" y="10" width="43" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -122,6 +122,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="C2E-fh-J9S"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acP-FL-DWg">
@@ -130,13 +131,16 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="vnP-98-XRP"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="tintColor" red="0.051427801719999999" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHz-Dk-6DR">
                             <rect key="frame" x="260" y="0.0" width="30" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmR-Dd-PUz">
                             <rect key="frame" x="310" y="0.0" width="45" height="44"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <state key="normal" title="cancel"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBo-f4-xEV">
@@ -151,10 +155,12 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s9-vD-v8K">
                                     <rect key="frame" x="10" y="0.0" width="46" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikr-3W-zki">
                                     <rect key="frame" x="319" y="0.0" width="46" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                             </subviews>

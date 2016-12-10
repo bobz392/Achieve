@@ -36,6 +36,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     fileprivate let task = Task()
     fileprivate var subtaskString: String? = nil
     
+    // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -30,8 +30,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hz4-by-RhM">
-                    <rect key="frame" x="5" y="23.5" width="54" height="26.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <rect key="frame" x="5" y="23.5" width="52.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -63,6 +63,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="REn-cd-J0g"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <state key="normal" title="Button"/>
                         </button>
                     </subviews>
@@ -90,7 +91,7 @@
                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="justified" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="T5u-nj-qTB">
                                     <rect key="frame" x="10" y="13.5" width="345" height="17"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="SUK-VC-62L"/>

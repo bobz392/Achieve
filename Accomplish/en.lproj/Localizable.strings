@@ -220,7 +220,7 @@
 "timeManagement"="Start Time Management";
 "createTimeManagement"="Create New Method";
 "infiniteRepeat"="Infinite";
-"repeatNumber"="Number Of Repeats";
+"repeatNumber"="Number of Repeats";
 "useTime"="Use %d time";
 "useTimes"="Use %d times";
 "pomodoro"="Pomodoro Technique";
@@ -239,7 +239,7 @@
 "min"="Min";
 "enterItemTime"="Enter Working Time";
 "enterMethodName"="Name time management method";
-"enterGroupRepeatNumber"="Set Number Of Repeats";
+"enterGroupRepeatNumber"="Set Number of Repeats";
 "methodName"="Name";
 "aliase"="Aliase";
 "defaultAliase"="Circles";
@@ -253,3 +253,4 @@
 "shareTask"="Add Task to Achieve";
 "shareNote"="Note";
 "shareCreated"="Added";
+"shareSetting"="Read Later";

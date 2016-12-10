@@ -84,6 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(.noData)
     }
     
+    /**
+     处理 share extension 中创建的任务
+     */
     private func checkHasShareExtensionData() {
         guard let userDefault = GroupUserDefault() else { return }
         let shares = userDefault.getReadLatersOrTask()

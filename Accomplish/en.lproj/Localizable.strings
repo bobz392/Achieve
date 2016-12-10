@@ -246,3 +246,9 @@
 "itemName"="Job Content";
 "itemTime"="Working Time(Minute)";
 "enterMethodAliase"="Aliase of time management method(Only used to record cycles)";
+
+// share extension
+"post"="Post";
+"createReadLater"="Read it later";
+"shareTask"="Add Task to Achieve";
+"shareNote"="Note";

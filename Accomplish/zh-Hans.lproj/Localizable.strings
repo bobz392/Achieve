@@ -249,3 +249,9 @@
 "aliase"="别名";
 "defaultAliase"="循环";
 "enterMethodAliase"="输入工作法的别名(仅用于记录循环次数)";
+
+// share extension
+"post"="发布";
+"createReadLater"="稍后阅读";
+"shareTask"="添加任务到 Achieve";
+"shareNote"="备注";

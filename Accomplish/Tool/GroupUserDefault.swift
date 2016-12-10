@@ -56,22 +56,6 @@ struct GroupUserDefault {
         return tasks
     }
     
-    func allTaskArrayForWatchExtension() -> [[String]] {
-        guard let tasksArray = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
-            else { return [[String]]() }
-        
-        return tasksArray
-    }
-    
-    func writeTasks(_ tasks: [[String]]) {
-        self.groupDefault.set(tasks, forKey: ExtensionTasksKey)
-        self.groupDefault.synchronize()
-    }
-    
-    func getAllFinishTask() -> [[String]] {
-        return (self.groupDefault.array(forKey: TodayExtensionFinishTaskKey) as? [[String]]) ?? [[String]]()
-    }
-    
     internal func setTaskFinish(_ finish: [String]) {
         var tasks = self.groupDefault.object(forKey: TodayExtensionFinishTaskKey) as? [[String]]
         if tasks == nil {
@@ -81,23 +65,14 @@ struct GroupUserDefault {
         tasks?.append(finish)
         self.groupDefault.set(tasks, forKey: TodayExtensionFinishTaskKey)
     }
-    
-    func clearTaskFinish() {
-        self.groupDefault.set(nil, forKey: TodayExtensionFinishTaskKey)
-        self.groupDefault.synchronize()
-    }
-    
-    func writeRunningTimeMethod(taskName: String? = nil) {
-        Logger.log("writeRunningTimeMethod taskName = \(taskName)")
-        if let name = taskName {
-            self.groupDefault.set(name, forKey: TodayExtensionTimeMethodKey)
-        } else {
-            self.groupDefault.removeObject(forKey: TodayExtensionTimeMethodKey)
-        }
-        self.groupDefault.synchronize()
-    }
-    
-    func getRunningTimeMethod() -> String? {
-        return self.groupDefault.string(forKey: TodayExtensionTimeMethodKey)
+}
+
+// MARK: - watch
+extension GroupUserDefault {
+    func allTaskArrayForWatchExtension() -> [[String]] {
+        guard let tasksArray = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
+            else { return [[String]]() }
+        
+        return tasksArray
     }
 }

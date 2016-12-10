@@ -11,7 +11,7 @@ import Foundation
 let WormholeNewTaskIdentifier = "wormhole.new.task"
 
 extension GroupUserDefault {
-
+    
     func todayExtensionMoveTaskFinish(_ taskIndex: Int) {
         guard var tasks = self.groupDefault.array(forKey: ExtensionTasksKey) as? [[String]]
             else { return }
@@ -22,4 +22,12 @@ extension GroupUserDefault {
         self.writeTasks(tasks)
     }
     
+    func getRunningTimeMethod() -> String? {
+        return self.groupDefault.string(forKey: TodayExtensionTimeMethodKey)
+    }
+    
+    fileprivate func writeTasks(_ tasks: [[String]]) {
+        self.groupDefault.set(tasks, forKey: ExtensionTasksKey)
+        self.groupDefault.synchronize()
+    }
 }

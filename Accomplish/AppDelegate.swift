@@ -82,6 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    private func checkHasShareExtensionData() {
+        guard let userDefault = GroupUserDefault() else { return }
+        let s = userDefault.getReadLatersOrTask()
+        
+        Logger.log("s = \(s)")
+        userDefault.clearShareData()
+    }
+    
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         return UrlSchemeDispatcher().handleUrl(url)
     }
@@ -103,6 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         UIApplication.shared.applicationIconBadgeNumber = 0
+        self.checkHasShareExtensionData()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

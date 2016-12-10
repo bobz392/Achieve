@@ -47,4 +47,24 @@ extension GroupUserDefault {
         
         self.setTaskChanged(true)
     }
+    
+    func writeRunningTimeMethod(taskName: String? = nil) {
+        Logger.log("writeRunningTimeMethod taskName = \(taskName)")
+        if let name = taskName {
+            self.groupDefault.set(name, forKey: TodayExtensionTimeMethodKey)
+        } else {
+            self.groupDefault.removeObject(forKey: TodayExtensionTimeMethodKey)
+        }
+        self.groupDefault.synchronize()
+    }
+    
+    func getAllFinishTask() -> [[String]] {
+        return (self.groupDefault.array(forKey: TodayExtensionFinishTaskKey) as? [[String]]) ?? [[String]]()
+    }
+    
+    func clearTaskFinish() {
+        self.groupDefault.set(nil, forKey: TodayExtensionFinishTaskKey)
+        self.groupDefault.synchronize()
+    }
+    
 }

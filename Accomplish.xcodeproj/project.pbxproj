@@ -169,24 +169,17 @@
 		C78C4E3A1DFC94B6000C289D /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E191DFC94B6000C289D /* A34D9DF1-C526-32C6-978C-9B2D3790A81E.bcsymbolmap */; };
 		C78C4E3B1DFC94B6000C289D /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E1A1DFC94B6000C289D /* B7791B22-8E2C-3ADD-9850-66080FA482B3.bcsymbolmap */; };
 		C78C4E3C1DFC94B6000C289D /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E1B1DFC94B6000C289D /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap */; };
-		C78C4E3D1DFC94B6000C289D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E1C1DFC94B6000C289D /* Charts.framework */; };
-		C78C4E3F1DFC94B6000C289D /* ChartsRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E1E1DFC94B6000C289D /* ChartsRealm.framework */; };
 		C78C4E411DFC94B6000C289D /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E201DFC94B6000C289D /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap */; };
 		C78C4E421DFC94B6000C289D /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E211DFC94B6000C289D /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap */; };
 		C78C4E431DFC94B6000C289D /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E221DFC94B6000C289D /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap */; };
 		C78C4E441DFC94B6000C289D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E231DFC94B6000C289D /* Fabric.framework */; };
-		C78C4E451DFC94B6000C289D /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E241DFC94B6000C289D /* Kanna.framework */; };
-		C78C4E471DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E261DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework */; };
-		C78C4E491DFC94B6000C289D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E281DFC94B6000C289D /* Realm.framework */; };
-		C78C4E4B1DFC94B6000C289D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E2A1DFC94B6000C289D /* RealmSwift.framework */; };
-		C78C4E4D1DFC94B6000C289D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E2C1DFC94B6000C289D /* SnapKit.framework */; };
-		C78C4E4F1DFC94B6000C289D /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E2E1DFC94B6000C289D /* SVProgressHUD.framework */; };
 		C78C4E511DFC94CD000C289D /* Charts.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E1D1DFC94B6000C289D /* Charts.framework.dSYM */; };
 		C78C4E521DFC94CD000C289D /* Kanna.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E251DFC94B6000C289D /* Kanna.framework.dSYM */; };
 		C78C4E531DFC94CD000C289D /* Realm.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E291DFC94B6000C289D /* Realm.framework.dSYM */; };
 		C78C4E541DFC94CD000C289D /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E2B1DFC94B6000C289D /* RealmSwift.framework.dSYM */; };
 		C78C4E551DFC94CD000C289D /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E2D1DFC94B6000C289D /* SnapKit.framework.dSYM */; };
 		C78C4E561DFC94CD000C289D /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E2F1DFC94B6000C289D /* SVProgressHUD.framework.dSYM */; };
+		C78C4E581DFC97FC000C289D /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E571DFC97FC000C289D /* libxml2.tbd */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
 		C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */; };
 		C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */; };
@@ -243,7 +236,6 @@
 		C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */; };
 		C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807141D8298380011DE19 /* SettingsViewController.swift */; };
 		C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807151D8298380011DE19 /* SettingsViewController.xib */; };
-		C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79807191D82B97E0011DE19 /* Fabric.framework */; };
 		C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C798071A1D82B97E0011DE19 /* Crashlytics.framework */; };
 		C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */ = {isa = PBXBuildFile; fileRef = C798071D1D82C0C70011DE19 /* Acknowledgements */; };
 		C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */; };
@@ -600,16 +592,12 @@
 		C78C4E1B1DFC94B6000C289D /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap"; sourceTree = "<group>"; };
 		C78C4E1C1DFC94B6000C289D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
 		C78C4E1D1DFC94B6000C289D /* Charts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Charts.framework.dSYM; sourceTree = "<group>"; };
-		C78C4E1E1DFC94B6000C289D /* ChartsRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChartsRealm.framework; sourceTree = "<group>"; };
-		C78C4E1F1DFC94B6000C289D /* ChartsRealm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = ChartsRealm.framework.dSYM; sourceTree = "<group>"; };
 		C78C4E201DFC94B6000C289D /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap"; sourceTree = "<group>"; };
 		C78C4E211DFC94B6000C289D /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap"; sourceTree = "<group>"; };
 		C78C4E221DFC94B6000C289D /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap"; sourceTree = "<group>"; };
 		C78C4E231DFC94B6000C289D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		C78C4E241DFC94B6000C289D /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kanna.framework; sourceTree = "<group>"; };
 		C78C4E251DFC94B6000C289D /* Kanna.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Kanna.framework.dSYM; sourceTree = "<group>"; };
-		C78C4E261DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PlaygroundFrameworkWrapper.framework; sourceTree = "<group>"; };
-		C78C4E271DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PlaygroundFrameworkWrapper.framework.dSYM; sourceTree = "<group>"; };
 		C78C4E281DFC94B6000C289D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		C78C4E291DFC94B6000C289D /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Realm.framework.dSYM; sourceTree = "<group>"; };
 		C78C4E2A1DFC94B6000C289D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -618,6 +606,7 @@
 		C78C4E2D1DFC94B6000C289D /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
 		C78C4E2E1DFC94B6000C289D /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		C78C4E2F1DFC94B6000C289D /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
+		C78C4E571DFC97FC000C289D /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterManager.swift; sourceTree = "<group>"; };
 		C78ED8351D7A72CD00031B4D /* Accomplish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Accomplish.entitlements; sourceTree = "<group>"; };
 		C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ConvenientMain.swift"; sourceTree = "<group>"; };
@@ -746,19 +735,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78C4E581DFC97FC000C289D /* libxml2.tbd in Frameworks */,
 				C78C4E441DFC94B6000C289D /* Fabric.framework in Frameworks */,
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
 				C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */,
-				C78C4E4D1DFC94B6000C289D /* SnapKit.framework in Frameworks */,
-				C78C4E471DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework in Frameworks */,
-				C78C4E491DFC94B6000C289D /* Realm.framework in Frameworks */,
-				C78C4E3D1DFC94B6000C289D /* Charts.framework in Frameworks */,
-				C78C4E4F1DFC94B6000C289D /* SVProgressHUD.framework in Frameworks */,
-				C78C4E4B1DFC94B6000C289D /* RealmSwift.framework in Frameworks */,
-				C78C4E451DFC94B6000C289D /* Kanna.framework in Frameworks */,
-				C78C4E3F1DFC94B6000C289D /* ChartsRealm.framework in Frameworks */,
 				C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */,
-				C798071B1D82B97E0011DE19 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +798,7 @@
 		C7105E9C1D6C7AD60096A1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C78C4E571DFC97FC000C289D /* libxml2.tbd */,
 				C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */,
 				C77194BA1D6FF62E00437560 /* AddressBookUI.framework */,
 				C77194B81D6FF3E600437560 /* libicucore.tbd */,
@@ -1220,16 +1202,12 @@
 				C78C4E1B1DFC94B6000C289D /* C239DCF5-E52A-31D5-99EA-A5B738AD88D7.bcsymbolmap */,
 				C78C4E1C1DFC94B6000C289D /* Charts.framework */,
 				C78C4E1D1DFC94B6000C289D /* Charts.framework.dSYM */,
-				C78C4E1E1DFC94B6000C289D /* ChartsRealm.framework */,
-				C78C4E1F1DFC94B6000C289D /* ChartsRealm.framework.dSYM */,
 				C78C4E201DFC94B6000C289D /* D53D150E-BC58-307C-AEB9-104ABB4700FE.bcsymbolmap */,
 				C78C4E211DFC94B6000C289D /* E36682C4-BABB-3EA5-9F8D-58460451206B.bcsymbolmap */,
 				C78C4E221DFC94B6000C289D /* E5617454-FAA5-34F3-A79D-925A72336AAE.bcsymbolmap */,
 				C78C4E231DFC94B6000C289D /* Fabric.framework */,
 				C78C4E241DFC94B6000C289D /* Kanna.framework */,
 				C78C4E251DFC94B6000C289D /* Kanna.framework.dSYM */,
-				C78C4E261DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework */,
-				C78C4E271DFC94B6000C289D /* PlaygroundFrameworkWrapper.framework.dSYM */,
 				C78C4E281DFC94B6000C289D /* Realm.framework */,
 				C78C4E291DFC94B6000C289D /* Realm.framework.dSYM */,
 				C78C4E2A1DFC94B6000C289D /* RealmSwift.framework */,
@@ -2450,10 +2428,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = Accomplish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lxml2";
 				OTHER_SWIFT_FLAGS = "-D debug";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2482,10 +2462,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = Accomplish/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "62c7f06c-bf59-4ba0-b1f9-8a3c5657815e";

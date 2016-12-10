@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Kanna
 
-class ReadLaterViewController: UIViewController {
+class ReadLaterViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -88,10 +88,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     // MARK: - actions
     func backAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
+        let _ = self.navigationController?.popViewController(animated: true)
     }
     
     fileprivate func fetchMonthlyTasks() {
@@ -220,6 +217,7 @@ extension MonthViewController: IAxisValueFormatter {
         self.chartView.xAxis.drawGridLinesEnabled = false
         self.chartView.xAxis.labelPosition = .bottom
         self.chartView.xAxis.valueFormatter = self
+        self.chartView.xAxis.setLabelCount(6, force: true)
         self.chartView.legend.enabled = false
         self.chartView.animate(yAxisDuration: 1.5)
         
@@ -228,7 +226,6 @@ extension MonthViewController: IAxisValueFormatter {
     
     fileprivate func setMonthData() {
         guard let count = NSDate().dayCountsInMonth() else { return }
-        self.chartView.xAxis.setLabelCount(count, force: true)
         var values = Array<ChartDataEntry>()
         
         var lastDay = 0
@@ -275,19 +272,8 @@ extension MonthViewController: IAxisValueFormatter {
     }
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let v = Int(value)
-        let d = NSDate()
-        let year = d.year()
-        let month = d.month()
-        guard let nd = NSDate(year: year, month: month, day: v)
-            else { return "" }
-        
-        if nd.weekday() == 1 {
-            let s = nd.weekOfMonth()
-            return String(format: Localized("monthlyWeek"), s)
-        } else {
-            return ""
-        }
+        Logger.log(value)
+        return "\(Int(value) + 1)"
     }
 }
 

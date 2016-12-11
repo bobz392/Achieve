@@ -184,6 +184,9 @@
 		C78C4EA91DFCAC32000C289D /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C78C4E7E1DFCAC13000C289D /* SVProgressHUD.framework.dSYM */; };
 		C78C4EAD1DFCBFB0000C289D /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */; };
 		C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */; };
+		C78C4EB01DFCD797000C289D /* RealmManager+ReadLater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4EAF1DFCD797000C289D /* RealmManager+ReadLater.swift */; };
+		C78C4EB21DFCD7EA000C289D /* RealmManager+Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4EB11DFCD7EA000C289D /* RealmManager+Tag.swift */; };
+		C78C4EB41DFCD810000C289D /* RealmManager+CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4EB31DFCD810000C289D /* RealmManager+CheckIn.swift */; };
 		C78ED8341D7A4F8700031B4D /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */; };
 		C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */; };
 		C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */; };
@@ -615,6 +618,9 @@
 		C78C4E7E1DFCAC13000C289D /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
 		C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
+		C78C4EAF1DFCD797000C289D /* RealmManager+ReadLater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealmManager+ReadLater.swift"; sourceTree = "<group>"; };
+		C78C4EB11DFCD7EA000C289D /* RealmManager+Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealmManager+Tag.swift"; sourceTree = "<group>"; };
+		C78C4EB31DFCD810000C289D /* RealmManager+CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealmManager+CheckIn.swift"; sourceTree = "<group>"; };
 		C78ED8331D7A4F8700031B4D /* RepeaterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterManager.swift; sourceTree = "<group>"; };
 		C78ED8351D7A72CD00031B4D /* Accomplish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Accomplish.entitlements; sourceTree = "<group>"; };
 		C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ConvenientMain.swift"; sourceTree = "<group>"; };
@@ -854,8 +860,11 @@
 			isa = PBXGroup;
 			children = (
 				C70BF6221D79B9B1006B0C1D /* RealmManager.swift */,
+				C78C4EB31DFCD810000C289D /* RealmManager+CheckIn.swift */,
+				C78C4EB11DFCD7EA000C289D /* RealmManager+Tag.swift */,
 				C78ED8A61D7A842E00031B4D /* ReamManager+Repeater.swift */,
 				C74751C01DC9884100831DB1 /* RealmManager+TimeMethod.swift */,
+				C78C4EAF1DFCD797000C289D /* RealmManager+ReadLater.swift */,
 				C7105F911D6CD52F0096A1A3 /* Task.swift */,
 				C77195781D71D0F800437560 /* Subtask.swift */,
 				C79805521D7CC8740011DE19 /* CheckIn.swift */,
@@ -2113,6 +2122,7 @@
 				C74751C11DC9884100831DB1 /* RealmManager+TimeMethod.swift in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
+				C78C4EB01DFCD797000C289D /* RealmManager+ReadLater.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
 				C7CAF0BD1DA0458A0046D756 /* HomePulldownView.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
@@ -2133,6 +2143,7 @@
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
 				C79805C41D7D4E610011DE19 /* JTAppleCalendarLayout.swift in Sources */,
+				C78C4EB21DFCD7EA000C289D /* RealmManager+Tag.swift in Sources */,
 				C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */,
 				C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */,
 				C7105B831DE8BB1000374F78 /* TimeMethodInputView.swift in Sources */,
@@ -2140,6 +2151,7 @@
 				C79805C71D7D4E610011DE19 /* JTAppleDayCell.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
 				C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */,
+				C78C4EB41DFCD810000C289D /* RealmManager+CheckIn.swift in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
 				C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */,

@@ -16,6 +16,8 @@ class ReadLaterViewController: BaseViewController {
     @IBOutlet weak var readLatersTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     
+    private var readLaters = RealmManager.shared.que
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

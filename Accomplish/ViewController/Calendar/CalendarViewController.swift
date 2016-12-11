@@ -58,7 +58,7 @@ class CalendarViewController: BaseViewController {
         if self.inTodayAlleady == false {
             let now = Date()
             self.calendarView.selectDates([now])
-            self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil) {
+            self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, preferredScrollPosition: nil) {
                 UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
                     self.calendarView.alpha = 1
                     })

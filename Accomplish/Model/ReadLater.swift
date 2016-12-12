@@ -14,4 +14,6 @@ class ReadLater: Object {
     dynamic var name: String = ""
     dynamic var link: String = ""
     dynamic var createdAt: NSDate? = nil
+    dynamic var cacheed: Bool = false
+    dynamic var previewImageLink: String?
 }

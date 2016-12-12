@@ -7,27 +7,28 @@
 //
 
 import UIKit
-import Fuzi
+import SafariServices
 
 class ReadLaterViewController: BaseViewController {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var readLatersTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     
-    private var readLaters = RealmManager.shared.que
+    fileprivate var readLaters = RealmManager.shared.allReadLaters()
+    fileprivate var readLaterManager =
+        ReadLaterManager()
     
+    // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.load()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.backAction))
-        self.view.addGestureRecognizer(tap)
+        // Do any additional setup after loading the view.
+        self.configMainUI()
+        self.initializeControl()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,58 +60,69 @@ class ReadLaterViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-        self.titleLabel.text = Localized("setting")
+        self.titleLabel.text = Localized("readLaterTitle")
         
-//        self.settingTableView
-//            .register(SettingTableViewCell.nib, forCellReuseIdentifier: SettingTableViewCell.reuseId)
-//        self.settingTableView
-//            .register(SettingDetialTableViewCell.nib, forCellReuseIdentifier: SettingDetialTableViewCell.reuseId)
+        self.readLatersTableView.register(ReadLaterTableViewCell.nib,
+                                          forCellReuseIdentifier: ReadLaterTableViewCell.reuseId)
+        self.readLatersTableView.tableFooterView = UIView()
     }
-
+    
     // MARK: - actions
     func backAction() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
+}
+
+extension ReadLaterViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.readLaters.count
+    }
     
-    func load() {
-        let url = URL(string: "https://github.com/tid-kijyun/Kanna")!
-//        guard let html = Kanna.HTML(url: url, encoding: String.Encoding.utf8) else {
-//            debugPrint("html = error")
-//            return
-//        }
-//        debugPrint("html.head = \(html.head)")
-//        debugPrint("html.body = \(html.body)")
-//        debugPrint("html.title = \(html.title)")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReadLaterTableViewCell.reuseId, for: indexPath) as! ReadLaterTableViewCell
         
-        let request = URLRequest(url: url)
-        let session = URLSession(configuration: URLSessionConfiguration.default)
+        let readLater = self.readLaters[indexPath.row]
+        if readLater.cacheed {
+            cell.configCell(readLater: readLater)
+        } else {
+            cell.loadingActivityIndicator.startAnimating()
+            self.readLaterManager.downloadReadLaterPreview(readLater: readLater, finishBlock: { 
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+                cell.loadingActivityIndicator.stopAnimating()
+            })
+        }
         
-        let task = session.dataTask(with: request, completionHandler: { data, response, error in
-            
-            if let error = error {
-                debugPrint("error = \(error)")
-                return
-            }
-            
-            guard let data = data else {
-                debugPrint("data = empty")
-                return
-            }
-            
-            guard let html = try? HTMLDocument(data: data) else {
-                debugPrint("data = \(data)")
-                debugPrint("data = error\n \(String(data: data, encoding: String.Encoding.utf8))")
-                return
-            }
-            
-            for link in html.css("link, icon") {
-                print(link.rawXML)
-                print(link["href"])
-            }
-            
-            debugPrint("html.head = \(html.head)")
-            debugPrint("html.title = \(html.title)")
-        })
-        task.resume()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ReadLaterTableViewCell.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let url = URL(string: self.readLaters[indexPath.row].link) else { return }
+        if #available(iOS 9.0, *) {
+            let sfVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+            self.present(sfVC, animated: true, completion: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let read = self.readLaters[indexPath.row]
+            RealmManager.shared.deleteObject(read)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }

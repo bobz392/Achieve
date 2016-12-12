@@ -30,7 +30,7 @@ class TagTableViewCell: BaseTableViewCell {
         self.currentLabel.text = Localized("currentTag")
         self.currentLabel.isHidden = true
         
-        self.currentLabel.layoutIfNeeded()
+        self.layoutIfNeeded()
         self.currentLabel.textColor = colors.mainGreenColor
         self.currentLabel.layer.cornerRadius = self.currentLabel.frame.height * 0.5
         self.currentLabel.layer.borderColor = colors.mainGreenColor.cgColor

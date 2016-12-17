@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JTAppleCalendar
 
 class CalendarCell: JTAppleDayCellView {
     @IBOutlet weak var dateLabel: UILabel!

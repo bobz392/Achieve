@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="9jR-Sg-hIY" id="mOU-to-fpS"/>
-                <outlet property="calendarView" destination="Mzf-lB-vyJ" id="odz-J3-eIK"/>
                 <outlet property="cardView" destination="Ptq-Wo-nZo" id="ysS-LO-bFA"/>
                 <outlet property="circleView" destination="ykf-Pj-aTB" id="XBL-04-bgK"/>
                 <outlet property="completedLabel" destination="6qq-4T-ld4" id="zgE-Td-A5c"/>
@@ -117,21 +116,13 @@
                                 <constraint firstItem="WIo-Mb-1MJ" firstAttribute="width" secondItem="l5b-AO-fni" secondAttribute="width" id="xpr-LG-Bpg"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzf-lB-vyJ" customClass="JTAppleCalendarView" customModule="Accomplish" customModuleProvider="target">
-                            <rect key="frame" x="5" y="35" width="355" height="200"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="m29-D1-27Q" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="top" constant="5" id="37N-vN-RKv"/>
-                        <constraint firstAttribute="trailing" secondItem="Mzf-lB-vyJ" secondAttribute="trailing" constant="5" id="5C0-RB-k8i"/>
                         <constraint firstAttribute="height" constant="240" id="8FN-VI-F6U"/>
                         <constraint firstAttribute="trailing" secondItem="m29-D1-27Q" secondAttribute="trailing" constant="5" id="O4E-fE-DRA"/>
-                        <constraint firstAttribute="bottom" secondItem="Mzf-lB-vyJ" secondAttribute="bottom" constant="5" id="bBs-R9-hDq"/>
-                        <constraint firstItem="Mzf-lB-vyJ" firstAttribute="top" secondItem="m29-D1-27Q" secondAttribute="bottom" id="dPw-F9-72Q"/>
                         <constraint firstItem="m29-D1-27Q" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" constant="5" id="pKJ-hg-U4a"/>
-                        <constraint firstItem="Mzf-lB-vyJ" firstAttribute="leading" secondItem="Ptq-Wo-nZo" secondAttribute="leading" constant="5" id="wM9-xA-YoO"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-BF-Vfq">

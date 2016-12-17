@@ -26,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
-        RealmManager.configMainRealm()
-        
         // background fetch
         if application.backgroundRefreshStatus != .available {
             // to do
@@ -49,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #else
             Crashlytics.sharedInstance().debugMode = false
         #endif
+        
+        RealmManager.configMainRealm()
         
         return true
     }

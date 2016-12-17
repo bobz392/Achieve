@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import JTAppleCalendar
 
 class CalendarViewController: BaseViewController {
     
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var calendarView: JTAppleCalendarView!
+    var calendarView: JTAppleCalendarView!
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var circleView: CircleProgressView!
     @IBOutlet weak var monthButton: UIButton!
@@ -108,10 +109,17 @@ class CalendarViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
         
-        let startDay = AppUserDefault().readInt(kUserDefaultWeekStartKey)
-        self.calendarView.firstDayOfWeek = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.sunday
+        self.calendarView = JTAppleCalendarView(frame: CGRect.zero)
+        self.calendarView.clearView()
+        self.cardView.addSubview(self.calendarView)
+        self.calendarView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(self.weekView.snp.bottom)
+            maker.left.equalTo(self.cardView).offset(5)
+            maker.bottom.equalTo(self.cardView).offset(-5)
+            maker.right.equalTo(self.cardView).offset(-5)
+        }
         self.calendarView.cellInset = CGPoint(x: 0, y: 0)
-        self.calendarView.registerCellViewXib(fileName: "CalendarCell")
+        self.calendarView.registerCellViewXib(file: "CalendarCell")
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
         self.calendarView.clearView()
@@ -185,15 +193,20 @@ class CalendarViewController: BaseViewController {
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
-        
+    
+    public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         let secondDate = self.firstDate.addingMonths(12) as NSDate
         let aCalendar = Calendar.current
         
-        return (startDate: self.firstDate as Date, endDate: secondDate as Date, numberOfRows: row, calendar: aCalendar)
+        let startDay = AppUserDefault().readInt(kUserDefaultWeekStartKey)
+        let firstDay = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.sunday
+        let params = ConfigurationParameters(startDate: self.firstDate as Date, endDate: secondDate as Date, numberOfRows: row, calendar: aCalendar, firstDayOfWeek: firstDay)
+        
+        return params
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
+
+    func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         
         let createCount = self.checkInManager.taskCount(date: date).created
@@ -213,9 +226,10 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         cell.cellSelectionChanged(cellState, date: date)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
-        let nsStartDate = startDate as NSDate
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        guard let startDate = visibleDates.monthDates.first else { return }
         
+        let nsStartDate = startDate as NSDate
         let inMonth = nsStartDate.month() == NSDate().month()
         self.monthButton.isEnabled = inMonth
         self.monthButtonRightConstraint.constant =
@@ -228,6 +242,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let newTitle = Localized("calendar")
             + "-" + nsStartDate.formattedDate(withFormat: MonthFormat)
         self.titleButton.setTitle(newTitle, for: .normal)
+
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {

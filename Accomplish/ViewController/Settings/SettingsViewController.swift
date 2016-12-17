@@ -142,6 +142,11 @@ class SettingsViewController: BaseViewController {
     }
 }
 
+fileprivate enum DaysOfWeek: Int {
+    /// Days of the week.
+    case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+}
+
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles[section].count
@@ -181,6 +186,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == self.weekIndex {
                 let weekStart = ud.readInt(kUserDefaultWeekStartKey)
                 let weeks: DaysOfWeek
+                
                 if let ws = DaysOfWeek(rawValue: weekStart) {
                     weeks = ws
                 } else {

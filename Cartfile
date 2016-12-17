@@ -1,7 +1,8 @@
 github "SnapKit/SnapKit" ~> 3.0.2
+github "danielgindi/Charts" ~> 3.0.1
 github "realm/realm-cocoa" 
 github "SVProgressHUD/SVProgressHUD"
 github "cezheng/Fuzi" ~> 1.0.0
 github "onevcat/Kingfisher" ~> 3.0
 github "patchthecode/JTAppleCalendar" ~> 6.0
-github "danielgindi/Charts" ~> 3.0.1
+github "malcommac/SwiftDate" ~> 4.0

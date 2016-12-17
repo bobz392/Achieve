@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
-//    let currentRealmVersion = 2
+    //    let currentRealmVersion = 2
     
     typealias RealmBlock = () -> Void
     internal let realm = try! Realm()
@@ -18,9 +18,10 @@ class RealmManager {
     static let shared = RealmManager()
     
     static func configMainRealm() {
+        
         let config = Realm.Configuration(
             schemaVersion: 3,
-            migrationBlock: { migration, oldSchemaVersion in
+            migrationBlock: { (igration, oldSchemaVersion) in
                 if (oldSchemaVersion < 3) { }
         })
         
@@ -72,9 +73,9 @@ class RealmManager {
         let tasks = realm
             .objects(Task.self)
             .filter("\(queryFormatted) AND \(queryStatues) \(queryWithTag)")
-//            .sorted(by: sortPropertys)
+            //            .sorted(by: sortPropertys)
             .sorted(byProperty: "createdDate", ascending: false)
-//            .sorted(byProperty: "priority", ascending: false)
+        //            .sorted(byProperty: "priority", ascending: false)
         
         return tasks
     }
@@ -85,7 +86,7 @@ class RealmManager {
         
         let created = task.count
         let complete = task.filter("status == \(kTaskFinish)").count
-//        Logger.log("created = \(created), complete = \(complete)")
+        //        Logger.log("created = \(created), complete = \(complete)")
         return (complete, created)
     }
     
@@ -117,7 +118,7 @@ class RealmManager {
             return subtasks
         }
     }
-
+    
     /**
      删除子任务， 删除通知， 删除重复
      **/

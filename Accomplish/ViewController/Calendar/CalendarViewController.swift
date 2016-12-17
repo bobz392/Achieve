@@ -59,11 +59,18 @@ class CalendarViewController: BaseViewController {
         if self.inTodayAlleady == false {
             let now = Date()
             self.calendarView.selectDates([now])
-            self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, preferredScrollPosition: nil) {
-                UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
-                    self.calendarView.alpha = 1
-                    self.showInfoWhenNeed(Date())
+            
+            if self.checkInManager.getMonthCheckIn().count > 1 {
+                self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, completionHandler: {
+                    Logger.log("calendarView scroll to date = \(now)")
+                    UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
+                        self.calendarView.alpha = 1
+                        self.showInfoWhenNeed(Date())
                     })
+                })
+            } else {
+                self.calendarView.alpha = 1
+                self.showInfoWhenNeed(Date())
             }
             self.inTodayAlleady = true
         }
@@ -205,7 +212,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         return params
     }
     
-
+    
     func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         
@@ -242,7 +249,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let newTitle = Localized("calendar")
             + "-" + nsStartDate.formattedDate(withFormat: MonthFormat)
         self.titleButton.setTitle(newTitle, for: .normal)
-
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {

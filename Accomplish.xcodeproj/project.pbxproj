@@ -118,7 +118,6 @@
 		C75F85AF1E053FD20057D76C /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C75F857B1E053F6D0057D76C /* RealmSwift.framework.dSYM */; };
 		C75F85B01E053FD20057D76C /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C75F857D1E053F6D0057D76C /* SnapKit.framework.dSYM */; };
 		C75F85B11E053FD20057D76C /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C75F857F1E053F6D0057D76C /* SVProgressHUD.framework.dSYM */; };
-		C75F85B21E053FD20057D76C /* SwiftDate.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C75F85811E053F6D0057D76C /* SwiftDate.framework.dSYM */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
@@ -425,7 +424,6 @@
 				C75F85AF1E053FD20057D76C /* RealmSwift.framework.dSYM in Copy Carthage dSYMs */,
 				C75F85B01E053FD20057D76C /* SnapKit.framework.dSYM in Copy Carthage dSYMs */,
 				C75F85B11E053FD20057D76C /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */,
-				C75F85B21E053FD20057D76C /* SwiftDate.framework.dSYM in Copy Carthage dSYMs */,
 			);
 			name = "Copy Carthage dSYMs";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,8 +541,6 @@
 		C75F857D1E053F6D0057D76C /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SnapKit.framework.dSYM; sourceTree = "<group>"; };
 		C75F857E1E053F6D0057D76C /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		C75F857F1E053F6D0057D76C /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
-		C75F85801E053F6D0057D76C /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = "<group>"; };
-		C75F85811E053F6D0057D76C /* SwiftDate.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftDate.framework.dSYM; sourceTree = "<group>"; };
 		C7670A5F1DFA16C600E5E21B /* AchieveShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AchieveShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -1043,8 +1039,6 @@
 				C75F857D1E053F6D0057D76C /* SnapKit.framework.dSYM */,
 				C75F857E1E053F6D0057D76C /* SVProgressHUD.framework */,
 				C75F857F1E053F6D0057D76C /* SVProgressHUD.framework.dSYM */,
-				C75F85801E053F6D0057D76C /* SwiftDate.framework */,
-				C75F85811E053F6D0057D76C /* SwiftDate.framework.dSYM */,
 			);
 			name = iOS;
 			path = Carthage/Build/iOS;
@@ -1837,7 +1831,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Fuzi.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JTAppleCalendar.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftDate.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (

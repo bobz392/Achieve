@@ -56,13 +56,14 @@ class CalendarViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
         if self.inTodayAlleady == false {
             let now = Date()
+            let startMonth = self.checkInManager.getMonthCheckIn().first?.checkInDate?.month()
             self.calendarView.selectDates([now])
             
-            if self.checkInManager.getMonthCheckIn().count > 1 {
+            if startMonth != NSDate().month() {
                 self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, completionHandler: {
-                    Logger.log("calendarView scroll to date = \(now)")
                     UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
                         self.calendarView.alpha = 1
                         self.showInfoWhenNeed(Date())
@@ -72,6 +73,7 @@ class CalendarViewController: BaseViewController {
                 self.calendarView.alpha = 1
                 self.showInfoWhenNeed(Date())
             }
+            
             self.inTodayAlleady = true
         }
         
@@ -202,12 +204,13 @@ class CalendarViewController: BaseViewController {
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     
     public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        let secondDate = self.firstDate.addingMonths(12) as NSDate
+        let endDate = self.firstDate.addingMonths(10)!
+        let startDate = self.firstDate.subtractingMonths(2)!
         let aCalendar = Calendar.current
         
-        let startDay = AppUserDefault().readInt(kUserDefaultWeekStartKey)
-        let firstDay = DaysOfWeek(rawValue: startDay) ?? DaysOfWeek.sunday
-        let params = ConfigurationParameters(startDate: self.firstDate as Date, endDate: secondDate as Date, numberOfRows: row, calendar: aCalendar, firstDayOfWeek: firstDay)
+        let firstDayOfWeekValue = AppUserDefault().readInt(kUserDefaultWeekStartKey)
+        let firstDayOfWeek = DaysOfWeek(rawValue: firstDayOfWeekValue) ?? DaysOfWeek.sunday
+        let params = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: row, calendar: aCalendar, firstDayOfWeek: firstDayOfWeek)
         
         return params
     }

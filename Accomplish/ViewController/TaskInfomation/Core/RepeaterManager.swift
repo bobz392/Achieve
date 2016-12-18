@@ -13,6 +13,7 @@ struct RepeaterManager {
     // 检查最后一次检查时间，并创建重复task
     func isNewDay() -> Bool {
         // check last check is today or not
+//        Logger.log("all check in = \(RealmManager.shared.allCheckIn())")
         guard let checkIn =
             RealmManager.shared.queryCheckIn(first: false) else {
                 self.createCheckIn()

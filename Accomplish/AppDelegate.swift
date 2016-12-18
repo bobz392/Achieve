@@ -22,7 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let root = HomeViewController()
         let nav = UINavigationController(rootViewController: root)
-        nav.isNavigationBarHidden = true
+        nav.navigationBar.barStyle = .default
+        let colors = Colors()
+        nav.navigationBar.isTranslucent = false
+        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav.navigationBar.shadowImage = colors.mainGreenColor.renderImageOfColor()
+        nav.navigationBar.barTintColor = colors.mainGreenColor
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         

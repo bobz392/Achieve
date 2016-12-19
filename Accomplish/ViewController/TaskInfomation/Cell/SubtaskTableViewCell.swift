@@ -34,7 +34,7 @@ class SubtaskTableViewCell: BaseTableViewCell {
                                           color: colors.mainGreenColor, status: .normal)
         
         self.subtaskTextField.tintColor = colors.mainGreenColor
-        self.subtaskTextField.textColor = colors.mainTextColor
+        self.subtaskTextField.textColor = Colors.mainTextColor
         
         self.separatorInset = UIEdgeInsets(top: 0, left: screenBounds.width, bottom: 0, right: 0)
     }
@@ -58,7 +58,7 @@ class SubtaskTableViewCell: BaseTableViewCell {
         if let subtask = subtask {
             if let _ = subtask.finishedDate {
                 self.subtaskTextField.attributedText = subtask.taskToDo.addStrikethrough()
-                self.iconButton.tintColor = colors.secondaryTextColor
+                self.iconButton.tintColor = Colors.secondaryTextColor
             } else {
                 self.subtaskTextField.text = subtask.taskToDo
                 self.iconButton.tintColor = colors.mainGreenColor
@@ -69,14 +69,14 @@ class SubtaskTableViewCell: BaseTableViewCell {
         } else {
             let attrPlacehold =
                 NSAttributedString(string: Localized("detailAddSubtask"), attributes: [
-                    NSForegroundColorAttributeName: colors.secondaryTextColor,
+                    NSForegroundColorAttributeName: Colors.secondaryTextColor,
                     NSFontAttributeName: UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)
                     ]
             )
             
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
             self.trashButton.isHidden = true
-            self.iconButton.tintColor = colors.secondaryTextColor
+            self.iconButton.tintColor = Colors.secondaryTextColor
             self.separatorInset = UIEdgeInsets(top: 0, left: 55, bottom: 0, right: 0)
         }
         

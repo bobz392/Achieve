@@ -58,18 +58,18 @@
 		C71D58781D74910400E76E91 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D58761D74910400E76E91 /* TaskDetailViewController.xib */; };
 		C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */; };
 		C71D587D1D74A7D200E76E91 /* TaskDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */; };
-		C7202DA31E06A1A200A341B8 /* BLKDelegateSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202D961E06A1A200A341B8 /* BLKDelegateSplitter.m */; };
-		C7202DA41E06A1A200A341B8 /* BLKFlexibleHeightBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202D981E06A1A200A341B8 /* BLKFlexibleHeightBar.m */; };
-		C7202DA51E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202D9A1E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.m */; };
-		C7202DA61E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202D9C1E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m */; };
-		C7202DA71E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202D9E1E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.m */; };
-		C7202DA81E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202DA01E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.m */; };
-		C7202DA91E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202DA21E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.m */; };
+		C71F215D1E08060E00A04351 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215C1E08060E00A04351 /* AppConstants.swift */; };
+		C71F215F1E080E2700A04351 /* TaskTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */; };
+		C71F21611E080E2E00A04351 /* TaskTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71F21601E080E2E00A04351 /* TaskTableHeaderView.xib */; };
+		C7202DB11E079CE100A341B8 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7202DB01E079CE100A341B8 /* Icons.swift */; };
+		C7202DBC1E07A23800A341B8 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202DB41E07A23800A341B8 /* MMDrawerBarButtonItem.m */; };
+		C7202DBD1E07A23800A341B8 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202DB71E07A23800A341B8 /* MMDrawerController.m */; };
+		C7202DBE1E07A23800A341B8 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202DB91E07A23800A341B8 /* MMDrawerVisualState.m */; };
+		C7202DBF1E07A23800A341B8 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7202DBB1E07A23800A341B8 /* UIViewController+MMDrawerController.m */; };
 		C72AB4F41DFB3FBF00EA0A24 /* ShareColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72AB4F31DFB3FBF00EA0A24 /* ShareColors.swift */; };
 		C72EC3BE1DFC5B1900EA6E97 /* FinishView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72EC3BD1DFC5B1900EA6E97 /* FinishView.xib */; };
 		C72EC3C01DFC5B2700EA6E97 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72EC3BF1DFC5B2700EA6E97 /* FinishView.swift */; };
 		C72EC3C11DFC668200EA6E97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7860E471D6C23FF000281FA /* Assets.xcassets */; };
-		C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBDE1DA04A7200099C87 /* HomeTableView.swift */; };
 		C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738CBE01DA13BB500099C87 /* ReportGenerator.swift */; };
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
@@ -483,24 +483,22 @@
 		C71D58761D74910400E76E91 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C71D587A1D74A7D200E76E91 /* TaskDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDateTableViewCell.swift; sourceTree = "<group>"; };
 		C71D587B1D74A7D200E76E91 /* TaskDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDateTableViewCell.xib; sourceTree = "<group>"; };
-		C7202D951E06A1A200A341B8 /* BLKDelegateSplitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKDelegateSplitter.h; sourceTree = "<group>"; };
-		C7202D961E06A1A200A341B8 /* BLKDelegateSplitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLKDelegateSplitter.m; sourceTree = "<group>"; };
-		C7202D971E06A1A200A341B8 /* BLKFlexibleHeightBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKFlexibleHeightBar.h; sourceTree = "<group>"; };
-		C7202D981E06A1A200A341B8 /* BLKFlexibleHeightBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLKFlexibleHeightBar.m; sourceTree = "<group>"; };
-		C7202D991E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKFlexibleHeightBarBehaviorDefiner.h; sourceTree = "<group>"; };
-		C7202D9A1E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLKFlexibleHeightBarBehaviorDefiner.m; sourceTree = "<group>"; };
-		C7202D9B1E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLKFlexibleHeightBarSubviewLayoutAttributes.h; sourceTree = "<group>"; };
-		C7202D9C1E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLKFlexibleHeightBarSubviewLayoutAttributes.m; sourceTree = "<group>"; };
-		C7202D9D1E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookStyleBarBehaviorDefiner.h; sourceTree = "<group>"; };
-		C7202D9E1E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookStyleBarBehaviorDefiner.m; sourceTree = "<group>"; };
-		C7202D9F1E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareCashStyleBehaviorDefiner.h; sourceTree = "<group>"; };
-		C7202DA01E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareCashStyleBehaviorDefiner.m; sourceTree = "<group>"; };
-		C7202DA11E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BLKFlexibleHeightBarSubview.h"; sourceTree = "<group>"; };
-		C7202DA21E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BLKFlexibleHeightBarSubview.m"; sourceTree = "<group>"; };
+		C71F215C1E08060E00A04351 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableHeaderView.swift; sourceTree = "<group>"; };
+		C71F21601E080E2E00A04351 /* TaskTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskTableHeaderView.xib; sourceTree = "<group>"; };
+		C7202DB01E079CE100A341B8 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		C7202DB31E07A23800A341B8 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		C7202DB41E07A23800A341B8 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		C7202DB51E07A23800A341B8 /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		C7202DB61E07A23800A341B8 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		C7202DB71E07A23800A341B8 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		C7202DB81E07A23800A341B8 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		C7202DB91E07A23800A341B8 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		C7202DBA1E07A23800A341B8 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		C7202DBB1E07A23800A341B8 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		C72AB4F31DFB3FBF00EA0A24 /* ShareColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareColors.swift; sourceTree = "<group>"; };
 		C72EC3BD1DFC5B1900EA6E97 /* FinishView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishView.xib; sourceTree = "<group>"; };
 		C72EC3BF1DFC5B2700EA6E97 /* FinishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
-		C738CBDE1DA04A7200099C87 /* HomeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableView.swift; sourceTree = "<group>"; };
 		C738CBE01DA13BB500099C87 /* ReportGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
@@ -847,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				C7105F8D1D6CCDB00096A1A3 /* Colors.swift */,
+				C71F215C1E08060E00A04351 /* AppConstants.swift */,
 				C77192971D6D18BF00437560 /* CommonCode.swift */,
 				C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */,
 				C77192991D6DB27A00437560 /* KeyboardManager.swift */,
@@ -868,6 +867,7 @@
 				C7B579321DAD79A3003B6D92 /* TestManager.swift */,
 				C77DE35F1DE6125300F098F4 /* SoundManager.swift */,
 				C78C4EB51DFCE563000C289D /* ReadLaterManager.swift */,
+				C7202DB01E079CE100A341B8 /* Icons.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -896,7 +896,7 @@
 		C7105F981D6CDBFD0096A1A3 /* Vander */ = {
 			isa = PBXGroup;
 			children = (
-				C7202D941E06A1A200A341B8 /* BLKFlexibleHeightBar */,
+				C7202DB21E07A23800A341B8 /* MMDrawerController */,
 				C79963021DE87A9E00B4617E /* TwicketSegmentedControl */,
 				C74751A81DC760B000831DB1 /* FontAwesome */,
 				C7821EB21D7BF1820056623D /* MMWormhole */,
@@ -961,25 +961,29 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C7202D941E06A1A200A341B8 /* BLKFlexibleHeightBar */ = {
+		C7202DAD1E07870A00A341B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C7202D951E06A1A200A341B8 /* BLKDelegateSplitter.h */,
-				C7202D961E06A1A200A341B8 /* BLKDelegateSplitter.m */,
-				C7202D971E06A1A200A341B8 /* BLKFlexibleHeightBar.h */,
-				C7202D981E06A1A200A341B8 /* BLKFlexibleHeightBar.m */,
-				C7202D991E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.h */,
-				C7202D9A1E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.m */,
-				C7202D9B1E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.h */,
-				C7202D9C1E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m */,
-				C7202D9D1E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.h */,
-				C7202D9E1E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.m */,
-				C7202D9F1E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.h */,
-				C7202DA01E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.m */,
-				C7202DA11E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.h */,
-				C7202DA21E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.m */,
+				C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */,
+				C71F21601E080E2E00A04351 /* TaskTableHeaderView.xib */,
 			);
-			path = BLKFlexibleHeightBar;
+			path = View;
+			sourceTree = "<group>";
+		};
+		C7202DB21E07A23800A341B8 /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				C7202DB31E07A23800A341B8 /* MMDrawerBarButtonItem.h */,
+				C7202DB41E07A23800A341B8 /* MMDrawerBarButtonItem.m */,
+				C7202DB51E07A23800A341B8 /* MMDrawerController+Subclass.h */,
+				C7202DB61E07A23800A341B8 /* MMDrawerController.h */,
+				C7202DB71E07A23800A341B8 /* MMDrawerController.m */,
+				C7202DB81E07A23800A341B8 /* MMDrawerVisualState.h */,
+				C7202DB91E07A23800A341B8 /* MMDrawerVisualState.m */,
+				C7202DBA1E07A23800A341B8 /* UIViewController+MMDrawerController.h */,
+				C7202DBB1E07A23800A341B8 /* UIViewController+MMDrawerController.m */,
+			);
+			path = MMDrawerController;
 			sourceTree = "<group>";
 		};
 		C74751A81DC760B000831DB1 /* FontAwesome */ = {
@@ -1106,13 +1110,13 @@
 		C77192431D6CEE4E00437560 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C7202DAD1E07870A00A341B8 /* View */,
 				C70BF6241D79C57D006B0C1D /* Core */,
 				C77194C21D70988800437560 /* Cell */,
 				C77192441D6CEE4E00437560 /* HomeViewController.swift */,
 				C77192451D6CEE4E00437560 /* HomeViewController.xib */,
 				C74A89381D93F972008E15CA /* SearchViewController.swift */,
 				C74A89391D93F972008E15CA /* SearchViewController.xib */,
-				C738CBDE1DA04A7200099C87 /* HomeTableView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1729,6 +1733,7 @@
 				C79806F31D8158610011DE19 /* EmptyView.xib in Resources */,
 				C70528401D8BEEE50036FCC1 /* HintCollectionViewCell.xib in Resources */,
 				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
+				C71F21611E080E2E00A04351 /* TaskTableHeaderView.xib in Resources */,
 				C75F85931E053F6D0057D76C /* C0814A98-BD12-32EA-9D23-2E24D7CD691B.bcsymbolmap in Resources */,
 				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
 				C7105B851DE8BB1600374F78 /* TimeMethodInputView.xib in Resources */,
@@ -2061,10 +2066,10 @@
 				C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */,
 				C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */,
 				C77193F61D6DE9C000437560 /* Constants.swift in Sources */,
-				C738CBDF1DA04A7200099C87 /* HomeTableView.swift in Sources */,
 				C7105F8E1D6CCDB00096A1A3 /* Colors.swift in Sources */,
 				C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */,
 				C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */,
+				C71F215F1E080E2700A04351 /* TaskTableHeaderView.swift in Sources */,
 				C79806F51D81586F0011DE19 /* EmptyView.swift in Sources */,
 				C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
@@ -2075,7 +2080,6 @@
 				C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */,
 				C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */,
 				C7105FC61D6CDBFD0096A1A3 /* DTTimePeriodGroup.m in Sources */,
-				C7202DA61E06A1A200A341B8 /* BLKFlexibleHeightBarSubviewLayoutAttributes.m in Sources */,
 				C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */,
 				C70528371D8B07320036FCC1 /* TagViewController.swift in Sources */,
 				C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */,
@@ -2083,6 +2087,7 @@
 				C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */,
 				C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */,
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
+				C7202DBC1E07A23800A341B8 /* MMDrawerBarButtonItem.m in Sources */,
 				C74751B91DC840C700831DB1 /* TimeManagementView.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
@@ -2091,15 +2096,18 @@
 				C74A896E1D9636F4008E15CA /* Logger.swift in Sources */,
 				C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */,
 				C7821EC21D7BF1820056623D /* MMWormhole.m in Sources */,
+				C7202DBD1E07A23800A341B8 /* MMDrawerController.m in Sources */,
 				C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */,
+				C7202DBE1E07A23800A341B8 /* MMDrawerVisualState.m in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
 				C74751B01DC760B000831DB1 /* FAKIcon.m in Sources */,
+				C71F215D1E08060E00A04351 /* AppConstants.swift in Sources */,
 				C77DE35E1DE4419E00F098F4 /* MZTimerLabel.m in Sources */,
-				C7202DA81E06A1A200A341B8 /* SquareCashStyleBehaviorDefiner.m in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
 				C70BF61B1D7921CD006B0C1D /* LocalNotificationManager.swift in Sources */,
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C70BF6271D79CADB006B0C1D /* SecondTimer.swift in Sources */,
+				C7202DB11E079CE100A341B8 /* Icons.swift in Sources */,
 				C7E2D9581D8F05080080D283 /* WatchConstants.swift in Sources */,
 				C74751C41DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
@@ -2127,6 +2135,7 @@
 				C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */,
 				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
+				C7202DBF1E07A23800A341B8 /* UIViewController+MMDrawerController.m in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
 				C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */,
 				C70BF6201D7951CA006B0C1D /* SectionTableViewCell.swift in Sources */,
@@ -2135,12 +2144,10 @@
 				C77194D11D710A8900437560 /* TaskStringManager.swift in Sources */,
 				C74751B61DC81F8500831DB1 /* TimeMethod.swift in Sources */,
 				C705283F1D8BEEE50036FCC1 /* HintCollectionViewCell.swift in Sources */,
-				C7202DA91E06A1A200A341B8 /* UIView+BLKFlexibleHeightBarSubview.m in Sources */,
 				C71D587C1D74A7D200E76E91 /* TaskDateTableViewCell.swift in Sources */,
 				C79805781D7D427A0011DE19 /* AnimationTools.swift in Sources */,
 				C77194941D6FD5E600437560 /* Trigger.swift in Sources */,
 				C74751BE1DC97FE100831DB1 /* TimeMethodTableViewCell.swift in Sources */,
-				C7202DA71E06A1A200A341B8 /* FacebookStyleBarBehaviorDefiner.m in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
 				C79806F71D8180CD0011DE19 /* ScheduleHeaderView.swift in Sources */,
 				C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */,
@@ -2179,14 +2186,11 @@
 				C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */,
 				C78C4EB41DFCD810000C289D /* RealmManager+CheckIn.swift in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
-				C7202DA31E06A1A200A341B8 /* BLKDelegateSplitter.m in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,
 				C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */,
 				C70BF6191D78C7DC006B0C1D /* RepeaterTimeType.swift in Sources */,
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
-				C7202DA41E06A1A200A341B8 /* BLKFlexibleHeightBar.m in Sources */,
 				C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */,
-				C7202DA51E06A1A200A341B8 /* BLKFlexibleHeightBarBehaviorDefiner.m in Sources */,
 				C7C5C5B91D752136001168A4 /* SubtaskTableViewCell.swift in Sources */,
 				C78C4E0C1DFC78E8000C289D /* ReadLaterViewController.swift in Sources */,
 				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,

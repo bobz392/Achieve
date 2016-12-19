@@ -13,27 +13,27 @@ typealias TaskSettingBlock = (String) -> Void
 
 class HomeViewController: BaseViewController {
     // MARK: - props
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
-    @IBOutlet weak var settingButton: UIButton!
+//    @IBOutlet weak var cardView: UIView!
+//    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
+//    @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var newTaskButton: UIButton!
-    @IBOutlet weak var calendarButton: UIButton!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var tagButton: UIButton!
-    @IBOutlet weak var fullScreenButton: UIButton!
-    @IBOutlet weak var taskTableView: HomeTableView!
-    @IBOutlet weak var currentDateLabel: UILabel!
-    @IBOutlet weak var emptyHintLabel: UILabel!
-    @IBOutlet weak var emptyCoffeeLabel: UILabel!
-    
-    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
-    
+//    @IBOutlet weak var calendarButton: UIButton!
+//    @IBOutlet weak var searchButton: UIButton!
+//    @IBOutlet weak var tagButton: UIButton!
+//    @IBOutlet weak var fullScreenButton: UIButton!
+    @IBOutlet weak var taskTableView: UITableView!
+//    @IBOutlet weak var currentDateLabel: UILabel!
+//    @IBOutlet weak var emptyHintLabel: UILabel!
+//    @IBOutlet weak var emptyCoffeeLabel: UILabel!
+//    
+//    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var cardViewBottomConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var addTaskHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var addTaskBottomConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var addTaskWidthConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
+//    
     fileprivate var finishTasks: Results<Task>?
     fileprivate var runningTasks: Results<Task>?
     
@@ -65,7 +65,7 @@ class HomeViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
-        self.configMainButton()
+//        self.configMainButton()
         
         self.queryTodayTask()
         self.addNotification()
@@ -83,7 +83,6 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.taskTableView.homeRefreshControl.endRefreshing()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,123 +112,134 @@ class HomeViewController: BaseViewController {
     
     // MARK: - ui config
     override func configMainUI() {
-        let colors = Colors()
+        let bar = self.createCustomBar()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        self.taskTableView.clearView()
         
-        self.navigationController?.view.backgroundColor = colors.mainGreenColor
-        self.view.backgroundColor = colors.mainGreenColor
-        self.currentDateLabel.textColor = colors.cloudColor
-        self.taskTableView.backgroundColor = colors.cloudColor
-        self.taskTableView.separatorColor = colors.separatorColor
-        self.cardView.backgroundColor = colors.cloudColor
+        let barButton = UIButton(type: .custom)
+        barButton.buttonWithIcon(icon: Icons.barMenu.iconString())
+        bar.addSubview(barButton)
+        barButton.snp.makeConstraints { (make) in
+            make.width.equalTo(barIconSize)
+            make.height.equalTo(barIconSize)
+            make.bottom.equalTo(bar).offset(-6)
+            make.left.equalToSuperview().offset(16)
+        }
         
-        self.statusSlideSegment.sliderBackgroundColor = colors.mainGreenColor
-        self.statusSlideSegment.segmentsBackgroundColor = UIColor.white
-        self.statusSlideSegment.clearView()
+//        self.currentDateLabel.textColor = colors.cloudColor
+        //.backgroundColor = colors.cloudColor
+//        self.taskTableView.separatorColor = colors.separatorColor
+//        self.cardView.backgroundColor = colors.cloudColor
+//        
+//        self.statusSlideSegment.sliderBackgroundColor = colors.mainGreenColor
+//        self.statusSlideSegment.segmentsBackgroundColor = UIColor.white
+//        self.statusSlideSegment.clearView()
+//        
+//        self.emptyHintLabel.textColor = colors.secondaryTextColor
+//        self.settingButton.buttonColor(colors)
+        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString())
+    
+//        self.calendarButton.buttonColor(colors)
+//        self.fullScreenButton.buttonColor(colors)
+//        self.tagButton.buttonColor(colors)
+//        self.searchButton.backgroundColor = colors.mainGreenColor
         
-        self.emptyHintLabel.textColor = colors.secondaryTextColor
-        self.settingButton.buttonColor(colors)
-        self.newTaskButton.buttonColor(colors)
-        self.calendarButton.buttonColor(colors)
-        self.fullScreenButton.buttonColor(colors)
-        self.tagButton.buttonColor(colors)
-        self.searchButton.backgroundColor = colors.mainGreenColor
-        
-        let coffeeIcon = FAKFontAwesome.coffeeIcon(withSize: 60)
-        coffeeIcon?.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.emptyCoffeeLabel.attributedText = coffeeIcon?.attributedString()
-        
-        let iconSize: CGFloat = 20
-        //fa-cog
-        self.settingButton.createIconButton(iconSize: iconSize, icon: "fa-cog",
-                                            color: colors.mainGreenColor, status: .normal)
-        //fa-plus
-        self.newTaskButton.createIconButton(iconSize: 50, imageSize: 70, icon: "fa-plus",
-                                            color: colors.mainGreenColor, status: .normal)
-        //fa-calendar
-        self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",
-                                             color: colors.mainGreenColor, status: .normal)
-        //fa-tag
-        self.tagButton.createIconButton(iconSize: iconSize, icon: "fa-tag",
-                                        color: colors.mainGreenColor, status: .normal)
-        //fa-search
-        self.searchButton.createIconButton(iconSize: 24, icon: "fa-search",
-                                           color: colors.cloudColor, status: .normal)
-        self.searchButton.tintColor = colors.mainGreenColor
-        
-        self.configFullSizeButton(colors)
+//        let coffeeIcon = FAKFontAwesome.coffeeIcon(withSize: 60)
+//        coffeeIcon?.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
+//        self.emptyCoffeeLabel.attributedText = coffeeIcon?.attributedString()
+//        
+//        let iconSize: CGFloat = 20
+//        //fa-cog
+//        self.settingButton.createIconButton(iconSize: iconSize, icon: "fa-cog",
+//                                            color: colors.mainGreenColor, status: .normal)
+//        //fa-plus
+//
+//        //fa-calendar
+//        self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",
+//                                             color: colors.mainGreenColor, status: .normal)
+//        //fa-tag
+//        self.tagButton.createIconButton(iconSize: iconSize, icon: "fa-tag",
+//                                        color: colors.mainGreenColor, status: .normal)
+//        //fa-search
+//        self.searchButton.createIconButton(iconSize: 24, icon: "fa-search",
+//                                           color: colors.cloudColor, status: .normal)
+//        self.searchButton.tintColor = colors.mainGreenColor
+//        
+//        self.configFullSizeButton(colors)
         
         self.taskTableView.reloadData()
-        self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
-        self.taskTableView.homeRefreshControl.attributedTitle =
-            NSAttributedString(string: Localized("search"),
-                               attributes: [NSForegroundColorAttributeName : colors.mainGreenColor])
+//        self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
+//        self.taskTableView.homeRefreshControl.attributedTitle =
+//            NSAttributedString(string: Localized("search"),
+//                               attributes: [NSForegroundColorAttributeName : colors.mainGreenColor])
     }
     
     /**
      配置 全屏和非全屏切换的按钮
      */
-    fileprivate func configFullSizeButton(_ colors: Colors) {
-        let iconSize: CGFloat = 20
-        //fa-compress
-        if self.isFullScreenSize {
-            self.fullScreenButton.createIconButton(iconSize: iconSize, icon: "fa-compress",
-                                                   color: colors.mainGreenColor, status: .normal)
-        } else {
-            //fa-expand
-            self.fullScreenButton.createIconButton(iconSize: iconSize, icon: "fa-expand",
-                                                   color: colors.mainGreenColor, status: .normal)
-        }
-    }
+//    fileprivate func configFullSizeButton(_ colors: Colors) {
+//        let iconSize: CGFloat = 20
+//        //fa-compress
+//        if self.isFullScreenSize {
+//            self.fullScreenButton.createIconButton(iconSize: iconSize, icon: "fa-compress",
+//                                                   color: colors.mainGreenColor, status: .normal)
+//        } else {
+//            //fa-expand
+//            self.fullScreenButton.createIconButton(iconSize: iconSize, icon: "fa-expand",
+//                                                   color: colors.mainGreenColor, status: .normal)
+//        }
+//    }
     
     fileprivate func initializeControl() {
         self.taskTableView.tableFooterView = UIView()
         
-        self.cardView.addShadow()
+//        self.cardView.addShadow()
         self.newTaskButton.addShadow()
-        self.settingButton.addShadow()
-        self.fullScreenButton.addShadow()
-        self.calendarButton.addShadow()
-        self.tagButton.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        let segTitles = [Localized("progess"), Localized("finished")]
-        self.statusSlideSegment.setSegmentItems(segTitles)
-        self.statusSlideSegment.delegate = self
+        self.newTaskButton.layer.cornerRadius = 35
+//        self.settingButton.addShadow()
+//        self.fullScreenButton.addShadow()
+//        self.calendarButton.addShadow()
+//        self.tagButton.addShadow()
+//        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+//        
+//        let segTitles = [Localized("progess"), Localized("finished")]
+//        self.statusSlideSegment.setSegmentItems(segTitles)
+//        self.statusSlideSegment.delegate = self
         
         self.taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
-        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
-        self.emptyHintLabel.text = Localized("emptyTask")
-        
+//        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
+//        self.emptyHintLabel.text = Localized("emptyTask")
+//        
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction),
                                      for: .touchUpInside)
+//
+//        self.calendarButton.addTarget(self, action: #selector(self.calendarAction),
+//                                      for: .touchUpInside)
+//        
+//        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction),
+//                                        for: .touchUpInside)
+//        
+//        self.settingButton.addTarget(self, action: #selector(self.settingAction),
+//                                     for: .touchUpInside)
+//        
+//        self.tagButton.addTarget(self, action: #selector(self.tagAction), for: .touchUpInside)
+//        
+//        self.searchButton.addTarget(self, action: #selector(self.searchAction),
+//                                    for: .touchUpInside)
         
-        self.calendarButton.addTarget(self, action: #selector(self.calendarAction),
-                                      for: .touchUpInside)
-        
-        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction),
-                                        for: .touchUpInside)
-        
-        self.settingButton.addTarget(self, action: #selector(self.settingAction),
-                                     for: .touchUpInside)
-        
-        self.tagButton.addTarget(self, action: #selector(self.tagAction), for: .touchUpInside)
-        
-        self.searchButton.addTarget(self, action: #selector(self.searchAction),
-                                    for: .touchUpInside)
-        
-        self.taskTableView.getCurrentIndex = { [unowned self] () -> Int in
-            return self.statusSlideSegment.selectedSegmentIndex
-        }
-        
-        self.taskTableView.changeCallBack = { [unowned self] (changeIndex) -> Void in
-            self.statusSlideSegment.move(to: changeIndex)
-            self.taskTableView.reloadData()
-        }
-        
-        self.taskTableView.searchCallBack = { [unowned self] () -> Void in
-            self.searchAction()
-        }
+//        self.taskTableView.getCurrentIndex = { [unowned self] () -> Int in
+//            return self.statusSlideSegment.selectedSegmentIndex
+//        }
+//        
+//        self.taskTableView.changeCallBack = { [unowned self] (changeIndex) -> Void in
+//            self.statusSlideSegment.move(to: changeIndex)
+//            self.taskTableView.reloadData()
+//        }
+//        
+//        self.taskTableView.searchCallBack = { [unowned self] () -> Void in
+//            self.searchAction()
+//        }
     }
     
     /**
@@ -286,7 +296,7 @@ class HomeViewController: BaseViewController {
         if self.repeaterManager.isNewDay() {
             self.handleNewDay()
             self.selectedIndex = nil
-            self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
+//            self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
             
             self.checkNeedMoveUnfinishTaskToday()
         }
@@ -328,31 +338,33 @@ class HomeViewController: BaseViewController {
     }
     
     // 当 task list 为空的时候展示对应的 hint
-    fileprivate func showEmptyHint(_ show: Bool) {
-        self.emptyHintLabel.isHidden = !show
-        self.emptyCoffeeLabel.isHidden = !show
-        
-        if self.inRunningTasksTable() {
-            self.emptyHintLabel.text = Localized("emptyTask")
-        } else {
-            self.emptyHintLabel.text = Localized("emptyFinishTask")
-        }
-    }
-    
-    fileprivate func configMainButton() {
-        self.settingButton.layer.cornerRadius = 16
-        self.fullScreenButton.layer.cornerRadius = 16
-        self.calendarButton.layer.cornerRadius = 16
-        self.tagButton.layer.cornerRadius = 16
-        
-        self.doSwitchScreen(false)
-    }
+//    fileprivate func showEmptyHint(_ show: Bool) {
+//        self.emptyHintLabel.isHidden = !show
+//        self.emptyCoffeeLabel.isHidden = !show
+//        
+//        if self.inRunningTasksTable() {
+//            self.emptyHintLabel.text = Localized("emptyTask")
+//        } else {
+//            self.emptyHintLabel.text = Localized("emptyFinishTask")
+//        }
+//    }
+//    
+//    fileprivate func configMainButton() {
+//        self.settingButton.layer.cornerRadius = 16
+//        self.fullScreenButton.layer.cornerRadius = 16
+//        self.calendarButton.layer.cornerRadius = 16
+//        self.tagButton.layer.cornerRadius = 16
+//        
+//        self.doSwitchScreen(false)
+//    }
     
     fileprivate func realmNoticationToken() {
         self.finishToken = finishTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
-            if self.statusSlideSegment.selectedSegmentIndex == kRunningSegmentIndex {
-                return
-            }
+            
+            return
+//            if self.statusSlideSegment.selectedSegmentIndex == kRunningSegmentIndex {
+//                return
+//            }
             switch changes {
             case .initial(_):
                 self.taskTableView.reloadData()
@@ -368,9 +380,9 @@ class HomeViewController: BaseViewController {
         })
         
         self.runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
-            if self.statusSlideSegment.selectedSegmentIndex == kFinishSegmentIndex {
-                return
-            }
+//            if self.statusSlideSegment.selectedSegmentIndex == kFinishSegmentIndex {
+//                return
+//            }
             switch changes {
             case .initial(_):
                 self.taskTableView.reloadData()
@@ -522,7 +534,7 @@ class HomeViewController: BaseViewController {
     }
     
     func switchScreenAction() {
-        self.doSwitchScreen(true)
+//        self.doSwitchScreen(true)
         //        CloudKitManager().fetchTestData()
         //        TestManager().addTestCheckIn()
         
@@ -555,59 +567,59 @@ class HomeViewController: BaseViewController {
         #endif
     }
     
-    fileprivate func doSwitchScreen(_ animation: Bool) {
-        if !self.isFullScreenSize {
-            self.cardViewLeftConstraint.constant = 10
-            self.cardViewRightConstraint.constant = 10
-            self.cardViewBottomConstraint.constant = 10
-            self.cardViewTopConstraint.constant = 60
-            self.addTaskWidthConstraint.constant = 70
-            self.addTaskHeightConstraint.constant = 70
-            self.addTaskBottomConstraint.constant = 10
-            if (animation) {
-                self.newTaskButton.addCornerRadiusAnimation(20, to: 35, duration: kNormalAnimationDuration)
-                
-                UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
-                    self.view.layoutIfNeeded()
-                    self.currentDateLabel.alpha = 1
-                    self.searchButton.alpha = 1
-                })
-            } else {
-                self.newTaskButton.layer.cornerRadius = 35
-                self.currentDateLabel.alpha = 1
-                self.searchButton.alpha = 1
-            }
-        } else {
-            self.cardViewLeftConstraint.constant = 5
-            self.cardViewRightConstraint.constant = 5
-            self.cardViewBottomConstraint.constant = 5
-            self.cardViewTopConstraint.constant = 20
-            self.addTaskWidthConstraint.constant = 40
-            self.addTaskHeightConstraint.constant = 40
-            self.addTaskBottomConstraint.constant = 5
-            
-            if (animation) {
-                self.newTaskButton.addCornerRadiusAnimation(35, to: 20, duration: kNormalAnimationDuration)
-                UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
-                    self.view.layoutIfNeeded()
-                    self.currentDateLabel.alpha = 0
-                    self.searchButton.alpha = 0
-                })
-            } else {
-                self.newTaskButton.layer.cornerRadius = 20
-                self.currentDateLabel.alpha = 0
-                self.searchButton.alpha = 0
-            }
-        }
-        
-        self.configFullSizeButton(Colors())
-        AppUserDefault().write(kUserDefaultFullScreenKey, value: isFullScreenSize)
-        self.isFullScreenSize = !self.isFullScreenSize
-    }
+//    fileprivate func doSwitchScreen(_ animation: Bool) {
+//        if !self.isFullScreenSize {
+//            self.cardViewLeftConstraint.constant = 10
+//            self.cardViewRightConstraint.constant = 10
+//            self.cardViewBottomConstraint.constant = 10
+//            self.cardViewTopConstraint.constant = 60
+//            self.addTaskWidthConstraint.constant = 70
+//            self.addTaskHeightConstraint.constant = 70
+//            self.addTaskBottomConstraint.constant = 10
+//            if (animation) {
+//                self.newTaskButton.addCornerRadiusAnimation(20, to: 35, duration: kNormalAnimationDuration)
+//                
+//                UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
+//                    self.view.layoutIfNeeded()
+//                    self.currentDateLabel.alpha = 1
+//                    self.searchButton.alpha = 1
+//                })
+//            } else {
+//                self.newTaskButton.layer.cornerRadius = 35
+//                self.currentDateLabel.alpha = 1
+//                self.searchButton.alpha = 1
+//            }
+//        } else {
+//            self.cardViewLeftConstraint.constant = 5
+//            self.cardViewRightConstraint.constant = 5
+//            self.cardViewBottomConstraint.constant = 5
+//            self.cardViewTopConstraint.constant = 20
+//            self.addTaskWidthConstraint.constant = 40
+//            self.addTaskHeightConstraint.constant = 40
+//            self.addTaskBottomConstraint.constant = 5
+//            
+//            if (animation) {
+//                self.newTaskButton.addCornerRadiusAnimation(35, to: 20, duration: kNormalAnimationDuration)
+//                UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
+//                    self.view.layoutIfNeeded()
+//                    self.currentDateLabel.alpha = 0
+//                    self.searchButton.alpha = 0
+//                })
+//            } else {
+//                self.newTaskButton.layer.cornerRadius = 20
+//                self.currentDateLabel.alpha = 0
+//                self.searchButton.alpha = 0
+//            }
+//        }
+//        
+//        self.configFullSizeButton(Colors())
+//        AppUserDefault().write(kUserDefaultFullScreenKey, value: isFullScreenSize)
+//        self.isFullScreenSize = !self.isFullScreenSize
+//    }
     
     func newTaskAction() {
         let newTaskVC = NewTaskViewController()
-        self.addChildViewController(newTaskVC)
+        self.navigationController?.addChildViewController(newTaskVC)
         newTaskVC.didMove(toParentViewController: self)
         
         self.newTaskVC = newTaskVC
@@ -641,13 +653,13 @@ extension HomeViewController: TwicketSegmentedControlDelegate {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.inRunningTasksTable() {
-            self.showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
+//        if self.inRunningTasksTable() {
+//            self.showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
             return self.runningTasks?.count ?? 0
-        } else {
-            self.showEmptyHint(self.finishTasks?.count ?? 0 <= 0)
-            return self.finishTasks?.count ?? 0
-        }
+//        } else {
+//            self.showEmptyHint(self.finishTasks?.count ?? 0 <= 0)
+//            return self.finishTasks?.count ?? 0
+//        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -678,7 +690,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             make.leading.equalTo(view).offset(5)
         }
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = Colors().mainTextColor
+        label.textColor = Colors.mainTextColor
         label.text = tag.name
         
         return view
@@ -689,13 +701,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let task: Task?
         let canChange: Bool
-        if self.inRunningTasksTable() {
+//        if self.inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
             canChange = true
-        } else {
-            task = self.finishTasks?[indexPath.row]
-            canChange = false
-        }
+//        } else {
+//            task = self.finishTasks?[indexPath.row]
+//            canChange = false
+//        }
         
         guard let t = task else { return }
         self.enterTask(t, canChange: canChange)
@@ -710,11 +722,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseId, for: indexPath) as! TaskTableViewCell
         
         var task: Task?
-        if self.inRunningTasksTable() {
+//        if self.inRunningTasksTable() {
             task = self.runningTasks?[indexPath.row]
-        } else {
-            task = self.finishTasks?[indexPath.row]
-        }
+//        } else {
+//            task = self.finishTasks?[indexPath.row]
+//        }
         
         if let t = task {
             cell.configCellUse(t)
@@ -726,9 +738,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    fileprivate func inRunningTasksTable() -> Bool {
-        return self.statusSlideSegment.selectedSegmentIndex == 0
-    }
+//    fileprivate func inRunningTasksTable() -> Bool {
+//        return self.statusSlideSegment.selectedSegmentIndex == 0
+//    }
     
     /**
      打开 settings 页面，例如删除 或者 工作法
@@ -801,7 +813,7 @@ extension HomeViewController: UINavigationControllerDelegate {
         default:
             let animation = CircleTransitionAnimator()
             animation.reverse = operation == UINavigationControllerOperation.pop
-            animation.buttonFrame = self.calendarButton.frame
+//            animation.buttonFrame = self.calendarButton.frame
             return animation
         }
     }

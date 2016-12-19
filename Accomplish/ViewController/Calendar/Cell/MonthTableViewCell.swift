@@ -30,10 +30,10 @@ class MonthTableViewCell: UITableViewCell {
         self.contentView.clearView()
         self.monthCardView.backgroundColor = colors.cloudColor
         self.monthCardView.layer.cornerRadius = kCardViewCornerRadius
-        self.taskNameLabel.textColor = colors.mainTextColor
-        self.infoLabel.textColor = colors.secondaryTextColor
-        self.leftDetailLabel.textColor = colors.secondaryTextColor
-        self.rightDetailLabel.textColor = colors.secondaryTextColor
+        self.taskNameLabel.textColor = Colors.mainTextColor
+        self.infoLabel.textColor = Colors.secondaryTextColor
+        self.leftDetailLabel.textColor = Colors.secondaryTextColor
+        self.rightDetailLabel.textColor = Colors.secondaryTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

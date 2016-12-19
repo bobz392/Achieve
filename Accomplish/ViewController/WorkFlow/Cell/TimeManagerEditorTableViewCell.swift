@@ -52,9 +52,9 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.itemsTableView.register(MethodCreateTableViewCell.nib,
                                      forCellReuseIdentifier: MethodCreateTableViewCell.reuseId)
         
-        self.groupNameLabel.textColor = colors.mainTextColor
+        self.groupNameLabel.textColor = Colors.mainTextColor
         
-        self.groupRepeatLabel.textColor = colors.mainTextColor
+        self.groupRepeatLabel.textColor = Colors.mainTextColor
         self.groupRepeatLabel.text = Localized("repeatNumber")
         self.groupRepeatButton.tintColor = colors.mainGreenColor
         self.groupRepeatButton.addTarget(self,

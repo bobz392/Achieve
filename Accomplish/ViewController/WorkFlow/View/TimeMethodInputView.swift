@@ -37,8 +37,8 @@ class TimeMethodInputView: UIView {
         view.cardHolderView.backgroundColor = colors.cloudColor
         view.cardHolderView.layer.cornerRadius = kCardViewCornerRadius
         
-        view.firstInputTitleLabel.textColor = colors.secondaryTextColor
-        view.secondInputTitleLabel.textColor = colors.secondaryTextColor
+        view.firstInputTitleLabel.textColor = Colors.secondaryTextColor
+        view.secondInputTitleLabel.textColor = Colors.secondaryTextColor
         
         view.leftButton.tintColor = colors.mainGreenColor
         view.leftButton.setTitle(Localized("cancel"), for: .normal)

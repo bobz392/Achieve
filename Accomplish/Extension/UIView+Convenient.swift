@@ -33,6 +33,13 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 3, height: 3)
     }
     
+    func addCardShadow() {
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+    }
+    
     func addTopShadow() {
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOpacity = 0.2

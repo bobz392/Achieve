@@ -13,6 +13,9 @@ let kBackgroundNeedRefreshNotification = "theme.need.refresh.notify"
 
 class BaseViewController: UIViewController {
     
+    fileprivate var customNavigationBar: UIView? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,5 +51,23 @@ class BaseViewController: UIViewController {
         } else {
             self.configMainUI()
         }
+    }
+    
+    @discardableResult
+    func createCustomBar(height: CGFloat = 64) -> UIView {
+        let origin = CGPoint.zero
+        let size = CGSize(width: UIScreen.main.bounds.width, height: height)
+        let bar = UIView(frame: CGRect(origin: origin, size: size))
+        bar.backgroundColor = Colors.mainBackgroundColor
+        self.view.addSubview(bar)
+        bar.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(height)
+        }
+        self.customNavigationBar = bar
+        
+        return bar
     }
 }

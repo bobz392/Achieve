@@ -79,7 +79,7 @@ class SearchViewController: BaseViewController {
         
         self.searchHolderView.backgroundColor = colors.placeHolderTextColor
         self.searchTextField.tintColor = colors.mainGreenColor
-        self.searchTextField.textColor = colors.mainTextColor
+        self.searchTextField.textColor = Colors.mainTextColor
         
         self.searchTableView.separatorColor = colors.cloudColor
         

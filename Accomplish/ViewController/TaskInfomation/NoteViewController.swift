@@ -81,10 +81,10 @@ class NoteViewController: BaseViewController {
         self.toolView.backgroundColor = colors.cloudColor
         self.cardView.backgroundColor = colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
-        self.titleLabel.textColor = colors.mainTextColor
+        self.titleLabel.textColor = Colors.mainTextColor
         
         self.contentTextView.tintColor = colors.mainGreenColor
-        self.contentTextView.textColor = colors.mainTextColor
+        self.contentTextView.textColor = Colors.mainTextColor
         self.placeholderLabel.textColor = colors.placeHolderTextColor
         
         self.cancelButton.tintColor = colors.mainGreenColor

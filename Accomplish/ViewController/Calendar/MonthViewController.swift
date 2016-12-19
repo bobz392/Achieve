@@ -58,9 +58,9 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.view.backgroundColor = colors.mainGreenColor
         self.chartCardView.backgroundColor = colors.cloudColor
         
-        self.chartView.chartDescription?.textColor = colors.mainTextColor
-        self.chartView.leftAxis.labelTextColor = colors.mainTextColor
-        self.chartView.xAxis.labelTextColor = colors.mainTextColor
+        self.chartView.chartDescription?.textColor = Colors.mainTextColor
+        self.chartView.leftAxis.labelTextColor = Colors.mainTextColor
+        self.chartView.xAxis.labelTextColor = Colors.mainTextColor
         
         self.monthTableView.clearView()
         

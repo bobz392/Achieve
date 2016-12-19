@@ -22,8 +22,8 @@ class TimeMethodTableViewCell: BaseTableViewCell {
         // Initialization code
         
         let colors = Colors()
-        self.nameLabel.textColor = colors.mainTextColor
-        self.timesLabel.textColor = colors.secondaryTextColor
+        self.nameLabel.textColor = Colors.mainTextColor
+        self.timesLabel.textColor = Colors.secondaryTextColor
     }
     
     func configCell(method: TimeMethod) {

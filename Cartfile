@@ -5,3 +5,4 @@ github "SVProgressHUD/SVProgressHUD"
 github "cezheng/Fuzi" ~> 1.0.0
 github "patchthecode/JTAppleCalendar" ~> 6.0
 github "onevcat/Kingfisher" ~> 3.0
+github "MortimerGoro/MGSwipeTableCell"

@@ -24,8 +24,8 @@ class TagTableViewCell: BaseTableViewCell {
         
         let colors = Colors()
         
-        self.tagLabel.textColor = colors.mainTextColor
-        self.todayCountLabel.textColor = colors.secondaryTextColor
+        self.tagLabel.textColor = Colors.mainTextColor
+        self.todayCountLabel.textColor = Colors.secondaryTextColor
         
         self.currentLabel.text = Localized("currentTag")
         self.currentLabel.isHidden = true

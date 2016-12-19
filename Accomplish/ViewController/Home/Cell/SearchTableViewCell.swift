@@ -25,8 +25,8 @@ class SearchTableViewCell: BaseTableViewCell {
         self.clearView()
         self.contentView.clearView()
         self.taskTitleLabel.textColor = colors.cloudColor
-        self.taskTitleLabel.highlightedTextColor = colors.secondaryTextColor
+        self.taskTitleLabel.highlightedTextColor = Colors.secondaryTextColor
         self.taskStartLabel.textColor = colors.cloudColor
-        self.taskStartLabel.highlightedTextColor = colors.secondaryTextColor
+        self.taskStartLabel.highlightedTextColor = Colors.secondaryTextColor
     }
 }

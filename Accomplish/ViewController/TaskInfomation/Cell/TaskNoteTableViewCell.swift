@@ -29,8 +29,8 @@ class TaskNoteTableViewCell: BaseTableViewCell {
                                          icon: TaskIconNote,
                                          color: colors.mainGreenColor, status: .normal)
         
-        self.noteLabel.highlightedTextColor = colors.mainTextColor
-        self.noteLabel.textColor = colors.secondaryTextColor
+        self.noteLabel.highlightedTextColor = Colors.mainTextColor
+        self.noteLabel.textColor = Colors.secondaryTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,7 +50,7 @@ class TaskNoteTableViewCell: BaseTableViewCell {
         } else {
             self.noteLabel.isHighlighted = false
             self.noteLabel.text = Localized("taskNote")
-            self.iconButton.tintColor = colors.secondaryTextColor
+            self.iconButton.tintColor = Colors.secondaryTextColor
         }
     }
 }

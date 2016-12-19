@@ -154,7 +154,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             attrText.append(
                 NSAttributedString(string: type.ationNameWithType(), attributes:[
-                    NSForegroundColorAttributeName: colors.mainTextColor
+                    NSForegroundColorAttributeName: Colors.mainTextColor
                     ]))
             let nameAttrText = NSAttributedString(string: name, attributes: [
                 NSForegroundColorAttributeName: colors.linkTextColor
@@ -169,11 +169,11 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             attrText.append(
                 NSAttributedString(string: name, attributes:[
-                    NSForegroundColorAttributeName: colors.mainTextColor
+                    NSForegroundColorAttributeName: Colors.mainTextColor
                     ]))
             let subtaskCountString =
                 NSAttributedString(string: Localized("subtaskCount"), attributes: [
-                    NSForegroundColorAttributeName: colors.secondaryTextColor
+                    NSForegroundColorAttributeName: Colors.secondaryTextColor
                     ])
             
             attrText.append(subtaskCountString)

@@ -25,7 +25,7 @@ class SettingTableViewCell: BaseTableViewCell {
         self.contentView.clearView()
         self.backgroundColor = colors.cloudColor
         self.settingTitleLabel.textColor =
-            colors.mainTextColor
+            Colors.mainTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

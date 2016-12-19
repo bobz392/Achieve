@@ -71,7 +71,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
 //        self.prioritySlideSegmental.tintColor = colors.mainGreenColor
         
         self.prioritySlideSegmental.sliderBackgroundColor = colors.mainGreenColor
-        self.priorityLabel.textColor = colors.mainTextColor
+        self.priorityLabel.textColor = Colors.mainTextColor
         self.toolView.backgroundColor = colors.cloudColor
         self.lineView.backgroundColor = colors.separatorColor
         self.dateToolLineView.backgroundColor = colors.separatorColor
@@ -85,7 +85,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
         self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize,
                                           icon: TaskIconCalendar,
-                                          color: colors.secondaryTextColor, status: .normal)
+                                          color: Colors.secondaryTextColor, status: .normal)
         
         self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize,
                                            icon: SystemIcon,
@@ -188,7 +188,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     }
     
     func cancelScheduleAction() {
-        self.clockButton.tintColor = Colors().secondaryTextColor
+        self.clockButton.tintColor = Colors.secondaryTextColor
         self.task.createdDate = nil
         
         self.closeDatePicker()
@@ -311,7 +311,8 @@ extension NewTaskViewController {
         self.renderImageView.image =
             image.blurredImage(5, iterations: 3, ratio: 2.0, blendColor: nil, blendMode: .clear)
         
-        self.cardViewTopConstraint.constant = (p.view.frame.height - cardViewHeight) * 0.5
+        self.cardViewTopConstraint.constant =
+            (p.view.frame.height - cardViewHeight - KeyboardManager.keyboardHeight) * 0.5
         
         self.configMainUI()
         self.initializeControl()

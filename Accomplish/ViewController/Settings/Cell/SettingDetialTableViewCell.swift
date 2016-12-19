@@ -28,7 +28,7 @@ class SettingDetialTableViewCell: UITableViewCell {
         self.contentView.clearView()
         self.backgroundColor = colors.cloudColor
         self.settingTitleLabel.textColor =
-            colors.mainTextColor
+            Colors.mainTextColor
         self.detailLabel.textColor = colors.linkTextColor
     }
     

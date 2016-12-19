@@ -15,8 +15,9 @@ class AwesomeButton: UIButton {
         
         self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
-        
+        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragOutside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpInside)
+        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragExit)
     }
     
     func buttonAnimationStartAction(_ btn: UIButton) {

@@ -26,12 +26,11 @@ class ReadLaterTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let colors = Colors()
         self.clearView()
         self.contentView.clearView()
         
-        self.titleLabel.textColor = colors.mainTextColor
-        self.siteLabel.textColor = colors.secondaryTextColor
+        self.titleLabel.textColor = Colors.mainTextColor
+        self.siteLabel.textColor = Colors.secondaryTextColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

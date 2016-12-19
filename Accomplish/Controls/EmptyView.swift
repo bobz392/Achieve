@@ -17,7 +17,7 @@ class EmptyView: UIView {
     
     override func awakeFromNib() {
         self.hintLabel.text = Localized("emptyHint")
-        self.hintLabel.textColor = Colors().mainTextColor
+        self.hintLabel.textColor = Colors.mainTextColor
         super.awakeFromNib()
     }
     

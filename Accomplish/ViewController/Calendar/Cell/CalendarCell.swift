@@ -44,9 +44,9 @@ class CalendarCell: JTAppleDayCellView {
             if (date as NSDate).isToday() {
                 self.dateLabel.textColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
             } else if cellState.dateBelongsTo == .thisMonth {
-                self.dateLabel.textColor = colors.mainTextColor
+                self.dateLabel.textColor = Colors.mainTextColor
             } else {
-                self.dateLabel.textColor = colors.secondaryTextColor
+                self.dateLabel.textColor = Colors.secondaryTextColor
             }
         }
         

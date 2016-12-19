@@ -57,11 +57,11 @@ class TimeManagementView: UIView {
         view.countLabel.textColor = colors.cloudColor
         view.countLabel.delegate = view
         
-        view.statusLabel.textColor = colors.secondaryTextColor
+        view.statusLabel.textColor = Colors.secondaryTextColor
         view.statusLabel.text = Localized("timeMethodPrepar")
         
-        view.loopLabel.textColor = colors.secondaryTextColor
-        view.titleLabel.textColor = colors.secondaryTextColor
+        view.loopLabel.textColor = Colors.secondaryTextColor
+        view.titleLabel.textColor = Colors.secondaryTextColor
         view.titleLabel.text = method.name
         
         view.statusShutterButton.buttonColor = colors.systemGreenColor
@@ -184,7 +184,7 @@ class TimeManagementView: UIView {
                 self.countLabel.start()
             }
         } else {
-            self.countLabel.textColor = colors.secondaryTextColor
+            self.countLabel.textColor = Colors.secondaryTextColor
             self.statusShutterButton.buttonState = .normal
             self.statusShutterButton.buttonColor = Colors().systemGreenColor
             self.statusLabel.text = Localized("timeMethodPause")

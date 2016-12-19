@@ -69,7 +69,7 @@ final class AddressBookViewController: BaseViewController {
     
     fileprivate func config(tableView: UITableView?) {
         let colors = Colors()
-        tableView?.sectionIndexColor = colors.mainTextColor
+        tableView?.sectionIndexColor = Colors.mainTextColor
         tableView?.sectionIndexBackgroundColor = colors.cloudColor
         tableView?.register(AddressBookTableViewCell.nib, forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
         tableView?.separatorStyle = .none
@@ -177,7 +177,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         let titleLabel = UILabel(frame: CGRect(x: margin, y: 0, width: view.bounds.width - margin, height: view.bounds.height))
         titleLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         titleLabel.font = UIFont.systemFont(ofSize: 12)
-        titleLabel.textColor = colors.secondaryTextColor
+        titleLabel.textColor = Colors.secondaryTextColor
         titleLabel.text = indexes[section]
         view.addSubview(titleLabel)
         

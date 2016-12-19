@@ -6,8 +6,8 @@
 	Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 */
 
-"progess"="Upcoming";
-"finished"="Finished";
+"progess"="PROCEED";
+"finished"="COMPLETED";
 "completed"="Completed";
 "emptyTask"="No new task, Enjoy the day :)";
 "emptyFinishTask"="No finshed task";

@@ -22,15 +22,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let root = HomeViewController()
         let nav = UINavigationController(rootViewController: root)
-        nav.navigationBar.barStyle = .default
-        let colors = Colors()
-        nav.navigationBar.isTranslucent = false
-        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nav.navigationBar.shadowImage = colors.mainGreenColor.renderImageOfColor()
-        nav.navigationBar.barTintColor = colors.mainGreenColor
-        window?.rootViewController = nav
+        nav.isNavigationBarHidden = true
+        
+//        nav.navigationBar.barStyle = .default        
+//        nav.navigationBar.barTintColor = Colors.mainBackgroundColor
+//        nav.navigationBar.isTranslucent = false
+//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        nav.navigationBar.shadowImage = Colors.mainBackgroundColor.renderImageOfColor()
+
+        
+        let leftViewController = UIViewController()
+        leftViewController.view.backgroundColor = Colors.mainBackgroundColor
+        let drawer = MMDrawerController(center: nav, leftDrawerViewController: leftViewController)
+        drawer?.maximumLeftDrawerWidth = 280
+        drawer?.openDrawerGestureModeMask = .all
+        drawer?.showsShadow = true
+        
+        drawer?.shadowOpacity = 0.2
+        drawer?.closeDrawerGestureModeMask = .all
+        drawer?.setDrawerVisualStateBlock(MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: 3.0))
+        
+        
+        
+        window?.rootViewController = drawer
         window?.makeKeyAndVisible()
         
+//        drawer?.open(MMDrawerSide.left, animated: true, completion: nil)
         // background fetch
         if application.backgroundRefreshStatus != .available {
             // to do

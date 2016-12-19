@@ -27,7 +27,7 @@ class HintCollectionViewCell: UICollectionViewCell {
     func configCell(item: HintItem) {
         let colors = Colors()
     
-        self.hintLabel.textColor = colors.mainTextColor
+        self.hintLabel.textColor = Colors.mainTextColor
         self.iconLabel.createIconText(iconSize: hintIconButtonSize,
                                       icon: item.iconName, color: colors.mainGreenColor)
         self.hintLabel.text = item.hintDetail

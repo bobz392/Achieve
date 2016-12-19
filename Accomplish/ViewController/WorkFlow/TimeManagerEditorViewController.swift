@@ -70,8 +70,8 @@ class TimeManagerEditorViewController: BaseViewController {
         self.cardView.backgroundColor = colors.cloudColor
         
         self.view.backgroundColor = colors.mainGreenColor
-        self.methodNameButton.setTitleColor(colors.mainTextColor, for: .normal)
-        self.methodNameButton.setTitleColor(colors.mainTextColor, for: .disabled)
+        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .normal)
+        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .disabled)
         
         self.backButton.buttonColor(colors)
         self.backButton.createIconButton(iconSize: kBackButtonCorner,
@@ -82,7 +82,7 @@ class TimeManagerEditorViewController: BaseViewController {
                                          icon: "fa-plus",
                                          color: colors.mainGreenColor, status: .normal)
         
-        self.methodRepeatTitleLabel.textColor = colors.mainTextColor
+        self.methodRepeatTitleLabel.textColor = Colors.mainTextColor
         self.methodRepeatLabel.textColor = colors.mainGreenColor
         
         if self.isCreate || self.canChange {

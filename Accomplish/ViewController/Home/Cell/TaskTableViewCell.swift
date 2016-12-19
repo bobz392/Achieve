@@ -12,19 +12,20 @@ class TaskTableViewCell: BaseTableViewCell {
     
     static let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
     static let reuseId = "taskTableViewCell"
-    static let rowHeight: CGFloat = 65
+    static let rowHeight: CGFloat = 80
     
     // 用户添加了系统动作
     @IBOutlet weak var taskInfoButton: UIButton!
-    @IBOutlet weak var taskSettingButton: UIButton!
+//    @IBOutlet weak var taskSettingButton: UIButton!
     @IBOutlet weak var taskStatusButton: UIButton!
     @IBOutlet weak var priorityView: UIView!
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
     @IBOutlet weak var overTimeLabel: UILabel!
     @IBOutlet weak var reminderLabel: UILabel!
-    @IBOutlet weak var settingWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var reminderLeftConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var settingWidthConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var reminderLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cellCardView: UIView!
     
     var systemActionContent: SystemActionContent? = nil
     var task: Task?
@@ -41,17 +42,21 @@ class TaskTableViewCell: BaseTableViewCell {
         self.contentView.clearView()
         self.layoutMargins = UIEdgeInsets.zero
         
-        self.taskTitleLabel.textColor = colors.mainTextColor
+        self.cellCardView.backgroundColor = Colors.cellCardColor
+        self.cellCardView.layer.cornerRadius = 4
+        self.cellCardView.addCardShadow()
+        
+        self.taskTitleLabel.textColor = Colors.mainTextColor
         self.taskInfoButton.tintColor = colors.linkTextColor
         self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), for: .touchUpInside)
-        self.taskDateLabel.textColor = colors.secondaryTextColor
+        self.taskDateLabel.textColor = Colors.secondaryTextColor
         
-        self.taskSettingButton.clearView()
+//        self.taskSettingButton.clearView()
         
         self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTaskAction(_:)), for: .touchUpInside)
         
-        self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
+//        self.taskSettingButton.addTarget(self, action: #selector(self.settingsAction), for: .touchUpInside)
         
         self.reminderLabel.text = Localized("repeatHint")
     }
@@ -70,7 +75,7 @@ class TaskTableViewCell: BaseTableViewCell {
             self.priorityView.backgroundColor = colors.priorityHighColor
             
         default:
-            self.priorityView.backgroundColor = colors.priorityNormalColor
+            self.priorityView.backgroundColor = Colors.cellCardColor
         }
     }
     
@@ -101,8 +106,8 @@ class TaskTableViewCell: BaseTableViewCell {
             self.taskStatusButton.createIconButton(iconSize: 20,
                                                    icon: "fa-square-o",
                                                    color: colors.mainGreenColor, status: .normal)
-            self.settingWidthConstraint.constant = 35
-            self.taskSettingButton.isHidden = false
+//            self.settingWidthConstraint.constant = 35
+//            self.taskSettingButton.isHidden = false
             
             if let create = task.createdDate {
                 let now = Date()
@@ -116,13 +121,13 @@ class TaskTableViewCell: BaseTableViewCell {
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
             self.taskStatusButton.createIconButton(iconSize: 20, icon: "fa-check-square-o",
-                                                   color: colors.secondaryTextColor,
+                                                   color: Colors.secondaryTextColor,
                                                    status: .normal)
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
-            self.settingWidthConstraint.constant = 10
-            self.taskSettingButton.isHidden = true
+//            self.settingWidthConstraint.constant = 10
+//            self.taskSettingButton.isHidden = true
             
         default:
             self.taskTitleLabel.attributedText = task.taskToDo.addStrikethrough()
@@ -130,8 +135,8 @@ class TaskTableViewCell: BaseTableViewCell {
                                                    color: colors.mainGreenColor, status: .normal)
             self.taskStatusButton.tintColor = colors.mainGreenColor
             
-            self.settingWidthConstraint.constant = 10
-            self.taskSettingButton.isHidden = true
+//            self.settingWidthConstraint.constant = 10
+//            self.taskSettingButton.isHidden = true
         }
     }
     
@@ -139,33 +144,33 @@ class TaskTableViewCell: BaseTableViewCell {
         self.task = task
         let colors = Colors()
         
-        self.taskSettingButton
-            .createIconButton(iconSize: 18, icon: "fa-ellipsis-v",
-                              color: colors.mainGreenColor, status: .normal)
+//        self.taskSettingButton
+//            .createIconButton(iconSize: 18, icon: "fa-ellipsis-v",
+//                              color: colors.mainGreenColor, status: .normal)
         
         self.configTaskPriority(priority: task.priority, colors: colors)
         self.configTaskStatus(task: task, colors: colors)
         
         self.overTimeLabel.isHidden = true
         self.overTimeLabel.text = nil
-        self.reminderLeftConstraint.constant = 0
+//        self.reminderLeftConstraint.constant = 0
         if let estimateDate = task.estimateDate {
             if estimateDate.isEarlierThan(Date()) {
                 self.overTimeLabel.text = Localized("overTime")
-                let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
+                let color = task.status == kTaskRunning ? colors.mainGreenColor : Colors.secondaryTextColor
                 self.overTimeLabel.textColor = color
                 self.overTimeLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
                 self.overTimeLabel.layer.borderColor = color.cgColor
                 self.overTimeLabel.layer.borderWidth = 1
                 self.overTimeLabel.isHidden = false
-                self.reminderLeftConstraint.constant = 4
+//                self.reminderLeftConstraint.constant = 4
                 self.overTimeLabel.setNeedsLayout()
             }
         }
         
         self.reminderLabel.isHidden = true
         if let _ = task.repeaterUUID {
-            let color = task.status == kTaskRunning ? colors.mainGreenColor : colors.secondaryTextColor
+            let color = task.status == kTaskRunning ? colors.mainGreenColor : Colors.secondaryTextColor
             self.reminderLabel.textColor = color
             self.reminderLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
             self.reminderLabel.layer.borderColor = color.cgColor

@@ -44,7 +44,7 @@ class HintView: UIView {
         super.awakeFromNib()
         
         let colors = Colors()
-        self.titleLabel.textColor = colors.mainTextColor
+        self.titleLabel.textColor = Colors.mainTextColor
 //        self.closeButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-times", color: colors.mainGreenColor, status: .normal)
 //        
 //        self.nextButton.createIconButton(iconSize: hintIconButtonSize, imageSize: hintIconButtonSize, icon: "fa-arrow-right", color: colors.mainGreenColor, status: .normal)

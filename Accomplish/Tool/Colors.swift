@@ -35,13 +35,19 @@ struct Colors {
     let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
     let priorityNormalColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)
-    let mainTextColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
-    let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
+    
     let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
     let linkTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
     let progressColor = UIColor(red:0.98, green:0.75, blue:0.23, alpha:1.00)
     let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)
     let systemRedColor = UIColor(red:0.98, green:0.24, blue:0.22, alpha:1.00)
+    
+    static let mainBackgroundColor = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
+    static let mainIconColor = UIColor(red:0.59, green:0.62, blue:0.69, alpha:1.00)
+    static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
+    static let buttonBackgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
+    static let mainTextColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
+    static let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
 }
 
 enum MainColorType: Int {
@@ -61,6 +67,7 @@ enum MainColorType: Int {
     func mianColor() -> UIColor {
         
         switch self {
+            
         case .greenSea:
             return UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
         case .nephritis:

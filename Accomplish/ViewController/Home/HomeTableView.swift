@@ -28,13 +28,13 @@ class HomeTableView: UITableView, UIGestureRecognizerDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(pan:)))
-        self.addGestureRecognizer(pan)
+//        let pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(pan:)))
+//        self.addGestureRecognizer(pan)
         
-        self.homeRefreshControl
-            .addTarget(self, action: #selector(self.searchAction), for: .valueChanged)
-
-        self.addSubview(self.homeRefreshControl)
+//        self.homeRefreshControl
+//            .addTarget(self, action: #selector(self.searchAction), for: .valueChanged)
+//
+//        self.addSubview(self.homeRefreshControl)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

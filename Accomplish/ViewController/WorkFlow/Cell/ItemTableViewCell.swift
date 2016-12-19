@@ -22,9 +22,9 @@ class ItemTableViewCell: BaseTableViewCell {
         // Initialization code
         
         let colors = Colors()
-        self.itemNameLabel.textColor = colors.mainTextColor
+        self.itemNameLabel.textColor = Colors.mainTextColor
         self.itemNameLabel.tintColor = colors.mainGreenColor
-        self.itemTimeLabel.textColor = colors.secondaryTextColor
+        self.itemTimeLabel.textColor = Colors.secondaryTextColor
     }
  
     func configCell(item: TimeMethodItem) {

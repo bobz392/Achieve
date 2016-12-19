@@ -40,9 +40,9 @@ class ScheduleTableViewCell: UITableViewCell {
         self.createdTimeLabel.textColor = colors.cloudColor
         self.amLabel.textColor = colors.cloudColor
         
-        self.tasksLabel.textColor = colors.mainTextColor
+        self.tasksLabel.textColor = Colors.mainTextColor
         self.tasksLabel.highlightedTextColor = colors.cloudColor
-        self.completedLabel.textColor = colors.secondaryTextColor
+        self.completedLabel.textColor = Colors.secondaryTextColor
         self.completedLabel.highlightedTextColor = colors.cloudColor
         
         self.tasksLabel.preferredMaxLayoutWidth = screenBounds.width - 101

@@ -24,7 +24,7 @@ class SystemTaskTableViewCell: BaseTableViewCell {
         let colors = Colors()
         self.backgroundColor = colors.cloudColor
         self.contentView.backgroundColor = colors.cloudColor
-        self.taskTitle.textColor = colors.mainTextColor
+        self.taskTitle.textColor = Colors.mainTextColor
         
         self.iconImage.layer.cornerRadius = 10
         self.iconImage.clipsToBounds = true

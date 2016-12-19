@@ -41,7 +41,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
                                           color: colors.mainGreenColor, status: .normal)
         
         self.infoLabel.highlightedTextColor = colors.mainGreenColor
-        self.infoLabel.textColor = colors.secondaryTextColor
+        self.infoLabel.textColor = Colors.secondaryTextColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -87,7 +87,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         
         let iconSize = CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize)
         let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskDetailCellIconSize)
-        icon.addAttributes([NSForegroundColorAttributeName: colors.secondaryTextColor])
+        icon.addAttributes([NSForegroundColorAttributeName: Colors.secondaryTextColor])
         let image =
             icon.image(with: iconSize)
         self.iconImageView.image = image

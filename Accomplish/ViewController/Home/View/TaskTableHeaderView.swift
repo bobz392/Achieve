@@ -10,7 +10,10 @@ import UIKit
 
 class TaskTableHeaderView: UIView {
 
+    static let height: CGFloat = 30
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var additionButton: UIButton!
     
     class func loadNib(_ target: AnyObject, title: String) -> TaskTableHeaderView? {
         guard let view =
@@ -19,8 +22,10 @@ class TaskTableHeaderView: UIView {
                     return nil
         }
         
+        view.backgroundColor = Colors.mainBackgroundColor
         view.titleLabel.text = title
-        view.titleLabel.textColor = Colors.secondaryTextColor
+        view.titleLabel.textColor = Colors.headerTextColor
+        view.additionButton.isHidden = true
         
         return view
     }

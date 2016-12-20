@@ -12,7 +12,7 @@ class TaskTableViewCell: BaseTableViewCell {
     
     static let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
     static let reuseId = "taskTableViewCell"
-    static let rowHeight: CGFloat = 80
+    static let rowHeight: CGFloat = 76
     
     // 用户添加了系统动作
     @IBOutlet weak var taskInfoButton: UIButton!
@@ -103,9 +103,10 @@ class TaskTableViewCell: BaseTableViewCell {
         switch task.status {
         case kTaskRunning:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
-            self.taskStatusButton.createIconButton(iconSize: 20,
-                                                   icon: "fa-square-o",
-                                                   color: colors.mainGreenColor, status: .normal)
+//            self.taskStatusButton.createIconButton(iconSize: 20,
+//                                                   icon: "fa-square-o",
+//                                                   color: colors.mainGreenColor, status: .normal)
+            self.taskStatusButton.buttonWithIcon(icon: Icons.uncheck.iconString(), backgroundColor: Colors.cellCardColor)
 //            self.settingWidthConstraint.constant = 35
 //            self.taskSettingButton.isHidden = false
             
@@ -120,9 +121,10 @@ class TaskTableViewCell: BaseTableViewCell {
             
         case kTaskFinish:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
-            self.taskStatusButton.createIconButton(iconSize: 20, icon: "fa-check-square-o",
-                                                   color: Colors.secondaryTextColor,
-                                                   status: .normal)
+//            self.taskStatusButton.createIconButton(iconSize: 20, icon: "fa-check-square-o",
+//                                                   color: Colors.secondaryTextColor,
+//                                                   status: .normal)
+            self.taskStatusButton.buttonWithIcon(icon: Icons.check.iconString(), backgroundColor: Colors.cellCardColor)
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()

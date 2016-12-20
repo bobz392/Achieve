@@ -8,7 +8,8 @@
 
 "progess"="PROCEED";
 "finished"="COMPLETED";
-"completed"="Completed";
+"show"="SHOW";
+"hide"="HIDE";
 "emptyTask"="No new task, Enjoy the day :)";
 "emptyFinishTask"="No finshed task";
 "emptyHint"="Nothing here";

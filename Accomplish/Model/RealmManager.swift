@@ -57,7 +57,7 @@ class RealmManager {
         Logger.log("result = \(result)")
     }
     
-    func queryTodayTaskList(finished: Bool, tagUUID: String?) -> Results<Task> {
+    func queryTodayTaskList(finished: Bool, tagUUID: String? = nil) -> Results<Task> {
         let queryDate = NSDate().createdFormatedDateString()
         
         let queryWithTag: String

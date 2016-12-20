@@ -27,18 +27,13 @@ class HomeViewController: BaseViewController {
     //    @IBOutlet weak var emptyCoffeeLabel: UILabel!
     
     fileprivate var showFinishTask = true
-    fileprivate var finishTasks: Results<Task>?
-    fileprivate var runningTasks: Results<Task>?
-    
-    fileprivate var finishToken: RealmSwift.NotificationToken?
-    fileprivate var runningToken: RealmSwift.NotificationToken?
+    fileprivate var taskListManager = TaskListManager()
     
     fileprivate var selectedIndex: IndexPath? = nil
     
     fileprivate var timer: SecondTimer?
     fileprivate var repeaterManager = RepeaterManager()
-    fileprivate let wormhole = MMWormhole.init(applicationGroupIdentifier: GroupIdentifier,
-                                               optionalDirectory: nil)
+  
     // 当前的 转场动画类型
     fileprivate var toViewControllerAnimationType = 0
     //
@@ -48,6 +43,7 @@ class HomeViewController: BaseViewController {
     fileprivate weak var timeManagementView: TimeManagementView? = nil
     
     // MARK: - life circle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,9 +52,10 @@ class HomeViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
+        self.taskListManager.datasource = self
         //        self.configMainButton()
         
-        self.queryTodayTask()
+//        self.queryTodayTask()
         self.addNotification()
         self.initTimer()
         
@@ -91,8 +88,6 @@ class HomeViewController: BaseViewController {
     }
     
     deinit {
-        finishToken?.stop()
-        runningToken?.stop()
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -239,7 +234,7 @@ class HomeViewController: BaseViewController {
         NotificationCenter.default.addObserver(
             forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil,
             queue: OperationQueue.main) { [unowned self] notification in
-                self.handelTodayExtensionFinish()
+                self.taskListManager.handelTodayExtensionFinish()
                 self.checkNewDay()
                 self.timer?.resume()
         }
@@ -301,28 +296,7 @@ class HomeViewController: BaseViewController {
         self.timer?.start()
     }
     
-    /**
-     处理 today extension 中完成的任务
-     */
-    fileprivate func handelTodayExtensionFinish() {
-        guard let group = GroupUserDefault() else { return }
-        let finishTasks = group.getAllFinishTask()
-        
-        let manager = RealmManager.shared
-        
-        let _ = finishTasks.map({ (taskInfoArr) -> Void in
-            let uuid = taskInfoArr[GroupTaskUUIDIndex]
-            let dateString = taskInfoArr[GroupTaskFinishDateIndex]
-            let date = dateString.dateFromString(UUIDFormat)
-            guard let task = self.runningTasks?.filter({ (t) -> Bool in
-                t.uuid == uuid
-            }).first else { return }
-            
-            manager.updateTaskStatus(task, status: kTaskFinish, updateDate: date)
-        })
-        
-        group.clearTaskFinish()
-    }
+
     
     // 当 task list 为空的时候展示对应的 hint
     //    fileprivate func showEmptyHint(_ show: Bool) {
@@ -335,82 +309,6 @@ class HomeViewController: BaseViewController {
     //            self.emptyHintLabel.text = Localized("emptyFinishTask")
     //        }
     //    }
-    //
-    //    fileprivate func configMainButton() {
-    //        self.settingButton.layer.cornerRadius = 16
-    //        self.fullScreenButton.layer.cornerRadius = 16
-    //        self.calendarButton.layer.cornerRadius = 16
-    //        self.tagButton.layer.cornerRadius = 16
-    //
-    //        self.doSwitchScreen(false)
-    //    }
-    
-    fileprivate func realmNoticationToken() {
-        self.finishToken = finishTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial(_):
-                self.taskTableView.reloadData()
-                
-            case .update(_, let deletions, let insertions, let modifications):
-                self.taskTableView.beginUpdates()
-                dispatch_delay(0.2) { [unowned self] in
-                    if insertions.count > 0 {
-                        self.taskTableView
-                            .insertRows(at: insertions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                    } else if modifications.count > 0 {
-                        self.taskTableView
-                            .reloadRows(at: modifications.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                    } else if deletions.count > 0 {
-                        self.taskTableView
-                            .deleteRows(at: deletions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                    }
-                    self.taskTableView.endUpdates()
-                }
-                self.handleUpdateTodayGroup()
-                
-            case .error(let error):
-                Logger.log("finishToken realmNoticationToken error = \(error)")
-                break
-            }
-        })
-        
-        self.runningToken = runningTasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial(_):
-                self.taskTableView.reloadData()
-                self.handleUpdateTodayGroup()
-                
-            case .update(_, let deletions, let insertions, let modifications):
-                
-                self.taskTableView.beginUpdates()
-                if insertions.count > 0 {
-                    self.taskTableView
-                        .insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-                } else if modifications.count > 0 {
-                    self.taskTableView
-                        .reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-                } else if deletions.count > 0 {
-                    self.taskTableView
-                        .deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-                }
-                self.taskTableView.endUpdates()
-                
-                
-                self.handleUpdateTodayGroup()
-                
-                guard let deletion = deletions.first,
-                    let selectedRow = self.selectedIndex?.row else { break }
-                if deletion == selectedRow {
-                    self.selectedIndex = nil
-                }
-                
-            case .error(let error):
-                Logger.log("runningToken realmNoticationToken error = \(error)")
-                break
-            }
-            
-        })
-    }
     
     fileprivate func handleUpdate(_ deletions: [Int], insertions: [Int], modifications: [Int], section: Int) {
         Logger.log("deletions = \(deletions), insertions = \(insertions), modifications = \(modifications), section = \(section)")
@@ -443,8 +341,8 @@ class HomeViewController: BaseViewController {
      - 添加今天的任务到索引
      */
     func handleNewDay() {
-        self.queryTodayTask()
-        self.handleUpdateTodayGroup()
+        self.taskListManager.queryTodayTask()
+        self.taskListManager.handleUpdateTodayGroup()
         if #available(iOS 9.0, *) {
             SpotlightManager().addDateTaskToIndex()
         }
@@ -494,13 +392,13 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    fileprivate func queryTodayTask(tagUUID: String? = nil) {
-        let shareManager = RealmManager.shared
-        //        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
-        self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
-        self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
-        self.realmNoticationToken()
-    }
+//    fileprivate func queryTodayTask(tagUUID: String? = nil) {
+//        let shareManager = RealmManager.shared
+//        //        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
+//        self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
+//        self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
+//        self.realmNoticationToken()
+//    }
     
     fileprivate func handleMoveUnfinishTaskToToday() {
         let shareManager = RealmManager.shared
@@ -524,15 +422,12 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    fileprivate func handleUpdateTodayGroup() {
-        guard let group = GroupUserDefault(),
-            let tasks = self.runningTasks else {
-                return
-        }
-        group.writeTasks(tasks)
-        
-        self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
-    }
+//    fileprivate func handleUpdateTodayGroup() {
+//        guard let group = GroupUserDefault() else { return }
+//        group.writeTasks(self.runningTasks)
+//        
+//        self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
+//    }
     
     // MARK: - actions
     fileprivate func animationNavgationTo(vc: UIViewController) {
@@ -543,16 +438,6 @@ class HomeViewController: BaseViewController {
     
     func settingAction() {
         self.animationNavgationTo(vc: SettingsViewController())
-    }
-    
-    func switchScreenAction() {
-        //        self.doSwitchScreen(true)
-        //        CloudKitManager().fetchTestData()
-        //        TestManager().addTestCheckIn()
-        
-        RealmManager.shared.queryAll(clz: TimeMethod.self)
-        RealmManager.shared.queryAll(clz: TimeMethodItem.self)
-        RealmManager.shared.queryAll(clz: TimeMethodGroup.self)
     }
     
     func calendarAction() {
@@ -589,7 +474,7 @@ class HomeViewController: BaseViewController {
     
     // 从today 点击一个 task 进入 detail
     func enterTaskFromToday(_ uuid: String) {
-        guard let t = self.runningTasks?.filter({ (task) -> Bool in
+        guard let t = self.taskListManager.preceedTasks.filter({ (task) -> Bool in
             task.uuid == uuid
         }).first else { return }
         
@@ -605,33 +490,53 @@ class HomeViewController: BaseViewController {
     }
 }
 
-extension HomeViewController: TwicketSegmentedControlDelegate {
-    func didSelect(_ segmentIndex: Int) {
+extension HomeViewController: RealmNotificationDataSource {
+    func initial(type: TaskCellType) {
         self.taskTableView.reloadData()
+    }
+    
+    func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType) {
+        let update = { [unowned self] (section: Int) -> Void in
+            self.taskTableView.beginUpdates()
+            if insertions.count > 0 {
+                self.taskTableView
+                    .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+            } else if modifications.count > 0 {
+                self.taskTableView
+                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
+            } else if deletions.count > 0 {
+                self.taskTableView
+                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+            }
+        }
+        
+        if type == .preceed {
+            update(0)
+            
+            guard let deletion = deletions.first,
+                let selectedRow = self.selectedIndex?.row else { return }
+            if deletion == selectedRow {
+                self.selectedIndex = nil
+            }
+
+        } else {
+            dispatch_delay(0.25, closure: { 
+                update(1)
+                self.taskTableView.endUpdates()
+            })
+        }
     }
 }
 
 // MARK: - table view
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        if self.inRunningTasksTable() {
-        //            self.showEmptyHint(self.runningTasks?.count ?? 0 <= 0)
-        if section == 0 {
-            return self.runningTasks?.count ?? 0
-        } else {
-            // 首先判断是否需要显示完成的任务
-            return self.showFinishTask ? (self.finishTasks?.count ?? 0) : 1
-        }
-        //        } else {
-        //            self.showEmptyHint(self.finishTasks?.count ?? 0 <= 0)
-        //            return self.finishTasks?.count ?? 0
-        //        }
+       return self.taskListManager.numberOfRows(section: section, showFinishTask: self.showFinishTask)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -639,27 +544,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return TaskTableViewCell.rowHeight
-        } else if indexPath.section == 1 {
-            if self.showFinishTask && (self.finishTasks?.count ?? 0) > 0 {
-                return TaskTableViewCell.rowHeight
-            } else {
-                return 1
-            }
-        } else {
-            return 0
-        }
+        return self.taskListManager.heightForRowAt(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 20
-        } else if section == 1 {
-            return 40
-        } else {
-            return 0
-        }
+        return self.taskListManager.heightForHeaderInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -696,18 +585,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndex = indexPath
         
-        var task: Task? = nil
+        let task = self.taskListManager.taskForIndexPath(indexPath: indexPath)
         var canChange = true
         if indexPath.section == 0 {
-            task = self.runningTasks?[indexPath.row]
             canChange = true
         } else if indexPath.section == 1 {
-            task = self.finishTasks?[indexPath.row]
             canChange = false
         }
-        
-        guard let t = task else { return }
-        self.enterTask(t, canChange: canChange)
+        self.enterTask(task, canChange: canChange)
     }
     
     fileprivate func enterTask(_ task: Task, canChange: Bool) {
@@ -716,21 +601,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseId, for: indexPath) as! TaskTableViewCell
+        let cell =
+            tableView.dequeueReusableCell(
+                withIdentifier: TaskTableViewCell.reuseId,
+                for: indexPath) as! TaskTableViewCell
         
-        var task: Task?
-        if indexPath.section == 0 {
-            task = self.runningTasks?[indexPath.row]
-        } else if indexPath.section == 1 {
-            task = self.finishTasks?[indexPath.row]
-        }
+        let task = self.taskListManager.taskForIndexPath(indexPath: indexPath)
         
-        if let t = task {
-            cell.configCellUse(t)
-            
-            cell.settingBlock = { [unowned self] (uuid) -> Void in
-                self.showSettings(taskUUID: uuid)
-            }
+        cell.configCellUse(task)
+        cell.settingBlock = { [unowned self] (uuid) -> Void in
+            self.showSettings(taskUUID: uuid)
         }
         return cell
     }
@@ -794,7 +674,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - switch tag delegate
 extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
-        self.queryTodayTask(tagUUID: tag?.tagUUID)
+        self.taskListManager.queryTodayTask(tagUUID: tag?.tagUUID)
     }
 }
 

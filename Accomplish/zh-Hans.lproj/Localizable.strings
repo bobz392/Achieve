@@ -8,7 +8,8 @@
 
 "progess"="进行中";
 "finished"="已完成";
-"completed"="已完成";
+"show"="显示";
+"hide"="隐藏";
 "emptyTask"="没有新任务，放松一下 :)";
 "emptyFinishTask"="没有已经结束的任务";
 "emptyHint"="空空如也";

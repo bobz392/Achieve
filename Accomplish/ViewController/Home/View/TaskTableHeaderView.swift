@@ -9,8 +9,11 @@
 import UIKit
 
 class TaskTableHeaderView: UIView {
-
+    
+    typealias TaskHeaderButtonBlock = () -> Void
+    
     static let height: CGFloat = 30
+    fileprivate var block: TaskHeaderButtonBlock? = nil
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var additionButton: UIButton!
@@ -26,8 +29,17 @@ class TaskTableHeaderView: UIView {
         view.titleLabel.text = title
         view.titleLabel.textColor = Colors.headerTextColor
         view.additionButton.isHidden = true
+        view.additionButton.addTarget(view, action: #selector(view.additionAction), for: .touchUpInside)
         
         return view
     }
 
+    func additionAction() {
+        self.block?()
+    }
+    
+    func configAdditionButton(title: String, buttonBlock: @escaping TaskHeaderButtonBlock) {
+        self.block = buttonBlock
+        self.additionButton.setTitle(title, for: .normal)
+    }
 }

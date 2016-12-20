@@ -21,7 +21,6 @@ class TimeMethodTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let colors = Colors()
         self.nameLabel.textColor = Colors.mainTextColor
         self.timesLabel.textColor = Colors.secondaryTextColor
     }

@@ -24,25 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: root)
         nav.isNavigationBarHidden = true
         
-//        nav.navigationBar.barStyle = .default        
-//        nav.navigationBar.barTintColor = Colors.mainBackgroundColor
-//        nav.navigationBar.isTranslucent = false
-//        nav.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        nav.navigationBar.shadowImage = Colors.mainBackgroundColor.renderImageOfColor()
-
-        
-        let leftViewController = UIViewController()
-        leftViewController.view.backgroundColor = Colors.mainBackgroundColor
-        let drawer = MMDrawerController(center: nav, leftDrawerViewController: leftViewController)
+        let menuViewController = HomeMenuViewController()
+        let drawer = MMDrawerController(center: nav,
+                                        leftDrawerViewController: menuViewController)
         drawer?.maximumLeftDrawerWidth = 280
         drawer?.openDrawerGestureModeMask = .all
         drawer?.showsShadow = true
         
         drawer?.shadowOpacity = 0.2
         drawer?.closeDrawerGestureModeMask = .all
-        drawer?.setDrawerVisualStateBlock(MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: 3.0))
-        
-        
+        drawer?.setDrawerVisualStateBlock(
+            MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: 3.0)
+        )
         
         window?.rootViewController = drawer
         window?.makeKeyAndVisible()

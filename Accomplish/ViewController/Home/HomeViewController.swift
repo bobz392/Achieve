@@ -33,7 +33,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate var timer: SecondTimer?
     fileprivate var repeaterManager = RepeaterManager()
-  
+    
     // 当前的 转场动画类型
     fileprivate var toViewControllerAnimationType = 0
     //
@@ -55,7 +55,7 @@ class HomeViewController: BaseViewController {
         self.taskListManager.datasource = self
         //        self.configMainButton()
         
-//        self.queryTodayTask()
+        //        self.queryTodayTask()
         self.addNotification()
         self.initTimer()
         
@@ -296,7 +296,7 @@ class HomeViewController: BaseViewController {
         self.timer?.start()
     }
     
-
+    
     
     // 当 task list 为空的时候展示对应的 hint
     //    fileprivate func showEmptyHint(_ show: Bool) {
@@ -392,13 +392,13 @@ class HomeViewController: BaseViewController {
         }
     }
     
-//    fileprivate func queryTodayTask(tagUUID: String? = nil) {
-//        let shareManager = RealmManager.shared
-//        //        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
-//        self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
-//        self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
-//        self.realmNoticationToken()
-//    }
+    //    fileprivate func queryTodayTask(tagUUID: String? = nil) {
+    //        let shareManager = RealmManager.shared
+    //        //        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
+    //        self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
+    //        self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
+    //        self.realmNoticationToken()
+    //    }
     
     fileprivate func handleMoveUnfinishTaskToToday() {
         let shareManager = RealmManager.shared
@@ -422,12 +422,12 @@ class HomeViewController: BaseViewController {
         }
     }
     
-//    fileprivate func handleUpdateTodayGroup() {
-//        guard let group = GroupUserDefault() else { return }
-//        group.writeTasks(self.runningTasks)
-//        
-//        self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
-//    }
+    //    fileprivate func handleUpdateTodayGroup() {
+    //        guard let group = GroupUserDefault() else { return }
+    //        group.writeTasks(self.runningTasks)
+    //
+    //        self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
+    //    }
     
     // MARK: - actions
     fileprivate func animationNavgationTo(vc: UIViewController) {
@@ -496,18 +496,18 @@ extension HomeViewController: RealmNotificationDataSource {
     }
     
     func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType) {
-//        let update = { [unowned self] (section: Int) -> Void in
-//            if insertions.count > 0 {
-//                self.taskTableView
-//                    .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
-//            } else if modifications.count > 0 {
-//                self.taskTableView
-//                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
-//            } else if deletions.count > 0 {
-//                self.taskTableView
-//                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
-//            }
-//        }
+        //        let update = { [unowned self] (section: Int) -> Void in
+        //            if insertions.count > 0 {
+        //                self.taskTableView
+        //                    .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+        //            } else if modifications.count > 0 {
+        //                self.taskTableView
+        //                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
+        //            } else if deletions.count > 0 {
+        //                self.taskTableView
+        //                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+        //            }
+        //        }
         
         if type == .preceed {
             self.taskTableView.beginUpdates()
@@ -528,17 +528,21 @@ extension HomeViewController: RealmNotificationDataSource {
                 self.selectedIndex = nil
             }
         } else {
-            dispatch_delay(0.2) { [unowned self] in
-                if insertions.count > 0 {
-                    self.taskTableView
-                        .insertRows(at: insertions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                } else if modifications.count > 0 {
-                    self.taskTableView
-                        .reloadRows(at: modifications.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                } else if deletions.count > 0 {
-                    self.taskTableView
-                        .deleteRows(at: deletions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+            if self.showFinishTask {
+                dispatch_delay(0.2) { [unowned self] in
+                    if insertions.count > 0 {
+                        self.taskTableView
+                            .insertRows(at: insertions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                    } else if modifications.count > 0 {
+                        self.taskTableView
+                            .reloadRows(at: modifications.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                    } else if deletions.count > 0 {
+                        self.taskTableView
+                            .deleteRows(at: deletions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                    }
+                    self.taskTableView.endUpdates()
                 }
+            } else {
                 self.taskTableView.endUpdates()
             }
         }
@@ -553,7 +557,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return self.taskListManager.numberOfRows(section: section, showFinishTask: self.showFinishTask)
+        return self.taskListManager.numberOfRows(section: section, showFinishTask: self.showFinishTask)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -44,4 +44,5 @@ class TaskTableHeaderView: UIView {
         self.additionButton.setTitle(title, for: .normal)
         self.additionButton.isHidden = false
     }
+    
 }

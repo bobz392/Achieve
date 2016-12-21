@@ -13,7 +13,7 @@ class TaskTableHeaderView: UIView {
     typealias TaskHeaderButtonBlock = (_ button: UIButton) -> Void
     
     static let preceedHeight: CGFloat = 20
-    static let completedHeight: CGFloat = 20
+    static let completedHeight: CGFloat = 40
     fileprivate var block: TaskHeaderButtonBlock? = nil
     
     @IBOutlet weak var titleLabel: UILabel!

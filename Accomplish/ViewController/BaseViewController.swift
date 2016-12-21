@@ -11,10 +11,18 @@ import SnapKit
 
 let kBackgroundNeedRefreshNotification = "theme.need.refresh.notify"
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate var customNavigationBar: UIView? = nil
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let nav = self.navigationController,
+            let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.openDraw(open: nav.viewControllers.count <= 1)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +30,12 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.changeMainUI), name: NSNotification.Name(rawValue: kBackgroundNeedRefreshNotification), object: nil)
-        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.edgesForExtendedLayout = UIRectEdge()
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     override func didReceiveMemoryWarning() {

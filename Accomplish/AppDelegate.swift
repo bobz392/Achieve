@@ -15,6 +15,7 @@ import CoreSpotlight
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    weak var drawer: MMDrawerController? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.isNavigationBarHidden = true
         
         let menuViewController = HomeMenuViewController()
-        let drawer = MMDrawerController(center: nav,
+        drawer = MMDrawerController(center: nav,
                                         leftDrawerViewController: menuViewController)
         drawer?.maximumLeftDrawerWidth = 280
         drawer?.openDrawerGestureModeMask = .bezelPanningCenterView
@@ -66,6 +67,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RealmManager.configMainRealm()
         
         return true
+    }
+    
+    func openDraw(open: Bool) {
+        if open {
+            self.drawer?.openDrawerGestureModeMask = .bezelPanningCenterView
+        } else {
+            self.drawer?.openDrawerGestureModeMask = MMOpenDrawerGestureMode(rawValue: 0)
+        }
     }
     
     // MRAK: - todo handle notify

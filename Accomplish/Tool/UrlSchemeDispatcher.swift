@@ -34,7 +34,8 @@ struct UrlSchemeDispatcher {
     }
     
     fileprivate func rootViewController() -> UINavigationController? {
-        return UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
+        let root = UIApplication.shared.keyWindow?.rootViewController as? MMDrawerController
+        return root?.centerViewController as? UINavigationController
     }
     
     func checkTaskDetail(_ uuid: String) {

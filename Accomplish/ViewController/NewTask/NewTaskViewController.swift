@@ -50,12 +50,15 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         if (toolView.alpha == 1) {
             titleTextField.becomeFirstResponder()
         }
+        
+        (UIApplication.shared.delegate as? AppDelegate)?.openDraw(open: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.closeNotification()
+        (UIApplication.shared.delegate as? AppDelegate)?.openDraw(open: true)
     }
     
     override func didReceiveMemoryWarning() {

@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKK-Y7-gNT">
-                        <rect key="frame" x="0.0" y="4" width="320" height="66.5"/>
+                        <rect key="frame" x="16" y="4" width="288" height="66.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiK-42-CC7">
                                 <rect key="frame" x="4" y="0.0" width="40" height="66.5"/>
@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRC-r3-d8A">
-                                <rect key="frame" x="318" y="23" width="2" height="20"/>
+                                <rect key="frame" x="286" y="23" width="2" height="20"/>
                                 <color key="backgroundColor" red="1" green="0.3607304382" blue="0.39335508120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="b4q-WD-cRI"/>
@@ -53,7 +53,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="overtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvh-Ed-xfX">
-                                <rect key="frame" x="220.5" y="24.5" width="42.5" height="16"/>
+                                <rect key="frame" x="188.5" y="24.5" width="42.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="OeG-U5-eGV"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="overtime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJP-H0-cPb">
-                                <rect key="frame" x="267" y="24.5" width="42.5" height="16"/>
+                                <rect key="frame" x="235" y="24.5" width="42.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="AIb-PM-2au"/>
                                 </constraints>
@@ -99,8 +99,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="DKK-Y7-gNT" secondAttribute="bottom" constant="9" id="7d4-yY-wBA"/>
-                    <constraint firstAttribute="trailing" secondItem="DKK-Y7-gNT" secondAttribute="trailing" id="Hjn-Z8-Fbc"/>
-                    <constraint firstItem="DKK-Y7-gNT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HrR-vq-f32"/>
+                    <constraint firstAttribute="trailing" secondItem="DKK-Y7-gNT" secondAttribute="trailing" constant="16" id="Hjn-Z8-Fbc"/>
+                    <constraint firstItem="DKK-Y7-gNT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HrR-vq-f32"/>
                     <constraint firstItem="DKK-Y7-gNT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="SO0-bz-j8l"/>
                 </constraints>
             </tableViewCellContentView>

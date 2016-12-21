@@ -26,7 +26,7 @@ class HomeViewController: BaseViewController {
     //    @IBOutlet weak var emptyHintLabel: UILabel!
     //    @IBOutlet weak var emptyCoffeeLabel: UILabel!
     
-    fileprivate var showFinishTask = true
+    fileprivate var showFinishTask = false
     fileprivate var taskListManager = TaskListManager()
     
     fileprivate var selectedIndex: IndexPath? = nil
@@ -569,13 +569,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = self.taskListManager.viewForHeaderIn(section: section, target: self)
+        
         if section == 0 {
-            let headerTitle = Localized("progess")
-            let headerView = TaskTableHeaderView.loadNib(self, title: headerTitle)
             return headerView
         } else if section == 1 {
-            let headerTitle = Localized("finished")
-            let headerView = TaskTableHeaderView.loadNib(self, title: headerTitle)
+            let showTitle = Localized("show")
+            let hideTitle = Localized("hide")
+            let initialTitle = self.showFinishTask ? showTitle : hideTitle
+            headerView?.configAdditionButton(title: initialTitle
+                , buttonBlock: { [unowned self] (additionButton) in
+                    self.showFinishTask = !self.showFinishTask
+                    let newTitle = self.showFinishTask ? showTitle : hideTitle
+                    additionButton.setTitle(newTitle, for: .normal)
+                    self.taskTableView.reloadSections(IndexSet([1]), with: .automatic)
+            })
+            
             return headerView
         } else {
             return nil

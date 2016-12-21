@@ -27,10 +27,11 @@ class TaskListManager {
         self.wormhole = MMWormhole(applicationGroupIdentifier: GroupIdentifier,
                                    optionalDirectory: nil)
         self.generatRealmToken()
-        
-        
     }
     
+    /**
+        生成 realm 的自动通知的 token
+     */
     func generatRealmToken() {
         let ws = self
         self.preceedToken = preceedTasks.addNotificationBlock({ (changes: RealmCollectionChange) in
@@ -104,6 +105,9 @@ class TaskListManager {
         self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
     }
     
+    /**
+     查询今天的 task 列表，如果有 tag 则传递 tag 的 uuid
+     */
     func queryTodayTask(tagUUID: String? = nil) {
         let shareManager = RealmManager.shared
         self.completedTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
@@ -112,6 +116,7 @@ class TaskListManager {
     }
 }
 
+// MARK: - task table view 代理相关的函数
 extension TaskListManager {
     func taskForIndexPath(indexPath: IndexPath) -> Task {
         let row = indexPath.row
@@ -143,9 +148,20 @@ extension TaskListManager {
         }
     }
     
+    func viewForHeaderIn(section: Int, target: AnyObject) -> TaskTableHeaderView? {
+        if section == 0 {
+            let headerTitle = Localized("progess")
+            let headerView = TaskTableHeaderView.loadNib(target, title: headerTitle)
+            return headerView
+        } else {
+            let headerTitle = Localized("finished")
+            let headerView = TaskTableHeaderView.loadNib(target, title: headerTitle)
+            return headerView
+        }
+    }
 }
 
-
+//MARK: - 自动通知的协议
 protocol RealmNotificationDataSource: NSObjectProtocol {
     func initial(type: TaskCellType)
     func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType)

@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLB-12-feP">
-                    <rect key="frame" x="16" y="64" width="343" height="603"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                     <inset key="separatorInset" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -41,9 +41,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="QLB-12-feP" secondAttribute="trailing" constant="16" id="1Uv-0d-FdS"/>
+                <constraint firstAttribute="trailing" secondItem="QLB-12-feP" secondAttribute="trailing" id="1Uv-0d-FdS"/>
                 <constraint firstAttribute="bottom" secondItem="QLB-12-feP" secondAttribute="bottom" id="RbW-Hv-IyO"/>
-                <constraint firstItem="QLB-12-feP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="SIz-YC-tBv"/>
+                <constraint firstItem="QLB-12-feP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SIz-YC-tBv"/>
                 <constraint firstItem="QLB-12-feP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="TdW-TC-9Az"/>
                 <constraint firstAttribute="trailing" secondItem="j7s-1q-E6R" secondAttribute="trailing" constant="15" id="ali-fQ-5mj"/>
                 <constraint firstAttribute="bottom" secondItem="j7s-1q-E6R" secondAttribute="bottom" constant="15" id="qeo-Dq-Kqf"/>

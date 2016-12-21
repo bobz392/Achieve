@@ -165,7 +165,7 @@ class HomeViewController: BaseViewController {
         //
         //        self.configFullSizeButton(colors)
         
-        self.taskTableView.reloadData()
+        
         //        self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
         //        self.taskTableView.homeRefreshControl.attributedTitle =
         //            NSAttributedString(string: Localized("search"),
@@ -496,34 +496,51 @@ extension HomeViewController: RealmNotificationDataSource {
     }
     
     func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType) {
-        let update = { [unowned self] (section: Int) -> Void in
+//        let update = { [unowned self] (section: Int) -> Void in
+//            if insertions.count > 0 {
+//                self.taskTableView
+//                    .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+//            } else if modifications.count > 0 {
+//                self.taskTableView
+//                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
+//            } else if deletions.count > 0 {
+//                self.taskTableView
+//                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+//            }
+//        }
+        
+        if type == .preceed {
             self.taskTableView.beginUpdates()
             if insertions.count > 0 {
                 self.taskTableView
-                    .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+                    .insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
             } else if modifications.count > 0 {
                 self.taskTableView
-                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
+                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
             } else if deletions.count > 0 {
                 self.taskTableView
-                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
             }
-        }
-        
-        if type == .preceed {
-            update(0)
             
             guard let deletion = deletions.first,
                 let selectedRow = self.selectedIndex?.row else { return }
             if deletion == selectedRow {
                 self.selectedIndex = nil
             }
-
         } else {
-            dispatch_delay(0.25, closure: { 
-                update(1)
+            dispatch_delay(0.2) { [unowned self] in
+                if insertions.count > 0 {
+                    self.taskTableView
+                        .insertRows(at: insertions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                } else if modifications.count > 0 {
+                    self.taskTableView
+                        .reloadRows(at: modifications.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                } else if deletions.count > 0 {
+                    self.taskTableView
+                        .deleteRows(at: deletions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                }
                 self.taskTableView.endUpdates()
-            })
+            }
         }
     }
 }
@@ -688,10 +705,7 @@ extension HomeViewController: UINavigationControllerDelegate {
             return animation
             
         default:
-            let animation = CircleTransitionAnimator()
-            animation.reverse = operation == UINavigationControllerOperation.pop
-            //            animation.buttonFrame = self.calendarButton.frame
-            return animation
+            return nil
         }
     }
 }

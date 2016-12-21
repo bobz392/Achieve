@@ -187,7 +187,6 @@
 		C7821ED01D7C01940056623D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77193F51D6DE9C000437560 /* Constants.swift */; };
 		C7821ED51D7C076B0056623D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED31D7C076B0056623D /* CalendarViewController.swift */; };
 		C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7821ED41D7C076B0056623D /* CalendarViewController.xib */; };
-		C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */; };
 		C7860E411D6C23FF000281FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7860E401D6C23FF000281FA /* AppDelegate.swift */; };
 		C78C47CB1D904161009CE56B /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
 		C78C4E071DFC71C7000C289D /* ReadLater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4E061DFC71C7000C289D /* ReadLater.swift */; };
@@ -631,7 +630,6 @@
 		C7821EC11D7BF1820056623D /* MMWormholeTransiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormholeTransiting.h; sourceTree = "<group>"; };
 		C7821ED31D7C076B0056623D /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C7821ED41D7C076B0056623D /* CalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
-		C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTransitionAnimator.swift; sourceTree = "<group>"; };
 		C7860E3D1D6C23FF000281FA /* Accomplish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accomplish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7860E401D6C23FF000281FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7860E471D6C23FF000281FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -819,7 +817,6 @@
 			isa = PBXGroup;
 			children = (
 				C70BF6251D79C58B006B0C1D /* SecondTimer.swift */,
-				C7821ED71D7C0A880056623D /* CircleTransitionAnimator.swift */,
 				C73B442B1E0969D600DDE093 /* TaskListManager.swift */,
 			);
 			path = Core;
@@ -2179,7 +2176,6 @@
 				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
 				C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
-				C7821ED81D7C0A880056623D /* CircleTransitionAnimator.swift in Sources */,
 				C78C4EB21DFCD7EA000C289D /* RealmManager+Tag.swift in Sources */,
 				C73B442C1E0969D600DDE093 /* TaskListManager.swift in Sources */,
 				C7E2D95A1D8F06B70080D283 /* GroupTasks.swift in Sources */,

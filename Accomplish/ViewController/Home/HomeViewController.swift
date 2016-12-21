@@ -1,4 +1,4 @@
-//
+ //
 //  HomeViewController.swift
 //  Accomplish
 //
@@ -296,45 +296,6 @@ class HomeViewController: BaseViewController {
         self.timer?.start()
     }
     
-    
-    
-    // 当 task list 为空的时候展示对应的 hint
-    //    fileprivate func showEmptyHint(_ show: Bool) {
-    //        self.emptyHintLabel.isHidden = !show
-    //        self.emptyCoffeeLabel.isHidden = !show
-    //
-    //        if self.inRunningTasksTable() {
-    //            self.emptyHintLabel.text = Localized("emptyTask")
-    //        } else {
-    //            self.emptyHintLabel.text = Localized("emptyFinishTask")
-    //        }
-    //    }
-    
-    fileprivate func handleUpdate(_ deletions: [Int], insertions: [Int], modifications: [Int], section: Int) {
-        Logger.log("deletions = \(deletions), insertions = \(insertions), modifications = \(modifications), section = \(section)")
-        
-        self.taskTableView.reloadSections(IndexSet([section]), with: .automatic)
-        return
-            
-            dispatch_delay(0.1) { [unowned self] in
-                self.taskTableView.beginUpdates()
-                if insertions.count > 0 {
-                    self.taskTableView
-                        .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
-                } else if modifications.count > 0 {
-                    self.taskTableView
-                        .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
-                } else if deletions.count > 0 {
-                    self.taskTableView
-                        .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
-                }
-                self.taskTableView.endUpdates()
-        }
-        
-        
-        
-    }
-    
     /**
      - 当新的一天到来的时候调用，来处理新的数据
      - 首先查询今天的任务，可能是重复任务，可能是分配到今天的任务
@@ -392,14 +353,6 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    //    fileprivate func queryTodayTask(tagUUID: String? = nil) {
-    //        let shareManager = RealmManager.shared
-    //        //        let tagUUID: String? = tagUUID ?? AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey)
-    //        self.finishTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
-    //        self.runningTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
-    //        self.realmNoticationToken()
-    //    }
-    
     fileprivate func handleMoveUnfinishTaskToToday() {
         let shareManager = RealmManager.shared
         let movetasks = shareManager.hasUnfinishTaskMoveToday()
@@ -421,13 +374,6 @@ class HomeViewController: BaseViewController {
             self.uploadToiCloud()
         }
     }
-    
-    //    fileprivate func handleUpdateTodayGroup() {
-    //        guard let group = GroupUserDefault() else { return }
-    //        group.writeTasks(self.runningTasks)
-    //
-    //        self.wormhole.passMessageObject(nil, identifier: WormholeNewTaskIdentifier)
-    //    }
     
     // MARK: - actions
     fileprivate func animationNavgationTo(vc: UIViewController) {
@@ -495,33 +441,44 @@ extension HomeViewController: RealmNotificationDataSource {
         self.taskTableView.reloadData()
     }
     
+    /**
+     由于刷新的通知时间问题，会导致 section 0 删除以后 section 1 里面的数据马上被添加，
+     导致的 uitableview cell assert 失败而崩溃，所以由 preceed list begin update，
+     并且统一延迟0.1秒来 end update。
+     
+     有2点要注意
+     - 在 preceed list 中要注意 count 从 0 到 1之间的变化需要reload section 来重载 header
+     */
     func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType) {
-        //        let update = { [unowned self] (section: Int) -> Void in
-        //            if insertions.count > 0 {
-        //                self.taskTableView
-        //                    .insertRows(at: insertions.map { IndexPath(row: $0, section: section) }, with: .automatic)
-        //            } else if modifications.count > 0 {
-        //                self.taskTableView
-        //                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
-        //            } else if deletions.count > 0 {
-        //                self.taskTableView
-        //                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
-        //            }
-        //        }
+        let update = { [unowned self] (section: Int) -> Void in
+            if insertions.count > 0 {
+                if self.taskListManager.preceedTasks.count == 1 && type == .preceed {
+                    self.taskTableView.reloadSections(IndexSet([0]), with: .automatic)
+                } else {
+                    self.taskTableView.insertRows(
+                        at: insertions.map { IndexPath(row: $0, section: section) },
+                        with: .automatic)
+                }
+            } else if modifications.count > 0 {
+                self.taskTableView
+                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
+            } else if deletions.count > 0 {
+                if self.taskListManager.preceedTasks.count == 0 && type == .preceed {
+                    self.taskTableView.reloadSections(IndexSet([0]), with: .automatic)
+                } else {
+                    self.taskTableView
+                        .deleteRows(at: deletions.map { IndexPath(row: $0, section: section) }, with: .automatic)
+                }
+            }
+        }
         
         if type == .preceed {
             self.taskTableView.beginUpdates()
-            if insertions.count > 0 {
-                self.taskTableView
-                    .insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-            } else if modifications.count > 0 {
-                self.taskTableView
-                    .reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-            } else if deletions.count > 0 {
-                self.taskTableView
-                    .deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+            update(0)
+            // 如果当前不是完成任务或者取消完成任务的情况，则直接 update
+            if TaskListManager.currentStatus() != .move {
+                self.taskTableView.endUpdates()
             }
-            
             guard let deletion = deletions.first,
                 let selectedRow = self.selectedIndex?.row else { return }
             if deletion == selectedRow {
@@ -529,23 +486,12 @@ extension HomeViewController: RealmNotificationDataSource {
             }
         } else {
             if self.showFinishTask {
-                dispatch_delay(0.2) { [unowned self] in
-                    if insertions.count > 0 {
-                        self.taskTableView
-                            .insertRows(at: insertions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                    } else if modifications.count > 0 {
-                        self.taskTableView
-                            .reloadRows(at: modifications.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                    } else if deletions.count > 0 {
-                        self.taskTableView
-                            .deleteRows(at: deletions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
-                    }
-                    self.taskTableView.endUpdates()
-                }
-            } else {
-                self.taskTableView.endUpdates()
+                update(1)
             }
+            self.taskTableView.endUpdates()
+            TaskListManager.updateStatus(newStatues: .none)
         }
+        
     }
 }
 
@@ -557,7 +503,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.taskListManager.numberOfRows(section: section, showFinishTask: self.showFinishTask)
+        return self.taskListManager
+            .numberOfRows(section: section, showFinishTask: self.showFinishTask)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -578,17 +525,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return headerView
         } else if section == 1 {
-            let showTitle = Localized("show")
-            let hideTitle = Localized("hide")
-            let initialTitle = self.showFinishTask ? showTitle : hideTitle
-            headerView?.configAdditionButton(title: initialTitle
-                , buttonBlock: { [unowned self] (additionButton) in
-                    self.showFinishTask = !self.showFinishTask
-                    let newTitle = self.showFinishTask ? showTitle : hideTitle
-                    additionButton.setTitle(newTitle, for: .normal)
-                    self.taskTableView.reloadSections(IndexSet([1]), with: .automatic)
-            })
-            
+            if let header = headerView as? TaskTableHeaderView {
+                let showTitle = Localized("show")
+                let hideTitle = Localized("hide")
+                let initialTitle = self.showFinishTask ? showTitle : hideTitle
+                header.configAdditionButton(title: initialTitle
+                    , buttonBlock: { [unowned self] (additionButton) in
+                        self.showFinishTask = !self.showFinishTask
+                        let newTitle = self.showFinishTask ? showTitle : hideTitle
+                        additionButton.setTitle(newTitle, for: .normal)
+                        self.taskTableView.reloadSections(IndexSet([1]), with: .automatic)
+                })
+            }
             return headerView
         } else {
             return nil
@@ -644,11 +592,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
-    
-    //    fileprivate func inRunningTasksTable() -> Bool {
-    //        return self.statusSlideSegment.selectedSegmentIndex == 0
-    //    }
-    
+
     /**
      打开 settings 页面，例如删除 或者 工作法
      */

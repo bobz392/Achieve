@@ -50,6 +50,8 @@ struct Colors {
     static let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
     static let headerTextColor = UIColor(red:0.80, green:0.81, blue:0.85, alpha:1.00)
     static let linkButtonTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
+    static let emptyTintColor = UIColor(red:0.70, green:0.72, blue:0.82, alpha:1.00)
+//    static let emptyInfoTextColor = UIColor(red:0.20, green:0.29, blue:0.37, alpha:1.00)
 }
 
 enum MainColorType: Int {

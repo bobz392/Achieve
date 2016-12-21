@@ -11,6 +11,8 @@ import RealmSwift
 
 class TaskListManager {
     
+    fileprivate static var status: UpdateStatus = .none
+    
     weak var datasource: RealmNotificationDataSource? = nil
     
     fileprivate let rowHeight = TaskTableViewCell.rowHeight
@@ -23,14 +25,24 @@ class TaskListManager {
     
     fileprivate let wormhole: MMWormhole
     
+    fileprivate weak var completedHeaderView: TaskTableHeaderView? = nil
+    
     init() {
         self.wormhole = MMWormhole(applicationGroupIdentifier: GroupIdentifier,
                                    optionalDirectory: nil)
         self.generatRealmToken()
     }
     
+    static func updateStatus(newStatues: UpdateStatus) {
+        status = newStatues
+    }
+    
+    static func currentStatus() -> UpdateStatus {
+        return TaskListManager.status
+    }
+    
     /**
-        生成 realm 的自动通知的 token
+     生成 realm 的自动通知的 token
      */
     func generatRealmToken() {
         let ws = self
@@ -58,7 +70,8 @@ class TaskListManager {
                 
             case .update(_, let deletions, let insertions, let modifications):
                 ws.datasource?.update(deletions: deletions, insertions: insertions,
-                                          modifications: modifications, type: .completed)
+                                      modifications: modifications, type: .completed)
+                ws.completedHeaderView?.updateTitle(newTitle: ws.updateCompletedHeaderViewTitle())
                 ws.handleUpdateTodayGroup()
                 
             case .error(let error):
@@ -142,22 +155,38 @@ extension TaskListManager {
     
     func heightForHeaderInSection(section: Int) -> CGFloat {
         if section == 0 {
-            return 20
+            return self.preceedTasks.count > 0 ?
+                TaskTableHeaderView.preceedHeight : EmptyDataView.height
         } else {
-            return self.completedTasks.count > 0 ? 40 : 0
+            return TaskTableHeaderView.completedHeight
         }
     }
     
-    func viewForHeaderIn(section: Int, target: AnyObject) -> TaskTableHeaderView? {
+    func viewForHeaderIn(section: Int, target: AnyObject) -> UIView? {
         if section == 0 {
-            let headerTitle = Localized("progess")
-            let headerView = TaskTableHeaderView.loadNib(target, title: headerTitle)
-            return headerView
+            if self.preceedTasks.count > 0 {
+                let headerTitle = Localized("progess")
+                let headerView = TaskTableHeaderView.loadNib(target, title: headerTitle)
+                return headerView
+            } else {
+                
+                    let headerView = EmptyDataView.loadNib(target)
+                    if let header = headerView {
+                        header.setImage(imageName: Icons.listEmpty.iconString())
+                            .setTitle(title: Localized("emptyTask"))
+                    }
+                    
+                    return headerView
+            }
         } else {
-            let headerTitle = Localized("finished")
-            let headerView = TaskTableHeaderView.loadNib(target, title: headerTitle)
+            let headerView = TaskTableHeaderView.loadNib(target, title: self.updateCompletedHeaderViewTitle())
+            self.completedHeaderView = headerView
             return headerView
         }
+    }
+    
+    fileprivate func updateCompletedHeaderViewTitle() -> String {
+        return Localized("finished") + "(\(self.completedTasks.count))"
     }
 }
 
@@ -170,5 +199,11 @@ protocol RealmNotificationDataSource: NSObjectProtocol {
 enum TaskCellType {
     case preceed
     case completed
-    
+}
+
+enum UpdateStatus {
+    case move
+    case insert
+    case delete
+    case none
 }

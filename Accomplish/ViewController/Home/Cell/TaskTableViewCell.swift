@@ -207,6 +207,9 @@ class TaskTableViewCell: BaseTableViewCell {
     */
     func markTaskAction(_ btn: UIButton) {
         guard let task = self.task else { return }
+        // 先标记为 move， 因为 tableview 刷新的问题
+        TaskListManager.updateStatus(newStatues: .move)
+        
         if task.status == kTaskFinish {
             RealmManager.shared.updateTaskStatus(task, status: kTaskRunning)
         } else {

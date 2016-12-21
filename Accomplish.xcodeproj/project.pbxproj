@@ -74,6 +74,10 @@
 		C73B442C1E0969D600DDE093 /* TaskListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B442B1E0969D600DDE093 /* TaskListManager.swift */; };
 		C73B442F1E0A4E6C00DDE093 /* HomeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B442D1E0A4E6C00DDE093 /* HomeMenuViewController.swift */; };
 		C73B44301E0A4E6C00DDE093 /* HomeMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B442E1E0A4E6C00DDE093 /* HomeMenuViewController.xib */; };
+		C73B44361E0A517E00DDE093 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B44331E0A517E00DDE093 /* MGSwipeButton.m */; };
+		C73B44371E0A517E00DDE093 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B44351E0A517E00DDE093 /* MGSwipeTableCell.m */; };
+		C73B44391E0A523100DDE093 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44381E0A523100DDE093 /* EmptyDataView.swift */; };
+		C73B443B1E0A523900DDE093 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B443A1E0A523900DDE093 /* EmptyDataView.xib */; };
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */; };
@@ -505,6 +509,12 @@
 		C73B442B1E0969D600DDE093 /* TaskListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListManager.swift; sourceTree = "<group>"; };
 		C73B442D1E0A4E6C00DDE093 /* HomeMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuViewController.swift; sourceTree = "<group>"; };
 		C73B442E1E0A4E6C00DDE093 /* HomeMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeMenuViewController.xib; sourceTree = "<group>"; };
+		C73B44321E0A517E00DDE093 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
+		C73B44331E0A517E00DDE093 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
+		C73B44341E0A517E00DDE093 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
+		C73B44351E0A517E00DDE093 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
+		C73B44381E0A523100DDE093 /* EmptyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
+		C73B443A1E0A523900DDE093 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
 		C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagementViewController.swift; sourceTree = "<group>"; };
@@ -820,8 +830,8 @@
 		C70BF6241D79C57D006B0C1D /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C70BF6251D79C58B006B0C1D /* SecondTimer.swift */,
 				C73B442B1E0969D600DDE093 /* TaskListManager.swift */,
+				C70BF6251D79C58B006B0C1D /* SecondTimer.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -900,6 +910,7 @@
 		C7105F981D6CDBFD0096A1A3 /* Vander */ = {
 			isa = PBXGroup;
 			children = (
+				C73B44311E0A517E00DDE093 /* MGSwipeTableCell */,
 				C7202DB21E07A23800A341B8 /* MMDrawerController */,
 				C79963021DE87A9E00B4617E /* TwicketSegmentedControl */,
 				C74751A81DC760B000831DB1 /* FontAwesome */,
@@ -970,6 +981,8 @@
 			children = (
 				C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */,
 				C71F21601E080E2E00A04351 /* TaskTableHeaderView.xib */,
+				C73B44381E0A523100DDE093 /* EmptyDataView.swift */,
+				C73B443A1E0A523900DDE093 /* EmptyDataView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -988,6 +1001,17 @@
 				C7202DBB1E07A23800A341B8 /* UIViewController+MMDrawerController.m */,
 			);
 			path = MMDrawerController;
+			sourceTree = "<group>";
+		};
+		C73B44311E0A517E00DDE093 /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				C73B44321E0A517E00DDE093 /* MGSwipeButton.h */,
+				C73B44331E0A517E00DDE093 /* MGSwipeButton.m */,
+				C73B44341E0A517E00DDE093 /* MGSwipeTableCell.h */,
+				C73B44351E0A517E00DDE093 /* MGSwipeTableCell.m */,
+			);
+			path = MGSwipeTableCell;
 			sourceTree = "<group>";
 		};
 		C74751A81DC760B000831DB1 /* FontAwesome */ = {
@@ -1761,6 +1785,7 @@
 				C78C4E0D1DFC78E8000C289D /* ReadLaterViewController.xib in Resources */,
 				C75F858A1E053F6D0057D76C /* 6093DE75-B510-3497-88D0-4DBEEA0A5400.bcsymbolmap in Resources */,
 				C75F85891E053F6D0057D76C /* 51DE814E-40D5-3019-A975-684DB4CEF559.bcsymbolmap in Resources */,
+				C73B443B1E0A523900DDE093 /* EmptyDataView.xib in Resources */,
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C7CAF0BF1DA045990046D756 /* HomePulldownView.xib in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
@@ -2116,6 +2141,7 @@
 				C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */,
 				C70BF6271D79CADB006B0C1D /* SecondTimer.swift in Sources */,
 				C7202DB11E079CE100A341B8 /* Icons.swift in Sources */,
+				C73B44371E0A517E00DDE093 /* MGSwipeTableCell.m in Sources */,
 				C7E2D9581D8F05080080D283 /* WatchConstants.swift in Sources */,
 				C74751C41DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift in Sources */,
 				C7105FC41D6CDBFD0096A1A3 /* DTTimePeriodChain.m in Sources */,
@@ -2142,6 +2168,7 @@
 				C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */,
 				C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */,
 				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,
+				C73B44391E0A523100DDE093 /* EmptyDataView.swift in Sources */,
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
 				C7202DBF1E07A23800A341B8 /* UIViewController+MMDrawerController.m in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
@@ -2175,6 +2202,7 @@
 				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
 				C77DE36C1DE6FE7000F098F4 /* ItemTableViewCell.swift in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
+				C73B44361E0A517E00DDE093 /* MGSwipeButton.m in Sources */,
 				C78C4EAD1DFCBFB0000C289D /* ReadLaterTableViewCell.swift in Sources */,
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,

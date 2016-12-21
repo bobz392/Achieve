@@ -11,8 +11,6 @@
 "show"="显示";
 "hide"="隐藏";
 "emptyTask"="没有新任务，放松一下 :)";
-"emptyFinishTask"="没有已经结束的任务";
-"emptyHint"="空空如也";
 "detailIncomplete"="把昨天未完成的任务移到今天";
 "move"="移动";
 "asyncing"="同步中";

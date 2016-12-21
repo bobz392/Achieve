@@ -12,7 +12,8 @@ class TaskTableHeaderView: UIView {
     
     typealias TaskHeaderButtonBlock = (_ button: UIButton) -> Void
     
-    static let height: CGFloat = 30
+    static let preceedHeight: CGFloat = 20
+    static let completedHeight: CGFloat = 20
     fileprivate var block: TaskHeaderButtonBlock? = nil
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -33,6 +34,10 @@ class TaskTableHeaderView: UIView {
         view.additionButton.addTarget(view, action: #selector(view.additionAction), for: .touchUpInside)
         
         return view
+    }
+    
+    func updateTitle(newTitle: String) {
+        self.titleLabel.text = newTitle
     }
 
     func additionAction() {

@@ -117,13 +117,11 @@ class HomeViewController: BaseViewController {
         
         self.newTaskButton.addShadow()
         self.newTaskButton.layer.cornerRadius = 35
+        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString())
+        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
         
         //        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
         //        self.emptyHintLabel.text = Localized("emptyTask")
-        //
-        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction),
-                                     for: .touchUpInside)
-        
         //        self.currentDateLabel.textColor = colors.cloudColor
         //.backgroundColor = colors.cloudColor
         //        self.taskTableView.separatorColor = colors.separatorColor
@@ -135,7 +133,7 @@ class HomeViewController: BaseViewController {
         //
         //        self.emptyHintLabel.textColor = colors.secondaryTextColor
         //        self.settingButton.buttonColor(colors)
-        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString())
+        
         
         //        self.calendarButton.buttonColor(colors)
         //        self.fullScreenButton.buttonColor(colors)
@@ -412,7 +410,7 @@ class HomeViewController: BaseViewController {
     
     func newTaskAction() {
         let newTaskVC = NewTaskViewController()
-        self.navigationController?.addChildViewController(newTaskVC)
+        self.addChildViewController(newTaskVC)
         newTaskVC.didMove(toParentViewController: self)
         
         self.newTaskVC = newTaskVC

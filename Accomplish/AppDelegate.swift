@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let drawer = MMDrawerController(center: nav,
                                         leftDrawerViewController: menuViewController)
         drawer?.maximumLeftDrawerWidth = 280
-        drawer?.openDrawerGestureModeMask = .all
+        drawer?.openDrawerGestureModeMask = .bezelPanningCenterView
         drawer?.showsShadow = true
         
         drawer?.shadowOpacity = 0.2

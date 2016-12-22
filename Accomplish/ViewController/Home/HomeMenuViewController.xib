@@ -19,17 +19,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNl-BB-ChR">
-                    <rect key="frame" x="104.5" y="98" width="166.5" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6cL-jI-7IR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="gNl-BB-ChR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7r6-k2-3F8"/>
-                <constraint firstItem="gNl-BB-ChR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="98" id="Pxg-Oj-y1p"/>
+                <constraint firstAttribute="trailing" secondItem="6cL-jI-7IR" secondAttribute="trailing" id="bmM-8b-Sj6"/>
+                <constraint firstItem="6cL-jI-7IR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ldJ-wp-uLu"/>
+                <constraint firstItem="6cL-jI-7IR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="maB-zG-z26"/>
+                <constraint firstAttribute="bottom" secondItem="6cL-jI-7IR" secondAttribute="bottom" id="tEY-ck-viL"/>
             </constraints>
         </view>
     </objects>

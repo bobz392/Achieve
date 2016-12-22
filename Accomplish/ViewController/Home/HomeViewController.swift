@@ -341,6 +341,8 @@
      -TODO 目前没有利用到 background fetch
      */
     fileprivate func uploadToiCloud() {
+        self.handleNewDay()
+        
         self.icloudManager.iCloudEnable { [unowned self] (enable) in
             if enable {
                 // 未上传的 checkIn 在这里全部上传
@@ -370,11 +372,11 @@
         let movetasks = shareManager.hasUnfinishTaskMoveToday()
         if movetasks.count > 0 {
             let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .alert)
-            let moveAction = UIAlertAction(title: Localized("move"), style: .default) { (action) in
+            let moveAction = UIAlertAction(title: Localized("move"), style: .default) { [unowned self] (action) in
                 shareManager.moveYesterdayTaskToToday(movedtasks: movetasks)
                 self.uploadToiCloud()
             }
-            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
+            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { [unowned self] (action) in
                 alert.dismiss(animated: true, completion: nil)
                 self.uploadToiCloud()
             }

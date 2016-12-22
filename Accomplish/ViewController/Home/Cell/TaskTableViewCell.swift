@@ -60,7 +60,22 @@ class TaskTableViewCell: MGSwipeTableCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+        
+        if selected {
+            self.cellCardView.backgroundColor = Colors.mainTextColor
+        } else {
+            self.cellCardView.backgroundColor = Colors.cellCardColor
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            self.cellCardView.backgroundColor = Colors.mainTextColor
+        } else {
+            self.cellCardView.backgroundColor = Colors.cellCardColor
+        }
     }
     
     private func configTaskPriority(priority: TaskPriority) {
@@ -72,7 +87,7 @@ class TaskTableViewCell: MGSwipeTableCell {
             self.priorityView.backgroundColor = Colors.priorityHighColor
             
         default:
-            self.priorityView.backgroundColor = Colors.cellCardColor
+            self.priorityView.clearView()
         }
     }
     
@@ -101,8 +116,7 @@ class TaskTableViewCell: MGSwipeTableCell {
         switch task.taskStatus() {
         case .preceed:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
-            self.taskStatusButton.buttonWithIcon(icon: Icons.uncheck.iconString(),
-                                                 backgroundColor: Colors.cellCardColor)
+            self.taskStatusButton.buttonWithIcon(icon: Icons.uncheck.iconString())
             
             if let create = task.createdDate {
                 let now = Date()
@@ -118,8 +132,7 @@ class TaskTableViewCell: MGSwipeTableCell {
             
         case .completed:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
-            self.taskStatusButton.buttonWithIcon(icon: Icons.check.iconString(),
-                                                 backgroundColor: Colors.cellCardColor)
+            self.taskStatusButton.buttonWithIcon(icon: Icons.check.iconString())
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()

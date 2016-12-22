@@ -27,12 +27,12 @@ extension UIButton {
         self.backgroundColor = Colors.cloudColor
     }
     
-    func buttonWithIcon(icon: String, tintColor: UIColor? = nil, backgroundColor: UIColor? = nil) {
+    func buttonWithIcon(icon: String, tintColor: UIColor = Colors.mainIconColor, backgroundColor: UIColor = UIColor.clear) {
         let image = UIImage(named:icon)?.withRenderingMode(.alwaysTemplate)
         self.contentMode = .scaleAspectFit
         self.setImage(image, for:.normal)
-        self.tintColor = tintColor ?? Colors.mainIconColor
-        self.backgroundColor = backgroundColor ?? Colors.buttonBackgroundColor
+        self.tintColor = tintColor
+        self.backgroundColor = backgroundColor
     }
 }
 

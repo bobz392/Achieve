@@ -30,7 +30,8 @@
     fileprivate var taskListManager = TaskListManager()
     
     fileprivate var selectedIndex: IndexPath? = nil
-    fileprivate var swipedIndex: IndexPath? = nil
+    // 用于缓存当前已经划开的 cell 的 index
+    fileprivate var cacheSwipedIndex: IndexPath? = nil
     
     fileprivate var timer: SecondTimer?
     fileprivate var repeaterManager = RepeaterManager()
@@ -298,6 +299,7 @@
             guard let ws = self else { return }
             dispatch_async_main {
                 ws.checkNewDay()
+                ws.cacheSwipedIndexBeforReload()
                 ws.taskTableView.reloadData()
             }
         })
@@ -419,12 +421,28 @@
         #endif
     }
     
+    /**
+     在新建任务之前先把滑动开的 cell 关闭
+     */
     func newTaskAction() {
-        let newTaskVC = NewTaskViewController()
-        self.addChildViewController(newTaskVC)
-        newTaskVC.didMove(toParentViewController: self)
+        let newTaskBlock = { [unowned self] in
+            let newTaskVC = NewTaskViewController()
+            self.addChildViewController(newTaskVC)
+            newTaskVC.didMove(toParentViewController: self)
+            
+            self.newTaskVC = newTaskVC
+        }
         
-        self.newTaskVC = newTaskVC
+        if let swiped = self.cacheSwipedIndex,
+            let cell = self.taskTableView.cellForRow(at: swiped) as? MGSwipeTableCell {
+            cell.hideSwipe(animated: true, completion: { (completion) in
+                newTaskBlock()
+            })
+            self.cacheSwipedIndex = nil
+        } else {
+            newTaskBlock()
+        }
+        
     }
     
     // 从today 点击一个 task 进入 detail
@@ -612,14 +630,25 @@
             cell.timeManagementBlock = nil
         }
         
-        cell.delegate = self
-        if let swiped = self.swipedIndex,
-            swiped == indexPath {
-            cell.showSwipe(MGSwipeDirection.rightToLeft, animated: false)
-            self.swipedIndex = nil
+        if let swipedIndex = self.cacheSwipedIndex,
+            swipedIndex == indexPath {
+            cell.showSwipe(.rightToLeft, animated: false)
+            self.cacheSwipedIndex = nil
         }
         
         return cell
+    }
+    
+    fileprivate func cacheSwipedIndexBeforReload() {
+        guard let visibleCells =
+            self.taskTableView.visibleCells as? [MGSwipeTableCell] else { return }
+        
+        for cell in visibleCells {
+            if cell.swipeOffset != 0.0 {
+                let index = self.taskTableView.indexPath(for: cell)
+                self.cacheSwipedIndex = index
+            }
+        }
     }
     
     /**
@@ -672,15 +701,6 @@
 //        
 //        self.present(alert, animated: true, completion: nil)
 //    }
- }
- 
- extension HomeViewController: MGSwipeTableCellDelegate {
-    func swipeTableCell(_ cell: MGSwipeTableCell, didChange state: MGSwipeState, gestureIsActive: Bool) {
-        if state == .swipingRightToLeft {
-            guard let index = self.taskTableView.indexPath(for: cell) else { return }
-            self.swipedIndex = index
-        }
-    }
  }
  
  // MARK: - switch tag delegate

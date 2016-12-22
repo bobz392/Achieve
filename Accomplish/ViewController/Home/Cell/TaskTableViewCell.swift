@@ -55,6 +55,7 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.rightSwipeSettings.transition = .drag
         self.rightSwipeSettings.topMargin = 4
         self.rightSwipeSettings.bottomMargin = 10
+        self.touchOnDismissSwipe = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

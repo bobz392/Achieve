@@ -14,6 +14,7 @@ enum Icons {
     case check
     case uncheck
     case listEmpty
+    case search
     
     func iconString() -> String {
         switch self {
@@ -27,6 +28,8 @@ enum Icons {
             return "uncheck"
         case .listEmpty:
             return "empty_list"
+        case .search:
+            return "search"
         }
     }
 }

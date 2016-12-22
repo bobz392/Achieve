@@ -32,7 +32,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7s-1q-E6R" customClass="AwesomeButton" customModule="Accomplish" customModuleProvider="target">
-                    <rect key="frame" x="290" y="582" width="70" height="70"/>
+                    <rect key="frame" x="152.5" y="582" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="0RI-gk-LeC"/>
                         <constraint firstAttribute="height" constant="70" id="Aza-aE-E0f"/>
@@ -45,8 +45,8 @@
                 <constraint firstAttribute="bottom" secondItem="QLB-12-feP" secondAttribute="bottom" id="RbW-Hv-IyO"/>
                 <constraint firstItem="QLB-12-feP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SIz-YC-tBv"/>
                 <constraint firstItem="QLB-12-feP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="TdW-TC-9Az"/>
-                <constraint firstAttribute="trailing" secondItem="j7s-1q-E6R" secondAttribute="trailing" constant="15" id="ali-fQ-5mj"/>
                 <constraint firstAttribute="bottom" secondItem="j7s-1q-E6R" secondAttribute="bottom" constant="15" id="qeo-Dq-Kqf"/>
+                <constraint firstItem="j7s-1q-E6R" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tsR-YN-4in"/>
             </constraints>
             <point key="canvasLocation" x="-30.5" y="316.5"/>
         </view>

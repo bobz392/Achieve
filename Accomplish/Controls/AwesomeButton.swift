@@ -14,8 +14,8 @@ class AwesomeButton: UIButton {
         super.awakeFromNib()
         
         self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
-//        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
-//        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragOutside)
+        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragOutside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpInside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchCancel)
     }

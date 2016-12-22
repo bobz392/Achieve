@@ -101,14 +101,24 @@ class HomeViewController: BaseViewController {
         self.view.backgroundColor = Colors.mainBackgroundColor
         
         let bar = self.createCustomBar()
-        let barButton = UIButton(type: .custom)
-        barButton.buttonWithIcon(icon: Icons.barMenu.iconString())
-        bar.addSubview(barButton)
-        barButton.snp.makeConstraints { (make) in
+        let menuButton = UIButton(type: .custom)
+        menuButton.buttonWithIcon(icon: Icons.barMenu.iconString())
+        bar.addSubview(menuButton)
+        menuButton.snp.makeConstraints { (make) in
             make.width.equalTo(barIconSize)
             make.height.equalTo(barIconSize)
             make.bottom.equalTo(bar).offset(-6)
             make.left.equalToSuperview().offset(12)
+        }
+        
+        let searchButton = UIButton(type: .custom)
+        searchButton.buttonWithIcon(icon: Icons.search.iconString())
+        bar.addSubview(searchButton)
+        searchButton.snp.makeConstraints { (make) in
+            make.width.equalTo(barIconSize)
+            make.height.equalTo(barIconSize)
+            make.centerY.equalTo(menuButton)
+            make.trailing.equalToSuperview().offset(-10)
         }
         
         self.taskTableView.clearView()

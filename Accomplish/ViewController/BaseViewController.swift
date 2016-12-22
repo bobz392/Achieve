@@ -20,7 +20,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if let nav = self.navigationController,
             let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.openDraw(open: nav.viewControllers.count <= 1)
+            delegate.setOpenDrawMode(openMode: nav.viewControllers.count <= 1)
         }
     }
     

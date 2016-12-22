@@ -39,11 +39,11 @@ class SystemTaskViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
-        self.taskTableView.backgroundColor = colors.cloudColor
-        self.taskTableView.separatorColor = colors.separatorColor
-        self.cardView.backgroundColor = colors.cloudColor
+        self.taskTableView.backgroundColor = Colors.cloudColor
+        self.taskTableView.separatorColor = Colors.separatorColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)

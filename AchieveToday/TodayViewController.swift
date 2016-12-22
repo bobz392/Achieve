@@ -26,9 +26,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
-        let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
-        let secondaryTextColor = UIColor(red:0.58, green:0.65, blue:0.65, alpha:1.00)
-        let mainTextColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.00)
+        let cloudColor = Colors.cloudColor
+        let secondaryTextColor = Colors.secondaryTextColor
+        let mainTextColor = Colors.mainTextColor
         
         self.todayTableView.register(TodayTableViewCell.nib, forCellReuseIdentifier: TodayTableViewCell.reuseId)
         self.todayTableView.separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)

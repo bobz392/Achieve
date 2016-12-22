@@ -19,10 +19,9 @@ class SectionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let colors = Colors()
-        self.lineView.backgroundColor = colors.separatorColor
-        self.backgroundColor = colors.cloudColor
-        self.contentView.backgroundColor = colors.cloudColor
+        self.lineView.backgroundColor = Colors.separatorColor
+        self.backgroundColor = Colors.cloudColor
+        self.contentView.backgroundColor = Colors.cloudColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

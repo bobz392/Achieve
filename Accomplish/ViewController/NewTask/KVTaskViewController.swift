@@ -77,14 +77,14 @@ class KVTaskViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
         self.toolView.addTopShadow()
-        self.toolView.backgroundColor = colors.cloudColor
-        self.cardView.backgroundColor = colors.cloudColor
+        self.toolView.backgroundColor = Colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
-        self.lineView.backgroundColor = colors.cloudColor
+        self.lineView.backgroundColor = Colors.cloudColor
         self.titleTextField.tintColor = colors.mainGreenColor
         self.titleTextField.textColor = Colors.mainTextColor
         self.contentTextView.tintColor = colors.mainGreenColor

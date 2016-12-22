@@ -41,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = drawer
         window?.makeKeyAndVisible()
         
-//        drawer?.open(MMDrawerSide.left, animated: true, completion: nil)
         // background fetch
         if application.backgroundRefreshStatus != .available {
             // to do
@@ -69,8 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func openDraw(open: Bool) {
-        if open {
+    func setOpenDrawMode(openMode: Bool) {
+        if openMode {
             self.drawer?.openDrawerGestureModeMask = .bezelPanningCenterView
         } else {
             self.drawer?.openDrawerGestureModeMask = MMOpenDrawerGestureMode(rawValue: 0)

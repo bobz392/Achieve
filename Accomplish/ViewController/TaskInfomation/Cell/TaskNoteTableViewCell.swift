@@ -21,8 +21,8 @@ class TaskNoteTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         let colors = Colors()
-        self.backgroundColor = colors.cloudColor
-        self.contentView.backgroundColor = colors.cloudColor
+        self.backgroundColor = Colors.cloudColor
+        self.contentView.backgroundColor = Colors.cloudColor
         self.layoutMargins = UIEdgeInsets.zero
         
         self.iconButton.createIconButton(iconSize: kNoteCellIconSize,

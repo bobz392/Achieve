@@ -56,7 +56,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         let colors = Colors()
         
         self.view.backgroundColor = colors.mainGreenColor
-        self.chartCardView.backgroundColor = colors.cloudColor
+        self.chartCardView.backgroundColor = Colors.cloudColor
         
         self.chartView.chartDescription?.textColor = Colors.mainTextColor
         self.chartView.leftAxis.labelTextColor = Colors.mainTextColor
@@ -68,7 +68,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.backButton.createIconButton(iconSize: kBackButtonCorner, icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
         
-        self.emptyDataLabel.textColor = colors.cloudColor
+        self.emptyDataLabel.textColor = Colors.cloudColor
     }
     
     fileprivate func initializeControl() {

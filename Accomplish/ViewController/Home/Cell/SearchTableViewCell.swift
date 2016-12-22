@@ -19,14 +19,12 @@ class SearchTableViewCell: BaseTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        let colors = Colors()
         self.clearView()
         self.contentView.clearView()
-        self.taskTitleLabel.textColor = colors.cloudColor
+        self.taskTitleLabel.textColor = Colors.cloudColor
         self.taskTitleLabel.highlightedTextColor = Colors.secondaryTextColor
-        self.taskStartLabel.textColor = colors.cloudColor
+        self.taskStartLabel.textColor = Colors.cloudColor
         self.taskStartLabel.highlightedTextColor = Colors.secondaryTextColor
     }
 }

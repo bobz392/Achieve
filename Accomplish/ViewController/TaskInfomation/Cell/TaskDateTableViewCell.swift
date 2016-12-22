@@ -32,8 +32,8 @@ class TaskDateTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         let colors = Colors()
-        self.backgroundColor = colors.cloudColor
-        self.contentView.backgroundColor = colors.cloudColor
+        self.backgroundColor = Colors.cloudColor
+        self.contentView.backgroundColor = Colors.cloudColor
         
         self.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), for: .touchUpInside)
         self.clearButton.createIconButton(iconSize: kTaskDetailCellIconSize,

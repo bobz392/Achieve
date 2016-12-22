@@ -34,7 +34,7 @@ class TimeMethodInputView: UIView {
         
         let colors = Colors()
         
-        view.cardHolderView.backgroundColor = colors.cloudColor
+        view.cardHolderView.backgroundColor = Colors.cloudColor
         view.cardHolderView.layer.cornerRadius = kCardViewCornerRadius
         
         view.firstInputTitleLabel.textColor = Colors.secondaryTextColor

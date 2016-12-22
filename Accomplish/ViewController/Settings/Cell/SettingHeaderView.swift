@@ -18,10 +18,9 @@ class SettingHeaderView: UIView {
     }
     
     override func awakeFromNib() {
-        let colors = Colors()
-        self.headerTitleLabel.textColor = Colors.secondaryTextColor
-        self.separatorView.backgroundColor = colors.separatorColor
-        self.backgroundColor = colors.cloudColor
         super.awakeFromNib()
-    }
+        
+        self.headerTitleLabel.textColor = Colors.secondaryTextColor
+        self.separatorView.backgroundColor = Colors.separatorColor
+        self.backgroundColor = Colors.cloudColor    }
 }

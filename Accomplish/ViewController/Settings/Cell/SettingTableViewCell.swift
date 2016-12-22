@@ -20,10 +20,8 @@ class SettingTableViewCell: BaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let colors = Colors()
-        
         self.contentView.clearView()
-        self.backgroundColor = colors.cloudColor
+        self.backgroundColor = Colors.cloudColor
         self.settingTitleLabel.textColor =
             Colors.mainTextColor
     }

@@ -78,8 +78,8 @@ class NoteViewController: BaseViewController {
         let colors = Colors()
         
         self.toolView.addTopShadow()
-        self.toolView.backgroundColor = colors.cloudColor
-        self.cardView.backgroundColor = colors.cloudColor
+        self.toolView.backgroundColor = Colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         self.titleLabel.textColor = Colors.mainTextColor
         

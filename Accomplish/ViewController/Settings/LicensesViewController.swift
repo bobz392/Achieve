@@ -30,9 +30,9 @@ class LicensesViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)

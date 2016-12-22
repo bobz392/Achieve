@@ -44,10 +44,10 @@ class SettingsViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
         self.settingTableView.clearView()
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
@@ -55,7 +55,7 @@ class SettingsViewController: BaseViewController {
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
         
-        self.settingTableView.separatorColor = colors.separatorColor
+        self.settingTableView.separatorColor = Colors.separatorColor
         self.settingTableView.reloadData()
     }
     
@@ -244,8 +244,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-                let backgroundVC = BackgroundViewController()
-                self.navigationController?.pushViewController(backgroundVC, animated: true)
+//                let backgroundVC = BackgroundViewController()
+//                self.navigationController?.pushViewController(backgroundVC, animated: true)
+                break
                 
             // 工作法管理
             case 1:

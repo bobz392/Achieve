@@ -83,8 +83,8 @@ class CalendarViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleButton.tintColor = colors.cloudColor
-        self.cardView.backgroundColor = colors.cloudColor
+        self.titleButton.tintColor = Colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         self.navigationController?.view.backgroundColor = colors.mainGreenColor
         
@@ -96,17 +96,17 @@ class CalendarViewController: BaseViewController {
         
         self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)
         self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
-        self.scheduleButton.setTitleColor(colors.cloudColor, for: .normal)
+        self.scheduleButton.setTitleColor(Colors.cloudColor, for: .normal)
         self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
         
         self.configWeekView()
         
-        self.createdLabel.textColor = colors.cloudColor
-        self.completedLabel.textColor = colors.cloudColor
-        self.createdTitleLable.textColor = colors.cloudColor
-        self.completedTitleLabel.textColor = colors.cloudColor
+        self.createdLabel.textColor = Colors.cloudColor
+        self.completedLabel.textColor = Colors.cloudColor
+        self.createdTitleLable.textColor = Colors.cloudColor
+        self.completedTitleLabel.textColor = Colors.cloudColor
         
-        self.monthButton.backgroundColor = colors.cloudColor
+        self.monthButton.backgroundColor = Colors.cloudColor
         self.monthButton.setTitleColor(colors.mainGreenColor, for: .normal)
     }
     

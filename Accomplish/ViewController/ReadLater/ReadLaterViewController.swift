@@ -37,10 +37,10 @@ class ReadLaterViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
         self.readLatersTableView.clearView()
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
@@ -48,7 +48,7 @@ class ReadLaterViewController: BaseViewController {
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
         
-        self.readLatersTableView.separatorColor = colors.separatorColor
+        self.readLatersTableView.separatorColor = Colors.separatorColor
         self.readLatersTableView.reloadData()
     }
     

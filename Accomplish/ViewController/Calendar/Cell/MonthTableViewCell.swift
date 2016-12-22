@@ -23,12 +23,10 @@ class MonthTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let colors = Colors()
         
         self.clearView()
         self.contentView.clearView()
-        self.monthCardView.backgroundColor = colors.cloudColor
+        self.monthCardView.backgroundColor = Colors.cloudColor
         self.monthCardView.layer.cornerRadius = kCardViewCornerRadius
         self.taskNameLabel.textColor = Colors.mainTextColor
         self.infoLabel.textColor = Colors.secondaryTextColor

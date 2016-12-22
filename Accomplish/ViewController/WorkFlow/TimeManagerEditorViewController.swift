@@ -67,7 +67,7 @@ class TimeManagerEditorViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         
         self.view.backgroundColor = colors.mainGreenColor
         self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .normal)

@@ -44,7 +44,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
                                          action: #selector(self.deleteGroupAction), for: .touchUpInside)
         
         self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         
         self.itemsTableView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.itemsTableView.register(ItemTableViewCell.nib,

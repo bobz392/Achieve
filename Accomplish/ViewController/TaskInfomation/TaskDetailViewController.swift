@@ -96,13 +96,13 @@ class TaskDetailViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleTextField.textColor = colors.cloudColor
-        self.titleTextField.tintColor = colors.cloudColor
+        self.titleTextField.textColor = Colors.cloudColor
+        self.titleTextField.tintColor = Colors.cloudColor
         
-        self.detailTableView.backgroundColor = colors.cloudColor
-        self.detailTableView.separatorColor = colors.separatorColor
+        self.detailTableView.backgroundColor = Colors.cloudColor
+        self.detailTableView.separatorColor = Colors.separatorColor
         
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)

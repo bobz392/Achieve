@@ -112,6 +112,7 @@
             make.bottom.equalTo(bar).offset(-6)
             make.left.equalToSuperview().offset(12)
         }
+        menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)
         
         let searchButton = UIButton(type: .custom)
         searchButton.buttonWithIcon(icon: Icons.search.iconString())
@@ -391,6 +392,11 @@
         //        self.navigationController?.delegate = self
         //        self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openMenuAction() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        delegate?.drawer?.open(MMDrawerSide.left, animated: true, completion: nil)
     }
     
     func settingAction() {

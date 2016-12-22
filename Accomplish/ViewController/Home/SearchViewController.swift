@@ -71,7 +71,7 @@ class SearchViewController: BaseViewController {
         let colors = Colors()
         
         self.view.backgroundColor = colors.mainGreenColor
-        self.topHolderView.backgroundColor = colors.cloudColor
+        self.topHolderView.backgroundColor = Colors.cloudColor
         self.topHolderView.layer.cornerRadius = self.searchCorner
         
         self.searchIconLabel
@@ -81,9 +81,9 @@ class SearchViewController: BaseViewController {
         self.searchTextField.tintColor = colors.mainGreenColor
         self.searchTextField.textColor = Colors.mainTextColor
         
-        self.searchTableView.separatorColor = colors.cloudColor
+        self.searchTableView.separatorColor = Colors.cloudColor
         
-        self.hintLabel.textColor = colors.cloudColor
+        self.hintLabel.textColor = Colors.cloudColor
     }
     
     fileprivate func initializeControl() {

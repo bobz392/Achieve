@@ -110,7 +110,7 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
         let colors = Colors()
         self.path = self.drawPathWithArcCenter()
         self.fillColor = UIColor.clear.cgColor
-        self.strokeColor = colors.cloudColor.cgColor
+        self.strokeColor = Colors.cloudColor.cgColor
         self.lineWidth = circleLineWidth
         self.backgroundColor = UIColor.clear.cgColor
         

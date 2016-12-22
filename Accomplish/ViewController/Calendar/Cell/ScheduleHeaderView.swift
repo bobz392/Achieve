@@ -18,8 +18,7 @@ class ScheduleHeaderView: UIView {
     }
     
     override func awakeFromNib() {
-        let colors = Colors()
-        self.titleLableView.textColor = colors.cloudColor
+        self.titleLableView.textColor = Colors.cloudColor
         super.awakeFromNib()
     }
 

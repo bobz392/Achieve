@@ -77,6 +77,8 @@
 		C73B44391E0A523100DDE093 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44381E0A523100DDE093 /* EmptyDataView.swift */; };
 		C73B443B1E0A523900DDE093 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B443A1E0A523900DDE093 /* EmptyDataView.xib */; };
 		C73B44411E0AED2700DDE093 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73B44401E0AED2700DDE093 /* UIViewController+MMDrawerController.m */; };
+		C73B44421E0C1AC700DDE093 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7202DB01E079CE100A341B8 /* Icons.swift */; };
+		C73B44431E0C1BA300DDE093 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */; };
@@ -264,8 +266,6 @@
 		C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */; };
 		C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */; };
 		C79807391D8507F20011DE19 /* UIView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807381D8507F20011DE19 /* UIView+Icon.swift */; };
-		C798073C1D8538C00011DE19 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798073A1D8538C00011DE19 /* BackgroundViewController.swift */; };
-		C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798073B1D8538C00011DE19 /* BackgroundViewController.xib */; };
 		C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */; };
 		C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */; };
 		C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */; };
@@ -705,8 +705,6 @@
 		C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetialTableViewCell.swift; sourceTree = "<group>"; };
 		C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingDetialTableViewCell.xib; sourceTree = "<group>"; };
 		C79807381D8507F20011DE19 /* UIView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Icon.swift"; sourceTree = "<group>"; };
-		C798073A1D8538C00011DE19 /* BackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
-		C798073B1D8538C00011DE19 /* BackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundViewController.xib; sourceTree = "<group>"; };
 		C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundCollectionViewCell.xib; sourceTree = "<group>"; };
 		C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodCreateTableViewCell.swift; sourceTree = "<group>"; };
@@ -1238,8 +1236,6 @@
 				C798071F1D82D0C20011DE19 /* Cell */,
 				C79807141D8298380011DE19 /* SettingsViewController.swift */,
 				C79807151D8298380011DE19 /* SettingsViewController.xib */,
-				C798073A1D8538C00011DE19 /* BackgroundViewController.swift */,
-				C798073B1D8538C00011DE19 /* BackgroundViewController.xib */,
 				C769A6411D885AB700E68871 /* AboutViewController.swift */,
 				C769A6421D885AB700E68871 /* AboutViewController.xib */,
 				C769A6451D8862D800E68871 /* LicensesViewController.swift */,
@@ -1796,7 +1792,6 @@
 				C73B44301E0A4E6C00DDE093 /* HomeMenuViewController.xib in Resources */,
 				C75F85901E053F6D0057D76C /* 9D3C03F7-AE0E-3AE2-9A3E-6F9664C9840F.bcsymbolmap in Resources */,
 				C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */,
-				C798073D1D8538C00011DE19 /* BackgroundViewController.xib in Resources */,
 				C75F858B1E053F6D0057D76C /* 63462667-8672-3110-B8E4-6AF146455308.bcsymbolmap in Resources */,
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
@@ -2087,7 +2082,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C798073C1D8538C00011DE19 /* BackgroundViewController.swift in Sources */,
 				C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */,
 				C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */,
 				C77193F61D6DE9C000437560 /* Constants.swift in Sources */,
@@ -2251,11 +2245,13 @@
 				C78ED8A11D7A800D00031B4D /* NSDate+DateTools.m in Sources */,
 				C78ED8A41D7A80F900031B4D /* NSDate+Convenient.swift in Sources */,
 				C7821EC91D7BF18E0056623D /* MMWormhole.m in Sources */,
+				C73B44421E0C1AC700DDE093 /* Icons.swift in Sources */,
 				C74A896F1D9636F4008E15CA /* Logger.swift in Sources */,
 				C78ED8A51D7A80FF00031B4D /* String+Convenient.swift in Sources */,
 				C78ED89B1D7A800D00031B4D /* DTConstants.m in Sources */,
 				C7821ECD1D7BF18E0056623D /* MMWormholeSessionContextTransiting.m in Sources */,
 				C7821ECF1D7BF18E0056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
+				C73B44431E0C1BA300DDE093 /* Colors.swift in Sources */,
 				C7821ECB1D7BF18E0056623D /* MMWormholeFileTransiting.m in Sources */,
 				C7E2D95C1D8F07570080D283 /* GroupTasks.swift in Sources */,
 				C78ED89C1D7A800D00031B4D /* DTError.m in Sources */,

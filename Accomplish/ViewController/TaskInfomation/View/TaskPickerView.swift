@@ -31,10 +31,10 @@ class TaskPickerView: UIView {
     override func awakeFromNib() {
         let colors = Colors()
         
-        self.toolView.backgroundColor = colors.cloudColor
+        self.toolView.backgroundColor = Colors.cloudColor
         self.leftButton.tintColor = colors.mainGreenColor
         self.rightButton.tintColor = colors.mainGreenColor
-        self.backgroundColor = colors.cloudColor
+        self.backgroundColor = Colors.cloudColor
         
         self.leftButton.setTitle(Localized("cancel"), for: .normal)
         self.toolView.addTopShadow()

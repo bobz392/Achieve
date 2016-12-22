@@ -73,9 +73,9 @@ class TagViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
@@ -83,7 +83,7 @@ class TagViewController: BaseViewController {
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
         self.newTagButton.tintColor = colors.linkTextColor
-        self.newTagButton.backgroundColor = colors.cloudColor
+        self.newTagButton.backgroundColor = Colors.cloudColor
         self.newTagButton.addTopShadow()
         
         self.newTagTextField.tintColor = colors.mainGreenColor

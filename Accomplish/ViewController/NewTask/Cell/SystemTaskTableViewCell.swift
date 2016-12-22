@@ -21,9 +21,8 @@ class SystemTaskTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let colors = Colors()
-        self.backgroundColor = colors.cloudColor
-        self.contentView.backgroundColor = colors.cloudColor
+        self.backgroundColor = Colors.cloudColor
+        self.contentView.backgroundColor = Colors.cloudColor
         self.taskTitle.textColor = Colors.mainTextColor
         
         self.iconImage.layer.cornerRadius = 10

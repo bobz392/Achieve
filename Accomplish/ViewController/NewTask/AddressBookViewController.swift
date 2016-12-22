@@ -68,9 +68,8 @@ final class AddressBookViewController: BaseViewController {
     }
     
     fileprivate func config(tableView: UITableView?) {
-        let colors = Colors()
         tableView?.sectionIndexColor = Colors.mainTextColor
-        tableView?.sectionIndexBackgroundColor = colors.cloudColor
+        tableView?.sectionIndexBackgroundColor = Colors.cloudColor
         tableView?.register(AddressBookTableViewCell.nib, forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
         tableView?.separatorStyle = .none
     }
@@ -78,10 +77,9 @@ final class AddressBookViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
-        
-        self.tableView.backgroundColor = colors.cloudColor
-        self.cardView.backgroundColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
+        self.tableView.backgroundColor = Colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.cancelButton.buttonColor(colors)
@@ -170,8 +168,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 25))
         
-        let colors = Colors()
-        view.backgroundColor = colors.cloudColor
+        view.backgroundColor = Colors.cloudColor
         
         let margin: CGFloat = 16
         let titleLabel = UILabel(frame: CGRect(x: margin, y: 0, width: view.bounds.width - margin, height: view.bounds.height))

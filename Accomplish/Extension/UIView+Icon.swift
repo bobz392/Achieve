@@ -24,7 +24,7 @@ extension UIButton {
     
     func buttonColor(_ colors: Colors) {
         self.tintColor = Colors.mainIconColor
-        self.backgroundColor = colors.cloudColor
+        self.backgroundColor = Colors.cloudColor
     }
     
     func buttonWithIcon(icon: String, tintColor: UIColor? = nil, backgroundColor: UIColor? = nil) {

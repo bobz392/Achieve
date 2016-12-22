@@ -30,24 +30,22 @@ class ScheduleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        let colors = Colors()
-        self.lineView.backgroundColor = colors.cloudColor
+        self.lineView.backgroundColor = Colors.cloudColor
         
         self.statusLabel.layer.cornerRadius = 10
-        self.statusLabel.backgroundColor = colors.cloudColor
-        self.createdTimeLabel.textColor = colors.cloudColor
-        self.amLabel.textColor = colors.cloudColor
+        self.statusLabel.backgroundColor = Colors.cloudColor
+        self.createdTimeLabel.textColor = Colors.cloudColor
+        self.amLabel.textColor = Colors.cloudColor
         
         self.tasksLabel.textColor = Colors.mainTextColor
-        self.tasksLabel.highlightedTextColor = colors.cloudColor
+        self.tasksLabel.highlightedTextColor = Colors.cloudColor
         self.completedLabel.textColor = Colors.secondaryTextColor
-        self.completedLabel.highlightedTextColor = colors.cloudColor
+        self.completedLabel.highlightedTextColor = Colors.cloudColor
         
         self.tasksLabel.preferredMaxLayoutWidth = screenBounds.width - 101
         
-        self.taskCardView.backgroundColor = colors.cloudColor
+        self.taskCardView.backgroundColor = Colors.cloudColor
         self.taskCardView.layer.cornerRadius = 4
         self.taskCardView.addShadow()
     }
@@ -88,7 +86,7 @@ class ScheduleTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         selectedBackgroundView = UIView(frame: frame)
-        selectedBackgroundView?.backgroundColor = Colors().selectedColor
+//        selectedBackgroundView?.backgroundColor = Colors.selectedColor
         
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state

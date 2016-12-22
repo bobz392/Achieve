@@ -59,9 +59,9 @@ class TimeManagementViewController: BaseViewController {
     override func configMainUI() {
         let colors = Colors()
         
-        self.titleLabel.textColor = colors.cloudColor
+        self.titleLabel.textColor = Colors.cloudColor
         
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
         self.backButton.buttonColor(colors)
@@ -74,7 +74,7 @@ class TimeManagementViewController: BaseViewController {
             self.createMethodButton.isHidden = true
         } else {
             self.createMethodButton.tintColor = colors.linkTextColor
-            self.createMethodButton.backgroundColor = colors.cloudColor
+            self.createMethodButton.backgroundColor = Colors.cloudColor
             self.createMethodButton.addTopShadow()
         }
     }

@@ -47,11 +47,11 @@ class AboutViewController: BaseViewController {
                                          color: colors.mainGreenColor,
                                          status: .normal)
         
-        self.versionLabel.textColor = colors.cloudColor
-        self.acknowledgementsButton.tintColor = colors.cloudColor
+        self.versionLabel.textColor = Colors.cloudColor
+        self.acknowledgementsButton.tintColor = Colors.cloudColor
         
-        self.nameLabel.textColor = colors.cloudColor
-        self.wordLabel.textColor = colors.cloudColor
+        self.nameLabel.textColor = Colors.cloudColor
+        self.wordLabel.textColor = Colors.cloudColor
     }
     
     fileprivate func initializeControl() {

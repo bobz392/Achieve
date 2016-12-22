@@ -54,7 +54,7 @@ class TimeManagementView: UIView {
         view.countLabel.text = "         "
         view.countLabel.font = UIFont(name: "Courier", size: 50)
         view.countLabel.adjustsFontSizeToFitWidth = true
-        view.countLabel.textColor = colors.cloudColor
+        view.countLabel.textColor = Colors.cloudColor
         view.countLabel.delegate = view
         
         view.statusLabel.textColor = Colors.secondaryTextColor
@@ -175,7 +175,7 @@ class TimeManagementView: UIView {
         if self.currentStatusRunning == false {
             self.statusShutterButton.buttonState = .recording
             self.statusShutterButton.buttonColor = colors.systemRedColor
-            self.countLabel.textColor = colors.cloudColor
+            self.countLabel.textColor = Colors.cloudColor
             self.statusLabel.text = ""
             if self.startType == .Init {
                 self.nextStatus()

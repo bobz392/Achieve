@@ -51,14 +51,14 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             titleTextField.becomeFirstResponder()
         }
         
-        (UIApplication.shared.delegate as? AppDelegate)?.openDraw(open: false)
+        (UIApplication.shared.delegate as? AppDelegate)?.setOpenDrawMode(openMode: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.closeNotification()
-        (UIApplication.shared.delegate as? AppDelegate)?.openDraw(open: true)
+        (UIApplication.shared.delegate as? AppDelegate)?.setOpenDrawMode(openMode: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,18 +68,18 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     override func configMainUI() {
         let colors = Colors()
-        self.cardView.backgroundColor = colors.cloudColor
+        self.cardView.backgroundColor = Colors.cloudColor
         self.titleTextField.tintColor = colors.mainGreenColor
         
 //        self.prioritySlideSegmental.tintColor = colors.mainGreenColor
         
         self.prioritySlideSegmental.sliderBackgroundColor = colors.mainGreenColor
         self.priorityLabel.textColor = Colors.mainTextColor
-        self.toolView.backgroundColor = colors.cloudColor
-        self.lineView.backgroundColor = colors.separatorColor
-        self.dateToolLineView.backgroundColor = colors.separatorColor
-        self.dateToolView.backgroundColor = colors.cloudColor
-        self.datePicker.backgroundColor = colors.cloudColor
+        self.toolView.backgroundColor = Colors.cloudColor
+        self.lineView.backgroundColor = Colors.separatorColor
+        self.dateToolLineView.backgroundColor = Colors.separatorColor
+        self.dateToolView.backgroundColor = Colors.cloudColor
+        self.datePicker.backgroundColor = Colors.cloudColor
         
         self.cancelButton.tintColor = colors.mainGreenColor
         self.saveButton.tintColor = colors.mainGreenColor

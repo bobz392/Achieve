@@ -130,7 +130,7 @@
         
         self.newTaskButton.addShadow()
         self.newTaskButton.layer.cornerRadius = 35
-        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString())
+        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(), backgroundColor: Colors.cloudColor)
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
         
         //        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)

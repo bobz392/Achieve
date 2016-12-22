@@ -68,8 +68,6 @@
 		C73B44421E0C1AC700DDE093 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7202DB01E079CE100A341B8 /* Icons.swift */; };
 		C73B44431E0C1BA300DDE093 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7105F8D1D6CCDB00096A1A3 /* Colors.swift */; };
 		C73B444B1E0C41DA00DDE093 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B444A1E0C41DA00DDE093 /* GrowingTextView.swift */; };
-		C73B444E1E0C420100DDE093 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B444C1E0C420100DDE093 /* EmptyView.swift */; };
-		C73B444F1E0C420100DDE093 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B444D1E0C420100DDE093 /* EmptyView.xib */; };
 		C73B44691E0C494200DDE093 /* SectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44521E0C494200DDE093 /* SectionTableViewCell.swift */; };
 		C73B446A1E0C494200DDE093 /* SectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44531E0C494200DDE093 /* SectionTableViewCell.xib */; };
 		C73B446B1E0C494200DDE093 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44541E0C494200DDE093 /* SubtaskTableViewCell.swift */; };
@@ -91,6 +89,8 @@
 		C73B447B1E0C494200DDE093 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */; };
 		C73B447C1E0C494200DDE093 /* TaskPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44671E0C494200DDE093 /* TaskPickerView.swift */; };
 		C73B447D1E0C494200DDE093 /* TaskPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44681E0C494200DDE093 /* TaskPickerView.xib */; };
+		C73B44801E0C4FE800DDE093 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B447E1E0C4FE800DDE093 /* EmptyView.swift */; };
+		C73B44811E0C4FE800DDE093 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B447F1E0C4FE800DDE093 /* EmptyView.xib */; };
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */; };
@@ -495,8 +495,6 @@
 		C73B443F1E0AED2700DDE093 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		C73B44401E0AED2700DDE093 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		C73B444A1E0C41DA00DDE093 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
-		C73B444C1E0C420100DDE093 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		C73B444D1E0C420100DDE093 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		C73B44521E0C494200DDE093 /* SectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTableViewCell.swift; sourceTree = "<group>"; };
 		C73B44531E0C494200DDE093 /* SectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionTableViewCell.xib; sourceTree = "<group>"; };
 		C73B44541E0C494200DDE093 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -518,6 +516,8 @@
 		C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C73B44671E0C494200DDE093 /* TaskPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPickerView.swift; sourceTree = "<group>"; };
 		C73B44681E0C494200DDE093 /* TaskPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPickerView.xib; sourceTree = "<group>"; };
+		C73B447E1E0C4FE800DDE093 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		C73B447F1E0C4FE800DDE093 /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
 		C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagementViewController.swift; sourceTree = "<group>"; };
@@ -1355,6 +1355,8 @@
 		C79806EE1D8157640011DE19 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				C73B447E1E0C4FE800DDE093 /* EmptyView.swift */,
+				C73B447F1E0C4FE800DDE093 /* EmptyView.xib */,
 				C798072C1D83DB3F0011DE19 /* HUD.swift */,
 				C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */,
 				C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */,
@@ -1364,8 +1366,6 @@
 				C79806F01D8157880011DE19 /* UICountingLabel.m */,
 				C77DE35C1DE4419E00F098F4 /* MZTimerLabel.h */,
 				C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */,
-				C73B444C1E0C420100DDE093 /* EmptyView.swift */,
-				C73B444D1E0C420100DDE093 /* EmptyView.xib */,
 				C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */,
 			);
 			path = Controls;
@@ -1753,10 +1753,10 @@
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
 				C75F85921E053F6D0057D76C /* B3E65619-1D82-3269-B69B-DD08018E6DE3.bcsymbolmap in Resources */,
+				C73B44811E0C4FE800DDE093 /* EmptyView.xib in Resources */,
 				C75F85831E053F6D0057D76C /* 00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap in Resources */,
 				C77DE36D1DE6FE7000F098F4 /* ItemTableViewCell.xib in Resources */,
 				C77DE3691DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib in Resources */,
-				C73B444F1E0C420100DDE093 /* EmptyView.xib in Resources */,
 				C78C4E0D1DFC78E8000C289D /* ReadLaterViewController.xib in Resources */,
 				C75F858A1E053F6D0057D76C /* 6093DE75-B510-3497-88D0-4DBEEA0A5400.bcsymbolmap in Resources */,
 				C75F85891E053F6D0057D76C /* 51DE814E-40D5-3019-A975-684DB4CEF559.bcsymbolmap in Resources */,
@@ -2159,8 +2159,8 @@
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C74751C11DC9884100831DB1 /* RealmManager+TimeMethod.swift in Sources */,
 				C7105FC71D6CDBFD0096A1A3 /* NSDate+DateTools.m in Sources */,
-				C73B444E1E0C420100DDE093 /* EmptyView.swift in Sources */,
 				C77193F81D6E488F00437560 /* UserDefault.swift in Sources */,
+				C73B44801E0C4FE800DDE093 /* EmptyView.swift in Sources */,
 				C73B44731E0C494200DDE093 /* LocalNotificationManager.swift in Sources */,
 				C78C4EB01DFCD797000C289D /* RealmManager+ReadLater.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,

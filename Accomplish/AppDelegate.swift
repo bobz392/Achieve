@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drawer = MMDrawerController(center: nav,
                                         leftDrawerViewController: menuViewController)
         drawer?.maximumLeftDrawerWidth = 280
-        drawer?.openDrawerGestureModeMask = .bezelPanningCenterView
+        self.setOpenDrawMode(openMode: true)
         drawer?.showsShadow = true
         
         drawer?.shadowOpacity = 0.2
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setOpenDrawMode(openMode: Bool) {
         if openMode {
-            self.drawer?.openDrawerGestureModeMask = .bezelPanningCenterView
+            self.drawer?.openDrawerGestureModeMask = [.panningCenterView, .bezelPanningCenterView]
         } else {
             self.drawer?.openDrawerGestureModeMask = MMOpenDrawerGestureMode(rawValue: 0)
         }

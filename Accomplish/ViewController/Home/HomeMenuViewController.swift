@@ -14,7 +14,7 @@ class HomeMenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = Colors.mainBackgroundColor
+        self.view.backgroundColor = UIColor(red:0.98, green:0.99, blue:1.00, alpha:1.00)
     }
 
     override func didReceiveMemoryWarning() {

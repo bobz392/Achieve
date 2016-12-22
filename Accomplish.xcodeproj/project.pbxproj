@@ -855,6 +855,7 @@
 			isa = PBXGroup;
 			children = (
 				C7105F8D1D6CCDB00096A1A3 /* Colors.swift */,
+				C7202DB01E079CE100A341B8 /* Icons.swift */,
 				C71F215C1E08060E00A04351 /* AppConstants.swift */,
 				C77192971D6D18BF00437560 /* CommonCode.swift */,
 				C78ED84A1D7A76B300031B4D /* MianCommonCode.swift */,
@@ -877,7 +878,6 @@
 				C7B579321DAD79A3003B6D92 /* TestManager.swift */,
 				C77DE35F1DE6125300F098F4 /* SoundManager.swift */,
 				C78C4EB51DFCE563000C289D /* ReadLaterManager.swift */,
-				C7202DB01E079CE100A341B8 /* Icons.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";

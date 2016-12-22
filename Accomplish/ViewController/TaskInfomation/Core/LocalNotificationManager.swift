@@ -387,7 +387,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                 return
             }
             
-            RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
+            RealmManager.shared.updateTaskStatus(task, newStatus: .completed)
             
         case kNotifyReschedulingAction:
             UrlSchemeDispatcher().checkTaskDetail(uuid)

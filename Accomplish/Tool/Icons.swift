@@ -15,6 +15,8 @@ enum Icons {
     case uncheck
     case listEmpty
     case search
+    case timeManagement
+    case delete
     
     func iconString() -> String {
         switch self {
@@ -30,6 +32,15 @@ enum Icons {
             return "empty_list"
         case .search:
             return "search"
+        case .timeManagement:
+            return "time_management"
+        case .delete:
+            return "delete"
+            
         }
+    }
+    
+    func iconImage() -> UIImage? {
+        return UIImage(named: self.iconString())?.withRenderingMode(.alwaysTemplate)
     }
 }

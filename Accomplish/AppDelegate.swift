@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             
-            RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
+            RealmManager.shared.updateTaskStatus(task, newStatus: .completed)
         } else if identifier == kNotifyReschedulingAction {
             UrlSchemeDispatcher().checkTaskDetail(uuid)
         }

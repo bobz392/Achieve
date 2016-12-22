@@ -99,7 +99,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
             if let repeatUUID = task.repeaterUUID {
                 if self.taskDict[repeatUUID] == nil {
                     var array: [Int]
-                    if task.status == kTaskFinish {
+                    if task.taskStatus() == .completed {
                         array = [1, 1]
                     } else {
                         array = [0, 1]
@@ -109,7 +109,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
                 } else {
                     if var array = self.taskDict[repeatUUID],
                         array.count == 2 {
-                        if task.status == kTaskFinish {
+                        if task.taskStatus() == .completed {
                             array[0] = 1 + array[0]
                             array[1] = 1 + array[1]
                         } else {

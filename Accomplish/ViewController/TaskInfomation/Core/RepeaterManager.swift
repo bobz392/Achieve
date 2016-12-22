@@ -95,7 +95,7 @@ struct RepeaterManager {
             newTask.notifyDate = NSDate(year: now.year(), month: now.month(), day: now.day(), hour: notify.hour(), minute: notify.minute(), second: notify.second())
         }
         newTask.subTaskCount = task.subTaskCount
-        newTask.status = kTaskRunning
+        newTask.status = TaskStatus.preceed.status()
         newTask.tagUUID = task.tagUUID
         newTask.taskNote = task.taskNote
         newTask.taskType = task.taskType

@@ -57,7 +57,7 @@ class RealmManager {
         Logger.log("result = \(result)")
     }
     
-    func queryTodayTaskList(finished: Bool, tagUUID: String? = nil) -> Results<Task> {
+    func queryTodayTaskList(taskStatus: TaskStatus, tagUUID: String? = nil) -> Results<Task> {
         let queryDate = NSDate().createdFormatedDateString()
         
         let queryWithTag: String
@@ -68,7 +68,7 @@ class RealmManager {
         }
         
         let queryFormatted = "createdFormattedDate = '\(queryDate)'"
-        let queryStatues = "status \(finished ? "!=" : "==") \(kTaskRunning)"
+        let queryStatues = "status == \(taskStatus.status())"
         
         let tasks = realm
             .objects(Task.self)
@@ -85,7 +85,7 @@ class RealmManager {
             .filter("createdFormattedDate == '\(date.createdFormatedDateString())'")
         
         let created = task.count
-        let complete = task.filter("status == \(kTaskFinish)").count
+        let complete = task.filter("status == \(TaskStatus.completed.status())").count
         //        Logger.log("created = \(created), complete = \(complete)")
         return (complete, created)
     }
@@ -149,7 +149,7 @@ class RealmManager {
     func hasUnfinishTaskMoveToday() -> [Task] {
         let yesterday = (NSDate().subtractingDays(1) as NSDate).createdFormatedDateString()
         let yesterdayTask = realm.objects(Task.self)
-            .filter("createdFormattedDate = '\(yesterday)' AND status = \(kTaskRunning)")
+            .filter("createdFormattedDate = '\(yesterday)' AND status = \(TaskStatus.preceed.status())")
         let taskArr = Array(yesterdayTask)
         let movedtasks = taskArr.filter { (task) -> Bool in
             return task.repeaterUUID == nil
@@ -174,10 +174,10 @@ class RealmManager {
         }
     }
     
-    func updateTaskStatus(_ task: Task, status: Int, updateDate: NSDate? = nil) {
+    func updateTaskStatus(_ task: Task, newStatus: TaskStatus, updateDate: NSDate? = nil) {
         try! realm.write({
-            task.status = status
-            if status == kTaskFinish {
+            task.status = newStatus.status()
+            if newStatus == .completed {
                 let now = NSDate()
                 let subtasks = querySubtask(task.uuid)
                 for subtask in subtasks {
@@ -186,7 +186,7 @@ class RealmManager {
                 task.finishedDate = updateDate ?? now
                 
                 LocalNotificationManager.shared.skipFireToday(skip: true, task: task)
-            } else if status == kTaskRunning {
+            } else {
                 task.finishedDate = nil
                 LocalNotificationManager.shared.skipFireToday(skip: false, task: task)
             }

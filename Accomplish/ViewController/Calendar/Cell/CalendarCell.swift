@@ -19,7 +19,7 @@ class CalendarCell: JTAppleDayCellView {
         
         self.clearView()
         self.hasTaskView.layer.cornerRadius = 2
-        self.hasTaskView.backgroundColor = Colors().priorityLowColor
+        self.hasTaskView.backgroundColor = Colors.priorityLowColor
         self.selectedView.layer.cornerRadius = 15
     }
     

@@ -17,5 +17,7 @@
 #import "MMDrawerVisualState.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MZTimerLabel.h"
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
 
 #endif /* Accomplish_Bridging_Header_h */

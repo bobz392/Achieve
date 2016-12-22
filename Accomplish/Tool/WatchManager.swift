@@ -77,7 +77,7 @@ class WatchManager: NSObject, WCSessionDelegate {
                 // 如果是设置任务完成的key
             } else if let uuid = message[kWatchSetTaskFinishKey] as? String {
                 guard let task = RealmManager.shared.queryTask(uuid) else { return }
-                RealmManager.shared.updateTaskStatus(task, status: kTaskFinish)
+                RealmManager.shared.updateTaskStatus(task, newStatus: .completed)
                 replyHandler([kAppSetTaskFinishOkKey: uuid])
                 
             } else {

@@ -145,7 +145,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     fileprivate func configDetailWithTask() {
-        if self.task.taskType == kSystemTaskType {
+        if self.task.typeOfTask() == .system {
             self.titleTextField.isEnabled = self.task.taskToDoCanChange() && self.canChange
         } else {
             self.titleTextField.isEnabled = self.canChange

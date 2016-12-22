@@ -32,9 +32,6 @@ struct Colors {
     
     let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
-    let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
-    let priorityNormalColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
-    let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)
     
     let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
     let linkTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
@@ -51,6 +48,12 @@ struct Colors {
     static let headerTextColor = UIColor(red:0.80, green:0.81, blue:0.85, alpha:1.00)
     static let linkButtonTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
     static let emptyTintColor = UIColor(red:0.70, green:0.72, blue:0.82, alpha:1.00)
+    
+    static let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
+    static let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)
+    
+    static let deleteButtonBackgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
+    static let tmButtonBackgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
 }
 
 enum MainColorType: Int {

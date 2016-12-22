@@ -317,13 +317,15 @@
 -(void) transitionDrag:(CGFloat) t
 {
     //No Op, nothing to do ;)
+     for (UIView *button in _buttons) {
+         button.alpha = t;
+     }
 }
 
 -(void) transitionClip:(CGFloat) t
 {
     CGFloat selfWidth = self.bounds.size.width;
     CGFloat offsetX = 0;
-    
     for (UIView *button in _buttons) {
         CGRect frame = button.frame;
         CGFloat dx = roundf(frame.size.width * 0.5 * (1.0 - t)) ;

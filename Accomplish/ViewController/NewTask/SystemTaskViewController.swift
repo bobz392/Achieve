@@ -159,13 +159,13 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             let nameAttrText = NSAttributedString(string: name, attributes: [
                 NSForegroundColorAttributeName: colors.linkTextColor
                 ])
-            task.taskType = kSystemTaskType
+            task.taskType = TaskType.system.type()
             attrText.append(nameAttrText)
             newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)
             
         case .createSubtasks:
             task.taskToDo = name
-            task.taskType = kCustomTaskType
+            task.taskType = TaskType.custom.type()
             
             attrText.append(
                 NSAttributedString(string: name, attributes:[
@@ -183,7 +183,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             let taskToText = TaskManager()
                 .createTaskText(type.rawValue, name: name, info: info)
             task.taskToDo = taskToText
-            task.taskType = kSystemTaskType
+            task.taskType = TaskType.system.type()
             
             attrText.append(
                 NSAttributedString(string: name, attributes:[

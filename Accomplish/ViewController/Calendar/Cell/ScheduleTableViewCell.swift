@@ -62,7 +62,8 @@ class ScheduleTableViewCell: UITableViewCell {
     
     func config(_ task: Task) {
         let colors = Colors()
-        let identifier = task.status == kTaskFinish ?
+        
+        let identifier = task.taskStatus() == .completed ?
             "fa-check" : (task.createdDate!.isLaterThenToday() ? "fa-exclamation" : "fa-times")
         let checkIcon = try! FAKFontAwesome(identifier: identifier, size: 12)
         checkIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)

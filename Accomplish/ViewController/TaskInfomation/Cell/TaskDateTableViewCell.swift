@@ -126,7 +126,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
             self.iconImageView.isHighlighted = task.notifyDate != nil
             
         case TaskDueIconCalendar:
-            if task.status == kTaskFinish {
+            if task.taskStatus() == .completed {
                 self.infoLabel.isHighlighted = task.finishedDate != nil
                 self.clearButton.isHidden = true
                 self.iconImageView.isHighlighted = task.finishedDate != nil

@@ -1,17 +1,17 @@
  //
-//  HomeViewController.swift
-//  Accomplish
-//
-//  Created by zhoubo on 16/8/23.
-//  Copyright © 2016年 zhoubo. All rights reserved.
-//
-
-import UIKit
-import RealmSwift
-
-typealias TaskSettingBlock = (String) -> Void
-
-class HomeViewController: BaseViewController {
+ //  HomeViewController.swift
+ //  Accomplish
+ //
+ //  Created by zhoubo on 16/8/23.
+ //  Copyright © 2016年 zhoubo. All rights reserved.
+ //
+ 
+ import UIKit
+ import RealmSwift
+ 
+ typealias TaskSettingBlock = (String) -> Void
+ 
+ class HomeViewController: BaseViewController {
     // MARK: - props
     //    @IBOutlet weak var cardView: UIView!
     //    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
@@ -30,6 +30,7 @@ class HomeViewController: BaseViewController {
     fileprivate var taskListManager = TaskListManager()
     
     fileprivate var selectedIndex: IndexPath? = nil
+    fileprivate var swipedIndex: IndexPath? = nil
     
     fileprivate var timer: SecondTimer?
     fileprivate var repeaterManager = RepeaterManager()
@@ -442,10 +443,10 @@ class HomeViewController: BaseViewController {
             self.enterTask(t, canChange: true)
         }
     }
-}
-
-extension HomeViewController: RealmNotificationDataSource {
-    func initial(type: TaskCellType) {
+ }
+ 
+ extension HomeViewController: RealmNotificationDataSource {
+    func initial(status: TaskStatus) {
         self.taskTableView.reloadData()
     }
     
@@ -457,10 +458,10 @@ extension HomeViewController: RealmNotificationDataSource {
      有2点要注意
      - 在 preceed list 中要注意 count 从 0 到 1之间的变化需要reload section 来重载 header
      */
-    func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType) {
+    func update(deletions: [Int], insertions: [Int], modifications: [Int], status: TaskStatus) {
         let update = { [unowned self] (section: Int) -> Void in
             if insertions.count > 0 {
-                if self.taskListManager.preceedTasks.count == 1 && type == .preceed {
+                if self.taskListManager.preceedTasks.count == 1 && status == .preceed {
                     self.taskTableView.reloadSections(IndexSet([0]), with: .automatic)
                 } else {
                     self.taskTableView.insertRows(
@@ -471,7 +472,7 @@ extension HomeViewController: RealmNotificationDataSource {
                 self.taskTableView
                     .reloadRows(at: modifications.map { IndexPath(row: $0, section: section) }, with: .automatic)
             } else if deletions.count > 0 {
-                if self.taskListManager.preceedTasks.count == 0 && type == .preceed {
+                if self.taskListManager.preceedTasks.count == 0 && status == .preceed {
                     self.taskTableView.reloadSections(IndexSet([0]), with: .automatic)
                 } else {
                     self.taskTableView
@@ -480,7 +481,7 @@ extension HomeViewController: RealmNotificationDataSource {
             }
         }
         
-        if type == .preceed {
+        if status == .preceed {
             self.taskTableView.beginUpdates()
             update(0)
             // 如果当前不是完成任务或者取消完成任务的情况，则直接 update
@@ -501,10 +502,10 @@ extension HomeViewController: RealmNotificationDataSource {
         }
         
     }
-}
-
-// MARK: - table view
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+ }
+ 
+ // MARK: - table view
+ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -588,48 +589,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =
-            tableView.dequeueReusableCell(
-                withIdentifier: TaskTableViewCell.reuseId,
-                for: indexPath) as! TaskTableViewCell
+            tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseId, for: indexPath) as! TaskTableViewCell
         
         let task = self.taskListManager.taskForIndexPath(indexPath: indexPath)
         
         cell.configCellUse(task)
-        cell.settingBlock = { [unowned self] (uuid) -> Void in
-            self.showSettings(taskUUID: uuid)
-        }
-        return cell
-    }
-
-    /**
-     打开 settings 页面，例如删除 或者 工作法
-     */
-    fileprivate func showSettings(taskUUID: String) {
-        guard let task =
-            RealmManager.shared.queryTask(taskUUID) else { return }
-        
-        let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
-        
-        let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
-            
-            if #available(iOS 9.0, *) {
-                SpotlightManager().removeFromIndex(task: task)
-            }
-            
-            RealmManager.shared.deleteTask(task)
-        }
-        alert.addAction(deleteAction)
-        
-        if let _ = task.notifyDate {
-            let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .destructive, handler: { (action) in
-                RealmManager.shared.deleteTaskReminder(task)
-                
-            })
-            alert.addAction(deleteReminderAction)
-        }
-        
-        if task.taskType == kCustomTaskType {
-            let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
+       
+        if task.typeOfTask() == .custom {
+            cell.timeManagementBlock = { [unowned self] in
                 let selectVC = TimeManagementViewController(isSelectTM: true, selectTMBlock: { [unowned self] (tm) in
                     dispatch_delay(0.35, closure: {
                         guard let view =
@@ -641,27 +608,90 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 self.navigationController?.pushViewController(selectVC, animated: true)
             }
-            alert.addAction(workflowAction)
+        } else {
+            cell.timeManagementBlock = nil
         }
         
-        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
-            alert.dismiss(animated: true, completion: nil)
+        cell.delegate = self
+        if let swiped = self.swipedIndex,
+            swiped == indexPath {
+            cell.showSwipe(MGSwipeDirection.rightToLeft, animated: false)
+            self.swipedIndex = nil
         }
-        alert.addAction(cancelAction)
         
-        self.present(alert, animated: true, completion: nil)
+        return cell
     }
-}
-
-// MARK: - switch tag delegate
-extension HomeViewController: SwitchTagDelegate {
+    
+    /**
+     打开 settings 页面，例如删除 或者 工作法
+     */
+//    fileprivate func showSettings(taskUUID: String) {
+//        guard let task =
+//            RealmManager.shared.queryTask(taskUUID) else { return }
+//        
+//        let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
+//        
+//        let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
+//            
+//            if #available(iOS 9.0, *) {
+//                SpotlightManager().removeFromIndex(task: task)
+//            }
+//            
+//            RealmManager.shared.deleteTask(task)
+//        }
+//        alert.addAction(deleteAction)
+//        
+//        if let _ = task.notifyDate {
+//            let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .destructive, handler: { (action) in
+//                RealmManager.shared.deleteTaskReminder(task)
+//                
+//            })
+//            alert.addAction(deleteReminderAction)
+//        }
+//        
+//        if task.typeOfTask() == .custom {
+//            let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
+//                let selectVC = TimeManagementViewController(isSelectTM: true, selectTMBlock: { [unowned self] (tm) in
+//                    dispatch_delay(0.35, closure: {
+//                        guard let view =
+//                            TimeManagementView.loadNib(self, method: tm, task: task) else { return }
+//                        self.timeManagementView = view
+//                        view.moveIn(view: self.view)
+//                    })
+//                })
+//                
+//                self.navigationController?.pushViewController(selectVC, animated: true)
+//            }
+//            alert.addAction(workflowAction)
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
+//            alert.dismiss(animated: true, completion: nil)
+//        }
+//        alert.addAction(cancelAction)
+//        
+//        self.present(alert, animated: true, completion: nil)
+//    }
+ }
+ 
+ extension HomeViewController: MGSwipeTableCellDelegate {
+    func swipeTableCell(_ cell: MGSwipeTableCell, didChange state: MGSwipeState, gestureIsActive: Bool) {
+        if state == .swipingRightToLeft {
+            guard let index = self.taskTableView.indexPath(for: cell) else { return }
+            self.swipedIndex = index
+        }
+    }
+ }
+ 
+ // MARK: - switch tag delegate
+ extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.taskListManager.queryTodayTask(tagUUID: tag?.tagUUID)
     }
-}
-
-// MARK: - UINavigationControllerDelegate
-extension HomeViewController: UINavigationControllerDelegate {
+ }
+ 
+ // MARK: - UINavigationControllerDelegate
+ extension HomeViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch toViewControllerAnimationType {
         case 0:
@@ -673,4 +703,4 @@ extension HomeViewController: UINavigationControllerDelegate {
             return nil
         }
     }
-}
+ }

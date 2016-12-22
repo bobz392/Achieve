@@ -9,28 +9,75 @@
 import Foundation
 import RealmSwift
 
-let kTaskRunning: Int = 0
-let kTaskFinish: Int = 1
-let kTaskFailure: Int = 3
-let kTaskCancel: Int = 4
+//let kTaskRunning: Int = 0
+//let kTaskFinish: Int = 1
+//let kTaskFailure: Int = 3
+//let kTaskCancel: Int = 4
 
-let kTaskPriorityLow: Int = 0
-let kTaskPriorityNormal: Int = 1
-let kTaskPriorityHigh: Int = 2
+//let kTaskPriorityLow: Int = 0
+//let kTaskPriorityNormal: Int = 1
+//let kTaskPriorityHigh: Int = 2
 
-let kCustomTaskType: Int = 0
-let kSystemTaskType: Int = 1
-let kAssociatTaskType: Int = 2
-let kSubtaskType: Int = 3
+//let kCustomTaskType: Int = 0
+//let kSystemTaskType: Int = 1
+//let kAssociatTaskType: Int = 2
+//let kSubtaskType: Int = 3
+
+enum TaskStatus {
+    case preceed
+    case completed
+    
+    func status() -> Int {
+        if self == .preceed {
+            return 0
+        } else {
+            return 1
+        }
+    }
+}
+
+enum TaskPriority {
+    case low
+    case high
+    case normal
+    
+    func priority() -> Int {
+        switch self {
+        case .low:
+            return 0
+        case .normal:
+            return 1
+        case .high:
+            return 2
+        }
+    }
+}
+
+enum TaskType {
+    case custom
+    case system
+    case subtask
+    
+    func type() -> Int {
+        switch self {
+        case .custom:
+            return 0
+        case .system:
+            return 1
+        case .subtask:
+            return 3
+        }
+    }
+}
 
 class Task: Object {
     dynamic var uuid = ""
     dynamic var taskToDo = ""
     dynamic var taskNote = ""
     
-    dynamic var status = kTaskRunning
-    dynamic var taskType = kCustomTaskType
-    dynamic var priority = kTaskPriorityNormal
+    dynamic var status = TaskStatus.preceed.status()
+    dynamic var taskType = TaskType.custom.type()
+    dynamic var priority = TaskPriority.normal.priority()
     // for query
     dynamic var createdFormattedDate: String = ""
     dynamic var createdDate: NSDate?
@@ -48,7 +95,7 @@ class Task: Object {
         return "uuid"
     }
     
-    func createDefaultTask(_ taskToDo: String, priority: Int = kTaskPriorityNormal) {
+    func createDefaultTask(_ taskToDo: String, priority: Int = TaskPriority.normal.priority()) {
         if let date = self.createdDate {
             self.createdFormattedDate = date.createdFormatedDateString()
             self.uuid = date.createTaskUUID()
@@ -65,7 +112,7 @@ class Task: Object {
     
     func getNormalDisplayTitle() -> String {
         switch self.taskType {
-        case kSystemTaskType:
+        case TaskType.system.type():
             if let action = TaskManager().parseTaskToDoText(self.taskToDo) {
                 return action.type.ationNameWithType() + action.name
             } else {
@@ -79,7 +126,7 @@ class Task: Object {
     
     func taskScheme() -> String {
         switch self.taskType {
-        case kSystemTaskType:
+        case TaskType.system.type():
             if let action = TaskManager().parseTaskToDoText(self.taskToDo) {
                 guard let scheme = action.type.actionScheme() else { return "" }
                 return scheme + action.name
@@ -89,6 +136,37 @@ class Task: Object {
             
         default:
             return ""
+        }
+    }
+    
+    func taskStatus() -> TaskStatus {
+        switch status {
+        case TaskStatus.completed.status():
+            return .completed
+        default:
+            return .preceed
+        }
+    }
+    
+    func typeOfTask() -> TaskType {
+        switch self.taskType {
+        case TaskType.subtask.type():
+            return .subtask
+        case TaskType.system.type():
+            return .system
+        default:
+            return .custom
+        }
+    }
+    
+    func taskPriority() -> TaskPriority {
+        switch priority {
+        case TaskPriority.high.priority():
+            return .high
+        case TaskPriority.normal.priority():
+            return .normal
+        default:
+            return .low
         }
     }
     

@@ -195,7 +195,7 @@ class TimeManagementView: UIView {
     }
     
     func finishTaskAndCancelTM() {
-        RealmManager.shared.updateTaskStatus(self.task, status: kTaskFinish)
+        RealmManager.shared.updateTaskStatus(self.task, newStatus: .completed)
         self.finish()
     }
     

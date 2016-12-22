@@ -11,14 +11,14 @@ import RealmSwift
 
 class TaskListManager {
     
-    fileprivate static var status: UpdateStatus = .none
+    fileprivate static var status: TaskUpdateStatus = .none
     
     weak var datasource: RealmNotificationDataSource? = nil
     
     fileprivate let rowHeight = TaskTableViewCell.rowHeight
     
-    var preceedTasks = RealmManager.shared.queryTodayTaskList(finished: false)
-    var completedTasks = RealmManager.shared.queryTodayTaskList(finished: true)
+    var preceedTasks = RealmManager.shared.queryTodayTaskList(taskStatus: .preceed)
+    var completedTasks = RealmManager.shared.queryTodayTaskList(taskStatus: .completed)
     
     fileprivate var preceedToken: RealmSwift.NotificationToken?
     fileprivate var completedToken: RealmSwift.NotificationToken?
@@ -33,11 +33,11 @@ class TaskListManager {
         self.generatRealmToken()
     }
     
-    static func updateStatus(newStatues: UpdateStatus) {
+    static func updateStatus(newStatues: TaskUpdateStatus) {
         status = newStatues
     }
     
-    static func currentStatus() -> UpdateStatus {
+    static func currentStatus() -> TaskUpdateStatus {
         return TaskListManager.status
     }
     
@@ -49,12 +49,12 @@ class TaskListManager {
         self.preceedToken = preceedTasks.addNotificationBlock({ (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
-                ws.datasource?.initial(type: .preceed)
+                ws.datasource?.initial(status: .preceed)
                 ws.handleUpdateTodayGroup()
                 
             case .update(_, let deletions, let insertions, let modifications):
                 ws.datasource?.update(deletions: deletions, insertions: insertions,
-                                      modifications: modifications, type: .preceed)
+                                      modifications: modifications, status: .preceed)
                 ws.handleUpdateTodayGroup()
                 
             case .error(let error):
@@ -66,11 +66,11 @@ class TaskListManager {
         self.completedToken = completedTasks.addNotificationBlock({ (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
-                ws.datasource?.initial(type: .completed)
+                ws.datasource?.initial(status: .completed)
                 
             case .update(_, let deletions, let insertions, let modifications):
                 ws.datasource?.update(deletions: deletions, insertions: insertions,
-                                      modifications: modifications, type: .completed)
+                                      modifications: modifications, status: .completed)
                 ws.completedHeaderView?.updateTitle(newTitle: ws.updateCompletedHeaderViewTitle())
                 ws.handleUpdateTodayGroup()
                 
@@ -103,7 +103,7 @@ class TaskListManager {
                 t.uuid == uuid
             }).first else { return }
             
-            manager.updateTaskStatus(task, status: kTaskFinish, updateDate: date)
+            manager.updateTaskStatus(task, newStatus: .completed, updateDate: date)
         })
         
         group.clearTaskFinish()
@@ -123,8 +123,8 @@ class TaskListManager {
      */
     func queryTodayTask(tagUUID: String? = nil) {
         let shareManager = RealmManager.shared
-        self.completedTasks = shareManager.queryTodayTaskList(finished: true, tagUUID: tagUUID)
-        self.preceedTasks = shareManager.queryTodayTaskList(finished: false, tagUUID: tagUUID)
+        self.completedTasks = shareManager.queryTodayTaskList(taskStatus: .completed, tagUUID: tagUUID)
+        self.preceedTasks = shareManager.queryTodayTaskList(taskStatus: .preceed, tagUUID: tagUUID)
         self.generatRealmToken()
     }
 }
@@ -192,16 +192,11 @@ extension TaskListManager {
 
 //MARK: - 自动通知的协议
 protocol RealmNotificationDataSource: NSObjectProtocol {
-    func initial(type: TaskCellType)
-    func update(deletions: [Int], insertions: [Int], modifications: [Int], type: TaskCellType)
+    func initial(status: TaskStatus)
+    func update(deletions: [Int], insertions: [Int], modifications: [Int], status: TaskStatus)
 }
 
-enum TaskCellType {
-    case preceed
-    case completed
-}
-
-enum UpdateStatus {
+enum TaskUpdateStatus {
     case move
     case insert
     case delete

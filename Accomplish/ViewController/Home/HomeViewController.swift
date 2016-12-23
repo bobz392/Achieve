@@ -16,12 +16,14 @@
     //    @IBOutlet weak var cardView: UIView!
     //    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
     //    @IBOutlet weak var settingButton: UIButton!
-    @IBOutlet weak var newTaskButton: UIButton!
+    let newTaskButton: UIButton = UIButton(type: .custom)
     //    @IBOutlet weak var calendarButton: UIButton!
     //    @IBOutlet weak var searchButton: UIButton!
     //    @IBOutlet weak var tagButton: UIButton!
     //    @IBOutlet weak var fullScreenButton: UIButton!
-    @IBOutlet weak var taskTableView: UITableView!
+//    @IBOutlet weak var taskTableView: UITableView!
+    
+    let taskTableView: UITableView = UITableView()
     //    @IBOutlet weak var currentDateLabel: UILabel!
     //    @IBOutlet weak var emptyHintLabel: UILabel!
     //    @IBOutlet weak var emptyCoffeeLabel: UILabel!
@@ -53,7 +55,6 @@
         let appDefault = AppUserDefault()
         
         self.configMainUI()
-        self.initializeControl()
         self.taskListManager.datasource = self
         //        self.configMainButton()
         
@@ -107,8 +108,8 @@
         menuButton.buttonWithIcon(icon: Icons.barMenu.iconString())
         bar.addSubview(menuButton)
         menuButton.snp.makeConstraints { (make) in
-            make.width.equalTo(barIconSize)
-            make.height.equalTo(barIconSize)
+            make.width.equalTo(BarIconSize)
+            make.height.equalTo(BarIconSize)
             make.bottom.equalTo(bar).offset(-6)
             make.left.equalToSuperview().offset(12)
         }
@@ -118,121 +119,37 @@
         searchButton.buttonWithIcon(icon: Icons.search.iconString())
         bar.addSubview(searchButton)
         searchButton.snp.makeConstraints { (make) in
-            make.width.equalTo(barIconSize)
-            make.height.equalTo(barIconSize)
+            make.width.equalTo(BarIconSize)
+            make.height.equalTo(BarIconSize)
             make.centerY.equalTo(menuButton)
             make.trailing.equalToSuperview().offset(-10)
         }
         
+        self.view.addSubview(self.taskTableView)
+        self.taskTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.taskTableView.delegate = self
+        self.taskTableView.dataSource = self
         self.taskTableView.clearView()
+        self.taskTableView.separatorStyle = .none
         self.taskTableView.tableFooterView = UIView()
         self.taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         
+        self.view.addSubview(self.newTaskButton)
+        self.newTaskButton.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-15)
+            make.width.equalTo(70)
+            make.height.equalTo(70)
+            make.centerX.equalToSuperview()
+        }
         self.newTaskButton.addShadow()
         self.newTaskButton.layer.cornerRadius = 35
         self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(), backgroundColor: Colors.cloudColor)
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
-        
-        //        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
-        //        self.emptyHintLabel.text = Localized("emptyTask")
-        //        self.currentDateLabel.textColor = colors.cloudColor
-        //.backgroundColor = colors.cloudColor
-        //        self.taskTableView.separatorColor = colors.separatorColor
-        //        self.cardView.backgroundColor = colors.cloudColor
-        //
-        //        self.statusSlideSegment.sliderBackgroundColor = colors.mainGreenColor
-        //        self.statusSlideSegment.segmentsBackgroundColor = UIColor.white
-        //        self.statusSlideSegment.clearView()
-        //
-        //        self.emptyHintLabel.textColor = colors.secondaryTextColor
-        //        self.settingButton.buttonColor(colors)
-        
-        
-        //        self.calendarButton.buttonColor(colors)
-        //        self.fullScreenButton.buttonColor(colors)
-        //        self.tagButton.buttonColor(colors)
-        //        self.searchButton.backgroundColor = colors.mainGreenColor
-        
-        //        let coffeeIcon = FAKFontAwesome.coffeeIcon(withSize: 60)
-        //        coffeeIcon?.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        //        self.emptyCoffeeLabel.attributedText = coffeeIcon?.attributedString()
-        //
-        //        let iconSize: CGFloat = 20
-        //        //fa-cog
-        //        self.settingButton.createIconButton(iconSize: iconSize, icon: "fa-cog",
-        //                                            color: colors.mainGreenColor, status: .normal)
-        //        //fa-plus
-        //
-        //        //fa-calendar
-        //        self.calendarButton.createIconButton(iconSize: iconSize, icon: "fa-calendar",
-        //                                             color: colors.mainGreenColor, status: .normal)
-        //        //fa-tag
-        //        self.tagButton.createIconButton(iconSize: iconSize, icon: "fa-tag",
-        //                                        color: colors.mainGreenColor, status: .normal)
-        //        //fa-search
-        //        self.searchButton.createIconButton(iconSize: 24, icon: "fa-search",
-        //                                           color: colors.cloudColor, status: .normal)
-        //        self.searchButton.tintColor = colors.mainGreenColor
-        //
-        //        self.configFullSizeButton(colors)
-        
-        
-        //        self.taskTableView.homeRefreshControl.tintColor = colors.mainGreenColor
-        //        self.taskTableView.homeRefreshControl.attributedTitle =
-        //            NSAttributedString(string: Localized("search"),
-        //                               attributes: [NSForegroundColorAttributeName : colors.mainGreenColor])
-    }
-    
-    fileprivate func initializeControl() {
-        self.taskTableView.tableFooterView = UIView()
-        
-        //        self.cardView.addShadow()
-        self.newTaskButton.addShadow()
-        self.newTaskButton.layer.cornerRadius = 35
-        //        self.settingButton.addShadow()
-        //        self.fullScreenButton.addShadow()
-        //        self.calendarButton.addShadow()
-        //        self.tagButton.addShadow()
-        //        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        //
-        //        let segTitles = [Localized("progess"), Localized("finished")]
-        //        self.statusSlideSegment.setSegmentItems(segTitles)
-        //        self.statusSlideSegment.delegate = self
-        
-        self.taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
-        
-        //        self.currentDateLabel.text = NSDate().formattedDate(with: .medium)
-        //        self.emptyHintLabel.text = Localized("emptyTask")
-        //
-        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction),
-                                     for: .touchUpInside)
-        //
-        //        self.calendarButton.addTarget(self, action: #selector(self.calendarAction),
-        //                                      for: .touchUpInside)
-        //
-        //        self.fullScreenButton.addTarget(self, action: #selector(self.switchScreenAction),
-        //                                        for: .touchUpInside)
-        //
-        //        self.settingButton.addTarget(self, action: #selector(self.settingAction),
-        //                                     for: .touchUpInside)
-        //
-        //        self.tagButton.addTarget(self, action: #selector(self.tagAction), for: .touchUpInside)
-        //
-        //        self.searchButton.addTarget(self, action: #selector(self.searchAction),
-        //                                    for: .touchUpInside)
-        
-        //        self.taskTableView.getCurrentIndex = { [unowned self] () -> Int in
-        //            return self.statusSlideSegment.selectedSegmentIndex
-        //        }
-        //
-        //        self.taskTableView.changeCallBack = { [unowned self] (changeIndex) -> Void in
-        //            self.statusSlideSegment.move(to: changeIndex)
-        //            self.taskTableView.reloadData()
-        //        }
-        //
-        //        self.taskTableView.searchCallBack = { [unowned self] () -> Void in
-        //            self.searchAction()
-        //        }
     }
     
     /**
@@ -433,24 +350,11 @@
      在新建任务之前先把滑动开的 cell 关闭
      */
     func newTaskAction() {
-        let newTaskBlock = { [unowned self] in
-            let newTaskVC = NewTaskViewController()
-            self.addChildViewController(newTaskVC)
-            newTaskVC.didMove(toParentViewController: self)
-            
-            self.newTaskVC = newTaskVC
-        }
+        let newTaskVC = NewTaskViewController()
+        self.addChildViewController(newTaskVC)
+        newTaskVC.didMove(toParentViewController: self)
         
-        if let swiped = self.cacheSwipedIndex,
-            let cell = self.taskTableView.cellForRow(at: swiped) as? MGSwipeTableCell {
-            cell.hideSwipe(animated: true, completion: { (completion) in
-                newTaskBlock()
-            })
-            self.cacheSwipedIndex = nil
-        } else {
-            newTaskBlock()
-        }
-        
+        self.newTaskVC = newTaskVC
     }
     
     // 从today 点击一个 task 进入 detail

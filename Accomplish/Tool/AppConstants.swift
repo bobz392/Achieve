@@ -8,4 +8,4 @@
 
 import Foundation
 
-let barIconSize: CGFloat = 32
+let BarIconSize: CGFloat = 32

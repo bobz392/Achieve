@@ -17,6 +17,7 @@ enum Icons {
     case search
     case timeManagement
     case delete
+    case back
     
     func iconString() -> String {
         switch self {
@@ -36,7 +37,8 @@ enum Icons {
             return "time_management"
         case .delete:
             return "delete"
-            
+        case .back:
+            return "back"
         }
     }
     

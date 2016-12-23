@@ -22,9 +22,9 @@ let SubtaskIconChecked = "fa-check-square-o"
 
 class TaskDetailViewController: BaseViewController {
     
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var cancelButton: UIButton!
+//    @IBOutlet weak var titleTextField: UITextField!
+//    @IBOutlet weak var cardView: UIView!
+//    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var datePickerHolderView: UIView!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
@@ -67,6 +67,10 @@ class TaskDetailViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         KeyboardManager.sharedManager.closeNotification()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         guard let count = subtasks?.count
             , self.task.subTaskCount != count
@@ -94,36 +98,46 @@ class TaskDetailViewController: BaseViewController {
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        let bar = self.createCustomBar(height: 64)
         
-        self.titleTextField.textColor = Colors.cloudColor
-        self.titleTextField.tintColor = Colors.cloudColor
+        let backButton = UIButton(type: .custom)
+        backButton.buttonWithIcon(icon: Icons.back.iconString())
+        bar.addSubview(backButton)
+        backButton.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(1)
+        }
+        
+        
+        let colors = Colors()
+//        
+//        self.titleTextField.textColor = Colors.cloudColor
+//        self.titleTextField.tintColor = Colors.cloudColor
         
         self.detailTableView.backgroundColor = Colors.cloudColor
         self.detailTableView.separatorColor = Colors.separatorColor
         
-        self.cardView.backgroundColor = Colors.cloudColor
+//        self.cardView.backgroundColor = Colors.cloudColor
         self.view.backgroundColor = colors.mainGreenColor
         
-        self.cancelButton.buttonColor(colors)
-        self.cancelButton.createIconButton(iconSize: kBackButtonCorner,
-                                           icon: backButtonIconString,
-                                           color: colors.mainGreenColor, status: .normal)
-        
+//        self.cancelButton.buttonColor(colors)
+//        self.cancelButton.createIconButton(iconSize: kBackButtonCorner,
+//                                           icon: backButtonIconString,
+//                                           color: colors.mainGreenColor, status: .normal)
+//        
         self.detailTableView.reloadData()
     }
     
     fileprivate func initializeControl() {
         self.initializeTableView()
         
-        self.cancelButton.addShadow()
-        self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.titleTextField.text = task.getNormalDisplayTitle()
+//        self.cancelButton.addShadow()
+//        self.cancelButton.layer.cornerRadius = kBackButtonCorner
+//        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+//        
+//        self.cardView.addShadow()
+//        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+//        
+//        self.titleTextField.text = task.getNormalDisplayTitle()
         
         guard let taskPickerView = Bundle.main.loadNibNamed("TaskPickerView", owner: self, options: nil)?.last as? TaskPickerView else { return }
         self.datePickerHolderView.addSubview(taskPickerView)
@@ -145,11 +159,11 @@ class TaskDetailViewController: BaseViewController {
     }
     
     fileprivate func configDetailWithTask() {
-        if self.task.typeOfTask() == .system {
-            self.titleTextField.isEnabled = self.task.taskToDoCanChange() && self.canChange
-        } else {
-            self.titleTextField.isEnabled = self.canChange
-        }
+//        if self.task.typeOfTask() == .system {
+//            self.titleTextField.isEnabled = self.task.taskToDoCanChange() && self.canChange
+//        } else {
+//            self.titleTextField.isEnabled = self.canChange
+//        }
     }
     
     // MARK: - actions

@@ -152,7 +152,6 @@
 		C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */; };
 		C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76AE2CE1D8E892F00930D43 /* WatchManager.swift */; };
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
-		C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77192451D6CEE4E00437560 /* HomeViewController.xib */; };
 		C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771924D1D6CEE6800437560 /* NewTaskViewController.swift */; };
 		C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771924E1D6CEE6800437560 /* NewTaskViewController.xib */; };
 		C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77192821D6CFCAF00437560 /* Launch Screen.storyboard */; };
@@ -586,7 +585,6 @@
 		C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C76AE2CE1D8E892F00930D43 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C77192451D6CEE4E00437560 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C771924D1D6CEE6800437560 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		C771924E1D6CEE6800437560 /* NewTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTaskViewController.xib; sourceTree = "<group>"; };
 		C77192821D6CFCAF00437560 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -957,12 +955,12 @@
 			children = (
 				C73B44511E0C494200DDE093 /* Cell */,
 				C73B445C1E0C494200DDE093 /* Core */,
+				C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */,
+				C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */,
 				C73B44601E0C494200DDE093 /* NoteViewController.swift */,
 				C73B44611E0C494200DDE093 /* NoteViewController.xib */,
 				C73B44621E0C494200DDE093 /* TagViewController.swift */,
 				C73B44631E0C494200DDE093 /* TagViewController.xib */,
-				C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */,
-				C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */,
 				C73B44661E0C494200DDE093 /* View */,
 			);
 			path = TaskDetail;
@@ -1132,7 +1130,6 @@
 				C70BF6241D79C57D006B0C1D /* Core */,
 				C77194C21D70988800437560 /* Cell */,
 				C77192441D6CEE4E00437560 /* HomeViewController.swift */,
-				C77192451D6CEE4E00437560 /* HomeViewController.xib */,
 				C73B442D1E0A4E6C00DDE093 /* HomeMenuViewController.swift */,
 				C73B442E1E0A4E6C00DDE093 /* HomeMenuViewController.xib */,
 				C74A89381D93F972008E15CA /* SearchViewController.swift */,
@@ -1739,7 +1736,6 @@
 				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
 				C71F21611E080E2E00A04351 /* TaskTableHeaderView.xib in Resources */,
 				C75F85931E053F6D0057D76C /* C0814A98-BD12-32EA-9D23-2E24D7CD691B.bcsymbolmap in Resources */,
-				C771924A1D6CEE4E00437560 /* HomeViewController.xib in Resources */,
 				C7105B851DE8BB1600374F78 /* TimeMethodInputView.xib in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
 				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,

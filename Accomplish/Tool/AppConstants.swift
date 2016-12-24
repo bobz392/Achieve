@@ -8,4 +8,5 @@
 
 import Foundation
 
-let BarIconSize: CGFloat = 32
+let kBarIconSize: CGFloat = 32
+let kCellAnimationDuration: TimeInterval = 0.6

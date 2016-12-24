@@ -102,9 +102,13 @@ class TaskDetailViewController: BaseViewController {
         
         let backButton = UIButton(type: .custom)
         backButton.buttonWithIcon(icon: Icons.back.iconString())
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         bar.addSubview(backButton)
         backButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(1)
+            make.top.equalToSuperview().offset(26)
+            make.height.equalTo(kBarIconSize)
+            make.width.equalTo(kBarIconSize)
+            make.left.equalToSuperview().offset(12)
         }
         
         

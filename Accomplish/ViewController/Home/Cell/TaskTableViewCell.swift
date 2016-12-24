@@ -20,8 +20,6 @@ class TaskTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var priorityView: UIView!
     @IBOutlet weak var taskDateLabel: UILabel!
     @IBOutlet weak var taskTitleLabel: UILabel!
-    @IBOutlet weak var overTimeLabel: UILabel!
-    @IBOutlet weak var reminderLabel: UILabel!
     @IBOutlet weak var cellCardView: UIView!
     
     var systemActionContent: SystemActionContent? = nil
@@ -34,12 +32,9 @@ class TaskTableViewCell: MGSwipeTableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.clearView()
         self.contentView.clearView()
-        //        self.layoutMargins = UIEdgeInsets.zero
-        
         self.cellCardView.backgroundColor = Colors.cellCardColor
         self.cellCardView.layer.cornerRadius = 4
         self.cellCardView.addCardShadow()
@@ -50,21 +45,25 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.taskDateLabel.textColor = Colors.secondaryTextColor
         self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTaskAction(_:)), for: .touchUpInside)
-        self.reminderLabel.text = Localized("repeatHint")
         
         self.rightSwipeSettings.transition = .drag
         self.rightSwipeSettings.topMargin = 4
         self.rightSwipeSettings.bottomMargin = 10
         self.touchOnDismissSwipe = true
+        
+//        self.firstImageView.tintColor = Colors.lightGrayHintColor
+//        self.lastImageView.tintColor = Colors.lightGrayHintColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            self.cellCardView.backgroundColor = Colors.mainTextColor
+            self.cellCardView.backgroundColor = Colors.cellCardSelectedColor
         } else {
-            self.cellCardView.backgroundColor = Colors.cellCardColor
+            UIView.animate(withDuration: kCellAnimationDuration, animations: {
+                self.cellCardView.backgroundColor = Colors.cellCardColor
+            })
         }
     }
     
@@ -72,9 +71,11 @@ class TaskTableViewCell: MGSwipeTableCell {
         super.setHighlighted(highlighted, animated: animated)
         
         if highlighted {
-            self.cellCardView.backgroundColor = Colors.mainTextColor
+            self.cellCardView.backgroundColor = Colors.cellCardSelectedColor
         } else {
-            self.cellCardView.backgroundColor = Colors.cellCardColor
+            UIView.animate(withDuration: kCellAnimationDuration, animations: {
+                self.cellCardView.backgroundColor = Colors.cellCardColor
+            })
         }
     }
     
@@ -184,35 +185,17 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.configTaskPriority(priority: task.taskPriority())
         self.configTaskStatus(task: task)
         
-        self.overTimeLabel.isHidden = true
-        self.overTimeLabel.text = nil
-        //        self.reminderLeftConstraint.constant = 0
-        if let estimateDate = task.estimateDate {
-            if estimateDate.isEarlierThan(Date()) {
-                self.overTimeLabel.text = Localized("overTime")
-                let color =
-                    task.taskStatus() == .preceed ? Colors.mainIconColor : Colors.secondaryTextColor
-                self.overTimeLabel.textColor = color
-                self.overTimeLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
-                self.overTimeLabel.layer.borderColor = color.cgColor
-                self.overTimeLabel.layer.borderWidth = 1
-                self.overTimeLabel.isHidden = false
-                //                self.reminderLeftConstraint.constant = 4
-                self.overTimeLabel.setNeedsLayout()
-            }
-        }
-        
-        self.reminderLabel.isHidden = true
-        if let _ = task.repeaterUUID {
-            let color =
-                task.taskStatus() == .preceed ? Colors.mainIconColor : Colors.secondaryTextColor
-            self.reminderLabel.textColor = color
-            self.reminderLabel.layer.cornerRadius = self.overTimeLabel.frame.height * 0.5
-            self.reminderLabel.layer.borderColor = color.cgColor
-            self.reminderLabel.layer.borderWidth = 1
-            self.reminderLabel.isHidden = false
-            self.reminderLabel.setNeedsLayout()
-        }
+//        self.firstImageView.image = nil
+//        self.lastImageView.image = nil        
+//        if let _ = task.notifyDate {
+//            self.firstImageView.image = Icons.notify.iconImage()
+//        }
+//        
+//        if let _ = task.repeaterUUID {
+//            let view = self.firstImageView.image == nil ?
+//                self.firstImageView : self.lastImageView
+//            view?.image = Icons.loop.iconImage()
+//        }
     }
     
     // MARK: - actions

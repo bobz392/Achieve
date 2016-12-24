@@ -16,7 +16,7 @@
     //    @IBOutlet weak var cardView: UIView!
     //    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
     //    @IBOutlet weak var settingButton: UIButton!
-    let newTaskButton: UIButton = UIButton(type: .custom)
+    let newTaskButton: UIButton = AwesomeButton(type: .custom)
     //    @IBOutlet weak var calendarButton: UIButton!
     //    @IBOutlet weak var searchButton: UIButton!
     //    @IBOutlet weak var tagButton: UIButton!
@@ -51,13 +51,10 @@
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         let appDefault = AppUserDefault()
         
         self.configMainUI()
         self.taskListManager.datasource = self
-        //        self.configMainButton()
-        
         //        self.queryTodayTask()
         self.addNotification()
         self.initTimer()
@@ -79,10 +76,10 @@
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.navigationController?.delegate = nil
+//        self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRow(at: indexPath, animated: true)
-        self.taskTableView.reloadRows(at: [indexPath], with: .none)
+//        self.taskTableView.reloadRows(at: [indexPath], with: .none)
         self.selectedIndex = nil
     }
     
@@ -108,8 +105,8 @@
         menuButton.buttonWithIcon(icon: Icons.barMenu.iconString())
         bar.addSubview(menuButton)
         menuButton.snp.makeConstraints { (make) in
-            make.width.equalTo(BarIconSize)
-            make.height.equalTo(BarIconSize)
+            make.width.equalTo(kBarIconSize)
+            make.height.equalTo(kBarIconSize)
             make.bottom.equalTo(bar).offset(-6)
             make.left.equalToSuperview().offset(12)
         }
@@ -119,8 +116,8 @@
         searchButton.buttonWithIcon(icon: Icons.search.iconString())
         bar.addSubview(searchButton)
         searchButton.snp.makeConstraints { (make) in
-            make.width.equalTo(BarIconSize)
-            make.height.equalTo(BarIconSize)
+            make.width.equalTo(kBarIconSize)
+            make.height.equalTo(kBarIconSize)
             make.centerY.equalTo(menuButton)
             make.trailing.equalToSuperview().offset(-10)
         }

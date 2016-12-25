@@ -86,7 +86,6 @@
 		C73B44781E0C494200DDE093 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44621E0C494200DDE093 /* TagViewController.swift */; };
 		C73B44791E0C494200DDE093 /* TagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44631E0C494200DDE093 /* TagViewController.xib */; };
 		C73B447A1E0C494200DDE093 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */; };
-		C73B447B1E0C494200DDE093 /* TaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */; };
 		C73B447C1E0C494200DDE093 /* TaskPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44671E0C494200DDE093 /* TaskPickerView.swift */; };
 		C73B447D1E0C494200DDE093 /* TaskPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44681E0C494200DDE093 /* TaskPickerView.xib */; };
 		C73B44801E0C4FE800DDE093 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B447E1E0C4FE800DDE093 /* EmptyView.swift */; };
@@ -512,7 +511,6 @@
 		C73B44621E0C494200DDE093 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C73B44631E0C494200DDE093 /* TagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewController.xib; sourceTree = "<group>"; };
 		C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
-		C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskDetailViewController.xib; sourceTree = "<group>"; };
 		C73B44671E0C494200DDE093 /* TaskPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskPickerView.swift; sourceTree = "<group>"; };
 		C73B44681E0C494200DDE093 /* TaskPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskPickerView.xib; sourceTree = "<group>"; };
 		C73B447E1E0C4FE800DDE093 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -957,7 +955,6 @@
 				C73B445C1E0C494200DDE093 /* Core */,
 				C73B44511E0C494200DDE093 /* Cell */,
 				C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */,
-				C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */,
 				C73B44601E0C494200DDE093 /* NoteViewController.swift */,
 				C73B44611E0C494200DDE093 /* NoteViewController.xib */,
 				C73B44621E0C494200DDE093 /* TagViewController.swift */,
@@ -971,12 +968,12 @@
 			children = (
 				C73B44521E0C494200DDE093 /* SectionTableViewCell.swift */,
 				C73B44531E0C494200DDE093 /* SectionTableViewCell.xib */,
-				C73B44541E0C494200DDE093 /* SubtaskTableViewCell.swift */,
-				C73B44551E0C494200DDE093 /* SubtaskTableViewCell.xib */,
 				C73B44561E0C494200DDE093 /* TagTableViewCell.swift */,
 				C73B44571E0C494200DDE093 /* TagTableViewCell.xib */,
 				C73B445A1E0C494200DDE093 /* TaskNoteTableViewCell.swift */,
 				C73B445B1E0C494200DDE093 /* TaskNoteTableViewCell.xib */,
+				C73B44541E0C494200DDE093 /* SubtaskTableViewCell.swift */,
+				C73B44551E0C494200DDE093 /* SubtaskTableViewCell.xib */,
 				C73B44581E0C494200DDE093 /* TaskDateTableViewCell.swift */,
 				C73B44591E0C494200DDE093 /* TaskDateTableViewCell.xib */,
 			);
@@ -1716,7 +1713,6 @@
 			files = (
 				C73B44791E0C494200DDE093 /* TagViewController.xib in Resources */,
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
-				C73B447B1E0C494200DDE093 /* TaskDetailViewController.xib in Resources */,
 				C75F858C1E053F6D0057D76C /* 68784BC9-A7E0-32D0-8556-A37FF12B0E77.bcsymbolmap in Resources */,
 				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
 				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,

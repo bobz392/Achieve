@@ -21,15 +21,8 @@ let SubtaskIconSquare = "fa-square-o"
 let SubtaskIconChecked = "fa-check-square-o"
 
 class TaskDetailViewController: BaseViewController {
-    
-//    @IBOutlet weak var titleTextField: UITextField!
-//    @IBOutlet weak var cardView: UIView!
-//    @IBOutlet weak var cancelButton: UIButton!
-//    @IBOutlet weak var datePickerHolderView: UIView!
-//    @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
-    
-    fileprivate var taskPickerView: TaskPickerView?
+
+    fileprivate var taskPickerView: TaskPickerView? = nil
     fileprivate let taskToDoTextView = GrowingTextView()
     fileprivate let detailTableView = UITableView()
     
@@ -49,7 +42,7 @@ class TaskDetailViewController: BaseViewController {
     init(task: Task, canChange: Bool) {
         self.task = task
         self.canChange = canChange
-        super.init(nibName: "TaskDetailViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -186,7 +179,7 @@ class TaskDetailViewController: BaseViewController {
     fileprivate func keyboardAction() {
         KeyboardManager.sharedManager.setShowHander { [unowned self] in
             self.detailTableView.snp.updateConstraints({ (make) in
-                make.bottom.equalToSuperview().offset(KeyboardManager.keyboardHeight - 64)
+                make.bottom.equalToSuperview().offset(-KeyboardManager.keyboardHeight)
             })
 //            self.detailTableViewBottomConstraint.constant =
 //                KeyboardManager.keyboardHeight - 62
@@ -261,31 +254,16 @@ class TaskDetailViewController: BaseViewController {
 
 // MARK: - UITextFieldDelegate
 extension TaskDetailViewController: GrowingTextViewDelegate {
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        KeyboardManager.sharedManager.closeNotification()
-//        if self.taskPickerView?.viewIsShow() == true {
-//            self.cancelDatePickerAction()
-//        }
-//        
-//        return true
-//    }
-//    
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        self.keyboardAction()
-//        return true
-//    }
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if let title = textField.text {
-//            if !title.isRealEmpty {
-//                RealmManager.shared.updateObject({
-//                    self.task.taskToDo = title
-//                })
-//            }
-//        }
-//        return textField.resignFirstResponder()
-//    }
-//    
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        KeyboardManager.sharedManager.closeNotification()
+        if self.taskPickerView?.viewIsShow() == true {
+            self.cancelDatePickerAction()
+        }
+        
+        return true
+
+    }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -306,18 +284,16 @@ extension TaskDetailViewController: GrowingTextViewDelegate {
             textView.text = self.task.realTaskToDo()
         }
         
+        self.keyboardAction()
         textView.resignFirstResponder()
     }
     
     func textViewDidChangeHeight(_ height: CGFloat) {
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
-//            self.taskToDoTextView.snp.updateConstraints({ (make) in
-//                make.height.equalTo(height)
-//                
-//            })
         }
     }
+    
 }
 
 // MARK: - table view

@@ -26,6 +26,7 @@ enum Icons {
     case due
     case note
     case clear
+    case smallDelete
     
     func iconString() -> String {
         switch self {
@@ -63,6 +64,8 @@ enum Icons {
             return "note"
         case .clear:
             return "clear"
+        case .smallDelete:
+            return "small_delete"
         }
     }
     

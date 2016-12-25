@@ -19,16 +19,10 @@ class TaskNoteTableViewCell: BaseTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let colors = Colors()
-        self.backgroundColor = Colors.cloudColor
-        self.contentView.backgroundColor = Colors.cloudColor
-        self.layoutMargins = UIEdgeInsets.zero
         
-        self.iconButton.createIconButton(iconSize: kNoteCellIconSize,
-                                         icon: TaskIconNote,
-                                         color: colors.mainGreenColor, status: .normal)
-        
+        self.backgroundColor = Colors.mainBackgroundColor
+        self.contentView.clearView()
+        self.iconButton.setImage(Icons.note.iconImage(), for: .normal)
         self.noteLabel.highlightedTextColor = Colors.mainTextColor
         self.noteLabel.textColor = Colors.secondaryTextColor
     }
@@ -40,13 +34,10 @@ class TaskNoteTableViewCell: BaseTableViewCell {
     }
     
     func configCell(_ task: Task) {
-        let colors = Colors()
-        
         if task.taskNote.characters.count > 0 {
             self.noteLabel.isHighlighted = true
             self.noteLabel.text = task.taskNote
-            self.iconButton.tintColor = colors.mainGreenColor
-            
+            self.iconButton.tintColor = Colors.mainTextColor
         } else {
             self.noteLabel.isHighlighted = false
             self.noteLabel.text = Localized("taskNote")

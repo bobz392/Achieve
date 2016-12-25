@@ -23,36 +23,24 @@ class SubtaskTableViewCell: BaseTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let colors = Colors()
-        self.backgroundColor = Colors.cloudColor
-        self.contentView.backgroundColor = Colors.cloudColor
-        self.layoutMargins = UIEdgeInsets.zero
+
+        self.backgroundColor = Colors.mainBackgroundColor
+        self.contentView.clearView()
         
-        self.trashButton.createIconButton(iconSize: kTaskDetailCellIconSize,
-                                          icon: "fa-trash-o",
-                                          color: colors.mainGreenColor, status: .normal)
+        self.trashButton.setImage(Icons.smallDelete.iconImage(), for: .normal)
+        self.trashButton.tintColor = Colors.mainIconColor
         
-        self.subtaskTextField.tintColor = colors.mainGreenColor
+        self.subtaskTextField.tintColor = Colors.mainTextColor
         self.subtaskTextField.textColor = Colors.mainTextColor
-        
-        self.separatorInset = UIEdgeInsets(top: 0, left: screenBounds.width, bottom: 0, right: 0)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
     
     func configCell(_ task: Task, subtask: Subtask?, icon: Icons) {
         self.task = task
         self.subtask = subtask
-        let colors = Colors()
-        
-//        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize,
-//                                         icon: iconString,
-//                                         color: colors.mainGreenColor, status: .normal)
-        
         self.iconButton.setImage(icon.iconImage(), for: .normal)
         self.iconButton.tintColor = Colors.mainIconColor
         
@@ -60,27 +48,26 @@ class SubtaskTableViewCell: BaseTableViewCell {
         
         if let subtask = subtask {
             if let _ = subtask.finishedDate {
-                self.subtaskTextField.attributedText = subtask.taskToDo.addStrikethrough()
+                self.subtaskTextField.attributedText =
+                    subtask.taskToDo.addStrikethrough(fontSize: 15)
                 self.iconButton.tintColor = Colors.secondaryTextColor
             } else {
                 self.subtaskTextField.text = subtask.taskToDo
-                self.iconButton.tintColor = colors.mainGreenColor
+                self.iconButton.tintColor = Colors.mainTextColor
             }
             
             self.trashButton.isHidden = false
-            self.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
         } else {
             let attrPlacehold =
                 NSAttributedString(string: Localized("detailAddSubtask"), attributes: [
                     NSForegroundColorAttributeName: Colors.secondaryTextColor,
-                    NSFontAttributeName: UIFont.systemFont(ofSize: 15, weight: UIFontWeightLight)
+                    NSFontAttributeName: UIFont.systemFont(ofSize: 15)
                     ]
             )
             
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
             self.trashButton.isHidden = true
             self.iconButton.tintColor = Colors.secondaryTextColor
-            self.separatorInset = UIEdgeInsets(top: 0, left: 55, bottom: 0, right: 0)
         }
         
         self.trashButton.addTarget(self, action: #selector(self.deleteSubtask), for: .touchUpInside)

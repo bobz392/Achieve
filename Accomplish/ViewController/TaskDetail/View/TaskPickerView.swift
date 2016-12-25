@@ -29,11 +29,11 @@ class TaskPickerView: UIView {
     fileprivate let TaskTagTag = 999
     
     override func awakeFromNib() {
-        let colors = Colors()
+        super.awakeFromNib()
         
         self.toolView.backgroundColor = Colors.cloudColor
-        self.leftButton.tintColor = colors.mainGreenColor
-        self.rightButton.tintColor = colors.mainGreenColor
+        self.leftButton.tintColor = Colors.linkButtonTextColor
+        self.rightButton.tintColor = Colors.linkButtonTextColor
         self.backgroundColor = Colors.cloudColor
         
         self.leftButton.setTitle(Localized("cancel"), for: .normal)
@@ -161,7 +161,7 @@ extension TaskPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         pickerLabel.text = title
         pickerLabel.textColor = Colors.mainTextColor
-        pickerLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFontWeightLight)
+        pickerLabel.font = UIFont.systemFont(ofSize: 16)
         pickerLabel.textAlignment = .center
         return pickerLabel
     }

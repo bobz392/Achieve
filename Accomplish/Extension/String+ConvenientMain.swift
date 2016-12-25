@@ -52,9 +52,9 @@ extension String {
 
 // attribution
 extension String {
-    func addStrikethrough() -> NSAttributedString {
+    func addStrikethrough(fontSize: CGFloat = 16) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 16),
+            NSFontAttributeName: UIFont.systemFont(ofSize: fontSize),
             NSForegroundColorAttributeName: Colors.secondaryTextColor,
             NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
             NSStrikethroughColorAttributeName: Colors.secondaryTextColor,

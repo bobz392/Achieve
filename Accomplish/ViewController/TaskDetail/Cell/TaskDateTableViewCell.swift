@@ -20,33 +20,52 @@ class TaskDateTableViewCell: BaseTableViewCell {
     static let reuseId = "taskDateTableViewCell"
     static let rowHeight: CGFloat = 50
     
-    //    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
     
     var task: Task?
     var detailType: TaskDetailType = .other
+    fileprivate var cuurentImageTintColor = Colors.mainIconColor
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let colors = Colors()
-        self.backgroundColor = Colors.cloudColor
-        self.contentView.backgroundColor = Colors.cloudColor
+
+        self.backgroundColor = Colors.mainBackgroundColor
+        self.contentView.clearView()
         
         self.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), for: .touchUpInside)
-        self.clearButton.createIconButton(iconSize: kTaskDetailCellIconSize,
-                                          icon: "fa-times",
-                                          color: colors.mainGreenColor, status: .normal)
+        self.clearButton.setImage(Icons.clear.iconImage(), for: .normal)
+        self.clearButton.tintColor = Colors.mainIconColor
         
-        self.infoLabel.highlightedTextColor = colors.mainGreenColor
-        self.infoLabel.textColor = Colors.secondaryTextColor
+        self.infoLabel.highlightedTextColor = Colors.linkButtonTextColor
+        self.infoLabel.textColor = Colors.mainIconColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+        
+        if selected {
+            self.iconImageView.tintColor = Colors.linkButtonTextColor
+        } else {
+            self.iconImageView.tintColor = self.cuurentImageTintColor
+        }
+        
+        self.clearButton.tintColor =
+            !selected ? Colors.mainIconColor : Colors.deleteButtonBackgroundColor
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            self.iconImageView.tintColor = Colors.linkButtonTextColor
+        } else {
+            self.iconImageView.tintColor = self.cuurentImageTintColor
+        }
+        
+        self.clearButton.tintColor =
+            !highlighted ? Colors.mainIconColor : Colors.deleteButtonBackgroundColor
     }
     
     func clearAction(_ btn: UIButton) {
@@ -58,7 +77,6 @@ class TaskDateTableViewCell: BaseTableViewCell {
             RealmManager.shared.updateObject {
                 task.repeaterUUID = nil
             }
-            
             
         case TaskDetailType.notify:
             RealmManager.shared.updateObject {
@@ -80,38 +98,26 @@ class TaskDateTableViewCell: BaseTableViewCell {
             break
         }
     }
-    
-    func configCell(_ task: Task, iconString: String) {
+
+    func configCell(_ task: Task, icon: Icons) {
         self.task = task
-        let colors = Colors()
-        
-        let iconSize = CGSize(width: kTaskDetailCellIconSize, height: kTaskDetailCellIconSize)
-        let icon = try! FAKFontAwesome(identifier: iconString, size: kTaskDetailCellIconSize)
-        icon.addAttributes([NSForegroundColorAttributeName: Colors.secondaryTextColor])
-        let image =
-            icon.image(with: iconSize)
-        self.iconImageView.image = image
-        
-        icon.addAttributes([NSForegroundColorAttributeName: colors.mainGreenColor])
-        let hImage = icon.image(with: iconSize)
-        self.iconImageView.highlightedImage = hImage
-        
+        self.iconImageView.image = icon.iconImage()
         self.clearButton.isHidden = false
         self.detailType = .other
         
-        switch iconString {
+        switch icon {
             
-        case TaskIconCalendar:
+        case .schedule:
             self.infoLabel.isHighlighted = true
             guard let createdDate = task.createdDate else { break }
             let scheduled = createdDate.isEarlierThan(Date()) ?
                 Localized("scheduled") : Localized("willScheduled")
             self.infoLabel.text = scheduled + " "
-                + (createdDate as NSDate).formattedDate(withFormat: TimeDateFormat)
+                + createdDate.formattedDate(withFormat: TimeDateFormat)
             self.clearButton.isHidden = true
-            self.iconImageView.isHighlighted = true
+            self.iconImageView.tintColor = Colors.linkButtonTextColor
             
-        case TaskIconReminder:
+        case .notify:
             self.infoLabel.isHighlighted = task.notifyDate != nil
             
             if let notifyDate = task.notifyDate {
@@ -123,32 +129,34 @@ class TaskDateTableViewCell: BaseTableViewCell {
             
             self.clearButton.isHidden = task.notifyDate == nil
             self.detailType = .notify
-            self.iconImageView.isHighlighted = task.notifyDate != nil
+            self.iconImageView.tintColor =
+                task.notifyDate == nil ? Colors.mainIconColor : Colors.linkButtonTextColor
             
-        case TaskDueIconCalendar:
+        case .due:
             if task.taskStatus() == .completed {
                 self.infoLabel.isHighlighted = task.finishedDate != nil
                 self.clearButton.isHidden = true
-                self.iconImageView.isHighlighted = task.finishedDate != nil
+                self.iconImageView.tintColor = Colors.linkButtonTextColor
                 self.detailType = .other
                 
                 if let finishDate = task.finishedDate {
-                    self.infoLabel.text = Localized("finishAt") + (finishDate as NSDate).formattedDate(withFormat: TimeDateFormat)
+                    self.infoLabel.text = Localized("finishAt") + finishDate.formattedDate(withFormat: TimeDateFormat)
                 }
             } else {
                 self.infoLabel.isHighlighted = task.estimateDate != nil
                 self.clearButton.isHidden = task.estimateDate == nil
-                self.iconImageView.isHighlighted = task.estimateDate != nil
+                self.iconImageView.tintColor =
+                    task.estimateDate == nil ? Colors.mainIconColor : Colors.linkButtonTextColor
                 self.detailType = .estimate
                 
                 if let estimateDate = task.estimateDate {
-                    self.infoLabel.text = Localized("estimeateAt") + (estimateDate as NSDate).formattedDate(withFormat: TimeDateFormat)
+                    self.infoLabel.text = Localized("estimeateAt") + estimateDate.formattedDate(withFormat: TimeDateFormat)
                 } else {
                     self.infoLabel.text = Localized("noEstimate")
                 }
             }
             
-        case TaskIconRepeat:
+        case .loop:
             let hasRepeater: Bool
             if let repeater = RealmManager.shared.queryRepeaterWithTask(task.uuid) {
                 hasRepeater = true
@@ -167,9 +175,10 @@ class TaskDateTableViewCell: BaseTableViewCell {
             self.infoLabel.isHighlighted = hasRepeater
             self.clearButton.isHidden = !hasRepeater
             self.detailType = .repeat
-            self.iconImageView.isHighlighted = hasRepeater
+            self.iconImageView.tintColor =
+                !hasRepeater ? Colors.mainIconColor : Colors.linkButtonTextColor
             
-        case TaskTagIcon:
+        case .tag:
             let hasTag: Bool
             // MARK: -- to do
             if let tagUUID = task.tagUUID {
@@ -190,13 +199,16 @@ class TaskDateTableViewCell: BaseTableViewCell {
             }
             
             self.infoLabel.isHighlighted = hasTag
+            self.iconImageView.tintColor =
+                !hasTag ? Colors.mainIconColor : Colors.linkButtonTextColor
             self.clearButton.isHidden = !hasTag
-            self.iconImageView.isHighlighted = hasTag
             self.detailType = .tag
             
         default:
             break
         }
+        
+        self.cuurentImageTintColor = self.iconImageView.tintColor
     }
     
     enum TaskDetailType: Int {

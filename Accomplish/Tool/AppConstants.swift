@@ -10,4 +10,4 @@ import Foundation
 
 let kBarHeight: CGFloat = 64
 let kBarIconSize: CGFloat = 32
-let kCellAnimationDuration: TimeInterval = 0.5
+let kCellAnimationDuration: TimeInterval = 0.4

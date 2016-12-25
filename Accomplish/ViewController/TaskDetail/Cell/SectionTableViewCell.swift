@@ -12,16 +12,16 @@ class SectionTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "SectionTableViewCell", bundle: nil)
     static let reuseId = "sectionTableViewCell"
-    static let rowHeight: CGFloat = 14
+    static let rowHeight: CGFloat = 34
 
     @IBOutlet weak var lineView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.lineView.backgroundColor = Colors.separatorColor
-        self.backgroundColor = Colors.cloudColor
-        self.contentView.backgroundColor = Colors.cloudColor
+        self.backgroundColor = Colors.mainBackgroundColor
+        self.contentView.clearView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -34,9 +34,9 @@ class TaskDetailViewController: BaseViewController {
     fileprivate let detailTableView = UITableView()
     
     fileprivate var iconList = [
-        [TaskIconCalendar, TaskDueIconCalendar, TaskIconReminder, TaskIconRepeat, TaskTagIcon],
-        [SubtaskIconAdd],
-        [TaskIconNote]
+        [Icons.schedule, Icons.due, Icons.notify, Icons.loop, Icons.tag],
+        [Icons.smallPlus],
+        [Icons.note]
     ]
     fileprivate let subtaskSection = 1
     
@@ -99,6 +99,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     override func configMainUI() {
+        self.view.backgroundColor = Colors.mainBackgroundColor
         let bar = self.createCustomBar(withBottomLine: true)
         
         let backButton = UIButton(type: .custom)
@@ -109,7 +110,7 @@ class TaskDetailViewController: BaseViewController {
             make.top.equalToSuperview().offset(26)
             make.height.equalTo(kBarIconSize)
             make.width.equalTo(kBarIconSize)
-            make.left.equalToSuperview().offset(12)
+            make.left.equalToSuperview().offset(16)
         }
         
         bar.addSubview(taskToDoTextView)
@@ -123,39 +124,23 @@ class TaskDetailViewController: BaseViewController {
         taskToDoTextView.delegate = self
         taskToDoTextView.returnKeyType = .done
         taskToDoTextView.snp.makeConstraints { (make) in
-            make.left.equalTo(backButton.snp.right).offset(12)
+            make.left.equalTo(backButton.snp.right).offset(8)
             make.right.equalToSuperview().offset(-12)
             make.top.equalToSuperview().offset(23)
             make.bottom.equalToSuperview().offset(-6)
         }
         
-        self.detailTableView.separatorStyle = .none
+        self.detailTableView.clearView()
         self.detailTableView.delegate = self
         self.detailTableView.dataSource = self
+        self.detailTableView.separatorStyle = .none
         self.view.addSubview(self.detailTableView)
         self.detailTableView.snp.makeConstraints { (make) in
             make.top.equalTo(bar.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
-        }
-        
-        let colors = Colors()
-//        
-//        self.titleTextField.textColor = Colors.cloudColor
-//        self.titleTextField.tintColor = Colors.cloudColor
-        
-        self.detailTableView.backgroundColor = Colors.cloudColor
-        self.detailTableView.separatorColor = Colors.separatorColor
-        
-//        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        
-//        self.cancelButton.buttonColor(colors)
-//        self.cancelButton.createIconButton(iconSize: kBackButtonCorner,
-//                                           icon: backButtonIconString,
-//                                           color: colors.mainGreenColor, status: .normal)
-//        
+        } 
         self.detailTableView.reloadData()
     }
     
@@ -240,7 +225,7 @@ class TaskDetailViewController: BaseViewController {
                 self.detailTableView.beginUpdates()
                 if insertions.count > 0 {
                     for index in insertions {
-                        self.iconList[self.subtaskSection].insert(SubtaskIconSquare, at: index)
+                        self.iconList[self.subtaskSection].insert(Icons.uncheck, at: index)
                     }
                     
                     self.detailTableView.insertRows(at: insertions.map { IndexPath(row: $0, section: self.subtaskSection) }, with: .automatic)
@@ -250,7 +235,7 @@ class TaskDetailViewController: BaseViewController {
                     for index in modifications {
                         guard let subtask = self.subtasks?[index] else { continue }
                         self.iconList[self.subtaskSection].remove(at: index)
-                        let element = subtask.finishedDate == nil ? SubtaskIconSquare : SubtaskIconChecked
+                        let element = subtask.finishedDate == nil ? Icons.uncheck : Icons.check
                         self.iconList[self.subtaskSection].insert(element, at: index)
                     }
                     
@@ -342,9 +327,9 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
         self.subtasks = sts
         for index in 0..<sts.count {
             if sts[index].finishedDate == nil {
-                iconList[self.subtaskSection].insert(SubtaskIconSquare, at:index)
+                iconList[self.subtaskSection].insert(Icons.uncheck, at:index)
             } else {
-                iconList[self.subtaskSection].insert(SubtaskIconChecked, at: index)
+                iconList[self.subtaskSection].insert(Icons.check, at: index)
             }
         }
         realmNoticationToken()
@@ -383,7 +368,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         if  indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: TaskDateTableViewCell.reuseId, for: indexPath) as! TaskDateTableViewCell
-            cell.configCell(task, iconString: iconList[indexPath.section][indexPath.row])
+            cell.configCell(task, icon: iconList[indexPath.section][indexPath.row])
             cell.clearButton.tag = indexPath.row
             cell.clearButton.addTarget(self, action: #selector(self.clearAction(_:)), for: .touchUpInside)
             tableCell = cell
@@ -395,10 +380,10 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: SubtaskTableViewCell.reuseId, for: indexPath) as! SubtaskTableViewCell
             let row = indexPath.row
-            if iconList[indexPath.section][row] == SubtaskIconAdd {
-                cell.configCell(task, subtask: nil, iconString: SubtaskIconAdd)
+            if self.iconList[indexPath.section][row] == .smallPlus {
+                cell.configCell(task, subtask: nil, icon: .smallPlus)
             } else {
-                cell.configCell(task, subtask: self.subtasks?[row], iconString: iconList[indexPath.section][indexPath.row])
+                cell.configCell(task, subtask: self.subtasks?[row], icon: iconList[indexPath.section][indexPath.row])
             }
             tableCell = cell
             tableCell.isUserInteractionEnabled = canChange
@@ -407,6 +392,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         return tableCell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row > self.iconList[indexPath.section].count - 1 {
@@ -425,8 +411,8 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             dispatch_delay(kSmallAnimationDuration, closure: { [unowned self] in
-                let indexString = self.iconList[indexPath.section][indexPath.row]
-                self.taskPickerView?.setIndex(index: indexString)
+                let icon = self.iconList[indexPath.section][indexPath.row]
+                self.taskPickerView?.setCurrentIcon(icon: icon)
                 self.showDatePickerView(show: true)
                 })
             
@@ -448,7 +434,17 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        if section == 0 {
+            return 17
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view =  UIView()
+        view.clearView()
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -462,8 +458,8 @@ extension TaskDetailViewController {
     //    [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
     //    [SubtaskIconAdd],
     //    [TaskIconNote]
-    fileprivate func getIndexPathFrom(indexString: String) -> IndexPath? {
-        guard let index = self.iconList[0].index(of: indexString) else { return nil }
+    fileprivate func getIndexPathFrom(icon: Icons) -> IndexPath? {
+        guard let index = self.iconList[0].index(of: icon) else { return nil }
         return IndexPath(row: index, section: 0)
     }
     
@@ -471,27 +467,27 @@ extension TaskDetailViewController {
         guard let datePicker = self.taskPickerView else { return }
         showDatePickerView(show: false)
         guard let indexPath =
-            self.getIndexPathFrom(indexString: datePicker.getIndex()) else { return }
+            self.getIndexPathFrom(icon: datePicker.getCurrentIcon()) else { return }
         self.detailTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func setDatePickerAction() {
         guard let taskPickerView = self.taskPickerView else { return }
         
-        switch taskPickerView.getIndex() {
-        case TaskIconCalendar:
+        switch taskPickerView.getCurrentIcon() {
+        case .schedule:
             guard let date = taskPickerView.datePicker.date as NSDate? else { break }
             RealmManager.shared.updateObject {
                 self.task.createdDate = date
                 self.task.createdFormattedDate = date.createdFormatedDateString()
             }
             
-        case TaskDueIconCalendar:
+        case .due:
             RealmManager.shared.updateObject {
                 self.task.estimateDate = taskPickerView.datePicker.date as NSDate
             }
             
-        case TaskIconReminder:
+        case .notify:
             RealmManager.shared.updateObject {
                 let date = taskPickerView.datePicker.date as NSDate
                 let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 0)
@@ -503,13 +499,13 @@ extension TaskDetailViewController {
             }
             LocalNotificationManager.shared.create(self.task)
             
-        case TaskIconRepeat:
+        case .loop:
             let repeatTimeType = taskPickerView.repeatTimeType()
             RealmManager.shared
                 .repeaterUpdate(self.task, repeaterTimeType: repeatTimeType)
             LocalNotificationManager.shared.update(self.task)
             
-        case TaskTagIcon:
+        case .tag:
             let tagUUID = taskPickerView.selectedTagUUID()
             RealmManager.shared.updateObject({
                 self.task.tagUUID = tagUUID
@@ -521,7 +517,7 @@ extension TaskDetailViewController {
         
         self.showDatePickerView(show: false)
         guard let indexPath =
-            self.getIndexPathFrom(indexString: taskPickerView.getIndex()) else { return }
+            self.getIndexPathFrom(icon: taskPickerView.getCurrentIcon()) else { return }
         self.detailTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
@@ -532,7 +528,7 @@ extension TaskDetailViewController {
                 self.view.endEditing(true)
                 guard let datePickerView = self.taskPickerView else { return }
                 guard let selectedIndex =
-                    self.getIndexPathFrom(indexString: datePickerView.getIndex()) else { return }
+                    self.getIndexPathFrom(icon: datePickerView.getCurrentIcon()) else { return }
                 self.detailTableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
             }
             if (self.taskPickerView?.viewIsShow() == true) {

@@ -44,14 +44,17 @@ class SubtaskTableViewCell: BaseTableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(_ task: Task, subtask: Subtask?, iconString: String) {
+    func configCell(_ task: Task, subtask: Subtask?, icon: Icons) {
         self.task = task
         self.subtask = subtask
         let colors = Colors()
         
-        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize,
-                                         icon: iconString,
-                                         color: colors.mainGreenColor, status: .normal)
+//        self.iconButton.createIconButton(iconSize: kTaskButtonIconSize,
+//                                         icon: iconString,
+//                                         color: colors.mainGreenColor, status: .normal)
+        
+        self.iconButton.setImage(icon.iconImage(), for: .normal)
+        self.iconButton.tintColor = Colors.mainIconColor
         
         self.subtaskTextField.attributedText = nil
         

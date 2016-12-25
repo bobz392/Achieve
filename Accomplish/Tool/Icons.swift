@@ -20,6 +20,12 @@ enum Icons {
     case back
     case loop
     case notify
+    case schedule
+    case smallPlus
+    case tag
+    case due
+    case note
+    case clear
     
     func iconString() -> String {
         switch self {
@@ -45,6 +51,18 @@ enum Icons {
             return "loop"
         case .notify:
             return "notify"
+        case .schedule:
+            return "schedule"
+        case .smallPlus:
+            return "small_plus"
+        case .tag:
+            return "tag"
+        case .due:
+            return "due"
+        case .note:
+            return "note"
+        case .clear:
+            return "clear"
         }
     }
     

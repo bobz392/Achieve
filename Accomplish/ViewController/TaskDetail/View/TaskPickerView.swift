@@ -22,7 +22,7 @@ class TaskPickerView: UIView {
     fileprivate let allTags = RealmManager.shared.allTags()
     
     var task: Task?
-    fileprivate var index: String = ""
+    fileprivate var currentIcon: Icons = .note
     fileprivate var viewShow = false
     
     fileprivate let TaskRepeatTag = 998
@@ -49,8 +49,8 @@ class TaskPickerView: UIView {
         self.viewShow = false
     }
     
-    func getIndex() -> String {
-        return self.index
+    func getCurrentIcon() -> Icons {
+        return self.currentIcon
     }
     
     func viewIsShow() -> Bool {
@@ -70,24 +70,24 @@ class TaskPickerView: UIView {
         }
     }
 
-    func setIndex(index: String) {
+    func setCurrentIcon(icon: Icons) {
         guard let task = self.task else { return }
-        self.index = index
+        self.currentIcon = icon
         self.viewShow = true
         self.pickerView.isHidden = true
         self.datePicker.isHidden = true
         let now = Date()
         self.datePicker.date = task.createdDate as Date? ?? now
         
-        switch index {
-        case TaskIconCalendar:
+        switch icon {
+        case .schedule:
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = now
             self.datePicker.datePickerMode = .dateAndTime
             self.rightButton.setTitle(Localized("setCreateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskDueIconCalendar:
+        case .due:
             self.datePicker.isHidden = false
             let date = task.createdDate?.addingMinutes(1) ?? now
             self.datePicker.minimumDate = date
@@ -96,7 +96,7 @@ class TaskPickerView: UIView {
             self.rightButton.setTitle(Localized("setEstimateDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskIconReminder:
+        case .notify:
             guard let createDate = task.createdDate else { break }
             self.datePicker.date = (task.estimateDate as? Date) ?? now
             self.datePicker.isHidden = false
@@ -113,14 +113,14 @@ class TaskPickerView: UIView {
             self.rightButton.setTitle(Localized("setReminder"), for: .normal)
             self.datePicker.reloadInputViews()
             
-        case TaskIconRepeat:
+        case .loop:
             self.pickerView.isHidden = false
             self.rightButton.setTitle(Localized("setRepeat"), for: .normal)
             self.pickerView.tag = self.TaskRepeatTag
             self.pickerView.reloadAllComponents()
             break
             
-        case TaskTagIcon:
+        case .tag:
             self.pickerView.isHidden = false
             self.rightButton.setTitle(Localized("setTag"), for: .normal)
             self.pickerView.tag = self.TaskTagTag

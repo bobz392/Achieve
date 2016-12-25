@@ -281,7 +281,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text,
-            !text.isEmpty() else { return true }
+            !text.isRealEmpty else { return true }
         
         self.saveNewTask(text)
         return true

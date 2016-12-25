@@ -125,8 +125,8 @@ class KVTaskViewController: BaseViewController {
     func saveAction() {
         guard let title = self.titleTextField.text,
             let content = self.contentTextView.text,
-            !title.isEmpty,
-            !content.isEmpty else {
+            !title.isRealEmpty,
+            !content.isRealEmpty else {
                 HUD.shared.error(Localized("errorInfos"))
                 return
         }

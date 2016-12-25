@@ -31,11 +31,14 @@ extension String {
 
 // counting
 extension String {
-    func isEmpty() -> Bool {
-        let trimString = self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
-        return trimString.characters.count <= 0
-    }
     
+    var isRealEmpty: Bool {
+        get {
+            let trimString = self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
+            return trimString.characters.count <= 0
+        }
+    }
+
     func length() -> Int {
         return self.characters.count
     }

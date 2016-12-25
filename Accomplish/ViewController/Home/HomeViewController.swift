@@ -79,7 +79,6 @@
 //        self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRow(at: indexPath, animated: true)
-//        self.taskTableView.reloadRows(at: [indexPath], with: .none)
         self.selectedIndex = nil
     }
     
@@ -100,7 +99,7 @@
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
         
-        let bar = self.createCustomBar()
+        let bar = self.createCustomBar(height: kBarHeight)
         let menuButton = UIButton(type: .custom)
         menuButton.buttonWithIcon(icon: Icons.barMenu.iconString())
         bar.addSubview(menuButton)

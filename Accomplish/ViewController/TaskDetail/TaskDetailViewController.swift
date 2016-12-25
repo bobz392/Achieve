@@ -26,11 +26,12 @@ class TaskDetailViewController: BaseViewController {
 //    @IBOutlet weak var cardView: UIView!
 //    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var datePickerHolderView: UIView!
-    @IBOutlet weak var detailTableView: UITableView!
-    @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate var taskPickerView: TaskPickerView?
+    fileprivate let taskToDoTextView = GrowingTextView()
+    fileprivate let detailTableView = UITableView()
     
     fileprivate var iconList = [
         [TaskIconCalendar, TaskDueIconCalendar, TaskIconReminder, TaskIconRepeat, TaskTagIcon],
@@ -98,7 +99,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     override func configMainUI() {
-        let bar = self.createCustomBar(height: 64)
+        let bar = self.createCustomBar(withBottomLine: true)
         
         let backButton = UIButton(type: .custom)
         backButton.buttonWithIcon(icon: Icons.back.iconString())
@@ -111,6 +112,32 @@ class TaskDetailViewController: BaseViewController {
             make.left.equalToSuperview().offset(12)
         }
         
+        bar.addSubview(taskToDoTextView)
+        taskToDoTextView.maxHeight = 160
+        taskToDoTextView.font = UIFont.systemFont(ofSize: 18)
+        taskToDoTextView.text = self.task.getNormalDisplayTitle()
+        taskToDoTextView.textColor = Colors.mainTextColor
+        taskToDoTextView.clearView()
+        taskToDoTextView.textAlignment = .left
+        taskToDoTextView.tintColor = Colors.mainTextColor
+        taskToDoTextView.delegate = self
+        taskToDoTextView.snp.makeConstraints { (make) in
+            make.left.equalTo(backButton.snp.right).offset(12)
+            make.right.equalToSuperview().offset(-12)
+            make.top.equalToSuperview().offset(23)
+            make.bottom.equalToSuperview().offset(-6)
+        }
+        
+        self.detailTableView.separatorStyle = .none
+        self.detailTableView.delegate = self
+        self.detailTableView.dataSource = self
+        self.view.addSubview(self.detailTableView)
+        self.detailTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         
         let colors = Colors()
 //        
@@ -182,8 +209,11 @@ class TaskDetailViewController: BaseViewController {
     
     fileprivate func keyboardAction() {
         KeyboardManager.sharedManager.setShowHander { [unowned self] in
-            self.detailTableViewBottomConstraint.constant =
-                KeyboardManager.keyboardHeight - 62
+            self.detailTableView.snp.updateConstraints({ (make) in
+                make.bottom.equalToSuperview().offset(62 - KeyboardManager.keyboardHeight)
+            })
+//            self.detailTableViewBottomConstraint.constant =
+//                KeyboardManager.keyboardHeight - 62
             
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.view.layoutIfNeeded()
@@ -198,7 +228,11 @@ class TaskDetailViewController: BaseViewController {
         }
         
         KeyboardManager.sharedManager.setHideHander { [unowned self] in
-            self.detailTableViewBottomConstraint.constant = 10
+            
+            self.detailTableView.snp.updateConstraints({ (make) in
+                make.bottom.equalToSuperview()
+            })
+//            self.detailTableViewBottomConstraint.constant = 10
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -250,7 +284,7 @@ class TaskDetailViewController: BaseViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension TaskDetailViewController: UITextFieldDelegate {
+extension TaskDetailViewController: UITextFieldDelegate, GrowingTextViewDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         KeyboardManager.sharedManager.closeNotification()
         if self.taskPickerView?.viewIsShow() == true {
@@ -267,13 +301,23 @@ extension TaskDetailViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let title = textField.text {
-            if !title.isEmpty {
+            if !title.isRealEmpty {
                 RealmManager.shared.updateObject({
                     self.task.taskToDo = title
                 })
             }
         }
         return textField.resignFirstResponder()
+    }
+    
+    func textViewDidChangeHeight(_ height: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+//            self.taskToDoTextView.snp.updateConstraints({ (make) in
+//                make.height.equalTo(height)
+//                
+//            })
+        }
     }
 }
 

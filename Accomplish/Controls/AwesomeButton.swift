@@ -10,14 +10,18 @@ import UIKit
 
 class AwesomeButton: UIButton {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         self.addTarget(self, action: #selector(self.buttonAnimationStartAction(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpOutside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchDragOutside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchUpInside)
         self.addTarget(self, action: #selector(self.buttonAnimationEndAction(_:)), for: .touchCancel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     func buttonAnimationStartAction(_ btn: UIButton) {
@@ -31,4 +35,5 @@ class AwesomeButton: UIButton {
             btn.transform = CGAffineTransform(scaleX: 1, y: 1)
         }) { (finish) in }
     }
+    
 }

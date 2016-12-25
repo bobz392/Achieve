@@ -104,10 +104,10 @@ class NoteViewController: BaseViewController {
         self.saveButton.setTitle(Localized("save"), for: .normal)
         self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
         
-        if !self.task.taskNote.isEmpty {
+        if !self.task.taskNote.isRealEmpty {
             self.contentTextView.text = self.task.taskNote
         }
-        self.placeholderLabel.isHidden = !self.task.taskNote.isEmpty
+        self.placeholderLabel.isHidden = !self.task.taskNote.isRealEmpty
         self.titleLabel.text = self.task.getNormalDisplayTitle()
         self.placeholderLabel.text = Localized("writeNote")
     }

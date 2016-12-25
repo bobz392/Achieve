@@ -14,8 +14,8 @@ class TaskTableViewCell: MGSwipeTableCell {
     static let reuseId = "taskTableViewCell"
     static let rowHeight: CGFloat = 76
     
-    // 用户添加了系统动作
-    @IBOutlet weak var taskInfoButton: UIButton!
+    // 用户添加了系统动作，则会有这个 button
+    @IBOutlet weak var systemTaskButton: UIButton!
     @IBOutlet weak var taskStatusButton: UIButton!
     @IBOutlet weak var priorityView: UIView!
     @IBOutlet weak var taskDateLabel: UILabel!
@@ -40,8 +40,8 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.cellCardView.addCardShadow()
         
         self.taskTitleLabel.textColor = Colors.mainTextColor
-        self.taskInfoButton.tintColor = Colors.linkButtonTextColor
-        self.taskInfoButton.addTarget(self, action: #selector(self.systemAction), for: .touchUpInside)
+        self.systemTaskButton.tintColor = Colors.linkButtonTextColor
+        self.systemTaskButton.addTarget(self, action: #selector(self.systemAction), for: .touchUpInside)
         self.taskDateLabel.textColor = Colors.secondaryTextColor
         self.taskStatusButton.clearView()
         self.taskStatusButton.addTarget(self, action: #selector(self.markTaskAction(_:)), for: .touchUpInside)
@@ -50,9 +50,6 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.rightSwipeSettings.topMargin = 4
         self.rightSwipeSettings.bottomMargin = 10
         self.touchOnDismissSwipe = true
-        
-//        self.firstImageView.tintColor = Colors.lightGrayHintColor
-//        self.lastImageView.tintColor = Colors.lightGrayHintColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -100,17 +97,17 @@ class TaskTableViewCell: MGSwipeTableCell {
             if let actionContent = TaskManager().parseTaskToDoText(task.taskToDo) {
                 self.systemActionContent = actionContent
                 taskTitle = actionContent.type.ationNameWithType()
-                self.taskInfoButton.isEnabled = true
-                self.taskInfoButton.setTitle(actionContent.name, for: .normal)
+                self.systemTaskButton.isEnabled = true
+                self.systemTaskButton.setTitle(actionContent.name, for: .normal)
             } else {
-                self.taskInfoButton.isEnabled = false
-                self.taskInfoButton.setTitle(nil, for: .normal)
+                self.systemTaskButton.isEnabled = false
+                self.systemTaskButton.setTitle(nil, for: .normal)
                 taskTitle = task.taskToDo
             }
             
         default:
-            self.taskInfoButton.isEnabled = false
-            self.taskInfoButton.setTitle(nil, for: .normal)
+            self.systemTaskButton.isEnabled = false
+            self.systemTaskButton.setTitle(nil, for: .normal)
             taskTitle = task.taskToDo
         }
         
@@ -184,18 +181,6 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.task = task
         self.configTaskPriority(priority: task.taskPriority())
         self.configTaskStatus(task: task)
-        
-//        self.firstImageView.image = nil
-//        self.lastImageView.image = nil        
-//        if let _ = task.notifyDate {
-//            self.firstImageView.image = Icons.notify.iconImage()
-//        }
-//        
-//        if let _ = task.repeaterUUID {
-//            let view = self.firstImageView.image == nil ?
-//                self.firstImageView : self.lastImageView
-//            view?.image = Icons.loop.iconImage()
-//        }
     }
     
     // MARK: - actions

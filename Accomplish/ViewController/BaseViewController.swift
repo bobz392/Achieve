@@ -66,19 +66,31 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @discardableResult
-    func createCustomBar(height: CGFloat = 64) -> UIView {
-        let origin = CGPoint.zero
-        let size = CGSize(width: UIScreen.main.bounds.width, height: height)
-        let bar = UIView(frame: CGRect(origin: origin, size: size))
+    func createCustomBar(height: CGFloat? = nil, withBottomLine: Bool = false) -> UIView {
+        let bar = UIView()
         bar.backgroundColor = Colors.mainBackgroundColor
         self.view.addSubview(bar)
         bar.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(height)
+            if let h = height {
+                make.height.equalTo(h)
+            }
         }
         self.customNavigationBar = bar
+        
+        if withBottomLine {
+            let lineView = UIView()
+            bar.addSubview(lineView)
+            lineView.backgroundColor = Colors.separatorColor
+            lineView.snp.makeConstraints({ (make) in
+                make.bottom.equalToSuperview()
+                make.left.equalToSuperview()
+                make.right.equalToSuperview()
+                make.height.equalTo(0.5)
+            })
+        }
         
         return bar
     }

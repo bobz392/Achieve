@@ -5,14 +5,12 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskDetailViewController" customModule="Accomplish" customModuleProvider="target">
             <connections>
-                <outlet property="datePickerHolderView" destination="CjQ-99-yJr" id="Tqn-Au-WSe"/>
-                <outlet property="datePickerViewBottomConstraint" destination="3ok-wT-1Me" id="zNl-Jz-5yU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +18,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjQ-99-yJr">
-                    <rect key="frame" x="0.0" y="667" width="375" height="245"/>
-                    <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="245" id="Ccj-r6-bSj"/>
-                    </constraints>
-                </view>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="CjQ-99-yJr" secondAttribute="trailing" id="2Uh-Iu-UFH"/>
-                <constraint firstAttribute="bottom" secondItem="CjQ-99-yJr" secondAttribute="bottom" constant="-245" id="3ok-wT-1Me"/>
-                <constraint firstItem="CjQ-99-yJr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eb0-BA-pPe"/>
-            </constraints>
             <point key="canvasLocation" x="225" y="228"/>
         </view>
     </objects>

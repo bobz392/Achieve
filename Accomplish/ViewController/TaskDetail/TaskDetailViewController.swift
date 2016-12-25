@@ -25,9 +25,9 @@ class TaskDetailViewController: BaseViewController {
 //    @IBOutlet weak var titleTextField: UITextField!
 //    @IBOutlet weak var cardView: UIView!
 //    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var datePickerHolderView: UIView!
+//    @IBOutlet weak var datePickerHolderView: UIView!
 //    @IBOutlet weak var detailTableViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var datePickerViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate var taskPickerView: TaskPickerView?
     fileprivate let taskToDoTextView = GrowingTextView()
@@ -115,12 +115,13 @@ class TaskDetailViewController: BaseViewController {
         bar.addSubview(taskToDoTextView)
         taskToDoTextView.maxHeight = 160
         taskToDoTextView.font = UIFont.systemFont(ofSize: 18)
-        taskToDoTextView.text = self.task.getNormalDisplayTitle()
+        taskToDoTextView.text = self.task.realTaskToDo()
         taskToDoTextView.textColor = Colors.mainTextColor
         taskToDoTextView.clearView()
         taskToDoTextView.textAlignment = .left
         taskToDoTextView.tintColor = Colors.mainTextColor
         taskToDoTextView.delegate = self
+        taskToDoTextView.returnKeyType = .done
         taskToDoTextView.snp.makeConstraints { (make) in
             make.left.equalTo(backButton.snp.right).offset(12)
             make.right.equalToSuperview().offset(-12)
@@ -171,13 +172,13 @@ class TaskDetailViewController: BaseViewController {
 //        self.titleTextField.text = task.getNormalDisplayTitle()
         
         guard let taskPickerView = Bundle.main.loadNibNamed("TaskPickerView", owner: self, options: nil)?.last as? TaskPickerView else { return }
-        self.datePickerHolderView.addSubview(taskPickerView)
+        self.view.addSubview(taskPickerView)
         
         taskPickerView.snp.makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.bottom.equalTo(0)
-            make.left.equalTo(0)
-            make.right.equalTo(0)
+            make.top.equalTo(self.view.snp.bottom)
+            make.height.equalTo(TaskPickerView.height)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
         }
         
         self.taskPickerView = taskPickerView
@@ -185,16 +186,6 @@ class TaskDetailViewController: BaseViewController {
         
         taskPickerView.leftButton.addTarget(self, action: #selector(self.cancelDatePickerAction), for: .touchUpInside)
         taskPickerView.rightButton.addTarget(self, action: #selector(self.setDatePickerAction), for: .touchUpInside)
-        
-        self.configDetailWithTask()
-    }
-    
-    fileprivate func configDetailWithTask() {
-//        if self.task.typeOfTask() == .system {
-//            self.titleTextField.isEnabled = self.task.taskToDoCanChange() && self.canChange
-//        } else {
-//            self.titleTextField.isEnabled = self.canChange
-//        }
     }
     
     // MARK: - actions
@@ -210,7 +201,7 @@ class TaskDetailViewController: BaseViewController {
     fileprivate func keyboardAction() {
         KeyboardManager.sharedManager.setShowHander { [unowned self] in
             self.detailTableView.snp.updateConstraints({ (make) in
-                make.bottom.equalToSuperview().offset(62 - KeyboardManager.keyboardHeight)
+                make.bottom.equalToSuperview().offset(KeyboardManager.keyboardHeight - 64)
             })
 //            self.detailTableViewBottomConstraint.constant =
 //                KeyboardManager.keyboardHeight - 62
@@ -284,30 +275,53 @@ class TaskDetailViewController: BaseViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension TaskDetailViewController: UITextFieldDelegate, GrowingTextViewDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        KeyboardManager.sharedManager.closeNotification()
-        if self.taskPickerView?.viewIsShow() == true {
-            self.cancelDatePickerAction()
+extension TaskDetailViewController: GrowingTextViewDelegate {
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        KeyboardManager.sharedManager.closeNotification()
+//        if self.taskPickerView?.viewIsShow() == true {
+//            self.cancelDatePickerAction()
+//        }
+//        
+//        return true
+//    }
+//    
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        self.keyboardAction()
+//        return true
+//    }
+//    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if let title = textField.text {
+//            if !title.isRealEmpty {
+//                RealmManager.shared.updateObject({
+//                    self.task.taskToDo = title
+//                })
+//            }
+//        }
+//        return textField.resignFirstResponder()
+//    }
+//    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.endEditing(true)
+            return false
         }
         
         return true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        self.keyboardAction()
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let title = textField.text {
-            if !title.isRealEmpty {
-                RealmManager.shared.updateObject({
-                    self.task.taskToDo = title
-                })
-            }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let title = textView.text,
+            !title.isRealEmpty == true {
+            RealmManager.shared.updateObject({
+                self.task.taskToDo = title
+            })
+        } else {
+            textView.text = self.task.realTaskToDo()
         }
-        return textField.resignFirstResponder()
+        
+        textView.resignFirstResponder()
     }
     
     func textViewDidChangeHeight(_ height: CGFloat) {
@@ -522,11 +536,17 @@ extension TaskDetailViewController {
                 self.detailTableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
             }
             if (self.taskPickerView?.viewIsShow() == true) {
-                self.datePickerViewBottomConstraint.constant = -TaskPickerView.height
+//                self.datePickerViewBottomConstraint.constant = -TaskPickerView.height
+                self.taskPickerView?.snp.updateConstraints({ (make) in
+                    make.top.equalTo(self.view.snp.bottom)
+                })
                 UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions.allowAnimatedContent, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                 }) { [unowned self] (finish) in
-                    self.datePickerViewBottomConstraint.constant = 0
+//                    self.datePickerViewBottomConstraint.constant = 0
+                    self.taskPickerView?.snp.updateConstraints({ (make) in
+                        make.top.equalTo(self.view.snp.bottom).offset(-TaskPickerView.height)
+                    })
                     UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
                         self.view.layoutIfNeeded()
                     }) { (finish) in }
@@ -535,7 +555,10 @@ extension TaskDetailViewController {
             }
         }
         
-        self.datePickerViewBottomConstraint.constant = show ? 0 : -TaskPickerView.height
+//        self.datePickerViewBottomConstraint.constant =
+        self.taskPickerView?.snp.updateConstraints({ (make) in
+            make.top.equalTo(self.view.snp.bottom).offset(show ? -TaskPickerView.height : 0)
+        })
         UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {  [unowned self] in
             self.view.layoutIfNeeded()
         }) { (finish) in }

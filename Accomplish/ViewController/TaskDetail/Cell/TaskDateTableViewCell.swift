@@ -18,7 +18,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
     
     static let nib = UINib(nibName: "TaskDateTableViewCell", bundle: nil)
     static let reuseId = "taskDateTableViewCell"
-    static let rowHeight: CGFloat = 38
+    static let rowHeight: CGFloat = 50
     
     //    @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!

@@ -132,7 +132,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseId, for: indexPath) as! SearchTableViewCell
         
         let task = self.searchResult[indexPath.row]
-        cell.taskTitleLabel.text = task.getNormalDisplayTitle()
+        cell.taskTitleLabel.text = task.realTaskToDo()
         cell.taskStartLabel.text =
             task.createdDate?.getDateString()
         

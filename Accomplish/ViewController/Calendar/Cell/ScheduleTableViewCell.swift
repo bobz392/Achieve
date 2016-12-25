@@ -69,7 +69,7 @@ class ScheduleTableViewCell: UITableViewCell {
         
         self.createdTimeLabel.text = task.createdDate?.timeString()
         self.amLabel.text = task.createdDate?.am()
-        self.tasksLabel.text = task.getNormalDisplayTitle()
+        self.tasksLabel.text = task.realTaskToDo()
         if let finishDate = task.finishedDate {
             self.completedLabel.text = Localized("completedAt") + finishDate.timeDateString()
         } else {

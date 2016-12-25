@@ -22,8 +22,7 @@ struct ReportGenerator {
         let string = taskList.reduce("", { (content, task) -> String in
             
             var newTaskContent = ""
-            let taskTodo = task.getNormalDisplayTitle()
-            
+            let taskTodo = task.realTaskToDo()
             
             if let startDate =
                 task.createdDate?.formattedDate(withFormat: ReportDateFormat) {

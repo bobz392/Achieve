@@ -108,7 +108,7 @@ class NoteViewController: BaseViewController {
             self.contentTextView.text = self.task.taskNote
         }
         self.placeholderLabel.isHidden = !self.task.taskNote.isRealEmpty
-        self.titleLabel.text = self.task.getNormalDisplayTitle()
+        self.titleLabel.text = self.task.realTaskToDo()
         self.placeholderLabel.text = Localized("writeNote")
     }
     

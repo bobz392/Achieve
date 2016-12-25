@@ -148,7 +148,7 @@ extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! MonthTableViewCell
         
         let task = self.monthlyTasks[indexPath.row]
-        cell.taskNameLabel.text = task.getNormalDisplayTitle()
+        cell.taskNameLabel.text = task.realTaskToDo()
         
         if let repeaterUUID = task.repeaterUUID {
             if let repeater = RealmManager.shared.queryRepeaterWithUUID(repeatUUID: repeaterUUID),

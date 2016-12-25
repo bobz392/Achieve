@@ -953,15 +953,15 @@
 		C73B44501E0C494200DDE093 /* TaskDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C73B44511E0C494200DDE093 /* Cell */,
+				C73B44661E0C494200DDE093 /* View */,
 				C73B445C1E0C494200DDE093 /* Core */,
+				C73B44511E0C494200DDE093 /* Cell */,
 				C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */,
 				C73B44651E0C494200DDE093 /* TaskDetailViewController.xib */,
 				C73B44601E0C494200DDE093 /* NoteViewController.swift */,
 				C73B44611E0C494200DDE093 /* NoteViewController.xib */,
 				C73B44621E0C494200DDE093 /* TagViewController.swift */,
 				C73B44631E0C494200DDE093 /* TagViewController.xib */,
-				C73B44661E0C494200DDE093 /* View */,
 			);
 			path = TaskDetail;
 			sourceTree = "<group>";
@@ -975,10 +975,10 @@
 				C73B44551E0C494200DDE093 /* SubtaskTableViewCell.xib */,
 				C73B44561E0C494200DDE093 /* TagTableViewCell.swift */,
 				C73B44571E0C494200DDE093 /* TagTableViewCell.xib */,
-				C73B44581E0C494200DDE093 /* TaskDateTableViewCell.swift */,
-				C73B44591E0C494200DDE093 /* TaskDateTableViewCell.xib */,
 				C73B445A1E0C494200DDE093 /* TaskNoteTableViewCell.swift */,
 				C73B445B1E0C494200DDE093 /* TaskNoteTableViewCell.xib */,
+				C73B44581E0C494200DDE093 /* TaskDateTableViewCell.swift */,
+				C73B44591E0C494200DDE093 /* TaskDateTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

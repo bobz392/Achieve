@@ -23,7 +23,7 @@ extension GroupUserDefault {
         var tasksArr = [[String]]()
         let realmManager = RealmManager.shared
         for task in tasks {
-            let title = task.getNormalDisplayTitle()
+            let title = task.realTaskToDo()
             let uuid = task.uuid
             let priority = task.priority
             let estimate = task.estimateDate?.formattedDate(withFormat: TimeDateFormat) ?? ""

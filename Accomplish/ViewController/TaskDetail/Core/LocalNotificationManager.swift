@@ -234,7 +234,7 @@ class LocalNotificationManager: NSObject {
             newLocalNotify.repeatInterval = type.getCalendarUnit()
             newLocalNotify.fireDate = nextfireDate
             newLocalNotify.alertTitle = Localized("taskReminding")
-            newLocalNotify.alertBody = task.getNormalDisplayTitle()
+            newLocalNotify.alertBody = task.realTaskToDo()
             newLocalNotify.soundName = UILocalNotificationDefaultSoundName
             newLocalNotify.category = kNotificationCategory
             newLocalNotify.applicationIconBadgeNumber =
@@ -268,7 +268,7 @@ class LocalNotificationManager: NSObject {
         }
         
         notify.alertTitle = Localized("taskReminding")
-        notify.alertBody = task.getNormalDisplayTitle()
+        notify.alertBody = task.realTaskToDo()
         notify.fireDate = notifyDate.clearSecond() as Date
         notify.soundName = UILocalNotificationDefaultSoundName
         notify.category = kNotificationCategory
@@ -292,7 +292,7 @@ class LocalNotificationManager: NSObject {
                 let notify = UILocalNotification()
                 notify.fireDate = fireDate as Date
                 notify.soundName = UILocalNotificationDefaultSoundName
-                notify.alertBody = task.getNormalDisplayTitle()
+                notify.alertBody = task.realTaskToDo()
                 notify.timeZone = TimeZone.current
                 notify.category = kNotificationCategory
                 notify.repeatInterval = .weekOfYear
@@ -559,7 +559,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
     fileprivate func createUNNotificationContent(task: Task) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = Localized("taskReminding")
-        content.body = task.getNormalDisplayTitle()
+        content.body = task.realTaskToDo()
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = kNotificationCategory
         let info = [kNotifyUserInfoKey: task.uuid]

@@ -30,7 +30,7 @@ struct SpotlightManager {
     
     fileprivate func createSearchableItem(task: Task) -> CSSearchableItem {
         let attributes = CSSearchableItemAttributeSet(itemContentType: kUTTypeContent as String)
-        attributes.title = task.getNormalDisplayTitle()
+        attributes.title = task.realTaskToDo()
         attributes.identifier = task.uuid
         if let image = UIImage(named: "AppIcon"),
             let data = UIImagePNGRepresentation(image){

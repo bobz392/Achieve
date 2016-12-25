@@ -110,7 +110,7 @@ class Task: Object {
         self.taskToDo = taskToDo
     }
     
-    func getNormalDisplayTitle() -> String {
+    func realTaskToDo() -> String {
         switch self.taskType {
         case TaskType.system.type():
             if let action = TaskManager().parseTaskToDoText(self.taskToDo) {

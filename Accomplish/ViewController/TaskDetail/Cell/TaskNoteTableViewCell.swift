@@ -12,7 +12,7 @@ class TaskNoteTableViewCell: BaseTableViewCell {
 
     static let nib = UINib(nibName: "TaskNoteTableViewCell", bundle: nil)
     static let reuseId = "taskNoteTableViewCell"
-    static let rowHeight: CGFloat = 80
+    static let rowHeight: CGFloat = 70
     
     @IBOutlet weak var iconButton: UIButton!
     @IBOutlet weak var noteLabel: UILabel!

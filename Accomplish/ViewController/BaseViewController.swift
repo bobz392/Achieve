@@ -9,11 +9,10 @@
 import UIKit
 import SnapKit
 
-let kBackgroundNeedRefreshNotification = "theme.need.refresh.notify"
-
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate var customNavigationBar: UIView? = nil
+    fileprivate var leftBarButton: UIButton? = nil
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,17 +21,16 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
             let delegate = UIApplication.shared.delegate as? AppDelegate {
             delegate.setOpenDrawMode(openMode: nav.viewControllers.count <= 1)
         }
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.changeMainUI), name: NSNotification.Name(rawValue: kBackgroundNeedRefreshNotification), object: nil)
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.edgesForExtendedLayout = UIRectEdge()
+        self.edgesForExtendedLayout = .all
     }
+    
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -40,31 +38,21 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     func configMainUI() {
         
     }
     
-    func changeMainUI() {
-        if self.isViewLoaded && self.view.window != nil {
-            UIView.animate(withDuration: kNormalAnimationDuration, animations: {
-                self.configMainUI()
-            }) 
-        } else {
-            self.configMainUI()
-        }
-    }
-    
+    /**
+     返回一个自定义的 bar。
+     并且已经添加到 view 中，可以直接拿来使用。
+     如果 height 为 nil，则表示 bar height 有内容来填充控制。
+     */
     @discardableResult
     func createCustomBar(height: CGFloat? = nil, withBottomLine: Bool = false) -> UIView {
         let bar = UIView()
@@ -93,5 +81,23 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         return bar
+    }
+    
+    @discardableResult
+    func createLeftBarButton(iconString: String) -> UIButton {
+        guard let bar = self.customNavigationBar else {
+            fatalError("you don't created a bar now")
+        }
+        let leftBarButton = UIButton(type: .custom)
+        leftBarButton.buttonWithIcon(icon: iconString)
+        bar.addSubview(leftBarButton)
+        leftBarButton.snp.makeConstraints { (make) in
+            make.width.equalTo(kBarIconSize)
+            make.height.equalTo(kBarIconSize)
+            make.top.equalTo(bar).offset(26)
+            make.left.equalToSuperview().offset(12)
+        }
+        self.leftBarButton = leftBarButton
+        return leftBarButton
     }
 }

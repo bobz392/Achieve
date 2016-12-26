@@ -10,25 +10,16 @@ import UIKit
 
 class NoteViewController: BaseViewController {
     
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var titleCardView: UIView!
-    
-    @IBOutlet weak var toolView: UIView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var contentTextView: UITextView!
-    @IBOutlet weak var placeholderLabel: UILabel!
+    fileprivate let noteTextView = UITextView()
     
     var task: Task
     var noteDelegate: TaskNoteDataDelegate?
     
+    // MARK: - life circle
     init(task: Task, noteDelegate: TaskNoteDataDelegate?) {
         self.task = task
         self.noteDelegate = noteDelegate
-        super.init(nibName: "NoteViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,77 +30,75 @@ class NoteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.closeNotification()
-        KeyboardManager.sharedManager.setHideHander { [unowned self] in
-            self.toolViewBottomConstraint.constant = 0
-            UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
-                self.view.layoutIfNeeded()
-                }, completion: nil)
+        let weakSelf = self
+        KeyboardManager.sharedManager.setHideHander {
+            weakSelf.noteTextView.snp.updateConstraints({ (make) in
+                make.bottom.equalToSuperview().offset(0)
+            })
+            UIView.animate(withDuration: kNormalAnimationDuration, animations: { 
+                weakSelf.view.layoutIfNeeded()
+            })
         }
-        KeyboardManager.sharedManager.setShowHander { [unowned self] in
-            self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
-            
-            UIView.animate(withDuration: kNormalAnimationDuration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
-                self.view.layoutIfNeeded()
-                }, completion: nil)
-
+        
+        KeyboardManager.sharedManager.setShowHander {
+            weakSelf.noteTextView.snp.updateConstraints({ (make) in
+                make.bottom.equalToSuperview().offset(-KeyboardManager.keyboardHeight)
+            })
+            UIView.animate(withDuration: kNormalAnimationDuration, animations: {
+                weakSelf.view.layoutIfNeeded()
+            })
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        KeyboardManager.sharedManager.closeNotification()
+        
+        self.saveNote()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
         
-        self.toolView.addTopShadow()
-        self.toolView.backgroundColor = Colors.cloudColor
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        self.titleLabel.textColor = Colors.mainTextColor
+        let bar = self.createCustomBar(height: 64, withBottomLine: true)
+        let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        self.contentTextView.tintColor = colors.mainGreenColor
-        self.contentTextView.textColor = Colors.mainTextColor
-        self.placeholderLabel.textColor = colors.placeHolderTextColor
-        
-        self.cancelButton.tintColor = colors.mainGreenColor
-        self.saveButton.tintColor = colors.mainGreenColor
-    }
-    
-    fileprivate func initializeControl() {
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.titleCardView.layer.cornerRadius = 6.0
-        self.titleCardView.addSmallShadow()
-        
-        self.cancelButton.setTitle(Localized("cancel"), for: .normal)
-        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.saveButton.setTitle(Localized("save"), for: .normal)
-        self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
-        
-        if !self.task.taskNote.isRealEmpty {
-            self.contentTextView.text = self.task.taskNote
+        let titleLable = UILabel()
+        titleLable.text = self.task.realTaskToDo()
+        titleLable.font = UIFont.systemFont(ofSize: 17)
+        titleLable.textAlignment = .center
+        titleLable.textColor = Colors.mainTextColor
+        bar.addSubview(titleLable)
+        titleLable.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(backButton.snp.centerY)
+            make.width.equalTo(180)
         }
-        self.placeholderLabel.isHidden = !self.task.taskNote.isRealEmpty
-        self.titleLabel.text = self.task.realTaskToDo()
-        self.placeholderLabel.text = Localized("writeNote")
+        
+        noteTextView.font = UIFont.systemFont(ofSize: 16)
+        noteTextView.textColor = Colors.mainTextColor
+        noteTextView.tintColor = Colors.mainTextColor
+        noteTextView.text = self.task.taskNote
+        noteTextView.clearView()
+        noteTextView.dataDetectorTypes = [.all]
+        self.view.addSubview(noteTextView)
+        noteTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom).offset(5)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview()
+        }
     }
     
     // MARK: - action
@@ -117,23 +106,8 @@ class NoteViewController: BaseViewController {
         let _ = self.navigationController?.popViewController(animated: true)
     }
     
-    func saveAction() {
-        guard let content = self.contentTextView.text else { return }
-        if content.characters.count > 0 {
-            self.noteDelegate?.taskNoteAdd(content)
-            guard let nav = self.navigationController else {
-                return
-            }
-            nav.popViewController(animated: true)
-        } else {
-            HUD.shared.error(Localized("errorInfos"))
-        }
-    }
-}
-
-extension NoteViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        self.placeholderLabel.isHidden = range.location + text.characters.count > 0
-        return true
+    func saveNote() {
+        guard let content = self.noteTextView.text else { return }
+        self.noteDelegate?.taskNoteAdd(content)
     }
 }

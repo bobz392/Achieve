@@ -53,7 +53,6 @@ class TaskDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.configMainUI()
         self.initializeControl()
@@ -94,18 +93,10 @@ class TaskDetailViewController: BaseViewController {
     
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
-        let bar = self.createCustomBar(withBottomLine: true)
         
-        let backButton = UIButton(type: .custom)
-        backButton.buttonWithIcon(icon: Icons.back.iconString())
+        let bar = self.createCustomBar(withBottomLine: true)
+        let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        bar.addSubview(backButton)
-        backButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(26)
-            make.height.equalTo(kBarIconSize)
-            make.width.equalTo(kBarIconSize)
-            make.left.equalToSuperview().offset(16)
-        }
         
         bar.addSubview(taskToDoTextView)
         taskToDoTextView.maxHeight = 160

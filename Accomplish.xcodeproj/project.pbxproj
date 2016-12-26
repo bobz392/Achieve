@@ -82,7 +82,6 @@
 		C73B44741E0C494200DDE093 /* RepeaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B445E1E0C494200DDE093 /* RepeaterManager.swift */; };
 		C73B44751E0C494200DDE093 /* RepeaterTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B445F1E0C494200DDE093 /* RepeaterTimeType.swift */; };
 		C73B44761E0C494200DDE093 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44601E0C494200DDE093 /* NoteViewController.swift */; };
-		C73B44771E0C494200DDE093 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44611E0C494200DDE093 /* NoteViewController.xib */; };
 		C73B44781E0C494200DDE093 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44621E0C494200DDE093 /* TagViewController.swift */; };
 		C73B44791E0C494200DDE093 /* TagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73B44631E0C494200DDE093 /* TagViewController.xib */; };
 		C73B447A1E0C494200DDE093 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */; };
@@ -507,7 +506,6 @@
 		C73B445E1E0C494200DDE093 /* RepeaterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterManager.swift; sourceTree = "<group>"; };
 		C73B445F1E0C494200DDE093 /* RepeaterTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeaterTimeType.swift; sourceTree = "<group>"; };
 		C73B44601E0C494200DDE093 /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
-		C73B44611E0C494200DDE093 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		C73B44621E0C494200DDE093 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C73B44631E0C494200DDE093 /* TagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewController.xib; sourceTree = "<group>"; };
 		C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -956,7 +954,6 @@
 				C73B44511E0C494200DDE093 /* Cell */,
 				C73B44641E0C494200DDE093 /* TaskDetailViewController.swift */,
 				C73B44601E0C494200DDE093 /* NoteViewController.swift */,
-				C73B44611E0C494200DDE093 /* NoteViewController.xib */,
 				C73B44621E0C494200DDE093 /* TagViewController.swift */,
 				C73B44631E0C494200DDE093 /* TagViewController.xib */,
 			);
@@ -1770,7 +1767,6 @@
 				C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */,
 				C75F858B1E053F6D0057D76C /* 63462667-8672-3110-B8E4-6AF146455308.bcsymbolmap in Resources */,
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
-				C73B44771E0C494200DDE093 /* NoteViewController.xib in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
 				C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */,
 				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,

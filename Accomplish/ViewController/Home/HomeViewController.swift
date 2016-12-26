@@ -100,15 +100,7 @@
         self.view.backgroundColor = Colors.mainBackgroundColor
         
         let bar = self.createCustomBar(height: kBarHeight)
-        let menuButton = UIButton(type: .custom)
-        menuButton.buttonWithIcon(icon: Icons.barMenu.iconString())
-        bar.addSubview(menuButton)
-        menuButton.snp.makeConstraints { (make) in
-            make.width.equalTo(kBarIconSize)
-            make.height.equalTo(kBarIconSize)
-            make.bottom.equalTo(bar).offset(-6)
-            make.left.equalToSuperview().offset(12)
-        }
+        let menuButton = self.createLeftBarButton(iconString: Icons.barMenu.iconString())
         menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)
         
         let searchButton = UIButton(type: .custom)

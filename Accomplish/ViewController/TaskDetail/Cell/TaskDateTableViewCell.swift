@@ -38,7 +38,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         self.clearButton.setImage(Icons.clear.iconImage(), for: .normal)
         self.clearButton.tintColor = Colors.mainIconColor
         
-        self.infoLabel.highlightedTextColor = Colors.linkButtonTextColor
+        self.infoLabel.highlightedTextColor = Colors.taskDetailSelectionTextColor
         self.infoLabel.textColor = Colors.mainIconColor
     }
     
@@ -46,7 +46,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            self.iconImageView.tintColor = Colors.linkButtonTextColor
+            self.iconImageView.tintColor = Colors.taskDetailSelectionTextColor
         } else {
             self.iconImageView.tintColor = self.cuurentImageTintColor
         }
@@ -59,7 +59,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         super.setHighlighted(highlighted, animated: animated)
         
         if highlighted {
-            self.iconImageView.tintColor = Colors.linkButtonTextColor
+            self.iconImageView.tintColor = Colors.taskDetailSelectionTextColor
         } else {
             self.iconImageView.tintColor = self.cuurentImageTintColor
         }
@@ -98,6 +98,12 @@ class TaskDateTableViewCell: BaseTableViewCell {
             break
         }
     }
+    
+    fileprivate func setCellContentHighlight(highlighted: Bool) {
+        self.iconImageView.tintColor =
+            highlighted ? Colors.taskDetailSelectionTextColor : Colors.mainIconColor
+        self.infoLabel.isHighlighted = highlighted
+    }
 
     func configCell(_ task: Task, icon: Icons) {
         self.task = task
@@ -108,18 +114,15 @@ class TaskDateTableViewCell: BaseTableViewCell {
         switch icon {
             
         case .schedule:
-            self.infoLabel.isHighlighted = true
             guard let createdDate = task.createdDate else { break }
             let scheduled = createdDate.isEarlierThan(Date()) ?
                 Localized("scheduled") : Localized("willScheduled")
             self.infoLabel.text = scheduled + " "
                 + createdDate.formattedDate(withFormat: TimeDateFormat)
             self.clearButton.isHidden = true
-            self.iconImageView.tintColor = Colors.linkButtonTextColor
+            self.setCellContentHighlight(highlighted: true)
             
         case .notify:
-            self.infoLabel.isHighlighted = task.notifyDate != nil
-            
             if let notifyDate = task.notifyDate {
                 self.infoLabel.text = Localized("reminderMe")
                     + notifyDate.timeDateString()
@@ -129,25 +132,21 @@ class TaskDateTableViewCell: BaseTableViewCell {
             
             self.clearButton.isHidden = task.notifyDate == nil
             self.detailType = .notify
-            self.iconImageView.tintColor =
-                task.notifyDate == nil ? Colors.mainIconColor : Colors.linkButtonTextColor
+            self.setCellContentHighlight(highlighted: task.notifyDate != nil)
             
         case .due:
             if task.taskStatus() == .completed {
-                self.infoLabel.isHighlighted = task.finishedDate != nil
                 self.clearButton.isHidden = true
-                self.iconImageView.tintColor = Colors.linkButtonTextColor
                 self.detailType = .other
+                self.setCellContentHighlight(highlighted: true)
                 
                 if let finishDate = task.finishedDate {
                     self.infoLabel.text = Localized("finishAt") + finishDate.formattedDate(withFormat: TimeDateFormat)
                 }
             } else {
-                self.infoLabel.isHighlighted = task.estimateDate != nil
                 self.clearButton.isHidden = task.estimateDate == nil
-                self.iconImageView.tintColor =
-                    task.estimateDate == nil ? Colors.mainIconColor : Colors.linkButtonTextColor
                 self.detailType = .estimate
+                self.setCellContentHighlight(highlighted: task.estimateDate != nil)
                 
                 if let estimateDate = task.estimateDate {
                     self.infoLabel.text = Localized("estimeateAt") + estimateDate.formattedDate(withFormat: TimeDateFormat)
@@ -172,11 +171,9 @@ class TaskDateTableViewCell: BaseTableViewCell {
                 self.infoLabel.text = Localized("noRepeat")
             }
             
-            self.infoLabel.isHighlighted = hasRepeater
             self.clearButton.isHidden = !hasRepeater
             self.detailType = .repeat
-            self.iconImageView.tintColor =
-                !hasRepeater ? Colors.mainIconColor : Colors.linkButtonTextColor
+            self.setCellContentHighlight(highlighted: hasRepeater)
             
         case .tag:
             let hasTag: Bool
@@ -198,11 +195,9 @@ class TaskDateTableViewCell: BaseTableViewCell {
                 self.infoLabel.text = Localized("noTag")
             }
             
-            self.infoLabel.isHighlighted = hasTag
-            self.iconImageView.tintColor =
-                !hasTag ? Colors.mainIconColor : Colors.linkButtonTextColor
             self.clearButton.isHidden = !hasTag
             self.detailType = .tag
+            self.setCellContentHighlight(highlighted: hasTag)
             
         default:
             break

@@ -198,6 +198,7 @@ protocol RealmNotificationDataSource: NSObjectProtocol {
 
 enum TaskUpdateStatus {
     case move
+    case resort
     case insert
     case delete
     case none

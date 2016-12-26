@@ -32,8 +32,8 @@ class TaskPickerView: UIView {
         super.awakeFromNib()
         
         self.toolView.backgroundColor = Colors.cloudColor
-        self.leftButton.tintColor = Colors.linkButtonTextColor
-        self.rightButton.tintColor = Colors.linkButtonTextColor
+        self.leftButton.tintColor = Colors.taskDetailSelectionTextColor
+        self.rightButton.tintColor = Colors.taskDetailSelectionTextColor
         self.backgroundColor = Colors.cloudColor
         
         self.leftButton.setTitle(Localized("cancel"), for: .normal)

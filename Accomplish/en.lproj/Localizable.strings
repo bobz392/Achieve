@@ -12,7 +12,6 @@
 "hide"="HIDE";
 "emptyTask"="No more task, Enjoy the day or challenge a new task";
 "detailIncomplete"="Yesterday unfinished tasks postponed to today";
-"move"="Move";
 "asyncing"="synchronizing";
 "icloud"="Login iCloud account to synchronize your data";
 
@@ -21,7 +20,7 @@
 "needABPermission"="Need permission to access Address Book";
 "loading"="Loading";
 
-"newTask"="Add task";
+"newTask"="Add Task";
 "rescheduling"="Task Detail";
 "taskReminding"="Task Reminding";
 "finishTask"="Finish Task";
@@ -37,23 +36,20 @@
 "done"="Done";
 "search"="Start Search";
 "customTask"="Custom task";
-"dependTask"="Associated task";
 "systemTask"="System task";
-"switchRunning"="Switch to proceed";
-"switchFinish"="Switch to finish";
 
 "goingDo"="What would you like to do?";
 "priority"="Priority";
 "remove"="Remove";
 
-"setCreateDate"="Set start date";
-"setEstimateDate"="Set estimated finish time";
-"setReminder"="Set reminder";
-"setRepeat"="Set repeat";
-"setTag"="Set tag";
+"setCreateDate"="Set Start Time";
+"setEstimateDate"="Set Estimated Time";
+"setReminder"="Set Reminder";
+"setRepeat"="Set Repeat";
+"setTag"="Set Tag";
 "noneTag"="None";
-"allTask"="All tasks";
-"writeNote"="write something...";
+"allTask"="All Tasks";
+"writeNote"="Task Note";
 
 "priority2"="High";
 "priority1"="Normal";

@@ -285,7 +285,7 @@
         let movetasks = shareManager.hasUnfinishTaskMoveToday()
         if movetasks.count > 0 {
             let alert = UIAlertController(title: nil, message: Localized("detailIncomplete"), preferredStyle: .alert)
-            let moveAction = UIAlertAction(title: Localized("move"), style: .default) { [unowned self] (action) in
+            let moveAction = UIAlertAction(title: Localized("ok"), style: .default) { [unowned self] (action) in
                 shareManager.moveYesterdayTaskToToday(movedtasks: movetasks)
                 self.uploadToiCloud()
             }
@@ -408,6 +408,12 @@
         }
         
         if status == .preceed {
+            // 如果是改变了顺序，例如更新了 created date
+            if TaskListManager.currentStatus() == .resort {
+                self.taskTableView.reloadSections(IndexSet([0]), with: .none)
+                return
+            }
+            
             self.taskTableView.beginUpdates()
             update(0)
             // 如果当前不是完成任务或者取消完成任务的情况，则直接 update

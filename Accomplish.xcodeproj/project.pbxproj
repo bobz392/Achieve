@@ -966,10 +966,10 @@
 		C73B44511E0C494200DDE093 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C73B44521E0C494200DDE093 /* SectionTableViewCell.swift */,
-				C73B44531E0C494200DDE093 /* SectionTableViewCell.xib */,
 				C73B44561E0C494200DDE093 /* TagTableViewCell.swift */,
 				C73B44571E0C494200DDE093 /* TagTableViewCell.xib */,
+				C73B44521E0C494200DDE093 /* SectionTableViewCell.swift */,
+				C73B44531E0C494200DDE093 /* SectionTableViewCell.xib */,
 				C73B445A1E0C494200DDE093 /* TaskNoteTableViewCell.swift */,
 				C73B445B1E0C494200DDE093 /* TaskNoteTableViewCell.xib */,
 				C73B44541E0C494200DDE093 /* SubtaskTableViewCell.swift */,

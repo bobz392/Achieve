@@ -12,7 +12,6 @@
 "hide"="隐藏";
 "emptyTask"="没有新任务，放松一下或者挑战一个新任务";
 "detailIncomplete"="把昨天未完成的任务移到今天";
-"move"="移动";
 "asyncing"="同步中";
 "icloud"="登录iCloud账户来同步您的数据";
 
@@ -37,22 +36,19 @@
 "done"="完成";
 "search"="开始搜索";
 "customTask"="新任务";
-"dependTask"="关联任务";
 "systemTask"="系统任务";
-"switchRunning"="切换到进行中";
-"switchFinish"="切换到已完成";
 
 "goingDo"="准备做点什么呢?";
 "priority"="优先级";
 "remove"="移除";
-"setCreateDate"="设置开始日期";
-"setEstimateDate"="设置预计完成时间";
+"setCreateDate"="设置开始时间";
+"setEstimateDate"="设置预估时间";
 "setReminder"="设置提醒";
 "setRepeat"="设置重复";
 "setTag"="设置标签";
 "noneTag"="无标签";
 "allTask"="所有任务";
-"writeNote"="写点什么吧...";
+"writeNote"="任务备注";
 
 "priority2"="高";
 "priority1"="普通";

@@ -25,6 +25,7 @@ class TaskDetailViewController: BaseViewController {
     fileprivate var taskPickerView: TaskPickerView? = nil
     fileprivate let taskToDoTextView = GrowingTextView()
     fileprivate let detailTableView = UITableView()
+    fileprivate let dateLabel = UILabel()
     
     fileprivate var iconList = [
         [Icons.schedule, Icons.due, Icons.notify, Icons.loop, Icons.tag],
@@ -120,7 +121,30 @@ class TaskDetailViewController: BaseViewController {
             make.left.equalTo(backButton.snp.right).offset(8)
             make.right.equalToSuperview().offset(-12)
             make.top.equalToSuperview().offset(23)
+//            make.bottom.equalToSuperview().offset(-6)
+        }
+        
+        dateLabel.font = UIFont.systemFont(ofSize: 12)
+        dateLabel.textColor = Colors.secondaryTextColor
+        dateLabel.text = NSDate().getDateString()
+        dateLabel.textAlignment = .right
+        bar.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { (make) in
+//            make.right.equalTo(taskToDoTextView).offset(-10)
+            make.top.equalTo(taskToDoTextView.snp.bottom).offset(4)
             make.bottom.equalToSuperview().offset(-6)
+        }
+        
+        let dateImageView = UIImageView()
+        dateImageView.image = Icons.arrangement.iconImage()
+        dateImageView.tintColor = Colors.secondaryTextColor
+        bar.addSubview(dateImageView)
+        dateImageView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(dateLabel).offset(-0.5)
+            make.width.equalTo(12)
+            make.height.equalTo(12)
+            make.right.equalTo(dateLabel.snp.left).offset(-4)
+            make.left.equalTo(taskToDoTextView).offset(6)
         }
         
         self.detailTableView.clearView()
@@ -139,17 +163,8 @@ class TaskDetailViewController: BaseViewController {
     
     fileprivate func initializeControl() {
         self.initializeTableView()
-        
-//        self.cancelButton.addShadow()
-//        self.cancelButton.layer.cornerRadius = kBackButtonCorner
-//        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-//        
-//        self.cardView.addShadow()
-//        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-//        
-//        self.titleTextField.text = task.getNormalDisplayTitle()
-        
-        guard let taskPickerView = Bundle.main.loadNibNamed("TaskPickerView", owner: self, options: nil)?.last as? TaskPickerView else { return }
+        guard let taskPickerView = Bundle.main
+            .loadNibNamed("TaskPickerView", owner: self, options: nil)?.last as? TaskPickerView else { return }
         self.view.addSubview(taskPickerView)
         
         taskPickerView.snp.makeConstraints { (make) in
@@ -181,8 +196,6 @@ class TaskDetailViewController: BaseViewController {
             self.detailTableView.snp.updateConstraints({ (make) in
                 make.bottom.equalToSuperview().offset(-KeyboardManager.keyboardHeight)
             })
-//            self.detailTableViewBottomConstraint.constant =
-//                KeyboardManager.keyboardHeight - 62
             
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.view.layoutIfNeeded()
@@ -197,11 +210,9 @@ class TaskDetailViewController: BaseViewController {
         }
         
         KeyboardManager.sharedManager.setHideHander { [unowned self] in
-            
             self.detailTableView.snp.updateConstraints({ (make) in
                 make.bottom.equalToSuperview()
             })
-//            self.detailTableViewBottomConstraint.constant = 10
             UIView.animate(withDuration: KeyboardManager.duration, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -250,6 +261,7 @@ class TaskDetailViewController: BaseViewController {
             }
             })
     }
+    
 }
 
 // MARK: - UITextFieldDelegate
@@ -298,6 +310,7 @@ extension TaskDetailViewController: GrowingTextViewDelegate {
 
 // MARK: - table view
 extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
     fileprivate func initializeTableView() {
         let sts = RealmManager.shared.querySubtask(task.uuid)
         self.subtasks = sts
@@ -431,9 +444,6 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - task data picker
 extension TaskDetailViewController {
-    //    [TaskIconCalendar, TaskDueIconCalendar, TaskIconBell, TaskIconRepeat, TaskTagIcon],
-    //    [SubtaskIconAdd],
-    //    [TaskIconNote]
     fileprivate func getIndexPathFrom(icon: Icons) -> IndexPath? {
         guard let index = self.iconList[0].index(of: icon) else { return nil }
         return IndexPath(row: index, section: 0)
@@ -449,26 +459,30 @@ extension TaskDetailViewController {
     
     func setDatePickerAction() {
         guard let taskPickerView = self.taskPickerView else { return }
-        
+        let weakSelf = self
         switch taskPickerView.getCurrentIcon() {
         case .schedule:
             guard let date = taskPickerView.datePicker.date as NSDate? else { break }
             RealmManager.shared.updateObject {
-                self.task.createdDate = date
-                self.task.createdFormattedDate = date.createdFormatedDateString()
+                TaskListManager.updateStatus(newStatues: .resort)
+                weakSelf.task.createdDate = date
+                let formatDate = date.createdFormatedDateString()
+                if formatDate != weakSelf.task.createdFormattedDate {
+                    weakSelf.task.createdFormattedDate = formatDate
+                }
+                weakSelf.dateLabel.text = date.getDateString()
             }
             
         case .due:
             RealmManager.shared.updateObject {
-                self.task.estimateDate = taskPickerView.datePicker.date as NSDate
+                weakSelf.task.estimateDate = taskPickerView.datePicker.date as NSDate
             }
             
         case .notify:
             RealmManager.shared.updateObject {
                 let date = taskPickerView.datePicker.date as NSDate
                 let fireDate = NSDate(year: date.year(), month: date.month(), day: date.day(), hour: date.hour(), minute: date.minute(), second: 0)
-                
-                self.task.notifyDate = fireDate
+                weakSelf.task.notifyDate = fireDate
             }
             if let _ = self.task.notifyDate {
                 LocalNotificationManager.shared.cancel(self.task)
@@ -484,7 +498,7 @@ extension TaskDetailViewController {
         case .tag:
             let tagUUID = taskPickerView.selectedTagUUID()
             RealmManager.shared.updateObject({
-                self.task.tagUUID = tagUUID
+                weakSelf.task.tagUUID = tagUUID
             })
             
         default:
@@ -508,14 +522,12 @@ extension TaskDetailViewController {
                 self.detailTableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
             }
             if (self.taskPickerView?.viewIsShow() == true) {
-//                self.datePickerViewBottomConstraint.constant = -TaskPickerView.height
                 self.taskPickerView?.snp.updateConstraints({ (make) in
                     make.top.equalTo(self.view.snp.bottom)
                 })
                 UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions.allowAnimatedContent, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                 }) { [unowned self] (finish) in
-//                    self.datePickerViewBottomConstraint.constant = 0
                     self.taskPickerView?.snp.updateConstraints({ (make) in
                         make.top.equalTo(self.view.snp.bottom).offset(-TaskPickerView.height)
                     })
@@ -527,7 +539,6 @@ extension TaskDetailViewController {
             }
         }
         
-//        self.datePickerViewBottomConstraint.constant =
         self.taskPickerView?.snp.updateConstraints({ (make) in
             make.top.equalTo(self.view.snp.bottom).offset(show ? -TaskPickerView.height : 0)
         })

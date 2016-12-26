@@ -115,6 +115,7 @@ class TaskDetailViewController: BaseViewController {
         taskToDoTextView.clearView()
         taskToDoTextView.textAlignment = .left
         taskToDoTextView.tintColor = Colors.mainTextColor
+        taskToDoTextView.isEditable = self.canChange
         taskToDoTextView.delegate = self
         taskToDoTextView.returnKeyType = .done
         taskToDoTextView.snp.makeConstraints { (make) in

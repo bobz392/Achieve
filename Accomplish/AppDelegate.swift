@@ -18,16 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     weak var drawer: MMDrawerController? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         let root = HomeViewController()
-        let nav = UINavigationController(rootViewController: root)
-        nav.isNavigationBarHidden = true
         
         let menuViewController = HomeMenuViewController()
-        drawer = MMDrawerController(center: nav,
+        drawer = MMDrawerController(center: root,
                                         leftDrawerViewController: menuViewController)
+        
+        let nav = UINavigationController(rootViewController: drawer!)
+        nav.isNavigationBarHidden = true
+        
         drawer?.maximumLeftDrawerWidth = 280
         self.setOpenDrawMode(openMode: true)
         drawer?.showsShadow = true
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: 3.0)
         )
         
-        window?.rootViewController = drawer
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
         // background fetch

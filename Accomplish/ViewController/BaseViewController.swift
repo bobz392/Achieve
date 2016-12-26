@@ -14,26 +14,15 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var customNavigationBar: UIView? = nil
     fileprivate var leftBarButton: UIButton? = nil
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let nav = self.navigationController,
-            let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.setOpenDrawMode(openMode: nav.viewControllers.count <= 1)
-        }
-        
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.edgesForExtendedLayout = .all
     }
     
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)   
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     override func didReceiveMemoryWarning() {

@@ -19,14 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        if let w = window {
-            let rootVC = self.createDrawer()
-//            let launchView = LaunchView.loadNib(w, realRootVC: rootVC)
-//            launchView?.showAndAutoFade()
-            w.rootViewController = rootVC
-        }
-        
+        let rootVC = self.createDrawer()
+        window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
         // background fetch

@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drawer = MMDrawerController(center: homeVC,
                                     leftDrawerViewController: menuVC)
         let nav = UINavigationController(rootViewController: drawer!)
+        drawer?.view.backgroundColor = Colors.mainBackgroundColor
         nav.isNavigationBarHidden = true
         drawer?.maximumLeftDrawerWidth = 280
         self.setOpenDrawMode(openMode: true)

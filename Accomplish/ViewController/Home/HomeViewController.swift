@@ -317,9 +317,7 @@
     
     func openMenuAction() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.drawer?.open(.left, animated: true, completion: { [unowned self] (finish) in
-            self.menuButton.isSelected = !self.menuButton.isSelected
-        })
+        delegate?.drawer?.open(.left, animated: true, completion: nil)
     }
     
     func settingAction() {

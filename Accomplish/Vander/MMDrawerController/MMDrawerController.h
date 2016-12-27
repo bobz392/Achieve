@@ -94,6 +94,7 @@ typedef NS_ENUM(NSInteger, MMDrawerOpenCenterInteractionMode) {
 
 @class  MMDrawerController;
 typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * drawerController, MMDrawerSide drawerSide, CGFloat percentVisible);
+typedef void (^MMDrawerControllerDrawerVisualAnimationFinishBlock)();
 
 @interface MMDrawerController : UIViewController
 

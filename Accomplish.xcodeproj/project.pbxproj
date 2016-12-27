@@ -152,7 +152,6 @@
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
 		C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771924D1D6CEE6800437560 /* NewTaskViewController.swift */; };
 		C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771924E1D6CEE6800437560 /* NewTaskViewController.xib */; };
-		C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77192821D6CFCAF00437560 /* Launch Screen.storyboard */; };
 		C77192951D6CFE0700437560 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C77192981D6D18BF00437560 /* CommonCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192971D6D18BF00437560 /* CommonCode.swift */; };
 		C771929A1D6DB27A00437560 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192991D6DB27A00437560 /* KeyboardManager.swift */; };
@@ -302,6 +301,10 @@
 		C7CAF0BB1D9C554F0046D756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
 		C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */; };
+		C7DC019D1E1250370055B7F8 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC019C1E1250370055B7F8 /* LaunchView.xib */; };
+		C7DC019F1E1250C00055B7F8 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC019E1E1250C00055B7F8 /* LaunchView.swift */; };
+		C7DC01A11E12A9580055B7F8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01A01E12A9580055B7F8 /* Launch Screen.storyboard */; };
+		C7DC01A31E12CB5A0055B7F8 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */; };
 		C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
 		C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
@@ -583,7 +586,6 @@
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C771924D1D6CEE6800437560 /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		C771924E1D6CEE6800437560 /* NewTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTaskViewController.xib; sourceTree = "<group>"; };
-		C77192821D6CFCAF00437560 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C77192941D6CFE0700437560 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C77192961D6CFE1200437560 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C77192971D6D18BF00437560 /* CommonCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCode.swift; sourceTree = "<group>"; };
@@ -726,6 +728,10 @@
 		C7CAF0B91D9C54260046D756 /* MessageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
 		C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotlightManager.swift; sourceTree = "<group>"; };
+		C7DC019C1E1250370055B7F8 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
+		C7DC019E1E1250C00055B7F8 /* LaunchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		C7DC01A01E12A9580055B7F8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B51D75FAD30054154C /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
@@ -918,6 +924,8 @@
 				C71F21601E080E2E00A04351 /* TaskTableHeaderView.xib */,
 				C73B44381E0A523100DDE093 /* EmptyDataView.swift */,
 				C73B443A1E0A523900DDE093 /* EmptyDataView.xib */,
+				C7DC019E1E1250C00055B7F8 /* LaunchView.swift */,
+				C7DC019C1E1250370055B7F8 /* LaunchView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1279,9 +1287,9 @@
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
 				C7860E471D6C23FF000281FA /* Assets.xcassets */,
 				C7860E4C1D6C23FF000281FA /* Info.plist */,
+				C7DC01A01E12A9580055B7F8 /* Launch Screen.storyboard */,
 				C798071D1D82C0C70011DE19 /* Acknowledgements */,
 				C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */,
-				C77192821D6CFCAF00437560 /* Launch Screen.storyboard */,
 			);
 			path = Accomplish;
 			sourceTree = "<group>";
@@ -1358,6 +1366,7 @@
 				C77DE35C1DE4419E00F098F4 /* MZTimerLabel.h */,
 				C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */,
 				C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */,
+				C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1716,13 +1725,13 @@
 				C74751BB1DC840D100831DB1 /* TimeManagementView.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
 				C77DE3651DE62B3E00F098F4 /* TimeManagerEditorViewController.xib in Resources */,
-				C77192831D6CFCAF00437560 /* Launch Screen.storyboard in Resources */,
 				C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */,
 				C75F85861E053F6D0057D76C /* 33CB8D26-3804-37E4-A0EC-0E593268595E.bcsymbolmap in Resources */,
 				C73B446A1E0C494200DDE093 /* SectionTableViewCell.xib in Resources */,
 				C73B446E1E0C494200DDE093 /* TagTableViewCell.xib in Resources */,
 				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
 				C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */,
+				C7DC01A11E12A9580055B7F8 /* Launch Screen.storyboard in Resources */,
 				C73B446C1E0C494200DDE093 /* SubtaskTableViewCell.xib in Resources */,
 				C75F85821E053F6D0057D76C /* 00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap in Resources */,
 				C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */,
@@ -1765,6 +1774,7 @@
 				C73B44301E0A4E6C00DDE093 /* HomeMenuViewController.xib in Resources */,
 				C75F85901E053F6D0057D76C /* 9D3C03F7-AE0E-3AE2-9A3E-6F9664C9840F.bcsymbolmap in Resources */,
 				C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */,
+				C7DC019D1E1250370055B7F8 /* LaunchView.xib in Resources */,
 				C75F858B1E053F6D0057D76C /* 63462667-8672-3110-B8E4-6AF146455308.bcsymbolmap in Resources */,
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
@@ -2080,6 +2090,7 @@
 				C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */,
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
 				C74751B91DC840C700831DB1 /* TimeManagementView.swift in Sources */,
+				C7DC019F1E1250C00055B7F8 /* LaunchView.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,
@@ -2167,6 +2178,7 @@
 				C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */,
 				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
 				C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */,
+				C7DC01A31E12CB5A0055B7F8 /* MenuButton.swift in Sources */,
 				C7105FC51D6CDBFD0096A1A3 /* DTTimePeriodCollection.m in Sources */,
 				C78C4EB21DFCD7EA000C289D /* RealmManager+Tag.swift in Sources */,
 				C73B442C1E0969D600DDE093 /* TaskListManager.swift in Sources */,
@@ -2501,6 +2513,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveApp-Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Accomplish/Accomplish-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2534,6 +2547,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveApp-Pro";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Accomplish/Accomplish-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

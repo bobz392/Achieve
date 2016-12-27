@@ -49,7 +49,7 @@ class RealmManager {
     func writeObjects(_ objects: [Object]) {
         realm.beginWrite()
         realm.add(objects)
-        try! realm.commitWrite()
+        let _ = try? realm.commitWrite()
     }
     
     func queryAll(clz: AnyClass) {

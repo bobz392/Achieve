@@ -10,6 +10,9 @@ import UIKit
 
 class HomeMenuViewController: UIViewController {
 
+    typealias MenuShowBlock = (_ show: Bool) -> Void
+    var menuShowBlock: MenuShowBlock? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,4 +32,18 @@ class HomeMenuViewController: UIViewController {
         Logger.log("HomeMenuViewController will appear")
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Logger.log("HomeMenuViewController did appear")
+        self.menuShowBlock?(true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        Logger.log("HomeMenuViewController did disappear")
+        self.menuShowBlock?(false)
+    }
 }

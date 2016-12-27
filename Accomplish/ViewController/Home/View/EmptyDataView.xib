@@ -23,7 +23,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RZM-Tp-m5r">
-                    <rect key="frame" x="187" y="113" width="0.0" height="0.0"/>
+                    <rect key="frame" x="187.5" y="113" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -32,8 +32,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="7ix-cy-CZd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="QSe-sB-3QB"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RZM-Tp-m5r" secondAttribute="trailing" constant="20" id="ZyM-CH-VJe"/>
                 <constraint firstItem="RZM-Tp-m5r" firstAttribute="top" secondItem="7ix-cy-CZd" secondAttribute="bottom" constant="20" id="aq5-zf-564"/>
                 <constraint firstItem="RZM-Tp-m5r" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dba-xR-pU9"/>
+                <constraint firstItem="RZM-Tp-m5r" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fID-MY-NSI"/>
                 <constraint firstItem="7ix-cy-CZd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="4" id="x87-Pc-wKS"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

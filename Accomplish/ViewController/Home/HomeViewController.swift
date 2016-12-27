@@ -16,7 +16,8 @@
     //    @IBOutlet weak var cardView: UIView!
     //    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
     //    @IBOutlet weak var settingButton: UIButton!
-    let newTaskButton: UIButton = AwesomeButton(type: .custom)
+    let newTaskButton = AwesomeButton(type: .custom)
+    let menuButton = MenuButton()
     //    @IBOutlet weak var calendarButton: UIButton!
     //    @IBOutlet weak var searchButton: UIButton!
     //    @IBOutlet weak var tagButton: UIButton!
@@ -100,8 +101,21 @@
         self.view.backgroundColor = Colors.mainBackgroundColor
         
         let bar = self.createCustomBar(height: kBarHeight)
-        let menuButton = self.createLeftBarButton(iconString: Icons.barMenu.iconString())
-        menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)
+        bar.addSubview(self.menuButton)
+        self.menuButton.snp.makeConstraints { (make) in
+            make.width.equalTo(kBarIconSize)
+            make.height.equalTo(kBarIconSize)
+            make.top.equalTo(bar).offset(26)
+            make.left.equalToSuperview().offset(12)
+        }
+        self.menuButton.lineWidth = kMenuBarLineWidth
+        self.menuButton.lineMargin = (kBarIconSize - kMenuBarLineWidth) * 0.5
+        self.menuButton.lineCapRound = true
+        self.menuButton.thickness = 2.5
+        self.menuButton.slideLeftToRight = true
+        self.menuButton.backgroundColor = UIColor.clear
+        self.menuButton.strokeColor = Colors.mainIconColor
+        self.menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)
         
         let searchButton = UIButton(type: .custom)
         searchButton.buttonWithIcon(icon: Icons.search.iconString())
@@ -303,7 +317,9 @@
     
     func openMenuAction() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.drawer?.open(MMDrawerSide.left, animated: true, completion: nil)
+        delegate?.drawer?.open(.left, animated: true, completion: { [unowned self] (finish) in
+            self.menuButton.isSelected = !self.menuButton.isSelected
+        })
     }
     
     func settingAction() {

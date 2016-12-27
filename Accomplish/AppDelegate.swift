@@ -19,26 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let root = HomeViewController()
         
-        let menuViewController = HomeMenuViewController()
-        drawer = MMDrawerController(center: root,
-                                        leftDrawerViewController: menuViewController)
+        if let w = window {
+            let rootVC = self.createDrawer()
+//            let launchView = LaunchView.loadNib(w, realRootVC: rootVC)
+//            launchView?.showAndAutoFade()
+            w.rootViewController = rootVC
+        }
         
-        let nav = UINavigationController(rootViewController: drawer!)
-        nav.isNavigationBarHidden = true
-        
-        drawer?.maximumLeftDrawerWidth = 280
-        self.setOpenDrawMode(openMode: true)
-        drawer?.showsShadow = true
-        
-        drawer?.shadowOpacity = 0.2
-        drawer?.closeDrawerGestureModeMask = .all
-        drawer?.setDrawerVisualStateBlock(
-            MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: 3.0)
-        )
-        
-        window?.rootViewController = nav
         window?.makeKeyAndVisible()
         
         // background fetch
@@ -66,6 +54,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RealmManager.configMainRealm()
         
         return true
+    }
+    
+    fileprivate func createDrawer() -> UINavigationController{
+        let homeVC = HomeViewController()
+        let menuVC = HomeMenuViewController()
+        menuVC.menuShowBlock = { (menuShow) -> Void in
+            homeVC.menuButton.isSelected = menuShow
+        }
+        drawer = MMDrawerController(center: homeVC,
+                                    leftDrawerViewController: menuVC)
+        let nav = UINavigationController(rootViewController: drawer!)
+        nav.isNavigationBarHidden = true
+        drawer?.maximumLeftDrawerWidth = 280
+        self.setOpenDrawMode(openMode: true)
+        drawer?.showsShadow = true
+        drawer?.shadowOpacity = 0.2
+        drawer?.closeDrawerGestureModeMask = .all
+        drawer?.setDrawerVisualStateBlock({ (drawer, side, factor) in
+            MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: factor)
+        })
+        
+        return nav
     }
     
     func setOpenDrawMode(openMode: Bool) {

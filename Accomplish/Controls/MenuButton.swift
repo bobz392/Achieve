@@ -97,7 +97,6 @@ class MenuButton: UIButton {
             ]
             self.layer.addSublayer(layer)
         }
-        self.layer.masksToBounds = true
         self.updateSubLayers()
     }
     

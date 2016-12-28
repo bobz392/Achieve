@@ -13,6 +13,8 @@ class HomeMenuViewController: UIViewController {
     typealias MenuShowBlock = (_ show: Bool) -> Void
     var menuShowBlock: MenuShowBlock? = nil
     
+    let menuTableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,5 +43,14 @@ class HomeMenuViewController: UIViewController {
     
     fileprivate func uiConfig() {
         self.view.backgroundColor = Colors.mainBackgroundColor
+        
+        self.view.addSubview(self.menuTableView)
+        self.menuTableView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(20)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.menuTableView.tableFooterView = UIView()
     }
 }

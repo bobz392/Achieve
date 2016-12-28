@@ -303,6 +303,8 @@
 		C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */; };
 		C7DC01A31E12CB5A0055B7F8 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */; };
 		C7DC01AD1E12E5BE0055B7F8 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */; };
+		C7DC01AF1E1390E10055B7F8 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01AE1E1390E10055B7F8 /* MenuHeaderView.swift */; };
+		C7DC01B11E1390E90055B7F8 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */; };
 		C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
 		C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
@@ -728,6 +730,8 @@
 		C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotlightManager.swift; sourceTree = "<group>"; };
 		C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
+		C7DC01AE1E1390E10055B7F8 /* MenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
+		C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
 		C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B51D75FAD30054154C /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
@@ -920,6 +924,8 @@
 				C71F21601E080E2E00A04351 /* TaskTableHeaderView.xib */,
 				C73B44381E0A523100DDE093 /* EmptyDataView.swift */,
 				C73B443A1E0A523900DDE093 /* EmptyDataView.xib */,
+				C7DC01AE1E1390E10055B7F8 /* MenuHeaderView.swift */,
+				C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1767,6 +1773,7 @@
 				C73B44301E0A4E6C00DDE093 /* HomeMenuViewController.xib in Resources */,
 				C75F85901E053F6D0057D76C /* 9D3C03F7-AE0E-3AE2-9A3E-6F9664C9840F.bcsymbolmap in Resources */,
 				C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */,
+				C7DC01B11E1390E90055B7F8 /* MenuHeaderView.xib in Resources */,
 				C7DC01AD1E12E5BE0055B7F8 /* LaunchView.xib in Resources */,
 				C75F858B1E053F6D0057D76C /* 63462667-8672-3110-B8E4-6AF146455308.bcsymbolmap in Resources */,
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
@@ -2131,6 +2138,7 @@
 				C73B44391E0A523100DDE093 /* EmptyDataView.swift in Sources */,
 				C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */,
 				C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */,
+				C7DC01AF1E1390E10055B7F8 /* MenuHeaderView.swift in Sources */,
 				C70BF6151D77DDE3006B0C1D /* Repeater.swift in Sources */,
 				C78ED8AC1D7A916700031B4D /* GroupUserDefault+Main.swift in Sources */,
 				C73B44691E0C494200DDE093 /* SectionTableViewCell.swift in Sources */,

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKK-Y7-gNT">
@@ -30,17 +30,14 @@
                                 <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="call" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fG9-rB-pjb">
-                                <rect key="frame" x="48" y="10" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="rMb-Oy-7qD"/>
-                                </constraints>
+                                <rect key="frame" x="48" y="12" width="25" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4a-ig-DCb">
-                                <rect key="frame" x="48" y="42" width="31" height="15"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <rect key="frame" x="48" y="45" width="26" height="12"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -53,7 +50,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-Re-QZp">
-                                <rect key="frame" x="81" y="10" width="30" height="25"/>
+                                <rect key="frame" x="81" y="6" width="30" height="32"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="bob"/>
                             </button>
@@ -62,14 +59,13 @@
                         <constraints>
                             <constraint firstItem="nRC-r3-d8A" firstAttribute="centerY" secondItem="DKK-Y7-gNT" secondAttribute="centerY" id="0q0-Fi-Cpd"/>
                             <constraint firstItem="fG9-rB-pjb" firstAttribute="leading" secondItem="AiK-42-CC7" secondAttribute="trailing" constant="4" id="Gp9-n8-80N"/>
+                            <constraint firstItem="TnC-Re-QZp" firstAttribute="centerY" secondItem="fG9-rB-pjb" secondAttribute="centerY" id="MTv-pt-oEG"/>
                             <constraint firstItem="AiK-42-CC7" firstAttribute="top" secondItem="DKK-Y7-gNT" secondAttribute="top" id="Qcl-wf-WG1"/>
-                            <constraint firstItem="TnC-Re-QZp" firstAttribute="top" secondItem="fG9-rB-pjb" secondAttribute="top" id="Rxp-E9-uil"/>
-                            <constraint firstItem="fG9-rB-pjb" firstAttribute="top" secondItem="DKK-Y7-gNT" secondAttribute="top" constant="10" id="VJu-s1-OOp"/>
+                            <constraint firstItem="fG9-rB-pjb" firstAttribute="top" secondItem="DKK-Y7-gNT" secondAttribute="top" constant="12" id="VJu-s1-OOp"/>
                             <constraint firstAttribute="trailing" secondItem="nRC-r3-d8A" secondAttribute="trailing" id="c97-fV-oFZ"/>
                             <constraint firstAttribute="bottom" secondItem="AiK-42-CC7" secondAttribute="bottom" id="eYz-2y-w1m"/>
                             <constraint firstItem="j4a-ig-DCb" firstAttribute="bottom" secondItem="AiK-42-CC7" secondAttribute="bottom" constant="-10" id="hrv-yp-S9n"/>
                             <constraint firstItem="j4a-ig-DCb" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="leading" id="kCu-ws-7Er"/>
-                            <constraint firstItem="TnC-Re-QZp" firstAttribute="height" secondItem="fG9-rB-pjb" secondAttribute="height" id="o7W-4W-Klb"/>
                             <constraint firstItem="AiK-42-CC7" firstAttribute="leading" secondItem="DKK-Y7-gNT" secondAttribute="leading" constant="4" id="rw8-jB-QbB"/>
                             <constraint firstItem="TnC-Re-QZp" firstAttribute="leading" secondItem="fG9-rB-pjb" secondAttribute="trailing" constant="8" id="wN8-7U-XdJ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fG9-rB-pjb" secondAttribute="trailing" constant="10" id="wma-ep-aTf"/>
@@ -92,7 +88,7 @@
                 <outlet property="taskStatusButton" destination="AiK-42-CC7" id="zPA-rx-Qy2"/>
                 <outlet property="taskTitleLabel" destination="fG9-rB-pjb" id="fc8-eb-qFC"/>
             </connections>
-            <point key="canvasLocation" x="-252" y="285"/>
+            <point key="canvasLocation" x="50" y="160"/>
         </tableViewCell>
     </objects>
 </document>

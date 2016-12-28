@@ -12,7 +12,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     
     static let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
     static let reuseId = "taskTableViewCell"
-    static let rowHeight: CGFloat = 76
+    static let rowHeight: CGFloat = 74
     
     // 用户添加了系统动作，则会有这个 button
     @IBOutlet weak var systemTaskButton: UIButton!
@@ -114,8 +114,9 @@ class TaskTableViewCell: MGSwipeTableCell {
         switch task.taskStatus() {
         case .preceed:
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
-            self.taskStatusButton.buttonWithIcon(icon: Icons.uncheck.iconString())
-            
+            self.taskStatusButton
+                .buttonWithIcon(icon: Icons.uncheck.iconString())
+//            , tintColor: Colors.mainTextColor
             if let create = task.createdDate {
                 let now = Date()
                 if create.isEarlierThan(now) {
@@ -130,7 +131,8 @@ class TaskTableViewCell: MGSwipeTableCell {
             
         case .completed:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
-            self.taskStatusButton.buttonWithIcon(icon: Icons.check.iconString())
+            self.taskStatusButton
+                .buttonWithIcon(icon: Icons.check.iconString(), tintColor: Colors.secondaryTextColor)
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()

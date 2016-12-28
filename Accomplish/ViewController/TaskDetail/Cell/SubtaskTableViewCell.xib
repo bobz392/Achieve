@@ -15,11 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8z-xv-pN7">
-                        <rect key="frame" x="4" y="6" width="57" height="32"/>
+                        <rect key="frame" x="3" y="6" width="57" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="cMv-8x-gR5"/>
                             <constraint firstAttribute="width" constant="57" id="daV-LQ-0kX"/>
@@ -33,7 +33,7 @@
                         <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                     </button>
                     <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdasd" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z6P-vq-Ywu">
-                        <rect key="frame" x="61" y="3" width="207" height="37.5"/>
+                        <rect key="frame" x="60" y="3" width="208" height="37.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
@@ -45,7 +45,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="U5i-Dm-emu" secondAttribute="bottom" id="9Lf-v3-A2h"/>
                     <constraint firstAttribute="bottom" secondItem="Z6P-vq-Ywu" secondAttribute="bottom" constant="3" id="Hf9-bU-Nes"/>
-                    <constraint firstItem="L8z-xv-pN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="I6p-3o-x32"/>
+                    <constraint firstItem="L8z-xv-pN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="I6p-3o-x32"/>
                     <constraint firstAttribute="trailing" secondItem="U5i-Dm-emu" secondAttribute="trailing" id="Ubs-eO-Kjy"/>
                     <constraint firstItem="U5i-Dm-emu" firstAttribute="leading" secondItem="Z6P-vq-Ywu" secondAttribute="trailing" id="V5H-q5-vMY"/>
                     <constraint firstItem="Z6P-vq-Ywu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="cTG-Df-ap6"/>

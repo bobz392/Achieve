@@ -66,9 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drawer?.showsShadow = true
         drawer?.shadowOpacity = 0.2
         drawer?.closeDrawerGestureModeMask = .all
-        drawer?.setDrawerVisualStateBlock({ (drawer, side, factor) in
-            MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: factor)
-        })
+        drawer?.setDrawerVisualStateBlock(MMDrawerVisualState.parallaxVisualStateBlock(withParallaxFactor: 3.0))
         
         return nav
     }

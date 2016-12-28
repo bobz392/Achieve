@@ -16,8 +16,7 @@ class HomeMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor(red:0.98, green:0.99, blue:1.00, alpha:1.00)
+        self.uiConfig()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,22 +27,19 @@ class HomeMenuViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        Logger.log("HomeMenuViewController will appear")
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        Logger.log("HomeMenuViewController did appear")
         self.menuShowBlock?(true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        Logger.log("HomeMenuViewController did disappear")
         self.menuShowBlock?(false)
+    }
+    
+    fileprivate func uiConfig() {
+        self.view.backgroundColor = Colors.mainBackgroundColor
     }
 }

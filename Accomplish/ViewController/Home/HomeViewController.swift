@@ -13,38 +13,19 @@
  
  class HomeViewController: BaseViewController {
     // MARK: - props
-    //    @IBOutlet weak var cardView: UIView!
-    //    @IBOutlet weak var statusSlideSegment: TwicketSegmentedControl!
-    //    @IBOutlet weak var settingButton: UIButton!
     let newTaskButton = AwesomeButton(type: .custom)
     let menuButton = MenuButton()
-    //    @IBOutlet weak var calendarButton: UIButton!
-    //    @IBOutlet weak var searchButton: UIButton!
-    //    @IBOutlet weak var tagButton: UIButton!
-    //    @IBOutlet weak var fullScreenButton: UIButton!
-//    @IBOutlet weak var taskTableView: UITableView!
-    
     let taskTableView: UITableView = UITableView()
-    //    @IBOutlet weak var currentDateLabel: UILabel!
-    //    @IBOutlet weak var emptyHintLabel: UILabel!
-    //    @IBOutlet weak var emptyCoffeeLabel: UILabel!
     
     fileprivate var showFinishTask = false
     fileprivate var taskListManager = TaskListManager()
-    
     fileprivate var selectedIndex: IndexPath? = nil
     // 用于缓存当前已经划开的 cell 的 index
     fileprivate var cacheSwipedIndex: IndexPath? = nil
-    
     fileprivate var timer: SecondTimer?
     fileprivate var repeaterManager = RepeaterManager()
-    
-    // 当前的 转场动画类型
-    fileprivate var toViewControllerAnimationType = 0
-    //
     fileprivate weak var newTaskVC: NewTaskViewController? = nil
-    //
-    fileprivate var icloudManager = CloudKitManager()
+    fileprivate lazy var icloudManager = CloudKitManager()
     fileprivate weak var timeManagementView: TimeManagementView? = nil
     
     // MARK: - life circle
@@ -150,7 +131,7 @@
         }
         self.newTaskButton.addShadow()
         self.newTaskButton.layer.cornerRadius = 35
-        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(), backgroundColor: Colors.cloudColor)
+        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(), backgroundColor: Colors.cellCardColor)
         self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
     }
     
@@ -627,20 +608,5 @@
  extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.taskListManager.queryTodayTask(tagUUID: tag?.tagUUID)
-    }
- }
- 
- // MARK: - UINavigationControllerDelegate
- extension HomeViewController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        switch toViewControllerAnimationType {
-        case 0:
-            let animation = LayerTransitioningAnimation()
-            animation.reverse = operation == UINavigationControllerOperation.pop
-            return animation
-            
-        default:
-            return nil
-        }
     }
  }

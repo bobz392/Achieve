@@ -99,8 +99,14 @@
 "everyMonth"="每月(%@号)";
 "annual"="每年(%@)";
 
+// menu
+"home"="今天";
 "calendar"="日历";
+"tag"="标签";
+"time_management"="时间管理";
+"settings"="设置";
 
+"dayUnit"="日";
 "day1" = "周一";
 "day2" = "周二";
 "day3" = "周三";
@@ -114,8 +120,6 @@
 "systemTaskHint"="在内置动作中您可以快速添加一个任务，例如给谁通话、短讯给谁、创建一个购物清单，等等。并且您可以直接通过点击推送通知来执行您的动作。（例如通话、写短讯，等）";
 
 // setting
-"setting"="设置";
-"background"="背景";
 "general"="通用";
 "extra"="附加";
 
@@ -189,7 +193,6 @@
 "help"="帮助";
 
 // tag
-"tag"="标签 ";
 "currentTag"="  当前  ";
 "tagToday"="(%d个任务)";
 "noTag"="标签";
@@ -213,7 +216,6 @@
 "continue"="继续工作";
 "timeManagementSetting"="管理工作法";
 "selectTimeManagement"="选择一个工作法";
-"timeManagement"="开始工作法";
 "createTimeManagement"="创建新的工作法";
 "infiniteRepeat"="无限";
 "repeatNumber"="循环次数";

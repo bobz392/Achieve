@@ -38,7 +38,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         self.clearButton.setImage(Icons.clear.iconImage(), for: .normal)
         self.clearButton.tintColor = Colors.mainIconColor
         
-        self.infoLabel.highlightedTextColor = Colors.taskDetailSelectionTextColor
+        self.infoLabel.highlightedTextColor = Colors.cellLabelSelectedTextColor
         self.infoLabel.textColor = Colors.mainIconColor
     }
     
@@ -46,7 +46,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            self.iconImageView.tintColor = Colors.taskDetailSelectionTextColor
+            self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
         } else {
             self.iconImageView.tintColor = self.cuurentImageTintColor
         }
@@ -59,7 +59,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         super.setHighlighted(highlighted, animated: animated)
         
         if highlighted {
-            self.iconImageView.tintColor = Colors.taskDetailSelectionTextColor
+            self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
         } else {
             self.iconImageView.tintColor = self.cuurentImageTintColor
         }
@@ -101,7 +101,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
     
     fileprivate func setCellContentHighlight(highlighted: Bool) {
         self.iconImageView.tintColor =
-            highlighted ? Colors.taskDetailSelectionTextColor : Colors.mainIconColor
+            highlighted ? Colors.cellLabelSelectedTextColor : Colors.mainIconColor
         self.infoLabel.isHighlighted = highlighted
     }
 

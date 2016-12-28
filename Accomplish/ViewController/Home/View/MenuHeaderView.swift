@@ -25,9 +25,25 @@ class MenuHeaderView: UIView {
         
         view.backgroundColor = Colors.mainBackgroundColor
         view.dayLabel.textColor = Colors.mainTextColor
-        view.dayUnitLabel.textColor = Colors.secondaryTextColor
+        view.dayUnitLabel.textColor = Colors.mainTextColor
         view.monthYearLabel.textColor = Colors.secondaryTextColor
+        let line = UIView()
+        line.backgroundColor = Colors.separatorColor
+        view.addSubview(line)
+        line.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+        
         return view
     }
 
+    func setNewDate(date: NSDate) {
+        self.dayLabel.text = String(format: "%02d", date.day())
+        self.dayUnitLabel.text = Localized("dayUnit")
+        self.monthYearLabel.text = date.formattedDate(withFormat: MenuDateFormat)
+    }
+    
 }

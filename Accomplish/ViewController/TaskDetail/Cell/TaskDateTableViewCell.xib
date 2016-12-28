@@ -61,7 +61,7 @@
                 <outlet property="iconImageView" destination="trC-wy-WS5" id="Dbv-bn-t0p"/>
                 <outlet property="infoLabel" destination="xsZ-4J-U5H" id="or9-ZN-f5f"/>
             </connections>
-            <point key="canvasLocation" x="-135" y="163"/>
+            <point key="canvasLocation" x="180" y="155"/>
         </tableViewCell>
     </objects>
 </document>

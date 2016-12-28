@@ -19,6 +19,7 @@ let OnlyTimeFormat = "hh:mm"
 let OnlyAmFormat = "a"
 
 let queryDateFormat = "yyyy.MM"
+let MenuDateFormat = "MMMM  yyyy"
 
 // TASK
 extension NSDate {

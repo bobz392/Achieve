@@ -35,7 +35,7 @@ class TaskInterfaceController: WKInterfaceController {
         
         let tag = task[GroupTaskTagIndex]
         if tag.length() > 0 {
-            infoArray.append([Localized("tag"), tag])
+            infoArray.append([Localized("tag"), " \(tag)"])
         }
         
         if let priority = Int(task[GroupTaskPriorityIndex]) {

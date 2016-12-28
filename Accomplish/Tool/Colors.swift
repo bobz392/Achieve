@@ -33,7 +33,9 @@ struct Colors {
     static let lightGrayHintColor = UIColor(red:0.86, green:0.87, blue:0.91, alpha:1.00)
     static let headerTextColor = UIColor(red:0.80, green:0.81, blue:0.85, alpha:1.00)
     static let linkButtonTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
-    static let taskDetailSelectionTextColor = UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
+    static let cellLabelSelectedTextColor = UIColor(red:0.50, green:0.68, blue:0.98, alpha:1.00)
+    static let cellSelectedColor = UIColor(red:0.50, green:0.68, blue:0.98, alpha:0.2)
+    //UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
     static let emptyTintColor = UIColor(red:0.70, green:0.72, blue:0.82, alpha:1.00)
     
     static let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)

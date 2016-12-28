@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate func createDrawer() -> UINavigationController{
         let homeVC = HomeViewController()
-        let menuVC = HomeMenuViewController()
+        let menuVC = MenuViewController()
         menuVC.menuShowBlock = { (menuShow) -> Void in
             homeVC.menuButton.isSelected = menuShow
         }
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: drawer!)
         drawer?.view.backgroundColor = Colors.mainBackgroundColor
         nav.isNavigationBarHidden = true
-        drawer?.maximumLeftDrawerWidth = 280
+        drawer?.maximumLeftDrawerWidth = UIScreen.main.bounds.width * 0.8
         self.setOpenDrawMode(openMode: true)
         drawer?.showsShadow = true
         drawer?.shadowOpacity = 0.2

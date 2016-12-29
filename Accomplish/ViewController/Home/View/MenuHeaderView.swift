@@ -10,7 +10,7 @@ import UIKit
 
 class MenuHeaderView: UIView {
 
-    static let height: CGFloat = 142
+    static let height: CGFloat = 160
 
     @IBOutlet weak var dayUnitLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!

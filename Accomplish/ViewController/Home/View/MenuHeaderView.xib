@@ -40,10 +40,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="G7K-DK-fA8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Hg8-oT-G1N"/>
                 <constraint firstItem="hdF-IC-bJZ" firstAttribute="top" secondItem="G7K-DK-fA8" secondAttribute="bottom" constant="-36" id="LQG-o4-ats"/>
                 <constraint firstItem="G7K-DK-fA8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="Qup-R4-nDa"/>
                 <constraint firstItem="ovN-WN-NLj" firstAttribute="leading" secondItem="G7K-DK-fA8" secondAttribute="leading" constant="3" id="bXh-Ff-A3x"/>
+                <constraint firstAttribute="bottom" secondItem="ovN-WN-NLj" secondAttribute="bottom" constant="20" id="gmb-Ab-4Ui"/>
                 <constraint firstItem="ovN-WN-NLj" firstAttribute="top" secondItem="G7K-DK-fA8" secondAttribute="bottom" constant="-3" id="lCl-zg-bAf"/>
                 <constraint firstItem="hdF-IC-bJZ" firstAttribute="leading" secondItem="G7K-DK-fA8" secondAttribute="trailing" id="n1R-Au-YNi"/>
             </constraints>

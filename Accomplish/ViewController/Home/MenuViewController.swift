@@ -10,13 +10,23 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    weak var cacheHomeVC: HomeViewController? = nil
-    
+    fileprivate let cacheHomeVC: HomeViewController
     fileprivate let menuTableView = UITableView()
+    var cacheViewControllers = [Int: UIViewController]()
+    var currentIndex = 0
     
     fileprivate let icons =
         [Icons.home, Icons.calendar, Icons.tag, Icons.timeManagement, Icons.settings]
 
+    init(withHomeVC: HomeViewController) {
+        self.cacheHomeVC = withHomeVC
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.cacheHomeVC = HomeViewController()
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +37,8 @@ class MenuViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+        self.cacheViewControllers.removeAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,12 +47,14 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.cacheHomeVC?.menuButton.isSelected = true
+        self.cacheHomeVC.menuButton.isSelected = true
+        self.menuTableView.selectRow(at: IndexPath(row: self.currentIndex, section:0),
+                                     animated: true, scrollPosition: .none)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.cacheHomeVC?.menuButton.isSelected = false
+        self.cacheHomeVC.menuButton.isSelected = false
     }
     
     fileprivate func uiConfig() {
@@ -91,6 +105,58 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.icons.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else { return }
+        let viewController: UIViewController
+        
+        switch indexPath.row {
+        case 0:
+            viewController = self.cacheHomeVC
+        case 1:
+            if let vc = self.cacheViewControllers[0] {
+                viewController = vc
+            } else {
+                let calendarVC = CalendarViewController()
+                self.cacheViewControllers[0] = calendarVC
+                viewController = calendarVC
+            }
+        case 2:
+            if let vc = self.cacheViewControllers[1] {
+                viewController = vc
+            } else {
+                let tagVC = TagViewController()
+                self.cacheViewControllers[1] = tagVC
+                viewController = tagVC
+            }
+        case 3:
+            if let vc = self.cacheViewControllers[2] {
+                viewController = vc
+            } else {
+                let tmVC = TimeManagementViewController()
+                self.cacheViewControllers[2] = tmVC
+                viewController = tmVC
+            }
+        case 4:
+            if let vc = self.cacheViewControllers[3] {
+                viewController = vc
+            } else {
+                let settingVC = SettingsViewController()
+                self.cacheViewControllers[3] = settingVC
+                viewController = settingVC
+            }
+            
+        default:
+            return
+        }
+        
+        self.currentIndex = indexPath.row
+        appDelegate.drawer?.setCenterView(viewController, withCloseAnimation: true,
+                                          completion: { (finish) in
+                                            
+        })
     }
     
 }

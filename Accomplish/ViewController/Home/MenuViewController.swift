@@ -158,11 +158,18 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             self.menuDelegate = delegate
         }
         
+        let deselectIndex = IndexPath(row: self.currentIndex, section: 0)
+        tableView.deselectRow(at: deselectIndex, animated: true)
         self.currentIndex = indexPath.row
         appDelegate.drawer?.setCenterView(viewController, withCloseAnimation: true,
                                           completion: { (finish) in
                                             
         })
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let selected = IndexPath(row: self.currentIndex, section: 0)
+        tableView.selectRow(at: selected, animated: false, scrollPosition: .none)
     }
     
 }

@@ -103,7 +103,6 @@ class MenuButton: UIButton {
     func showMenu(_ isShow: Bool){
         if isShow{
             for (idx, layer) in [topLayer, midLayer, bottomLayer].enumerated(){
-                layer.removeAllAnimations()
                 let anim = CABasicAnimation(keyPath: slideLeftToRight ? "strokeEnd" : "strokeStart")
                 anim.toValue = slideLeftToRight ? 0.3 + Double(idx) * 0.2 : 0.7
                 anim.duration = animateDuration
@@ -115,7 +114,6 @@ class MenuButton: UIButton {
             
         }else{
             for (idx, layer) in [topLayer, midLayer, bottomLayer].enumerated(){
-                layer.removeAllAnimations()
                 let anim = CABasicAnimation(keyPath: slideLeftToRight ? "strokeEnd" : "strokeStart")
                 anim.toValue = slideLeftToRight ? 1.0 : 0.0
                 anim.duration = animateDuration
@@ -157,6 +155,7 @@ extension CALayer {
         if copy.fromValue == nil {
             copy.fromValue = self.presentation()!.value(forKeyPath: copy.keyPath!)
         }
+        self.removeAllAnimations()
         self.add(copy, forKey: copy.keyPath)
         self.setValue(copy.toValue, forKeyPath:copy.keyPath!)
     }

@@ -34,6 +34,8 @@ class MenuTableViewCell: UITableViewCell {
         } else {
             self.iconImageView.tintColor = Colors.mainIconColor
         }
+        
+        self.iconDetailLabel.isHighlighted = selected
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -44,6 +46,8 @@ class MenuTableViewCell: UITableViewCell {
         } else {
             self.iconImageView.tintColor = Colors.mainIconColor
         }
+        
+        self.iconDetailLabel.isHighlighted = highlighted
     }
     
     func configCell(icon: Icons) {

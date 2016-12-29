@@ -339,4 +339,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MAKR: - drawer open close call back -- not prefect
+extension SettingsViewController: MenuDrawerSlideStatusDelegate {
+    func slideOpen(open: Bool) {
+        self.leftBarButton?.isSelected = open
+    }
+}
 

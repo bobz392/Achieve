@@ -11,8 +11,8 @@ import SnapKit
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    fileprivate var customNavigationBar: UIView? = nil
-    fileprivate var leftBarButton: UIButton? = nil
+    var customNavigationBar: UIView? = nil
+    var leftBarButton: UIButton? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,5 +88,37 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         self.leftBarButton = leftBarButton
         return leftBarButton
+    }
+    
+    @discardableResult
+    func congfigMenuButton() -> UIButton {
+        guard let bar = self.customNavigationBar else {
+            fatalError("you don't created a bar now")
+        }
+        
+        let menuButton = MenuButton()
+        bar.addSubview(menuButton)
+        menuButton.snp.makeConstraints { (make) in
+            make.width.equalTo(kBarIconSize)
+            make.height.equalTo(kBarIconSize)
+            make.top.equalTo(bar).offset(26)
+            make.left.equalToSuperview().offset(12)
+        }
+        menuButton.lineWidth = kMenuBarLineWidth
+        menuButton.lineMargin = (kBarIconSize - kMenuBarLineWidth) * 0.5
+        menuButton.lineCapRound = true
+        menuButton.thickness = 2.5
+        menuButton.slideLeftToRight = true
+        menuButton.backgroundColor = UIColor.clear
+        menuButton.strokeColor = Colors.mainIconColor
+        menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)
+        
+        self.leftBarButton = menuButton
+        return menuButton
+    }
+    
+    func openMenuAction() {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        delegate?.drawer?.open(.left, animated: true, completion: nil)
     }
 }

@@ -14,7 +14,6 @@
  class HomeViewController: BaseViewController {
     // MARK: - props
     let newTaskButton = AwesomeButton(type: .custom)
-    let menuButton = MenuButton()
     let taskTableView: UITableView = UITableView()
     
     fileprivate var showFinishTask = false
@@ -82,21 +81,7 @@
         self.view.backgroundColor = Colors.mainBackgroundColor
         
         let bar = self.createCustomBar(height: kBarHeight)
-        bar.addSubview(self.menuButton)
-        self.menuButton.snp.makeConstraints { (make) in
-            make.width.equalTo(kBarIconSize)
-            make.height.equalTo(kBarIconSize)
-            make.top.equalTo(bar).offset(26)
-            make.left.equalToSuperview().offset(12)
-        }
-        self.menuButton.lineWidth = kMenuBarLineWidth
-        self.menuButton.lineMargin = (kBarIconSize - kMenuBarLineWidth) * 0.5
-        self.menuButton.lineCapRound = true
-        self.menuButton.thickness = 2.5
-        self.menuButton.slideLeftToRight = true
-        self.menuButton.backgroundColor = UIColor.clear
-        self.menuButton.strokeColor = Colors.mainIconColor
-        self.menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)
+        let menuButton = self.congfigMenuButton()
         
         let searchButton = UIButton(type: .custom)
         searchButton.buttonWithIcon(icon: Icons.search.iconString())
@@ -294,11 +279,6 @@
         //        self.navigationController?.delegate = self
         //        self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func openMenuAction() {
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.drawer?.open(.left, animated: true, completion: nil)
     }
     
     func settingAction() {
@@ -608,5 +588,12 @@
  extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.taskListManager.queryTodayTask(tagUUID: tag?.tagUUID)
+    }
+ }
+ 
+ // MAKR: - drawer open close call back -- not prefect
+ extension HomeViewController: MenuDrawerSlideStatusDelegate {
+    func slideOpen(open: Bool) {
+        self.leftBarButton?.isSelected = open
     }
  }

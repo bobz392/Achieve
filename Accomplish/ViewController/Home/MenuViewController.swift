@@ -14,12 +14,14 @@ class MenuViewController: UIViewController {
     fileprivate let menuTableView = UITableView()
     var cacheViewControllers = [Int: UIViewController]()
     var currentIndex = 0
+    weak var menuDelegate: MenuDrawerSlideStatusDelegate? = nil
     
     fileprivate let icons =
         [Icons.home, Icons.calendar, Icons.tag, Icons.timeManagement, Icons.settings]
 
     init(withHomeVC: HomeViewController) {
         self.cacheHomeVC = withHomeVC
+        self.menuDelegate = withHomeVC
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,14 +49,14 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.cacheHomeVC.menuButton.isSelected = true
+        self.menuDelegate?.slideOpen(open: true)
         self.menuTableView.selectRow(at: IndexPath(row: self.currentIndex, section:0),
                                      animated: true, scrollPosition: .none)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.cacheHomeVC.menuButton.isSelected = false
+        self.menuDelegate?.slideOpen(open: false)
     }
     
     fileprivate func uiConfig() {
@@ -152,6 +154,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         
+        if let delegate = viewController as? MenuDrawerSlideStatusDelegate {
+            self.menuDelegate = delegate
+        }
+        
         self.currentIndex = indexPath.row
         appDelegate.drawer?.setCenterView(viewController, withCloseAnimation: true,
                                           completion: { (finish) in
@@ -159,4 +165,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         })
     }
     
+}
+
+protocol MenuDrawerSlideStatusDelegate: NSObjectProtocol {
+    func slideOpen(open: Bool)
 }

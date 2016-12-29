@@ -310,6 +310,13 @@ extension TagViewController: UITextFieldDelegate {
     }
 }
 
+// MAKR: - drawer open close call back -- not prefect
+extension TagViewController: MenuDrawerSlideStatusDelegate {
+    func slideOpen(open: Bool) {
+        self.leftBarButton?.isSelected = open
+    }
+}
+
 protocol SwitchTagDelegate {
     func switchTagTo(tag: Tag?)
 }

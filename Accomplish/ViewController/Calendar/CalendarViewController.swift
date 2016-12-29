@@ -269,4 +269,12 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.completedLabel.count(from: 0, to: CGFloat(completed))
         self.scheduleButton.isEnabled = created > 0
     }
+    
+}
+
+// MAKR: - drawer open close call back -- not prefect
+extension CalendarViewController: MenuDrawerSlideStatusDelegate {
+    func slideOpen(open: Bool) {
+        self.leftBarButton?.isSelected = open
+    }
 }

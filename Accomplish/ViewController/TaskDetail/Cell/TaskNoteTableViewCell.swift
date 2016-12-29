@@ -51,11 +51,9 @@ class TaskNoteTableViewCell: BaseTableViewCell {
         if task.taskNote.characters.count > 0 {
             self.noteLabel.isHighlighted = true
             self.noteLabel.text = task.taskNote
-            self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
         } else {
             self.noteLabel.isHighlighted = false
             self.noteLabel.text = Localized("taskNote")
-            self.iconImageView.tintColor = Colors.mainIconColor
         }
     }
 }

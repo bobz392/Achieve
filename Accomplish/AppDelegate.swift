@@ -53,9 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func createDrawer() -> UINavigationController{
         let homeVC = HomeViewController()
         let menuVC = MenuViewController()
-        menuVC.menuShowBlock = { (menuShow) -> Void in
-            homeVC.menuButton.isSelected = menuShow
-        }
+        menuVC.cacheHomeVC = homeVC
         drawer = MMDrawerController(center: homeVC,
                                     leftDrawerViewController: menuVC)
         let nav = UINavigationController(rootViewController: drawer!)

@@ -10,12 +10,13 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    typealias MenuShowBlock = (_ show: Bool) -> Void
+    weak var cacheHomeVC: HomeViewController? = nil
     
-    var menuShowBlock: MenuShowBlock? = nil
     fileprivate let menuTableView = UITableView()
+    
     fileprivate let icons =
         [Icons.home, Icons.calendar, Icons.tag, Icons.timeManagement, Icons.settings]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +35,12 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.menuShowBlock?(true)
+        self.cacheHomeVC?.menuButton.isSelected = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.menuShowBlock?(false)
+        self.cacheHomeVC?.menuButton.isSelected = false
     }
     
     fileprivate func uiConfig() {

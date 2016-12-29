@@ -58,7 +58,7 @@ class TaskTableViewCell: MGSwipeTableCell {
         if selected {
             self.cellCardView.backgroundColor = Colors.cellCardSelectedColor
         } else {
-            UIView.animate(withDuration: kCellAnimationDuration, animations: {
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
                 self.cellCardView.backgroundColor = Colors.cellCardColor
             })
         }
@@ -70,7 +70,7 @@ class TaskTableViewCell: MGSwipeTableCell {
         if highlighted {
             self.cellCardView.backgroundColor = Colors.cellCardSelectedColor
         } else {
-            UIView.animate(withDuration: kCellAnimationDuration, animations: {
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
                 self.cellCardView.backgroundColor = Colors.cellCardColor
             })
         }

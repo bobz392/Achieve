@@ -9,7 +9,6 @@
 import Foundation
 
 enum Icons {
-    case barMenu
     case plus
     case check
     case uncheck
@@ -36,7 +35,6 @@ enum Icons {
     
     func iconString() -> String {
         switch self {
-        case .barMenu: return "menu"
         case .plus: return "plus"
         case .check: return "check"
         case .uncheck: return "uncheck"

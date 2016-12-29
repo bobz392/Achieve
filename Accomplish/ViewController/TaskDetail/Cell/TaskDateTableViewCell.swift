@@ -23,6 +23,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var selectedView: UIView!
     
     var task: Task?
     var detailType: TaskDetailType = .other
@@ -40,6 +41,9 @@ class TaskDateTableViewCell: BaseTableViewCell {
         
         self.infoLabel.highlightedTextColor = Colors.cellLabelSelectedTextColor
         self.infoLabel.textColor = Colors.mainIconColor
+        
+        self.selectedView.backgroundColor = Colors.mainBackgroundColor
+        self.selectedView.layer.cornerRadius = 2.0
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,8 +51,12 @@ class TaskDateTableViewCell: BaseTableViewCell {
         
         if selected {
             self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
+            self.selectedView.backgroundColor = Colors.cellSelectedColor
         } else {
             self.iconImageView.tintColor = self.cuurentImageTintColor
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
+                self.selectedView.backgroundColor = Colors.mainBackgroundColor
+            })
         }
         
         self.clearButton.tintColor =
@@ -60,14 +68,18 @@ class TaskDateTableViewCell: BaseTableViewCell {
         
         if highlighted {
             self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
+            self.selectedView.backgroundColor = Colors.cellSelectedColor
         } else {
             self.iconImageView.tintColor = self.cuurentImageTintColor
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
+                self.selectedView.backgroundColor = Colors.mainBackgroundColor
+            })
         }
         
         self.clearButton.tintColor =
             !highlighted ? Colors.mainIconColor : Colors.deleteButtonBackgroundColor
     }
-    
+
     func clearAction(_ btn: UIButton) {
         guard let task = self.task else { return }
         

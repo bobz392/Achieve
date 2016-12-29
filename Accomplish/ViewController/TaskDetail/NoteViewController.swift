@@ -55,6 +55,10 @@ class NoteViewController: BaseViewController {
                 weakSelf.view.layoutIfNeeded()
             })
         }
+        
+        if self.task.taskNote.isRealEmpty {
+            self.noteTextView.becomeFirstResponder()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

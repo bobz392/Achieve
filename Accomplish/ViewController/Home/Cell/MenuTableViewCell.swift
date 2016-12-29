@@ -22,7 +22,7 @@ class MenuTableViewCell: UITableViewCell {
         
         self.backgroundColor = Colors.mainBackgroundColor
         self.contentView.clearView()
-        self.iconDetailLabel.textColor = Colors.secondaryTextColor
+        self.iconDetailLabel.textColor = Colors.mainIconColor
         self.iconDetailLabel.highlightedTextColor = Colors.cellLabelSelectedTextColor
     }
 
@@ -36,7 +36,7 @@ class MenuTableViewCell: UITableViewCell {
         }
         
         selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = Colors.cellSelectedColor
+//        selectedBackgroundView?.backgroundColor = Colors.cellSelectedColor
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

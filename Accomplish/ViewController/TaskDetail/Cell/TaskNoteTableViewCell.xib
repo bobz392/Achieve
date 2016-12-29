@@ -18,26 +18,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbU-ma-Zvx">
-                        <rect key="frame" x="22" y="10" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="MOP-PF-ssH"/>
-                            <constraint firstAttribute="width" constant="20" id="aMR-CR-ioT"/>
-                        </constraints>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label\\nasdasdLabel\\nasdasdLabel\\nasdasdLabel\\nasdasdLabel\\nasdasdLabel\\nasdasdLabel\\nasdasd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMK-4z-ypU">
-                        <rect key="frame" x="60" y="10" width="248" height="54"/>
+                        <rect key="frame" x="61" y="10" width="247" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="huS-Hl-OVc">
+                        <rect key="frame" x="23" y="10" width="19" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="MFg-Vb-Lnf"/>
+                            <constraint firstAttribute="height" constant="19" id="emj-WR-fxr"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="VbU-ma-Zvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="AWz-YX-YNd"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sMK-4z-ypU" secondAttribute="bottom" constant="5" id="Kfj-Di-PxS"/>
-                    <constraint firstItem="sMK-4z-ypU" firstAttribute="leading" secondItem="VbU-ma-Zvx" secondAttribute="trailing" constant="18" id="Qa3-eH-GMS"/>
+                    <constraint firstItem="sMK-4z-ypU" firstAttribute="leading" secondItem="huS-Hl-OVc" secondAttribute="trailing" constant="19" id="cGJ-pP-aBg"/>
                     <constraint firstItem="sMK-4z-ypU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="cGq-HJ-EcZ"/>
-                    <constraint firstItem="VbU-ma-Zvx" firstAttribute="top" secondItem="sMK-4z-ypU" secondAttribute="top" id="esX-hz-mgw"/>
+                    <constraint firstItem="huS-Hl-OVc" firstAttribute="top" secondItem="sMK-4z-ypU" secondAttribute="top" id="dwV-gn-XUe"/>
+                    <constraint firstItem="huS-Hl-OVc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="jih-xv-or5"/>
                     <constraint firstAttribute="trailing" secondItem="sMK-4z-ypU" secondAttribute="trailing" constant="12" id="uKU-GG-w5d"/>
                 </constraints>
                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
@@ -45,7 +45,7 @@
             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="iconButton" destination="VbU-ma-Zvx" id="VOE-Kk-g2l"/>
+                <outlet property="iconImageView" destination="huS-Hl-OVc" id="MUG-n4-fWK"/>
                 <outlet property="noteLabel" destination="sMK-4z-ypU" id="Jcp-tH-Inn"/>
             </connections>
             <point key="canvasLocation" x="-873" y="359"/>

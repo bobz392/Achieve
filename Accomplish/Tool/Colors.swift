@@ -22,7 +22,8 @@ struct Colors {
     let systemRedColor = UIColor(red:0.98, green:0.24, blue:0.22, alpha:1.00)
     
     static let mainBackgroundColor = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
-    static let mainIconColor = UIColor(red:0.59, green:0.62, blue:0.69, alpha:1.00)
+    static let mainIconColor = UIColor(red:0.70, green:0.76, blue:0.79, alpha:1.00)
+        //UIColor(red:0.59, green:0.62, blue:0.69, alpha:1.00)
     static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
     static let cellCardSelectedColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:0.4)
     
@@ -35,7 +36,6 @@ struct Colors {
     static let linkButtonTextColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
     static let cellLabelSelectedTextColor = UIColor(red:0.50, green:0.68, blue:0.98, alpha:1.00)
     static let cellSelectedColor = UIColor(red:0.50, green:0.68, blue:0.98, alpha:0.2)
-    //UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.00)
     static let emptyTintColor = UIColor(red:0.70, green:0.72, blue:0.82, alpha:1.00)
     
     static let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)

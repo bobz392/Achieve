@@ -16,18 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-7h-sbF">
-                        <rect key="frame" x="40" y="20.5" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-7h-sbF">
+                        <rect key="frame" x="40" y="22.5" width="18" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="6bW-oT-dCm"/>
-                            <constraint firstAttribute="height" constant="20" id="7KM-Zx-qNE"/>
+                            <constraint firstAttribute="width" constant="18" id="6bW-oT-dCm"/>
+                            <constraint firstAttribute="height" constant="18" id="7KM-Zx-qNE"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-7i-for">
-                        <rect key="frame" x="75" y="21.5" width="37.5" height="18"/>
+                        <rect key="frame" x="73" y="22.5" width="37.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

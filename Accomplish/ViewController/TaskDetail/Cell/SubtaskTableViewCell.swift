@@ -67,7 +67,7 @@ class SubtaskTableViewCell: BaseTableViewCell {
             
             self.subtaskTextField.attributedPlaceholder = attrPlacehold
             self.trashButton.isHidden = true
-            self.iconButton.tintColor = Colors.secondaryTextColor
+            self.iconButton.tintColor = Colors.mainIconColor
         }
         
         self.trashButton.addTarget(self, action: #selector(self.deleteSubtask), for: .touchUpInside)

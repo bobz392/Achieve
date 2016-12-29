@@ -34,9 +34,6 @@ class MenuTableViewCell: UITableViewCell {
         } else {
             self.iconImageView.tintColor = Colors.mainIconColor
         }
-        
-        selectedBackgroundView = UIView()
-//        selectedBackgroundView?.backgroundColor = Colors.cellSelectedColor
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

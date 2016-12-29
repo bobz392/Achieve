@@ -14,10 +14,9 @@ let CreatedDateFormat = "yyyy.MM.dd"
 let TimeDateFormat = "hh: mm a"
 let ReportDateFormat = "HH:mm"
 let MonthDayFormat = "MM/dd"
-let MonthFormat = "YYYY MMM"
+let MonthFormat = "MMMM"
 let OnlyTimeFormat = "hh:mm"
 let OnlyAmFormat = "a"
-
 let queryDateFormat = "yyyy.MM"
 let MenuDateFormat = "MMMM  yyyy"
 

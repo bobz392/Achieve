@@ -109,13 +109,14 @@
 
 
 "dayUnit"="th";
-"day1" = "Mon";
-"day2" = "Tue";
-"day3" = "Wed";
-"day4" = "Thu";
-"day5" = "Fri";
-"day6" = "Sat";
-"day7" = "Sun";
+
+"day1" = "M";
+"day2" = "T";
+"day3" = "W";
+"day4" = "T";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
 
 "newDay"="Have a nice day :)";
 

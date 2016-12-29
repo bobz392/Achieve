@@ -11,9 +11,9 @@ import JTAppleCalendar
 
 class CalendarViewController: BaseViewController {
     
-    @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     var calendarView: JTAppleCalendarView!
+    fileprivate let dateButton = UIButton()
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var circleView: CircleProgressView!
     @IBOutlet weak var monthButton: UIButton!
@@ -81,10 +81,19 @@ class CalendarViewController: BaseViewController {
     
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
-        self.titleButton.tintColor = Colors.cloudColor
+        
         self.cardView.backgroundColor = Colors.cellCardColor
         let bar = self.createCustomBar()
-        self.congfigMenuButton()
+        self.view.sendSubview(toBack: bar)
+        let menuButton = self.congfigMenuButton()
+        
+        self.dateButton.setTitleColor(Colors.mainTextColor, for: .normal)
+        bar.addSubview(dateButton)
+        self.dateButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-12)
+            make.centerY.equalTo(menuButton)
+        }
+        self.dateButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
     
         self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)
         self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
@@ -104,13 +113,13 @@ class CalendarViewController: BaseViewController {
     
     fileprivate func initializeControl() {
         self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = 4
+//        self.cardView.layer.cornerRadius = 4
         
         self.calendarView = JTAppleCalendarView(frame: CGRect.zero)
         self.calendarView.clearView()
         self.cardView.addSubview(self.calendarView)
         self.calendarView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(self.weekView.snp.bottom)
+            maker.top.equalTo(self.weekView.snp.bottom).offset(10)
             maker.left.equalTo(self.cardView).offset(5)
             maker.bottom.equalTo(self.cardView).offset(-5)
             maker.right.equalTo(self.cardView).offset(-5)
@@ -126,29 +135,28 @@ class CalendarViewController: BaseViewController {
         self.configCountingLabel(self.completedLabel)
         self.calendarView.reloadData()
         
-        self.titleButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
         
         self.monthButton.setTitle(Localized("monthly"), for: .normal)
         self.monthButton.layer.cornerRadius = 14
         self.monthButton.addTarget(self, action: #selector(self.monthAction), for: .touchUpInside)
     }
     
-    func configCountingLabel(_ countLabel: UICountingLabel) {
+    fileprivate func configCountingLabel(_ countLabel: UICountingLabel) {
         countLabel.numberOfLines = 1
         countLabel.animationDuration = kCalendarProgressAnimationDuration
         countLabel.method = .easeIn
         countLabel.format = "%d"
     }
     
-    func configWeekView() {
+    fileprivate func configWeekView() {
         let startDay = AppUserDefault().readInt(kUserDefaultWeekStartKey)
         
         for subview in self.weekView.subviews {
-            let colors = Colors()
             guard let label = subview as? UILabel else { break }
-            label.textColor = colors.mainGreenColor
+            label.textColor = Colors.mainIconColor
             if startDay == DaysOfWeek.monday.rawValue {
                 label.text = Localized("day\(label.tag)")
+                label.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)
             } else if startDay == DaysOfWeek.saturday.rawValue {
                 if label.tag < 3 {
                     label.text = Localized("day\(label.tag + 5)")
@@ -237,9 +245,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
             self.view.layoutIfNeeded()
         }) { (finish) in }
         
-        let newTitle = Localized("calendar")
-            + "-" + nsStartDate.formattedDate(withFormat: MonthFormat)
-        self.titleButton.setTitle(newTitle, for: .normal)
+        let newTitle = nsStartDate.formattedDate(withFormat: MonthFormat)
+        self.dateButton.setTitle(newTitle, for: .normal)
         
     }
     

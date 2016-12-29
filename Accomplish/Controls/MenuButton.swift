@@ -66,8 +66,6 @@ class MenuButton: UIButton {
         }
     }
     
-    @IBInspectable var slideLeftToRight : Bool = true
-    
     override var isSelected: Bool{
         didSet{
             self.showMenu(self.isSelected)
@@ -101,27 +99,16 @@ class MenuButton: UIButton {
     }
     
     func showMenu(_ isShow: Bool){
-        if isShow{
-            for (idx, layer) in [topLayer, midLayer, bottomLayer].enumerated(){
-                let anim = CABasicAnimation(keyPath: slideLeftToRight ? "strokeEnd" : "strokeStart")
-                anim.toValue = slideLeftToRight ? 0.3 + Double(idx) * 0.2 : 0.7
-                anim.duration = animateDuration
-                anim.fillMode = kCAFillModeBackwards
-                anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                anim.beginTime = CACurrentMediaTime() + Double(idx) * animateDelay
-                layer.applyAnimation(anim)
-            }
-            
-        }else{
-            for (idx, layer) in [topLayer, midLayer, bottomLayer].enumerated(){
-                let anim = CABasicAnimation(keyPath: slideLeftToRight ? "strokeEnd" : "strokeStart")
-                anim.toValue = slideLeftToRight ? 1.0 : 0.0
-                anim.duration = animateDuration
-                anim.fillMode = kCAFillModeBackwards
-                anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                anim.beginTime = CACurrentMediaTime() + Double(idx) * animateDelay
-                layer.applyAnimation(anim)
-            }
+        let keyPath = "strokeEnd"
+        for (idx, layer) in [topLayer, midLayer, bottomLayer].enumerated(){
+            let anim = CABasicAnimation(keyPath: keyPath)
+            let toValue = isShow ? 0.3 + Double(idx) * 0.2 : 1.0
+            anim.toValue = toValue
+            anim.duration = animateDuration
+            anim.fillMode = kCAFillModeBackwards
+            anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            anim.beginTime = CACurrentMediaTime() + Double(idx) * animateDelay
+            layer.applyAnimation(anim)
         }
     }
     
@@ -155,7 +142,6 @@ extension CALayer {
         if copy.fromValue == nil {
             copy.fromValue = self.presentation()!.value(forKeyPath: copy.keyPath!)
         }
-        self.removeAllAnimations()
         self.add(copy, forKey: copy.keyPath)
         self.setValue(copy.toValue, forKeyPath:copy.keyPath!)
     }

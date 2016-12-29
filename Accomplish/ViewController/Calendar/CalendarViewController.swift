@@ -13,7 +13,6 @@ class CalendarViewController: BaseViewController {
     
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var backButton: UIButton!
     var calendarView: JTAppleCalendarView!
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var circleView: CircleProgressView!
@@ -81,19 +80,12 @@ class CalendarViewController: BaseViewController {
     }
     
     override func configMainUI() {
-        let colors = Colors()
-        
+        self.view.backgroundColor = Colors.mainBackgroundColor
         self.titleButton.tintColor = Colors.cloudColor
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        self.navigationController?.view.backgroundColor = colors.mainGreenColor
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        
-        
+        self.cardView.backgroundColor = Colors.cellCardColor
+        let bar = self.createCustomBar()
+        self.congfigMenuButton()
+    
         self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)
         self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
         self.scheduleButton.setTitleColor(Colors.cloudColor, for: .normal)
@@ -107,14 +99,10 @@ class CalendarViewController: BaseViewController {
         self.completedTitleLabel.textColor = Colors.cloudColor
         
         self.monthButton.backgroundColor = Colors.cloudColor
-        self.monthButton.setTitleColor(colors.mainGreenColor, for: .normal)
+        self.monthButton.setTitleColor(Colors.linkButtonTextColor, for: .normal)
     }
     
     fileprivate func initializeControl() {
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = 4
         

@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhD-7i-for">
-                        <rect key="frame" x="73" y="22.5" width="37.5" height="18"/>
+                        <rect key="frame" x="73" y="23.5" width="37.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="jhD-7i-for" secondAttribute="trailing" constant="10" id="7Qi-Nu-EZ7"/>
                     <constraint firstItem="jhD-7i-for" firstAttribute="leading" secondItem="Kaf-7h-sbF" secondAttribute="trailing" constant="15" id="9hz-Z8-t6r"/>
                     <constraint firstItem="Kaf-7h-sbF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="IB6-p4-ydV"/>
-                    <constraint firstItem="jhD-7i-for" firstAttribute="centerY" secondItem="Kaf-7h-sbF" secondAttribute="centerY" id="ikA-JK-8if"/>
+                    <constraint firstItem="jhD-7i-for" firstAttribute="centerY" secondItem="Kaf-7h-sbF" secondAttribute="centerY" constant="1" id="ikA-JK-8if"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Kaf-7h-sbF" secondAttribute="bottom" constant="11.5" id="nx0-mB-Urg"/>
                 </constraints>
             </tableViewCellContentView>

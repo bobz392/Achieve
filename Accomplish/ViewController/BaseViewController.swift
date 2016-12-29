@@ -108,7 +108,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         menuButton.lineMargin = (kBarIconSize - kMenuBarLineWidth) * 0.5
         menuButton.lineCapRound = true
         menuButton.thickness = 2.5
-        menuButton.slideLeftToRight = true
         menuButton.backgroundColor = UIColor.clear
         menuButton.strokeColor = Colors.mainIconColor
         menuButton.addTarget(self, action: #selector(self.openMenuAction), for: .touchUpInside)

@@ -117,9 +117,9 @@ class KVTaskViewController: BaseViewController {
     }
     
     // MARK: - action
-    func backAction() {
+    override func backAction() {
         self.toolView.isHidden = true
-        let _ = self.navigationController?.popViewController(animated: true)
+        super.backAction()
     }
     
     func saveAction() {

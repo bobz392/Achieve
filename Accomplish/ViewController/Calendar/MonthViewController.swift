@@ -87,10 +87,6 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     }
     
     // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     fileprivate func fetchMonthlyTasks() {
         let tasks = RealmManager.shared.queryMonthlyTask()
         

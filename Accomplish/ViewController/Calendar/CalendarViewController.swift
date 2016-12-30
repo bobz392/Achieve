@@ -95,7 +95,7 @@ class CalendarViewController: BaseViewController {
         }
         self.dateButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
     
-        self.scheduleButton.setTitle(Localized("calendarReport"), for: .normal)
+        self.scheduleButton.setTitle(Localized("schedule"), for: .normal)
         self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
         self.scheduleButton.setTitleColor(Colors.cloudColor, for: .normal)
         self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
@@ -174,10 +174,6 @@ class CalendarViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     func checkReport() {
         guard let checkDate = self.calendarView.selectedDates.first else { return }
         let reportVC = ReportViewController(checkInDate: checkDate as NSDate)

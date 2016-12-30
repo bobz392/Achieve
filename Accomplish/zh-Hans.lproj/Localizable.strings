@@ -124,8 +124,7 @@
 "extra"="附加";
 
 // calendar
-"calendarReport"="日程";
-"schedule"="日程-";
+"schedule"="日程";
 "noSchedule"="没有日程";
 "completedAt"="完成于 ";
 "notCompleted"="没有完成";

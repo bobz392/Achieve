@@ -179,10 +179,6 @@ class TaskDetailViewController: BaseViewController {
         detailTableView.reloadRows(at: [index], with: .automatic)
     }
     
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     fileprivate func keyboardAction() {
         KeyboardManager.sharedManager.setShowHander { [unowned self] in
             self.detailTableView.snp.updateConstraints({ (make) in

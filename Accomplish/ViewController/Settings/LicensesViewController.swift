@@ -60,9 +60,5 @@ class LicensesViewController: BaseViewController {
             }
         }
     }
-    
-    // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
+
 }

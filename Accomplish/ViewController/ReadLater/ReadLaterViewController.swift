@@ -66,11 +66,7 @@ class ReadLaterViewController: BaseViewController {
                                           forCellReuseIdentifier: ReadLaterTableViewCell.reuseId)
         self.readLatersTableView.tableFooterView = UIView()
     }
-    
-    // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
+
 }
 
 extension ReadLaterViewController: UITableViewDelegate, UITableViewDataSource {

@@ -14,7 +14,7 @@
  class HomeViewController: BaseViewController {
     // MARK: - props
     let newTaskButton = AwesomeButton(type: .custom)
-    let taskTableView: UITableView = UITableView()
+    let taskTableView = UITableView()
     
     fileprivate var showFinishTask = false
     fileprivate var taskListManager = TaskListManager()

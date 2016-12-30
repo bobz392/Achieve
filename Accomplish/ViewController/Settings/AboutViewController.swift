@@ -69,10 +69,6 @@ class AboutViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     func licensesAction() {
         let licensesVC = LicensesViewController()
         self.navigationController?.pushViewController(licensesVC, animated: true)

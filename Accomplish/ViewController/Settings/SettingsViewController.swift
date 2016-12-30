@@ -135,11 +135,7 @@ class SettingsViewController: BaseViewController {
         
         self.settingTableView.reloadData()
     }
-    
-    // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
+
 }
 
 fileprivate enum DaysOfWeek: Int {

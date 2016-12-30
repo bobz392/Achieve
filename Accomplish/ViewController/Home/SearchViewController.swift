@@ -96,10 +96,6 @@ class SearchViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     fileprivate func enterTask(_ task: Task) {
         let taskVC = TaskDetailViewController(task: task, canChange: false)
         self.navigationController?.pushViewController(taskVC, animated: true)

@@ -106,10 +106,6 @@ class NoteViewController: BaseViewController {
     }
     
     // MARK: - action
-    func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     func saveNote() {
         guard let content = self.noteTextView.text else { return }
         self.noteDelegate?.taskNoteAdd(content)

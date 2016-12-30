@@ -129,8 +129,7 @@
 "extra"="Extra";
 
 // calendar
-"calendarReport"="Schedule";
-"schedule"="Schedule-";
+"schedule"="Schedule";
 "noSchedule"="No Schedule";
 "completedAt"="completed at ";
 "notCompleted"="not completed";

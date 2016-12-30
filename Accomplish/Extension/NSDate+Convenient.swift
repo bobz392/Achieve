@@ -13,10 +13,9 @@ let UUIDFormat = "yyMMddHHmmssZ"
 let CreatedDateFormat = "yyyy.MM.dd"
 let TimeDateFormat = "hh: mm a"
 let ReportDateFormat = "HH:mm"
-let MonthDayFormat = "MM/dd"
+let MonthDayFormat = "MMMM dd"
 let MonthFormat = "MMMM"
-let OnlyTimeFormat = "hh:mm"
-let OnlyAmFormat = "a"
+let OnlyTimeFormat = "hh:mm aa"
 let queryDateFormat = "yyyy.MM"
 let MenuDateFormat = "MMMM  yyyy"
 
@@ -59,10 +58,7 @@ extension NSDate {
     func timeString() -> String {
         return self.formattedDate(withFormat: OnlyTimeFormat)
     }
-    func am() -> String {
-        return self.formattedDate(withFormat: OnlyAmFormat)
-    }
-    
+
     func isLaterThenToday() -> Bool {
         let now = Date()
         return self.isToday() || self.isLaterThan(now)

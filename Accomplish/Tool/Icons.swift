@@ -32,6 +32,9 @@ enum Icons {
     case settings
     case weekStart
     case home
+    case finish
+    case unfinish
+    case export
     
     func iconString() -> String {
         switch self {
@@ -58,6 +61,9 @@ enum Icons {
         case .settings: return "settings"
         case .weekStart: return "week_start"
         case .home: return "home"
+        case .finish: return "finish"
+        case .unfinish: return "unfinish"
+        case .export: return "export"
         }
     }
     

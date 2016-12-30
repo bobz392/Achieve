@@ -102,7 +102,7 @@ final class AddressBookViewController: BaseViewController {
     }
     
     // MARK: - action
-    func backAction() {
+    override func backAction() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
 }

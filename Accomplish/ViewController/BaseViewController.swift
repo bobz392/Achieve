@@ -120,4 +120,8 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         delegate?.drawer?.open(.left, animated: true, completion: nil)
     }
+    
+    func backAction() {
+        let _ = self.navigationController?.popViewController(animated: true)
+    }
 }

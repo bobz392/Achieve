@@ -100,13 +100,6 @@ class TimeManagementViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func backAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
-    }
-    
     func newMethodAction() {
         let timeMethod = TimeMethod()
         timeMethod.name = Localized("defaultTimeManagerName")

@@ -128,7 +128,7 @@ class TimeManagerEditorViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func backAction() {
+    override func backAction() {
         if self.isCreate {
             let alert = UIAlertController(title: Localized("saveTimeMethod"),
                                           message: nil, preferredStyle: .actionSheet)

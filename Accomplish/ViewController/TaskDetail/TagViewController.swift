@@ -109,7 +109,7 @@ class TagViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func backAction() {
+    override func backAction() {
         guard let nav = self.navigationController else {
             return
         }

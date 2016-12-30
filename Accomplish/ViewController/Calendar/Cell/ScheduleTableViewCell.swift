@@ -13,12 +13,12 @@ class ScheduleTableViewCell: UITableViewCell {
     
     static let nib = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
     static let reuseId = "scheduleTableViewCell"
-    static let rowHeight: CGFloat = 57
+    static let rowHeight: CGFloat = 75
     
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var createdTimeLabel: UILabel!
-    @IBOutlet weak var amLabel: UILabel!
     @IBOutlet weak var tasksLabel: UILabel!
     @IBOutlet weak var taskCardView: UIView!
     @IBOutlet weak var completedLabel: UILabel!
@@ -31,44 +31,37 @@ class ScheduleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.lineView.backgroundColor = Colors.cloudColor
-        
-        self.statusLabel.layer.cornerRadius = 10
-        self.statusLabel.backgroundColor = Colors.cloudColor
-        self.createdTimeLabel.textColor = Colors.cloudColor
-        self.amLabel.textColor = Colors.cloudColor
+        self.statusView.layer.cornerRadius = 10
+        self.statusView.backgroundColor = Colors.mainIconColor
+        self.statusImageView.tintColor = Colors.cellCardColor
         
         self.tasksLabel.textColor = Colors.mainTextColor
-        self.tasksLabel.highlightedTextColor = Colors.cloudColor
+        self.tasksLabel.preferredMaxLayoutWidth = screenBounds.width - 160
+        
         self.completedLabel.textColor = Colors.secondaryTextColor
-        self.completedLabel.highlightedTextColor = Colors.cloudColor
+        self.createdTimeLabel.textColor = Colors.mainTextColor
         
-        self.tasksLabel.preferredMaxLayoutWidth = screenBounds.width - 101
-        
-        self.taskCardView.backgroundColor = Colors.cloudColor
+        self.taskCardView.backgroundColor = Colors.cellCardColor
         self.taskCardView.layer.cornerRadius = 4
-        self.taskCardView.addShadow()
+        self.taskCardView.addCardShadow()
+        
+        self.lineView.backgroundColor = Colors.mainIconColor
     }
     
     func setTop(_ isTop: Bool) {
-        self.lineViewTopConstraint.constant = isTop ? 10: 0
+        self.lineViewTopConstraint.constant = isTop ? -60: 0
     }
     
     func setBottom(_ isBottom: Bool) {
-        self.lineViewBottomConstraint.constant = isBottom ? self.contentView.frame.height - 10 : 0
+        self.lineViewBottomConstraint.constant = isBottom ? self.contentView.frame.height - 26 : 0
     }
     
     func config(_ task: Task) {
-        let colors = Colors()
-        
-        let identifier = task.taskStatus() == .completed ?
-            "fa-check" : (task.createdDate!.isLaterThenToday() ? "fa-exclamation" : "fa-times")
-        let checkIcon = try! FAKFontAwesome(identifier: identifier, size: 12)
-        checkIcon.addAttribute(NSForegroundColorAttributeName, value: colors.mainGreenColor)
-        self.statusLabel.attributedText = checkIcon.attributedString()
+        let icon = task.taskStatus() == .completed ?
+            Icons.finish : (task.createdDate!.isLaterThenToday() ? Icons.unfinish : Icons.clear)
+        self.statusImageView.image = icon.iconImage()
         
         self.createdTimeLabel.text = task.createdDate?.timeString()
-        self.amLabel.text = task.createdDate?.am()
         self.tasksLabel.text = task.realTaskToDo()
         if let finishDate = task.finishedDate {
             self.completedLabel.text = Localized("completedAt") + finishDate.timeDateString()
@@ -85,10 +78,26 @@ class ScheduleTableViewCell: UITableViewCell {
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        selectedBackgroundView = UIView(frame: frame)
-//        selectedBackgroundView?.backgroundColor = Colors.selectedColor
-        
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
+        
+        if selected {
+            self.taskCardView.backgroundColor = Colors.cellCardSelectedColor
+        } else {
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
+                self.taskCardView.backgroundColor = Colors.cellCardColor
+            })
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            self.taskCardView.backgroundColor = Colors.cellCardSelectedColor
+        } else {
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
+                self.taskCardView.backgroundColor = Colors.cellCardColor
+            })
+        }
     }
 }

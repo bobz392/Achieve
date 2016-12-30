@@ -245,12 +245,9 @@
 		C798066A1D7E33BE0011DE19 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
 		C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E41D8006580011DE19 /* CheckInManager.swift */; };
 		C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E61D8011E20011DE19 /* ReportViewController.swift */; };
-		C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806E71D8011E20011DE19 /* ReportViewController.xib */; };
 		C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */; };
 		C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */; };
 		C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C79806F01D8157880011DE19 /* UICountingLabel.m */; };
-		C79806F71D8180CD0011DE19 /* ScheduleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806F61D8180CD0011DE19 /* ScheduleHeaderView.swift */; };
-		C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806F81D8180DA0011DE19 /* ScheduleHeaderView.xib */; };
 		C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */; };
 		C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */; };
 		C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807141D8298380011DE19 /* SettingsViewController.swift */; };
@@ -306,6 +303,8 @@
 		C7DC01B11E1390E90055B7F8 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */; };
 		C7DC01B51E13B4D80055B7F8 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01B31E13B4D80055B7F8 /* MenuTableViewCell.swift */; };
 		C7DC01B61E13B4D80055B7F8 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01B41E13B4D80055B7F8 /* MenuTableViewCell.xib */; };
+		C7DC01C21E159FD20055B7F8 /* ScheduleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01C01E159FD20055B7F8 /* ScheduleHeaderView.swift */; };
+		C7DC01C31E159FD20055B7F8 /* ScheduleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01C11E159FD20055B7F8 /* ScheduleHeaderView.xib */; };
 		C7DDA5B71D75FAD30054154C /* NSDate+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */; };
 		C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C7DDA5B91D75FAD30054154C /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
@@ -678,13 +677,10 @@
 		C79805771D7D427A0011DE19 /* AnimationTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTools.swift; sourceTree = "<group>"; };
 		C79806E41D8006580011DE19 /* CheckInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInManager.swift; sourceTree = "<group>"; };
 		C79806E61D8011E20011DE19 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
-		C79806E71D8011E20011DE19 /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
 		C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		C79806EF1D8157880011DE19 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
 		C79806F01D8157880011DE19 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
-		C79806F61D8180CD0011DE19 /* ScheduleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHeaderView.swift; sourceTree = "<group>"; };
-		C79806F81D8180DA0011DE19 /* ScheduleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleHeaderView.xib; sourceTree = "<group>"; };
 		C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionDispatcher.swift; sourceTree = "<group>"; };
 		C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSchemeDispatcher.swift; sourceTree = "<group>"; };
 		C79807141D8298380011DE19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -734,6 +730,8 @@
 		C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
 		C7DC01B31E13B4D80055B7F8 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C7DC01B41E13B4D80055B7F8 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		C7DC01C01E159FD20055B7F8 /* ScheduleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHeaderView.swift; sourceTree = "<group>"; };
+		C7DC01C11E159FD20055B7F8 /* ScheduleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleHeaderView.xib; sourceTree = "<group>"; };
 		C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B51D75FAD30054154C /* String+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Convenient.swift"; sourceTree = "<group>"; };
 		C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Convenient.swift"; sourceTree = "<group>"; };
@@ -1219,12 +1217,12 @@
 		C7821ED11D7C07250056623D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				C7DC01BF1E159FD20055B7F8 /* View */,
 				C79806E31D80064E0011DE19 /* Core */,
 				C798056C1D7CD8A20011DE19 /* Cell */,
 				C7821ED31D7C076B0056623D /* CalendarViewController.swift */,
 				C7821ED41D7C076B0056623D /* CalendarViewController.xib */,
 				C79806E61D8011E20011DE19 /* ReportViewController.swift */,
-				C79806E71D8011E20011DE19 /* ReportViewController.xib */,
 				C7B579291DAACEDC003B6D92 /* MonthViewController.swift */,
 				C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */,
 			);
@@ -1337,8 +1335,6 @@
 				C798056F1D7CD8D50011DE19 /* CalendarCell.xib */,
 				C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */,
 				C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */,
-				C79806F61D8180CD0011DE19 /* ScheduleHeaderView.swift */,
-				C79806F81D8180DA0011DE19 /* ScheduleHeaderView.xib */,
 				C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */,
 				C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */,
 			);
@@ -1411,6 +1407,15 @@
 				C7CAF0A21D9C3FE80046D756 /* Info.plist */,
 			);
 			path = AchieveMessage;
+			sourceTree = "<group>";
+		};
+		C7DC01BF1E159FD20055B7F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7DC01C01E159FD20055B7F8 /* ScheduleHeaderView.swift */,
+				C7DC01C11E159FD20055B7F8 /* ScheduleHeaderView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C7DDA5B31D75FAD30054154C /* Extension */ = {
@@ -1742,12 +1747,12 @@
 				C75F85931E053F6D0057D76C /* C0814A98-BD12-32EA-9D23-2E24D7CD691B.bcsymbolmap in Resources */,
 				C7105B851DE8BB1600374F78 /* TimeMethodInputView.xib in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
-				C79806E91D8011E20011DE19 /* ReportViewController.xib in Resources */,
 				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
 				C75F85881E053F6D0057D76C /* 504A13C3-C7A8-3231-B76E-D9E300DC1E66.bcsymbolmap in Resources */,
 				C73B44701E0C494200DDE093 /* TaskDateTableViewCell.xib in Resources */,
 				C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */,
 				C73B44721E0C494200DDE093 /* TaskNoteTableViewCell.xib in Resources */,
+				C7DC01C31E159FD20055B7F8 /* ScheduleHeaderView.xib in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
 				C75F858F1E053F6D0057D76C /* 99799440-203F-3407-9652-696FA6C94675.bcsymbolmap in Resources */,
 				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
@@ -1768,7 +1773,6 @@
 				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
-				C79806F91D8180DA0011DE19 /* ScheduleHeaderView.xib in Resources */,
 				C75F85871E053F6D0057D76C /* 4D8D5350-FB19-325E-8092-1435F09B92D7.bcsymbolmap in Resources */,
 				C75F858E1E053F6D0057D76C /* 7F730641-9F0C-3351-9EC3-CAFC53480E6A.bcsymbolmap in Resources */,
 				C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */,
@@ -2153,7 +2157,6 @@
 				C74751BE1DC97FE100831DB1 /* TimeMethodTableViewCell.swift in Sources */,
 				C77195791D71D0F800437560 /* Subtask.swift in Sources */,
 				C7DC01B51E13B4D80055B7F8 /* MenuTableViewCell.swift in Sources */,
-				C79806F71D8180CD0011DE19 /* ScheduleHeaderView.swift in Sources */,
 				C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */,
 				C79807391D8507F20011DE19 /* UIView+Icon.swift in Sources */,
 				C73B44711E0C494200DDE093 /* TaskNoteTableViewCell.swift in Sources */,
@@ -2205,6 +2208,7 @@
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
 				C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
+				C7DC01C21E159FD20055B7F8 /* ScheduleHeaderView.swift in Sources */,
 				C73B44781E0C494200DDE093 /* TagViewController.swift in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,
 				C77DE3601DE6125300F098F4 /* SoundManager.swift in Sources */,

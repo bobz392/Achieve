@@ -12,9 +12,9 @@ import RealmSwift
 class ReportViewController: BaseViewController {
     
     //    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var scheduleTableView: UITableView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var exportButton: UIButton!
+    fileprivate let scheduleTableView = UITableView()
+//    @IBOutlet weak var backButton: UIButton!
+//    @IBOutlet weak var exportButton: UIButton!
     
     fileprivate let checkInDate: NSDate
     fileprivate var taskList: Results<Task>
@@ -24,64 +24,58 @@ class ReportViewController: BaseViewController {
         self.checkInDate = checkInDate
         self.taskList = RealmManager.shared.queryTaskList(checkInDate)
         self.cellHeightCache = Array(repeating: 0, count: self.taskList.count)
-        super.init(nibName: "ReportViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.checkInDate = NSDate()
-        self.taskList = RealmManager.shared.queryTaskList(self.checkInDate)
-        self.cellHeightCache = [CGFloat]()
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: 64, withBottomLine: true)
+        let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        self.view.backgroundColor = colors.mainGreenColor
+        let exportButton = UIButton(type: .custom)
+        exportButton.buttonWithIcon(icon: Icons.export.iconString())
+        bar.addSubview(exportButton)
+        exportButton.snp.makeConstraints { (make) in
+            make.width.equalTo(kBarIconSize)
+            make.height.equalTo(kBarIconSize)
+            make.top.equalTo(bar).offset(26)
+            make.right.equalToSuperview().offset(-12)
+        }
+        exportButton.addTarget(self, action: #selector(self.extportAction), for: .touchUpInside)
         
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        
-        self.exportButton.buttonColor(colors)
-        self.exportButton.createIconButton(iconSize: kBackButtonCorner, icon: "fa-share",
-                                           color: colors.mainGreenColor, status: .normal)
-    }
-    
-    fileprivate func initializeControl() {
-        configTableView()
-        
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.exportButton.addShadow()
-        self.exportButton.layer.cornerRadius = kBackButtonCorner
-        self.exportButton.addTarget(self, action: #selector(self.extportAction), for: .touchUpInside)
+        self.view.addSubview(self.scheduleTableView)
+        self.scheduleTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.scheduleTableView.delegate = self
+        self.scheduleTableView.dataSource = self
+        self.scheduleTableView.clearView()
+        self.scheduleTableView.separatorStyle = .none
+        self.scheduleTableView.tableFooterView = UIView()
+        self.scheduleTableView
+            .register(ScheduleTableViewCell.nib,
+                      forCellReuseIdentifier: ScheduleTableViewCell.reuseId)
     }
     
     // MARK: - actions
-    func backAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
-    }
-    
     func extportAction() {
         let report = ReportGenerator().generateReport(taskList: self.taskList)
         let activeViewController =
@@ -102,25 +96,6 @@ class ReportViewController: BaseViewController {
 }
 
 extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func configTableView() {
-        self.scheduleTableView.clearView()
-        self.scheduleTableView.register(ScheduleTableViewCell.nib, forCellReuseIdentifier: ScheduleTableViewCell.reuseId)
-        
-        self.scheduleTableView.tableFooterView = UIView()
-        guard let headerView = ScheduleHeaderView.loadNib(self) else { return }
-        
-        headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screenBounds.width, height: 50))
-        
-        headerView.titleLableView.text = Localized("schedule") + self.checkInDate.getDateString()
-        self.scheduleTableView.tableHeaderView = headerView
-        self.scheduleTableView.tableHeaderView?.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.scheduleTableView)
-            make.height.equalTo(50)
-            make.trailing.equalTo(self.scheduleTableView)
-            make.leading.equalTo(self.scheduleTableView)
-        })
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.taskList.count
@@ -158,5 +133,17 @@ extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
             self.cellHeightCache[indexPath.row] = height
             return height
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return ScheduleHeaderView.height
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView =
+            ScheduleHeaderView.loadNib(self, title: Localized("schedule"))
+            else { return nil }
+    
+        return headerView
     }
 }

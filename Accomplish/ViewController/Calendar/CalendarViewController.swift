@@ -87,7 +87,7 @@ class CalendarViewController: BaseViewController {
         self.view.sendSubview(toBack: bar)
         let menuButton = self.congfigMenuButton()
         
-        self.dateButton.setTitleColor(Colors.mainTextColor, for: .normal)
+        self.dateButton.setTitleColor(Colors.mainIconColor, for: .normal)
         bar.addSubview(dateButton)
         self.dateButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-12)

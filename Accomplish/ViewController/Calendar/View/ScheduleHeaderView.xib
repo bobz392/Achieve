@@ -16,8 +16,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrw-O5-GPd">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="12.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="13"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="GZF-8Y-5Qk"/>
+                    </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHw-8f-4tr">
                     <rect key="frame" x="12" y="12.5" width="150" height="36"/>
@@ -34,7 +37,6 @@
             <constraints>
                 <constraint firstItem="Vrw-O5-GPd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GpW-dX-cja"/>
                 <constraint firstItem="sHw-8f-4tr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cQn-Ae-ZDA"/>
-                <constraint firstAttribute="trailing" secondItem="Vrw-O5-GPd" secondAttribute="trailing" id="oVD-Ox-ovt"/>
                 <constraint firstItem="sHw-8f-4tr" firstAttribute="top" secondItem="Vrw-O5-GPd" secondAttribute="bottom" id="stG-c0-Q1p"/>
                 <constraint firstItem="Vrw-O5-GPd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wUs-Vn-0oA"/>
                 <constraint firstItem="sHw-8f-4tr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="wkh-66-0m2"/>
@@ -45,7 +47,7 @@
                 <outlet property="headerBackgroundView" destination="Vrw-O5-GPd" id="5e5-DD-eBD"/>
                 <outlet property="titleLable" destination="sHw-8f-4tr" id="bkx-7R-vJE"/>
             </connections>
-            <point key="canvasLocation" x="-318" y="295"/>
+            <point key="canvasLocation" x="-307" y="250"/>
         </view>
     </objects>
 </document>

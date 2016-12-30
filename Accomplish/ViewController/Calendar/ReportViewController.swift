@@ -11,10 +11,7 @@ import RealmSwift
 
 class ReportViewController: BaseViewController {
     
-    //    @IBOutlet weak var titleLabel: UILabel!
     fileprivate let scheduleTableView = UITableView()
-//    @IBOutlet weak var backButton: UIButton!
-//    @IBOutlet weak var exportButton: UIButton!
     
     fileprivate let checkInDate: NSDate
     fileprivate var taskList: Results<Task>
@@ -43,9 +40,19 @@ class ReportViewController: BaseViewController {
     
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
-        let bar = self.createCustomBar(height: 64, withBottomLine: false)
+        let bar = self.createCustomBar(height: 64, withBottomLine: true)
         let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        
+        let dateLabel = UILabel()
+        dateLabel.textColor = Colors.mainIconColor
+        dateLabel.font = UIFont.systemFont(ofSize: 16)
+        dateLabel.text = self.checkInDate.formattedDate(with: .medium)
+        bar.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(backButton)
+            make.left.equalTo(backButton.snp.right).offset(12)
+        }
         
         let exportButton = UIButton(type: .custom)
         exportButton.buttonWithIcon(icon: Icons.export.iconString())

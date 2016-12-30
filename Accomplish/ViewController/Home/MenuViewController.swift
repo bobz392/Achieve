@@ -116,6 +116,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        if indexPath.row == self.currentIndex {
+            appDelegate.drawer?.closeDrawer(animated: true, completion: nil)
+            return
+        }
+        
         let viewController: UIViewController
         
         switch indexPath.row {
@@ -169,11 +175,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                                           completion: { (finish) in
                                             
         })
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let selected = IndexPath(row: self.currentIndex, section: 0)
-        tableView.selectRow(at: selected, animated: false, scrollPosition: .none)
     }
     
 }

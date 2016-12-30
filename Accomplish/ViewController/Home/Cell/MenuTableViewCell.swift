@@ -16,6 +16,7 @@ class MenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconDetailLabel: UILabel!
+    internal var cellSelected = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,7 @@ class MenuTableViewCell: UITableViewCell {
             self.iconImageView.tintColor = Colors.mainIconColor
         }
         
+        self.cellSelected = selected
         self.iconDetailLabel.isHighlighted = selected
     }
     
@@ -43,11 +45,13 @@ class MenuTableViewCell: UITableViewCell {
         
         if highlighted {
             self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
+            self.iconDetailLabel.isHighlighted = highlighted
         } else {
-            self.iconImageView.tintColor = Colors.mainIconColor
+            self.iconDetailLabel.isHighlighted = cellSelected
+            if !self.cellSelected {
+                self.iconImageView.tintColor = Colors.mainIconColor
+            }
         }
-        
-        self.iconDetailLabel.isHighlighted = highlighted
     }
     
     func configCell(icon: Icons) {

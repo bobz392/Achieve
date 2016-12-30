@@ -40,19 +40,13 @@ class ReportViewController: BaseViewController {
     
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
-        let bar = self.createCustomBar(height: 64, withBottomLine: true)
-        let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        let dateLabel = UILabel()
+        let dateText = self.checkInDate.formattedDate(with: .medium) ?? ""
+        let dateLabel = self.createTitleLabel(titleText: dateText, style: .left)
         dateLabel.textColor = Colors.mainIconColor
-        dateLabel.font = UIFont.systemFont(ofSize: 16)
-        dateLabel.text = self.checkInDate.formattedDate(with: .medium)
-        bar.addSubview(dateLabel)
-        dateLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(backButton)
-            make.left.equalTo(backButton.snp.right).offset(12)
-        }
         
         let exportButton = UIButton(type: .custom)
         exportButton.buttonWithIcon(icon: Icons.export.iconString())

@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-Wo-nZo">
-                    <rect key="frame" x="14" y="74" width="347" height="250"/>
+                    <rect key="frame" x="14" y="69" width="347" height="250"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m29-D1-27Q">
                             <rect key="frame" x="5" y="5" width="337" height="30"/>
@@ -117,14 +117,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykf-Pj-aTB" customClass="CircleProgressView" customModule="Accomplish" customModuleProvider="target">
-                    <rect key="frame" x="41.5" y="364" width="293" height="293"/>
+                    <rect key="frame" x="39" y="359" width="298" height="298"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="1:1" id="iNt-r2-SdQ"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-iL-ftt">
-                    <rect key="frame" x="70" y="438" width="235" height="146.5"/>
+                    <rect key="frame" x="68" y="433.5" width="239" height="149"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="Daily Report">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -155,7 +155,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-BF-Vfq">
-                    <rect key="frame" x="318" y="332" width="43" height="28"/>
+                    <rect key="frame" x="318" y="327" width="43" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="iyI-du-szm"/>
                     </constraints>
@@ -172,7 +172,7 @@
                 <constraint firstItem="sIN-iL-ftt" firstAttribute="height" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="0.5" id="DiZ-Ia-57Z"/>
                 <constraint firstItem="kYH-Ed-2rT" firstAttribute="centerX" secondItem="sIG-WB-n4S" secondAttribute="centerX" id="Duf-8W-ZoF"/>
                 <constraint firstItem="ykf-Pj-aTB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Dzo-IH-z78"/>
-                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="FB3-Jq-hp5"/>
+                <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="69" id="FB3-Jq-hp5"/>
                 <constraint firstItem="z6c-BF-Vfq" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="8" id="Fbk-WM-pj2"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="top" secondItem="kYH-Ed-2rT" secondAttribute="bottom" constant="5" id="JfC-D2-od5"/>
                 <constraint firstItem="6qq-4T-ld4" firstAttribute="centerX" secondItem="KUt-8r-SET" secondAttribute="centerX" id="Kcm-ws-5wV"/>

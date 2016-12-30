@@ -54,7 +54,7 @@
 "priority1"="Normal";
 "priority0"="Low";
 
-"selectAction"="Built-in Task";
+"builtInTask"="Built-in Task";
 "callAction"="Call ";
 "sendMessageAction"="Send Message To ";
 "faceTimeAction"="Face Time to ";

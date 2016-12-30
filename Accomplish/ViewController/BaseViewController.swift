@@ -73,12 +73,12 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @discardableResult
-    func createLeftBarButton(iconString: String) -> UIButton {
+    func createLeftBarButton(icon: Icons) -> UIButton {
         guard let bar = self.customNavigationBar else {
             fatalError("you don't created a bar now")
         }
         let leftBarButton = UIButton(type: .custom)
-        leftBarButton.buttonWithIcon(icon: iconString)
+        leftBarButton.buttonWithIcon(icon: icon.iconString())
         bar.addSubview(leftBarButton)
         leftBarButton.snp.makeConstraints { (make) in
             make.width.equalTo(kBarIconSize)
@@ -116,6 +116,33 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         return menuButton
     }
     
+    @discardableResult
+    func createTitleLabel(titleText: String, style: ControllerTitleStyle = .center) -> UILabel {
+        guard let bar = self.customNavigationBar else {
+            fatalError("you don't created a bar now")
+        }
+        
+        let titleLabel = UILabel()
+        titleLabel.textColor = Colors.mainTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.text = titleText
+        bar.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview().offset(10)
+            if style == .center {
+                make.centerX.equalToSuperview()
+            } else {
+                if let leftButton = self.leftBarButton {
+                    make.left.equalTo(leftButton.snp.right).offset(12)
+                } else {
+                    make.left.equalToSuperview().offset(12)
+                }
+            }
+        }
+
+        return titleLabel
+    }
+    
     func openMenuAction() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         delegate?.drawer?.open(.left, animated: true, completion: nil)
@@ -124,4 +151,14 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     func backAction() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
+    
+    func dismissAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+enum ControllerTitleStyle {
+    case center
+    case left
 }

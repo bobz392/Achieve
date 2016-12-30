@@ -159,9 +159,7 @@
 		C77194921D6FCFC200437560 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194911D6FCFC200437560 /* BaseViewController.swift */; };
 		C77194941D6FD5E600437560 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194931D6FD5E600437560 /* Trigger.swift */; };
 		C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771949E1D6FEB0B00437560 /* SystemTaskViewController.swift */; };
-		C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771949F1D6FEB0B00437560 /* SystemTaskViewController.xib */; };
 		C77194A41D6FF14200437560 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194A21D6FF14200437560 /* AddressBookViewController.swift */; };
-		C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194A31D6FF14200437560 /* AddressBookViewController.xib */; };
 		C77194AB1D6FF1A200437560 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194AA1D6FF1A200437560 /* AddressBook.swift */; };
 		C77194B51D6FF34800437560 /* AddressBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77194B41D6FF34800437560 /* AddressBookTableViewCell.swift */; };
 		C77194B71D6FF35000437560 /* AddressBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77194B61D6FF35000437560 /* AddressBookTableViewCell.xib */; };
@@ -175,7 +173,7 @@
 		C77195771D71530100437560 /* SystemActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195761D71530100437560 /* SystemActionBuilder.swift */; };
 		C77195791D71D0F800437560 /* Subtask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77195781D71D0F800437560 /* Subtask.swift */; };
 		C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C771957A1D71ED6400437560 /* KVTaskViewController.swift */; };
-		C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771957B1D71ED6400437560 /* KVTaskViewController.xib */; };
+		C771957D1D71ED6400437560 /* s.xib in Resources */ = {isa = PBXBuildFile; fileRef = C771957B1D71ED6400437560 /* s.xib */; };
 		C77DE35E1DE4419E00F098F4 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */; };
 		C77DE3601DE6125300F098F4 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77DE35F1DE6125300F098F4 /* SoundManager.swift */; };
 		C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77DE3621DE62B3E00F098F4 /* TimeManagerEditorViewController.swift */; };
@@ -594,9 +592,7 @@
 		C77194911D6FCFC200437560 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C77194931D6FD5E600437560 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		C771949E1D6FEB0B00437560 /* SystemTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemTaskViewController.swift; sourceTree = "<group>"; };
-		C771949F1D6FEB0B00437560 /* SystemTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SystemTaskViewController.xib; sourceTree = "<group>"; };
 		C77194A21D6FF14200437560 /* AddressBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
-		C77194A31D6FF14200437560 /* AddressBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
 		C77194A61D6FF16700437560 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		C77194A81D6FF17400437560 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C77194AA1D6FF1A200437560 /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
@@ -615,7 +611,7 @@
 		C77195761D71530100437560 /* SystemActionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionBuilder.swift; sourceTree = "<group>"; };
 		C77195781D71D0F800437560 /* Subtask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subtask.swift; sourceTree = "<group>"; };
 		C771957A1D71ED6400437560 /* KVTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVTaskViewController.swift; sourceTree = "<group>"; };
-		C771957B1D71ED6400437560 /* KVTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVTaskViewController.xib; sourceTree = "<group>"; };
+		C771957B1D71ED6400437560 /* s.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = s.xib; sourceTree = "<group>"; };
 		C77DE35C1DE4419E00F098F4 /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
 		C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		C77DE35F1DE6125300F098F4 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -1147,11 +1143,9 @@
 				C771924D1D6CEE6800437560 /* NewTaskViewController.swift */,
 				C771924E1D6CEE6800437560 /* NewTaskViewController.xib */,
 				C771949E1D6FEB0B00437560 /* SystemTaskViewController.swift */,
-				C771949F1D6FEB0B00437560 /* SystemTaskViewController.xib */,
 				C77194A21D6FF14200437560 /* AddressBookViewController.swift */,
-				C77194A31D6FF14200437560 /* AddressBookViewController.xib */,
 				C771957A1D71ED6400437560 /* KVTaskViewController.swift */,
-				C771957B1D71ED6400437560 /* KVTaskViewController.xib */,
+				C771957B1D71ED6400437560 /* s.xib */,
 			);
 			path = NewTask;
 			sourceTree = "<group>";
@@ -1729,7 +1723,6 @@
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
 				C75F858C1E053F6D0057D76C /* 68784BC9-A7E0-32D0-8556-A37FF12B0E77.bcsymbolmap in Resources */,
 				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
-				C77194A11D6FEB0B00437560 /* SystemTaskViewController.xib in Resources */,
 				C74751BB1DC840D100831DB1 /* TimeManagementView.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
 				C77DE3651DE62B3E00F098F4 /* TimeManagerEditorViewController.xib in Resources */,
@@ -1786,12 +1779,11 @@
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
 				C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */,
-				C77194A51D6FF14200437560 /* AddressBookViewController.xib in Resources */,
 				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
 				C75F858D1E053F6D0057D76C /* 77F140F0-5A33-3088-B533-9A7D68FD7B76.bcsymbolmap in Resources */,
 				C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */,
 				C75F85951E053F6D0057D76C /* CF9F788D-FF79-38BB-9831-AFDB915250FE.bcsymbolmap in Resources */,
-				C771957D1D71ED6400437560 /* KVTaskViewController.xib in Resources */,
+				C771957D1D71ED6400437560 /* s.xib in Resources */,
 				C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */,
 				C74751BF1DC97FE100831DB1 /* TimeMethodTableViewCell.xib in Resources */,
 				C75F85941E053F6D0057D76C /* C0A1D7F9-0DBE-3FAB-A195-3901C02037AF.bcsymbolmap in Resources */,

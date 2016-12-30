@@ -74,8 +74,8 @@ class NoteViewController: BaseViewController {
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
         
-        let bar = self.createCustomBar(height: 64, withBottomLine: true)
-        let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         let titleLable = UILabel()

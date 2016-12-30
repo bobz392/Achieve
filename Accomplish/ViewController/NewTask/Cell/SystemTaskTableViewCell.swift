@@ -12,17 +12,16 @@ class SystemTaskTableViewCell: BaseTableViewCell {
 
     static let nib = UINib(nibName: "SystemTaskTableViewCell", bundle: nil)
     static let reuseId = "systemTaskTableViewCell"
-    static let rowHeight: CGFloat = 65
+    static let rowHeight: CGFloat = 70
     
     @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
-        self.backgroundColor = Colors.cloudColor
-        self.contentView.backgroundColor = Colors.cloudColor
+        self.backgroundColor = Colors.mainBackgroundColor
+        self.contentView.clearView()
         self.taskTitle.textColor = Colors.mainTextColor
         
         self.iconImage.layer.cornerRadius = 10
@@ -31,8 +30,6 @@ class SystemTaskTableViewCell: BaseTableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

@@ -77,7 +77,7 @@ class SearchViewController: BaseViewController {
         self.searchIconLabel
             .createIconText(iconSize: 20, icon: "fa-search", color: colors.mainGreenColor)
         
-        self.searchHolderView.backgroundColor = colors.placeHolderTextColor
+        self.searchHolderView.backgroundColor = Colors.placeHolderTextColor
         self.searchTextField.tintColor = colors.mainGreenColor
         self.searchTextField.textColor = Colors.mainTextColor
         

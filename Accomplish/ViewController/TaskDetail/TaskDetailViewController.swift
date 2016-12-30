@@ -95,7 +95,7 @@ class TaskDetailViewController: BaseViewController {
         self.view.backgroundColor = Colors.mainBackgroundColor
         
         let bar = self.createCustomBar(withBottomLine: true)
-        let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
+        let backButton = self.createLeftBarButton(icon: Icons.back)
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         bar.addSubview(taskToDoTextView)

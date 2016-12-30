@@ -16,33 +16,37 @@ private let AddressBookMiscIndexKey = "#"
 
 final class AddressBookViewController: BaseViewController {
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
+    fileprivate let addressTableView = UITableView()
     
     var readPhoneType = true
     weak var delegate: TaskActionDataDelegate? = nil
     
-    class func loadFromNib(_ readPhoneType: Bool, delegate: TaskActionDataDelegate) -> AddressBookViewController {
-        let address = AddressBookViewController(nibName: "AddressBookViewController", bundle: nil)
-        address.readPhoneType = readPhoneType
-        address.delegate = delegate
-        return address
-    }
+//    class func loadFromNib(_ readPhoneType: Bool, delegate: TaskActionDataDelegate) -> AddressBookViewController {
+//        let address = AddressBookViewController(nibName: "AddressBookViewController", bundle: nil)
+//        address.readPhoneType = readPhoneType
+//        address.delegate = delegate
+//        return address
+//    }
     
     fileprivate var indexingQueue = DispatchQueue(label: "achieve.addressBook.indexing")
     
     fileprivate var indexes: Indexes = []
     fileprivate var data: IndexedData = [:]
     
+    init(readPhoneType: Bool, delegate: TaskActionDataDelegate) {
+        self.readPhoneType = readPhoneType
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configMainUI()
-        self.initializeControl()
-        
-        self.config(tableView: tableView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,11 +59,11 @@ final class AddressBookViewController: BaseViewController {
                 (self.indexes, self.data) = self.processPeople(people)
                 DispatchQueue.main.async { [unowned self] in
                     HUD.shared.dismiss()
-                    self.tableView.reloadData()
+                    self.addressTableView.reloadData()
                     if self.data.count == 0 {
                         guard let emptyView = EmptyView.loadNib(self) else { return }
-                        self.cardView.addSubview(emptyView)
-                        emptyView.layout(superview: self.cardView)
+                        self.view.addSubview(emptyView)
+                        emptyView.layout(superview: self.view)
                     }
                     
                 }
@@ -67,44 +71,32 @@ final class AddressBookViewController: BaseViewController {
             })
     }
     
-    fileprivate func config(tableView: UITableView?) {
-        tableView?.sectionIndexColor = Colors.mainTextColor
-        tableView?.sectionIndexBackgroundColor = Colors.cloudColor
-        tableView?.register(AddressBookTableViewCell.nib, forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
-        tableView?.separatorStyle = .none
-    }
-    
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        self.titleLabel.textColor = Colors.cloudColor
-        self.tableView.backgroundColor = Colors.cloudColor
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
+        self.createTitleLabel(titleText: Localized("addressBook"))
         
-        self.cancelButton.buttonColor(colors)
-        self.cancelButton.createIconButton(iconSize: kBackButtonCorner,
-                                           icon: backButtonIconString,
-                                           color: colors.mainGreenColor, status: .normal)
-        
-        self.tableView.reloadData()
+        self.view.addSubview(self.addressTableView)
+        self.addressTableView.delegate = self
+        self.addressTableView.dataSource = self
+        self.addressTableView.backgroundColor = Colors.mainBackgroundColor
+        self.addressTableView.tableFooterView = UIView()
+        self.addressTableView.sectionIndexColor = Colors.mainTextColor
+        self.addressTableView.sectionIndexBackgroundColor = Colors.mainBackgroundColor
+        self.addressTableView.register(AddressBookTableViewCell.nib,
+                                       forCellReuseIdentifier: AddressBookTableViewCell.reuseId)
+        self.addressTableView.separatorStyle = .none
+        self.addressTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
     
-    fileprivate func initializeControl() {
-        self.cancelButton.addShadow()
-        self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.titleLabel.text = Localized("addressBook")
-    }
-    
-    // MARK: - action
-    override func backAction() {
-        let _ = self.navigationController?.popViewController(animated: true)
-    }
 }
 
 extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource {

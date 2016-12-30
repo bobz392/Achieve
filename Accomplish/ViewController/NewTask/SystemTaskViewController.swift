@@ -10,67 +10,57 @@ import UIKit
 
 class SystemTaskViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var taskTableView: UITableView!
-    @IBOutlet weak var cancelButton: UIButton!
+    fileprivate let systemTaskTableView = UITableView()
     
     weak var newTaskDelegate: NewTaskDataDelegate? = nil
     
-    fileprivate let animation = LayerTransitioningAnimation()
     fileprivate let actionBuilder = SystemActionBuilder()
     fileprivate var selectedActionType: SystemActionType? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initControl()
-        
-        self.navigationController?.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
         
-        self.titleLabel.textColor = Colors.cloudColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.closeDown)
+        let action = #selector(self.dismissAction)
+        backButton.addTarget(self, action: action, for: .touchUpInside)
         
-        self.taskTableView.backgroundColor = Colors.cloudColor
-        self.taskTableView.separatorColor = Colors.separatorColor
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
+        let titleLabel = UILabel()
+        titleLabel.textColor = Colors.mainTextColor
+        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        titleLabel.text = Localized("builtInTask")
+        bar.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(backButton)
+            make.centerX.equalToSuperview()
+        }
         
-        self.cancelButton.buttonColor(colors)
-        self.cancelButton.createIconButton(iconSize: kBackButtonCorner,
-                                           icon: backButtonIconString,
-                                           color: colors.mainGreenColor, status: .normal)
-        self.taskTableView.reloadData()
+        self.view.addSubview(self.systemTaskTableView)
+        self.systemTaskTableView.backgroundColor = Colors.mainBackgroundColor
+        self.systemTaskTableView.delegate = self
+        self.systemTaskTableView.separatorColor = Colors.separatorColor
+        self.systemTaskTableView.dataSource = self
+        self.systemTaskTableView.tableFooterView = UIView()
+        self.systemTaskTableView.register(SystemTaskTableViewCell.nib,
+                                    forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
+        self.systemTaskTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
-    
-    fileprivate func initControl() {
-        self.taskTableView.tableFooterView = UIView()
-        self.taskTableView.register(SystemTaskTableViewCell.nib, forCellReuseIdentifier: SystemTaskTableViewCell.reuseId)
-        
-        self.cancelButton.addShadow()
-        self.cancelButton.layer.cornerRadius = kBackButtonCorner
-        self.cancelButton.addTarget(self, action: #selector(self.cancelAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.titleLabel.text = Localized("selectAction")
-    }
-    
-    // MARK: - action
-    func cancelAction() {
-        self.dismiss(animated: true, completion: nil)
-    }
+
 }
 
 // MARK: - table view
@@ -102,14 +92,13 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
         switch present {
         case .addressBook:
             AddressBook.requestAccess {[unowned self] (finish) in
-                let addressVC = AddressBookViewController.loadFromNib(true, delegate: self)
-                
+                let addressVC = AddressBookViewController(readPhoneType: true, delegate: self)
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
         case .addressBookEmail:
             AddressBook.requestAccess {[unowned self] (finish) in
-                let addressVC = AddressBookViewController.loadFromNib(false, delegate: self)
+                let addressVC = AddressBookViewController(readPhoneType: true, delegate: self)
                 self.navigationController?.pushViewController(addressVC, animated: true)
             }
             
@@ -121,14 +110,6 @@ extension SystemTaskViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-    }
-}
-
-// MARK: - UINavigationControllerDelegate
-extension SystemTaskViewController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animation.reverse = operation == UINavigationControllerOperation.pop
-        return animation
     }
 }
 

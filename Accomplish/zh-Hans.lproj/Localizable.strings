@@ -32,7 +32,7 @@
 "reject"="拒绝";
 "add"="添加";
 "save"="保存";
-"ok"="知道了";
+"ok"="好的";
 "done"="完成";
 "search"="开始搜索";
 "customTask"="新任务";
@@ -53,7 +53,7 @@
 "priority1"="普通";
 "priority0"="低";
 
-"selectAction"="选择内置任务";
+"builtInTask"="内置任务";
 "callAction"="打电话给 ";
 "sendMessageAction"="发短讯给 ";
 "faceTimeAction"="Face Time给 ";

@@ -55,7 +55,6 @@ class CalendarViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
         if self.inTodayAlleady == false {
             let now = Date()
             let startMonth = self.checkInManager.getMonthCheckIn().first?.checkInDate?.month()
@@ -83,12 +82,13 @@ class CalendarViewController: BaseViewController {
         self.view.backgroundColor = Colors.mainBackgroundColor
         
         self.cardView.backgroundColor = Colors.cellCardColor
-        let bar = self.createCustomBar()
-        self.view.sendSubview(toBack: bar)
+        let bar = self.createCustomBar(height: kBarHeight)
+//        self.view.sendSubview(toBack: bar)
         let menuButton = self.congfigMenuButton()
         
+        bar.addSubview(self.dateButton)
         self.dateButton.setTitleColor(Colors.mainIconColor, for: .normal)
-        bar.addSubview(dateButton)
+        self.dateButton.tintColor = Colors.mainIconColor
         self.dateButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-12)
             make.centerY.equalTo(menuButton)
@@ -197,7 +197,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         let endDate = self.firstDate.addingMonths(10)!
-        let startDate = self.firstDate.subtractingMonths(2)!
+        let startDate = self.firstDate as Date
         let aCalendar = Calendar.current
         
         let firstDayOfWeekValue = AppUserDefault().readInt(kUserDefaultWeekStartKey)

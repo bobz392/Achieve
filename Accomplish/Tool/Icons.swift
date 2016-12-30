@@ -35,6 +35,7 @@ enum Icons {
     case finish
     case unfinish
     case export
+    case closeDown
     
     func iconString() -> String {
         switch self {
@@ -64,6 +65,7 @@ enum Icons {
         case .finish: return "finish"
         case .unfinish: return "unfinish"
         case .export: return "export"
+        case .closeDown: return "close_down"
         }
     }
     

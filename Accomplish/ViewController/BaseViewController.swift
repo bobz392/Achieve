@@ -143,6 +143,24 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         return titleLabel
     }
     
+    @discardableResult
+    func createPlusButton() -> UIButton {
+        let newTaskButton = AwesomeButton(type: .custom)
+        self.view.addSubview(newTaskButton)
+        newTaskButton.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-15)
+            make.width.equalTo(70)
+            make.height.equalTo(70)
+            make.centerX.equalToSuperview()
+        }
+        newTaskButton.addShadow()
+        newTaskButton.layer.cornerRadius = 35
+        newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(),
+                                     backgroundColor: Colors.cellCardColor)
+        
+        return newTaskButton
+    }
+    
     func openMenuAction() {
         let delegate = UIApplication.shared.delegate as? AppDelegate
         delegate?.drawer?.open(.left, animated: true, completion: nil)

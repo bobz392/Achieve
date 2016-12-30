@@ -213,7 +213,6 @@
 "finishTimeManager"="Finish Task";
 "continue"="Continue work";
 "selectTimeManagement"="Select Time Management Method";
-"createTimeManagement"="Create New Method";
 "infiniteRepeat"="Infinite";
 "repeatNumber"="Number of Repeats";
 "useTime"="Use %d time";

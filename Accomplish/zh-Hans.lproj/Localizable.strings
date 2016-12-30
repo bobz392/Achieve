@@ -213,9 +213,7 @@
 "cancelTimeManager"="退出工作法";
 "finishTimeManager"="完成任务";
 "continue"="继续工作";
-"timeManagementSetting"="管理工作法";
 "selectTimeManagement"="选择一个工作法";
-"createTimeManagement"="创建新的工作法";
 "infiniteRepeat"="无限";
 "repeatNumber"="循环次数";
 "useTime"="使用%d次";

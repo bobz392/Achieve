@@ -246,7 +246,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 
             // 工作法管理
             case 1:
-                let timeVC = TimeManagementViewController()
+                let timeVC = TimeManagementViewController(isSelectTM: false)
                 self.navigationController?.pushViewController(timeVC, animated: true)
             
             case 2:

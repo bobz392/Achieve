@@ -91,15 +91,14 @@
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */; };
-		C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751A51DC741C700831DB1 /* TimeManagementViewController.xib */; };
 		C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */; };
 		C74751B01DC760B000831DB1 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AC1DC760B000831DB1 /* FAKIcon.m */; };
 		C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
 		C74751B31DC760D700831DB1 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */; };
 		C74751B41DC760D700831DB1 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AC1DC760B000831DB1 /* FAKIcon.m */; };
 		C74751B61DC81F8500831DB1 /* TimeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751B51DC81F8500831DB1 /* TimeMethod.swift */; };
-		C74751B91DC840C700831DB1 /* TimeManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751B81DC840C700831DB1 /* TimeManagementView.swift */; };
-		C74751BB1DC840D100831DB1 /* TimeManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751BA1DC840D100831DB1 /* TimeManagementView.xib */; };
+		C74751B91DC840C700831DB1 /* TMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751B81DC840C700831DB1 /* TMView.swift */; };
+		C74751BB1DC840D100831DB1 /* TMView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751BA1DC840D100831DB1 /* TMView.xib */; };
 		C74751BE1DC97FE100831DB1 /* TimeMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751BC1DC97FE100831DB1 /* TimeMethodTableViewCell.swift */; };
 		C74751BF1DC97FE100831DB1 /* TimeMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751BD1DC97FE100831DB1 /* TimeMethodTableViewCell.xib */; };
 		C74751C11DC9884100831DB1 /* RealmManager+TimeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751C01DC9884100831DB1 /* RealmManager+TimeMethod.swift */; };
@@ -516,7 +515,6 @@
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
 		C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagementViewController.swift; sourceTree = "<group>"; };
-		C74751A51DC741C700831DB1 /* TimeManagementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeManagementViewController.xib; sourceTree = "<group>"; };
 		C74751A91DC760B000831DB1 /* FAKFontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFontAwesome.h; sourceTree = "<group>"; };
 		C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFontAwesome.m; sourceTree = "<group>"; };
 		C74751AB1DC760B000831DB1 /* FAKIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIcon.h; sourceTree = "<group>"; };
@@ -524,8 +522,8 @@
 		C74751AD1DC760B000831DB1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		C74751AE1DC760B000831DB1 /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
 		C74751B51DC81F8500831DB1 /* TimeMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeMethod.swift; sourceTree = "<group>"; };
-		C74751B81DC840C700831DB1 /* TimeManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagementView.swift; sourceTree = "<group>"; };
-		C74751BA1DC840D100831DB1 /* TimeManagementView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeManagementView.xib; sourceTree = "<group>"; };
+		C74751B81DC840C700831DB1 /* TMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMView.swift; sourceTree = "<group>"; };
+		C74751BA1DC840D100831DB1 /* TMView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMView.xib; sourceTree = "<group>"; };
 		C74751BC1DC97FE100831DB1 /* TimeMethodTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeMethodTableViewCell.swift; sourceTree = "<group>"; };
 		C74751BD1DC97FE100831DB1 /* TimeMethodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeMethodTableViewCell.xib; sourceTree = "<group>"; };
 		C74751C01DC9884100831DB1 /* RealmManager+TimeMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealmManager+TimeMethod.swift"; sourceTree = "<group>"; };
@@ -1016,8 +1014,8 @@
 		C74751B71DC840B900831DB1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C74751B81DC840C700831DB1 /* TimeManagementView.swift */,
-				C74751BA1DC840D100831DB1 /* TimeManagementView.xib */,
+				C74751B81DC840C700831DB1 /* TMView.swift */,
+				C74751BA1DC840D100831DB1 /* TMView.xib */,
 				C7105B821DE8BB1000374F78 /* TimeMethodInputView.swift */,
 				C7105B841DE8BB1600374F78 /* TimeMethodInputView.xib */,
 			);
@@ -1039,7 +1037,6 @@
 				C74751B71DC840B900831DB1 /* View */,
 				C74F1E221DC3219400F7D37D /* Cell */,
 				C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */,
-				C74751A51DC741C700831DB1 /* TimeManagementViewController.xib */,
 				C77DE3621DE62B3E00F098F4 /* TimeManagerEditorViewController.swift */,
 				C77DE3631DE62B3E00F098F4 /* TimeManagerEditorViewController.xib */,
 			);
@@ -1723,7 +1720,7 @@
 				C77194C61D70988800437560 /* TaskTableViewCell.xib in Resources */,
 				C75F858C1E053F6D0057D76C /* 68784BC9-A7E0-32D0-8556-A37FF12B0E77.bcsymbolmap in Resources */,
 				C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */,
-				C74751BB1DC840D100831DB1 /* TimeManagementView.xib in Resources */,
+				C74751BB1DC840D100831DB1 /* TMView.xib in Resources */,
 				C7821ED61D7C076B0056623D /* CalendarViewController.xib in Resources */,
 				C77DE3651DE62B3E00F098F4 /* TimeManagerEditorViewController.xib in Resources */,
 				C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */,
@@ -1772,7 +1769,6 @@
 				C75F85911E053F6D0057D76C /* A74044C4-272B-3638-B33C-30BB5C6BC2F4.bcsymbolmap in Resources */,
 				C7DC01B61E13B4D80055B7F8 /* MenuTableViewCell.xib in Resources */,
 				C75F85901E053F6D0057D76C /* 9D3C03F7-AE0E-3AE2-9A3E-6F9664C9840F.bcsymbolmap in Resources */,
-				C74751A71DC741C700831DB1 /* TimeManagementViewController.xib in Resources */,
 				C7DC01B11E1390E90055B7F8 /* MenuHeaderView.xib in Resources */,
 				C7DC01AD1E12E5BE0055B7F8 /* LaunchView.xib in Resources */,
 				C75F858B1E053F6D0057D76C /* 63462667-8672-3110-B8E4-6AF146455308.bcsymbolmap in Resources */,
@@ -2088,7 +2084,7 @@
 				C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */,
 				C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */,
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
-				C74751B91DC840C700831DB1 /* TimeManagementView.swift in Sources */,
+				C74751B91DC840C700831DB1 /* TMView.swift in Sources */,
 				C7DDA5B81D75FAD30054154C /* String+Convenient.swift in Sources */,
 				C7821EC51D7BF1820056623D /* MMWormholeSession.m in Sources */,
 				C70BF6231D79B9B1006B0C1D /* RealmManager.swift in Sources */,

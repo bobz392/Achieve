@@ -13,7 +13,7 @@ enum StartTimeStatuType {
     case Init
 }
 
-class TimeManagementView: UIView {
+class TMView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -40,10 +40,10 @@ class TimeManagementView: UIView {
     
     fileprivate let soundManager = SoundManager()
     
-    class func loadNib(_ target: AnyObject, method: TimeMethod, task: Task) -> TimeManagementView? {
+    class func loadNib(_ target: AnyObject, method: TimeMethod, task: Task) -> TMView? {
         guard let view =
-            Bundle.main.loadNibNamed("TimeManagementView", owner: target, options: nil)?
-                .first as? TimeManagementView else {
+            Bundle.main.loadNibNamed("TMView", owner: target, options: nil)?
+                .first as? TMView else {
                     return nil
         }
         
@@ -226,7 +226,7 @@ class TimeManagementView: UIView {
     }
 }
 
-extension TimeManagementView: MZTimerLabelDelegate {
+extension TMView: MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval) {
         Logger.log("finish")
         

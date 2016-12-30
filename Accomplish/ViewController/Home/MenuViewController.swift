@@ -141,7 +141,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             if let vc = self.cacheViewControllers[2] {
                 viewController = vc
             } else {
-                let tmVC = TimeManagementViewController()
+                let tmVC = TimeManagementViewController(isSelectTM: false, selectTMBlock: nil)
                 self.cacheViewControllers[2] = tmVC
                 viewController = tmVC
             }

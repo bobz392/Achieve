@@ -12,12 +12,7 @@ class TimeManagementViewController: BaseViewController {
     
     typealias SelectTMBlock = (TimeMethod) -> Void
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var methodTableView: UITableView!
-    @IBOutlet weak var createMethodButton: UIButton!
-    @IBOutlet weak var bottomButtonHeightConstraint: NSLayoutConstraint!
+    fileprivate let methodTableView = UITableView()
     
     // TODO - first come to this page no need to query
     fileprivate var timeMethods = RealmManager.shared.allTimeMethods()
@@ -25,10 +20,10 @@ class TimeManagementViewController: BaseViewController {
     fileprivate var isSelectTM: Bool
     fileprivate var selectTMBlock: SelectTMBlock? = nil
     
-    init(isSelectTM: Bool = false, selectTMBlock: SelectTMBlock? = nil) {
+    init(isSelectTM: Bool, selectTMBlock: SelectTMBlock? = nil) {
         self.isSelectTM = isSelectTM
         self.selectTMBlock = selectTMBlock
-        super.init(nibName: "TimeManagementViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,9 +34,7 @@ class TimeManagementViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,46 +50,19 @@ class TimeManagementViewController: BaseViewController {
     }
     
     override func configMainUI() {
-        let colors = Colors()
-        
-        self.titleLabel.textColor = Colors.cloudColor
-        
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: false)
+        self.congfigMenuButton()
+        let titleLabel = self.createTitleLabel(titleText: "")
+        self.configMethodTableView(bar: bar)
         
         if self.isSelectTM == true {
-            self.bottomButtonHeightConstraint.constant = 0
-            self.createMethodButton.isHidden = true
+            titleLabel.text = Localized("selectTimeManagement")
         } else {
-            self.createMethodButton.tintColor = colors.linkTextColor
-            self.createMethodButton.backgroundColor = Colors.cloudColor
-            self.createMethodButton.addTopShadow()
+            let createMethodButton = self.createPlusButton()
+            createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
+            titleLabel.text = Localized("time_management")
         }
-    }
-    
-    fileprivate func initializeControl() {
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        if self.isSelectTM == true {
-            self.titleLabel.text = Localized("selectTimeManagement")
-        } else {
-            self.createMethodButton.setTitle(Localized("createTimeManagement"), for: .normal)
-            self.createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
-            
-            self.titleLabel.text = Localized("timeManagementSetting")
-        }
-        
-        self.configMethodTableView()
     }
     
     // MARK: - actions
@@ -113,12 +79,22 @@ class TimeManagementViewController: BaseViewController {
     }
 }
 
-extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSource {
-    fileprivate func configMethodTableView() {
+extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate {
+    fileprivate func configMethodTableView(bar: UIView) {
+        self.view.addSubview(self.methodTableView)
+        self.methodTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.methodTableView.delegate = self
+        self.methodTableView.dataSource = self
         self.methodTableView.clearView()
+        self.methodTableView.separatorStyle = .none
+        self.methodTableView.tableFooterView = UIView()
         self.methodTableView.register(TimeMethodTableViewCell.nib,
                                       forCellReuseIdentifier: TimeMethodTableViewCell.reuseId)
-        self.methodTableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,8 +104,10 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TimeMethodTableViewCell.reuseId,
                                                  for: indexPath) as! TimeMethodTableViewCell
-        cell.configCell(method: self.timeMethods[indexPath.row])
         
+        let canSwipe = indexPath.row != 0 && self.isSelectTM == false
+        cell.configCell(method: self.timeMethods[indexPath.row], enableSwipe: canSwipe)
+        cell.delegate = self
         return cell
     }
     
@@ -152,22 +130,19 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row != 0 && self.isSelectTM == false
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            RealmManager.shared.deleteObject(self.timeMethods[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-        default:
-            break
+    func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        if let indexPath = self.methodTableView.indexPath(for: cell) {
+            RealmManager.shared.deleteObject(self.timeMethods[indexPath.row ])
+            self.methodTableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        return true
+    }
+
+}
+
+// MAKR: - drawer open close call back -- not prefect
+extension TimeManagementViewController: MenuDrawerSlideStatusDelegate {
+    func slideOpen(open: Bool) {
+        self.leftBarButton?.isSelected = open
     }
 }

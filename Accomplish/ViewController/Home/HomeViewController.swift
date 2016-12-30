@@ -13,7 +13,6 @@
  
  class HomeViewController: BaseViewController {
     // MARK: - props
-    let newTaskButton = AwesomeButton(type: .custom)
     let taskTableView = UITableView()
     
     fileprivate var showFinishTask = false
@@ -25,7 +24,7 @@
     fileprivate var repeaterManager = RepeaterManager()
     fileprivate weak var newTaskVC: NewTaskViewController? = nil
     fileprivate lazy var icloudManager = CloudKitManager()
-    fileprivate weak var timeManagementView: TimeManagementView? = nil
+    fileprivate weak var tmView: TMView? = nil
     
     // MARK: - life circle
     
@@ -95,17 +94,8 @@
         
         self.configHomeTableView(bar: bar)
         
-        self.view.addSubview(self.newTaskButton)
-        self.newTaskButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-15)
-            make.width.equalTo(70)
-            make.height.equalTo(70)
-            make.centerX.equalToSuperview()
-        }
-        self.newTaskButton.addShadow()
-        self.newTaskButton.layer.cornerRadius = 35
-        self.newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(), backgroundColor: Colors.cellCardColor)
-        self.newTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
+        let createTaskButton = self.createPlusButton()
+        createTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
     }
     
     /**
@@ -136,7 +126,7 @@
      */
     fileprivate func checkTimeMethodRunning() {
         // 如果 time manager view 还存在则之前未退出 app， 则直接交给 view 内部通知处理
-        if let _ = self.timeManagementView { return }
+        if let _ = self.tmView { return }
         let app = AppUserDefault()
         guard let uuid = app.readString(kUserDefaultTMUUIDKey),
             let taskUUID = app.readString(kUserDefaultTMTaskUUID),
@@ -145,8 +135,8 @@
             let tm = RealmManager.shared.queryTimeMethod(uuid: uuid) else { return }
         
         if details.count == 4 {
-            guard let view = TimeManagementView.loadNib(self, method: tm, task: task) else { return }
-            self.timeManagementView = view
+            guard let view = TMView.loadNib(self, method: tm, task: task) else { return }
+            self.tmView = view
             view.moveIn(view: self.view)
             view.configTimeManager(details: details)
         }
@@ -504,8 +494,8 @@
                 let selectVC = TimeManagementViewController(isSelectTM: true, selectTMBlock: { [unowned self] (tm) in
                     dispatch_delay(0.35, closure: {
                         guard let view =
-                            TimeManagementView.loadNib(self, method: tm, task: task) else { return }
-                        self.timeManagementView = view
+                            TMView.loadNib(self, method: tm, task: task) else { return }
+                        self.tmView = view
                         view.moveIn(view: self.view)
                     })
                 })

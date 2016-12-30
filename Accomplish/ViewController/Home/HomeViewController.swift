@@ -93,19 +93,7 @@
             make.trailing.equalToSuperview().offset(-10)
         }
         
-        self.view.addSubview(self.taskTableView)
-        self.taskTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(bar.snp.bottom)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        self.taskTableView.delegate = self
-        self.taskTableView.dataSource = self
-        self.taskTableView.clearView()
-        self.taskTableView.separatorStyle = .none
-        self.taskTableView.tableFooterView = UIView()
-        self.taskTableView.register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
+        self.configHomeTableView(bar: bar)
         
         self.view.addSubview(self.newTaskButton)
         self.newTaskButton.snp.makeConstraints { (make) in
@@ -405,6 +393,23 @@
  
  // MARK: - table view
  extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    fileprivate func configHomeTableView(bar: UIView) {
+        self.view.addSubview(self.taskTableView)
+        self.taskTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.taskTableView.delegate = self
+        self.taskTableView.dataSource = self
+        self.taskTableView.clearView()
+        self.taskTableView.separatorStyle = .none
+        self.taskTableView.tableFooterView = UIView()
+        self.taskTableView.register(TaskTableViewCell.nib,
+                                    forCellReuseIdentifier: TaskTableViewCell.reuseId)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2

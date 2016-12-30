@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfX-Yw-NKh">
-                        <rect key="frame" x="116" y="10" width="184" height="59.5"/>
+                        <rect key="frame" x="116" y="10" width="150.5" height="59.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="completed on 12: 30 am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsp-63-ljx">
                                 <rect key="frame" x="12" y="33.5" width="126.5" height="14"/>
@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天吃法" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZc-vq-JvP">
-                                <rect key="frame" x="12" y="12" width="160" height="14"/>
+                                <rect key="frame" x="12" y="12" width="126.5" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -74,7 +74,8 @@
                             <constraint firstItem="fZc-vq-JvP" firstAttribute="top" secondItem="OfX-Yw-NKh" secondAttribute="top" constant="12" id="KlT-Yn-OJl"/>
                             <constraint firstItem="lsp-63-ljx" firstAttribute="top" secondItem="fZc-vq-JvP" secondAttribute="bottom" constant="8" id="Vzy-5c-1Ul"/>
                             <constraint firstItem="lsp-63-ljx" firstAttribute="leading" secondItem="fZc-vq-JvP" secondAttribute="leading" id="bNb-XX-fwP"/>
-                            <constraint firstAttribute="trailing" secondItem="fZc-vq-JvP" secondAttribute="trailing" constant="12" id="leh-kQ-VVc"/>
+                            <constraint firstAttribute="trailing" secondItem="fZc-vq-JvP" secondAttribute="trailing" priority="750" constant="12" id="leh-kQ-VVc"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lsp-63-ljx" secondAttribute="trailing" constant="12" id="o7o-b5-gIS"/>
                             <constraint firstAttribute="bottom" secondItem="lsp-63-ljx" secondAttribute="bottom" constant="12" id="uRt-B9-Vc6"/>
                         </constraints>
                     </view>
@@ -87,7 +88,7 @@
                     <constraint firstItem="3VE-aM-y6G" firstAttribute="centerX" secondItem="WAn-HE-Swi" secondAttribute="centerX" id="NyO-F1-AGY"/>
                     <constraint firstItem="3VE-aM-y6G" firstAttribute="centerY" secondItem="YUb-QW-nsg" secondAttribute="centerY" id="Oc1-jx-YDz"/>
                     <constraint firstItem="WAn-HE-Swi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Q9F-h7-ORb"/>
-                    <constraint firstAttribute="trailing" secondItem="OfX-Yw-NKh" secondAttribute="trailing" constant="20" id="TOK-cz-an7"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OfX-Yw-NKh" secondAttribute="trailing" constant="20" id="TOK-cz-an7"/>
                     <constraint firstAttribute="bottom" secondItem="WAn-HE-Swi" secondAttribute="bottom" id="Wo2-9i-em9"/>
                     <constraint firstItem="WAn-HE-Swi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="34.5" id="YR4-JB-dwo"/>
                     <constraint firstItem="OfX-Yw-NKh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="e6k-Ue-6aF"/>

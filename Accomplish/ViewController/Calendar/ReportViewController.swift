@@ -43,7 +43,7 @@ class ReportViewController: BaseViewController {
     
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
-        let bar = self.createCustomBar(height: 64, withBottomLine: true)
+        let bar = self.createCustomBar(height: 64, withBottomLine: false)
         let backButton = self.createLeftBarButton(iconString: Icons.back.iconString())
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         

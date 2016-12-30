@@ -8,45 +8,50 @@
 
 import Foundation
 
+struct ControllerUtil {
+    
+    internal func drawerController() -> MMDrawerController? {
+        guard let navi = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController,
+            let drawer = navi.viewControllers.first as? MMDrawerController else { return nil }
+        let _ = navi.popToRootViewController(animated: false)
+        drawer.closeDrawer(animated: false, completion: nil)
+        return drawer
+    }
+    
+    internal func menuHomeViewControllers() -> (MenuViewController?, HomeViewController?) {
+        guard let drawer = self.drawerController() else { return (nil, nil) }
+        Logger.log((drawer.leftDrawerViewController as? MenuViewController, drawer.centerViewController as? HomeViewController))
+        return (drawer.leftDrawerViewController as? MenuViewController, drawer.centerViewController as? HomeViewController)
+    }
+    
+}
+
 struct UrlSchemeDispatcher {
  
-    func handleUrl(_ url: URL) -> Bool {
-//        SystemInfo.log(url)
-//        SystemInfo.log("url.baseURL = \(url.baseURL)")
-//        SystemInfo.log("absoluteString = \(url.absoluteString)")
-//        SystemInfo.log("pathComponents = \(url.pathComponents)")
-//        SystemInfo.log("relativeString = \(url.relativeString)")
-//        SystemInfo.log("lastPathComponent = \(url.lastPathComponent)")
-//        SystemInfo.log("query = \(url.query)")
-        
-        if url.absoluteString.contains(kTaskDetailPath) {
+    private let controllerUtil = ControllerUtil()
+    
+    func handleURL(url: URL) -> Bool {
+        if url.absoluteString.contains(UrlType.taskDetail.pathString()) {
             let uuid = url.lastPathComponent
             self.checkTaskDetail(uuid)
             return true
-        } else if url.absoluteString.contains(kTaskAllPath) {
+        } else if url.absoluteString.contains(UrlType.home.pathString()) {
             self.enterDestop()
-            return true
-        } else if url.scheme == kMyRootUrlScheme {
             return true
         }
         
         return false
     }
     
-    fileprivate func rootViewController() -> UINavigationController? {
-        let root = UIApplication.shared.keyWindow?.rootViewController as? MMDrawerController
-        return root?.centerViewController as? UINavigationController
+    func enterDestop() {
+        let (menuVC, _) = self.controllerUtil.menuHomeViewControllers()
+        menuVC?.selectedNewMenu(index: 0)
     }
     
     func checkTaskDetail(_ uuid: String) {
-        guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewController(animated: false)
-        guard let homeVC = rootNavigationController.viewControllers.first as? HomeViewController else { return }
-        homeVC.enterTaskFromToday(uuid)
+        let (menuVC, homeVC) = self.controllerUtil.menuHomeViewControllers()
+        menuVC?.selectedNewMenu(index: 0)
+        homeVC?.enterTaskFromToday(uuid)
     }
-    
-    func enterDestop() {
-        guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewController(animated: false)
-    }
+
 }

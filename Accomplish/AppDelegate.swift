@@ -149,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-        return UrlSchemeDispatcher().handleUrl(url)
+        return UrlSchemeDispatcher().handleURL(url: url)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

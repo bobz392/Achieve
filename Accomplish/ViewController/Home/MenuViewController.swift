@@ -77,6 +77,11 @@ class MenuViewController: UIViewController {
         self.menuTableView.tableFooterView = UIView()
     }
     
+    func selectedNewMenu(index: Int) {
+        self.menuTableView.selectRow(at: IndexPath(row: index, section:0), animated: false, scrollPosition: .none)
+        self.tableView(self.menuTableView, didSelectRowAt: IndexPath(row: index, section:0))
+    }
+    
 }
 
 // MARK: -- UITableView delegate and dataSource

@@ -18,6 +18,27 @@ let kKeyboardAnimationDelay: TimeInterval = 0.1
 
 let kBackButtonCorner: CGFloat = 21
 
-let kMyRootUrlScheme: String = "achieve://"
-let kTaskDetailPath = "task/detail/"
-let kTaskAllPath = "task/all/"
+enum UrlType {
+    case taskDetail
+    case home
+    
+    func absoluteString() -> String {
+        let scheme = "achieve://"
+        switch self {
+        case .taskDetail:
+            return "\(scheme)\(self.pathString())"
+        case .home:
+            return "\(scheme)\(self.pathString())"
+        }
+    }
+    
+    func pathString() -> String {
+        switch self {
+        case .taskDetail:
+            return "task/detail/"
+        case .home:
+            return "task/all/"
+        }
+    }
+    
+}

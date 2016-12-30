@@ -18,6 +18,7 @@ enum QuickActionType: String {
 struct QuickActionDispatcher {
     
     typealias QuickActionCompletion = (Bool) -> Void
+    private let controllerUtil = ControllerUtil()
     
     func dispatch(_ shortcutItem: UIApplicationShortcutItem, completion: QuickActionCompletion) {
         switch shortcutItem.type {
@@ -35,28 +36,21 @@ struct QuickActionDispatcher {
         }
     }
     
-    fileprivate func rootViewController() -> UINavigationController? {
-        return UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-    }
-    
     fileprivate func handleCreate() {
-        guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewController(animated: false)
-        guard let homeVC = rootNavigationController.viewControllers.first as? HomeViewController else { return }
-        homeVC.newTaskAction()
+        Logger.log(controllerUtil.menuHomeViewControllers())
+        let (menuVC, homeVC) = controllerUtil.menuHomeViewControllers()
+        menuVC?.selectedNewMenu(index: 0)
+        homeVC?.newTaskAction()
     }
     
     fileprivate func handleCalender() {
-        guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewController(animated: false)
-        let calendar = CalendarViewController()
-        rootNavigationController.pushViewController(calendar, animated: true)
+        let (menuVC, _) = controllerUtil.menuHomeViewControllers()
+        menuVC?.selectedNewMenu(index: 1)
     }
     
     fileprivate func handleSearch() {
-        guard let rootNavigationController = rootViewController() else { return }
-        rootNavigationController.popToRootViewController(animated: false)
+        guard let drawer = controllerUtil.drawerController() else { return }
         let search = SearchViewController()
-        rootNavigationController.pushViewController(search, animated: true)
+        drawer.navigationController?.pushViewController(search, animated: true)
     }
 }

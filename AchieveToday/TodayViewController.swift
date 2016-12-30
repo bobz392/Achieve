@@ -128,7 +128,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func enterApp() {
-        guard let url = URL(string: kMyRootUrlScheme + kTaskAllPath) else { return }
+        
+        guard let url = URL(string: UrlType.home.absoluteString()) else { return }
         self.extensionContext?.open(url, completionHandler: nil)
     }
     
@@ -191,12 +192,12 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let _ = self.wrokingTimeMethodName {
-            guard let url = URL(string: kMyRootUrlScheme) else { return }
+            guard let url = URL(string: UrlType.home.absoluteString()) else { return }
             self.extensionContext?.open(url, completionHandler: nil)
         } else {
             let task = self.allGroupTasks[indexPath.row]
             let taskUUID = task.taskUUID
-            guard let url = URL(string: kMyRootUrlScheme + kTaskDetailPath + taskUUID) else { return }
+            guard let url = URL(string: UrlType.taskDetail.absoluteString() + taskUUID) else { return }
             self.extensionContext?.open(url, completionHandler: nil)
         }
     }

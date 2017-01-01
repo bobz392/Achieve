@@ -58,7 +58,7 @@ class CalendarViewController: BaseViewController {
         
         if self.inTodayAlleady == false {
             let now = Date()
-            let startMonth = self.checkInManager.getMonthCheckIn().first?.checkInDate?.month()
+            let startMonth = self.firstDate.month() 
             self.calendarView.selectDates([now])
             
             self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, completionHandler: {
@@ -190,8 +190,9 @@ class CalendarViewController: BaseViewController {
     }
     
     func monthAction() {
-        let monthVC =
-            MonthViewController(checkIns: self.checkInManager.getMonthCheckIn())
+        guard let date = self.calendarView.visibleDates().monthDates.first else { return }
+        let nd = date as NSDate
+        let monthVC = MonthViewController(queryFormat: nd.formattedDate(withFormat: ChartQueryDateFormat))
         self.navigationController?.pushViewController(monthVC, animated: true)
     }
 }

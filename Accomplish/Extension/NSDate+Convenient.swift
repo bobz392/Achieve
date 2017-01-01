@@ -16,7 +16,7 @@ let ReportDateFormat = "HH:mm"
 let MonthDayFormat = "MMMM dd"
 let MonthFormat = "MMMM"
 let OnlyTimeFormat = "hh:mm aa"
-let queryDateFormat = "yyyy.MM"
+let ChartQueryDateFormat = "yyyy.MM"
 let MenuDateFormat = "MMMM  yyyy"
 
 // TASK

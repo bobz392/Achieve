@@ -33,8 +33,8 @@ struct CheckInManager {
         return counts
     }
     
-    func getMonthCheckIn() -> Array<CheckIn> {
-        let checkIns = RealmManager.shared.monthlyCheckIn()
+    func getMonthCheckIn(format: String) -> Array<CheckIn> {
+        let checkIns = RealmManager.shared.monthlyCheckIn(format: format)
         
         return Array<CheckIn>(checkIns)
     }

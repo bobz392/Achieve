@@ -35,10 +35,10 @@ extension RealmManager {
         return realm.objects(CheckIn.self)
     }
     
-    func monthlyCheckIn() -> Results<CheckIn> {
-        let month = NSDate().formattedDate(withFormat: queryDateFormat)!
+    func monthlyCheckIn(format: String) -> Results<CheckIn> {
+//        let month = NSDate().formattedDate(withFormat: ChartQueryDateFormat)!
         let checkIns = realm.objects(CheckIn.self)
-            .filter("formatedDate BEGINSWITH '\(month)'")
+            .filter("formatedDate BEGINSWITH '\(format)'")
             .sorted(byProperty: "checkInDate", ascending: true)
         return checkIns
     }

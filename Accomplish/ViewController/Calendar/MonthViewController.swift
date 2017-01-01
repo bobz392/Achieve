@@ -17,19 +17,18 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     @IBOutlet weak var emptyDataLabel: UILabel!
     
     fileprivate let chartView = LineChartView()
-    fileprivate let checkIns: Array<CheckIn>
     fileprivate var monthlyTasks = Array<Task>()
     fileprivate var taskDict = Dictionary<String, Array<Int>>()
     
     let monthRepeatFormat = NumberFormatter()
+    var queryFormat = ""
     
-    init(checkIns: Array<CheckIn>) {
-        self.checkIns = checkIns
+    init(queryFormat: String) {
+        self.queryFormat = queryFormat
         super.init(nibName: "MonthViewController", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.checkIns = Array<CheckIn>()
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -43,8 +42,6 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.fetchMonthlyTasks()
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,6 +71,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     fileprivate func initializeControl() {
         self.chartCardView.layer.cornerRadius = kCardViewCornerRadius
         self.initChart()
+        self.fetchMonthlyTasks()
         self.initTableView()
         
         self.backButton.addShadow()
@@ -88,7 +86,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     // MARK: - actions
     fileprivate func fetchMonthlyTasks() {
-        let tasks = RealmManager.shared.queryMonthlyTask()
+        let tasks = RealmManager.shared.queryMonthlyTask(format: queryFormat)
         
         for task in tasks {
             // 如果是重复任务
@@ -225,30 +223,27 @@ extension MonthViewController: IAxisValueFormatter {
         var values = Array<ChartDataEntry>()
         
         var lastDay = 0
-        var monthRats = [Double]()
-        for check in self.checkIns {
-            let day = check.checkInDate?.day() ?? 0
-            if day > lastDay {
-                let appends = Array<Double>(repeating: 0.0, count: day - lastDay - 1)
-                monthRats.append(contentsOf: appends)
-            }
-            if (check.createdCount == 0) {
-                monthRats.append(0.0)
+        let checkIns = RealmManager.shared.monthlyCheckIn(format: self.queryFormat)
+            
+        for day in 0..<count {
+            
+            if lastDay >= checkIns.count {
+                values.append(ChartDataEntry(x: Double(day), y: 0))
             } else {
-                monthRats.append(Double(check.completedCount) / Double(check.createdCount))
+                let checkIn = checkIns[lastDay]
+                
+                if "\(queryFormat).\(String(format: "%02d", day))" == checkIn.formatedDate {
+                    var rate: Double = 0
+                    if checkIn.createdCount > 0 {
+                        rate = Double(checkIn.completedCount) / Double(checkIn.createdCount) * 100.0
+                    }
+                    values.append(ChartDataEntry(x: Double(day), y: rate))
+                    lastDay += 1
+                } else {
+                    values.append(ChartDataEntry(x: Double(day), y: 0))
+                }
             }
-            lastDay = day
-        }
-        
-        if let lastDay = self.checkIns.last?.checkInDate?.day() {
-            if lastDay < count {
-                let appends = Array<Double>(repeating: 0.0, count: count - lastDay)
-                monthRats.append(contentsOf: appends)
-            }
-        }
-        
-        for i in 0..<monthRats.count {
-            values.append(ChartDataEntry(x: Double(i), y: monthRats[i]))
+            
         }
         
         let set1 = LineChartDataSet(values: values, label: "date 1")
@@ -268,7 +263,6 @@ extension MonthViewController: IAxisValueFormatter {
     }
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        Logger.log(value)
         return "\(Int(value) + 1)"
     }
 }

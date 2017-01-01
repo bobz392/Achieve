@@ -22,5 +22,6 @@ class SettingHeaderView: UIView {
         
         self.headerTitleLabel.textColor = Colors.secondaryTextColor
         self.separatorView.backgroundColor = Colors.separatorColor
-        self.backgroundColor = Colors.cloudColor    }
+        self.backgroundColor = Colors.cloudColor
+    }
 }

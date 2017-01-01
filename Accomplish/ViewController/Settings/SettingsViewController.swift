@@ -10,18 +10,12 @@ import UIKit
 
 class SettingsViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var settingTableView: UITableView!
-    @IBOutlet weak var backButton: UIButton!
-    
     fileprivate var titles = [[String]]()
-    fileprivate var icons = [[String]]()
-    fileprivate var sizes = [[CGFloat]]()
+    fileprivate var icons = [[Icons]]()
     
-    fileprivate let weekIndex = 3
-    fileprivate let closeDueIndex = 4
-    fileprivate let closeSoundIndex = 5
+    fileprivate let weekIndex = 1
+    fileprivate let closeDueIndex = 2
+    fileprivate let closeSoundIndex = 3
     
     fileprivate let settingsTableView = UITableView()
     
@@ -29,9 +23,7 @@ class SettingsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,47 +32,16 @@ class SettingsViewController: BaseViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        
         let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
         self.congfigMenuButton()
         self.createTitleLabel(titleText: Localized("settings"), style: .center)
         
-        self.view.addSubview(self.settingsTableView)
-        
-        let colors = Colors()
-        
-        self.titleLabel.textColor = Colors.cloudColor
-        
-        self.settingTableView.clearView()
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        
-        self.settingTableView.separatorColor = Colors.separatorColor
-        self.settingTableView.reloadData()
-    }
-    
-    fileprivate func initializeControl() {
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        
-        self.settingTableView
-            .register(SettingTableViewCell.nib, forCellReuseIdentifier: SettingTableViewCell.reuseId)
-        self.settingTableView
-            .register(SettingDetialTableViewCell.nib, forCellReuseIdentifier: SettingDetialTableViewCell.reuseId)
-        
+        self.configSettingsTableView(bar: bar)
         self.settingDatas()
     }
     
@@ -93,8 +54,6 @@ class SettingsViewController: BaseViewController {
             ]
         
         let general = [
-            Localized("theme"),
-            Localized("timeManagementSetting"),
             Localized("shareSetting"),
             Localized("startDay"),
             Localized("enabDueNextDay"),
@@ -106,41 +65,21 @@ class SettingsViewController: BaseViewController {
         
         
         let eIcons = [
-            "fa-envelope",
-            "fa-info-circle",
-            "fa-pencil",
+            Icons.mail,
+            Icons.about,
+            Icons.star,
             ]
         
         let gIcons = [
-            "fa-paint-brush",
-            "fa-bullseye",
-            "fa-bookmark",
-            "fa-calendar",
-            "fa-retweet",
-            "fa-music",
+            Icons.readLater,
+            Icons.weekStart,
+            Icons.delay,
+            Icons.sound,
             ]
         self.icons.append(gIcons)
         self.icons.append(eIcons)
         
-        let eSize: [CGFloat] = [
-            16,
-            20,
-            18,
-            ]
-        
-        let gSize: [CGFloat] = [
-            16,
-            20,
-            20,
-            17,
-            25,
-            18,
-            ]
-        
-        self.sizes.append(gSize)
-        self.sizes.append(eSize)
-        
-        self.settingTableView.reloadData()
+        self.settingsTableView.reloadData()
     }
 
 }
@@ -151,6 +90,27 @@ fileprivate enum DaysOfWeek: Int {
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func configSettingsTableView(bar: UIView) {
+        self.view.addSubview(self.settingsTableView)
+        self.settingsTableView.backgroundColor = Colors.cloudColor
+        self.settingsTableView.separatorColor = Colors.separatorColor
+        self.settingsTableView.dataSource = self
+        self.settingsTableView.delegate = self
+        self.settingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 48, bottom: 0, right: 0)
+        self.settingsTableView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalTo(bar.snp.bottom)
+            make.bottom.equalToSuperview()
+        }
+        self.settingsTableView.tableFooterView = UIView()
+        self.settingsTableView.register(SettingTableViewCell.nib,
+                                       forCellReuseIdentifier: SettingTableViewCell.reuseId)
+        self.settingsTableView.register(SettingDetialTableViewCell.nib,
+                                       forCellReuseIdentifier: SettingDetialTableViewCell.reuseId)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles[section].count
     }
@@ -174,15 +134,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let size = self.sizes[indexPath.section][indexPath.row]
-        let icon = try! FAKFontAwesome(identifier:
-            self.icons[indexPath.section][indexPath.row], size: size)
-        icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
-        
+        let icon = self.icons[indexPath.section][indexPath.row]
         if indexPath.section == 0 && indexPath.row >= self.weekIndex {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingDetialTableViewCell.reuseId, for: indexPath) as! SettingDetialTableViewCell
             cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
-            cell.iconLabel.attributedText = icon.attributedString()
+            cell.iconImageView.image = icon.iconImage()
             cell.accessoryType = .none
             
             let ud = AppUserDefault()
@@ -220,7 +176,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseId, for: indexPath) as! SettingTableViewCell
             cell.settingTitleLabel.text = self.titles[indexPath.section][indexPath.row]
-            cell.iconLabel.attributedText = icon.attributedString()
+            cell.iconImageView.image = icon.iconImage()
             cell.accessoryType = .disclosureIndicator
             
             return cell
@@ -247,16 +203,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
-//                let backgroundVC = BackgroundViewController()
-//                self.navigationController?.pushViewController(backgroundVC, animated: true)
-                break
-                
-            // 工作法管理
-            case 1:
-                let timeVC = TimeManagementViewController(isSelectTM: false)
-                self.navigationController?.pushViewController(timeVC, animated: true)
-            
-            case 2:
                 let readVC = ReadLaterViewController()
                 self.navigationController?.pushViewController(readVC, animated: true)
                 
@@ -310,7 +256,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         ud.write(key, value: !closeDue)
         
         let reloadIndex = IndexPath(row: index, section: 0)
-        self.settingTableView.reloadRows(at: [reloadIndex], with: .automatic)
+        self.settingsTableView.reloadRows(at: [reloadIndex], with: .automatic)
     }
     
     fileprivate func handleWeekOfDay() {
@@ -337,8 +283,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
         
-        let reloadIndex = IndexPath(row: 2, section: 0)
-        self.settingTableView.reloadRows(at: [reloadIndex], with: .automatic)
+        let reloadIndex = IndexPath(row: weekIndex, section: 0)
+        self.settingsTableView.reloadRows(at: [reloadIndex], with: .automatic)
     }
 }
 

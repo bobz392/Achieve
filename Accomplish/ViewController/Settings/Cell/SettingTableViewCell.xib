@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,38 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qMZ-re-OmF">
-                        <rect key="frame" x="15" y="12" width="20" height="20"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="DrW-zy-ASr"/>
-                            <constraint firstAttribute="width" constant="20" id="RIr-hY-5J4"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vNU-qM-fb8">
-                        <rect key="frame" x="50" y="13.5" width="35" height="17"/>
+                        <rect key="frame" x="48" y="14" width="35" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-c3-KRK">
+                        <rect key="frame" x="15" y="13" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="2h5-OG-MnQ"/>
+                            <constraint firstAttribute="width" constant="18" id="BGN-2R-hJ7"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="qMZ-re-OmF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6aX-Vj-siY"/>
-                    <constraint firstItem="qMZ-re-OmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="awf-7I-MC5"/>
+                    <constraint firstItem="bl8-c3-KRK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="F2M-Rc-MVb"/>
+                    <constraint firstItem="bl8-c3-KRK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NVt-8I-K4f"/>
                     <constraint firstItem="vNU-qM-fb8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bzu-T3-rZ5"/>
-                    <constraint firstItem="vNU-qM-fb8" firstAttribute="leading" secondItem="qMZ-re-OmF" secondAttribute="trailing" constant="15" id="jwf-Hx-tIM"/>
+                    <constraint firstItem="vNU-qM-fb8" firstAttribute="leading" secondItem="bl8-c3-KRK" secondAttribute="trailing" constant="15" id="rQ6-Oc-wdC"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="iconLabel" destination="qMZ-re-OmF" id="w4R-q5-989"/>
+                <outlet property="iconImageView" destination="bl8-c3-KRK" id="0FL-pa-rXD"/>
                 <outlet property="settingTitleLabel" destination="vNU-qM-fb8" id="era-jl-GWx"/>
             </connections>
-            <point key="canvasLocation" x="382" y="197"/>
+            <point key="canvasLocation" x="49" y="112"/>
         </tableViewCell>
     </objects>
 </document>

@@ -245,7 +245,6 @@
 		C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */; };
 		C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */; };
 		C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807141D8298380011DE19 /* SettingsViewController.swift */; };
-		C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807151D8298380011DE19 /* SettingsViewController.xib */; };
 		C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C798071A1D82B97E0011DE19 /* Crashlytics.framework */; };
 		C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */ = {isa = PBXBuildFile; fileRef = C798071D1D82C0C70011DE19 /* Acknowledgements */; };
 		C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */; };
@@ -672,7 +671,6 @@
 		C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionDispatcher.swift; sourceTree = "<group>"; };
 		C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSchemeDispatcher.swift; sourceTree = "<group>"; };
 		C79807141D8298380011DE19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		C79807151D8298380011DE19 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		C79807191D82B97E0011DE19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		C798071A1D82B97E0011DE19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C798071D1D82C0C70011DE19 /* Acknowledgements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Acknowledgements; sourceTree = "<group>"; };
@@ -1218,7 +1216,6 @@
 			children = (
 				C798071F1D82D0C20011DE19 /* Cell */,
 				C79807141D8298380011DE19 /* SettingsViewController.swift */,
-				C79807151D8298380011DE19 /* SettingsViewController.xib */,
 				C769A6411D885AB700E68871 /* AboutViewController.swift */,
 				C769A6451D8862D800E68871 /* LicensesViewController.swift */,
 			);
@@ -1717,7 +1714,6 @@
 				C75F85861E053F6D0057D76C /* 33CB8D26-3804-37E4-A0EC-0E593268595E.bcsymbolmap in Resources */,
 				C73B446A1E0C494200DDE093 /* SectionTableViewCell.xib in Resources */,
 				C73B446E1E0C494200DDE093 /* TagTableViewCell.xib in Resources */,
-				C79807171D8298380011DE19 /* SettingsViewController.xib in Resources */,
 				C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */,
 				C73B446C1E0C494200DDE093 /* SubtaskTableViewCell.xib in Resources */,
 				C75F85821E053F6D0057D76C /* 00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap in Resources */,

@@ -33,6 +33,7 @@ class CalendarViewController: BaseViewController {
     lazy fileprivate var row = 6
     fileprivate var inTodayAlleady = false
     fileprivate var monthButtonRight: CGFloat = 0
+    fileprivate var currentWeekStart = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,11 @@ class CalendarViewController: BaseViewController {
             }
         
             self.inTodayAlleady = true
+        } else {
+            if self.currentWeekStart != AppUserDefault().readInt(kUserDefaultWeekStartKey) {
+                self.configWeekView()
+                self.calendarView.reloadData()
+            }
         }
         
         self.monthButtonRight = self.monthButton.frame.width * 0.9 + 5
@@ -197,8 +203,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let startDate = self.firstDate as Date
         let aCalendar = Calendar.current
         
-        let firstDayOfWeekValue = AppUserDefault().readInt(kUserDefaultWeekStartKey)
-        let firstDayOfWeek = DaysOfWeek(rawValue: firstDayOfWeekValue) ?? DaysOfWeek.sunday
+        self.currentWeekStart = AppUserDefault().readInt(kUserDefaultWeekStartKey)
+        let firstDayOfWeek = DaysOfWeek(rawValue: self.currentWeekStart) ?? DaysOfWeek.sunday
         let params = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: row, calendar: aCalendar, firstDayOfWeek: firstDayOfWeek)
         
         return params

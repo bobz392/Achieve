@@ -39,6 +39,11 @@ enum Icons {
     case save
     case rename
     case briefcase
+    case about
+    case delay
+    case sound
+    case mail
+    case star
     
     func iconString() -> String {
         switch self {
@@ -61,9 +66,7 @@ enum Icons {
         case .smallDelete: return "small_delete"
         case .arrangement: return "arrangement"
         case .calendar: return "calendar"
-        case .readLater: return "read_later"
         case .settings: return "settings"
-        case .weekStart: return "week_start"
         case .home: return "home"
         case .finish: return "finish"
         case .unfinish: return "unfinish"
@@ -72,6 +75,13 @@ enum Icons {
         case .save: return "save"
         case .rename: return "rename"
         case .briefcase: return "briefcase"
+        case .about: return "about"
+        case .delay: return "delay"
+        case .mail: return "mail"
+        case .sound: return "sound"
+        case .star: return "star"
+        case .weekStart: return "week_start"
+        case .readLater: return "read_later"
         }
     }
     

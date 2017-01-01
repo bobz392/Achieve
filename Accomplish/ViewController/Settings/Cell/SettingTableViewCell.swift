@@ -15,20 +15,19 @@ class SettingTableViewCell: BaseTableViewCell {
     static let rowHeight: CGFloat = 44
     
     @IBOutlet weak var settingTitleLabel: UILabel!
-    @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.contentView.clearView()
-        self.backgroundColor = Colors.cloudColor
-        self.settingTitleLabel.textColor =
-            Colors.mainTextColor
+        self.backgroundColor = Colors.cellCardColor
+        self.iconImageView.tintColor = Colors.cellLabelSelectedTextColor
+        settingTitleLabel.textColor = Colors.mainTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
     
 }

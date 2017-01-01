@@ -99,7 +99,9 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
                     }
                 }
             }
-            .moveIn()
+
+        guard let moveInView = self.moveInBlock?() else { return }
+        inputView.setMoveInView(moveInView: moveInView).moveIn()
     }
 }
 

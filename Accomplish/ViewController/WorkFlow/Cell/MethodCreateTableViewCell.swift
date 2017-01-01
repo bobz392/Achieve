@@ -20,8 +20,8 @@ class MethodCreateTableViewCell: BaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.createButton.setImage(Icons.plus.iconImage(), for: .normal)
-        self.createButton.tintColor = Colors.cellLabelSelectedTextColor
+        self.createButton.setImage(Icons.smallPlus.iconImage(), for: .normal)
+        self.createButton.tintColor = Colors.mainIconColor
     }
 
 }

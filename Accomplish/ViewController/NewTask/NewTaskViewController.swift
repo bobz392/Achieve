@@ -67,13 +67,8 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func configMainUI() {
-        let colors = Colors()
         self.cardView.backgroundColor = Colors.cloudColor
-        self.titleTextField.tintColor = colors.mainGreenColor
-        
-//        self.prioritySlideSegmental.tintColor = colors.mainGreenColor
-        
-        self.prioritySlideSegmental.sliderBackgroundColor = colors.mainGreenColor
+        self.prioritySlideSegmental.sliderBackgroundColor = Colors.cellLabelSelectedTextColor
         self.priorityLabel.textColor = Colors.mainTextColor
         self.toolView.backgroundColor = Colors.cloudColor
         self.lineView.backgroundColor = Colors.separatorColor
@@ -81,18 +76,16 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.dateToolView.backgroundColor = Colors.cloudColor
         self.datePicker.backgroundColor = Colors.cloudColor
         
-        self.cancelButton.tintColor = colors.mainGreenColor
-        self.saveButton.tintColor = colors.mainGreenColor
-        self.setDateButton.tintColor = colors.mainGreenColor
-        self.cancelDateButton.tintColor = colors.mainGreenColor
+        self.cancelButton.tintColor = Colors.cellLabelSelectedTextColor
+        self.saveButton.tintColor = Colors.cellLabelSelectedTextColor
+        self.setDateButton.tintColor = Colors.cellLabelSelectedTextColor
+        self.cancelDateButton.tintColor = Colors.cellLabelSelectedTextColor
         
-        self.clockButton.createIconButton(iconSize: kTaskDetailCellIconSize,
-                                          icon: TaskIconCalendar,
-                                          color: Colors.secondaryTextColor, status: .normal)
+        self.clockButton.setImage(Icons.schedule.iconImage(), for: .normal)
+        self.clockButton.tintColor = Colors.cellLabelSelectedTextColor
         
-        self.systemButton.createIconButton(iconSize: kTaskDetailCellIconSize,
-                                           icon: SystemIcon,
-                                           color: colors.mainGreenColor, status: .normal)
+        self.systemButton.setImage(Icons.briefcase.iconImage(), for: .normal)
+        self.systemButton.tintColor = Colors.cellLabelSelectedTextColor
     }
     
     fileprivate func initializeControl() {

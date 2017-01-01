@@ -38,6 +38,7 @@ enum Icons {
     case closeDown
     case save
     case rename
+    case briefcase
     
     func iconString() -> String {
         switch self {
@@ -70,6 +71,7 @@ enum Icons {
         case .closeDown: return "close_down"
         case .save: return "save"
         case .rename: return "rename"
+        case .briefcase: return "briefcase"
         }
     }
     

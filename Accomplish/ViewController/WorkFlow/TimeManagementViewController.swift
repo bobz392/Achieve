@@ -34,7 +34,6 @@ class TimeManagementViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.configMainUI()
     }
     
@@ -91,9 +90,7 @@ class TimeManagementViewController: BaseViewController {
                 let timeManagerEditorVC =
                     TimeManagerEditorViewController(method: timeMethod, canChange: true)
                 self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
-                
                 RealmManager.shared.writeObject(timeMethod)
-                self.methodTableView.reloadData()
             })
             .moveIn()
     }

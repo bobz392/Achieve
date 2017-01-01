@@ -19,6 +19,7 @@ class TimeManagementViewController: BaseViewController {
     // 是是选择一个工作法开始，还是管理工作法
     fileprivate var isSelectTM: Bool
     fileprivate var selectTMBlock: SelectTMBlock? = nil
+    fileprivate var timeMethodInputView: TimeMethodInputView? = nil
     
     init(isSelectTM: Bool, selectTMBlock: SelectTMBlock? = nil) {
         self.isSelectTM = isSelectTM

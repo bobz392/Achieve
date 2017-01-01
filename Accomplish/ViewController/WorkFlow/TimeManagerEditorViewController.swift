@@ -10,18 +10,19 @@ import UIKit
 
 class TimeManagerEditorViewController: BaseViewController {
     
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var methodNameTextFieldHolderView: UIView!
-    @IBOutlet weak var methodNameButton: UIButton!
-    @IBOutlet weak var methodTableView: UITableView!
-    @IBOutlet weak var addGroupButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var methodRepeatTitleLabel: UILabel!
-    @IBOutlet weak var methodRepeatLabel: UILabel!
+//    @IBOutlet weak var cardView: UIView!
+//    @IBOutlet weak var methodNameTextFieldHolderView: UIView!
+//    @IBOutlet weak var methodNameButton: UIButton!
+//    
+//    @IBOutlet weak var addGroupButton: UIButton!
+//    @IBOutlet weak var backButton: UIButton!
+//    @IBOutlet weak var methodRepeatTitleLabel: UILabel!
+//    @IBOutlet weak var methodRepeatLabel: UILabel!
+//    
+//    @IBOutlet weak var backButtonCenterConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var addGroupButtonCenterConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var backButtonCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addGroupButtonCenterConstraint: NSLayoutConstraint!
-    
+    fileprivate let methodTableView = UITableView()
     
     internal var timeMethodInputView: TimeMethodInputView? = nil
     
@@ -33,7 +34,7 @@ class TimeManagerEditorViewController: BaseViewController {
         self.timeMethod = method
         self.canChange = canChange
         self.isCreate = isCreate
-        super.init(nibName: "TimeManagerEditorViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,16 +44,25 @@ class TimeManagerEditorViewController: BaseViewController {
         super.init(coder: aDecoder)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        RealmManager.shared.updateObject {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+//        self.initializeControl()
         
         if self.isCreate {
             self.changeMethodNameAction()
@@ -65,67 +75,68 @@ class TimeManagerEditorViewController: BaseViewController {
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
         
-        self.cardView.backgroundColor = Colors.cloudColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        self.createTitleLabel(titleText: self.timeMethod.name, style: .left)
+        self.configMethodTableView(bar: bar)
         
-        self.view.backgroundColor = colors.mainGreenColor
-        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .normal)
-        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .disabled)
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        self.addGroupButton.buttonColor(colors)
-        self.addGroupButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: "fa-plus",
-                                         color: colors.mainGreenColor, status: .normal)
-        
-        self.methodRepeatTitleLabel.textColor = Colors.mainTextColor
-        self.methodRepeatLabel.textColor = colors.mainGreenColor
-        
-        if self.isCreate || self.canChange {
-            self.addGroupButtonCenterConstraint.constant = 50
-            self.backButtonCenterConstraint.constant = -50
-            // 进来的时候首先持久化临时创建的 timeMethod，返回的时候根据用户的选择来决定是否删除
-            // 其次是对于后面的所有操作这样可以一致来对待
-            // 最次是可以防止突发情况导致的编辑未保存，例如关app 关机 等
-            RealmManager.shared.writeObject(self.timeMethod)
-        } else {
-            self.addGroupButtonCenterConstraint.constant = 0
-            self.addGroupButton.isHidden = true
-            self.backButtonCenterConstraint.constant = 0
+        if self.canChange {
+            let addGroupButton = self.createPlusButton()
+            addGroupButton.addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
         }
+        self.checkInputViewCreated()
+        
+//        let colors = Colors()
+//        
+//        self.cardView.backgroundColor = Colors.cloudColor
+//        
+//        self.view.backgroundColor = colors.mainGreenColor
+//        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .normal)
+//        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .disabled)
+//        
+//        self.backButton.buttonColor(colors)
+//        self.backButton.createIconButton(iconSize: kBackButtonCorner,
+//                                         icon: backButtonIconString,
+//                                         color: colors.mainGreenColor, status: .normal)
+//        self.addGroupButton.buttonColor(colors)
+//        self.addGroupButton.createIconButton(iconSize: kBackButtonCorner,
+//                                         icon: "fa-plus",
+//                                         color: colors.mainGreenColor, status: .normal)
+        
+//        self.methodRepeatTitleLabel.textColor = Colors.mainTextColor
+//        self.methodRepeatLabel.textColor = colors.mainGreenColor
     }
     
-    fileprivate func initializeControl() {
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
-        self.methodNameTextFieldHolderView.addSmallShadow()
-        self.methodNameTextFieldHolderView.layer.cornerRadius = kCardViewSmallCornerRadius
-        
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.addGroupButton.addShadow()
-        self.addGroupButton.layer.cornerRadius = kBackButtonCorner
-        self.addGroupButton
-            .addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
-        
-        self.configTableView()
-        
-        self.methodNameButton.isEnabled = self.canChange
-        self.methodNameButton.setTitle(self.timeMethod.name, for: .normal)
-        self.methodNameButton
-            .addTarget(self, action: #selector(self.changeMethodNameAction), for: .touchUpInside)
-        
-        self.methodRepeatTitleLabel.text = Localized("aliase")
-        self.methodRepeatLabel.text = self.timeMethod.timeMethodAliase
-        
-        self.checkInputViewCreated()
-    }
+//    fileprivate func initializeControl() {
+//        self.cardView.addShadow()
+//        self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
+//        self.methodNameTextFieldHolderView.addSmallShadow()
+//        self.methodNameTextFieldHolderView.layer.cornerRadius = kCardViewSmallCornerRadius
+//        
+//        self.backButton.addShadow()
+//        self.backButton.layer.cornerRadius = kBackButtonCorner
+//        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+//        
+//        self.addGroupButton.addShadow()
+//        self.addGroupButton.layer.cornerRadius = kBackButtonCorner
+//        self.addGroupButton
+//            .addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
+//        
+//        
+//        
+//        self.methodNameButton.isEnabled = self.canChange
+//        self.methodNameButton.setTitle(self.timeMethod.name, for: .normal)
+//        self.methodNameButton
+//            .addTarget(self, action: #selector(self.changeMethodNameAction), for: .touchUpInside)
+//        
+//        self.methodRepeatTitleLabel.text = Localized("aliase")
+//        self.methodRepeatLabel.text = self.timeMethod.timeMethodAliase
+//        
+//        self.checkInputViewCreated()
+//    }
     
     // MARK: - actions
     override func backAction() {
@@ -181,8 +192,9 @@ class TimeManagerEditorViewController: BaseViewController {
                                     self.timeMethod.timeMethodAliase = s
                                 }
                             }
-                            self.methodNameButton.setTitle(first, for: .normal)
-                            self.methodRepeatLabel.text = second
+//                            self.methodNameTextView.text = first
+//                            self.methodNameButton.setTitle(first, for: .normal)
+//                            self.methodRepeatLabel.text = second
                         }
         })
     }
@@ -209,11 +221,20 @@ class TimeManagerEditorViewController: BaseViewController {
 
 extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataSource {
     
-    fileprivate func configTableView() {
+    fileprivate func configMethodTableView(bar: UIView) {
+        self.view.addSubview(self.methodTableView)
+        self.methodTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.methodTableView.delegate = self
+        self.methodTableView.dataSource = self
         self.methodTableView.clearView()
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenBounds.width, height: 15))
-        headerView.clearView()
-        self.methodTableView.tableHeaderView = headerView
+        self.methodTableView.allowsSelection = false
+        self.methodTableView.separatorStyle = .none
+        self.methodTableView.tableFooterView = UIView()
         self.methodTableView.register(TimeManagerEditorTableViewCell.nib,
                                       forCellReuseIdentifier: TimeManagerEditorTableViewCell.reuseId)
     }

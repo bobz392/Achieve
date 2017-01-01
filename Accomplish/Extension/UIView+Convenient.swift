@@ -42,9 +42,11 @@ extension UIView {
     
     func addRoundShadow() {
         self.layer.shadowColor = UIColor.lightGray.cgColor
-        self.layer.shadowOpacity = 0.4
-        self.layer.shadowRadius = 10
-        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowOpacity = 0.1
+        let path = UIBezierPath(rect: self.bounds.insetBy(dx: -6, dy: -2)).cgPath
+        self.layer.shadowPath = path
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
     }
     
     func addTopShadow() {

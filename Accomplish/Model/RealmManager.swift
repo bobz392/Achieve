@@ -106,6 +106,7 @@ class RealmManager {
     func queryTaskList(_ date: NSDate) -> Results<Task> {
         return realm.objects(Task.self)
             .filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
+            .sorted(byProperty: "createdDate")
     }
     
     func querySubtask(_ rootUUID: String, sorted: Bool = true) -> Results<Subtask> {

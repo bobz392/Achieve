@@ -112,7 +112,7 @@ class CalendarViewController: BaseViewController {
     }
     
     fileprivate func initializeControl() {
-        self.cardView.addShadow()
+        self.cardView.addRoundShadow()
 //        self.cardView.layer.cornerRadius = 4
         
         self.calendarView = JTAppleCalendarView(frame: CGRect.zero)

@@ -18,21 +18,6 @@ class KVTaskViewController: BaseViewController {
     fileprivate let contentTextView = UITextView()
     fileprivate let contentTextPlaceHolderLabel = UILabel()
     
-//    @IBOutlet weak var titleLabel: UILabel!
-//    
-//    @IBOutlet weak var cardView: UIView!
-//    @IBOutlet weak var titleCardView: UIView!
-//    
-//    @IBOutlet weak var lineView: UIView!
-//    @IBOutlet weak var titleTextField: UITextField!
-//    @IBOutlet weak var contentTextView: UITextView!
-//    @IBOutlet weak var placeholderLabel: UILabel!
-//    
-//    @IBOutlet weak var toolView: UIView!
-//    @IBOutlet weak var cancelButton: UIButton!
-//    @IBOutlet weak var saveButton: UIButton!
-//    @IBOutlet weak var toolViewBottomConstraint: NSLayoutConstraint!
-    
     weak var delegate: TaskActionDataDelegate? = nil
     
     init(actionType: SystemActionType, delegate: TaskActionDataDelegate) {
@@ -71,24 +56,23 @@ class KVTaskViewController: BaseViewController {
         let titleLabel = self.createTitleLabel(titleText: title, style: .left)
         titleLabel.textColor = Colors.mainIconColor
         
-        self.addButton.setTitle(Localized("add"), for: .normal)
-        self.addButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        self.addButton.setTitleColor(Colors.linkButtonTextColor, for: .normal)
-        self.addButton.setTitleColor(Colors.mainIconColor, for: .disabled)
+        self.addButton.setImage(Icons.save.iconImage(), for: .normal)
+        self.addButton.tintColor = Colors.mainIconColor
         bar.addSubview(self.addButton)
         self.addButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(backButton)
-            make.right.equalToSuperview().offset(-20)
+            make.right.equalToSuperview().offset(-12)
+            make.height.equalTo(kBarIconSize)
+            make.width.equalTo(kBarIconSize)
         }
         
         let paparView = UIView()
         paparView.backgroundColor = Colors.cellCardColor
-        paparView.addRoundShadow()
         self.view.addSubview(paparView)
         paparView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
-            make.top.equalTo(bar.snp.bottom).offset(10)
+            make.top.equalTo(bar.snp.bottom).offset(4)
             make.bottom.equalToSuperview().offset(-25)
         }
         
@@ -142,6 +126,8 @@ class KVTaskViewController: BaseViewController {
             self.contentTextPlaceHolderLabel.text = Localized(hint.1)
         }
         
+        self.view.layoutIfNeeded()
+        paparView.addRoundShadow()
 //        let colors = Colors()
 //        
 //        self.titleLabel.textColor = Colors.cloudColor

@@ -19,7 +19,7 @@ class TimeManagementViewController: BaseViewController {
     // 是是选择一个工作法开始，还是管理工作法
     fileprivate var isSelectTM: Bool
     fileprivate var selectTMBlock: SelectTMBlock? = nil
-    fileprivate var timeMethodInputView: TimeMethodInputView? = nil
+    fileprivate lazy var timeMethodInputView = TimeMethodInputView.loadNib(self)!
     
     init(isSelectTM: Bool, selectTMBlock: SelectTMBlock? = nil) {
         self.isSelectTM = isSelectTM
@@ -64,19 +64,38 @@ class TimeManagementViewController: BaseViewController {
             createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
             titleLabel.text = Localized("time_management")
         }
+        
+        self.view.addSubview(self.timeMethodInputView)
+        self.timeMethodInputView.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.view)
+            make.bottom.equalTo(self.view)
+            make.left.equalTo(self.view)
+            make.right.equalTo(self.view)
+        })
     }
     
     // MARK: - actions
     func newMethodAction() {
-        let timeMethod = TimeMethod()
-        timeMethod.name = Localized("defaultTimeManagerName")
-        let group = TimeMethodGroup()
-        group.addDefaultGroupAndItem()
-        timeMethod.groups.append(group)
-        
-        let timeManagerEditorVC =
-            TimeManagerEditorViewController(method: timeMethod, canChange: true, isCreate: true)
-        self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
+        timeMethodInputView.setTitles(first: Localized("methodName"), second: Localized("aliase"))
+            .setPlaceHolders(first: Localized("enterMethodName"), second: Localized("enterMethodAliase"))
+            .setSaveBlock(saveBlock: { [unowned self] (name, aliase) in
+                let timeMethod = TimeMethod()
+                timeMethod.name = name
+                if let aliase = aliase {
+                    timeMethod.timeMethodAliase = aliase
+                }
+                let group = TimeMethodGroup()
+                group.addDefaultGroupAndItem()
+                timeMethod.groups.append(group)
+                
+                let timeManagerEditorVC =
+                    TimeManagerEditorViewController(method: timeMethod, canChange: true)
+                self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
+                
+                RealmManager.shared.writeObject(timeMethod)
+                self.methodTableView.reloadData()
+            })
+            .moveIn()
     }
 }
 
@@ -109,8 +128,7 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
         let canSwipe = indexPath.row != 0 && self.isSelectTM == false
         cell.configCell(method: self.timeMethods[indexPath.row], enableSwipe: canSwipe)
         cell.delegate = self
-        return cell
-    }
+        return cell    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TimeMethodTableViewCell.rowHeight

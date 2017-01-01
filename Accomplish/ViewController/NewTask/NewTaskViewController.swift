@@ -51,14 +51,14 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             titleTextField.becomeFirstResponder()
         }
         
-        (UIApplication.shared.delegate as? AppDelegate)?.setOpenDrawMode(openMode: false)
+        appDelegate?.setOpenDrawMode(openMode: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         KeyboardManager.sharedManager.closeNotification()
-        (UIApplication.shared.delegate as? AppDelegate)?.setOpenDrawMode(openMode: true)
+        appDelegate?.setOpenDrawMode(openMode: true)
     }
     
     override func didReceiveMemoryWarning() {

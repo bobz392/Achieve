@@ -26,7 +26,7 @@ class TimeMethodGroup: Object {
     func addDefaultGroupAndItem() {
         let item = TimeMethodItem()
         item.name = Localized("enterItemName")
-        item.interval = 10
+        item.interval = 5
         self.items.append(item)
     }
 }

@@ -114,11 +114,10 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let delegate = appDelegate else { return }
         
         if indexPath.row == self.currentIndex {
-            appDelegate.drawer?.closeDrawer(animated: true, completion: nil)
+            delegate.drawer?.closeDrawer(animated: true, completion: nil)
             return
         }
         
@@ -171,7 +170,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let deselectIndex = IndexPath(row: self.currentIndex, section: 0)
         tableView.deselectRow(at: deselectIndex, animated: true)
         self.currentIndex = indexPath.row
-        appDelegate.drawer?.setCenterView(viewController, withCloseAnimation: true,
+        delegate.drawer?.setCenterView(viewController, withCloseAnimation: true,
                                           completion: { (finish) in
                                             
         })

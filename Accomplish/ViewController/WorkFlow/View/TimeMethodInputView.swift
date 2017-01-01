@@ -10,6 +10,7 @@ import UIKit
 
 class TimeMethodInputView: UIView {
     typealias SaveBlock = (_ first: String, _ second: String?) -> Void
+    typealias FinishBlock = () -> Void
     
     @IBOutlet weak var realShadowView: UIView!
     @IBOutlet weak var cardHolderView: UIView!
@@ -22,10 +23,11 @@ class TimeMethodInputView: UIView {
     @IBOutlet weak var rightButton: UIButton!
     
     fileprivate let viewHeight: CGFloat = 167
-    fileprivate let shadowAlpha: CGFloat = 0.85
+    fileprivate let shadowAlpha: CGFloat = 0.6
     fileprivate var saveBlock: SaveBlock? = nil
+    fileprivate var finishBlock: FinishBlock? = nil
     
-    class func loadNib(_ target: AnyObject) -> TimeMethodInputView? {
+    class func loadNib(_ target: Any) -> TimeMethodInputView? {
         guard let view =
             Bundle.main.loadNibNamed("TimeMethodInputView", owner: target, options: nil)?
                 .first as? TimeMethodInputView else {
@@ -56,24 +58,63 @@ class TimeMethodInputView: UIView {
         view.cardHolderViewTopConstraint.constant = -view.viewHeight
         view.isHidden = true
         
+        let tapDismiss = UITapGestureRecognizer(target: view, action: #selector(view.moveOut))
+        view.addGestureRecognizer(tapDismiss)
+        let swipe = UISwipeGestureRecognizer(target: view, action: #selector(blockGecognizer))
+        view.addGestureRecognizer(swipe)
+        let pan = UIPanGestureRecognizer(target: view, action: #selector(blockGecognizer))
+        view.addGestureRecognizer(pan)
+        let edgepan = UIScreenEdgePanGestureRecognizer(target: view, action: #selector(blockGecognizer))
+        view.addGestureRecognizer(edgepan)
+        
         return view
     }
     
-    func moveIn(twoTitles: [String], twoHolders: [String]?,
-                twoContent: [String], keyboardType: UIKeyboardType = .default,
-                saveBlock: @escaping SaveBlock) {
-        self.firstInputTitleLabel.text = twoTitles.first
-        self.secondInputTitleLabel.text = twoTitles.last
-        self.firstTextField.text = twoContent.first
-        self.secondTextField.text = twoContent.last
+    func blockGecognizer() {
+        //do nothing
+    }
+    
+    @discardableResult
+    func setTitles(first: String, second: String) -> TimeMethodInputView {
+        self.firstInputTitleLabel.text = first
+        self.secondInputTitleLabel.text = second
+        return self
+    }
+    
+    @discardableResult
+    func setPlaceHolders(first: String, second: String) -> TimeMethodInputView {
+        self.firstTextField.placeholder = first
+        self.secondTextField.placeholder = second
+        return self
+    }
+    
+    @discardableResult
+    func setContent(first: String, second: String) -> TimeMethodInputView {
+        self.firstTextField.text = first
+        self.secondTextField.text = second
+        return self
+    }
+    
+    @discardableResult
+    func setSaveBlock(saveBlock: @escaping SaveBlock) -> TimeMethodInputView {
         self.saveBlock = saveBlock
-        
-        if let horders = twoHolders {
-            self.firstTextField.placeholder = horders.first
-            self.secondTextField.placeholder = horders.last
-        }
+        return self
+    }
+    
+    @discardableResult
+    func setFinishBlock(finishBlock: @escaping FinishBlock) -> TimeMethodInputView {
+        self.finishBlock = finishBlock
+        return self
+    }
+    
+    @discardableResult
+    func setSecondKeyboardType(keyboardType: UIKeyboardType = .default) -> TimeMethodInputView {
         self.secondTextField.keyboardType = keyboardType
-        
+        return self
+    }
+
+    
+    func moveIn() {
         // 进来的时候先隐藏
         self.isHidden = false
         // 有可能第一个输入框的状态是被禁止的 那么则响应第二个输入框的键盘
@@ -84,7 +125,9 @@ class TimeMethodInputView: UIView {
         }
         
         self.cardHolderViewTopConstraint.constant = 64
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration, usingSpringWithDamping: self.shadowAlpha, initialSpringVelocity: 0.1, options: UIViewAnimationOptions(), animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration,
+                       usingSpringWithDamping: self.shadowAlpha, initialSpringVelocity: 0.1,
+                       options: UIViewAnimationOptions(), animations: { [unowned self] in
             self.layoutIfNeeded()
             self.realShadowView.alpha = self.shadowAlpha
         })
@@ -93,6 +136,8 @@ class TimeMethodInputView: UIView {
     func moveOut() {
         self.cardHolderViewTopConstraint.constant = -self.viewHeight
         self.leftButton.isEnabled = true
+        self.finishBlock?()
+        self.endEditing(true)
         
         UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { [unowned self] in
             self.layoutIfNeeded()
@@ -102,7 +147,6 @@ class TimeMethodInputView: UIView {
             self.firstTextField.text = nil
             self.saveBlock = nil
             self.secondTextField.text = nil
-            self.endEditing(true)
         }
     }
     

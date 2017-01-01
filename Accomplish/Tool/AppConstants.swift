@@ -12,3 +12,5 @@ let kBarHeight: CGFloat = 64
 let kBarIconSize: CGFloat = 32
 let kMenuBarLineWidth: CGFloat = 20
 let kCellAnimationDuration: TimeInterval = 0.4
+
+let appDelegate = UIApplication.shared.delegate as? AppDelegate

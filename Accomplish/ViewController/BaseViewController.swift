@@ -162,8 +162,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func openMenuAction() {
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.drawer?.open(.left, animated: true, completion: nil)
+        appDelegate?.drawer?.open(.left, animated: true, completion: nil)
     }
     
     func backAction() {

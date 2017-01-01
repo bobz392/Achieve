@@ -23,50 +23,30 @@ class TimeManagerEditorViewController: BaseViewController {
 //    @IBOutlet weak var addGroupButtonCenterConstraint: NSLayoutConstraint!
     
     fileprivate let methodTableView = UITableView()
-    
-    internal var timeMethodInputView: TimeMethodInputView? = nil
+    fileprivate lazy var timeMethodInputView = TimeMethodInputView.loadNib(self)!
     
     fileprivate let timeMethod: TimeMethod
     fileprivate let canChange: Bool
-    fileprivate let isCreate: Bool
     
-    init(method: TimeMethod, canChange: Bool, isCreate: Bool = false) {
+    init(method: TimeMethod, canChange: Bool) {
         self.timeMethod = method
         self.canChange = canChange
-        self.isCreate = isCreate
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.timeMethod = TimeMethod()
         self.canChange = false
-        self.isCreate = false
         super.init(coder: aDecoder)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        RealmManager.shared.updateObject {
-            
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.configMainUI()
-//        self.initializeControl()
-        
-        if self.isCreate {
-            self.changeMethodNameAction()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,8 +66,16 @@ class TimeManagerEditorViewController: BaseViewController {
         if self.canChange {
             let addGroupButton = self.createPlusButton()
             addGroupButton.addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
+            self.view.addSubview(self.timeMethodInputView)
+            self.timeMethodInputView.snp.makeConstraints({ (make) in
+                make.top.equalTo(self.view)
+                make.bottom.equalTo(self.view)
+                make.left.equalTo(self.view)
+                make.right.equalTo(self.view)
+            })
         }
-        self.checkInputViewCreated()
+        
+        
         
 //        let colors = Colors()
 //        
@@ -139,35 +127,6 @@ class TimeManagerEditorViewController: BaseViewController {
 //    }
     
     // MARK: - actions
-    override func backAction() {
-        if self.isCreate {
-            let alert = UIAlertController(title: Localized("saveTimeMethod"),
-                                          message: nil, preferredStyle: .actionSheet)
-            let saveAction = UIAlertAction(title: Localized("save"), style: .destructive,
-                                           handler: { [unowned self] (action) in
-                self.pop()
-            })
-            
-            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
-                RealmManager.shared.deleteObject(self.timeMethod)
-                self.pop()
-            })
-            alert.addAction(saveAction)
-            alert.addAction(cancelAction)
-            
-            self.navigationController?.present(alert, animated: true, completion: nil)
-            
-        } else {
-            self.pop()
-        }
-    }
-    
-    fileprivate func pop() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        nav.popViewController(animated: true)
-    }
     
     func addGroupAction() {
         RealmManager.shared.updateObject { [unowned self] in
@@ -178,45 +137,7 @@ class TimeManagerEditorViewController: BaseViewController {
             self.methodTableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    func changeMethodNameAction() {
-        guard let view = self.timeMethodInputView else { return }
-        view.moveIn(twoTitles: [Localized("methodName"), Localized("aliase")],
-                    twoHolders: [Localized("enterMethodName"), Localized("enterMethodAliase")],
-                    twoContent: [self.timeMethod.name, self.timeMethod.timeMethodAliase],
-                    saveBlock: { (first, second) in
-                        RealmManager.shared.updateObject { [unowned self] in
-                            self.timeMethod.name = first
-                            if let s = second?.trim() {
-                                if s.length() > 0 {
-                                    self.timeMethod.timeMethodAliase = s
-                                }
-                            }
-//                            self.methodNameTextView.text = first
-//                            self.methodNameButton.setTitle(first, for: .normal)
-//                            self.methodRepeatLabel.text = second
-                        }
-        })
-    }
-    
-    /**
-     make sure input view created
-     */
-    fileprivate func checkInputViewCreated() {
-        guard  let _ = self.timeMethodInputView else {
-            let view = TimeMethodInputView.loadNib(self)!
-            self.timeMethodInputView = view
-            self.view.addSubview(view)
-            view.snp.makeConstraints({ (make) in
-                make.top.equalTo(self.view)
-                make.bottom.equalTo(self.view)
-                make.left.equalTo(self.view)
-                make.right.equalTo(self.view)
-            })
-            view.layoutIfNeeded()
-            return
-        }
-    }
+
 }
 
 extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataSource {

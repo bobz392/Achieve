@@ -40,6 +40,13 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
     }
     
+    func addButtonShadow() {
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 4
+        self.layer.shadowOffset = CGSize(width: 8, height: 8)
+    }
+    
     func addRoundShadow() {
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOpacity = 0.1

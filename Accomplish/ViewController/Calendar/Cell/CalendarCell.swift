@@ -37,20 +37,19 @@ class CalendarCell: JTAppleDayCellView {
     }
     
     func configureTextColor(_ cellState: CellState, date: Date) {
-        let colors = Colors()
         if cellState.isSelected {
-            self.dateLabel.textColor = Colors.cloudColor
+            self.dateLabel.textColor = Colors.mainTextColor
         } else {
             if (date as NSDate).isToday() {
                 self.dateLabel.textColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
             } else if cellState.dateBelongsTo == .thisMonth {
                 self.dateLabel.textColor = Colors.mainTextColor
             } else {
-                self.dateLabel.textColor = UIColor.clear
+                self.dateLabel.textColor = Colors.secondaryTextColor
             }
         }
         
-        self.selectedView.backgroundColor = colors.mainGreenColor
+        self.selectedView.backgroundColor = Colors.cellSelectedColor
     }
     
     func cellSelectionChanged(_ cellState: CellState, date: Date) {

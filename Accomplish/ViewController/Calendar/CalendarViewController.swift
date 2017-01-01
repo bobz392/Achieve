@@ -24,7 +24,8 @@ class CalendarViewController: BaseViewController {
     @IBOutlet weak var createdTitleLable: UILabel!
     @IBOutlet weak var completedTitleLabel: UILabel!
     
-    @IBOutlet weak var scheduleButton: UIButton!
+    @IBOutlet weak var circleViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var circleViewBottomConstraint: NSLayoutConstraint!
     
     lazy fileprivate var checkInManager = CheckInManager()
     lazy fileprivate var firstDate =
@@ -36,20 +37,19 @@ class CalendarViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
         self.initializeControl()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.weekView.layoutSubviews()
+        self.circleView.configButtonCorner()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,18 +60,18 @@ class CalendarViewController: BaseViewController {
             let startMonth = self.checkInManager.getMonthCheckIn().first?.checkInDate?.month()
             self.calendarView.selectDates([now])
             
-            if startMonth != NSDate().month() {
-                self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, completionHandler: {
-                    UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
-                        self.calendarView.alpha = 1
-                        self.showInfoWhenNeed(Date())
-                    })
+            self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, completionHandler: {
+                UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
+                    self.calendarView.alpha = 1
+                    self.showInfoWhenNeed(Date())
                 })
-            } else {
+            })
+            
+            if startMonth == NSDate().month() {
                 self.calendarView.alpha = 1
                 self.showInfoWhenNeed(Date())
             }
-            
+        
             self.inTodayAlleady = true
         }
         
@@ -83,7 +83,7 @@ class CalendarViewController: BaseViewController {
         
         self.cardView.backgroundColor = Colors.cellCardColor
         let bar = self.createCustomBar(height: kBarHeight)
-//        self.view.sendSubview(toBack: bar)
+        self.view.sendSubview(toBack: bar)
         let menuButton = self.congfigMenuButton()
         
         bar.addSubview(self.dateButton)
@@ -94,26 +94,27 @@ class CalendarViewController: BaseViewController {
             make.centerY.equalTo(menuButton)
         }
         self.dateButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
-    
-        self.scheduleButton.setTitle(Localized("schedule"), for: .normal)
-        self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
-        self.scheduleButton.setTitleColor(Colors.cloudColor, for: .normal)
-        self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
+        self.circleViewTopConstraint.constant = DeviceSzie.isSmallDevice() ? 40 : 50
+        self.circleViewBottomConstraint.constant = DeviceSzie.isSmallDevice() ? 5 : 20
+//        self.scheduleButton.setTitle(Localized("schedule"), for: .normal)
+//        self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
+//        self.scheduleButton.setTitleColor(Colors.cellLabelSelectedTextColor, for: .normal)
+//        self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
         
         self.configWeekView()
         
-        self.createdLabel.textColor = Colors.cloudColor
-        self.completedLabel.textColor = Colors.cloudColor
-        self.createdTitleLable.textColor = Colors.cloudColor
-        self.completedTitleLabel.textColor = Colors.cloudColor
+        self.createdLabel.textColor = Colors.mainTextColor
+        self.completedLabel.textColor = Colors.mainTextColor
+        self.createdTitleLable.textColor = Colors.secondaryTextColor
+        self.completedTitleLabel.textColor = Colors.secondaryTextColor
         
-        self.monthButton.backgroundColor = Colors.cloudColor
+        self.monthButton.backgroundColor = Colors.cellCardColor
         self.monthButton.setTitleColor(Colors.linkButtonTextColor, for: .normal)
     }
     
     fileprivate func initializeControl() {
-        self.cardView.addRoundShadow()
-//        self.cardView.layer.cornerRadius = 4
+        self.cardView.addCardShadow()
+        self.cardView.layer.cornerRadius = 4
         
         self.calendarView = JTAppleCalendarView(frame: CGRect.zero)
         self.calendarView.clearView()
@@ -232,18 +233,18 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         guard let startDate = visibleDates.monthDates.first else { return }
         
         let nsStartDate = startDate as NSDate
-        let inMonth = nsStartDate.month() == NSDate().month()
+        let inMonth = nsStartDate.month() <= NSDate().month() || nsStartDate.year() < NSDate().year()
         self.monthButton.isEnabled = inMonth
         self.monthButtonRightConstraint.constant =
             inMonth ? 0 : self.monthButtonRight
         
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .beginFromCurrentState, animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.4, options: .beginFromCurrentState, animations: { [unowned self] in
             self.view.layoutIfNeeded()
         }) { (finish) in }
         
         let newTitle = nsStartDate.formattedDate(withFormat: MonthFormat)
         self.dateButton.setTitle(newTitle, for: .normal)
-        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
@@ -258,7 +259,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.circleView.start(completed: completed, created: created)
         self.createdLabel.count(from: 0, to: CGFloat(created))
         self.completedLabel.count(from: 0, to: CGFloat(completed))
-        self.scheduleButton.isEnabled = created > 0
+        self.circleView.scheduleLabel.text =
+            created > 0 ? Localized("enter") + Localized("schedule") : Localized("noSchedule")
     }
     
 }

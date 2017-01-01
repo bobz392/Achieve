@@ -82,7 +82,7 @@ class TagViewController: BaseViewController {
         self.backButton.createIconButton(iconSize: kBackButtonCorner,
                                          icon: backButtonIconString,
                                          color: colors.mainGreenColor, status: .normal)
-        self.newTagButton.tintColor = colors.linkTextColor
+        self.newTagButton.tintColor = Colors.cellLabelSelectedTextColor
         self.newTagButton.backgroundColor = Colors.cloudColor
         self.newTagButton.addTopShadow()
         

@@ -20,10 +20,13 @@ struct CheckInManager {
     }
     
     mutating func taskCount(date: Date) -> (completed: Int, created: Int) {
+        let d = date as NSDate
         guard let counts = self.cacheTaskData[date] else {
             let newCounts =
-                RealmManager.shared.queryTaskCount(date: date as NSDate)
-            self.cacheTaskData[date] = newCounts
+                RealmManager.shared.queryTaskCount(date: d)
+            if !d.isToday() {
+                self.cacheTaskData[date] = newCounts
+            }
             return newCounts
         }
         

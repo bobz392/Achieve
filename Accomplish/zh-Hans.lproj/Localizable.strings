@@ -124,6 +124,7 @@
 "extra"="附加";
 
 // calendar
+"enter"="进入";
 "schedule"="日程";
 "noSchedule"="没有日程";
 "completedAt"="完成于 ";

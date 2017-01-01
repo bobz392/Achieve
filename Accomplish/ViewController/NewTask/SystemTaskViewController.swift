@@ -125,7 +125,6 @@ extension SystemTaskViewController: TaskActionDataDelegate {
         let task = Task()
         // 用于 text field 显示用
         let attrText = NSMutableAttributedString()
-        let colors = Colors()
         
         switch type.actionPresent() {
         case .addressBook, .addressBookEmail:
@@ -138,7 +137,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
                     NSForegroundColorAttributeName: Colors.mainTextColor
                     ]))
             let nameAttrText = NSAttributedString(string: name, attributes: [
-                NSForegroundColorAttributeName: colors.linkTextColor
+                NSForegroundColorAttributeName: Colors.cellLabelSelectedTextColor
                 ])
             task.taskType = TaskType.system.type()
             attrText.append(nameAttrText)
@@ -168,7 +167,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             attrText.append(
                 NSAttributedString(string: name, attributes:[
-                    NSForegroundColorAttributeName: colors.linkTextColor
+                    NSForegroundColorAttributeName: Colors.cellLabelSelectedTextColor
                     ]))
             
             newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)

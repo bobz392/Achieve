@@ -232,6 +232,7 @@
 		C78ED8AE1D7A91C200031B4D /* GroupUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8A81D7A85E600031B4D /* GroupUserDefault.swift */; };
 		C78ED8B31D7A958F00031B4D /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */; };
 		C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */; };
+		C79223A31E1968ED00E5C193 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79223A21E1968ED00E5C193 /* CircleProgressView.swift */; };
 		C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805521D7CC8740011DE19 /* CheckIn.swift */; };
 		C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798056D1D7CD8C90011DE19 /* CalendarCell.swift */; };
 		C79805701D7CD8D50011DE19 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C798056F1D7CD8D50011DE19 /* CalendarCell.xib */; };
@@ -253,7 +254,6 @@
 		C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */; };
 		C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807241D83958F0011DE19 /* SettingHeaderView.xib */; };
 		C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807261D83959D0011DE19 /* SettingHeaderView.swift */; };
-		C79807291D83D04F0011DE19 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807281D83D04F0011DE19 /* CircleProgressView.swift */; };
 		C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */; };
 		C798072E1D83DB3F0011DE19 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */; };
 		C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C798072C1D83DB3F0011DE19 /* HUD.swift */; };
@@ -268,6 +268,7 @@
 		C79963091DE87A9E00B4617E /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963041DE87A9E00B4617E /* Palette.swift */; };
 		C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */; };
 		C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */; };
+		C7AC8AFF1E198AA600276E8C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AC8AFE1E198AA600276E8C /* DeviceType.swift */; };
 		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
 		C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */; };
 		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
@@ -660,6 +661,7 @@
 		C78ED8AB1D7A916700031B4D /* GroupUserDefault+Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupUserDefault+Main.swift"; sourceTree = "<group>"; };
 		C78ED8B11D7A958F00031B4D /* TodayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C78ED8B21D7A958F00031B4D /* TodayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayTableViewCell.xib; sourceTree = "<group>"; };
+		C79223A21E1968ED00E5C193 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		C79805521D7CC8740011DE19 /* CheckIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
 		C798056D1D7CD8C90011DE19 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		C798056F1D7CD8D50011DE19 /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
@@ -682,7 +684,6 @@
 		C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		C79807241D83958F0011DE19 /* SettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingHeaderView.xib; sourceTree = "<group>"; };
 		C79807261D83959D0011DE19 /* SettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
-		C79807281D83D04F0011DE19 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeButton.swift; sourceTree = "<group>"; };
 		C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
 		C798072C1D83DB3F0011DE19 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
@@ -696,6 +697,7 @@
 		C79963041DE87A9E00B4617E /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwicketSegmentedControl.swift; sourceTree = "<group>"; };
 		C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYShutterButton.swift; sourceTree = "<group>"; };
+		C7AC8AFE1E198AA600276E8C /* DeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		C7B579291DAACEDC003B6D92 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C7B5792A1DAACEDC003B6D92 /* MonthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthViewController.xib; sourceTree = "<group>"; };
 		C7B579321DAD79A3003B6D92 /* TestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
@@ -846,6 +848,7 @@
 				C7B579321DAD79A3003B6D92 /* TestManager.swift */,
 				C77DE35F1DE6125300F098F4 /* SoundManager.swift */,
 				C78C4EB51DFCE563000C289D /* ReadLaterManager.swift */,
+				C7AC8AFE1E198AA600276E8C /* DeviceType.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1344,7 +1347,6 @@
 				C798072A1D83DB3F0011DE19 /* AwesomeButton.swift */,
 				C798072B1D83DB3F0011DE19 /* DynamicBlurView.swift */,
 				C73B444A1E0C41DA00DDE093 /* GrowingTextView.swift */,
-				C79807281D83D04F0011DE19 /* CircleProgressView.swift */,
 				C79806EF1D8157880011DE19 /* UICountingLabel.h */,
 				C79806F01D8157880011DE19 /* UICountingLabel.m */,
 				C77DE35C1DE4419E00F098F4 /* MZTimerLabel.h */,
@@ -1397,6 +1399,7 @@
 		C7DC01BF1E159FD20055B7F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C79223A21E1968ED00E5C193 /* CircleProgressView.swift */,
 				C7DC01C01E159FD20055B7F8 /* ScheduleHeaderView.swift */,
 				C7DC01C11E159FD20055B7F8 /* ScheduleHeaderView.xib */,
 			);
@@ -2150,6 +2153,7 @@
 				C73B44731E0C494200DDE093 /* LocalNotificationManager.swift in Sources */,
 				C78C4EB01DFCD797000C289D /* RealmManager+ReadLater.swift in Sources */,
 				C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */,
+				C79223A31E1968ED00E5C193 /* CircleProgressView.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
@@ -2161,7 +2165,6 @@
 				C77194A01D6FEB0B00437560 /* SystemTaskViewController.swift in Sources */,
 				C77194C91D70ED2300437560 /* SystemTaskTableViewCell.swift in Sources */,
 				C73B446D1E0C494200DDE093 /* TagTableViewCell.swift in Sources */,
-				C79807291D83D04F0011DE19 /* CircleProgressView.swift in Sources */,
 				C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */,
 				C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */,
 				C79807271D83959D0011DE19 /* SettingHeaderView.swift in Sources */,
@@ -2190,6 +2193,7 @@
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C7DC01C21E159FD20055B7F8 /* ScheduleHeaderView.swift in Sources */,
 				C73B44781E0C494200DDE093 /* TagViewController.swift in Sources */,
+				C7AC8AFF1E198AA600276E8C /* DeviceType.swift in Sources */,
 				C78ED8491D7A767300031B4D /* String+ConvenientMain.swift in Sources */,
 				C77DE3601DE6125300F098F4 /* SoundManager.swift in Sources */,
 			);

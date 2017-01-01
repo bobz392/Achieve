@@ -147,14 +147,16 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     func createPlusButton() -> UIButton {
         let newTaskButton = AwesomeButton(type: .custom)
         self.view.addSubview(newTaskButton)
+        let side: CGFloat = DeviceSzie.isSmallDevice() ? 50 : 70
+        
         newTaskButton.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-15)
-            make.width.equalTo(70)
-            make.height.equalTo(70)
+            make.width.equalTo(side)
+            make.height.equalTo(side)
             make.centerX.equalToSuperview()
         }
         newTaskButton.addShadow()
-        newTaskButton.layer.cornerRadius = 35
+        newTaskButton.layer.cornerRadius = side * 0.5
         newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(),
                                      backgroundColor: Colors.cellCardColor)
         

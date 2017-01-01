@@ -19,9 +19,9 @@ class MethodCreateTableViewCell: BaseTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let colors = Colors()
-        self.createButton.createIconButton(iconSize: 22, icon: "fa-plus", color: colors.mainGreenColor, status: .normal)
+        
+        self.createButton.setImage(Icons.plus.iconImage(), for: .normal)
+        self.createButton.tintColor = Colors.cellLabelSelectedTextColor
     }
 
 }

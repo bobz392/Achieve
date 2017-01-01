@@ -24,12 +24,11 @@ class SettingDetialTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let colors = Colors()
         self.contentView.clearView()
         self.backgroundColor = Colors.cloudColor
         self.settingTitleLabel.textColor =
             Colors.mainTextColor
-        self.detailLabel.textColor = colors.linkTextColor
+        self.detailLabel.textColor = Colors.cellLabelSelectedTextColor
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

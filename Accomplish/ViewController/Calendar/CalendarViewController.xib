@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,13 +15,14 @@
             <connections>
                 <outlet property="cardView" destination="Ptq-Wo-nZo" id="ysS-LO-bFA"/>
                 <outlet property="circleView" destination="ykf-Pj-aTB" id="XBL-04-bgK"/>
+                <outlet property="circleViewBottomConstraint" destination="ete-gb-pcA" id="JXa-2k-RgN"/>
+                <outlet property="circleViewTopConstraint" destination="56l-Qv-qe8" id="D8Z-aN-gpQ"/>
                 <outlet property="completedLabel" destination="6qq-4T-ld4" id="zgE-Td-A5c"/>
                 <outlet property="completedTitleLabel" destination="KUt-8r-SET" id="pfC-yc-JrR"/>
                 <outlet property="createdLabel" destination="kYH-Ed-2rT" id="gqE-em-tiY"/>
                 <outlet property="createdTitleLable" destination="sIG-WB-n4S" id="OC9-VK-9ZL"/>
                 <outlet property="monthButton" destination="z6c-BF-Vfq" id="0Pe-GK-bJF"/>
                 <outlet property="monthButtonRightConstraint" destination="kpA-sf-skk" id="dtK-pe-zbn"/>
-                <outlet property="scheduleButton" destination="sIN-iL-ftt" id="fY6-d5-nYM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekView" destination="m29-D1-27Q" id="ljX-09-ouT"/>
             </connections>
@@ -117,19 +118,12 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykf-Pj-aTB" customClass="CircleProgressView" customModule="Accomplish" customModuleProvider="target">
-                    <rect key="frame" x="39" y="359" width="298" height="298"/>
+                    <rect key="frame" x="72" y="369" width="232" height="232"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="1:1" id="iNt-r2-SdQ"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-iL-ftt">
-                    <rect key="frame" x="68" y="433.5" width="239" height="149"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                    <state key="normal" title="Daily Report">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIG-WB-n4S">
                     <rect key="frame" x="288.5" y="646" width="42" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -166,27 +160,24 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="top" secondItem="6qq-4T-ld4" secondAttribute="bottom" constant="5" id="0Xx-hD-w7O"/>
-                <constraint firstItem="ykf-Pj-aTB" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="40" id="56l-Qv-qe8"/>
+                <constraint firstItem="ykf-Pj-aTB" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="50" id="56l-Qv-qe8"/>
                 <constraint firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" constant="14" id="8HG-kc-QuE"/>
-                <constraint firstAttribute="bottom" secondItem="ykf-Pj-aTB" secondAttribute="bottom" constant="10" id="BYu-DO-wIc"/>
-                <constraint firstItem="sIN-iL-ftt" firstAttribute="height" secondItem="ykf-Pj-aTB" secondAttribute="height" multiplier="0.5" id="DiZ-Ia-57Z"/>
                 <constraint firstItem="kYH-Ed-2rT" firstAttribute="centerX" secondItem="sIG-WB-n4S" secondAttribute="centerX" id="Duf-8W-ZoF"/>
                 <constraint firstItem="ykf-Pj-aTB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Dzo-IH-z78"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="69" id="FB3-Jq-hp5"/>
                 <constraint firstItem="z6c-BF-Vfq" firstAttribute="top" secondItem="Ptq-Wo-nZo" secondAttribute="bottom" constant="8" id="Fbk-WM-pj2"/>
+                <constraint firstAttribute="bottom" secondItem="KUt-8r-SET" secondAttribute="bottom" constant="10" id="J4m-Qc-Q8L"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="top" secondItem="kYH-Ed-2rT" secondAttribute="bottom" constant="5" id="JfC-D2-od5"/>
                 <constraint firstItem="6qq-4T-ld4" firstAttribute="centerX" secondItem="KUt-8r-SET" secondAttribute="centerX" id="Kcm-ws-5wV"/>
-                <constraint firstItem="sIG-WB-n4S" firstAttribute="bottom" secondItem="ykf-Pj-aTB" secondAttribute="bottom" id="Srh-fO-TgK"/>
-                <constraint firstItem="sIN-iL-ftt" firstAttribute="width" secondItem="ykf-Pj-aTB" secondAttribute="width" multiplier="0.8" id="WJJ-Ol-jVU"/>
-                <constraint firstItem="KUt-8r-SET" firstAttribute="centerY" secondItem="sIG-WB-n4S" secondAttribute="centerY" id="cRs-JP-Lzt"/>
+                <constraint firstItem="kYH-Ed-2rT" firstAttribute="centerY" secondItem="6qq-4T-ld4" secondAttribute="centerY" id="Ms0-DR-QGa"/>
+                <constraint firstItem="sIG-WB-n4S" firstAttribute="centerY" secondItem="KUt-8r-SET" secondAttribute="centerY" id="czL-CE-bAH"/>
+                <constraint firstItem="6qq-4T-ld4" firstAttribute="top" secondItem="ykf-Pj-aTB" secondAttribute="bottom" constant="20" id="ete-gb-pcA"/>
                 <constraint firstItem="z6c-BF-Vfq" firstAttribute="trailing" secondItem="Ptq-Wo-nZo" secondAttribute="trailing" id="kpA-sf-skk"/>
                 <constraint firstItem="KUt-8r-SET" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.35" id="lzi-nv-fLw"/>
-                <constraint firstItem="sIN-iL-ftt" firstAttribute="centerY" secondItem="ykf-Pj-aTB" secondAttribute="centerY" id="nGY-r4-Jao"/>
                 <constraint firstItem="sIG-WB-n4S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="1.65" id="roj-Yz-02v"/>
                 <constraint firstItem="Ptq-Wo-nZo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="sqz-87-6su"/>
-                <constraint firstItem="sIN-iL-ftt" firstAttribute="centerX" secondItem="ykf-Pj-aTB" secondAttribute="centerX" id="vB0-db-mrK"/>
             </constraints>
-            <point key="canvasLocation" x="325" y="90"/>
+            <point key="canvasLocation" x="-278.5" y="-46.5"/>
         </view>
     </objects>
 </document>

@@ -129,6 +129,7 @@
 "extra"="Extra";
 
 // calendar
+"enter"="Enter ";
 "schedule"="Schedule";
 "noSchedule"="No Schedule";
 "completedAt"="completed at ";

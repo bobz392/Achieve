@@ -60,4 +60,13 @@ extension String {
             NSStrikethroughColorAttributeName: Colors.secondaryTextColor,
             ])
     }
+    
+    func fixTextFieldBugString(fontSize: CGFloat, color: UIColor) -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: [
+            NSForegroundColorAttributeName: color,
+            NSBaselineOffsetAttributeName: 0,
+            NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)
+            ]
+        )
+    }
 }

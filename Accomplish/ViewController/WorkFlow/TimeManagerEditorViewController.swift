@@ -66,13 +66,6 @@ class TimeManagerEditorViewController: BaseViewController {
         if self.canChange {
             let addGroupButton = self.createPlusButton()
             addGroupButton.addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
-            self.view.addSubview(self.timeMethodInputView)
-            self.timeMethodInputView.snp.makeConstraints({ (make) in
-                make.top.equalTo(self.view)
-                make.bottom.equalTo(self.view)
-                make.left.equalTo(self.view)
-                make.right.equalTo(self.view)
-            })
         }
         
         
@@ -161,24 +154,11 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
     }
     
     fileprivate func deleteTimeMethodGroup(indexPath: IndexPath) {
-        let title = Localized("delete") +
-            String(format: Localized("timeManageGroupName"), indexPath.row + 1) + " ?"
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        RealmManager.shared.updateObject {
+            self.timeMethod.groups.remove(objectAtIndex: indexPath.row)
+        }
         
-        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(cancelAction)
-        
-        let deleteAction = UIAlertAction(title: Localized("delete"), style: .destructive, handler: { [unowned self] (action) in
-            RealmManager.shared.updateObject {
-                self.timeMethod.groups.remove(objectAtIndex: indexPath.row)
-            }
-            self.methodTableView.deleteRows(at: [indexPath], with: .automatic)
-        })
-        alert.addAction(deleteAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        self.methodTableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,7 +170,11 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
             tableView.dequeueReusableCell(withIdentifier: TimeManagerEditorTableViewCell.reuseId, for: indexPath) as! TimeManagerEditorTableViewCell
         cell.configCell(methodTime: self.timeMethod,
                         canChange: self.canChange, groupIndex: indexPath.row)
+
         cell.timeMethodInputView = self.timeMethodInputView
+        cell.moveInBlock = { [unowned self] () -> UIView in
+            self.view
+        }
         cell.methodTableView = self.methodTableView
         cell.deleteBlock = { [unowned self] () -> Void in
             self.deleteTimeMethodGroup(indexPath: indexPath)

@@ -12,7 +12,7 @@ class TimeMethodInputView: UIView {
     typealias SaveBlock = (_ first: String, _ second: String?) -> Void
     typealias FinishBlock = () -> Void
     
-    @IBOutlet weak var realShadowView: UIView!
+    @IBOutlet weak var blurImageView: UIImageView!
     @IBOutlet weak var cardHolderView: UIView!
     @IBOutlet weak var cardHolderViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var firstInputTitleLabel: UILabel!
@@ -23,9 +23,11 @@ class TimeMethodInputView: UIView {
     @IBOutlet weak var rightButton: UIButton!
     
     fileprivate let viewHeight: CGFloat = 167
-    fileprivate let shadowAlpha: CGFloat = 0.6
+    fileprivate let shadowAlpha: CGFloat = 0.8
     fileprivate var saveBlock: SaveBlock? = nil
     fileprivate var finishBlock: FinishBlock? = nil
+    
+    weak var moveInView: UIView? = nil
     
     class func loadNib(_ target: Any) -> TimeMethodInputView? {
         guard let view =
@@ -33,33 +35,26 @@ class TimeMethodInputView: UIView {
                 .first as? TimeMethodInputView else {
                     return nil
         }
-        
-        let colors = Colors()
-        
-        view.cardHolderView.backgroundColor = Colors.cloudColor
+        view.cardHolderView.backgroundColor = Colors.cellCardColor
         view.cardHolderView.layer.cornerRadius = kCardViewCornerRadius
+        view.cardHolderView.addShadow()
         
         view.firstInputTitleLabel.textColor = Colors.secondaryTextColor
         view.secondInputTitleLabel.textColor = Colors.secondaryTextColor
         
-        view.leftButton.tintColor = colors.mainGreenColor
+        view.leftButton.tintColor = Colors.cellLabelSelectedTextColor
         view.leftButton.setTitle(Localized("cancel"), for: .normal)
         view.leftButton.addTarget(view, action: #selector(view.moveOut), for: .touchUpInside)
         
-        view.rightButton.tintColor = colors.mainGreenColor
+        view.rightButton.tintColor = Colors.cellLabelSelectedTextColor
         view.rightButton.setTitle(Localized("save"), for: .normal)
         view.rightButton.addTarget(view, action: #selector(view.saveAction), for: .touchUpInside)
         
         view.firstTextField.delegate = view
-        view.firstTextField.tintColor = colors.mainGreenColor
         view.secondTextField.delegate = view
-        view.secondTextField.tintColor = colors.mainGreenColor
         
         view.cardHolderViewTopConstraint.constant = -view.viewHeight
-        view.isHidden = true
         
-        let tapDismiss = UITapGestureRecognizer(target: view, action: #selector(view.moveOut))
-        view.addGestureRecognizer(tapDismiss)
         let swipe = UISwipeGestureRecognizer(target: view, action: #selector(blockGecognizer))
         view.addGestureRecognizer(swipe)
         let pan = UIPanGestureRecognizer(target: view, action: #selector(blockGecognizer))
@@ -72,6 +67,12 @@ class TimeMethodInputView: UIView {
     
     func blockGecognizer() {
         //do nothing
+    }
+    
+    @discardableResult
+    func setMoveInView(moveInView: UIView) -> TimeMethodInputView {
+        self.moveInView = moveInView
+        return self
     }
     
     @discardableResult
@@ -115,8 +116,17 @@ class TimeMethodInputView: UIView {
 
     
     func moveIn() {
+        guard let view = self.moveInView else { fatalError("not set move in view yet")}
         // 进来的时候先隐藏
-        self.isHidden = false
+        let image = view.convertViewToImage()
+        self.blurImageView.image =
+            image.blurredImage(5, iterations: 3, ratio: 2.0, blendColor: nil, blendMode: .clear)
+        self.blurImageView.alpha = 0
+        self.cardHolderView.alpha = 0.5
+        self.frame = view.bounds
+        view.addSubview(self)
+        self.layoutIfNeeded()
+        
         // 有可能第一个输入框的状态是被禁止的 那么则响应第二个输入框的键盘
         if self.firstTextField.isUserInteractionEnabled == false {
             self.secondTextField.becomeFirstResponder()
@@ -125,12 +135,11 @@ class TimeMethodInputView: UIView {
         }
         
         self.cardHolderViewTopConstraint.constant = 64
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration,
-                       usingSpringWithDamping: self.shadowAlpha, initialSpringVelocity: 0.1,
-                       options: UIViewAnimationOptions(), animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: .curveEaseInOut, animations: { [unowned self] in
+            self.blurImageView.alpha = 1
+            self.cardHolderView.alpha = 1
             self.layoutIfNeeded()
-            self.realShadowView.alpha = self.shadowAlpha
-        })
+        }, completion: nil)
     }
     
     func moveOut() {
@@ -139,14 +148,15 @@ class TimeMethodInputView: UIView {
         self.finishBlock?()
         self.endEditing(true)
         
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: kSmallAnimationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: .curveEaseInOut, animations: { [unowned self] in
+            self.cardHolderView.alpha = 0.5
+            self.blurImageView.alpha = 0
             self.layoutIfNeeded()
-            self.realShadowView.alpha = 0
         }) { [unowned self] (finish) in
-            self.isHidden = true
             self.firstTextField.text = nil
             self.saveBlock = nil
             self.secondTextField.text = nil
+            self.removeFromSuperview()
         }
     }
     
@@ -182,5 +192,9 @@ extension TimeMethodInputView: UITextFieldDelegate {
         } else {
             return true
         }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.attributedText =  textField.text?.fixTextFieldBugString(fontSize: 14, color: Colors.mainTextColor)
     }
 }

@@ -15,6 +15,7 @@ class TimeMethodTableViewCell: MGSwipeTableCell {
     static let rowHeight: CGFloat = 70
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var aliaseLabel: UILabel!
     @IBOutlet weak var timesLabel: UILabel!
     @IBOutlet weak var cellCardView: UIView!
     
@@ -23,6 +24,7 @@ class TimeMethodTableViewCell: MGSwipeTableCell {
         // Initialization code
         
         self.nameLabel.textColor = Colors.mainTextColor
+        self.aliaseLabel.textColor = Colors.secondaryTextColor
         self.timesLabel.textColor = Colors.secondaryTextColor
         self.cellCardView.layer.cornerRadius = 4
         self.cellCardView.addCardShadow()
@@ -35,6 +37,7 @@ class TimeMethodTableViewCell: MGSwipeTableCell {
     
     func configCell(method: TimeMethod, enableSwipe: Bool) {
         self.nameLabel.text = method.name
+        self.aliaseLabel.text = method.timeMethodAliase
         self.timesLabel.text =
             String(format: Localized(method.useTimes > 1 ? "useTimes" : "useTime"), method.useTimes)
         
@@ -44,12 +47,21 @@ class TimeMethodTableViewCell: MGSwipeTableCell {
             let deleteImage = Icons.delete.iconImage()
             let deleteButton = MGSwipeButton(title: "",
                                              icon: deleteImage,
-                                             backgroundColor: Colors.deleteButtonBackgroundColor,
+                                             backgroundColor: Colors.swipeRedBackgroundColor,
                                              callback: nil)
             deleteButton.tintColor = Colors.cellCardColor
             deleteButton.buttonWidth = width
             rightButtons.append(deleteButton)
             
+            let renameImage = Icons.rename.iconImage()
+            let renameButton = MGSwipeButton(title: "",
+                                         icon: renameImage,
+                                         backgroundColor: Colors.swipeBlueBackgroundColor,
+                                         callback: nil)
+            renameButton.tintColor = Colors.cellCardColor
+            renameButton.buttonWidth = width
+            rightButtons.append(renameButton)
+
             self.rightButtons = rightButtons
         } else {
             self.rightButtons.removeAll()

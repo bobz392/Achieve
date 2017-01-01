@@ -60,7 +60,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         }
         
         self.clearButton.tintColor =
-            !selected ? Colors.mainIconColor : Colors.deleteButtonBackgroundColor
+            !selected ? Colors.mainIconColor : Colors.swipeRedBackgroundColor
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
@@ -77,7 +77,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         }
         
         self.clearButton.tintColor =
-            !highlighted ? Colors.mainIconColor : Colors.deleteButtonBackgroundColor
+            !highlighted ? Colors.mainIconColor : Colors.swipeRedBackgroundColor
     }
 
     func clearAction(_ btn: UIButton) {

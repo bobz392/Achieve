@@ -12,10 +12,11 @@ import UIKit
 class TimeManagerEditorTableViewCell: BaseTableViewCell {
     
     typealias DeleteTimeMethodGroupBlock = () -> Void
+    typealias GetMoveInViewBlock = () -> UIView
     
     static let nib = UINib(nibName: "TimeManagerEditorTableViewCell", bundle: nil)
     static let reuseId = "timeManagerEditorTableViewCell"
-    static let defaultHeight: CGFloat = 72.5
+    static let defaultHeight: CGFloat = 74
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var groupNameLabel: UILabel!
@@ -32,19 +33,18 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     fileprivate var groupIndex: Int = 0
     fileprivate var canChange = false
     var deleteBlock: DeleteTimeMethodGroupBlock? = nil
+    var moveInBlock: GetMoveInViewBlock? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let colors = Colors()
-        self.deleteGroupButton.createIconButton(iconSize: kTaskDetailCellIconSize,
-                                                icon: "fa-times",
-                                                color: colors.mainGreenColor, status: .normal)
-        self.deleteGroupButton.addTarget(self,
-                                         action: #selector(self.deleteGroupAction), for: .touchUpInside)
+        
+        self.deleteGroupButton.setImage(Icons.clear.iconImage(), for: .normal)
+        self.deleteGroupButton.tintColor = Colors.linkButtonTextColor
+        self.deleteGroupButton.addTarget(self, action: #selector(self.deleteGroupAction), for: .touchUpInside)
         
         self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
-        self.cardView.backgroundColor = Colors.cloudColor
+        self.cardView.backgroundColor = Colors.cellCardColor
+        self.cardView.addCardShadow()
         
         self.itemsTableView.layer.cornerRadius = kCardViewSmallCornerRadius
         self.itemsTableView.register(ItemTableViewCell.nib,
@@ -56,9 +56,8 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         
         self.groupRepeatLabel.textColor = Colors.mainTextColor
         self.groupRepeatLabel.text = Localized("repeatNumber")
-        self.groupRepeatButton.tintColor = colors.mainGreenColor
-        self.groupRepeatButton.addTarget(self,
-                                         action: #selector(self.groupRepeatAction), for: .touchUpInside)
+        self.groupRepeatButton.tintColor = Colors.linkButtonTextColor
+        self.groupRepeatButton.addTarget(self, action: #selector(self.groupRepeatAction), for: .touchUpInside)
         
         self.itemsTableView.addLightBorder()
     }
@@ -68,7 +67,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.canChange = canChange
         self.groupIndex = groupIndex
         // 如果在可以删除的情况下，也禁止第一个 group 删除，因为默认最少有一个group
-        self.deleteGroupButton.isHidden = !canChange && groupIndex == 0
+        self.deleteGroupButton.isHidden = !canChange || groupIndex == 0
         self.groupRepeatButton.isEnabled = canChange
         
         self.groupNameLabel.text = Localized("timeManageGroupName") + "\(groupIndex + 1)"
@@ -182,7 +181,8 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
             })
         }
         
-        inputView.moveIn()
+        guard let moveInView = self.moveInBlock?() else { return }
+        inputView.setMoveInView(moveInView: moveInView).moveIn()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

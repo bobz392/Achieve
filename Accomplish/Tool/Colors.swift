@@ -40,8 +40,8 @@ struct Colors {
     static let priorityHighColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
     static let priorityLowColor = UIColor(red:0.95, green:0.77, blue:0.06, alpha:1.00)
     
-    static let deleteButtonBackgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
-    static let tmButtonBackgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
+    static let swipeRedBackgroundColor = UIColor(red:0.91, green:0.30, blue:0.24, alpha:1.00)
+    static let swipeBlueBackgroundColor = UIColor(red:0.20, green:0.60, blue:0.86, alpha:1.00)
     
     static let scheduleLineBackgroundColor = UIColor(red:0.75, green:0.78, blue:0.79, alpha:1.00)
 }

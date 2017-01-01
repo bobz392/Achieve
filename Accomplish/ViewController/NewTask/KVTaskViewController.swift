@@ -49,6 +49,7 @@ class KVTaskViewController: BaseViewController {
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
         
+        
         let bar = self.createCustomBar(height: kBarHeight, withBottomLine: false)
         let backButton = self.createLeftBarButton(icon: Icons.back)
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
@@ -79,7 +80,6 @@ class KVTaskViewController: BaseViewController {
         paparView.addSubview(self.nameTextField)
         self.nameTextField.backgroundColor = Colors.cellCardColor
         self.nameTextField.font = UIFont.systemFont(ofSize: 16)
-        self.nameTextField.tintColor = Colors.mainTextColor
         self.nameTextField.textColor = Colors.mainTextColor
         self.nameTextField.delegate = self
         self.nameTextField.snp.makeConstraints { (make) in
@@ -196,6 +196,11 @@ extension KVTaskViewController: UITextViewDelegate {
 }
 
 extension KVTaskViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.attributedText =  textField.text?.fixTextFieldBugString(fontSize: 16, color: Colors.mainTextColor)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.contentTextView.becomeFirstResponder()
         return false
@@ -205,4 +210,5 @@ extension KVTaskViewController: UITextFieldDelegate {
         self.addButton.isEnabled = (range.location + string.characters.count > 0) && !self.contentTextView.text.isRealEmpty
         return true
     }
+    
 }

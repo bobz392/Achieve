@@ -147,7 +147,7 @@ class TaskTableViewCell: MGSwipeTableCell {
         let deleteImage = Icons.delete.iconImage()
         let deleteButton = MGSwipeButton(title: "",
                                          icon: deleteImage,
-                                         backgroundColor: Colors.deleteButtonBackgroundColor,
+                                         backgroundColor: Colors.swipeRedBackgroundColor,
                                          callback: { (cell) -> Bool in
                                             // 删除任务的 block
                                             if #available(iOS 9.0, *) {
@@ -165,7 +165,7 @@ class TaskTableViewCell: MGSwipeTableCell {
             let tmImage = Icons.timeManagement.iconImage()
             let tmButton = MGSwipeButton(title: "",
                                          icon: tmImage,
-                                         backgroundColor: Colors.tmButtonBackgroundColor,
+                                         backgroundColor: Colors.swipeBlueBackgroundColor,
                                          callback: { (cell) -> Bool in
                                             // 进入时间管理的 block
                                             self.timeManagementBlock?()

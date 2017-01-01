@@ -63,19 +63,11 @@ class TimeManagementViewController: BaseViewController {
             createMethodButton.addTarget(self, action: #selector(self.newMethodAction), for: .touchUpInside)
             titleLabel.text = Localized("time_management")
         }
-        
-        self.view.addSubview(self.timeMethodInputView)
-        self.timeMethodInputView.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.view)
-            make.bottom.equalTo(self.view)
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view)
-        })
     }
     
     // MARK: - actions
     func newMethodAction() {
-        timeMethodInputView.setTitles(first: Localized("methodName"), second: Localized("aliase"))
+        self.timeMethodInputView.setTitles(first: Localized("methodName"), second: Localized("aliase"))
             .setPlaceHolders(first: Localized("enterMethodName"), second: Localized("enterMethodAliase"))
             .setSaveBlock(saveBlock: { [unowned self] (name, aliase) in
                 let timeMethod = TimeMethod()
@@ -92,8 +84,30 @@ class TimeManagementViewController: BaseViewController {
                 self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
                 RealmManager.shared.writeObject(timeMethod)
             })
+            .setMoveInView(moveInView: self.view)
             .moveIn()
     }
+    
+    func renameAction(indexPath: IndexPath) {
+        let timeMethod = self.timeMethods[indexPath.row]
+        self.timeMethodInputView.setTitles(first: Localized("methodName"), second: Localized("aliase"))
+            .setContent(first: timeMethod.name, second: timeMethod.timeMethodAliase)
+            .setPlaceHolders(first: Localized("enterMethodName"), second: Localized("enterMethodAliase"))
+            .setSaveBlock(saveBlock: { [unowned self] (name, aliase) in
+                RealmManager.shared.updateObject {
+                    if !name.isRealEmpty {
+                        timeMethod.name = name
+                    }
+                    if let aliase = aliase, !aliase.isRealEmpty {
+                        timeMethod.timeMethodAliase = aliase
+                    }
+                    self.methodTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            })
+            .setMoveInView(moveInView: self.view)
+            .moveIn()
+    }
+    
 }
 
 extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate {
@@ -148,9 +162,16 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
     
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
         if let indexPath = self.methodTableView.indexPath(for: cell) {
-            RealmManager.shared.deleteObject(self.timeMethods[indexPath.row ])
-            self.methodTableView.deleteRows(at: [indexPath], with: .automatic)
+            if indexPath.row == 0 {
+                RealmManager.shared.deleteObject(self.timeMethods[indexPath.row ])
+                self.methodTableView.deleteRows(at: [indexPath], with: .automatic)
+                return true
+            } else {
+                self.renameAction(indexPath: indexPath)
+                return false
+            }
         }
+        
         return true
     }
 

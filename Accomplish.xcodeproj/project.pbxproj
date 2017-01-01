@@ -198,7 +198,6 @@
 		C78C47CB1D904161009CE56B /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */; };
 		C78C4E071DFC71C7000C289D /* ReadLater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4E061DFC71C7000C289D /* ReadLater.swift */; };
 		C78C4E0C1DFC78E8000C289D /* ReadLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4E0A1DFC78E8000C289D /* ReadLaterViewController.swift */; };
-		C78C4E0D1DFC78E8000C289D /* ReadLaterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78C4E0B1DFC78E8000C289D /* ReadLaterViewController.xib */; };
 		C78C4E581DFC97FC000C289D /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C78C4E571DFC97FC000C289D /* libxml2.tbd */; };
 		C78C4EAD1DFCBFB0000C289D /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */; };
 		C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */; };
@@ -634,7 +633,6 @@
 		C7860E4C1D6C23FF000281FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C78C4E061DFC71C7000C289D /* ReadLater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLater.swift; sourceTree = "<group>"; };
 		C78C4E0A1DFC78E8000C289D /* ReadLaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterViewController.swift; sourceTree = "<group>"; };
-		C78C4E0B1DFC78E8000C289D /* ReadLaterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterViewController.xib; sourceTree = "<group>"; };
 		C78C4E571DFC97FC000C289D /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		C78C4EAB1DFCBFB0000C289D /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
 		C78C4EAC1DFCBFB0000C289D /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
@@ -1279,7 +1277,6 @@
 			children = (
 				C78C4EAA1DFCBDE7000C289D /* Cell */,
 				C78C4E0A1DFC78E8000C289D /* ReadLaterViewController.swift */,
-				C78C4E0B1DFC78E8000C289D /* ReadLaterViewController.xib */,
 			);
 			path = ReadLater;
 			sourceTree = "<group>";
@@ -1737,7 +1734,6 @@
 				C75F85831E053F6D0057D76C /* 00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap in Resources */,
 				C77DE36D1DE6FE7000F098F4 /* ItemTableViewCell.xib in Resources */,
 				C77DE3691DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib in Resources */,
-				C78C4E0D1DFC78E8000C289D /* ReadLaterViewController.xib in Resources */,
 				C75F858A1E053F6D0057D76C /* 6093DE75-B510-3497-88D0-4DBEEA0A5400.bcsymbolmap in Resources */,
 				C75F85891E053F6D0057D76C /* 51DE814E-40D5-3019-A975-684DB4CEF559.bcsymbolmap in Resources */,
 				C73B443B1E0A523900DDE093 /* EmptyDataView.xib in Resources */,

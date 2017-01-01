@@ -11,10 +11,8 @@ import SafariServices
 
 class ReadLaterViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var readLatersTableView: UITableView!
-    @IBOutlet weak var backButton: UIButton!
+    fileprivate let readLaterTableView = UITableView()
+    fileprivate let emptyLabel = UILabel()
     
     fileprivate var readLaters = RealmManager.shared.allReadLaters()
     fileprivate var readLaterManager =
@@ -24,52 +22,41 @@ class ReadLaterViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
-        
-        self.titleLabel.textColor = Colors.cloudColor
-        
-        self.readLatersTableView.clearView()
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        
-        self.readLatersTableView.separatorColor = Colors.separatorColor
-        self.readLatersTableView.reloadData()
-    }
-    
-    fileprivate func initializeControl() {
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.titleLabel.text = Localized("readLaterTitle")
-        
-        self.readLatersTableView.register(ReadLaterTableViewCell.nib,
-                                          forCellReuseIdentifier: ReadLaterTableViewCell.reuseId)
-        self.readLatersTableView.tableFooterView = UIView()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        self.createTitleLabel(titleText: Localized("readLaterTitle"), style: .center)
+        self.configReadLaterTableView(bar: bar)
     }
 
 }
 
 extension ReadLaterViewController: UITableViewDelegate, UITableViewDataSource {
+    func configReadLaterTableView(bar: UIView) {
+        self.view.addSubview(self.readLaterTableView)
+        self.readLaterTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.readLaterTableView.delegate = self
+        self.readLaterTableView.dataSource = self
+        self.readLaterTableView.separatorColor = Colors.separatorColor
+        self.readLaterTableView.register(ReadLaterTableViewCell.nib,
+                                          forCellReuseIdentifier: ReadLaterTableViewCell.reuseId)
+        self.readLaterTableView.tableFooterView = UIView()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.readLaters.count
     }

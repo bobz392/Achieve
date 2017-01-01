@@ -96,11 +96,7 @@ class CalendarViewController: BaseViewController {
         self.dateButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
         self.circleViewTopConstraint.constant = DeviceSzie.isSmallDevice() ? 40 : 50
         self.circleViewBottomConstraint.constant = DeviceSzie.isSmallDevice() ? 5 : 20
-//        self.scheduleButton.setTitle(Localized("schedule"), for: .normal)
-//        self.scheduleButton.setTitle(Localized("noSchedule"), for: .disabled)
-//        self.scheduleButton.setTitleColor(Colors.cellLabelSelectedTextColor, for: .normal)
-//        self.scheduleButton.addTarget(self, action: #selector(self.checkReport), for: .touchUpInside)
-        
+        self.circleView.circleButton.addTarget(self, action:  #selector(self.checkReport), for: .touchUpInside)
         self.configWeekView()
         
         self.createdLabel.textColor = Colors.mainTextColor

@@ -23,6 +23,8 @@ class SettingsViewController: BaseViewController {
     fileprivate let closeDueIndex = 4
     fileprivate let closeSoundIndex = 5
     
+    fileprivate let settingsTableView = UITableView()
+    
     // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,12 @@ class SettingsViewController: BaseViewController {
     }
     
     override func configMainUI() {
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        self.congfigMenuButton()
+        self.createTitleLabel(titleText: Localized("settings"), style: .center)
+        
+        self.view.addSubview(self.settingsTableView)
+        
         let colors = Colors()
         
         self.titleLabel.textColor = Colors.cloudColor
@@ -67,7 +75,6 @@ class SettingsViewController: BaseViewController {
         self.cardView.addShadow()
         self.cardView.layer.cornerRadius = kCardViewCornerRadius
         
-        self.titleLabel.text = Localized("setting")
         
         self.settingTableView
             .register(SettingTableViewCell.nib, forCellReuseIdentifier: SettingTableViewCell.reuseId)

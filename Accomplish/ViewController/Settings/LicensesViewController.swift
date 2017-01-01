@@ -9,56 +9,46 @@
 import UIKit
 
 class LicensesViewController: BaseViewController {
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        self.createTitleLabel(titleText: Localized("licenses"), style: .center)
         
-        self.titleLabel.textColor = Colors.cloudColor
-        
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-    }
-    
-    fileprivate func initializeControl() {
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.titleLabel.text = Localized("licenses")
+        let textView = UITextView()
+        self.view.addSubview(textView)
+        textView.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightLight)
+        textView.textColor = Colors.mainTextColor
+        textView.backgroundColor = Colors.mainBackgroundColor
+        textView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom).offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(10)
+        }
         
         if let stringURL = Bundle.main.url(forResource: "Acknowledgements", withExtension: nil) {
             DispatchQueue(label: "com.shimo.fileReading", attributes: []).async {
                 if let string = try? String(contentsOf: stringURL, encoding: String.Encoding.utf8) {
-                    DispatchQueue.main.async { [unowned self] in
-                        self.textView.text = string
+                    DispatchQueue.main.async {
+                        textView.text = string
                     }
                 }
             }
         }
-    }
 
-}
+    }
+    
+ }

@@ -142,9 +142,7 @@
 		C75F85B01E053FD20057D76C /* SnapKit.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C75F857D1E053F6D0057D76C /* SnapKit.framework.dSYM */; };
 		C75F85B11E053FD20057D76C /* SVProgressHUD.framework.dSYM in Copy Carthage dSYMs */ = {isa = PBXBuildFile; fileRef = C75F857F1E053F6D0057D76C /* SVProgressHUD.framework.dSYM */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
-		C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6421D885AB700E68871 /* AboutViewController.xib */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
-		C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C769A6461D8862D800E68871 /* LicensesViewController.xib */; };
 		C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */; };
 		C76AE2CF1D8E892F00930D43 /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76AE2CE1D8E892F00930D43 /* WatchManager.swift */; };
 		C77192491D6CEE4E00437560 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77192441D6CEE4E00437560 /* HomeViewController.swift */; };
@@ -572,9 +570,7 @@
 		C75F857F1E053F6D0057D76C /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C7670A5F1DFA16C600E5E21B /* AchieveShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AchieveShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		C769A6421D885AB700E68871 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
-		C769A6461D8862D800E68871 /* LicensesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicensesViewController.xib; sourceTree = "<group>"; };
 		C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C76AE2CE1D8E892F00930D43 /* WatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
 		C77192441D6CEE4E00437560 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -1224,9 +1220,7 @@
 				C79807141D8298380011DE19 /* SettingsViewController.swift */,
 				C79807151D8298380011DE19 /* SettingsViewController.xib */,
 				C769A6411D885AB700E68871 /* AboutViewController.swift */,
-				C769A6421D885AB700E68871 /* AboutViewController.xib */,
 				C769A6451D8862D800E68871 /* LicensesViewController.swift */,
-				C769A6461D8862D800E68871 /* LicensesViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1741,7 +1735,6 @@
 				C7DC01C31E159FD20055B7F8 /* ScheduleHeaderView.xib in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
 				C75F858F1E053F6D0057D76C /* 99799440-203F-3407-9652-696FA6C94675.bcsymbolmap in Resources */,
-				C769A6441D885AB700E68871 /* AboutViewController.xib in Resources */,
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
 				C75F85921E053F6D0057D76C /* B3E65619-1D82-3269-B69B-DD08018E6DE3.bcsymbolmap in Resources */,
 				C73B44811E0C4FE800DDE093 /* EmptyView.xib in Resources */,
@@ -1756,7 +1749,6 @@
 				C7105FC01D6CDBFD0096A1A3 /* DateTools.bundle in Resources */,
 				C77194CA1D70ED2300437560 /* SystemTaskTableViewCell.xib in Resources */,
 				C75F85841E053F6D0057D76C /* 035FA449-7E65-35CF-9F2E-76FE3795A161.bcsymbolmap in Resources */,
-				C769A6481D8862D800E68871 /* LicensesViewController.xib in Resources */,
 				C7B5792C1DAACEDC003B6D92 /* MonthViewController.xib in Resources */,
 				C79807251D83958F0011DE19 /* SettingHeaderView.xib in Resources */,
 				C75F85871E053F6D0057D76C /* 4D8D5350-FB19-325E-8092-1435F09B92D7.bcsymbolmap in Resources */,

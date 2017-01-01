@@ -10,62 +10,69 @@ import UIKit
 
 class AboutViewController: BaseViewController {
 
-//    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var acknowledgementsButton: UIButton!
-    @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var wordLabel: UILabel!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         self.configMainUI()
-        self.initializeControl()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        self.createCustomBar(height: kBarHeight, withBottomLine: false)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-//        self.titleLabel.textColor = colors.cloudColor
+        let appLabel = UILabel()
+        appLabel.font = UIFont(name: "Chalkduster", size: 45)
+        appLabel.textColor = Colors.mainIconColor
+        appLabel.text = "Achieve"
+        appLabel.textAlignment = .center
+        self.view.addSubview(appLabel)
+        appLabel.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview().multipliedBy(0.35).offset(kBarHeight)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+        }
         
-        self.cardView.clearView()//backgroundColor = colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
+        let contentLabel = UILabel()
+        contentLabel.text = "We always have time enough, if we will but use it aright."
+        contentLabel.textColor = Colors.mainIconColor
+        contentLabel.textAlignment = .center
+        contentLabel.font = UIFont(name: "Chalkduster", size: 14)
+        self.view.addSubview(contentLabel)
+        contentLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(appLabel.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
         
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor,
-                                         status: .normal)
-        
-        self.versionLabel.textColor = Colors.cloudColor
-        self.acknowledgementsButton.tintColor = Colors.cloudColor
-        
-        self.nameLabel.textColor = Colors.cloudColor
-        self.wordLabel.textColor = Colors.cloudColor
-    }
-    
-    fileprivate func initializeControl() {
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+        let acknowledgementsButton = UIButton()
+        acknowledgementsButton.setTitleColor(Colors.cellLabelSelectedTextColor, for: .normal)
+        acknowledgementsButton.setTitle(Localized("licenses"), for: .normal)
+        acknowledgementsButton.tintColor = Colors.cloudColor
+        acknowledgementsButton.addTarget(self, action: #selector(self.licensesAction), for: .touchUpInside)
         
         let appVersion = AppVersion()
-        self.versionLabel.text = Localized("version") + " \(appVersion.version)" + " (\(appVersion.build))"
-        self.acknowledgementsButton.setTitle(Localized("licenses"), for: .normal)
-        self.acknowledgementsButton.addTarget(self, action: #selector(self.licensesAction), for: .touchUpInside)
+        let versionLabel = UILabel()
+        versionLabel.textColor = Colors.mainIconColor
+        versionLabel.textAlignment = .center
+        versionLabel.font = UIFont.systemFont(ofSize: 12)
+        versionLabel.text = Localized("version") + " \(appVersion.version)" + " (\(appVersion.build))"
+        self.view.addSubview(versionLabel)
+        versionLabel.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-20)
+            make.centerX.equalToSuperview()
+        }
+        
+        self.view.addSubview(acknowledgementsButton)
+        acknowledgementsButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(versionLabel.snp.top).offset(-14)
+            make.centerX.equalToSuperview()
+        }
     }
     
     // MARK: - actions

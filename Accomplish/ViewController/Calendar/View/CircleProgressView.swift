@@ -85,7 +85,7 @@ final class CircleProgressView: UIView {
         self.precentLabel.method = .easeInOut
         self.precentLabel.format = "%d"
         self.precentLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
+            make.centerX.equalToSuperview().offset(-4)
             make.centerY.equalToSuperview().offset(DeviceSzie.isSmallDevice() ? -10 : -30)
         }
         

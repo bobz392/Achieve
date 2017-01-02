@@ -59,7 +59,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.groupRepeatButton.tintColor = Colors.linkButtonTextColor
         self.groupRepeatButton.addTarget(self, action: #selector(self.groupRepeatAction), for: .touchUpInside)
         
-        self.itemsTableView.separatorStyle = .none
+        self.itemsTableView.separatorColor = UIColor.lightGray
         self.itemsTableView.layer.borderWidth = 0.2
         self.itemsTableView.layer.borderColor = UIColor.lightGray.cgColor
     }

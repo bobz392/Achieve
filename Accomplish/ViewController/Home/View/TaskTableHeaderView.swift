@@ -50,4 +50,9 @@ class TaskTableHeaderView: UIView {
         self.additionButton.isHidden = false
     }
     
+    func removeAdditionButton() {
+        self.block = nil
+        self.additionButton.setTitle(nil, for: .normal)
+        self.additionButton.isHidden = false
+    }
 }

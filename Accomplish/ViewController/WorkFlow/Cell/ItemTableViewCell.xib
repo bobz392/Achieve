@@ -30,22 +30,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2f-Cs-z8W">
-                        <rect key="frame" x="15" y="42.5" width="305" height="0.0"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="0.29999999999999999" id="Ezq-OX-5jZ"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="xob-dh-c3e" secondAttribute="trailing" constant="8" id="9dB-M6-42F"/>
                     <constraint firstItem="xob-dh-c3e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qaU-06-vJT" secondAttribute="trailing" constant="10" id="9sx-0G-aw6"/>
                     <constraint firstItem="qaU-06-vJT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Nbq-9j-6QI"/>
-                    <constraint firstItem="x2f-Cs-z8W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="WNW-Ge-4db"/>
-                    <constraint firstAttribute="bottom" secondItem="x2f-Cs-z8W" secondAttribute="bottom" constant="0.5" id="XNZ-zP-nUZ"/>
                     <constraint firstItem="xob-dh-c3e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bZF-YZ-TFc"/>
-                    <constraint firstAttribute="trailing" secondItem="x2f-Cs-z8W" secondAttribute="trailing" id="qh6-nc-1my"/>
                     <constraint firstItem="qaU-06-vJT" firstAttribute="centerY" secondItem="xob-dh-c3e" secondAttribute="centerY" id="wrj-Qh-Wnb"/>
                 </constraints>
             </tableViewCellContentView>

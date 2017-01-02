@@ -140,6 +140,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 let tagVC = TagViewController()
                 self.cacheViewControllers[1] = tagVC
+                tagVC.delegate = self.cacheHomeVC
                 viewController = tagVC
             }
         case 3:

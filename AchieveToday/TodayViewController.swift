@@ -46,7 +46,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             self.allButton.setTitleColor(cloudColor, for: UIControlState())
         }
         
-        self.allButton.setTitle(Localized("showAll"), for: UIControlState())
+        self.allButton.setTitle(Localized("allTask"), for: UIControlState())
         self.allButton.addTarget(self, action: #selector(self.enterApp), for: .touchUpInside)
         self.allButton.clipsToBounds = true
         self.allButton.layer.cornerRadius = 4

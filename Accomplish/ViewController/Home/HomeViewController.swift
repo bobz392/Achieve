@@ -56,7 +56,7 @@
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        self.navigationController?.delegate = nil
+        //        self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRow(at: indexPath, animated: true)
         self.selectedIndex = nil
@@ -427,6 +427,20 @@
         let headerView = self.taskListManager.viewForHeaderIn(section: section, target: self)
         
         if section == 0 {
+            guard let header = headerView as? TaskTableHeaderView else { return headerView }
+            let userDefault = AppUserDefault()
+            if let tagUUID = userDefault.readString(kUserDefaultCurrentTagUUIDKey),
+                let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID) {
+                header.updateTitle(newTitle: Localized("progess") + "-" + tag.name)
+                header.configAdditionButton(title: Localized("backToAllTask"), buttonBlock: { (button) in
+                    userDefault.remove(kUserDefaultCurrentTagUUIDKey)
+                    self.switchTagTo(tag: nil)
+                })
+            } else {
+                userDefault.remove(kUserDefaultCurrentTagUUIDKey)
+                header.removeAdditionButton()
+            }
+            
             return headerView
         } else if section == 1 {
             if let header = headerView as? TaskTableHeaderView {
@@ -489,7 +503,7 @@
         let task = self.taskListManager.taskForIndexPath(indexPath: indexPath)
         
         cell.configCellUse(task)
-       
+        
         if task.typeOfTask() == .custom {
             cell.timeManagementBlock = { [unowned self] in
                 let selectVC = TimeManagementViewController(isSelectTM: true, selectTMBlock: { [unowned self] (tm) in
@@ -528,62 +542,13 @@
         }
     }
     
-    /**
-     打开 settings 页面，例如删除 或者 工作法
-     */
-//    fileprivate func showSettings(taskUUID: String) {
-//        guard let task =
-//            RealmManager.shared.queryTask(taskUUID) else { return }
-//        
-//        let alert = UIAlertController(title: task.getNormalDisplayTitle(), message: nil, preferredStyle: .actionSheet)
-//        
-//        let deleteAction = UIAlertAction(title: Localized("deleteTask"), style: .destructive) { (action) in
-//            
-//            if #available(iOS 9.0, *) {
-//                SpotlightManager().removeFromIndex(task: task)
-//            }
-//            
-//            RealmManager.shared.deleteTask(task)
-//        }
-//        alert.addAction(deleteAction)
-//        
-//        if let _ = task.notifyDate {
-//            let deleteReminderAction = UIAlertAction(title: Localized("deleteReminder"), style: .destructive, handler: { (action) in
-//                RealmManager.shared.deleteTaskReminder(task)
-//                
-//            })
-//            alert.addAction(deleteReminderAction)
-//        }
-//        
-//        if task.typeOfTask() == .custom {
-//            let workflowAction = UIAlertAction(title: Localized("timeManagement"), style: .default) { [unowned self] (action) in
-//                let selectVC = TimeManagementViewController(isSelectTM: true, selectTMBlock: { [unowned self] (tm) in
-//                    dispatch_delay(0.35, closure: {
-//                        guard let view =
-//                            TimeManagementView.loadNib(self, method: tm, task: task) else { return }
-//                        self.timeManagementView = view
-//                        view.moveIn(view: self.view)
-//                    })
-//                })
-//                
-//                self.navigationController?.pushViewController(selectVC, animated: true)
-//            }
-//            alert.addAction(workflowAction)
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel) { (action) in
-//            alert.dismiss(animated: true, completion: nil)
-//        }
-//        alert.addAction(cancelAction)
-//        
-//        self.present(alert, animated: true, completion: nil)
-//    }
  }
  
  // MARK: - switch tag delegate
  extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.taskListManager.queryTodayTask(tagUUID: tag?.tagUUID)
+        self.taskTableView.reloadSections(IndexSet([0]), with: .automatic)
     }
  }
  

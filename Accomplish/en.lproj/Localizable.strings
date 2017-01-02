@@ -10,7 +10,8 @@
 "finished"="COMPLETED";
 "show"="SHOW";
 "hide"="HIDE";
-"emptyTask"="No more task, Enjoy the day or challenge a new task";
+"emptyTask"="No more tasks, Enjoy the day or challenge a new task";
+"emptyTagTask"="No more tasks in Tag: %@";
 "detailIncomplete"="Yesterday unfinished tasks postponed to today";
 "asyncing"="synchronizing";
 "icloud"="Login iCloud account to synchronize your data";
@@ -49,6 +50,7 @@
 "setTag"="Set Tag";
 "noneTag"="None";
 "allTask"="All Tasks";
+"backToAllTask"="Back To All Tasks";
 
 "priority2"="High";
 "priority1"="Normal";
@@ -161,7 +163,6 @@
 "noTaskToday"="You have no task due today.";
 "taskToday"="You have %d task due today.";
 "taskTodays"="You have %d tasks due today.";
-"showAll"="All Tasks";
 "showPriority"="Show task with priority";
 "timeMethodRunning"="(Working)";
 

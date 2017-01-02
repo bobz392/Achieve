@@ -59,6 +59,21 @@ class TagViewController: BaseViewController {
         self.tagTableView.selectRow(at: self.currentSelectedIndex, animated: true, scrollPosition: .none)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
+        if self.tagChange {
+            if let index = self.currentSelectedIndex {
+                if index.row == 0 {
+                    self.delegate?.switchTagTo(tag: nil)
+                } else {
+                    let tag = self.allTags[index.row - 1]
+                    self.delegate?.switchTagTo(tag: tag)
+                }
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -79,24 +94,6 @@ class TagViewController: BaseViewController {
     }
     
     // MARK: - actions
-    override func backAction() {
-        guard let nav = self.navigationController else {
-            return
-        }
-        
-        if self.tagChange {
-            if let index = self.currentSelectedIndex {
-                if index.row == 0 {
-                    self.delegate?.switchTagTo(tag: nil)
-                } else {
-                    self.delegate?.switchTagTo(tag: self.allTags[index.row - 1])
-                }
-            }
-        }
-        
-        nav.popViewController(animated: true)
-    }
-    
     func newTagAction() {
         self.newTagShadowView.isHidden = false
         
@@ -160,7 +157,7 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource, MGSwipe
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = Colors.mainBackgroundColor
+        view.clearView()
         return view
     }
     

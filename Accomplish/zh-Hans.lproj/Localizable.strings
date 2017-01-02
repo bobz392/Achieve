@@ -11,6 +11,7 @@
 "show"="显示";
 "hide"="隐藏";
 "emptyTask"="没有新任务，放松一下或者挑战一个新任务";
+"emptyTagTask"="没有新任务在标签：%@";
 "detailIncomplete"="把昨天未完成的任务移到今天";
 "asyncing"="同步中";
 "icloud"="登录iCloud账户来同步您的数据";
@@ -48,6 +49,7 @@
 "setTag"="设置标签";
 "noneTag"="无标签";
 "allTask"="所有任务";
+"backToAllTask"="切换回所有任务";
 
 "priority2"="高";
 "priority1"="普通";
@@ -162,7 +164,6 @@
 "noTaskToday"="您今天没有新任务。";
 "taskToday"="您今天还有%d个任务。";
 "taskTodays"="您今天还有%d个任务。";
-"showAll"="所有任务";
 "showPriority"="仅显示优先级为";
 "timeMethodRunning"="(工作中)";
 

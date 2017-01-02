@@ -17,8 +17,8 @@ class TaskListManager {
     
     fileprivate let rowHeight = TaskTableViewCell.rowHeight
     
-    var preceedTasks = RealmManager.shared.queryTodayTaskList(taskStatus: .preceed)
-    var completedTasks = RealmManager.shared.queryTodayTaskList(taskStatus: .completed)
+    var preceedTasks: Results<Task>
+    var completedTasks: Results<Task>
     
     fileprivate var preceedToken: RealmSwift.NotificationToken?
     fileprivate var completedToken: RealmSwift.NotificationToken?
@@ -28,6 +28,12 @@ class TaskListManager {
     fileprivate weak var completedHeaderView: TaskTableHeaderView? = nil
     
     init() {
+        var tagUUID: String? = nil
+        if let uuid = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey) {
+            tagUUID = uuid
+        }
+        self.preceedTasks = RealmManager.shared.queryTodayTaskList(taskStatus: .preceed, tagUUID: tagUUID)
+        self.completedTasks = RealmManager.shared.queryTodayTaskList(taskStatus: .completed, tagUUID: tagUUID)
         self.wormhole = MMWormhole(applicationGroupIdentifier: GroupIdentifier,
                                    optionalDirectory: nil)
         self.generatRealmToken()
@@ -169,14 +175,21 @@ extension TaskListManager {
                 let headerView = TaskTableHeaderView.loadNib(target, title: headerTitle)
                 return headerView
             } else {
+                let title: String
+                if let tagUUID = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey),
+                    let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID) {
+                    title = String(format: Localized("emptyTagTask"), tag.name)
+                } else {
+                    title = Localized("emptyTask")
+                }
                 
-                    let headerView = EmptyDataView.loadNib(target)
-                    if let header = headerView {
-                        header.setImage(imageName: Icons.listEmpty.iconString())
-                            .setTitle(title: Localized("emptyTask"))
-                    }
-                    
-                    return headerView
+                let headerView = EmptyDataView.loadNib(target)
+                if let header = headerView {
+                    header.setImage(imageName: Icons.listEmpty.iconString())
+                        .setTitle(title: title)
+                }
+                
+                return headerView
             }
         } else {
             let headerView = TaskTableHeaderView.loadNib(target, title: self.updateCompletedHeaderViewTitle())

@@ -27,15 +27,12 @@
     fileprivate weak var tmView: TMView? = nil
     
     // MARK: - life circle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let appDefault = AppUserDefault()
-        
         self.configMainUI()
         self.taskListManager.datasource = self
-        //        self.queryTodayTask()
         self.addNotification()
         self.initTimer()
         
@@ -56,14 +53,9 @@
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //        self.navigationController?.delegate = nil
         guard let indexPath = self.selectedIndex else { return }
         self.taskTableView.deselectRow(at: indexPath, animated: true)
         self.selectedIndex = nil
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
     }
     
     deinit {
@@ -96,6 +88,10 @@
         
         let createTaskButton = self.createPlusButton()
         createTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
+        
+        if #available(iOS 9.0, *) {
+            self.registerPerview()
+        }
     }
     
     /**
@@ -254,8 +250,6 @@
     
     // MARK: - actions
     fileprivate func animationNavgationTo(vc: UIViewController) {
-        //        self.navigationController?.delegate = self
-        //        self.toViewControllerAnimationType = 0
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -378,8 +372,51 @@
             self.taskTableView.endUpdates()
             TaskListManager.updateStatus(newStatues: .none)
         }
-        
     }
+    
+ }
+ 
+ // Mark: - 3d touch
+ extension HomeViewController: UIViewControllerPreviewingDelegate {
+    @available(iOS 9.0, *)
+    func registerPerview() {
+        if self.traitCollection.forceTouchCapability == .available {
+            self.registerForPreviewing(with: self, sourceView: self.taskTableView)
+        } else {
+            Logger.log("该设备不支持3D-Touch")
+        }
+    }
+    
+    @available(iOS 9.0, *)
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: false)
+    }
+    
+    @available(iOS 9.0, *)
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let index = self.taskTableView.indexPathForRow(at: location),
+            let cell = self.taskTableView.cellForRow(at: index) else { return nil }
+        let task = self.taskListManager.taskForIndexPath(indexPath: index)
+        let taskVC = TaskDetailViewController(task: task, canChange: index.section == 0)
+        previewingContext.sourceRect = cell.frame
+        return taskVC
+    }
+    
+    @available(iOS 8.0, *)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 9.0, *) {
+            switch traitCollection.forceTouchCapability {
+            case .available:
+                self.registerForPreviewing(with: self, sourceView: self.taskTableView)
+            default:
+                return
+            }
+        }  
+    }
+    
  }
  
  // MARK: - table view
@@ -459,23 +496,6 @@
         } else {
             return nil
         }
-        
-        //        guard let tagUUID = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey) else { return nil }
-        //        guard let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID)
-        //            else { return nil }
-        //
-        //        let view = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: tableView.frame.width, height: 25)))
-        //        view.backgroundColor = UIColor(red:0.91, green:0.92, blue:0.93, alpha:1.00)
-        //
-        //        let label = UILabel()
-        //        view.addSubview(label)
-        //        label.snp.makeConstraints { (make) in
-        //            make.centerY.equalTo(view)
-        //            make.leading.equalTo(view).offset(5)
-        //        }
-        //        label.font = UIFont.systemFont(ofSize: 14)
-        //        label.textColor = Colors.mainTextColor
-        //        label.text = tag.name
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

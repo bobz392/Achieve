@@ -32,6 +32,19 @@ class ReportViewController: BaseViewController {
         super.viewDidLoad()
         
         self.configMainUI()
+        
+        if #available(iOS 9.0, *) {
+            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+                return self.scheduleTableView
+                }, previewViewControllerBlock: { [unowned self] (previewingContext: UIViewControllerPreviewing, location: CGPoint) -> UIViewController? in
+                    guard let index = self.scheduleTableView.indexPathForRow(at: location),
+                        let cell = self.scheduleTableView.cellForRow(at: index) else { return nil }
+                    let task = self.taskList[index.row]
+                    let taskVC = TaskDetailViewController(task: task, canChange: false)
+                    previewingContext.sourceRect = cell.frame
+                    return taskVC
+            })
+        }
     }
     
     override func didReceiveMemoryWarning() {

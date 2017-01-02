@@ -91,7 +91,16 @@
         createTaskButton.addTarget(self, action:  #selector(self.newTaskAction), for: .touchUpInside)
         
         if #available(iOS 9.0, *) {
-            self.registerPerview()
+            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+                return self.taskTableView
+                }, previewViewControllerBlock: { [unowned self] (previewingContext: UIViewControllerPreviewing, location: CGPoint) -> UIViewController? in
+                guard let index = self.taskTableView.indexPathForRow(at: location),
+                    let cell = self.taskTableView.cellForRow(at: index) else { return nil }
+                let task = self.taskListManager.taskForIndexPath(indexPath: index)
+                let taskVC = TaskDetailViewController(task: task, canChange: index.section == 0)
+                previewingContext.sourceRect = cell.frame
+                return taskVC
+            })
         }
     }
     
@@ -373,49 +382,6 @@
             self.taskTableView.endUpdates()
             TaskListManager.updateStatus(newStatues: .none)
         }
-    }
-    
- }
- 
- // Mark: - 3d touch
- extension HomeViewController: UIViewControllerPreviewingDelegate {
-    @available(iOS 9.0, *)
-    func registerPerview() {
-        if self.traitCollection.forceTouchCapability == .available {
-            self.registerForPreviewing(with: self, sourceView: self.taskTableView)
-        } else {
-            Logger.log("该设备不支持3D-Touch")
-        }
-    }
-    
-    @available(iOS 9.0, *)
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        self.navigationController?.pushViewController(viewControllerToCommit, animated: false)
-    }
-    
-    @available(iOS 9.0, *)
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
-        guard let index = self.taskTableView.indexPathForRow(at: location),
-            let cell = self.taskTableView.cellForRow(at: index) else { return nil }
-        let task = self.taskListManager.taskForIndexPath(indexPath: index)
-        let taskVC = TaskDetailViewController(task: task, canChange: index.section == 0)
-        previewingContext.sourceRect = cell.frame
-        return taskVC
-    }
-    
-    @available(iOS 8.0, *)
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if #available(iOS 9.0, *) {
-            switch traitCollection.forceTouchCapability {
-            case .available:
-                self.registerForPreviewing(with: self, sourceView: self.taskTableView)
-            default:
-                return
-            }
-        }  
     }
     
  }

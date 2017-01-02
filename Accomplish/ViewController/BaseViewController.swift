@@ -14,6 +14,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var customNavigationBar: UIView? = nil
     var leftBarButton: UIButton? = nil
     
+    fileprivate var sourceViewBlock: SourceViewBlock? = nil
+    fileprivate var previewViewControllerBlock: PreviewViewControllerBlock? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -175,6 +178,51 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+}
+
+// Mark: - 3d touch
+extension BaseViewController: UIViewControllerPreviewingDelegate {
+    typealias SourceViewBlock = () -> UIView
+    typealias PreviewViewControllerBlock = (UIViewControllerPreviewing, CGPoint) -> UIViewController?
+    
+    @available(iOS 9.0, *)
+    func registerPerview(sourceViewBlock: @escaping SourceViewBlock,
+                         previewViewControllerBlock: @escaping PreviewViewControllerBlock) {
+        self.previewViewControllerBlock = previewViewControllerBlock
+        self.sourceViewBlock = sourceViewBlock
+        
+        if self.traitCollection.forceTouchCapability == .available {
+            self.registerForPreviewing(with: self, sourceView: sourceViewBlock())
+        } else {
+            Logger.log("该设备不支持3D-Touch")
+        }
+    }
+    
+    @available(iOS 9.0, *)
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: false)
+    }
+    
+    @available(iOS 9.0, *)
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        return self.previewViewControllerBlock?(previewingContext, location)
+    }
+    
+    @available(iOS 8.0, *)
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 9.0, *) {
+            switch traitCollection.forceTouchCapability {
+            case .available:
+                guard let block = self.sourceViewBlock else { return }
+                self.registerForPreviewing(with: self, sourceView: block())
+            default:
+                return
+            }
+        }
+    }
+
 }
 
 enum ControllerTitleStyle {

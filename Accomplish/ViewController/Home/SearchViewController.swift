@@ -22,6 +22,21 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         self.configMainUI()
+        
+        if #available(iOS 9.0, *) {
+            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+                return self.searchTableView
+                }, previewViewControllerBlock: { [unowned self] (previewingContext: UIViewControllerPreviewing, location: CGPoint) -> UIViewController? in
+                    guard let index = self.searchTableView.indexPathForRow(at: location),
+                        let cell = self.searchTableView.cellForRow(at: index) else { return nil }
+                    let task = self.searchResult[index.row]
+                    let taskVC = TaskDetailViewController(task: task, canChange: false)
+                    previewingContext.sourceRect = cell.frame
+                    self.searchTextField.resignFirstResponder()
+                    return taskVC
+            })
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

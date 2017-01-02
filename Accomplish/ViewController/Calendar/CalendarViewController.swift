@@ -48,7 +48,7 @@ class CalendarViewController: BaseViewController {
                     guard true == self.circleView.circleButton.point(inside: location, with: nil),
                         let checkDate = self.calendarView.selectedDates.first else { return nil }
                     let scheduleVC = ScheduleViewController(checkInDate: checkDate as NSDate)
-                    previewingContext.sourceRect = self.circleView.circleButton.frame
+                    previewingContext.sourceRect = self.circleView.frame
                     return scheduleVC
             })
         }

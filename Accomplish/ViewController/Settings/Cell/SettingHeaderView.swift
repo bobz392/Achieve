@@ -22,6 +22,6 @@ class SettingHeaderView: UIView {
         
         self.headerTitleLabel.textColor = Colors.secondaryTextColor
         self.separatorView.backgroundColor = Colors.separatorColor
-        self.backgroundColor = Colors.cellCardSelectedColor
+        self.backgroundColor = Colors.mainBackgroundColor
     }
 }

@@ -36,8 +36,7 @@ class SettingsViewController: BaseViewController {
     
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
-        
-        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: false)
         self.congfigMenuButton()
         self.createTitleLabel(titleText: Localized("settings"), style: .center)
         
@@ -93,7 +92,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func configSettingsTableView(bar: UIView) {
         self.view.addSubview(self.settingsTableView)
-        self.settingsTableView.backgroundColor = Colors.cloudColor
+        self.settingsTableView.backgroundColor = Colors.mainBackgroundColor
         self.settingsTableView.separatorColor = Colors.separatorColor
         self.settingsTableView.dataSource = self
         self.settingsTableView.delegate = self
@@ -195,7 +194,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return section == 0 ? 20 : 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -10,11 +10,7 @@ import UIKit
 
 class TagViewController: BaseViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var tagTableView: UITableView!
-    @IBOutlet weak var newTagButton: UIButton!
+    fileprivate let tagTableView = UITableView()
     
     @IBOutlet weak var newTagShadowView: UIView!
     @IBOutlet weak var textFieldHolderTopConstraint: NSLayoutConstraint!
@@ -33,16 +29,14 @@ class TagViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let tasks = RealmManager.shared.queryTaskList(NSDate())
+        self.bagDict.removeAll()
         
         for task in tasks {
             if let tagUUID = task.tagUUID {
@@ -62,50 +56,26 @@ class TagViewController: BaseViewController {
             indexPath = IndexPath(row: 0, section: 0)
         }
         self.currentSelectedIndex = indexPath
-        self.tagTableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        self.tagTableView.selectRow(at: self.currentSelectedIndex, animated: true, scrollPosition: .none)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        self.congfigMenuButton()
+        self.createTitleLabel(titleText: Localized("tag"), style: .center)
         
-        self.titleLabel.textColor = Colors.cloudColor
+        self.configTableView(bar: bar)
+        let newTagButton = self.createPlusButton()
+        newTagButton.addTarget(self, action: #selector(self.newTagAction), for: .touchUpInside)
         
-        self.cardView.backgroundColor = Colors.cloudColor
-        self.view.backgroundColor = colors.mainGreenColor
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-                                         icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        self.newTagButton.tintColor = Colors.cellLabelSelectedTextColor
-        self.newTagButton.backgroundColor = Colors.cloudColor
-        self.newTagButton.addTopShadow()
-        
-        self.newTagTextField.tintColor = colors.mainGreenColor
-    }
-    
-    fileprivate func initializeControl() {
-        self.configTableView()
-        
-        self.cardView.addShadow()
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-        
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.newTagButton.setTitle(Localized("newTag"), for: .normal)
-        self.newTagButton.addTarget(self, action: #selector(self.newTagAction), for: .touchUpInside)
-        
-        self.holderView.layer.cornerRadius = kCardViewCornerRadius
-        
+        self.view.bringSubview(toFront: self.newTagShadowView)
         self.newTagTextField.placeholder = Localized("newTag")
-        self.titleLabel.text = Localized("tag")
+        self.holderView.layer.cornerRadius = 4
     }
     
     // MARK: - actions
@@ -162,18 +132,36 @@ class TagViewController: BaseViewController {
 }
 
 // MARK: - tableview datasource and delegate
-extension TagViewController: UITableViewDelegate, UITableViewDataSource {
-    fileprivate func configTableView() {
+extension TagViewController: UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate {
+    fileprivate func configTableView(bar: UIView) {
+        self.view.addSubview(self.tagTableView)
+        self.tagTableView.delegate = self
+        self.tagTableView.dataSource = self
+        self.tagTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.tagTableView.separatorStyle = .none
         self.tagTableView.clearView()
-        
         self.tagTableView.register(TagTableViewCell.nib,
                                    forCellReuseIdentifier: TagTableViewCell.reuseId)
-        
         self.tagTableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allTags.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = Colors.mainBackgroundColor
+        return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -185,6 +173,7 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
             if let count = self.bagDict[noTag] {
                 cell.todayCountLabel.text = String(format: Localized("tagToday"), count)
             }
+            cell.configSwipeButtons(enable: false)
         } else {
             let tag = allTags[indexPath.row - 1]
             cell.tagLabel.text = tag.name
@@ -193,53 +182,40 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.todayCountLabel.text = nil
             }
+            
+            cell.configSwipeButtons(enable: true)
+            cell.delegate = self
         }
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row != 0
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        tableView.selectRow(at: self.currentSelectedIndex, animated: true, scrollPosition: .none)
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        guard let indexPath = self.tagTableView.indexPath(for: cell) else { return true }
         
         let tag = self.allTags[indexPath.row - 1]
-        switch editingStyle {
-        case .delete:
-            let message: String?
-            if let count = self.bagDict[tag.tagUUID] {
-                message = String(format: Localized("tagToday"), count)
-            } else {
-                message = nil
-            }
-            
-            let alert = UIAlertController(title: tag.name, message: message, preferredStyle: .actionSheet)
-            
-            let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-            })
-            alert.addAction(cancelAction)
-            
-            let deleteAction = UIAlertAction(title: Localized("deleteTag"), style: .destructive, handler: { (action) in
-                RealmManager.shared.deleteObject(tag)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            })
-            alert.addAction(deleteAction)
-            
-            self.present(alert, animated: true, completion: nil)
-            
-        default:
-            break
+        let message: String?
+        if let count = self.bagDict[tag.tagUUID] {
+            message = String(format: Localized("tagToday"), count)
+        } else {
+            message = nil
         }
+        
+        let alert = UIAlertController(title: tag.name, message: message, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: Localized("cancel"), style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: Localized("deleteTag"), style: .destructive, handler: { [unowned self] (action) in
+            RealmManager.shared.deleteObject(tag)
+            self.tagTableView.deleteRows(at: [indexPath], with: .automatic)
+        })
+        alert.addAction(deleteAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        return true
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

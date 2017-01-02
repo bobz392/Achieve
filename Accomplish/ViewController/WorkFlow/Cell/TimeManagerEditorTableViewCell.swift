@@ -59,7 +59,9 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.groupRepeatButton.tintColor = Colors.linkButtonTextColor
         self.groupRepeatButton.addTarget(self, action: #selector(self.groupRepeatAction), for: .touchUpInside)
         
-        self.itemsTableView.addLightBorder()
+        self.itemsTableView.separatorStyle = .none
+        self.itemsTableView.layer.borderWidth = 0.2
+        self.itemsTableView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     func configCell(methodTime: TimeMethod, canChange: Bool, groupIndex: Int) {
@@ -105,7 +107,7 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
     }
 }
 
-extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSource {
+extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSource, MGSwipeTableCellDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let methodGroup = self.methodTime?.groups[self.groupIndex] {
@@ -125,7 +127,9 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseId,
                                                          for: indexPath) as! ItemTableViewCell
-                cell.configCell(item: methodGroup.items[indexPath.row])
+                let canSwipe = self.canChange && indexPath.row < methodGroup.items.count
+                cell.configCell(item: methodGroup.items[indexPath.row], swipeEnable: canSwipe)
+                cell.delegate = self
                 return cell
             }
         }
@@ -187,27 +191,19 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
         inputView.setMoveInView(moveInView: moveInView).moveIn()
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        guard let methodGroup = self.methodTime?.groups[self.groupIndex] else { return false }
-        return self.canChange && indexPath.row < methodGroup.items.count
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        guard let methodGroup = self.methodTime?.groups[self.groupIndex] else { return }
-        switch editingStyle {
-        case .delete:
-            RealmManager.shared.updateObject { [unowned self] in
-                methodGroup.items.remove(objectAtIndex: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .none)
-                let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
-                self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)
-            }
-        default:
-            break
+    func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        
+        guard let indexPath = self.itemsTableView.indexPath(for: cell),
+            let methodGroup = self.methodTime?.groups[self.groupIndex]
+            else { return true}
+        
+        RealmManager.shared.updateObject { [unowned self] in
+            methodGroup.items.remove(objectAtIndex: indexPath.row)
+            self.itemsTableView.deleteRows(at: [indexPath], with: .none)
+            let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
+            self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)
         }
+        return true
     }
+
 }

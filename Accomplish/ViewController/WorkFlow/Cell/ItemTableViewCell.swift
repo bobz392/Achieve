@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ItemTableViewCell: BaseTableViewCell {
-
+class ItemTableViewCell: MGSwipeTableCell {
+    
     static let nib = UINib(nibName: "ItemTableViewCell", bundle: nil)
     static let reuseId = "itemTableViewCell"
     static let rowHeight: CGFloat = 38
@@ -26,10 +26,27 @@ class ItemTableViewCell: BaseTableViewCell {
         self.itemNameLabel.tintColor = colors.mainGreenColor
         self.itemTimeLabel.textColor = Colors.secondaryTextColor
     }
- 
-    func configCell(item: TimeMethodItem) {
+    
+    func configCell(item: TimeMethodItem, swipeEnable: Bool) {
         self.itemNameLabel.text = item.name
         self.itemTimeLabel.text = "\(item.interval)" + Localized("min")
+        
+        if swipeEnable {
+            var rightButtons = [MGSwipeButton]()
+            let width: CGFloat = 45
+            let deleteImage = Icons.delete.iconImage()
+            let deleteButton = MGSwipeButton(title: "",
+                                             icon: deleteImage,
+                                             backgroundColor: Colors.swipeRedBackgroundColor,
+                                             callback: nil)
+            deleteButton.tintColor = Colors.cellCardColor
+            deleteButton.buttonWidth = width
+            rightButtons.append(deleteButton)
+            
+            self.rightButtons = rightButtons
+        } else {
+            self.rightButtons.removeAll()
+        }
     }
     
 }

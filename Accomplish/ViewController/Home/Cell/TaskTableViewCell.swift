@@ -116,7 +116,6 @@ class TaskTableViewCell: MGSwipeTableCell {
             self.taskTitleLabel.attributedText = NSAttributedString(string: taskTitle)
             self.taskStatusButton
                 .buttonWithIcon(icon: Icons.uncheck.iconString())
-//            , tintColor: Colors.mainTextColor
             if let create = task.createdDate {
                 let now = Date()
                 if create.isEarlierThan(now) {

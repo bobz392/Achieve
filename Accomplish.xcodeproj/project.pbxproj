@@ -100,9 +100,6 @@
 		C74751C41DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751C31DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift */; };
 		C7499A181E049FCC002CBFBA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79807191D82B97E0011DE19 /* Fabric.framework */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
-		C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A89391D93F972008E15CA /* SearchViewController.xib */; };
-		C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A893C1D941071008E15CA /* SearchTableViewCell.swift */; };
-		C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74A893D1D941071008E15CA /* SearchTableViewCell.xib */; };
 		C74A89411D94109E008E15CA /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89401D94109E008E15CA /* BaseTableViewCell.swift */; };
 		C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896B1D949A6B008E15CA /* CloudKitManager.swift */; };
 		C74A896E1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
@@ -508,9 +505,6 @@
 		C74751C01DC9884100831DB1 /* RealmManager+TimeMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RealmManager+TimeMethod.swift"; sourceTree = "<group>"; };
 		C74751C31DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInTimeMethodCreator.swift; sourceTree = "<group>"; };
 		C74A89381D93F972008E15CA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		C74A89391D93F972008E15CA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
-		C74A893C1D941071008E15CA /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
-		C74A893D1D941071008E15CA /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C74A896D1D9636F3008E15CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1083,7 +1077,6 @@
 				C77192441D6CEE4E00437560 /* HomeViewController.swift */,
 				C73B442D1E0A4E6C00DDE093 /* MenuViewController.swift */,
 				C74A89381D93F972008E15CA /* SearchViewController.swift */,
-				C74A89391D93F972008E15CA /* SearchViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1118,8 +1111,6 @@
 			children = (
 				C77194C31D70988800437560 /* TaskTableViewCell.swift */,
 				C77194C41D70988800437560 /* TaskTableViewCell.xib */,
-				C74A893C1D941071008E15CA /* SearchTableViewCell.swift */,
-				C74A893D1D941071008E15CA /* SearchTableViewCell.xib */,
 				C7DC01B31E13B4D80055B7F8 /* MenuTableViewCell.swift */,
 				C7DC01B41E13B4D80055B7F8 /* MenuTableViewCell.xib */,
 			);
@@ -1676,13 +1667,11 @@
 				C78C4EAE1DFCBFB0000C289D /* ReadLaterTableViewCell.xib in Resources */,
 				C73B446C1E0C494200DDE093 /* SubtaskTableViewCell.xib in Resources */,
 				C75F85821E053F6D0057D76C /* 00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap in Resources */,
-				C74A893B1D93F972008E15CA /* SearchViewController.xib in Resources */,
 				C7B74DB21D8D8FE7002EE15E /* Assets.xcassets in Resources */,
 				C71F21611E080E2E00A04351 /* TaskTableHeaderView.xib in Resources */,
 				C75F85931E053F6D0057D76C /* C0814A98-BD12-32EA-9D23-2E24D7CD691B.bcsymbolmap in Resources */,
 				C7105B851DE8BB1600374F78 /* TimeMethodInputView.xib in Resources */,
 				C77192951D6CFE0700437560 /* Localizable.strings in Resources */,
-				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
 				C75F85881E053F6D0057D76C /* 504A13C3-C7A8-3231-B76E-D9E300DC1E66.bcsymbolmap in Resources */,
 				C73B44701E0C494200DDE093 /* TaskDateTableViewCell.xib in Resources */,
 				C73B44721E0C494200DDE093 /* TaskNoteTableViewCell.xib in Resources */,
@@ -2116,7 +2105,6 @@
 				C7105B831DE8BB1000374F78 /* TimeMethodInputView.swift in Sources */,
 				C79963091DE87A9E00B4617E /* Palette.swift in Sources */,
 				C7105FC21D6CDBFD0096A1A3 /* DTError.m in Sources */,
-				C74A893E1D941071008E15CA /* SearchTableViewCell.swift in Sources */,
 				C78C4EB41DFCD810000C289D /* RealmManager+CheckIn.swift in Sources */,
 				C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */,
 				C78ED8A71D7A842E00031B4D /* ReamManager+Repeater.swift in Sources */,

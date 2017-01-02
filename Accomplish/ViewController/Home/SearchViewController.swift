@@ -10,103 +10,118 @@ import UIKit
 
 class SearchViewController: BaseViewController {
     
-    @IBOutlet weak var topHolderView: UIView!
-    @IBOutlet weak var searchHolderView: UIView!
-    @IBOutlet weak var searchIconLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
-    
-    @IBOutlet weak var searchTableView: UITableView!
-    
-    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var hintLabel: UILabel!
-    
-    private let searchCorner: CGFloat = 16
+    fileprivate let searchTextField = UITextField()
+    fileprivate let searchTableView = UITableView()
+    fileprivate let hintLabel = UILabel()
+
     fileprivate var searchResult = Array<Task>()
     fileprivate var searchInProgress = false
-    
     fileprivate var selectedIndex: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        KeyboardManager.sharedManager.setShowHander { [unowned self] in
-            self.tableViewBottomConstraint.constant = KeyboardManager.keyboardHeight
-            
-            UIView.animate(withDuration: KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: UIViewAnimationOptions(), animations: { [unowned self] in
-                self.view.layoutIfNeeded()
-                }, completion: nil)
-        }
-        
+        self.keyboardAction()
         self.searchTextField.becomeFirstResponder()
-        
+
         guard let indexPath = self.selectedIndex else { return }
         self.searchTableView.deselectRow(at: indexPath, animated: true)
         self.selectedIndex = nil
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         KeyboardManager.sharedManager.closeNotification()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.default
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: true)
+        let leftButton = self.createLeftBarButton(icon: Icons.back)
+        leftButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
-        self.view.backgroundColor = colors.mainGreenColor
-        self.topHolderView.backgroundColor = Colors.cloudColor
-        self.topHolderView.layer.cornerRadius = self.searchCorner
-        
-//        self.searchIconLabel
-//            .createIconText(iconSize: 20, icon: "fa-search", color: colors.mainGreenColor)
-        
-        self.searchHolderView.backgroundColor = Colors.placeHolderTextColor
-        self.searchTextField.tintColor = colors.mainGreenColor
+        bar.addSubview(self.searchTextField)
+        self.searchTextField.font = UIFont.systemFont(ofSize: 14)
         self.searchTextField.textColor = Colors.mainTextColor
-        
-        self.searchTableView.separatorColor = Colors.cloudColor
-        
-        self.hintLabel.textColor = Colors.cloudColor
-    }
-    
-    fileprivate func initializeControl() {
-        self.searchHolderView.layer.cornerRadius = self.searchCorner
-        
+        self.searchTextField.tintColor = Colors.mainTextColor
+        self.searchTextField.delegate = self
         self.searchTextField.placeholder = Localized("searchHolder")
-        self.configTableView()
+        self.searchTextField.returnKeyType = .done
+        self.searchTextField.snp.makeConstraints { (make) in
+            make.left.equalTo(leftButton.snp.right).offset(2)
+            make.right.equalToSuperview().offset(-12)
+            make.centerY.equalTo(leftButton)
+            make.height.equalTo(leftButton)
+        }
         
-        self.hintLabel.text = Localized("searchStart")
+        self.configTableView(bar: bar)
+        
+        self.hintLabel.font = UIFont.systemFont(ofSize: 14)
+        self.hintLabel.textColor = Colors.mainIconColor
+        self.view.addSubview(self.hintLabel)
+        self.hintLabel.isHidden = true
+        self.hintLabel.snp.makeConstraints { (make) in
+            make.center.equalTo(self.searchTableView)
+        }
     }
     
     // MARK: - actions
+    fileprivate func keyboardAction() {
+        KeyboardManager.sharedManager.setShowHander { [unowned self] in
+            self.searchTableView.snp.updateConstraints({ (make) in
+                make.bottom.equalToSuperview().offset(-KeyboardManager.keyboardHeight)
+            })
+            
+            UIView.animate(withDuration: KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .curveEaseInOut, animations: { [unowned self] in
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
+        
+        KeyboardManager.sharedManager.setHideHander { [unowned self] in
+            self.searchTableView.snp.updateConstraints({ (make) in
+                make.bottom.equalToSuperview()
+            })
+            
+            UIView.animate(withDuration: KeyboardManager.duration, delay: kKeyboardAnimationDelay, options: .curveEaseInOut, animations: { [unowned self] in
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
+    }
+    
     fileprivate func enterTask(_ task: Task) {
+        self.searchTextField.resignFirstResponder()
         let taskVC = TaskDetailViewController(task: task, canChange: false)
         self.navigationController?.pushViewController(taskVC, animated: true)
     }
+    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    fileprivate func configTableView() {
-        self.searchTableView
-            .register(SearchTableViewCell.nib, forCellReuseIdentifier: SearchTableViewCell.reuseId)
+    fileprivate func configTableView(bar: UIView) {
+        self.view.addSubview(self.searchTableView)
+        self.searchTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        self.searchTableView.delegate = self
+        self.searchTableView.dataSource = self
         self.searchTableView.clearView()
+        self.searchTableView.separatorStyle = .none
+        self.searchTableView.tableFooterView = UIView()
+        self.searchTableView
+            .register(TaskTableViewCell.nib, forCellReuseIdentifier: TaskTableViewCell.reuseId)
         self.searchTableView.tableFooterView = UIView()
     }
     
@@ -121,29 +136,35 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SearchTableViewCell.rowHeight
+        return TaskTableViewCell.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.clearView()
+        return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseId, for: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.reuseId, for: indexPath) as! TaskTableViewCell
         
         let task = self.searchResult[indexPath.row]
-        cell.taskTitleLabel.text = task.realTaskToDo()
-        cell.taskStartLabel.text =
-            task.createdDate?.getDateString()
-        
+        cell.configCellUse(task, enableSwipe: false)
+        cell.configCellForSearch()
         return cell
     }
 }
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.backAction()
-        return true
+        return textField.resignFirstResponder()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         
         var text = textField.text
         text?.replace(range, replacement: string)
@@ -154,8 +175,7 @@ extension SearchViewController: UITextFieldDelegate {
         guard realString.length() > 0 else {
             self.searchResult.removeAll()
             self.searchTableView.reloadData()
-            self.hintLabel.text = Localized("searchStart")
-            self.hintLabel.isHidden = false
+            self.hintLabel.isHidden = true
             return true
         }
         
@@ -180,4 +200,5 @@ extension SearchViewController: UITextFieldDelegate {
         self.searchInProgress = false
         self.hintLabel.isHidden = self.searchResult.count > 0
     }
+    
 }

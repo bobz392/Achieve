@@ -200,9 +200,8 @@
 "help"="Help";
 
 // search
-"searchHolder"="Search";
-"searchStart"="Please input your search keyword";
-"searchNoResult"="No results were found";
+"searchHolder"="Please Input Your Search Keyword";
+"searchNoResult"="- No Results Were Found -";
 
 // message
 "messageUseage"="Share your schedules of today";

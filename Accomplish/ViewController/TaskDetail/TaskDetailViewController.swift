@@ -88,7 +88,6 @@ class TaskDetailViewController: BaseViewController {
     
     deinit {
         subtasksToken?.stop()
-        KeyboardManager.sharedManager.closeNotification()
     }
     
     override func configMainUI() {

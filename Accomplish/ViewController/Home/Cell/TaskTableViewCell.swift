@@ -125,9 +125,6 @@ class TaskTableViewCell: MGSwipeTableCell {
                 }
             }
             
-            // config swipe buttons
-            self.configSwipeButtons(task: task)
-            
         case .completed:
             self.taskTitleLabel.attributedText = taskTitle.addStrikethrough()
             self.taskStatusButton
@@ -135,8 +132,6 @@ class TaskTableViewCell: MGSwipeTableCell {
             
             self.taskDateLabel.text =
                 task.finishedDate?.timeDateString()
-            
-            self.rightButtons = []
         }
     }
     
@@ -178,10 +173,20 @@ class TaskTableViewCell: MGSwipeTableCell {
         self.rightButtons = rightButtons
     }
     
-    func configCellUse(_ task: Task) {
+    func configCellUse(_ task: Task, enableSwipe: Bool = true) {
         self.task = task
         self.configTaskPriority(priority: task.taskPriority())
         self.configTaskStatus(task: task)
+        
+        if enableSwipe && task.taskStatus() == .preceed {
+            self.configSwipeButtons(task: task)
+        } else {
+            self.rightButtons.removeAll()
+        }
+    }
+    
+    func configCellForSearch() {
+        self.taskStatusButton.isEnabled = false
     }
     
     // MARK: - actions

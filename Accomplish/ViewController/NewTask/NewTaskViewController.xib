@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -50,7 +50,7 @@
                             <rect key="frame" x="10" y="10" width="345" height="44"/>
                             <subviews>
                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="justified" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3BC-4a-wUV">
-                                    <rect key="frame" x="12" y="0.0" width="9" height="44"/>
+                                    <rect key="frame" x="12" y="0.0" width="328" height="44"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
@@ -61,6 +61,7 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="3BC-4a-wUV" secondAttribute="bottom" id="00e-Lm-JAb"/>
+                                <constraint firstAttribute="trailing" secondItem="3BC-4a-wUV" secondAttribute="trailing" constant="5" id="4bH-tr-EKA"/>
                                 <constraint firstItem="3BC-4a-wUV" firstAttribute="top" secondItem="L1X-lI-ffW" secondAttribute="top" id="Ye1-B6-crt"/>
                                 <constraint firstAttribute="height" constant="44" id="eZq-dw-J1l"/>
                             </constraints>
@@ -136,11 +137,11 @@
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHz-Dk-6DR">
                             <rect key="frame" x="260" y="0.0" width="30" height="44"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmR-Dd-PUz">
                             <rect key="frame" x="310" y="0.0" width="45" height="44"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="cancel"/>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBo-f4-xEV">
@@ -155,12 +156,12 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s9-vD-v8K">
                                     <rect key="frame" x="10" y="0.0" width="46" height="43"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikr-3W-zki">
                                     <rect key="frame" x="319" y="0.0" width="46" height="43"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                             </subviews>
@@ -238,7 +239,7 @@
                 <constraint firstItem="z3E-3R-jYr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="wrT-z0-jiS"/>
                 <constraint firstItem="Jdt-4n-GAw" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="bottom" id="zWa-oC-CfE"/>
             </constraints>
-            <point key="canvasLocation" x="264.5" y="459.5"/>
+            <point key="canvasLocation" x="50" y="418"/>
         </view>
     </objects>
 </document>

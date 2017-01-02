@@ -49,7 +49,7 @@ struct TestManager {
         RealmManager.shared.writeObjects(checkins)
         
         let postTask = Task()
-        //Read Harry Potter
+        //Read Harry Potter读三国演义
         postTask.createDefaultTask("读三国演义")
         postTask.postponeTimes = 6
         postTask.createdDate = date.subtractingDays(8) as NSDate

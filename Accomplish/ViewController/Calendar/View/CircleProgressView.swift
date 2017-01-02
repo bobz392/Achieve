@@ -104,7 +104,7 @@ final class CircleProgressView: UIView {
         self.addSubview(pLabel)
         pLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.precentLabel.snp.right)
-            make.bottom.equalTo(self.precentLabel).offset(-15)
+            make.bottom.equalTo(self.precentLabel).offset(DeviceSzie.isSmallDevice() ? -10 : -15)
         }
         
     }

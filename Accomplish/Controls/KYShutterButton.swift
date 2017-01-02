@@ -119,7 +119,7 @@ open class KYShutterButton: UIButton {
     }
     
     private var _arcWidth: CGFloat {
-        return bounds.width * 0.09090
+        return bounds.width * 0.04090
     }
     
     private var _arcMargin: CGFloat {

@@ -34,10 +34,6 @@
 "add"="Add";
 "save"="Save";
 "ok"="Ok";
-"done"="Done";
-"search"="Start Search";
-"customTask"="Custom task";
-"systemTask"="System task";
 
 "goingDo"="What would you like to do?";
 "priority"="Priority";
@@ -84,8 +80,6 @@
 "noRepeat"="Repeat";
 "taskNote"="Add a notse";
 "detailAddSubtask"="Add a subtask";
-"overTime"="  overdue  ";
-"repeatHint"="  repeat  ";
 "addressBook"="Address Book";
 "errorInfos"="Please improve content";
 "errorURL"="Invalid url";
@@ -106,7 +100,7 @@
 "home"="Today";
 "calendar"="Calendar";
 "tag"="Tag";
-"time_management"="Time Management Method";
+"time_management"="Time Management";
 "settings"="Settings";
 
 
@@ -167,7 +161,7 @@
 "timeMethodRunning"="(Working)";
 
 // Shortcut
-"shortCutCreate"="Create Task";
+"shortCutCreate"="New Task";
 "shortCutCalendar"="Calendar";
 
 // settings
@@ -176,10 +170,6 @@
 "writeReview"="Write review";
 "enabDueNextDay"="Postpone unfinished tasks";
 "finishSound"="Task finished sound";
-"hintClose"="Show hint button";
-"taskSort"="Tasks sorted by";
-"sortPriority"="Sorted by priority";
-"sortCreated"="Sorted by created date";
 "startDay"="Week start on";
 "about"="About";
 "licenses"="Licenses";

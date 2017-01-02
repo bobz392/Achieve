@@ -67,11 +67,20 @@ class TMView: UIView {
         view.statusShutterButton.buttonColor = colors.systemGreenColor
         view.statusShutterButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
         
-//        view.cancelTMButton.createIconButton(iconSize: 16, icon: backButtonIconString,
-//                                             color: colors.mainGreenColor, status: .normal)
+        view.cancelTMButton.buttonWithIcon(icon: Icons.clear.iconString())
+        view.cancelTMButton.tintColor = Colors.cellLabelSelectedTextColor
+        view.cancelTMButton.contentMode = .scaleAspectFill
+
         view.cancelTMButton.backgroundColor = UIColor.white
         view.cancelTMButton.layer.cornerRadius = 16
         view.cancelTMButton.addTarget(view, action: #selector(view.cancelAction), for: .touchUpInside)
+        
+        let swipe = UISwipeGestureRecognizer(target: view, action: #selector(blockGecognizer))
+        view.addGestureRecognizer(swipe)
+        let pan = UIPanGestureRecognizer(target: view, action: #selector(blockGecognizer))
+        view.addGestureRecognizer(pan)
+        let edgepan = UIScreenEdgePanGestureRecognizer(target: view, action: #selector(blockGecognizer))
+        view.addGestureRecognizer(edgepan)
         
         view.method = method
         view.task = task
@@ -95,6 +104,10 @@ class TMView: UIView {
         }
         
         return view
+    }
+    
+    func blockGecognizer() {
+        //do nothing
     }
     
     // 当从后台进入的时候，此时app已经完全退出，根据 usefdefault 来重新创建
@@ -257,7 +270,10 @@ extension TMView: MZTimerLabelDelegate {
                     }
                 }
             }
+        } else {
+            self.itemIndex = self.itemIndex < 0 ? 0 : self.itemIndex
         }
+        
         let item = group.items[self.itemIndex]
         
         if self.methodRepeatTimes > 0 {

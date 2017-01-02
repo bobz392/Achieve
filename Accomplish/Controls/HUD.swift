@@ -23,17 +23,6 @@ final class HUD {
         SVProgressHUD.show(withStatus: status)
     }
     
-    func showSwitch(_ status: String, left: Bool) {
-        guard let icon = left ?
-            FAKFontAwesome.arrowLeftIcon(withSize: 18) :
-            FAKFontAwesome.arrowRightIcon(withSize: 18) else { return }
-        
-        icon.addAttribute(NSForegroundColorAttributeName, value: Colors().mainGreenColor)
-        let iconImage = icon.image(with: CGSize(width: 28, height: 28))
-        
-        SVProgressHUD.show(iconImage, status: status)
-    }
-    
     func showOnce(_ status: String = "") {
         SVProgressHUD.showSuccess(withStatus: status)
     }

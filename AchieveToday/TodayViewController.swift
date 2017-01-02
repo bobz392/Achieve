@@ -59,7 +59,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.updateTask()
         
         if #available(iOS 10.0, *) {
-            self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+            self.extensionContext?.widgetLargestAvailableDisplayMode = self.allGroupTasks.count > 1 ? .expanded : .compact
         }
     }
     

@@ -36,7 +36,7 @@ class TimeMethodInputView: UIView {
                     return nil
         }
         view.cardHolderView.backgroundColor = Colors.cellCardColor
-        view.cardHolderView.layer.cornerRadius = kCardViewCornerRadius
+        view.cardHolderView.layer.cornerRadius = 4
         view.cardHolderView.addShadow()
         
         view.firstInputTitleLabel.textColor = Colors.secondaryTextColor

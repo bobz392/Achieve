@@ -67,57 +67,7 @@ class TimeManagerEditorViewController: BaseViewController {
             let addGroupButton = self.createPlusButton()
             addGroupButton.addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
         }
-        
-        
-        
-//        let colors = Colors()
-//        
-//        self.cardView.backgroundColor = Colors.cloudColor
-//        
-//        self.view.backgroundColor = colors.mainGreenColor
-//        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .normal)
-//        self.methodNameButton.setTitleColor(Colors.mainTextColor, for: .disabled)
-//        
-//        self.backButton.buttonColor(colors)
-//        self.backButton.createIconButton(iconSize: kBackButtonCorner,
-//                                         icon: backButtonIconString,
-//                                         color: colors.mainGreenColor, status: .normal)
-//        self.addGroupButton.buttonColor(colors)
-//        self.addGroupButton.createIconButton(iconSize: kBackButtonCorner,
-//                                         icon: "fa-plus",
-//                                         color: colors.mainGreenColor, status: .normal)
-        
-//        self.methodRepeatTitleLabel.textColor = Colors.mainTextColor
-//        self.methodRepeatLabel.textColor = colors.mainGreenColor
     }
-    
-//    fileprivate func initializeControl() {
-//        self.cardView.addShadow()
-//        self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
-//        self.methodNameTextFieldHolderView.addSmallShadow()
-//        self.methodNameTextFieldHolderView.layer.cornerRadius = kCardViewSmallCornerRadius
-//        
-//        self.backButton.addShadow()
-//        self.backButton.layer.cornerRadius = kBackButtonCorner
-//        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-//        
-//        self.addGroupButton.addShadow()
-//        self.addGroupButton.layer.cornerRadius = kBackButtonCorner
-//        self.addGroupButton
-//            .addTarget(self, action: #selector(self.addGroupAction), for: .touchUpInside)
-//        
-//        
-//        
-//        self.methodNameButton.isEnabled = self.canChange
-//        self.methodNameButton.setTitle(self.timeMethod.name, for: .normal)
-//        self.methodNameButton
-//            .addTarget(self, action: #selector(self.changeMethodNameAction), for: .touchUpInside)
-//        
-//        self.methodRepeatTitleLabel.text = Localized("aliase")
-//        self.methodRepeatLabel.text = self.timeMethod.timeMethodAliase
-//        
-//        self.checkInputViewCreated()
-//    }
     
     // MARK: - actions
     

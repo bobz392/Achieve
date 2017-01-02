@@ -6,7 +6,7 @@
 //  Copyright © 2016年 zhoubo. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Icons {
     case plus

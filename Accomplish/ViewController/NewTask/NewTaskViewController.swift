@@ -91,10 +91,10 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     fileprivate func initializeControl() {
         self.cardView.addShadow()
         
-        self.titleCardView.layer.cornerRadius = kCardViewSmallCornerRadius
+        self.titleCardView.layer.cornerRadius = 4
         self.titleCardView.addSmallShadow()
         
-        self.priorityCardView.layer.cornerRadius = kCardViewSmallCornerRadius
+        self.priorityCardView.layer.cornerRadius = 4
         self.priorityCardView.addSmallShadow()
         
         self.dateToolView.isHidden = true
@@ -323,7 +323,7 @@ extension NewTaskViewController {
         
         self.renderImageView.alpha = 0
         self.cardView.alpha = 0
-        self.cardView.layer.cornerRadius = kCardViewCornerRadius
+        self.cardView.layer.cornerRadius = 4
         
         UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in
             self.renderImageView.alpha = 1

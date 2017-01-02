@@ -67,8 +67,8 @@ class TMView: UIView {
         view.statusShutterButton.buttonColor = colors.systemGreenColor
         view.statusShutterButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
         
-        view.cancelTMButton.createIconButton(iconSize: 16, icon: backButtonIconString,
-                                             color: colors.mainGreenColor, status: .normal)
+//        view.cancelTMButton.createIconButton(iconSize: 16, icon: backButtonIconString,
+//                                             color: colors.mainGreenColor, status: .normal)
         view.cancelTMButton.backgroundColor = UIColor.white
         view.cancelTMButton.layer.cornerRadius = 16
         view.cancelTMButton.addTarget(view, action: #selector(view.cancelAction), for: .touchUpInside)

@@ -76,6 +76,7 @@
         
         let searchButton = UIButton(type: .custom)
         searchButton.buttonWithIcon(icon: Icons.search.iconString())
+        searchButton.addTarget(self, action: #selector(self.searchAction), for: .touchUpInside)
         bar.addSubview(searchButton)
         searchButton.snp.makeConstraints { (make) in
             make.width.equalTo(kBarIconSize)

@@ -91,11 +91,6 @@
 		C740A6E61DAE69BF00E78263 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */; };
 		C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */; };
 		C74751A61DC741C700831DB1 /* TimeManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */; };
-		C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */; };
-		C74751B01DC760B000831DB1 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AC1DC760B000831DB1 /* FAKIcon.m */; };
-		C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
-		C74751B31DC760D700831DB1 /* FAKFontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */; };
-		C74751B41DC760D700831DB1 /* FAKIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74751AC1DC760B000831DB1 /* FAKIcon.m */; };
 		C74751B61DC81F8500831DB1 /* TimeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751B51DC81F8500831DB1 /* TimeMethod.swift */; };
 		C74751B91DC840C700831DB1 /* TMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751B81DC840C700831DB1 /* TMView.swift */; };
 		C74751BB1DC840D100831DB1 /* TMView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751BA1DC840D100831DB1 /* TMView.xib */; };
@@ -256,11 +251,8 @@
 		C79807361D8414340011DE19 /* SettingDetialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */; };
 		C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */; };
 		C79807391D8507F20011DE19 /* UIView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807381D8507F20011DE19 /* UIView+Icon.swift */; };
-		C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */; };
-		C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */; };
 		C79962F71DE7939300B4617E /* MethodCreateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */; };
 		C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */; };
-		C79963011DE8520A00B4617E /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = C74751AD1DC760B000831DB1 /* FontAwesome.otf */; };
 		C79963091DE87A9E00B4617E /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963041DE87A9E00B4617E /* Palette.swift */; };
 		C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */; };
 		C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */; };
@@ -286,7 +278,6 @@
 		C7CAF0B81D9C50850046D756 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */; };
 		C7CAF0BA1D9C54260046D756 /* MessageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CAF0B91D9C54260046D756 /* MessageColors.swift */; };
 		C7CAF0BB1D9C554F0046D756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
-		C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */; };
 		C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */; };
 		C7DC01A31E12CB5A0055B7F8 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */; };
 		C7DC01AD1E12E5BE0055B7F8 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */; };
@@ -509,12 +500,6 @@
 		C740A6E41DAE69BF00E78263 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
 		C740A6E51DAE69BF00E78263 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
 		C74751A41DC741C700831DB1 /* TimeManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeManagementViewController.swift; sourceTree = "<group>"; };
-		C74751A91DC760B000831DB1 /* FAKFontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKFontAwesome.h; sourceTree = "<group>"; };
-		C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKFontAwesome.m; sourceTree = "<group>"; };
-		C74751AB1DC760B000831DB1 /* FAKIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAKIcon.h; sourceTree = "<group>"; };
-		C74751AC1DC760B000831DB1 /* FAKIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAKIcon.m; sourceTree = "<group>"; };
-		C74751AD1DC760B000831DB1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		C74751AE1DC760B000831DB1 /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
 		C74751B51DC81F8500831DB1 /* TimeMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeMethod.swift; sourceTree = "<group>"; };
 		C74751B81DC840C700831DB1 /* TMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMView.swift; sourceTree = "<group>"; };
 		C74751BA1DC840D100831DB1 /* TMView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TMView.xib; sourceTree = "<group>"; };
@@ -681,8 +666,6 @@
 		C79807341D8414340011DE19 /* SettingDetialTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDetialTableViewCell.swift; sourceTree = "<group>"; };
 		C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingDetialTableViewCell.xib; sourceTree = "<group>"; };
 		C79807381D8507F20011DE19 /* UIView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Icon.swift"; sourceTree = "<group>"; };
-		C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
-		C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundCollectionViewCell.xib; sourceTree = "<group>"; };
 		C79962F51DE7939300B4617E /* MethodCreateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodCreateTableViewCell.swift; sourceTree = "<group>"; };
 		C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodCreateTableViewCell.xib; sourceTree = "<group>"; };
 		C79963041DE87A9E00B4617E /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -704,7 +687,6 @@
 		C7CAF0B51D9C50850046D756 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		C7CAF0B61D9C50850046D756 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		C7CAF0B91D9C54260046D756 /* MessageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
-		C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Icon.swift"; sourceTree = "<group>"; };
 		C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotlightManager.swift; sourceTree = "<group>"; };
 		C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
@@ -870,7 +852,6 @@
 				C73B44311E0A517E00DDE093 /* MGSwipeTableCell */,
 				C7202DB21E07A23800A341B8 /* MMDrawerController */,
 				C79963021DE87A9E00B4617E /* TwicketSegmentedControl */,
-				C74751A81DC760B000831DB1 /* FontAwesome */,
 				C7821EB21D7BF1820056623D /* MMWormhole */,
 				C7105F991D6CDBFD0096A1A3 /* DateTools */,
 			);
@@ -985,19 +966,6 @@
 				C73B44681E0C494200DDE093 /* TaskPickerView.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		C74751A81DC760B000831DB1 /* FontAwesome */ = {
-			isa = PBXGroup;
-			children = (
-				C74751A91DC760B000831DB1 /* FAKFontAwesome.h */,
-				C74751AA1DC760B000831DB1 /* FAKFontAwesome.m */,
-				C74751AB1DC760B000831DB1 /* FAKIcon.h */,
-				C74751AC1DC760B000831DB1 /* FAKIcon.m */,
-				C74751AD1DC760B000831DB1 /* FontAwesome.otf */,
-				C74751AE1DC760B000831DB1 /* FontAwesomeKit.h */,
-			);
-			path = FontAwesome;
 			sourceTree = "<group>";
 		};
 		C74751B71DC840B900831DB1 /* View */ = {
@@ -1351,8 +1319,6 @@
 				C79807351D8414340011DE19 /* SettingDetialTableViewCell.xib */,
 				C79807261D83959D0011DE19 /* SettingHeaderView.swift */,
 				C79807241D83958F0011DE19 /* SettingHeaderView.xib */,
-				C79807461D8541FF0011DE19 /* BackgroundCollectionViewCell.swift */,
-				C79807471D8541FF0011DE19 /* BackgroundCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1400,7 +1366,6 @@
 				C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */,
 				C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */,
 				C79807381D8507F20011DE19 /* UIView+Icon.swift */,
-				C7D933841D8546C500F0A759 /* UIImageView+Icon.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1720,7 +1685,6 @@
 				C74A893F1D941071008E15CA /* SearchTableViewCell.xib in Resources */,
 				C75F85881E053F6D0057D76C /* 504A13C3-C7A8-3231-B76E-D9E300DC1E66.bcsymbolmap in Resources */,
 				C73B44701E0C494200DDE093 /* TaskDateTableViewCell.xib in Resources */,
-				C74751B11DC760B000831DB1 /* FontAwesome.otf in Resources */,
 				C73B44721E0C494200DDE093 /* TaskNoteTableViewCell.xib in Resources */,
 				C7DC01C31E159FD20055B7F8 /* ScheduleHeaderView.xib in Resources */,
 				C77192501D6CEE6800437560 /* NewTaskViewController.xib in Resources */,
@@ -1751,7 +1715,6 @@
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
 				C740A6E71DAE69BF00E78263 /* MonthTableViewCell.xib in Resources */,
-				C79807491D8541FF0011DE19 /* BackgroundCollectionViewCell.xib in Resources */,
 				C75F858D1E053F6D0057D76C /* 77F140F0-5A33-3088-B533-9A7D68FD7B76.bcsymbolmap in Resources */,
 				C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */,
 				C75F85951E053F6D0057D76C /* CF9F788D-FF79-38BB-9831-AFDB915250FE.bcsymbolmap in Resources */,
@@ -1767,7 +1730,6 @@
 			files = (
 				C78ED87F1D7A7D3100031B4D /* MainInterface.storyboard in Resources */,
 				C78ED8A21D7A801200031B4D /* Localizable.strings in Resources */,
-				C79963011DE8520A00B4617E /* FontAwesome.otf in Resources */,
 				C78ED8B41D7A958F00031B4D /* TodayTableViewCell.xib in Resources */,
 				C7B74DB31D8D8FE8002EE15E /* Assets.xcassets in Resources */,
 				C78ED89A1D7A800600031B4D /* DateTools.bundle in Resources */,
@@ -2056,7 +2018,6 @@
 				C73B44741E0C494200DDE093 /* RepeaterManager.swift in Sources */,
 				C73B44411E0AED2700DDE093 /* UIViewController+MMDrawerController.m in Sources */,
 				C7821EC61D7BF1820056623D /* MMWormholeSessionContextTransiting.m in Sources */,
-				C74751AF1DC760B000831DB1 /* FAKFontAwesome.m in Sources */,
 				C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */,
 				C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */,
 				C74751B91DC840C700831DB1 /* TMView.swift in Sources */,
@@ -2071,7 +2032,6 @@
 				C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */,
 				C7202DBE1E07A23800A341B8 /* MMDrawerVisualState.m in Sources */,
 				C7105F921D6CD52F0096A1A3 /* Task.swift in Sources */,
-				C74751B01DC760B000831DB1 /* FAKIcon.m in Sources */,
 				C71F215D1E08060E00A04351 /* AppConstants.swift in Sources */,
 				C77DE35E1DE4419E00F098F4 /* MZTimerLabel.m in Sources */,
 				C771957C1D71ED6400437560 /* KVTaskViewController.swift in Sources */,
@@ -2136,7 +2096,6 @@
 				C79223A31E1968ED00E5C193 /* CircleProgressView.swift in Sources */,
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */,
-				C7D933851D8546C500F0A759 /* UIImageView+Icon.swift in Sources */,
 				C77DE36C1DE6FE7000F098F4 /* ItemTableViewCell.swift in Sources */,
 				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
 				C73B446F1E0C494200DDE093 /* TaskDateTableViewCell.swift in Sources */,
@@ -2165,7 +2124,6 @@
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
 				C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */,
 				C78C4E0C1DFC78E8000C289D /* ReadLaterViewController.swift in Sources */,
-				C79807481D8541FF0011DE19 /* BackgroundCollectionViewCell.swift in Sources */,
 				C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */,
 				C78C4EB61DFCE563000C289D /* ReadLaterManager.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
@@ -2191,7 +2149,6 @@
 				C7821ECE1D7BF18E0056623D /* MMWormholeSessionFileTransiting.m in Sources */,
 				C78ED87C1D7A7D3100031B4D /* TodayViewController.swift in Sources */,
 				C7821ECA1D7BF18E0056623D /* MMWormholeCoordinatedFileTransiting.m in Sources */,
-				C74751B41DC760D700831DB1 /* FAKIcon.m in Sources */,
 				C78ED89D1D7A800D00031B4D /* DTTimePeriod.m in Sources */,
 				C7CAF0B41D9C46ED0046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C78ED8A11D7A800D00031B4D /* NSDate+DateTools.m in Sources */,
@@ -2209,7 +2166,6 @@
 				C78ED89C1D7A800D00031B4D /* DTError.m in Sources */,
 				C78ED89F1D7A800D00031B4D /* DTTimePeriodCollection.m in Sources */,
 				C78ED8981D7A7FBE00031B4D /* CommonCode.swift in Sources */,
-				C74751B31DC760D700831DB1 /* FAKFontAwesome.m in Sources */,
 				C798066A1D7E33BE0011DE19 /* UIView+Convenient.swift in Sources */,
 				C7821ED01D7C01940056623D /* Constants.swift in Sources */,
 			);

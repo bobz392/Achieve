@@ -128,46 +128,7 @@ class KVTaskViewController: BaseViewController {
         
         self.view.layoutIfNeeded()
         paparView.addRoundShadow()
-//        let colors = Colors()
-//        
-//        self.titleLabel.textColor = Colors.cloudColor
-//        
-//        self.toolView.addTopShadow()
-//        self.toolView.backgroundColor = Colors.cloudColor
-//        self.cardView.backgroundColor = Colors.cloudColor
-//        self.view.backgroundColor = colors.mainGreenColor
-//        
-//        self.lineView.backgroundColor = Colors.cloudColor
-//        self.titleTextField.tintColor = colors.mainGreenColor
-//        self.titleTextField.textColor = Colors.mainTextColor
-//        self.contentTextView.tintColor = colors.mainGreenColor
-//        self.contentTextView.textColor = Colors.mainTextColor
-//        self.placeholderLabel.textColor = colors.placeHolderTextColor
-//        
-//        self.cancelButton.tintColor = colors.mainGreenColor
-//        self.saveButton.tintColor = colors.mainGreenColor
     }
-//    
-//    fileprivate func initializeControl() {
-//        self.cardView.addShadow()
-//        self.cardView.layer.cornerRadius = kCardViewCornerRadius
-//        
-//        self.titleLabel.text = self.actionType.actionPresent().presentTitle()
-//        
-//        if let hint = self.actionType.hintNameWithType() {
-//            self.titleTextField.placeholder = Localized(hint.0)
-//            self.placeholderLabel.text = Localized(hint.1)
-//        }
-//        
-//        self.titleCardView.layer.cornerRadius = 6.0
-//        self.titleCardView.addSmallShadow()
-//        
-//        self.cancelButton.setTitle(Localized("cancel"), for: .normal)
-//        self.cancelButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-//        
-//        self.saveButton.setTitle(Localized("add"), for: .normal)
-//        self.saveButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
-//    }
     
     // MARK: - action
     func saveAction() {

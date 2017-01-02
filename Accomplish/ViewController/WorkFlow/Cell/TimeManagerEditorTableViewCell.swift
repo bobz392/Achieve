@@ -42,11 +42,11 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.deleteGroupButton.tintColor = Colors.linkButtonTextColor
         self.deleteGroupButton.addTarget(self, action: #selector(self.deleteGroupAction), for: .touchUpInside)
         
-        self.cardView.layer.cornerRadius = kCardViewSmallCornerRadius
+        self.cardView.layer.cornerRadius = 4
         self.cardView.backgroundColor = Colors.cellCardColor
         self.cardView.addCardShadow()
         
-        self.itemsTableView.layer.cornerRadius = kCardViewSmallCornerRadius
+        self.itemsTableView.layer.cornerRadius = 4
         self.itemsTableView.register(ItemTableViewCell.nib,
                                      forCellReuseIdentifier: ItemTableViewCell.reuseId)
         self.itemsTableView.register(MethodCreateTableViewCell.nib,

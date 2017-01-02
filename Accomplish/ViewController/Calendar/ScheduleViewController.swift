@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ReportViewController: BaseViewController {
+class ScheduleViewController: BaseViewController {
     
     fileprivate let scheduleTableView = UITableView()
     
@@ -109,7 +109,7 @@ class ReportViewController: BaseViewController {
     }
 }
 
-extension ReportViewController: UITableViewDelegate, UITableViewDataSource {
+extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.taskList.count

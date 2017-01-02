@@ -229,7 +229,7 @@
 		C79805781D7D427A0011DE19 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79805771D7D427A0011DE19 /* AnimationTools.swift */; };
 		C798066A1D7E33BE0011DE19 /* UIView+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */; };
 		C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E41D8006580011DE19 /* CheckInManager.swift */; };
-		C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E61D8011E20011DE19 /* ReportViewController.swift */; };
+		C79806E81D8011E20011DE19 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806E61D8011E20011DE19 /* ScheduleViewController.swift */; };
 		C79806EC1D810F040011DE19 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */; };
 		C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */; };
 		C79806F11D8157880011DE19 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C79806F01D8157880011DE19 /* UICountingLabel.m */; };
@@ -639,7 +639,7 @@
 		C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenient.swift"; sourceTree = "<group>"; };
 		C79805771D7D427A0011DE19 /* AnimationTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTools.swift; sourceTree = "<group>"; };
 		C79806E41D8006580011DE19 /* CheckInManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInManager.swift; sourceTree = "<group>"; };
-		C79806E61D8011E20011DE19 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		C79806E61D8011E20011DE19 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		C79806EA1D810F040011DE19 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		C79806EB1D810F040011DE19 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		C79806EF1D8157880011DE19 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
@@ -1159,7 +1159,7 @@
 				C798056C1D7CD8A20011DE19 /* Cell */,
 				C7821ED31D7C076B0056623D /* CalendarViewController.swift */,
 				C7821ED41D7C076B0056623D /* CalendarViewController.xib */,
-				C79806E61D8011E20011DE19 /* ReportViewController.swift */,
+				C79806E61D8011E20011DE19 /* ScheduleViewController.swift */,
 				C7B579291DAACEDC003B6D92 /* MonthViewController.swift */,
 			);
 			path = Calendar;
@@ -2086,7 +2086,7 @@
 				C79805531D7CC8740011DE19 /* CheckIn.swift in Sources */,
 				C7CAF0B31D9C46E30046D756 /* GroupUserDefault+Today.swift in Sources */,
 				C77DE36C1DE6FE7000F098F4 /* ItemTableViewCell.swift in Sources */,
-				C79806E81D8011E20011DE19 /* ReportViewController.swift in Sources */,
+				C79806E81D8011E20011DE19 /* ScheduleViewController.swift in Sources */,
 				C73B446F1E0C494200DDE093 /* TaskDateTableViewCell.swift in Sources */,
 				C73B44361E0A517E00DDE093 /* MGSwipeButton.m in Sources */,
 				C78C4EAD1DFCBFB0000C289D /* ReadLaterTableViewCell.swift in Sources */,

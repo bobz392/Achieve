@@ -40,6 +40,18 @@ class CalendarViewController: BaseViewController {
         
         self.configMainUI()
         self.initializeControl()
+        
+        if #available(iOS 9.0, *) {
+            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+                return self.circleView.circleButton
+                }, previewViewControllerBlock: { [unowned self] (previewingContext: UIViewControllerPreviewing, location: CGPoint) -> UIViewController? in
+                    guard true == self.circleView.circleButton.point(inside: location, with: nil),
+                        let checkDate = self.calendarView.selectedDates.first else { return nil }
+                    let scheduleVC = ScheduleViewController(checkInDate: checkDate as NSDate)
+                    previewingContext.sourceRect = self.circleView.circleButton.frame
+                    return scheduleVC
+            })
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,7 +114,7 @@ class CalendarViewController: BaseViewController {
         self.dateButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
         self.circleViewTopConstraint.constant = DeviceSzie.isSmallDevice() ? 40 : 50
         self.circleViewBottomConstraint.constant = DeviceSzie.isSmallDevice() ? 5 : 20
-        self.circleView.circleButton.addTarget(self, action:  #selector(self.checkReport), for: .touchUpInside)
+        self.circleView.circleButton.addTarget(self, action:  #selector(self.enterSchedule), for: .touchUpInside)
         self.configWeekView()
         
         self.createdLabel.textColor = Colors.mainTextColor
@@ -177,10 +189,10 @@ class CalendarViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func checkReport() {
+    func enterSchedule() {
         guard let checkDate = self.calendarView.selectedDates.first else { return }
-        let reportVC = ReportViewController(checkInDate: checkDate as NSDate)
-        self.navigationController?.pushViewController(reportVC, animated: true)
+        let scheduleVC = ScheduleViewController(checkInDate: checkDate as NSDate)
+        self.navigationController?.pushViewController(scheduleVC, animated: true)
     }
     
     func returnTodayAction() {

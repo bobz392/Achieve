@@ -41,7 +41,7 @@
             BuildInTimeMethodCreator().pomodoroCreator()
             appDefault.write(kUserDefaultBuildInTMKey, value: true)
         }
-        TestManager().addAppStoreData()
+//        TestManager().addAppStoreData()
         
         self.checkTimeMethodRunning()
     }

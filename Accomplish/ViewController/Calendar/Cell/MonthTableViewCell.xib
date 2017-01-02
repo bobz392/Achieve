@@ -70,6 +70,7 @@
                     <constraint firstItem="pql-zd-aHt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Ybm-G6-0jF"/>
                 </constraints>
             </tableViewCellContentView>
+            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
             <connections>
                 <outlet property="infoLabel" destination="pyg-iy-n54" id="goT-d8-KEK"/>
                 <outlet property="leftDetailLabel" destination="PdZ-QS-Tph" id="dxM-a0-nOy"/>

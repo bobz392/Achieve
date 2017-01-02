@@ -11,12 +11,10 @@ import Charts
 
 class MonthViewController: BaseViewController, ChartViewDelegate {
     
-    @IBOutlet weak var chartCardView: UIView!
-    @IBOutlet weak var monthTableView: UITableView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var emptyDataLabel: UILabel!
-    
+    fileprivate let emptyDataLabel = UILabel()
+    fileprivate let monthTableView = UITableView()
     fileprivate let chartView = LineChartView()
+    
     fileprivate var monthlyTasks = Array<Task>()
     fileprivate var taskDict = Dictionary<String, Array<Int>>()
     
@@ -25,19 +23,17 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     init(queryFormat: String) {
         self.queryFormat = queryFormat
-        super.init(nibName: "MonthViewController", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.configMainUI()
-        self.initializeControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,42 +42,26 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func configMainUI() {
-        let colors = Colors()
+        self.view.backgroundColor = Colors.mainBackgroundColor
+        let bar = self.createCustomBar(height: kBarHeight, withBottomLine: false)
+        let backButton = self.createLeftBarButton(icon: Icons.back)
+        backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
+        self.createTitleLabel(titleText: Localized("monthly"), style: .center)
+        self.initChart(bar: bar)
         
-        self.view.backgroundColor = colors.mainGreenColor
-        self.chartCardView.backgroundColor = Colors.cloudColor
-        
-        self.chartView.chartDescription?.textColor = Colors.mainTextColor
-        self.chartView.leftAxis.labelTextColor = Colors.mainTextColor
-        self.chartView.xAxis.labelTextColor = Colors.mainTextColor
-        
-        self.monthTableView.clearView()
-        
-        self.backButton.buttonColor(colors)
-        self.backButton.createIconButton(iconSize: kBackButtonCorner, icon: backButtonIconString,
-                                         color: colors.mainGreenColor, status: .normal)
-        
-        self.emptyDataLabel.textColor = Colors.cloudColor
-    }
-    
-    fileprivate func initializeControl() {
-        self.chartCardView.layer.cornerRadius = kCardViewCornerRadius
-        self.initChart()
         self.fetchMonthlyTasks()
-        self.initTableView()
+        self.initTableView(chartView: self.chartView)
         
-        self.backButton.addShadow()
-        self.backButton.layer.cornerRadius = kBackButtonCorner
-        self.backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
-        
-        self.monthRepeatFormat.numberStyle = .decimal
-        self.monthRepeatFormat.maximumFractionDigits = 2
-        
+        self.emptyDataLabel.font = UIFont.systemFont(ofSize: 16)
+        self.emptyDataLabel.textColor = Colors.mainTextColor
         self.emptyDataLabel.text = Localized("noMonthlyData")
+        self.view.addSubview(self.emptyDataLabel)
+        self.emptyDataLabel.snp.makeConstraints { (make) in
+            make.center.equalTo(self.monthTableView)
+        }
     }
     
     // MARK: - actions
@@ -128,7 +108,19 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
 }
 
 extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
-    fileprivate func initTableView() {
+    fileprivate func initTableView(chartView: LineChartView) {
+        self.monthTableView.backgroundColor = Colors.mainBackgroundColor
+        self.monthTableView.delegate = self
+        self.monthTableView.dataSource = self
+        self.monthTableView.allowsSelection = false
+        self.view.addSubview(self.monthTableView)
+        self.monthTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(chartView.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview()
+        }
+        self.monthTableView.tableFooterView = UIView()
         self.monthTableView
             .register(MonthTableViewCell.nib, forCellReuseIdentifier: MonthTableViewCell.reuseId)
     }
@@ -180,14 +172,32 @@ extension MonthViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MonthViewController: IAxisValueFormatter {
-    fileprivate func initChart() {
-        self.chartCardView.addSubview(chartView)
-        self.chartCardView.addShadow()
+    fileprivate func initChart(bar: UIView) {
+        let cardView = UIView()
+        cardView.backgroundColor = Colors.cellCardColor
+        cardView.addCardShadow()
+        cardView.layer.cornerRadius = 4
+        self.view.addSubview(cardView)
+        cardView.snp.makeConstraints { (make) in
+            make.top.equalTo(bar.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(150)
+        }
+        
+        self.monthRepeatFormat.numberStyle = .decimal
+        self.monthRepeatFormat.maximumFractionDigits = 2
+        
+        self.chartView.chartDescription?.textColor = Colors.mainIconColor
+        self.chartView.leftAxis.labelTextColor = Colors.mainIconColor
+        self.chartView.xAxis.labelTextColor = Colors.mainIconColor
+        cardView.addSubview(chartView)
+        
         self.chartView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.chartCardView).offset(5)
-            make.leading.equalTo(self.chartCardView)
-            make.trailing.equalTo(self.chartCardView)
-            make.bottom.equalTo(self.chartCardView).offset(-5)
+            make.top.equalToSuperview().offset(5)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-5)
         }
         
         self.chartView.isUserInteractionEnabled = false
@@ -243,12 +253,11 @@ extension MonthViewController: IAxisValueFormatter {
                     values.append(ChartDataEntry(x: Double(day), y: 0))
                 }
             }
-            
         }
         
         let set1 = LineChartDataSet(values: values, label: "date 1")
         set1.setColor(UIColor.clear)
-        set1.fillColor = Colors().mainGreenColor
+        set1.fillColor = Colors.cellLabelSelectedTextColor
         set1.drawCirclesEnabled = false
         set1.drawCircleHoleEnabled = false
         set1.mode = .cubicBezier

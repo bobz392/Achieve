@@ -26,18 +26,19 @@ class MonthTableViewCell: UITableViewCell {
         
         self.clearView()
         self.contentView.clearView()
-        self.monthCardView.backgroundColor = Colors.cloudColor
-        self.monthCardView.layer.cornerRadius = kCardViewCornerRadius
+        self.monthCardView.backgroundColor = Colors.mainBackgroundColor
         self.taskNameLabel.textColor = Colors.mainTextColor
         self.infoLabel.textColor = Colors.secondaryTextColor
         self.leftDetailLabel.textColor = Colors.secondaryTextColor
         self.rightDetailLabel.textColor = Colors.secondaryTextColor
+        
+        self.layoutMargins = UIEdgeInsets.zero
+        self.separatorInset = UIEdgeInsets.zero
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     func configPostpone(task: Task) {

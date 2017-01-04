@@ -13,6 +13,7 @@ struct Colors {
     
     static let cloudColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     static let separatorColor = UIColor(red:0.74, green:0.76, blue:0.78, alpha:1.00)
+    static let lightSeparatorColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00)
     static let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
     
     let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)

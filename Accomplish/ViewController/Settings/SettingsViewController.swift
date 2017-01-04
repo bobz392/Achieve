@@ -93,7 +93,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func configSettingsTableView(bar: UIView) {
         self.view.addSubview(self.settingsTableView)
         self.settingsTableView.backgroundColor = Colors.mainBackgroundColor
-        self.settingsTableView.separatorColor = Colors.separatorColor
+        self.settingsTableView.separatorColor = Colors.lightSeparatorColor
         self.settingsTableView.dataSource = self
         self.settingsTableView.delegate = self
         self.settingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 48, bottom: 0, right: 0)

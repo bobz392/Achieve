@@ -21,7 +21,7 @@ class SettingHeaderView: UIView {
         super.awakeFromNib()
         
         self.headerTitleLabel.textColor = Colors.secondaryTextColor
-        self.separatorView.backgroundColor = Colors.separatorColor
+        self.separatorView.backgroundColor = Colors.lightSeparatorColor
         self.backgroundColor = Colors.mainBackgroundColor
     }
 }

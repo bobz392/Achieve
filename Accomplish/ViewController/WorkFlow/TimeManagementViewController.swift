@@ -35,6 +35,17 @@ class TimeManagementViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configMainUI()
+        
+        if #available(iOS 9.0, *), !self.isSelectTM {
+            self.registerPerview(sourceViewBlock: { [unowned self] () -> UIView in
+                return self.methodTableView
+            }) { [unowned self] (previewingContext, location) -> UIViewController? in
+                guard let indexPath = self.methodTableView.indexPathForRow(at: location),
+                    let cell = self.methodTableView.cellForRow(at: indexPath) else { return nil }
+                previewingContext.sourceRect = cell.frame
+                return self.createEditorVC(indexPath: indexPath)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -147,17 +158,22 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         if self.isSelectTM {
             self.selectTMBlock?(self.timeMethods[indexPath.row])
             self.backAction()
         } else {
-            let canChange = indexPath.row != 0
-            let timeManagerEditorVC =
-                TimeManagerEditorViewController(method: self.timeMethods[indexPath.row],
-                                                canChange: canChange)
-            self.navigationController?.pushViewController(timeManagerEditorVC, animated: true)
+            let editorVC = self.createEditorVC(indexPath: indexPath)
+            self.navigationController?.pushViewController(editorVC, animated: true)
         }
+    }
+    
+    @discardableResult
+    fileprivate func createEditorVC(indexPath: IndexPath) -> UIViewController {
+        let canChange = indexPath.row != 0
+        let timeManagerEditorVC =
+            TimeManagerEditorViewController(method: self.timeMethods[indexPath.row],
+                                            canChange: canChange)
+        return timeManagerEditorVC
     }
     
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {

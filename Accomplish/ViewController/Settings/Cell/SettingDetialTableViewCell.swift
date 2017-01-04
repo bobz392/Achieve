@@ -13,7 +13,7 @@ class SettingDetialTableViewCell: UITableViewCell {
 
     static let nib = UINib(nibName: "SettingDetialTableViewCell", bundle: nil)
     static let reuseId = "settingDetialTableViewCell"
-    static let rowHeight: CGFloat = 48
+    static let rowHeight: CGFloat = 60
     
     
     @IBOutlet weak var settingTitleLabel: UILabel!
@@ -35,6 +35,26 @@ class SettingDetialTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        if selected {
+            self.backgroundColor = Colors.cellCardSelectedColor
+        } else {
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
+                self.backgroundColor = Colors.cellCardColor
+            })
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            self.backgroundColor = Colors.cellCardSelectedColor
+        } else {
+            UIView.animate(withDuration: kCellAnimationDuration, animations: { [unowned self] in
+                self.backgroundColor = Colors.cellCardColor
+            })
+        }
     }
     
 }

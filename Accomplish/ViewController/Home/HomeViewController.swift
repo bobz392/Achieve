@@ -18,6 +18,8 @@
     fileprivate var showFinishTask = false
     fileprivate var taskListManager = TaskListManager()
     fileprivate var selectedIndex: IndexPath? = nil
+    // 改变日期后移动的 index， 从这个 index 到 selected index
+    fileprivate var atIndex: IndexPath? = nil
     // 用于缓存当前已经划开的 cell 的 index
     fileprivate var cacheSwipedIndex: IndexPath? = nil
     fileprivate var timer: SecondTimer?
@@ -53,9 +55,15 @@
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let indexPath = self.selectedIndex else { return }
-        self.taskTableView.deselectRow(at: indexPath, animated: true)
-        self.selectedIndex = nil
+        if let select = self.selectedIndex {
+            if let at = self.atIndex {
+                self.taskTableView.moveRow(at: at, to: select)
+                self.atIndex = nil
+            }
+            
+            self.taskTableView.deselectRow(at: select, animated: true)
+            self.selectedIndex = nil
+        }
     }
     
     deinit {
@@ -358,29 +366,37 @@
         }
         
         if status == .preceed {
-            // 如果是改变了顺序，例如更新了 created date
+            // 如果是改变了顺序，例如更新了 created date
             if TaskListManager.currentStatus() == .resort {
-                self.taskTableView.reloadSections(IndexSet([0]), with: .none)
+                if let insert = insertions.first, let delete = deletions.first {
+                    self.atIndex = IndexPath(row: delete, section: 0)
+                    self.selectedIndex = IndexPath(row: insert, section: 0)
+                } else {
+                    self.taskTableView.reloadSections(IndexSet([0]), with: .none)
+                }
+                TaskListManager.updateCurrentStatus(newStatues: .none)
                 return
+            } else {
+                update(0)
+                guard let deletion = deletions.first,
+                    let selectedRow = self.selectedIndex?.row else { return }
+                if deletion == selectedRow {
+                    self.selectedIndex = nil
+                }
             }
-            
-            self.taskTableView.beginUpdates()
-            update(0)
-            // 如果当前不是完成任务或者取消完成任务的情况，则直接 update
-            if TaskListManager.currentStatus() != .move {
-                self.taskTableView.endUpdates()
-            }
-            guard let deletion = deletions.first,
-                let selectedRow = self.selectedIndex?.row else { return }
-            if deletion == selectedRow {
-                self.selectedIndex = nil
-            }
+            // 结束任务的动画
         } else {
             if self.showFinishTask {
                 update(1)
             }
+        }
+    }
+    
+    func updating(begin: Bool) {
+        if begin {
+            self.taskTableView.beginUpdates()
+        } else {
             self.taskTableView.endUpdates()
-            TaskListManager.updateStatus(newStatues: .none)
         }
     }
     
@@ -535,7 +551,7 @@
  extension HomeViewController: SwitchTagDelegate {
     func switchTagTo(tag: Tag?) {
         self.taskListManager.queryTodayTask(tagUUID: tag?.tagUUID)
-        self.taskTableView.reloadSections(IndexSet([0]), with: .automatic)
+        self.taskTableView.reloadData()
     }
  }
  

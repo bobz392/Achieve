@@ -14,6 +14,7 @@ class EmptyDataView: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var linkButton: UIButton!
     
     class func loadNib(_ target: AnyObject) -> EmptyDataView? {
         guard let view =
@@ -24,6 +25,8 @@ class EmptyDataView: UIView {
 
         view.backgroundColor = Colors.mainBackgroundColor
         view.nameLabel.textColor = Colors.emptyTintColor
+        view.linkButton.setTitleColor(Colors.linkButtonTextColor, for: .normal)
+        
         return view
     }
     

@@ -451,7 +451,7 @@ extension TaskDetailViewController {
         case .schedule:
             guard let date = taskPickerView.datePicker.date as NSDate? else { break }
             RealmManager.shared.updateObject {
-                TaskListManager.updateStatus(newStatues: .resort)
+                TaskListManager.updateCurrentStatus(newStatues: .resort)
                 weakSelf.task.createdDate = date
                 let formatDate = date.createdFormatedDateString()
                 if formatDate != weakSelf.task.createdFormattedDate {

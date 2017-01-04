@@ -24,6 +24,7 @@ class TaskListManager {
     fileprivate var completedToken: RealmSwift.NotificationToken?
     
     fileprivate let wormhole: MMWormhole
+    fileprivate var realmUpdating = false
     
     fileprivate weak var completedHeaderView: TaskTableHeaderView? = nil
     
@@ -39,12 +40,23 @@ class TaskListManager {
         self.generatRealmToken()
     }
     
-    static func updateStatus(newStatues: TaskUpdateStatus) {
+    static func updateCurrentStatus(newStatues: TaskUpdateStatus) {
         status = newStatues
     }
     
     static func currentStatus() -> TaskUpdateStatus {
         return TaskListManager.status
+    }
+    
+    private func realmTokenUpdating() {
+        if !self.realmUpdating && TaskListManager.currentStatus() != .resort {
+            self.datasource?.updating(begin: true)
+            self.realmUpdating = true
+            dispatch_delay(0.2, closure: { [unowned self] in
+                self.datasource?.updating(begin: false)
+                self.realmUpdating = false
+            })
+        }
     }
     
     /**
@@ -59,6 +71,7 @@ class TaskListManager {
                 ws.handleUpdateTodayGroup()
                 
             case .update(_, let deletions, let insertions, let modifications):
+                ws.realmTokenUpdating()
                 ws.datasource?.update(deletions: deletions, insertions: insertions,
                                       modifications: modifications, status: .preceed)
                 ws.handleUpdateTodayGroup()
@@ -75,6 +88,7 @@ class TaskListManager {
                 ws.datasource?.initial(status: .completed)
                 
             case .update(_, let deletions, let insertions, let modifications):
+                ws.realmTokenUpdating()
                 ws.datasource?.update(deletions: deletions, insertions: insertions,
                                       modifications: modifications, status: .completed)
                 ws.completedHeaderView?.updateTitle(newTitle: ws.updateCompletedHeaderViewTitle())
@@ -176,17 +190,24 @@ extension TaskListManager {
                 return headerView
             } else {
                 let title: String
+                let hiddenLinkButton: Bool
                 if let tagUUID = AppUserDefault().readString(kUserDefaultCurrentTagUUIDKey),
                     let tag = RealmManager.shared.queryTag(usingName: false, query: tagUUID) {
                     title = String(format: Localized("emptyTagTask"), tag.name)
+                    hiddenLinkButton = false
                 } else {
                     title = Localized("emptyTask")
+                    hiddenLinkButton = true
                 }
                 
                 let headerView = EmptyDataView.loadNib(target)
                 if let header = headerView {
                     header.setImage(imageName: Icons.listEmpty.iconString())
                         .setTitle(title: title)
+                    header.linkButton.isHidden = hiddenLinkButton
+                    header.linkButton.setTitle(Localized("backToAllTask"), for: .normal)
+                    let linkAction = #selector(self.headerSwitchTagAction)
+                    header.linkButton.addTarget(self, action: linkAction, for: .touchUpInside)
                 }
                 
                 return headerView
@@ -201,18 +222,22 @@ extension TaskListManager {
     fileprivate func updateCompletedHeaderViewTitle() -> String {
         return Localized("finished") + "(\(self.completedTasks.count))"
     }
+    
+    @objc fileprivate func headerSwitchTagAction() {
+        AppUserDefault().remove(kUserDefaultCurrentTagUUIDKey)
+        self.datasource?.switchTagTo(tag: nil)
+    }
 }
 
 //MARK: - 自动通知的协议
-protocol RealmNotificationDataSource: NSObjectProtocol {
+protocol RealmNotificationDataSource: NSObjectProtocol, SwitchTagDelegate {
     func initial(status: TaskStatus)
     func update(deletions: [Int], insertions: [Int], modifications: [Int], status: TaskStatus)
+    func updating(begin: Bool)
 }
 
 enum TaskUpdateStatus {
     case move
     case resort
-    case insert
-    case delete
     case none
 }

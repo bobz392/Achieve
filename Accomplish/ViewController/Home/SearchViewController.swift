@@ -17,6 +17,7 @@ class SearchViewController: BaseViewController {
     fileprivate var searchResult = Array<Task>()
     fileprivate var searchInProgress = false
     fileprivate var selectedIndex: IndexPath? = nil
+    fileprivate var searchString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,7 +170,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let task = self.searchResult[indexPath.row]
         cell.configCellUse(task, enableSwipe: false)
-        cell.configCellForSearch()
+        cell.configCellForSearch(search: self.searchString)
         return cell
     }
 }
@@ -196,6 +197,7 @@ extension SearchViewController: UITextFieldDelegate {
         
         self.hintLabel.text = Localized("searchNoResult")
         self.hintLabel.isHidden = true
+        self.searchString = realString
         
         if !self.searchInProgress {
             self.queryResult(queryString: realString)

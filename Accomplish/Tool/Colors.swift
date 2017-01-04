@@ -23,6 +23,7 @@ struct Colors {
     static let mainIconColor = UIColor(red:0.70, green:0.76, blue:0.79, alpha:1.00)
     static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)
     static let cellCardSelectedColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:0.4)
+    static let searchBackgroundColor = UIColor(red:0.96, green:0.89, blue:0.11, alpha:1.00)
     
     static let buttonBackgroundColor = UIColor(red:0.93, green:0.94, blue:0.95, alpha:1.00)
     static let mainTextColor = UIColor(red:0.20, green:0.29, blue:0.37, alpha:1.00)

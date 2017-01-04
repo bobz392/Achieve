@@ -185,8 +185,17 @@ class TaskTableViewCell: MGSwipeTableCell {
         }
     }
     
-    func configCellForSearch() {
+    func configCellForSearch(search: String) {
         self.taskStatusButton.isEnabled = false
+        guard !search.isRealEmpty else { return }
+
+        if let taskToDo = self.taskTitleLabel.attributedText {
+            self.taskTitleLabel.attributedText = taskToDo.searchHintString(search: search)
+        } else {
+            guard let taskTodo = self.task?.realTaskToDo() else { return }
+            self.taskTitleLabel.attributedText =
+                NSAttributedString(string: taskTodo).searchHintString(search: search)
+        }
     }
     
     // MARK: - actions

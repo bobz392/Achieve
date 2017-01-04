@@ -45,6 +45,7 @@
 		C7145AC41D904FF9000FAC18 /* TaskInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC31D904FF9000FAC18 /* TaskInterfaceController.swift */; };
 		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
 		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
+		C71A4B681E1D123E003EE0B9 /* AttributedString+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */; };
 		C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D586F1D746A7800E76E91 /* SystemActionType.swift */; };
 		C71F215D1E08060E00A04351 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215C1E08060E00A04351 /* AppConstants.swift */; };
 		C71F215F1E080E2700A04351 /* TaskTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */; };
@@ -449,6 +450,7 @@
 		C7145AC51D90506D000FAC18 /* WatchColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchColors.swift; sourceTree = "<group>"; };
 		C7145ACD1D91208F000FAC18 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Convenient.swift"; sourceTree = "<group>"; };
 		C71D586F1D746A7800E76E91 /* SystemActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionType.swift; sourceTree = "<group>"; };
 		C71F215C1E08060E00A04351 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1353,6 +1355,7 @@
 			children = (
 				C7DDA5B41D75FAD30054154C /* NSDate+Convenient.swift */,
 				C7DDA5B51D75FAD30054154C /* String+Convenient.swift */,
+				C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */,
 				C7DDA5B61D75FAD30054154C /* UIView+Convenient.swift */,
 				C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */,
 				C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */,
@@ -2112,6 +2115,7 @@
 				C7821EC41D7BF1820056623D /* MMWormholeFileTransiting.m in Sources */,
 				C738CBE11DA13BB500099C87 /* ReportGenerator.swift in Sources */,
 				C78C4E0C1DFC78E8000C289D /* ReadLaterViewController.swift in Sources */,
+				C71A4B681E1D123E003EE0B9 /* AttributedString+Convenient.swift in Sources */,
 				C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */,
 				C78C4EB61DFCE563000C289D /* ReadLaterManager.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,

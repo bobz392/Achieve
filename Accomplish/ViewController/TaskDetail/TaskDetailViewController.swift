@@ -112,16 +112,14 @@ class TaskDetailViewController: BaseViewController {
             make.left.equalTo(backButton.snp.right).offset(8)
             make.right.equalToSuperview().offset(-12)
             make.top.equalToSuperview().offset(23)
-//            make.bottom.equalToSuperview().offset(-6)
         }
         
         dateLabel.font = UIFont.systemFont(ofSize: 12)
         dateLabel.textColor = Colors.secondaryTextColor
-        dateLabel.text = NSDate().getDateString()
+        dateLabel.text = self.task.createdDate?.getDateString()
         dateLabel.textAlignment = .right
         bar.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { (make) in
-//            make.right.equalTo(taskToDoTextView).offset(-10)
             make.top.equalTo(taskToDoTextView.snp.bottom).offset(4)
             make.bottom.equalToSuperview().offset(-6)
         }

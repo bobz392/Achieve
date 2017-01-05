@@ -88,7 +88,7 @@ extension NSDate {
         } else if self.isYesterday() {
             return Localized("yesterday")
         } else {
-            return " " + self.formattedDate(with: .medium)
+            return self.formattedDate(with: .medium)
         }
     }
     

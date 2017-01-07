@@ -18,8 +18,9 @@ class SubtaskTableViewCell: BaseTableViewCell {
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var iconButton: UIButton!
     
-    var task: Task?
-    var subtask: Subtask?
+    fileprivate var task: Task?
+    fileprivate var subtask: Subtask?
+    fileprivate var isAdd = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,11 +39,12 @@ class SubtaskTableViewCell: BaseTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configCell(_ task: Task, subtask: Subtask?, icon: Icons) {
+    func configCell(_ task: Task, subtask: Subtask?, icon: Icons, isAdd: Bool) {
         self.task = task
         self.subtask = subtask
         self.iconButton.setImage(icon.iconImage(), for: .normal)
         self.iconButton.tintColor = Colors.mainIconColor
+        self.isAdd = isAdd
         
         self.subtaskTextField.attributedText = nil
         
@@ -95,7 +97,9 @@ class SubtaskTableViewCell: BaseTableViewCell {
 extension SubtaskTableViewCell: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.text = nil
+        if self.isAdd {
+            textField.text = nil
+        }
         return true
     }
     

@@ -355,9 +355,9 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: SubtaskTableViewCell.reuseId, for: indexPath) as! SubtaskTableViewCell
             let row = indexPath.row
             if self.iconList[indexPath.section][row] == .smallPlus {
-                cell.configCell(task, subtask: nil, icon: .smallPlus)
+                cell.configCell(task, subtask: nil, icon: .smallPlus, isAdd: true)
             } else {
-                cell.configCell(task, subtask: self.subtasks?[row], icon: iconList[indexPath.section][indexPath.row])
+                cell.configCell(task, subtask: self.subtasks?[row], icon: iconList[indexPath.section][indexPath.row], isAdd: false)
             }
             tableCell = cell
             tableCell.isUserInteractionEnabled = canChange

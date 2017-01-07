@@ -59,6 +59,7 @@ class KVTaskViewController: BaseViewController {
         
         self.addButton.setImage(Icons.save.iconImage(), for: .normal)
         self.addButton.tintColor = Colors.mainIconColor
+        self.addButton.addTarget(self, action: #selector(self.saveAction), for: .touchUpInside)
         bar.addSubview(self.addButton)
         self.addButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(backButton)
@@ -165,11 +166,6 @@ extension KVTaskViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.contentTextView.becomeFirstResponder()
         return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        self.addButton.isEnabled = (range.location + string.characters.count > 0) && !self.contentTextView.text.isRealEmpty
-        return true
     }
     
 }

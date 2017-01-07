@@ -10,16 +10,16 @@
 "icloud"="Login iCloud-account om uw gegevens te synchroniseren";
 
 "noPermission"="No toegangsrechten";
-"abPermission"="We hebben geen toestemming om toegang te krijgen tot het adresboek, dan kunt u deze toestemming te verlenen door middel van \" Instellingen> Privacy> Contactpersonen \ "";
+"abPermission"="We hebben geen toestemming om toegang te krijgen tot het adresboek, dan kunt u deze toestemming te verlenen door middel van \"Settings > Privacy > Contacts\"";
 "needABPermission"="Toestemming nodig om toegang te krijgen tot het adresboek";
 "loading"="Laden";
 
 "rescheduling"="Task detail";
 "taskReminding"="Task herinnering";
-"finishTask"="Finish taak ';
+"finishTask"="Finish taak";
 "cancel"="Annuleer";
 "delete"="Verwijderen";
-"deleteTask"="Delete taak ';
+"deleteTask"="Delete taak";
 "deleteReminder"="Delete herinnering";
 "permit"="Toestaan";
 "reject"="Weigeren";
@@ -63,7 +63,7 @@
 "customSchemeTask"="Geef de URL van uw aangepaste launcher taak";
 
 "noEstimate"="Verwachte oplevering";
-"estimeateAt"="Verwacht finish bij ';
+"estimeateAt"="Verwacht finish bij ";
 "beginsAt"="Begint om ";
 "willBeginsAt"="Will begint bij";
 "finishAt"="Finished op";
@@ -121,7 +121,7 @@
 
 "completionRates"="Huidige maand Completion tarieven";
 "monthlyWeek"="Week %d";
-"postponeTask"="Uitstellen taak ';
+"postponeTask"="Uitstellen taak";
 "repeaterMonth"="Repeat %@";
 "postponeTimes"="Uitgesteld: %d dagen";
 "repeaterTimes"="Herhalen: %d dagen";
@@ -158,13 +158,13 @@
 "deleteTag"="Delete tag";
 
 // search
-"search"='Zoeken';
+"search"="Zoeken";
 "searchHolder"="Vul aub uw trefwoord";
 "searchNoResult"="- Er zijn geen resultaten gevonden -";
 
 // message
 "messageUseage"="Deel je schema voor vandaag";
-"shareMessage"="%@ Op %@, samen met mij? ';
+"shareMessage"="%@ Op %@, samen met mij?";
 
 // time management
 "defaultTimeManagerName"="Time Manager Method ";

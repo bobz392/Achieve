@@ -128,7 +128,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
         case .schedule:
             guard let createdDate = task.createdDate else { break }
             let scheduled = createdDate.isEarlierThan(Date()) ?
-                Localized("scheduled") : Localized("willScheduled")
+                Localized("beginsAt") : Localized("willBeginsAt")
             self.infoLabel.text = scheduled + " "
                 + createdDate.formattedDate(withFormat: TimeDateFormat)
             self.clearButton.isHidden = true

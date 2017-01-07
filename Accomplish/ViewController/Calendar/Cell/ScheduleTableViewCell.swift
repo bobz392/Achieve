@@ -64,7 +64,7 @@ class ScheduleTableViewCell: UITableViewCell {
         self.createdTimeLabel.text = task.createdDate?.timeString()
         self.tasksLabel.text = task.realTaskToDo()
         if let finishDate = task.finishedDate {
-            self.completedLabel.text = Localized("completedAt") + finishDate.timeDateString()
+            self.completedLabel.text = Localized("finishAt") + finishDate.timeDateString()
         } else {
     
             if task.createdDate!.isLaterThenToday() {

@@ -84,7 +84,7 @@ class TaskPickerView: UIView {
             self.datePicker.isHidden = false
             self.datePicker.minimumDate = now
             self.datePicker.datePickerMode = .dateAndTime
-            self.rightButton.setTitle(Localized("setCreateDate"), for: .normal)
+            self.rightButton.setTitle(Localized("setStartDate"), for: .normal)
             self.datePicker.reloadInputViews()
             
         case .due:

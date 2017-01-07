@@ -10,6 +10,7 @@
 "finished"="COMPLETED";
 "show"="SHOW";
 "hide"="HIDE";
+"newTask"="New Task";
 "emptyTask"="No more tasks, Enjoy the day or challenge a new task";
 "emptyTagTask"="No more tasks in Tag: %@";
 "detailIncomplete"="Yesterday unfinished tasks postponed to today";
@@ -21,7 +22,6 @@
 "needABPermission"="Need permission to access Address Book";
 "loading"="Loading";
 
-"newTask"="Add Task";
 "rescheduling"="Task Detail";
 "taskReminding"="Task Reminding";
 "finishTask"="Finish Task";
@@ -39,14 +39,14 @@
 "priority"="Priority";
 "remove"="Remove";
 
-"setCreateDate"="Set Start Time";
+"setStartDate"="Set Start Time";
 "setEstimateDate"="Set Estimated Time";
 "setReminder"="Set Reminder";
 "setRepeat"="Set Repeat";
 "setTag"="Set Tag";
 "noneTag"="None";
 "allTask"="All Tasks";
-"backToAllTask"="Back To All Tasks";
+"backToAllTask"="Return To All Tasks";
 
 "priority2"="High";
 "priority1"="Normal";
@@ -70,22 +70,21 @@
 "subtaskCount"=" (Subtask) ";
 "customSchemeTask"="Enter url of your custom launcher task";
 
+"noEstimate"="Estimated time of completion";
+"estimeateAt"="Estimated finish at ";
+"beginsAt"="Begins at ";
+"willBeginsAt"="Will begins at ";
+"finishAt"="Finished at ";
 "noReminder"="Reminder";
 "reminderMe"="Reminder me at ";
-"noEstimate"="Estimate finish time";
-"estimeateAt"="Estimate finish at ";
-"createdAt"="Started at ";
-"finishAt"="Finished at ";
 "repeat"="Repeat ";
 "noRepeat"="Repeat";
-"taskNote"="Add a notse";
+"taskNote"="Add a note";
 "detailAddSubtask"="Add a subtask";
 "addressBook"="Address Book";
 "errorInfos"="Please improve content";
-"errorURL"="Invalid url";
+"errorURL"="Invalid URL";
 
-"scheduled"="Started in ";
-"willScheduled"="Will start in ";
 "today"="Today";
 "tomorrow"="Tomorrow";
 "yesterday"="Yesterday";
@@ -103,9 +102,6 @@
 "time_management"="Time Management";
 "settings"="Settings";
 
-
-"dayUnit"="th";
-
 "day1" = "M";
 "day2" = "T";
 "day3" = "W";
@@ -114,10 +110,8 @@
 "day6" = "S";
 "day7" = "S";
 
-"newDay"="Have a nice day :)";
-
 // hint
-"repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your shoud prepare to complete it each day, but you can remove repeat of this task.";
+"repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your should prepare to complete it each day, but you can remove repeat of this task.";
 "systemTaskHint"="In the built-in task you can quickly add a task. For example, make phone call or send message, or create a shopping list, and so on. And you can directly carry out your action by clicking on the push notification or in list.";
 
 // setting
@@ -128,48 +122,33 @@
 "enter"="Enter ";
 "schedule"="Schedule";
 "noSchedule"="No Schedule";
-"completedAt"="completed at ";
 "notCompleted"="not completed";
 "notComoletedYet"="not completed yet";
 "monthly"="  Monthly Statistics  ";
-"noMonthlyData"="No repeat and postponed tasks";
-
-"reportFinish"="%@-%@ %@";
-"reportUnfinish"="%@ %@";
-"reportOvertime"=", %@ overtime.";
-"reportEarlier"=", finished ahead of %@.";
-"reportEstimate"=", estimated finish at %@.";
+"noMonthlyData"="No repetitive or postponed tasks";
 
 "completionRates"="Current Month Completion Rates";
 "monthlyWeek"="Week %d";
-"postponeTask"="Postponed task";
+"postponeTask"="Postpone task";
 "repeaterMonth"="Repeat %@";
-"postponeTimes"="Postpone: %d Days";
+"postponeTimes"="Postponed: %d Days";
 "repeaterTimes"="Repeat: %d Days";
 "repeaterRates"="Completion Rates: %@";
-"postponeFinishAt"="Finish at %@";
-
-"hour"="hour";
-"hours"="hours";
-"mins"="minutes";
+"postponeFinishAt"="Completed in %@";
 
 // today
 "noTaskToday"="You have no task due today.";
 "taskToday"="You have %d task due today.";
 "taskTodays"="You have %d tasks due today.";
-"showPriority"="Show task with priority";
+//"showPriority"="Show task with priority";
 "timeMethodRunning"="(Working)";
-
-// Shortcut
-"shortCutCreate"="New Task";
-"shortCutCalendar"="Calendar";
 
 // settings
 "emailUs"="Email us";
 "about"="About";
 "writeReview"="Write review";
-"enabDueNextDay"="Postpone unfinished tasks";
-"finishSound"="Task finished sound";
+"enabDueNextDay"="Postponed tasks that are not completed";
+"finishSound"="Task completion beep";
 "startDay"="Week start on";
 "about"="About";
 "licenses"="Licenses";
@@ -186,25 +165,21 @@
 "tagExist"="Tag already exists";
 "deleteTag"="Delete tag";
 
-// hint
-"help"="Help";
-
 // search
+"search"="Search";
 "searchHolder"="Please Input Your Search Keyword";
 "searchNoResult"="- No Results Were Found -";
 
 // message
-"messageUseage"="Share your schedules of today";
+"messageUseage"="Share your schedule for today";
 "shareMessage"="%@ at %@, join with me?";
 
 // time management
 "defaultTimeManagerName"="Time Manager Method";
 "cancelTimeManager"="Quit Time Manager Method";
-"finishTimeManager"="Finish Task";
 "continue"="Continue work";
 "selectTimeManagement"="Select Time Management Method";
-"infiniteRepeat"="Infinite";
-"repeatNumber"="Number of Repeats";
+"repeatNumber"="Number of repetitions";
 "useTime"="Use %d time";
 "useTimes"="Use %d times";
 "pomodoro"="Pomodoro Technique";
@@ -216,14 +191,13 @@
 "timeMethodPause"="(Pause)";
 
 // time management editor
-"saveTimeMethod"="Save Time Management Method?";
 "please"="Please ";
 "timeManageGroupName"="Work Group ";
 "enterItemName"="Enter Job Content";
 "min"="Min";
 "enterItemTime"="Enter Working Time";
-"enterMethodName"="Name time management method";
-"enterGroupRepeatNumber"="Set Number of Repeats";
+"enterMethodName"="Named to the time management method";
+"enterGroupRepeatNumber"="Set number of repetitions";
 "methodName"="Name";
 "aliase"="Aliase";
 "defaultAliase"="Circles";

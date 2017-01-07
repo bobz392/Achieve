@@ -186,7 +186,7 @@ extension AppDelegate {
     func configureDynamicShortcuts() {
         let createTaskItem = UIApplicationShortcutItem(
             type: QuickActionType.Create.rawValue,
-            localizedTitle: Localized("shortCutCreate"),
+            localizedTitle: Localized("newTask"),
             localizedSubtitle: "",
             icon: UIApplicationShortcutIcon(type: .add),
             userInfo: nil)
@@ -194,14 +194,14 @@ extension AppDelegate {
         let calendarIcon = UIApplicationShortcutIcon(templateImageName: "Calendar")
         let calendarItem = UIApplicationShortcutItem(
             type: QuickActionType.Calendar.rawValue,
-            localizedTitle: Localized("shortCutCalendar"),
+            localizedTitle: Localized("calendar"),
             localizedSubtitle: "",
             icon: calendarIcon,
             userInfo: nil)
         
         let searchTaskItem = UIApplicationShortcutItem(
             type: QuickActionType.Search.rawValue,
-            localizedTitle: Localized("searchHolder"),
+            localizedTitle: Localized("search"),
             localizedSubtitle: "",
             icon: UIApplicationShortcutIcon(type: .search),
             userInfo: nil)

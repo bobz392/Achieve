@@ -10,6 +10,7 @@
 "finished"="已完成";
 "show"="显示";
 "hide"="隐藏";
+"newTask"="新任务";
 "emptyTask"="没有新任务，放松一下或者挑战一个新任务";
 "emptyTagTask"="没有新任务在标签：%@";
 "detailIncomplete"="把昨天未完成的任务移到今天";
@@ -21,7 +22,6 @@
 "needABPermission"="需要通讯录权限";
 "loading"="加载中";
 
-"newTask"="添加新任务";
 "rescheduling"="任务详情";
 "finishTask"="完成任务";
 "taskReminding"="任务提醒";
@@ -38,7 +38,7 @@
 "goingDo"="准备做点什么呢?";
 "priority"="优先级";
 "remove"="移除";
-"setCreateDate"="设置开始时间";
+"setStartDate"="设置开始时间";
 "setEstimateDate"="设置预估时间";
 "setReminder"="设置提醒";
 "setRepeat"="设置重复";
@@ -71,7 +71,8 @@
 
 "noEstimate"="预计完成时间";
 "estimeateAt"="预计完成于 ";
-"createdAt"="开始于 ";
+"beginsAt"="开始于 ";
+"willBeginsAt"="Will begins at ";
 "finishAt"="完成于 ";
 "noReminder"="没有提醒";
 "reminderMe"="提醒我在 ";
@@ -81,10 +82,8 @@
 "detailAddSubtask"="添加子任务";
 "addressBook"="通讯录";
 "errorInfos"="请完善内容";
-"errorURL"="无效的url";
+"errorURL"="无效的URL";
 
-"scheduled"="开始于 ";
-"willScheduled"="将开始于  ";
 "today"="今天";
 "tomorrow"="明天";
 "yesterday"="昨天";
@@ -111,7 +110,7 @@
 "day6" = "六";
 "day7" = "日";
 
-"newDay"="美好的一天开始了 :)";
+// hint
 "repeatTaskHint"="如果您创建一个重复任务，那么它将会在每一天都创建一个新的任务。所以您应该要准备好每天都去完成这个任务，不过您可以移除这个任务的重复。";
 "systemTaskHint"="在内置动作中您可以快速添加一个任务，例如给谁通话、短讯给谁、创建一个购物清单，等等。并且您可以直接通过点击推送通知来执行您的动作。（例如通话、写短讯，等）";
 
@@ -123,7 +122,6 @@
 "enter"="进入";
 "schedule"="日程";
 "noSchedule"="没有日程";
-"completedAt"="完成于 ";
 "notCompleted"="没有完成";
 "notComoletedYet"="还未完成";
 "monthly"="  本月统计  ";
@@ -138,32 +136,12 @@
 "repeaterRates"="完成率: %@";
 "postponeFinishAt"="完成于 %@";
 
-"reportFinish"="%@-%@ %@";
-"reportUnfinish"="%@ %@";
-"reportOvertime"=", %@ overtime.";
-"reportEarlier"=", %@ earlier finish task.";
-"reportEstimate"=", estimate finish at %@.";
-
-"reportFinish"="%@-%@ %@";
-"reportUnfinish"="%@ %@";
-"reportOvertime"="，超出预期 %@。";
-"reportEarlier"="，提前 %@ 完成。";
-"reportEstimate"="，预计完成于 %@。";
-
-"hour"="小时";
-"hours"="小时";
-"mins"="分钟";
-
 // today
 "noTaskToday"="您今天没有新任务。";
 "taskToday"="您今天还有%d个任务。";
 "taskTodays"="您今天还有%d个任务。";
 "showPriority"="仅显示优先级为";
 "timeMethodRunning"="(工作中)";
-
-// Shortcut
-"shortCutCreate"="添加新任务";
-"shortCutCalendar"="日历";
 
 // settings
 "emailUs"="给我们邮件";
@@ -179,9 +157,6 @@
 "open"="已打开";
 "close"="已关闭";
 
-// hint
-"help"="帮助";
-
 // tag
 "currentTag"="  当前  ";
 "tagToday"="(%d个任务)";
@@ -191,6 +166,7 @@
 "deleteTag"="删除标签";
 
 // search
+"search"="搜索";
 "searchHolder"="请输入您搜索的关键词";
 "searchNoResult"="- 没有查询到结果 -";
 
@@ -201,10 +177,8 @@
 // time management
 "defaultTimeManagerName"="工作法";
 "cancelTimeManager"="退出工作法";
-"finishTimeManager"="完成任务";
 "continue"="继续工作";
 "selectTimeManagement"="选择一个工作法";
-"infiniteRepeat"="无限";
 "repeatNumber"="循环次数";
 "useTime"="使用%d次";
 "useTimes"="使用%d次";
@@ -217,7 +191,6 @@
 "timeMethodPause"="(暂停中)";
 
 // time management editor
-"saveTimeMethod"="保存此工作法?";
 "please"="请";
 "timeManageGroupName"="工作组 ";
 "enterItemName"="输入工作内容";

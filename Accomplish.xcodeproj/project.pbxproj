@@ -547,6 +547,11 @@
 		C75F857E1E053F6D0057D76C /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = "<group>"; };
 		C75F857F1E053F6D0057D76C /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		C7670A5F1DFA16C600E5E21B /* AchieveShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AchieveShare-Bridging-Header.h"; sourceTree = "<group>"; };
+		C767D01A1E21394E00491418 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		C767D01B1E21394E00491418 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Interface.strings; sourceTree = "<group>"; };
+		C767D01C1E21394E00491418 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		C767D01D1E21394E00491418 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		C767D01E1E21394E00491418 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C769A6411D885AB700E68871 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C769A6451D8862D800E68871 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -1636,6 +1641,7 @@
 				en,
 				"zh-Hans",
 				Base,
+				ja,
 			);
 			mainGroup = C7860E341D6C23FF000281FA;
 			productRefGroup = C7860E3E1D6C23FF000281FA /* Products */;
@@ -2270,6 +2276,7 @@
 			children = (
 				C77192941D6CFE0700437560 /* en */,
 				C77192961D6CFE1200437560 /* zh-Hans */,
+				C767D01E1E21394E00491418 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2278,6 +2285,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C78ED87E1D7A7D3100031B4D /* Base */,
+				C767D01A1E21394E00491418 /* ja */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -2286,6 +2294,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C7CAF09E1D9C3FE80046D756 /* Base */,
+				C767D01C1E21394E00491418 /* ja */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -2294,6 +2303,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C7E1B0471D8C7A9600554B11 /* Base */,
+				C767D01B1E21394E00491418 /* ja */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -2302,6 +2312,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C7EFB3111DF3924F0094B1E0 /* Base */,
+				C767D01D1E21394E00491418 /* ja */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";

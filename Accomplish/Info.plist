@@ -57,7 +57,7 @@
 		<true/>
 	</dict>
 	<key>NSContactsUsageDescription</key>
-	<string>access addressbook to create task</string>
+	<string>Access addressbook to create task</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

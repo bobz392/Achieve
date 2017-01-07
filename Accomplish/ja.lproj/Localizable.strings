@@ -1,0 +1,215 @@
+/*
+	Localizable.strings
+	aire3S
+ 
+	Created by Alec on 5/3/13.
+	Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+ */
+
+"progess"="進行中";
+"finished"="完成した";
+"show"="ディスプレイ";
+"hide"="非表示";
+"newTask"="新しいタスク";
+"emptyTask"="新しいタスクはありません，リラックス";
+"emptyTagTask"="新しいタスクはありませんこのタグで：%@";
+"detailIncomplete"="今日完了昨日した未完のタスク";
+"asyncing"="同期式データ";
+"icloud"="ログインして iCloud アカウント データを同期するには";
+
+"noPermission"="権限がありません";
+"abPermission"="ディレクトリの読み取り権限がないので，アクセス許可\"Settings > Privacy > Contacts\";
+"needABPermission"="ディレクトリのアクセス許可を必要があります。";
+"loading"="読み込み";
+
+"newTask"="新しいタスクを作成します";
+"rescheduling"="タスクの詳細";
+"finishTask"="タスクを完了します";
+"taskReminding"="仕事のアラーム";
+"cancel"="キャンセル";
+"delete"="削除";
+"deleteTask"="タスクを削除します";
+"deleteReminder"="アラームをキャンセルします";
+"permit"="認める";
+"reject"="拒否します";
+"add"="を追加します";
+"save"="保存";
+"ok"="Ok";
+
+"goingDo"="何かをするつもりですか?";
+"priority"="優先順位";
+"remove"="削除";
+"setStartDate"="開始時刻を設定";
+"setEstimateDate"="推定時間を設定";
+"setReminder"="リマインダを設定する";
+"setRepeat"="繰り返しを設定";
+"setTag"="ラベルのセット";
+"noneTag"="ラベルなし";
+"allTask"="すべてのタスク";
+"backToAllTask"="すべてのタスクを返す";
+
+"priority2"="高";
+"priority1"="普通";
+"priority0"="低";
+
+"builtInTask"="組み込み作業";
+"callAction"="呼び出し ";
+"sendMessageAction"="SMS の送信 ";
+"faceTimeAction"="Face Time ";
+"mailAction"="Mail ";
+"customSchemeAction"="実装 ";
+
+"addPhoneCall"="ダイアル アップ作業を追加します";
+"addMessage"="送信テキスト メッセージ タスクを追加します";
+"addFaceTime"="Face Time タスクを追加します";
+"addMail"="メール送信タスクを追加します";
+"addSubtask"="サブタスクを含む新しいタスクを作成します";
+"addCustomScheme"="カスタム タスク ランチャーを作成します";
+"taskTitle"="タスクの名前を入力してください";
+"subtaskInfo"="サブタスクを入力します，サブタスクは、キャリッジ リターンで区切られます";
+"subtaskCount"=" (サブタスク) ";
+"customSchemeTask"="カスタム URL を入力します";
+
+"noEstimate"="预计完成时间";
+"estimeateAt"="预计完成时间 ";
+"createdAt"="開始されます ";
+"finishAt"="終了します ";
+"noReminder"="リマインダー";
+"reminderMe"="私に思い出させる ";
+"repeat"="繰り返し ";
+"noRepeat"="繰り返し";
+"taskNote"="コメントを追加します";
+"detailAddSubtask"="サブタスクを追加します";
+"addressBook"="アドレス帳";
+"errorInfos"="変更または追加する必要があります";
+"errorURL"="無効な URL";
+
+"today"="今日";
+"tomorrow"="明日";
+"yesterday"="昨日";
+
+"everyday"="毎日";
+"weekday"="毎営業日 (月曜日 ~ 金曜日) ";
+"everyWeek"="毎週(%@)";
+"everyMonth"="毎月(%@号)";
+"annual"="每年(%@)";
+
+// menu
+"home"="今日";
+"calendar"="カレンダー";
+"tag"="タグ";
+"time_management"="時間管理";
+"settings"="設定";
+
+"day1" = "月曜";
+"day2" = "火曜";
+"day3" = "水曜";
+"day4" = "木曜";
+"day5" = "金曜";
+"day6" = "土曜";
+"day7" = "日曜";
+
+// hint
+"repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your shoud prepare to complete it each day, but you can remove repeat of this task.";
+"systemTaskHint"="In the built-in task you can quickly add a task. For example, make phone call or send message, or create a shopping list, and so on. And you can directly carry out your action by clicking on the push notification or in list.";
+
+// setting
+"general"="共通の設定";
+"extra"="追加の設定";
+
+// calendar
+"enter"="入る";
+"schedule"="スケジュール";
+"noSchedule"="スケジュールなし";
+"completedAt"="終了 ";
+"notCompleted"="失敗しました";
+"notComoletedYet"="完了しませんでした";
+"monthly"="  今月の統計  ";
+"noMonthlyData"="重複または遅延タスクはありません";
+
+"completionRates"="今月の完了率";
+"monthlyWeek"="第%d週";
+"postponeTask"="遅れているタスク";
+"repeaterMonth"="%@繰り返し";
+"postponeTimes"="遅延: %d日";
+"repeaterTimes"="繰り返し: %d日";
+"repeaterRates"="完了率: %@";
+"postponeFinishAt"="%@ 終了";
+
+// today
+"noTaskToday"="すべての完了したタスク.";
+"taskToday"="今日では、%d つのタスクがあります.";
+"taskTodays"="今日では、%d つのタスクがあります.";
+//"showPriority"="仅显示优先级为";
+"timeMethodRunning"="(作業)";
+
+// settings
+"emailUs"="電子メールでお問い合わせ";
+"about"="について";
+"writeReview"="あなたの提案";
+"enabDueNextDay"="未完成の延期";
+"finishSound"="タスク完了のビープ音";
+"startDay"="週の開始日";
+"about"="について";
+"licenses"="オープン ソース ライセンス";
+"version"="バージョン ";
+
+"open"="オープン";
+"close"="クローズ";
+
+// tag
+"currentTag"="  現在  ";
+"tagToday"="(%d タスク)";
+"noTag"="タグ";
+"newTag"="新しいラベルを追加";
+"tagExist"="このラベルは既に使用中です";
+"deleteTag"="タグを削除します";
+
+// search
+"search"="検索";
+"searchHolder"="検索キーワードを入力してください";
+"searchNoResult"="- クエリ結果がありません -";
+
+// message
+"messageUseage"="今日のスケジュールを共有します";
+"shareMessage"="%@ %@,一緒に?";
+
+// time management
+"defaultTimeManagerName"="時間管理";
+"cancelTimeManager"="時間管理終了";
+"continue"="作業を続";
+"selectTimeManagement"="作業の方法を選択";
+"repeatNumber"="サイクル数";
+"useTime"="%d回を使用";
+"useTimes"="%d回を使用";
+"pomodoro"="トマトの作業方法";
+"pomodoroAliase"="トマト";
+"pomodoroWork"="タスクで";
+"pomodoroRest"="休憩を取る";
+"pomodoroLongRest"="4 トマト！休憩を取る";
+"timeMethodPrepar"="(開始)";
+"timeMethodPause"="(中断)";
+
+// time management editor
+"please"="";
+"timeManageGroupName"="ワーキング グループ ";
+"enterItemName"="ジョブ内容を入力してください";
+"enterItemTime"="時間を入力してください";
+"min"="分";
+"enterMethodName"="作業方法の名前";
+"enterGroupRepeatNumber"="サイクル数を設定します";
+"methodName"="名前";
+"itemName"="作業内容";
+"itemTime"="作業時間(分)";
+"aliase"="エイリアス";
+"defaultAliase"="サイクル";
+"enterMethodAliase"="サイクル(サイクルを記録するために使用)";
+
+// share extension
+"post"="発行";
+"createReadLater"="後で読む";
+"shareTask"="タスクを追加 Achieve";
+"shareNote"="ノート";
+"shareCreated"="追加";
+"shareSetting"="後で読む";
+"readLaterTitle"="読書リスト";

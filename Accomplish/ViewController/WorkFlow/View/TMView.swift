@@ -224,7 +224,7 @@ class TMView: UIView {
         })
         alertVC.addAction(cancelAction)
         
-        let finishTaskAction = UIAlertAction(title: Localized("finishTimeManager"), style: .destructive, handler: { [unowned self] (action) -> Void in
+        let finishTaskAction = UIAlertAction(title: Localized("finishTask"), style: .destructive, handler: { [unowned self] (action) -> Void in
             self.finishTaskAndCancelTM()
             self.clearTimeManagerUserDefault()
         })

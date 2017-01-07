@@ -39,6 +39,7 @@
         self.initTimer()
         
         self.icloudManager.asyncFromCloudIfNeeded()
+        
         if appDefault.readBool(kUserDefaultBuildInTMKey) != true {
             BuildInTimeMethodCreator().pomodoroCreator()
             appDefault.write(kUserDefaultBuildInTMKey, value: true)

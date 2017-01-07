@@ -148,6 +148,11 @@ class CloudKitManager: NSObject {
                         HUD.shared.showProgress(Localized("asyncing"))
                     }
                     for r in rs {
+                        guard let uuid = r["uuid"] as? String else { break }
+                        if let _ = RealmManager.shared.queryTask(uuid) {
+                            break
+                        }
+
                         let task = Task()
                         task.createdDate = r["createdDate"] as? NSDate
                         task.estimateDate = r["estimateDate"] as? NSDate
@@ -155,7 +160,7 @@ class CloudKitManager: NSObject {
                         task.notifyDate = r["notifyDate"] as? NSDate
                         task.subTaskCount = (r["subTaskCount"] as? Int) ?? 0
                         task.createdFormattedDate = (r["createdFormattedDate"] as? String) ?? ""
-                        task.uuid = (r["uuid"] as? String) ?? ""
+                        task.uuid = uuid
                         task.postponeTimes = (r["postponeTimes"] as? Int) ?? 0
                         task.priority = (r["priority"] as? Int) ?? 0
                         task.status = (r["status"] as? Int) ?? 0

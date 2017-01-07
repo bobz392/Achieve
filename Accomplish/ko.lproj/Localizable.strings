@@ -1,0 +1,207 @@
+"progess"="발하다";
+"finished"="COMPLETED";
+"show"="보여 주다";
+"hide"="숨는 장소";
+"newTask"="새 작업";
+"emptyTask"="더 이상 작업은 하루를 즐기거나 새로운 작업에 도전";
+"emptyTagTask"="태그에서 더 이상 작업하지 %@ 의";
+"detailIncomplete"="어제 미완성 작업은 오늘로 연기";
+"asyncing"="업데이트";
+"icloud"="로그인 아이 클라우드는 데이터를 동기화 계정";
+
+"noPermission"="어떤 액세스 권한이 없습니다";
+"abPermission"="우리는 주소록에 액세스 할 수있는 권한이 없습니다, 당신은 통해이 권한을 부여 할 수 있습니다 \"Settings > Privacy > Contacts\"";
+"needABPermission"="주소록에 액세스 할 수있는 권한이 필요";
+"loading"="로드";
+
+"rescheduling"="작업 세부 정보";
+"taskReminding"="작업 알림";
+"finishTask"="마침 작업";
+"cancel"="취소하다";
+"delete"="지우다";
+"deleteTask"="작업 삭제";
+"deleteReminder"="알림 삭제";
+"permit"="허용하다";
+"reject"="받지 않다";
+"add"="더하다";
+"save"="구하다";
+"ok"="승인";
+
+"goingDo"="무엇을하고 싶으십니까?";
+"priority"="우선 순위";
+"remove"="없애다";
+
+"setStartDate"="시작 시간을 설정합니다";
+"setEstimateDate"="예상 시간을 설정합니다";
+"setReminder"="알림 설정";
+"setRepeat"="반복 설정";
+"setTag"="태그를 설정합니다";
+"noneTag"="없음";
+"allTask"="모든 작업";
+"backToAllTask"="모든 작업으로 돌아갑니다";
+
+"priority2"="높은";
+"priority1"="표준";
+"priority0"="낮은";
+
+"builtInTask"="내장 작업";
+"callAction"="전화";
+"sendMessageAction"="에게 메시지 보내기";
+"faceTimeAction"="에 페이스 타임";
+"mailAction"="메일 보내기";
+"customSchemeAction"="진행";
+
+"addPhoneCall"="전화 통화 작업 만들기";
+"addMessage"="메시지 작업 만들기";
+"addFaceTime"="페이스 타임 태스크를 생성합니다";
+"addMail"="메일 작업을 만듭니다";
+"addSubtask"="하위 작업과 작업 만들기";
+"addCustomScheme"="사용자 정의 실행 작업 만들기";
+"taskTitle"="당신의 작업 이름을 입력";
+"subtaskInfo"="당신의 하위 작업을 입력, 하위는 입력 분리";
+"subtaskCount"="(하위 작업)";
+"customSchemeTask"="사용자 정의 실행 작업의 URL을 입력";
+
+"noEstimate"="완료 시간을 예상";
+"estimeateAt"="에서 마무리 기대";
+"beginsAt"="시작 :";
+"willBeginsAt"="윌에서 시작";
+"finishAt"="에 완료";
+"noReminder"="조언";
+"reminderMe"="에서 알림 날";
+"repeat"="반복";
+"noRepeat"="반복";
+"taskNote"="메모 추가";
+"detailAddSubtask"="하위 작업 추가";
+"addressBook"="주소록";
+"errorInfos"="콘텐츠를 개선하십시오";
+"errorURL"="잘못된 URL";
+
+"today"="오늘";
+"tomorrow"="내일";
+"yesterday"="어제";
+
+"everyday"="매일";
+"weekday"="주중 매일 (월 - 금)";
+"everyWeek"="매주(%@)";
+"everyMonth"="매월 (일 %@는)";
+"annual"="매년(%@)";
+
+// menu
+"home"="오늘";
+"calendar"="달력";
+"tag"="꼬리표";
+"time_management"="시간 관리";
+"settings"="설정";
+
+"day1" = "M";
+"day2" = "T";
+"day3" = "W";
+"day4" = "T";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
+
+// hint
+"repeatTaskHint"=". 당신은 반복 작업을 만들 경우, 매일의 새 작업을 만듭니다 그래서 당신의 매일을 완료하기 위해 준비해야하지만,이 작업의 반복을 제거 할 수 있습니다.";
+"systemTaskHint"="내장 작업에서는 신속하게, 예를 들어. 작업을 추가 전화를 걸거나 메시지를 보내거나 쇼핑 목록을 작성, 등등. 그리고 당신은 직접 푸시 알림 또는에서 클릭하여 작업을 수행 할 수 있습니다 명부.";
+
+// setting
+"general"="일반";
+"extra"="특별한";
+
+// calendar
+"enter"="입력";
+"schedule"="시간표";
+"noSchedule"="어떤 일정 없습니다";
+"notCompleted"="완료되지";
+"notComoletedYet"="아직 완료되지";
+"monthly"="월간 통계";
+"noMonthlyData"="어떤 반복적 인 또는 연기 작업 없습니다";
+
+"completionRates"="현재 월 완료 요금";
+"monthlyWeek"="주 %d 개";
+"postponeTask"="작업을 연기";
+"repeaterMonth"="반복 %@";
+"postponeTimes"="연기: %d일";
+"repeaterTimes"="반복 : %d의일";
+"repeaterRates"="완료율 : %@의";
+"postponeFinishAt"="에 완료 %@";
+
+// today
+"noTaskToday"="오늘 인해 어떤 작업이 없습니다.";
+"taskToday"="당신 때문에 오늘 %d 개의 작업을해야합니다.";
+"taskTodays"="당신은 오늘 인해 %d 의 작업을해야합니다.";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(일)";
+
+// settings
+"emailUs"="이메일을 보내";
+"about"="약";
+"writeReview"="리뷰 쓰기";
+"enabDueNextDay"="완료되지 않은 작업을 연기";
+"finishSound"="작업 완료 비프 음";
+"startDay"="주에 시작";
+"about"="약";
+"licenses"="라이센스";
+"version"="버전";
+
+"open"="열린";
+"close"="닫은";
+
+// tag
+"newTag"="태그 만들기";
+"tagToday"="(%d 개 작업)";
+"currentTag"="현재";
+"noTag"="꼬리표";
+"tagExist"="태그가 이미 존재합니다";
+"deleteTag"="태그 삭제";
+
+// search
+"search"="검색";
+"searchHolder"="입력에게 검색 키워드를주세요";
+"searchNoResult"="- 어떤 결과를 찾을 수 없습니다 -";
+
+// message
+"messageUseage"="오늘 일정을 공유";
+"shareMessage"="%@ 의 %@ 에, 나와 함께 가입?";
+
+// time management
+"defaultTimeManagerName"="시간 관리자 방법";
+"cancelTimeManager"="시간 관리자 방법을 종료합니다";
+"continue"="일을 계속";
+"selectTimeManagement"="시간 관리 방법을 선택합니다";
+"repeatNumber"="반복 횟수";
+"useTime"="%d 의 시간을 사용하여";
+"useTimes"="%d 의 시간을 사용하여";
+"pomodoro"="뽀 모도로 기법";
+"pomodoroAliase"="포모 도로";
+"pomodoroWork"="작업";
+"pomodoroRest"="휴식을 취하다";
+"pomodoroLongRest"="4 pomodoros! 긴 휴식";
+"timeMethodPrepar"="(시작 클릭)";
+"timeMethodPause"="(중지)";
+
+// time management editor
+"please"="하세요";
+"timeManageGroupName"="작업 그룹";
+"enterItemName"="작업 내용을 입력";
+"min"="최소";
+"enterItemTime"="작업 시간을 입력";
+"enterMethodName"="시간 관리 방법에 명시된";
+"enterGroupRepeatNumber"="반복 수를 설정합니다";
+"methodName"="이름";
+"aliase"="Aliase";
+"defaultAliase"="치 저 우";
+"itemName"="작업 내용";
+"itemTime"="작업 시간 (분)";
+"enterMethodAliase"="(에만 기록 사이클에 사용되는) 시간 관리 방법의 Aliase";
+
+// share extension
+"post"="포스트";
+"createReadLater"="나중에 읽기";
+"shareTask"="달성하기 위해 작업 Achieve";
+"shareNote"="노트";
+"shareCreated"="추가";
+"shareSetting"="나중에 읽기";
+"readLaterTitle"="목록을 읽기";

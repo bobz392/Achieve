@@ -1,0 +1,207 @@
+"progess"="VORGEHEN";
+"finished"="Completed";
+"show"="SHOW";
+"hide"="VERSTECKEN";
+"newTask"="Neue Aufgabe";
+"emptyTask"="Keine weiteren Aufgaben, Genießenden Tag oder eine neue Aufgabe in Frage stellen";
+"emptyTagTask"="Keine weiteren Aufgaben in Tag: %@";
+"detailIncomplete"="Gestern unerledigten Aufgaben auf heute verschoben";
+"asyncing"="Aktualisierung";
+"icloud"="Anmeldung iCloud Account Ihre Daten zu synchronisieren";
+
+"noPermission"="Keine Zugriffsberechtigung";
+"abPermission"="Wir haben nichtErlaubnisdas Adressbuch zuzugreifen, können Sie diese Berechtigung durch \"Settings > Privacy > Contacts\"";
+"needABPermission"="Need Erlaubnis Adressbuch zugreifen";
+"loading"="Laden";
+
+"rescheduling"="Aufgabendetail";
+"taskReminding"="Aufgabe Erinnerung";
+"finishTask"="Aufgabe beenden";
+"cancel"="Stornieren";
+"delete"="Löschen";
+"deleteTask"="Aufgabe löschen";
+"deleteReminder"="Löschen Erinnerung";
+"permit"="Zulassen";
+"reject"="Ablehnen";
+"add"="Hinzufügen";
+"save"="Sparen";
+"ok"="OK";
+
+"goingDo"="Was würdest du gern tun?";
+"priority"="Priorität";
+"remove"="Entfernen";
+
+"setStartDate"="Set Startzeit";
+"setEstimateDate"="Set Geschätzte Zeit";
+"setReminder"="Set Erinnerung";
+"setRepeat"="Set Wiederholen";
+"setTag"="Set Tag";
+"noneTag"="Keiner";
+"allTask"="Alle Aufgaben";
+"backToAllTask"="Zurück zu allen Aufgaben";
+
+"priority2"="Hoch";
+"priority1"="Normal";
+"priority0"="Niedrig";
+
+"builtInTask"="Eingebaut Aufgabe";
+"callAction"="Anruf ";
+"sendMessageAction"="Nachricht senden an ";
+"faceTimeAction"="Facetime";
+"mailAction"="SendeMail an ";
+"customSchemeAction"="Vorgehen ";
+
+"addPhoneCall"="Erstellen Anruf Aufgabe";
+"addMessage"="Nachricht erstellen Aufgabe";
+"addFaceTime"="Create Facetime Aufgabe";
+"addMail"="Create MailAufgabe";
+"addSubtask"="Aufgabe erstellen mit Unteraufgabe";
+"addCustomScheme"="Erstellenbenutzerdefinierten Launcher Aufgabe";
+"taskTitle"="Geben Sie Ihren Aufgabennamen";
+"subtaskInfo"="Geben Sie Ihre Unteraufgaben werden Unteraufgaben getrennt eingeben";
+"subtaskCount"="(Teilaufgabe)";
+"customSchemeTask"="Geben SieURL der benutzerdefinierten Launcher Aufgabe";
+
+"noEstimate"="Erwartete Zeitpunkt der Fertigstellung";
+"estimeateAt"="Erwartete Ziel am ";
+"beginsAt"="Startet um ";
+"willBeginsAt"="Will beginnt bei";
+"finishAt"="Fertig an ";
+"noReminder"="Mahnung";
+"reminderMe"="Erinnerung mich an ";
+"repeat"="Wiederholen ";
+"noRepeat"="Wiederholen";
+"taskNote"="Notiz hinzufügen";
+"detailAddSubtask"="Add a Unteraufgabe";
+"addressBook"="Adressbuch";
+"errorInfos"="Bitte verbessern Inhalt";
+"errorURL"="Ungültige URL";
+
+"today"="Heute";
+"tomorrow"="Morgen";
+"yesterday"="Gestern";
+
+"everyday"="Täglich";
+"weekday"="jedem Wochentag (Mo-Fr)";
+"everyWeek"="Jede Woche(%@)";
+"everyMonth"="Jeden Monat (die %@ st)";
+"annual"="Jedes Jahr(%@)";
+
+// menu
+"home"="Heute";
+"calendar"="Kalender";
+"tag"="Tag";
+"time_management"="Zeitmanagement";
+"settings"="Einstellungen";
+
+"day1" = "M";
+"day2" = "T";
+"day3" = "W";
+"day4" = "T";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
+
+// hint
+"repeatTaskHint"=". Wenn Sie eine Wiederholung Aufgabe erstellen, wird es eine neue Aufgabe an jedem Tag erstellen Sie sollten also bereitenes jeden Tag zu vollenden , aber Sie können Wiederholung dieser Aufgabe entfernen.";
+"systemTaskHint"="In der integrierte Task können Sie schnell eine Aufgabe hinzufügenz. B. Anruftätigen oderNachricht senden, oder eine Einkaufsliste erstellen, und so weiter. Und Sie können Ihre Aktion durch Klicken auf die PushBenachrichtigung direkt ausführen oder in Liste.";
+
+// setting
+"general"="Allgemein";
+"extra"="Extra";
+
+// calendar
+"enter"="Geben Sie";
+"schedule"="Zeitplan";
+"noSchedule"="Kein Zeitplan";
+"notCompleted"="nicht vollständig";
+"notComoletedYet"="noch nicht abgeschlossen";
+"monthly"="Monatsstatistik";
+"noMonthlyData"="Keine Wiederholung oder verschoben Aufgaben";
+
+"completionRates"="Aktueller Monat Fertigstellung Preise";
+"monthlyWeek"="Woche %d";
+"postponeTask"="Postpone Aufgabe";
+"repeaterMonth"="Repeat %@";
+"postponeTimes"="Verschoben: %d Tage";
+"repeaterTimes"="Repeat:%d Tage";
+"repeaterRates"="Fertigstellung Preisen: %@";
+"postponeFinishAt"="In %@ abgeschlossen";
+
+// today
+"noTaskToday"="Sie haben keine Aufgabe heute fällig.";
+"taskToday"="Du hast %d Aufgabe heute fällig.";
+"taskTodays"="Du hast %d Aufgaben heute fällig.";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(Arbeiten)";
+
+// settings
+"emailUs"="uns EMail";
+"about"="Etwa";
+"writeReview"="Bewertung schreiben";
+"enabDueNextDay"="Verschoben Aufgabendie nicht abgeschlossen sind";
+"finishSound"="Aufgabe Abschluss Piep";
+"startDay"="Woche beginnen";
+"about"="Etwa";
+"licenses"="Lizenzen";
+"version"="Version";
+
+"open"="Geöffnet";
+"close"="Abgeschlossen";
+
+// tag
+"newTag"="Tag erstellen";
+"tagToday"="(%d Aufgabe)";
+"currentTag"=" Strom ";
+"noTag"="Tag";
+"tagExist"="Tag existiert bereits";
+"deleteTag"="Tag löschen";
+
+// search
+"search"="Suchen";
+"searchHolder"="Bitte gebenIhre Suchwörter";
+"searchNoResult"="- Es wurden keine Ergebnisse gefunden -";
+
+// message
+"messageUseage"="Ihr Zeitplan für heute Teile";
+"shareMessage"="%@ At %@, verbinden sie mit mir?";
+
+// time management
+"defaultTimeManagerName"="Zeitmanager Methode";
+"cancelTimeManager"="Quit Zeitmanager Methode";
+"continue"="Weiter Arbeit";
+"selectTimeManagement"="Wählen Zeitmanagement Methode";
+"repeatNumber"="Anzahl der Wiederholungen";
+"useTime"="Benötigte Zeit";
+"useTimes"="Verwenden %d mal";
+"pomodoro"="Pomodoro Technik";
+"pomodoroAliase"="Pomodoro";
+"pomodoroWork"="Arbeiten";
+"pomodoroRest"="Machen Sie eine Pause";
+"pomodoroLongRest"="Four Pomodoros einen längeren Bruch";
+"timeMethodPrepar"="(Klicken Sie auf Start)";
+"timeMethodPause"="(Pause)";
+
+// time management editor
+"please"="Bitte";
+"timeManageGroupName"="Arbeitsgruppe";
+"enterItemName"="Geben Sie Job-Inhalt";
+"min"="Min";
+"enterItemTime"="Geben Sie Arbeitszeit";
+"enterMethodName"="Benannt nach dem ZeitManagementMethode";
+"enterGroupRepeatNumber"="LegenAnzahl der Wiederholungen";
+"methodName"="Name";
+"aliase"="Alias";
+"defaultAliase"="Kreise";
+"itemName"="Arbeitsinhalte";
+"itemTime"="Arbeitszeit (Minute)";
+"enterMethodAliase"="Alias von ZeitmanagementMethode (Nur auf Rekordzyklen)";
+
+// share extension
+"post"="Post";
+"createReadLater"="Lesenes später";
+"shareTask"="Aufgabe hinzufügen zu Achieve";
+"shareNote"="Hinweis";
+"shareCreated"="Hinzugefügt";
+"shareSetting"="Später lesen";
+"readLaterTitle"="ReadListen";

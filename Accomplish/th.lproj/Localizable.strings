@@ -1,0 +1,207 @@
+"progess"="ดำเนินการต่อ";
+"finished"="ให้เสร็จสมบูรณ์";
+"show"="แสดง";
+"hide"="ซ่อน";
+"newTask"="งานใหม่";
+"emptyTask"="ไม่มีงานมากขึ้นเพลิดเพลินไปกับวันหรือท้าทายงานใหม่";
+"emptyTagTask"="ไม่มีงานอื่น ๆ ใน Tag: %@";
+"detailIncomplete"="เมื่อวานนี้งานยังไม่เสร็จเลื่อนออกไปในวันนี้";
+"asyncing"="อัปเดต";
+"icloud"="บัญชีเข้าสู่ระบบ iCloud เพื่อประสานข้อมูลของคุณ";
+
+"noPermission"="ไม่มีสิทธิ์ในการเข้าถึง";
+"abPermission"="เราไม่ได้รับอนุญาตให้เข้าถึงหนังสือที่อยู่ที่คุณสามารถให้สิทธิ์นี้ผ่าน \"Settings > Privacy > Contacts\"";
+"needABPermission"="ต้องได้รับอนุญาตในการเข้าถึงสมุดที่อยู่";
+"loading"="ในการโหลด";
+
+"rescheduling"="รายละเอียดงาน";
+"taskReminding"="การแจ้งเตือนงาน";
+"finishTask"="เสร็จงาน";
+"cancel"="ยกเลิก";
+"delete"="ลบ";
+"deleteTask"="ลบงาน";
+"deleteReminder"="ลบการแจ้งเตือน";
+"permit"="อนุญาต";
+"reject"="ปฏิเสธ";
+"add"="เพิ่ม";
+"save"="ประหยัด";
+"ok"="ตกลง";
+
+"goingDo"="คุณอยากจะทำอะไร?";
+"priority"="ความสำคัญ";
+"remove"="ลบ";
+
+"setStartDate"="ตั้งเวลาเริ่มต้น";
+"setEstimateDate"="ตั้งเวลาโดยประมาณ";
+"setReminder"="การตั้งเตือนความจำ";
+"setRepeat"="ตั้งซ้ำ";
+"setTag"="แท็กตั้ง";
+"noneTag"="ไม่มี";
+"allTask"="งานทั้งหมด";
+"backToAllTask"="กลับไปที่งานทั้งหมด";
+
+"priority2"="สูง";
+"priority1"="ปกติ";
+"priority0"="ต่ำ";
+
+"builtInTask"="Built-in งาน";
+"callAction"="โทร ";
+"sendMessageAction"="ส่งข้อความถึง";
+"faceTimeAction"="FaceTime ไป";
+"mailAction"="ส่งอีเมลไปยัง";
+"customSchemeAction"="ดำเนินการต่อ";
+
+"addPhoneCall"="สร้างงานโทรศัพท์";
+"addMessage"="สร้างงานข้อความ";
+"addFaceTime"="สร้างงาน FaceTime";
+"addMail"="สร้างงานอีเมล";
+"addSubtask"="สร้างงานที่มีงานย่อย";
+"addCustomScheme"="สร้างงานที่กำหนดเองปล่อย";
+"taskTitle"="ป้อนชื่องานของคุณ";
+"subtaskInfo"="ป้อนงานย่อยของคุณจะถูกแยกย่อยที่จะเข้าสู่";
+"subtaskCount"="(งานย่อย)";
+"customSchemeTask"="ป้อน URL ของ Launcher งานของคุณเอง";
+
+"noEstimate"="คาดว่าเวลาแห่งความสำเร็จ";
+"estimeateAt"="คาดว่าจะเสร็จสิ้น";
+"beginsAt"="เริ่มต้นที่";
+"willBeginsAt"="จะเริ่มต้นที่";
+"finishAt"="เสร็จ";
+"noReminder"="การแจ้งเตือน";
+"reminderMe"="การแจ้งเตือนฉันที่";
+"repeat"="ซ้ำ";
+"noRepeat"="ซ้ำ";
+"taskNote"="เพิ่มข้อความ";
+"detailAddSubtask"="เพิ่มงานย่อย";
+"addressBook"="สมุดที่อยู่";
+"errorInfos"="กรุณาปรับปรุงเนื้อหา";
+"errorURL"="URL ไม่ถูกต้อง";
+
+"today"="วันนี้";
+"tomorrow"="พรุ่งนี้";
+"yesterday"="เมื่อวานนี้";
+
+"everyday"="รายวัน";
+"weekday"="ทุกวันทำการ (จันทร์ถึงศุกร์)";
+"everyWeek"="ทุกสัปดาห์(%@)";
+"everyMonth"="ทุกเดือน (เครื่องหมาย %@ ST)";
+"annual"="ทุกปี(%@)";
+
+// menu
+"home"="วันนี้";
+"calendar"="ปฏิทิน";
+"tag"="แท็ก";
+"time_management"="การจัดการเวลา";
+"settings"="ตั้งค่า";
+
+"day1" = "M";
+"day2" = "T";
+"day3" = "W";
+"day4" = "T";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
+
+// hint
+"repeatTaskHint"=". ถ้าคุณสร้างงานซ้ำก็จะสร้างงานใหม่ในแต่ละวันดังนั้นคุณควรเตรียมความพร้อมที่จะเสร็จสมบูรณ์ในแต่ละวัน แต่คุณสามารถลบซ้ำของงานนี้.";
+"systemTaskHint"="ในงานในตัวคุณได้อย่างรวดเร็วสามารถเพิ่มงาน. ตัวอย่างเช่นโทรหรือส่งข้อความหรือสร้างรายการช้อปปิ้งและอื่น ๆ . และคุณโดยตรงสามารถดำเนินการการกระทำของคุณโดยการคลิกที่แจ้งเตือนผลักดันหรือใน รายการ.";
+
+// setting
+"general"="นายพล";
+"extra"="พิเศษ";
+
+// calendar
+"enter"="ป้อน";
+"schedule"="ตารางเวลา";
+"noSchedule"="ไม่มีกำหนดการ";
+"notCompleted"="ยังไม่เสร็จสมบูรณ์";
+"notComoletedYet"="ยังไม่เสร็จ";
+"monthly"="สถิติรายเดือน";
+"noMonthlyData"="ไม่ซ้ำซ้อนหรือเลื่อนออกไปงาน";
+
+"completionRates"="ปัจจุบันอัตราการสำเร็จเดือน";
+"monthlyWeek"="สัปดาห์ %d";
+"postponeTask"="เลื่อนงาน";
+"repeaterMonth"="ซ้ำ %@";
+"postponeTimes"="เลื่อน: %d วัน";
+"repeaterTimes"="ซ้ำ: %d วัน";
+"repeaterRates"="อัตราการสำเร็จ: %@";
+"postponeFinishAt"="เสร็จสมบูรณ์ใน %@";
+
+// today
+"noTaskToday"="คุณมีงานเนื่องจากวันนี้.";
+"taskToday"="คุณมี %d งานเนื่องจากวันนี้.";
+"taskTodays"="คุณมีงาน %d เนื่องจากวันนี้.";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(ที่ทำงาน)";
+
+// settings
+"emailUs"="ส่งอีเมล์ถึงเรา";
+"about"="เกี่ยวกับ";
+"writeReview"="เขียนรีวิว";
+"enabDueNextDay"="งานที่ไม่เสร็จเลื่อน";
+"finishSound"="เสร็จงานเสียงเตือน";
+"startDay"="สัปดาห์เริ่มต้นใน";
+"about"="เกี่ยวกับ";
+"licenses"="ใบอนุญาต";
+"version"="รุ่น";
+
+"open"="เปิด";
+"close"="ปิด";
+
+// tag
+"newTag"="สร้างแท็ก";
+"tagToday"="(%d งาน)";
+"currentTag"=" ปัจจุบัน ";
+"noTag"="แท็ก";
+"tagExist"="แท็กอยู่แล้ว";
+"deleteTag"="ลบแท็ก";
+
+// search
+"search"="ค้นหา";
+"searchHolder"="กรุณาใส่คำค้นหาของคุณ";
+"searchNoResult"="- ไม่พบผลลัพธ์ -";
+
+// message
+"messageUseage"="แบ่งปันตารางเวลาของคุณสำหรับวันนี้";
+"shareMessage"="%@ %@ ที่เข้าร่วมกับผมได้ไหม";
+
+// time management
+"defaultTimeManagerName"="เวลาวิธีการจัดการ";
+"cancelTimeManager"="เลิกกับวิธีการจัดการ";
+"continue"="ดำเนินการต่อการทำงาน";
+"selectTimeManagement"="เลือกวิธีการบริหารเวลา";
+"repeatNumber"="จำนวนของการเกิดซ้ำ";
+"useTime"="ใช้เวลา %d";
+"useTimes"="ใช้เวลา %d";
+"pomodoro"="Pomodoro เทคนิค";
+"pomodoroAliase"="Pomodoro";
+"pomodoroWork"="การทำงาน";
+"pomodoroRest"="หยุดพัก";
+"pomodoroLongRest"="สี่ pomodoros ใช้เวลาพักอีกต่อไป";
+"timeMethodPrepar"="(คลิ๊กเพื่อเริ่มต้น)";
+"timeMethodPause"="(หยุด)";
+
+// time management editor
+"please"="กรุณา";
+"timeManageGroupName"="กลุ่มงาน ";
+"enterItemName"="ป้อนเนื้อหางาน";
+"min"="นาที";
+"enterItemTime"="ป้อนเวลาทำงาน";
+"enterMethodName"="ชื่อที่วิธีการบริหารเวลา";
+"enterGroupRepeatNumber"="การตั้งค่าจำนวนของการเกิดซ้ำ";
+"methodName"="ชื่อ";
+"aliase"="นามแฝง";
+"defaultAliase"="แวดวง";
+"itemName"="เนื้อหางาน";
+"itemTime"="เวลาทำงาน (นาที)";
+"enterMethodAliase"="นามแฝง ของวิธีการจัดการเวลา (ใช้เพียงเพื่อรอบ)";
+
+// share extension
+"post"="โพสต์";
+"createReadLater"="อ่านได้ในภายหลัง";
+"shareTask"="เพิ่มงานเพื่อให้ Achieve";
+"shareNote"="บันทึก";
+"shareCreated"="เพิ่ม";
+"shareSetting"="อ่านต่อ";
+"readLaterTitle"="อ่านรายการ";

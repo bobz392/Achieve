@@ -1,0 +1,207 @@
+"progess"="DOORGAAN";
+"finished"="VOLTOOID";
+"show"="TONEN";
+"hide"="VERBERGEN";
+"newTask"="Nieuwe taak";
+"emptyTask"="Niet meer taken, Geniet van de dag of daag een nieuwe taak";
+"emptyTagTask"="Nooit meer taken op Tag: %@";
+"detailIncomplete"="Gisteren onvoltooide taken uitgesteld tot vandaag";
+"asyncing"="Vernieuwing";
+"icloud"="Login iCloud-account om uw gegevens te synchroniseren";
+
+"noPermission"="No toegangsrechten";
+"abPermission"="We hebben geen toestemming om toegang te krijgen tot het adresboek, dan kunt u deze toestemming te verlenen door middel van \" Instellingen> Privacy> Contactpersonen \ "";
+"needABPermission"="Toestemming nodig om toegang te krijgen tot het adresboek";
+"loading"="Laden";
+
+"rescheduling"="Task detail";
+"taskReminding"="Task herinnering";
+"finishTask"="Finish taak ';
+"cancel"="Annuleer";
+"delete"="Verwijderen";
+"deleteTask"="Delete taak ';
+"deleteReminder"="Delete herinnering";
+"permit"="Toestaan";
+"reject"="Weigeren";
+"add"="Toevoegen";
+"save"="Opslaan";
+"ok"="OK";
+
+"goingDo"="Wat zou je willen doen?";
+"priority"="Prioriteit";
+"remove"="Verwijderen";
+
+"setStartDate"="Stel starttijd";
+"setEstimateDate"="Stel geschatte tijd";
+"setReminder"="Herinnering instellen";
+"setRepeat"="Set herhalen";
+"setTag"="Set tag";
+"noneTag"="Geen";
+"allTask"="Alle taken";
+"backToAllTask"="Terug naar alle taken";
+
+"priority2"="Hoog";
+"priority1"="Normal";
+"priority0"="Laag";
+
+"builtInTask"="Built-in Task";
+"callAction"="Call";
+"sendMessageAction"="Bericht te sturen naar";
+"faceTimeAction"="FaceTime naar";
+"mailAction"="E-mail verzenden naar";
+"customSchemeAction"="Doorgaan ";
+
+"addPhoneCall"="Maak een telefoontje taak";
+"addMessage"="Bericht maken taak";
+"addFaceTime"="Create FaceTime taak";
+"addMail"="Create mail taak";
+"addSubtask"="Create taak subtaak";
+"addCustomScheme"="Maak aangepaste launcher taak";
+"taskTitle"="Vul uw taak naam";
+"subtaskInfo"="Vul uw deeltaken, subtaken worden gescheiden in te voeren";
+"subtaskCount"=" (Deel taak) ";
+"customSchemeTask"="Geef de URL van uw aangepaste launcher taak";
+
+"noEstimate"="Verwachte oplevering";
+"estimeateAt"="Verwacht finish bij ';
+"beginsAt"="Begint om ";
+"willBeginsAt"="Will begint bij";
+"finishAt"="Finished op";
+"noReminder"="Herinnering";
+"reminderMe"="Herinnering me bij";
+"repeat"="Repeat";
+"noRepeat"="Herhaling";
+"taskNote"="Voeg een notitie toe";
+"detailAddSubtask"="Een subtaak toevoegen";
+"addressBook"="Adresboek";
+"errorInfos"="Please verbeteren content";
+"errorURL"="Ongeldige URL";
+
+"today"="Vandaag";
+"tomorrow"="Morgen";
+"yesterday"="Gisteren";
+
+"everyday"="Dagelijks";
+"weekday"="Elke weekdag (ma-vr)";
+"everyWeek"="Elke week(%@)";
+"everyMonth"="Elke maand (het %@ st)";
+"annual"="Elk jaar(%@)";
+
+// menu
+"home"="Vandaag";
+"calendar"="Kalender";
+"tag"="Label";
+"time_management"="Tijdsbeheer";
+"settings"="Instellingen";
+
+"day1" = "M";
+"day2" = "T";
+"day3" = "W";
+"day4" = "T";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
+
+// hint
+"repeatTaskHint"=". Als je een terugkerende taak te maken, zal het een nieuwe taak in elke dag te maken Dus je moet voorbereiden om het te voltooien elke dag, maar je kunt herhaling van deze taak te verwijderen.";
+"systemTaskHint"="In de ingebouwde taak kunt u snel een taak toe te voegen. Zo maken telefoontje of bericht te sturen, of maak een boodschappenlijstje, en ga zo maar door. En u kunt direct uw actie uit te voeren door te klikken op de push notificatie of in lijst.";
+
+// setting
+"general"="Algemeen";
+"extra"="Extra";
+
+// calendar
+"enter"="enter";
+"schedule"="Schedule";
+"noSchedule"="No Schedule";
+"notCompleted"="Niet compleet";
+"notComoletedYet"="nog niet ingevuld";
+"monthly"="Maandoverzicht";
+"noMonthlyData"="Nee repetitieve of uitgesteld taken";
+
+"completionRates"="Huidige maand Completion tarieven";
+"monthlyWeek"="Week %d";
+"postponeTask"="Uitstellen taak ';
+"repeaterMonth"="Repeat %@";
+"postponeTimes"="Uitgesteld: %d dagen";
+"repeaterTimes"="Herhalen: %d dagen";
+"repeaterRates"="Voltooiing Tarieven: %@";
+"postponeFinishAt"="Voltooid in %@";
+
+// today
+"noTaskToday"="Je hebt geen enkele taak als gevolg van vandaag.";
+"taskToday"="Je hebt %d taak als gevolg van vandaag.";
+"taskTodays"="Je hebt %d taken als gevolg van vandaag.";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(Werken)";
+
+// settings
+"emailUs"="E-mail ons";
+"about"="Over";
+"writeReview"="Schrijf review";
+"enabDueNextDay"="Uitgesteld taken die niet zijn voltooid";
+"finishSound"="Task voltooiing piep";
+"startDay"="Week start op";
+"about"="Over";
+"licenses"="Licenties";
+"version"="Versie";
+
+"open"="Geopend";
+"close"="Gesloten";
+
+// tag
+"newTag"="Create Tag";
+"tagToday"="(%d taak)";
+"currentTag"=" actueel ";
+"noTag"="Label";
+"tagExist"="Tag bestaat al";
+"deleteTag"="Delete tag";
+
+// search
+"search"='Zoeken';
+"searchHolder"="Vul aub uw trefwoord";
+"searchNoResult"="- Er zijn geen resultaten gevonden -";
+
+// message
+"messageUseage"="Deel je schema voor vandaag";
+"shareMessage"="%@ Op %@, samen met mij? ';
+
+// time management
+"defaultTimeManagerName"="Time Manager Method ";
+"cancelTimeManager"="Quit Time Manager Method";
+"continue"="Voortzetting van de werkzaamheden";
+"selectTimeManagement"="Select Time Management Method";
+"repeatNumber"="Aantal herhalingen";
+"useTime"="Gebruikte tijd";
+"useTimes"="Gebruik %d tijden";
+"pomodoro"="Pomodorotechniek";
+"pomodoroAliase"="Pomodoro";
+"pomodoroWork"="Werken";
+"pomodoroRest"="Take a Break";
+"pomodoroLongRest"="! Vier pomodoros Neem een langere Break";
+"timeMethodPrepar"="(Klik om te starten)";
+"timeMethodPause"="(Pauze)";
+
+// time management editor
+"please"="Please";
+"timeManageGroupName"="Work Group";
+"enterItemName"="input jobinhoud";
+"min"="Min";
+"enterItemTime"="Enter Working Time";
+"enterMethodName"="Genoemd naar de time management methode";
+"enterGroupRepeatNumber"="Stel het aantal herhalingen";
+"methodName"="naam";
+"aliase"="Alias";
+"defaultAliase"="Circles";
+"itemName"="Job Content";
+"itemTime"="Working Time (Minute)";
+"enterMethodAliase"="Alias van time management methode (alleen gebruikt om op te nemen cycli)";
+
+// share extension
+"post"="Post";
+"createReadLater"="Lees het later";
+"shareTask"="Taak toevoegen te Achieve";
+"shareNote"="Notitie";
+"shareCreated"="Toegevoegd";
+"shareSetting"="Later lezen";
+"readLaterTitle"="Lees Lijsten";

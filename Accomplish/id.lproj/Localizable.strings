@@ -1,0 +1,207 @@
+"progess"="MEMPROSES";
+"finished"="LENGKAP";
+"show"="MENUNJUKKAN";
+"hide"="MENYEMBUNYIKAN";
+"newTask"="Tugas Baru";
+"emptyTask"="Tidak ada tugas yang lebih, Nikmati hari atau menantang tugas baru";
+"emptyTagTask"="Tidak ada lagi tugas di tuga: %@";
+"detailIncomplete"="Kemarin tugas yang belum selesai ditunda untuk hari ini";
+"asyncing"="Memperbarui";
+"icloud"="Akun Login iCloud untuk menyinkronkan data Anda";
+
+"noPermission"="Tidak ada izin akses";
+"abPermission"="Kami tidak memiliki izin untuk mengakses buku alamat, Anda dapat memberikan izin ini melalui \"Settings > Privacy > Contacts\"";
+"needABPermission"="Perlu izin untuk mengakses buku alamat";
+"loading"="Pemuatan";
+
+"rescheduling"="Tugas rinci";
+"taskReminding"="Tugas pengingat";
+"finishTask"="Selesai tugas";
+"cancel"="Membatalkan";
+"delete"="Menghapus";
+"deleteTask"="Hapus tugas";
+"deleteReminder"="Hapus pengingat";
+"permit"="Mengizinkan";
+"reject"="Menolak";
+"add"="Menambahkan";
+"save"="Menyimpan";
+"ok"="Baik";
+
+"goingDo"="Apa yang ingin kamu lakukan?";
+"priority"="Prioritas";
+"remove"="Menghapus";
+
+"setStartDate"="Set waktu mulai";
+"setEstimateDate"="Set perkiraan waktu";
+"setReminder"="Set pengingat";
+"setRepeat"="Set mengulang";
+"setTag"="Set tag";
+"noneTag"="Tidak ada";
+"allTask"="Semua Tugas";
+"backToAllTask"="Kembali ke semua tugas";
+
+"priority2"="Tinggi";
+"priority1"="Normal";
+"priority0"="Rendah";
+
+"builtInTask"="Built-in Task";
+"callAction"="Panggilan";
+"sendMessageAction"="Kirim Pesan kepada";
+"faceTimeAction"="FaceTime untuk";
+"mailAction"="Kirim email ke";
+"customSchemeAction"="Memproses ";
+
+"addPhoneCall"="Buat tugas panggilan telepon";
+"addMessage"="Buat task pesan";
+"addFaceTime"="Buat task FaceTime";
+"addMail"="Buat task mail";
+"addSubtask"="Buat tugas dengan subtask";
+"addCustomScheme"="Buat tugas peluncur kustom";
+"taskTitle"="Masukkan nama tugas Anda";
+"subtaskInfo"="Masukkan subtugas Anda, subtugas dipisahkan untuk masuk";
+"subtaskCount"="(Subtask)";
+"customSchemeTask"="Masukkan url adat peluncur tugas Anda";
+
+"noEstimate"="Diharapkan waktu penyelesaian";
+"estimeateAt"="Diharapkan finish di";
+"beginsAt"="Mulai dari";
+"willBeginsAt"="Will dimulai pada";
+"finishAt"="Selesai di";
+"noReminder"="Peringatan";
+"reminderMe"="Pengingat saya di";
+"repeat"="Ulangi";
+"noRepeat"="Ulangi";
+"taskNote"="Tambahkan catatan";
+"detailAddSubtask"="Tambahkan subtask";
+"addressBook"="Buku alamat";
+"errorInfos"="Silakan meningkatkan konten";
+"errorURL"="URL tidak valid";
+
+"today"="Hari ini";
+"tomorrow"="Besok";
+"yesterday"="Kemarin";
+
+"everyday"="Harian";
+"weekday"="Setiap hari kerja (Senin-Jumat)";
+"everyWeek"="Setiap minggu(%@)";
+"everyMonth"="Setiap bulan (yang %@ st)";
+"annual"="Setiap tahun(%@)";
+
+// menu
+"home"="Hari ini";
+"calendar"="Kalender";
+"tag"="Menandai";
+"time_management"="Manajemen waktu";
+"settings"="Pengaturan";
+
+"day1" ="M";
+"day2" ="T";
+"day3" ="W";
+"day4" ="T";
+"day5" ="F";
+"day6" ="S";
+"day7" ="S";
+
+// hint
+"repeatTaskHint"=". Jika Anda membuat tugas yang berulang, itu akan membuat tugas baru di setiap hari Jadi Anda harus mempersiapkan untuk menyelesaikannya setiap hari, tetapi Anda dapat menghapus mengulang tugas ini.";
+"systemTaskHint"="Dalam tugas built-in Anda dapat dengan cepat menambahkan tugas. Misalnya, membuat panggilan telepon atau mengirim pesan, atau membuat daftar belanja, dan sebagainya. Dan Anda dapat langsung melakukan tindakan dengan mengklik pada push notification atau di daftar.";
+
+// setting
+"general"="General";
+"extra"="Tambahan";
+
+// calendar
+"enter"="masuk";
+"schedule"="Susunan acara";
+"noSchedule"="Tidak ada Jadwal";
+"notCompleted"="tidak selesai";
+"notComoletedYet"="belum selesai";
+"monthly"="Statistik Bulanan";
+"noMonthlyData"="Tidak ada yang berulang-ulang atau ditunda tugas";
+
+"completionRates"="Saat Bulan Penyelesaian Tarif";
+"monthlyWeek"="Minggu %d";
+"postponeTask"="Menunda tugas";
+"repeaterMonth"="Ulangi %@";
+"postponeTimes"="Ditunda: %d Days";
+"repeaterTimes"="Ulangi: %d Days";
+"repeaterRates"="Tarif Penyelesaian: %@";
+"postponeFinishAt"="Selesai di %@";
+
+// today
+"noTaskToday"="Anda tidak memiliki tugas karena hari ini.";
+"taskToday"="Anda memiliki %d tugas karena hari ini.";
+"taskTodays"="Anda memiliki %d tugas karena hari ini.";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(Kerja)";
+
+// settings
+"emailUs"="Email kami";
+"about"="Tentang";
+"writeReview"="Menulis ulasan";
+"enabDueNextDay"="Ditunda tugas yang tidak selesai";
+"finishSound"="Tugas selesai beep";
+"startDay"="Minggu mulai pada";
+"about"="Tentang";
+"licenses"="Lisensi";
+"version"="Versi";
+
+"open"="Dibuka";
+"close"="Tutup";
+
+// tag
+"newTag"="membuat tag";
+"tagToday"="(%d tugas)";
+"currentTag"="Saat ini";
+"noTag"="Menandai";
+"tagExist"="Tag sudah ada";
+"deleteTag"="Hapus tuga";
+
+// search
+"search"="Cari";
+"searchHolder"="Silakan Masukan Pencarian Kata Kunci";
+"searchNoResult"="- Tidak ada Hasil Apakah Ditemukan -";
+
+// message
+"messageUseage"="Bagi jadwal Anda untuk hari ini";
+"shareMessage"="%@ Di %@, bergabung dengan saya?";
+
+// time management
+"defaultTimeManagerName"="Waktu Metode Manager";
+"cancelTimeManager"="Berhenti Waktu Metode Manager";
+"continue"="Lanjutkan kerja";
+"selectTimeManagement"="Pilih Metode Manajemen Waktu";
+"repeatNumber"="Jumlah pengulangan";
+"useTime"="Gunakan %d waktu";
+"useTimes"="Gunakan %d kali";
+"pomodoro"="Pomodoro Technique";
+"pomodoroAliase"="Pomodoro";
+"pomodoroWork"="Kerja";
+"pomodoroRest"="Istirahat";
+"pomodoroLongRest"="Four Pomodoros Ambil istirahat lagi";
+"timeMethodPrepar"="(Klik untuk memulai)";
+"timeMethodPause"="(Berhenti sebentar)";
+
+// time management editor
+"please"="Silakan";
+"timeManageGroupName"="Kelompok Kerja";
+"enterItemName"="masukan isi pekerjaan";
+"min"="Min";
+"enterItemTime"="Masukkan Waktu Kerja";
+"enterMethodName"="Dinamakan dengan metode manajemen waktu";
+"enterGroupRepeatNumber"="Set jumlah pengulangan";
+"methodName"="nama";
+"aliase"="Alias";
+"defaultAliase"="Lingkaran";
+"itemName"="Konten Job";
+"itemTime"="Waktu Kerja (Menit)";
+"enterMethodAliase"="Alias metode manajemen waktu (Hanya digunakan untuk siklus record)";
+
+// share extension
+"post"="Post";
+"createReadLater"="Baca nanti";
+"shareTask"="Tambahkan Tugas Achieve";
+"shareNote"="Catatan";
+"shareCreated"="Ditambahkan";
+"shareSetting"="Baca Selanjutnya";
+"readLaterTitle"="Baca Lists";

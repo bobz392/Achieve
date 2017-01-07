@@ -42,7 +42,6 @@ class MenuHeaderView: UIView {
 
     func setNewDate(date: NSDate) {
         self.dayLabel.text = String(format: "%02d", date.day())
-//        self.dayUnitLabel.text = Localized("dayUnit")
         self.monthYearLabel.text = date.formattedDate(withFormat: MenuDateFormat)
     }
     

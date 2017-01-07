@@ -1,0 +1,207 @@
+"progess"="تقدم";
+"finished"="منجز";
+"show"="تبين";
+"hide"="إخفاء";
+"newTask"="مهمة جديدة";
+"emptyTask"="لا مزيد من المهام، تتمتع اليوم أو يطعن في مهمة جديدة";
+"emptyTagTask"="لا مزيد من المهام في الوسم: %@";
+"detailIncomplete"="بالأمس المهام التي لم تكتمل أجلت إلى اليوم";
+"asyncing"="تحديث";
+"icloud"="تسجيل الدخول على iCloud لمزامنة البيانات الخاصة بك";
+
+"noPermission"="لا إذن الوصول";
+"abPermission"="We don't have permission to access the address book, you can grant this permission through \"Settings > Privacy > Contacts\"";
+"needABPermission"="الحاجة إذن للوصول إلى دفتر العناوين";
+"loading"="جار التحميل";
+
+"rescheduling"="تفاصيل مهمة";
+"taskReminding"="تذكير المهام";
+"finishTask"="إنهاء المهمة";
+"cancel"="إلغاء";
+"delete"="حذف";
+"deleteTask"="حذف المهمة";
+"deleteReminder"="حذف تذكير";
+"permit"="السماح";
+"reject"="رفض";
+"add"="إضافة";
+"save"="حفظ";
+"ok"="حسنا";
+
+"goingDo"="ماذا تريد ان تفعل؟";
+"priority"="أفضلية";
+"remove"="إزالة";
+
+"setStartDate"="تعيين بداية الوقت";
+"setEstimateDate"="تعيين يقدر وقت";
+"setReminder"="تعيين تذكير";
+"setRepeat"="تعيين كرر";
+"setTag"="تعيين علامة";
+"noneTag"="لا شيء";
+"allTask"="كافة المهام";
+"backToAllTask"="العودة إلى كافة المهام";
+
+"priority2"="عالي";
+"priority1"="عادي";
+"priority0"="منخفض";
+
+"builtInTask"="المدمج في العمل";
+"callAction"="مكالمة ";
+"sendMessageAction"="إرسال رسالة إلى";
+"faceTimeAction"="فيس تايم ل";
+"mailAction"="إرسال بريد إلكتروني إلى";
+"customSchemeAction"="تقدم ";
+
+"addPhoneCall"="إنشاء مهمة مكالمة هاتفية";
+"addMessage"="إنشاء مهمة الرسالة";
+"addFaceTime"="إنشاء مهمة فيس تايم";
+"addMail"="إنشاء مهمة الإلكتروني";
+"addSubtask"="إنشاء مهمة مع فرعية";
+"addCustomScheme"="إنشاء مهمة قاذفة مخصصة";
+"taskTitle"="أدخل اسم المهمة الخاصة بك";
+"subtaskInfo"="أدخل المهام الفرعية الخاصة بك، يتم فصل المهام الفرعية لدخول";
+"subtaskCount"="(فرعية)";
+"customSchemeTask"="أدخل عنوان الموقع من مهمتك اطلاق العرف";
+
+"noEstimate"="الوقت المتوقع الانتهاء";
+"estimeateAt"="المتوقعة النهاية في";
+"beginsAt"="تبدأ في";
+"willBeginsAt"="يبدأ ويل في";
+"finishAt"="انتهى في";
+"noReminder"="تذكير";
+"reminderMe"="تذكير لي في";
+"repeat"="كرر";
+"noRepeat"="كرر";
+"taskNote"="أضف ملاحظة";
+"detailAddSubtask"="إضافة مهمة فرعية";
+"addressBook"="دفتر العناوين";
+"errorInfos"="الرجاء تحسين المحتوى";
+"errorURL"="URL غير صالح";
+
+"today"="اليوم";
+"tomorrow"="يوم غد";
+"yesterday"="اليوم السابق";
+
+"everyday"="يومي";
+"weekday"="في كل يوم من أيام الأسبوع (من الاثنين الى الجمعة)";
+"everyWeek"="كل اسبوع(@%)";
+"everyMonth"="كل شهر (و @% الحادي و)";
+"annual"="كل عام(@%)";
+
+// menu
+"home"="اليوم";
+"calendar"="تقويم";
+"tag"="العلامة";
+"time_management"="إدارة الوقت";
+"settings"="إعدادات";
+
+"day1" = "M";
+"day2" = "T";
+"day3" = "W";
+"day4" = "T";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
+
+// hint
+"repeatTaskHint"=". Si crea una tarea de repetición, se creará una nueva tarea en cada día para que su debe preparar para completar cada día, pero puede eliminar la repetición de esta tarea.";
+"systemTaskHint"="En la tarea incorporada puede agregar rápidamente una tarea. Por ejemplo, realizar llamadas o enviar mensajes, o crear una lista de compras, y así sucesivamente. Y se puede llevar directamente a cabo su acción haciendo clic en la notificación de inserción o en lista.";
+
+// setting
+"general"="عامة";
+"extra"="إضافي";
+
+// calendar
+"enter"="أدخل";
+"schedule"="جدول";
+"noSchedule"="لا يوجد جدول زمني";
+"notCompleted"="غير مكتمل";
+"notComoletedYet"="لم تكتمل بعد";
+"monthly"="الاحصائيات الشهرية";
+"noMonthlyData"="لا المهام المتكررة أو تأجيلها";
+
+"completionRates"="الشهر الحالي استكمال الاسعار";
+"monthlyWeek"="أسبوع %d";
+"postponeTask"="تأجيل المهمة";
+"repeaterMonth"="كرر @%";
+"postponeTimes"="مؤجل: %d أيام";
+"repeaterTimes"="كرر: %d أيام";
+"repeaterRates"="معدلات إتمام: %@";
+"postponeFinishAt"="مكتمل في %@";
+
+// today
+"noTaskToday"="لا يوجد لديك مهمة المقرر اليوم;";
+"taskToday"="لديك %d مهمة المقرر اليوم;";
+"taskTodays"="لديك %d المهام الواجبة اليوم";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(العمل)";
+
+// settings
+"emailUs"="أرسل لنا";
+"about"="حول";
+"writeReview"="أكتب مراجعة";
+"enabDueNextDay"="المهام التي لم تكتمل مؤجل";
+"finishSound"="العمل زمارة الانتهاء";
+"startDay"="أسبوع تبدأ يوم";
+"about"="حول";
+"licenses"="تراخيص";
+"version"="الإصدار";
+
+"open"="افتتح";
+"close"="مغلق";
+
+// tag
+"newTag"="إنشاء علامة";
+"tagToday"="(%d مهمة)";
+"currentTag"="تيار ";
+"noTag"="العلامة";
+"tagExist"="العلامة موجود بالفعل";
+"deleteTag"="حذف البطاقات";
+
+// search
+"search"="بحث";
+"searchHolder"="الرجاء إدخال كلمات البحث الخاصة بك";
+"searchNoResult"="- لا توجد نتائج -";
+
+// message
+"messageUseage"="مشاركة الجدول الزمني الخاص بك لهذا اليوم";
+"shareMessage"="٪@ - ٪@ معي؟";
+
+// time management
+"defaultTimeManagerName"="حان الوقت أسلوب مدير";
+"cancelTimeManager"="إنهاء الوقت أسلوب مدير";
+"continue"="مواصلة العمل";
+"selectTimeManagement"="تحديد الوقت أسلوب الإدارة";
+"repeatNumber"="عدد التكرار";
+"useTime"="استخدام %d الوقت";
+"useTimes"="استخدام الأوقات %d";
+"pomodoro"="تقنية بومودورو";
+"pomodoroAliase"="بومودورو";
+"pomodoroWork"="العمل";
+"pomodoroRest"="خذ استراحة";
+"pomodoroLongRest"="! أربعة pomodoros تأخذ استراحة أطول";
+"timeMethodPrepar"="(انقر لبدء)";
+"timeMethodPause"="(وقفة)";
+
+// time management editor
+"please"="الرجاء";
+"timeManageGroupName"="مجموعة العمل";
+"enterItemName"="أدخل المحتوى الوظيفة";
+"min"="مين";
+"enterItemTime"="أدخل وقت العمل";
+"enterMethodName"="الاسم إلى أسلوب إدارة الوقت";
+"enterGroupRepeatNumber"="تعيين عدد من حالات التكرار";
+"methodName"="اسم";
+"aliase"="الاسم المستعار";
+"defaultAliase"="الدوائر";
+"itemName"="مضمون العمل";
+"itemTime"="وقت العمل (دقيقة)";
+"enterMethodAliase"="اسم مستعار من أسلوب إدارة الوقت (تستخدم فقط لدورات رقم قياسي)";
+
+// share extension
+"post"="بوست";
+"createReadLater"="قراءة في وقت لاحق";
+"shareTask"="Add task to Achieve";
+"shareNote"="ملاحظة";
+"shareCreated"="وأضاف";
+"shareSetting"="قراءة في وقت لاحق";
+"readLaterTitle"="اقرأ قوائم";

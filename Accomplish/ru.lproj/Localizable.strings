@@ -1,0 +1,208 @@
+"progess"="ПРОДОЛЖИТЬ";
+"finished"="ГОТОВО";
+"show"="ПОКАЗАТЬ";
+"hide"="СКРЫВАТЬ";
+"newTask"="Новое задание";
+"emptyTask"="Нет больше задач, не Наслаждайтесь днем или бросить вызов новой задачи";
+"emptyTagTask"="Нет больше задач в категории: %@";
+"detailIncomplete"="Вчера незавершенные задачи отложено до сегодняшнего дня";
+"asyncing"="Обновление";
+"icloud"="Войти ICloud учетной записи для синхронизации данных";
+
+"noPermission"="Нет прав доступа";
+"abPermission"="нас нет разрешения на доступ к адресной книге, вы можете предоставить это разрешение через \"Settings > Privacy > Contacts\"";
+"needABPermission"="Нужно разрешение на доступадресной книге";
+"loading"="Загрузка";
+
+"rescheduling"="Задача Деталь";
+"taskReminding"="Напоминание о задаче";
+
+"finishTask"="Конец задания";
+"cancel"="Отмена";
+"delete"="Удалить";
+"deleteTask"="Удалить задачу";
+"deleteReminder"="Удалить напоминание";
+"permit"="Позволять";
+"reject"="Отклонить";
+"add"="Добавить";
+"save"="Сохранить";
+"ok"="ОК";
+
+"goingDo"="Чем бы Вы хотели заняться?";
+"priority"="Приоритет";
+"remove"="Удалить";
+
+"setStartDate"="Set Start Time";
+"setEstimateDate"="Установить расчетное время";
+"setReminder"="Установить напоминание";
+"setRepeat"="Set Repeat";
+"setTag"="Установить метку";
+"noneTag"="Никто";
+"allTask"="Все задачи";
+"backToAllTask"="Вернуться ко всем задачам";
+
+"priority2"="Высокая";
+"priority1"="Нормальный";
+"priority0"="Низкий";
+
+"builtInTask"="Встроенные задачи";
+"callAction"="Вызов ";
+"sendMessageAction"="Отправить сообщение";
+"faceTimeAction"="FaceTime к";
+"mailAction"="Отправить письмо";
+"customSchemeAction"="Продолжить";
+
+"addPhoneCall"="Создать задачу вызова телефона";
+"addMessage"="Создать сообщение задачу";
+"addFaceTime"="Создать задачу FaceTime";
+"addMail"="Создать задачу почты";
+"addSubtask"="Создать задачу сподзадачи";
+"addCustomScheme"="Создание пользовательской задачи запуска";
+"taskTitle"="Введите имя задачи";
+"subtaskInfo"="Введите подзадачи, подзадачи разделенычтобы ввести";
+"subtaskCount"="(Подзадач)";
+"customSchemeTask"="Введите URL вашей пользовательскойзапуска задания";
+
+"noEstimate"="Ожидаемое время завершения";
+"estimeateAt"="Ожидаемый финиш на";
+"beginsAt"="Начинается в ";
+"willBeginsAt"="Воля начинается с";
+"finishAt"="Закончено в";
+"noReminder"="Напоминание";
+"reminderMe"="Напоминание мне на";
+"repeat"="Повторение ";
+"noRepeat"="Повторение";
+"taskNote"="Добавить заметку";
+"detailAddSubtask"="Добавить подзадачи";
+"addressBook"="Адресная книга";
+"errorInfos"="Пожалуйстаулучшить содержание";
+"errorURL"="Неверная ссылка";
+
+"today"="Cегодня";
+"tomorrow"="Завтра";
+"yesterday"="Вчера";
+
+"everyday"="Ежедневно";
+"weekday"="Каждый будний день (пн-пт)";
+"everyWeek"="Каждую неделю(%@)";
+"everyMonth"="Каждый месяц (%@ ст)";
+"annual"="Каждый год(%@)";
+
+// menu
+"home"="Сегодня";
+"calendar"="Календарь";
+"tag"="Тег";
+"time_management"="Тайм-менеджмент";
+"settings"="Настройки";
+
+"day1" = "М";
+"day2" = "Т";
+"day3" = "W";
+"day4" = "Т";
+"day5" = "F";
+"day6" = "S";
+"day7" = "S";
+
+// hint
+"repeatTaskHint"=". Если вы создаете задачу повтора, это создаст новую задачу в каждый день Такваши должны подготовитьсячтобы завершить его каждый день, но вы можете удалить повторение этой задачи.";
+"systemTaskHint"="Во встроенной в задаче вы можете быстро добавить задачу. Например, сделать телефонный звонок или отправить сообщение, или создать список покупок, и так далее. И вы можете напрямую выполнить действие, нажав на толчок уведомления или в список.";
+
+// setting
+"general"="Общие";
+"extra"="Экстра";
+
+// calendar
+"enter"="Enter";
+"schedule"="График";
+"noSchedule"="Нет Расписание";
+"notCompleted"="не завершен";
+"notComoletedYet"="еще не завершена";
+"monthly"="Ежемесячные статистики";
+"noMonthlyData"="Нет повторяющихся или откладывались задач";
+
+"completionRates"="Текущий месяц коэффициент завершения";
+"monthlyWeek"="Неделя %d";
+"postponeTask"="Отложите задачи";
+"repeaterMonth"="Повторение %@";
+"postponeTimes"="Перенесенные: %D дней";
+"repeaterTimes"="Повторить: %d дней";
+"repeaterRates"="Завершение Цены: %@";
+"postponeFinishAt"="Завершено в %@";
+
+// today
+"noTaskToday"="вас нет задачи должнысегодня.";
+"taskToday"="вас есть %d задачи должнысегодня.";
+"taskTodays"="вас есть %d задачи должнысегодня.";
+//"showPriority"="Show task with priority";
+"timeMethodRunning"="(За работой)";
+
+// settings
+"emailUs"="Пишите нам";
+"about"="Около";
+"writeReview"="Написать обзор";
+"enabDueNextDay"="Отложено задачи, которые не завершены";
+"finishSound"="Задача завершения звукового сигнала";
+"startDay"="Неделя начнется";
+"about"="Около";
+"licenses"="Лицензии";
+"version"="Версия";
+
+"open"="Открытый";
+"close"="Закрыто";
+
+// tag
+"newTag"="Создать тег";
+"tagToday"="(%d задача)";
+"currentTag"=" текущий ";
+"noTag"="Тег";
+"tagExist"="Тег уже существует";
+"deleteTag"="Удалить тег";
+
+// search
+"search"="Поиск";
+"searchHolder"="Пожалуйставведите поиск слова";
+"searchNoResult"="- Ничего не найдено -";
+
+// message
+"messageUseage"="Поделитесь расписание на сегодня";
+"shareMessage"="%@ В %@, присоединиться ко мне?";
+
+// time management
+"defaultTimeManagerName"="Диспетчер времени метод";
+"cancelTimeManager"="Бросить Диспетчер времени метод";
+"continue"="Продолжить работу";
+"selectTimeManagement"="Выберите метод управления времени";
+"repeatNumber"="Число повторов";
+"useTime"="Использованное время";
+"useTimes"="Используйте %d раз";
+"pomodoro"="Pomodoro Техника";
+"pomodoroAliase"="Pomodoro";
+"pomodoroWork"="За работой";
+"pomodoroRest"="Сделайте перерыв";
+"pomodoroLongRest"="Четыре! Pomodoros Возьмите длительный перерыв";
+"timeMethodPrepar"="(Нажмитечтобы начать)";
+"timeMethodPause"="(Пауза)";
+
+// time management editor
+"please"="Пожалуйста";
+"timeManageGroupName"="Рабочая группа";
+"enterItemName"="Введите работы Содержание";
+"min"="Min";
+"enterItemTime"="Ввод рабочего времени";
+"enterMethodName"="Названный метод управления временем";
+"enterGroupRepeatNumber"="Установить число повторов";
+"methodName"="Имя";
+"aliase"="Псевдоним";
+"defaultAliase"="Круги";
+"itemName"="Работа Содержание";
+"itemTime"="Рабочее время (минута)";
+"enterMethodAliase"="Псевдоним метода управления временем (используется только для записи циклов)";
+
+// share extension
+"post"="Поместить";
+"createReadLater"="Читай позже";
+"shareTask"="Добавить задачу в Achieve";
+"shareNote"="Заметка";
+"shareCreated"="Добавлен";
+"shareSetting"="Читать далее";
+"readLaterTitle"="Чтение списков";

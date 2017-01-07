@@ -1,11 +1,3 @@
-/*
-	Localizable.strings
-	aire3S
- 
-	Created by Alec on 5/3/13.
-	Copyright (c) 2013 __MyCompanyName__. All rights reserved.
- */
-
 "progess"="進行中";
 "finished"="完成した";
 "show"="ディスプレイ";
@@ -18,7 +10,7 @@
 "icloud"="ログインして iCloud アカウント データを同期するには";
 
 "noPermission"="権限がありません";
-"abPermission"="ディレクトリの読み取り権限がないので，アクセス許可\"Settings > Privacy > Contacts\";
+"abPermission"="ディレクトリの読み取り権限がないので，アクセス許可\"Settings > Privacy > Contacts\"";
 "needABPermission"="ディレクトリのアクセス許可を必要があります。";
 "loading"="読み込み";
 
@@ -55,13 +47,13 @@
 "builtInTask"="組み込み作業";
 "callAction"="呼び出し ";
 "sendMessageAction"="SMS の送信 ";
-"faceTimeAction"="Face Time ";
+"faceTimeAction"="FaceTime ";
 "mailAction"="Mail ";
 "customSchemeAction"="実装 ";
 
 "addPhoneCall"="ダイアル アップ作業を追加します";
 "addMessage"="送信テキスト メッセージ タスクを追加します";
-"addFaceTime"="Face Time タスクを追加します";
+"addFaceTime"="FaceTime タスクを追加します";
 "addMail"="メール送信タスクを追加します";
 "addSubtask"="サブタスクを含む新しいタスクを作成します";
 "addCustomScheme"="カスタム タスク ランチャーを作成します";

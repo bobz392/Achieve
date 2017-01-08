@@ -93,13 +93,13 @@
 "time_management"="時間管理";
 "settings"="設定";
 
-"day1" = "月曜";
-"day2" = "火曜";
-"day3" = "水曜";
-"day4" = "木曜";
-"day5" = "金曜";
-"day6" = "土曜";
-"day7" = "日曜";
+"day1" = "月";
+"day2" = "火";
+"day3" = "水";
+"day4" = "木";
+"day5" = "金";
+"day6" = "土";
+"day7" = "日";
 
 // hint
 "repeatTaskHint"="If you create a repeat task, it will create a new task in each day. So your shoud prepare to complete it each day, but you can remove repeat of this task.";

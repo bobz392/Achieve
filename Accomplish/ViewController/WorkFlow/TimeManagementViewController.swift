@@ -178,7 +178,7 @@ extension TimeManagementViewController: UITableViewDelegate, UITableViewDataSour
     
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
         if let indexPath = self.methodTableView.indexPath(for: cell) {
-            if indexPath.row == 0 {
+            if index == 0 {
                 RealmManager.shared.deleteObject(self.timeMethods[indexPath.row ])
                 self.methodTableView.deleteRows(at: [indexPath], with: .automatic)
                 return true

@@ -47,6 +47,7 @@
 		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C71A4B681E1D123E003EE0B9 /* AttributedString+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */; };
 		C71BCDD81E2458AE00611460 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71BCDD71E2458AE00611460 /* TouchButton.swift */; };
+		C71BCDDB1E24FF7900611460 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C71BCDDA1E24FF7900611460 /* Launch Screen.storyboard */; };
 		C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D586F1D746A7800E76E91 /* SystemActionType.swift */; };
 		C71F215D1E08060E00A04351 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215C1E08060E00A04351 /* AppConstants.swift */; };
 		C71F215F1E080E2700A04351 /* TaskTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */; };
@@ -254,7 +255,6 @@
 		C79962F81DE7939300B4617E /* MethodCreateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */; };
 		C79963091DE87A9E00B4617E /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963041DE87A9E00B4617E /* Palette.swift */; };
 		C799630A1DE87A9E00B4617E /* TwicketSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */; };
-		C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */; };
 		C7AC8AFF1E198AA600276E8C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AC8AFE1E198AA600276E8C /* DeviceType.swift */; };
 		C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579291DAACEDC003B6D92 /* MonthViewController.swift */; };
 		C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B579321DAD79A3003B6D92 /* TestManager.swift */; };
@@ -279,7 +279,6 @@
 		C7CAF0BB1D9C554F0046D756 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77192931D6CFE0700437560 /* Localizable.strings */; };
 		C7DB5D121D9183C300719CB3 /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */; };
 		C7DC01A31E12CB5A0055B7F8 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */; };
-		C7DC01AD1E12E5BE0055B7F8 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */; };
 		C7DC01AF1E1390E10055B7F8 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01AE1E1390E10055B7F8 /* MenuHeaderView.swift */; };
 		C7DC01B11E1390E90055B7F8 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */; };
 		C7DC01B51E13B4D80055B7F8 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DC01B31E13B4D80055B7F8 /* MenuTableViewCell.swift */; };
@@ -453,6 +452,7 @@
 		C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Convenient.swift"; sourceTree = "<group>"; };
 		C71BCDD71E2458AE00611460 /* TouchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
+		C71BCDDA1E24FF7900611460 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C71D586F1D746A7800E76E91 /* SystemActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionType.swift; sourceTree = "<group>"; };
 		C71F215C1E08060E00A04351 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableHeaderView.swift; sourceTree = "<group>"; };
@@ -767,7 +767,6 @@
 		C79962F61DE7939300B4617E /* MethodCreateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodCreateTableViewCell.xib; sourceTree = "<group>"; };
 		C79963041DE87A9E00B4617E /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		C79963061DE87A9E00B4617E /* TwicketSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwicketSegmentedControl.swift; sourceTree = "<group>"; };
-		C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYShutterButton.swift; sourceTree = "<group>"; };
 		C7AC8AFE1E198AA600276E8C /* DeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
 		C7B579291DAACEDC003B6D92 /* MonthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthViewController.swift; sourceTree = "<group>"; };
 		C7B579321DAD79A3003B6D92 /* TestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
@@ -786,7 +785,6 @@
 		C7CAF0B91D9C54260046D756 /* MessageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageColors.swift; sourceTree = "<group>"; };
 		C7DB5D111D9183C300719CB3 /* SpotlightManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotlightManager.swift; sourceTree = "<group>"; };
 		C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
-		C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		C7DC01AE1E1390E10055B7F8 /* MenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		C7DC01B01E1390E90055B7F8 /* MenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
 		C7DC01B31E13B4D80055B7F8 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -1324,7 +1322,7 @@
 				C7105F981D6CDBFD0096A1A3 /* Vander */,
 				C7860E471D6C23FF000281FA /* Assets.xcassets */,
 				C7860E4C1D6C23FF000281FA /* Info.plist */,
-				C7DC01AC1E12E5BE0055B7F8 /* LaunchView.xib */,
+				C71BCDDA1E24FF7900611460 /* Launch Screen.storyboard */,
 				C798071D1D82C0C70011DE19 /* Acknowledgements */,
 				C7105EE91D6CB35C0096A1A3 /* Accomplish-Bridging-Header.h */,
 			);
@@ -1398,7 +1396,6 @@
 				C79806F01D8157880011DE19 /* UICountingLabel.m */,
 				C77DE35C1DE4419E00F098F4 /* MZTimerLabel.h */,
 				C77DE35D1DE4419E00F098F4 /* MZTimerLabel.m */,
-				C7A340F41DED2D1400DFB853 /* KYShutterButton.swift */,
 				C7DC01A21E12CB5A0055B7F8 /* MenuButton.swift */,
 			);
 			path = Controls;
@@ -1805,6 +1802,7 @@
 				C79806ED1D810F040011DE19 /* ScheduleTableViewCell.xib in Resources */,
 				C75F85921E053F6D0057D76C /* B3E65619-1D82-3269-B69B-DD08018E6DE3.bcsymbolmap in Resources */,
 				C73B44811E0C4FE800DDE093 /* EmptyView.xib in Resources */,
+				C71BCDDB1E24FF7900611460 /* Launch Screen.storyboard in Resources */,
 				C75F85831E053F6D0057D76C /* 00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap in Resources */,
 				C77DE36D1DE6FE7000F098F4 /* ItemTableViewCell.xib in Resources */,
 				C77DE3691DE62D2400F098F4 /* TimeManagerEditorTableViewCell.xib in Resources */,
@@ -1823,7 +1821,6 @@
 				C7DC01B61E13B4D80055B7F8 /* MenuTableViewCell.xib in Resources */,
 				C75F85901E053F6D0057D76C /* 9D3C03F7-AE0E-3AE2-9A3E-6F9664C9840F.bcsymbolmap in Resources */,
 				C7DC01B11E1390E90055B7F8 /* MenuHeaderView.xib in Resources */,
-				C7DC01AD1E12E5BE0055B7F8 /* LaunchView.xib in Resources */,
 				C75F858B1E053F6D0057D76C /* 63462667-8672-3110-B8E4-6AF146455308.bcsymbolmap in Resources */,
 				C75F85851E053F6D0057D76C /* 1876A4A6-62DD-3263-8B27-09014FD0FE49.bcsymbolmap in Resources */,
 				C79807371D8414340011DE19 /* SettingDetialTableViewCell.xib in Resources */,
@@ -2241,7 +2238,6 @@
 				C77DE3641DE62B3E00F098F4 /* TimeManagerEditorViewController.swift in Sources */,
 				C78C4EB61DFCE563000C289D /* ReadLaterManager.swift in Sources */,
 				C7B579331DAD79A3003B6D92 /* TestManager.swift in Sources */,
-				C7A340F51DED2D1400DFB853 /* KYShutterButton.swift in Sources */,
 				C798072D1D83DB3F0011DE19 /* AwesomeButton.swift in Sources */,
 				C7DC01C21E159FD20055B7F8 /* ScheduleHeaderView.swift in Sources */,
 				C73B44781E0C494200DDE093 /* TagViewController.swift in Sources */,

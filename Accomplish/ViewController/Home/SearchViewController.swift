@@ -69,6 +69,7 @@ class SearchViewController: BaseViewController {
         bar.addSubview(self.searchTextField)
         self.searchTextField.font = UIFont.systemFont(ofSize: 14)
         self.searchTextField.textColor = Colors.mainTextColor
+        self.searchTextField.clearButtonMode = .whileEditing
         self.searchTextField.tintColor = Colors.mainTextColor
         self.searchTextField.delegate = self
         self.searchTextField.placeholder = Localized("searchHolder")
@@ -178,6 +179,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.hintLabel.isHidden = true
+        return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

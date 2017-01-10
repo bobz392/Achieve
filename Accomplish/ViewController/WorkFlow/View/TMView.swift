@@ -71,8 +71,8 @@ class TMView: UIView {
         let side: CGFloat = DeviceSzie.isSmallDevice() ? 50 : 70
         view.buttonWidthConstraint.constant = side
         view.buttonHeightConstraint.constant = side
-        view.statusButton.setImage(Icons.stop.iconImage(), for: .normal)
-        view.statusButton.tintColor = Colors.swipeRedBackgroundColor
+        view.statusButton.setImage(Icons.play.iconImage(), for: .normal)
+        view.statusButton.tintColor = Colors.swipeBlueBackgroundColor
         view.statusButton.config()
         view.statusButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
         
@@ -211,8 +211,8 @@ class TMView: UIView {
     func startAction() {
         // 点击以后开始计时
         if self.currentStatusRunning == false {
-            self.statusButton.setImage(Icons.play.iconImage(), for: .normal)
-            self.statusButton.changeStatus(color: Colors.swipeBlueBackgroundColor)
+            self.statusButton.setImage(Icons.stop.iconImage(), for: .normal)
+            self.statusButton.changeStatus(color: Colors.swipeRedBackgroundColor)
             self.countLabel.isHighlighted = false
             self.statusLabel.text = ""
             if self.startType == .Init {
@@ -223,8 +223,8 @@ class TMView: UIView {
             }
         } else {
             self.countLabel.isHighlighted = true
-            self.statusButton.setImage(Icons.stop.iconImage(), for: .normal)
-            self.statusButton.changeStatus(color: Colors.swipeRedBackgroundColor)
+            self.statusButton.setImage(Icons.play.iconImage(), for: .normal)
+            self.statusButton.changeStatus(color: Colors.swipeBlueBackgroundColor)
             self.statusLabel.text = Localized("timeMethodPause")
             self.countLabel.pause()
         }

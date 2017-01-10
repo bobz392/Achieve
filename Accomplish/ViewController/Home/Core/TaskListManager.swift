@@ -202,7 +202,7 @@ extension TaskListManager {
                 
                 let headerView = EmptyDataView.loadNib(target)
                 if let header = headerView {
-                    header.setImage(imageName: Icons.listEmpty.iconString())
+                    header.setImage(imageName: Icons.coffee.iconString())
                         .setTitle(title: title)
                     header.linkButton.isHidden = hiddenLinkButton
                     header.linkButton.setTitle(Localized("backToAllTask"), for: .normal)

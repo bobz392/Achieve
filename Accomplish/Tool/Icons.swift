@@ -12,7 +12,7 @@ enum Icons {
     case plus
     case check
     case uncheck
-    case listEmpty
+    case coffee
     case search
     case timeManagement
     case delete
@@ -53,7 +53,7 @@ enum Icons {
         case .plus: return "plus"
         case .check: return "check"
         case .uncheck: return "uncheck"
-        case .listEmpty: return "empty_list"
+        case .coffee: return "coffee"
         case .search:  return "search"
         case .timeManagement: return "time_management"
         case .delete: return "delete"

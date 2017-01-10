@@ -63,7 +63,13 @@ class TimeManagementViewController: BaseViewController {
     override func configMainUI() {
         self.view.backgroundColor = Colors.mainBackgroundColor
         let bar = self.createCustomBar(height: kBarHeight, withBottomLine: false)
-        self.congfigMenuButton()
+        if self.isSelectTM {
+            let backButton = self.createLeftBarButton(icon: Icons.back)
+            backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        } else {
+            self.congfigMenuButton()
+        }
+        
         let titleLabel = self.createTitleLabel(titleText: "")
         self.configMethodTableView(bar: bar)
         

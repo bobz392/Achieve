@@ -15,12 +15,16 @@ enum StartTimeStatuType {
 
 class TMView: UIView {
     
+    @IBOutlet weak var buttonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var blurImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var loopLabel: UILabel!
     @IBOutlet weak var countLabel: MZTimerLabel!
-    @IBOutlet weak var statusShutterButton: KYShutterButton!
-    @IBOutlet weak var cancelTMButton: UIButton!
+    
+    @IBOutlet weak var statusButton: TouchButton!
+    @IBOutlet weak var cancelTMButton: TouchButton!
     
     fileprivate var method: TimeMethod!
     // 当前所在的 group 的 index
@@ -47,14 +51,14 @@ class TMView: UIView {
                     return nil
         }
         
-        let colors = Colors()
-        
         view.countLabel.timerType = MZTimerLabelType.init(1)
         view.countLabel.timeFormat = "HH:mm:ss"
         view.countLabel.text = "         "
-        view.countLabel.font = UIFont(name: "Courier", size: 50)
+        view.countLabel.font = UIFont(name: "Courier",
+                                      size: DeviceSzie.isSmallDevice() ? 50 : 70 )
         view.countLabel.adjustsFontSizeToFitWidth = true
-        view.countLabel.textColor = Colors.cloudColor
+        view.countLabel.textColor = Colors.mainTextColor
+        view.countLabel.highlightedTextColor = Colors.secondaryTextColor
         view.countLabel.delegate = view
         
         view.statusLabel.textColor = Colors.secondaryTextColor
@@ -64,11 +68,17 @@ class TMView: UIView {
         view.titleLabel.textColor = Colors.secondaryTextColor
         view.titleLabel.text = method.name
         
-        view.statusShutterButton.buttonColor = colors.systemGreenColor
-        view.statusShutterButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
+        let side: CGFloat = DeviceSzie.isSmallDevice() ? 50 : 70
+        view.buttonWidthConstraint.constant = side
+        view.buttonHeightConstraint.constant = side
+        view.statusButton.setImage(Icons.stop.iconImage(), for: .normal)
+        view.statusButton.tintColor = Colors.swipeRedBackgroundColor
+        view.statusButton.config()
+        view.statusButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
         
-        view.cancelTMButton.buttonWithIcon(icon: Icons.clear.iconString())
+        view.cancelTMButton.buttonWithIcon(icon: Icons.bigClear.iconString())
         view.cancelTMButton.tintColor = Colors.cellLabelSelectedTextColor
+        view.cancelTMButton.config()
         view.cancelTMButton.contentMode = .scaleAspectFill
 
         view.cancelTMButton.backgroundColor = UIColor.white
@@ -153,9 +163,26 @@ class TMView: UIView {
         appUserDefault.remove(kUserDefaultTMTaskUUID)
     }
     
+    func configBlurImageView(view: UIView) {
+        let image = view.convertViewToImage()
+        self.blurImageView.image =
+            image.blurredImage(5, iterations: 3, ratio: 2.0, blendColor: nil, blendMode: .clear)
+        self.frame = view.bounds
+    }
+    
     func moveIn(view: UIView) {
         UIApplication.shared.isIdleTimerDisabled = true
+        // 进来的时候先隐藏
+        let image = view.convertViewToImage()
+        self.blurImageView.image =
+            image.blurredImage(5, iterations: 3, ratio: 2.0, blendColor: nil, blendMode: .clear)
+        self.blurImageView.alpha = 0
+        self.frame = view.bounds
         view.addSubview(self)
+        self.layoutIfNeeded()
+        
+        self.statusButton.configButtonCorner()
+        self.cancelTMButton.configButtonCorner()
         
         self.snp.makeConstraints({ (make) in
             make.top.equalTo(view)
@@ -163,9 +190,8 @@ class TMView: UIView {
             make.leading.equalTo(view)
             make.height.equalTo(view)
         })
-        self.alpha = 0
         UIView.animate(withDuration: kSmallAnimationDuration) { [unowned self] in
-            self.alpha = 1
+            self.blurImageView.alpha = 1
         }
     }
     
@@ -184,11 +210,10 @@ class TMView: UIView {
     
     func startAction() {
         // 点击以后开始计时
-        let colors = Colors()
         if self.currentStatusRunning == false {
-            self.statusShutterButton.buttonState = .recording
-            self.statusShutterButton.buttonColor = colors.systemRedColor
-            self.countLabel.textColor = Colors.cloudColor
+            self.statusButton.setImage(Icons.play.iconImage(), for: .normal)
+            self.statusButton.changeStatus(color: Colors.swipeBlueBackgroundColor)
+            self.countLabel.isHighlighted = false
             self.statusLabel.text = ""
             if self.startType == .Init {
                 self.nextStatus()
@@ -197,9 +222,9 @@ class TMView: UIView {
                 self.countLabel.start()
             }
         } else {
-            self.countLabel.textColor = Colors.secondaryTextColor
-            self.statusShutterButton.buttonState = .normal
-            self.statusShutterButton.buttonColor = Colors().systemGreenColor
+            self.countLabel.isHighlighted = true
+            self.statusButton.setImage(Icons.stop.iconImage(), for: .normal)
+            self.statusButton.changeStatus(color: Colors.swipeRedBackgroundColor)
             self.statusLabel.text = Localized("timeMethodPause")
             self.countLabel.pause()
         }
@@ -280,12 +305,11 @@ extension TMView: MZTimerLabelDelegate {
             self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
         }
         self.titleLabel.text = item.name
-//        #if debug
-//            self.countLabel.setCountDownTime(5)
-//        #else
+        #if debug
+            self.countLabel.setCountDownTime(5)
+        #else
             self.countLabel.setCountDownTime(TimeInterval(item.interval * 60))
-//        #endif
-        self.statusShutterButton.rotateAnimateDuration = Float(item.interval)
+        #endif
         if start {
             self.countLabel.start()
         } else {

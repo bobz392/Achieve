@@ -215,14 +215,12 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         let selectedDate = self.datePicker.date as NSDate
         self.task.createdDate = selectedDate
         
-        self.clockButton.tintColor = Colors().mainGreenColor
         self.closeDatePicker()
     }
     
     func systemAction() {
         let systemVC = SystemTaskViewController()
         let nav = UINavigationController(rootViewController: systemVC)
-        nav.view.backgroundColor = Colors().mainGreenColor
         nav.isNavigationBarHidden = true
         systemVC.newTaskDelegate = self
         self.parent?.present(nav, animated: true, completion: { })

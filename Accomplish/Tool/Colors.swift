@@ -16,9 +16,8 @@ struct Colors {
     static let lightSeparatorColor = UIColor(red:0.89, green:0.89, blue:0.89, alpha:1.00)
     static let placeHolderTextColor = UIColor(red:0.80, green:0.80, blue:0.80, alpha:1.00)
     
-    let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)
-    let systemRedColor = UIColor(red:0.98, green:0.24, blue:0.22, alpha:1.00)
-    
+    static let systemGreenColor = UIColor(red:0.34, green:0.85, blue:0.42, alpha:1.00)
+
     static let mainBackgroundColor = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.00)
     static let mainIconColor = UIColor(red:0.70, green:0.76, blue:0.79, alpha:1.00)
     static let cellCardColor = UIColor(red:0.99, green:0.99, blue:1.00, alpha:1.00)

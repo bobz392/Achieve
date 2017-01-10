@@ -44,6 +44,9 @@ enum Icons {
     case sound
     case mail
     case star
+    case play
+    case stop
+    case bigClear
     
     func iconString() -> String {
         switch self {
@@ -82,6 +85,9 @@ enum Icons {
         case .star: return "star"
         case .weekStart: return "week_start"
         case .readLater: return "read_later"
+        case .play: return "play"
+        case .stop: return "stop"
+        case .bigClear: return "big_clear"
         }
     }
     

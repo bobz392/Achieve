@@ -34,7 +34,7 @@
             <connections>
                 <outlet property="titleLabel" destination="iDy-Qn-HRH" id="eFF-oe-SX0"/>
             </connections>
-            <point key="canvasLocation" x="-260.5" y="-1.5"/>
+            <point key="canvasLocation" x="19" y="170"/>
         </view>
     </objects>
 </document>

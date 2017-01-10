@@ -46,7 +46,9 @@
         }
 //        TestManager().addAppStoreData()
         
-        self.checkTimeMethodRunning()
+        dispatch_delay(0.5) { [unowned self] in
+            self.checkTimeMethodRunning()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,6 +155,7 @@
             guard let view = TMView.loadNib(self, method: tm, task: task) else { return }
             self.tmView = view
             view.moveIn(view: self.view)
+            view.configBlurImageView(view: self.view)
             view.configTimeManager(details: details)
         }
     }

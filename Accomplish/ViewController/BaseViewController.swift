@@ -160,6 +160,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         newTaskButton.addShadow()
         newTaskButton.layer.cornerRadius = side * 0.5
+        newTaskButton.adjustsImageWhenHighlighted = false
         newTaskButton.buttonWithIcon(icon: Icons.plus.iconString(),
                                      backgroundColor: Colors.cellCardColor)
         

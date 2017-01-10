@@ -43,7 +43,7 @@
                 <outlet property="itemNameLabel" destination="qaU-06-vJT" id="LgW-PI-aES"/>
                 <outlet property="itemTimeLabel" destination="xob-dh-c3e" id="0Ls-it-SpV"/>
             </connections>
-            <point key="canvasLocation" x="-49" y="159"/>
+            <point key="canvasLocation" x="30" y="121"/>
         </tableViewCell>
     </objects>
 </document>

@@ -40,6 +40,7 @@ class AboutViewController: BaseViewController {
         
         let contentLabel = UILabel()
         contentLabel.text = "We always have time enough, if we will but use it aright."
+        contentLabel.numberOfLines = 0
         contentLabel.textColor = Colors.mainIconColor
         contentLabel.textAlignment = .center
         contentLabel.font = UIFont(name: "Chalkduster", size: 14)

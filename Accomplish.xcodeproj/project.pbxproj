@@ -46,6 +46,7 @@
 		C7145AC61D90506D000FAC18 /* WatchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7145AC51D90506D000FAC18 /* WatchColors.swift */; };
 		C7145AC71D9105C3000FAC18 /* String+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDA5B51D75FAD30054154C /* String+Convenient.swift */; };
 		C71A4B681E1D123E003EE0B9 /* AttributedString+Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */; };
+		C71BCDD81E2458AE00611460 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71BCDD71E2458AE00611460 /* TouchButton.swift */; };
 		C71D58701D746A7800E76E91 /* SystemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71D586F1D746A7800E76E91 /* SystemActionType.swift */; };
 		C71F215D1E08060E00A04351 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215C1E08060E00A04351 /* AppConstants.swift */; };
 		C71F215F1E080E2700A04351 /* TaskTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */; };
@@ -451,6 +452,7 @@
 		C7145ACD1D91208F000FAC18 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		C7145ACF1D91208F000FAC18 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		C71A4B671E1D123E003EE0B9 /* AttributedString+Convenient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Convenient.swift"; sourceTree = "<group>"; };
+		C71BCDD71E2458AE00611460 /* TouchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
 		C71D586F1D746A7800E76E91 /* SystemActionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemActionType.swift; sourceTree = "<group>"; };
 		C71F215C1E08060E00A04351 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C71F215E1E080E2700A04351 /* TaskTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableHeaderView.swift; sourceTree = "<group>"; };
@@ -1445,6 +1447,7 @@
 				C79223A21E1968ED00E5C193 /* CircleProgressView.swift */,
 				C7DC01C01E159FD20055B7F8 /* ScheduleHeaderView.swift */,
 				C7DC01C11E159FD20055B7F8 /* ScheduleHeaderView.xib */,
+				C71BCDD71E2458AE00611460 /* TouchButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2194,6 +2197,7 @@
 				C79807391D8507F20011DE19 /* UIView+Icon.swift in Sources */,
 				C73B44711E0C494200DDE093 /* TaskNoteTableViewCell.swift in Sources */,
 				C77192981D6D18BF00437560 /* CommonCode.swift in Sources */,
+				C71BCDD81E2458AE00611460 /* TouchButton.swift in Sources */,
 				C7821EC81D7BF1820056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
 				C7105FC31D6CDBFD0096A1A3 /* DTTimePeriod.m in Sources */,
 				C74751C11DC9884100831DB1 /* RealmManager+TimeMethod.swift in Sources */,

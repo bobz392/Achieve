@@ -28,6 +28,10 @@ class RealmManager {
         Realm.Configuration.defaultConfiguration = config
     }
     
+    static func threadRealm() -> Realm {
+        return try! Realm()
+    }
+    
     func writeObject(_ object: Object) {
         try! realm.write {
             realm.add(object)
@@ -88,7 +92,8 @@ class RealmManager {
         return (complete, created)
     }
     
-    func queryTask(_ taskUUID: String) -> Task? {
+    func queryTask(_ taskUUID: String, threadRealm: Realm? = nil) -> Task? {
+        let realm = threadRealm ?? self.realm
         return realm.objects(Task.self).filter("uuid = '\(taskUUID)'").first
     }
     

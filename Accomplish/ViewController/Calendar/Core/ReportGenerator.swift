@@ -14,19 +14,19 @@ struct ReportGenerator {
     func generateReport(taskList: Results<Task>) -> String {
         let string = taskList.reduce("", { (content, task) -> String in
             
-            var taskTodo = task.realTaskToDo()
-            
+            let taskTodo = task.realTaskToDo()
+            var dateString = ""
             if let startDate =
                 task.createdDate?.formattedDate(withFormat: ReportDateFormat) {
                 if let finishDate =
                     task.finishedDate?.formattedDate(withFormat: ReportDateFormat) {
-                    return "\(startDate) - \(finishDate) \(taskTodo)\n"
+                    dateString = "\(startDate) - \(finishDate) "
                 } else {
-                    taskTodo += "\(startDate) \(taskTodo)\n"
+                    dateString = "\(startDate) "
                 }
             }
-            
-            return taskTodo + "\n"
+
+            return content + dateString + taskTodo + "\n"
         })
         
         return string

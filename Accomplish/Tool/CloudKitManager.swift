@@ -147,9 +147,11 @@ class CloudKitManager: NSObject {
                     if rs.count > 0 {
                         HUD.shared.showProgress(Localized("asyncing"))
                     }
+                    
+                    let threadRealm = RealmManager.threadRealm()
                     for r in rs {
                         guard let uuid = r["uuid"] as? String else { break }
-                        if let _ = RealmManager.shared.queryTask(uuid) {
+                        if let _ = RealmManager.shared.queryTask(uuid, threadRealm: threadRealm) {
                             break
                         }
 

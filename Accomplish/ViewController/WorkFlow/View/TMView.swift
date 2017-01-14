@@ -194,8 +194,15 @@ class TMView: UIView {
         
         UIApplication.shared.setStatusBarHidden(true, with: .slide)
         
-        UIView.animate(withDuration: kSmallAnimationDuration) { [unowned self] in
+        self.countLabel.isHighlighted = false
+        
+        UIView.animate(withDuration: kSmallAnimationDuration, animations: { [unowned self] in
             self.blurImageView.alpha = 1
+        }) { [unowned self] (finish) in
+            if let intv = self.method.groups.first?.items.first?.interval {
+                self.countLabel.setCountDownTime(TimeInterval(intv))
+            }
+            
         }
     }
     

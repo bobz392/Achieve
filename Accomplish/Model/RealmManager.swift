@@ -28,11 +28,6 @@ class RealmManager {
         Realm.Configuration.defaultConfiguration = config
     }
     
-    static func threadRealm() -> Realm {
-        let config = Realm.Configuration(schemaVersion: version)
-        return try! Realm(configuration: config)
-    }
-    
     func writeObject(_ object: Object) {
         try! realm.write {
             realm.add(object)
@@ -60,6 +55,10 @@ class RealmManager {
     func queryAll(clz: AnyClass) {
         let result = realm.objects(clz as! Object.Type)
         Logger.log("result = \(result)")
+    }
+    
+    func allTaskCount() -> Int {
+        return realm.objects(Task.self).count
     }
     
     func queryTodayTaskList(taskStatus: TaskStatus, tagUUID: String? = nil) -> Results<Task> {
@@ -93,9 +92,8 @@ class RealmManager {
         return (complete, created)
     }
     
-    func queryTask(_ taskUUID: String, threadRealm: Realm? = nil) -> Task? {
-        let realm = threadRealm ?? self.realm
-        return realm.objects(Task.self).filter("uuid = '\(taskUUID)'").first
+    func queryTask(_ taskUUID: String) -> Task? {
+        return self.realm.objects(Task.self).filter("uuid = '\(taskUUID)'").first
     }
     
     /**

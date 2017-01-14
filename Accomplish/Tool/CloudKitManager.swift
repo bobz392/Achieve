@@ -137,7 +137,7 @@ class CloudKitManager: NSObject {
     
     func asyncFromCloudIfNeeded() {
         let appUD = AppUserDefault()
-        if (appUD.readBool(kUserDefaultSynciCloudKey) != true) {
+        if (appUD.readBool(kUserDefaultSynciCloudKey) != true && RealmManager.shared.allTaskCount() <= 0) {
             let privateDB = container.privateCloudDatabase
             
             let query = CKQuery(recordType: "Task", predicate: NSPredicate(value: true))
@@ -148,13 +148,9 @@ class CloudKitManager: NSObject {
                         HUD.shared.showProgress(Localized("asyncing"))
                     }
                     
-                    let threadRealm = RealmManager.threadRealm()
                     for r in rs {
                         guard let uuid = r["uuid"] as? String else { break }
-                        if let _ = RealmManager.shared.queryTask(uuid, threadRealm: threadRealm) {
-                            break
-                        }
-
+                        
                         let task = Task()
                         task.createdDate = r["createdDate"] as? NSDate
                         task.estimateDate = r["estimateDate"] as? NSDate
@@ -181,6 +177,8 @@ class CloudKitManager: NSObject {
                 }
             }
             
+            appUD.write(kUserDefaultSynciCloudKey, value: true)
+        } else {
             appUD.write(kUserDefaultSynciCloudKey, value: true)
         }
     }

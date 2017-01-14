@@ -71,7 +71,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优先级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tts-aO-sIm">
                                     <rect key="frame" x="12" y="10" width="43" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -239,7 +239,7 @@
                 <constraint firstItem="z3E-3R-jYr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="wrT-z0-jiS"/>
                 <constraint firstItem="Jdt-4n-GAw" firstAttribute="top" secondItem="Vdp-Ws-MLD" secondAttribute="bottom" id="zWa-oC-CfE"/>
             </constraints>
-            <point key="canvasLocation" x="50" y="418"/>
+            <point key="canvasLocation" x="-258" y="-56"/>
         </view>
     </objects>
 </document>

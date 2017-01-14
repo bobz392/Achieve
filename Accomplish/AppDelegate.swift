@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     weak var drawer: MMDrawerController? = nil
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        window = HitTestWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         let rootVC = self.createDrawer()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()

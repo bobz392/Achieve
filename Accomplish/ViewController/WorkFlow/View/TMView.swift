@@ -22,8 +22,8 @@ class TMView: UIView {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var loopLabel: UILabel!
     @IBOutlet weak var countLabel: MZTimerLabel!
+    @IBOutlet weak var circleView: CircleProgressView!
     
-    @IBOutlet weak var statusButton: TouchButton!
     @IBOutlet weak var cancelTMButton: TouchButton!
     
     fileprivate var method: TimeMethod!
@@ -71,10 +71,11 @@ class TMView: UIView {
         let side: CGFloat = DeviceSzie.isSmallDevice() ? 50 : 70
         view.buttonWidthConstraint.constant = side
         view.buttonHeightConstraint.constant = side
-        view.statusButton.setImage(Icons.play.iconImage(), for: .normal)
-        view.statusButton.tintColor = Colors.swipeBlueBackgroundColor
-        view.statusButton.config()
-        view.statusButton.addTarget(view, action: #selector(view.startAction), for: .touchUpInside)
+        
+        view.circleView.circleButton
+            .addTarget(view, action:  #selector(self.startAction), for: .touchUpInside)
+        view.circleView.setPrecentLableEnable(enabel: false)
+        view.circleView.backgroundColor = UIColor.clear
         
         view.cancelTMButton.buttonWithIcon(icon: Icons.bigClear.iconString())
         view.cancelTMButton.tintColor = Colors.cellLabelSelectedTextColor
@@ -181,7 +182,7 @@ class TMView: UIView {
         view.addSubview(self)
         self.layoutIfNeeded()
         
-        self.statusButton.configButtonCorner()
+        self.circleView.configButtonCorner()
         self.cancelTMButton.configButtonCorner()
         
         self.snp.makeConstraints({ (make) in
@@ -190,6 +191,9 @@ class TMView: UIView {
             make.leading.equalTo(view)
             make.height.equalTo(view)
         })
+        
+        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+        
         UIView.animate(withDuration: kSmallAnimationDuration) { [unowned self] in
             self.blurImageView.alpha = 1
         }
@@ -198,6 +202,8 @@ class TMView: UIView {
     func moveOut() {
         UIApplication.shared.isIdleTimerDisabled = false
         NotificationCenter.default.removeObserver(self)
+        
+        UIApplication.shared.setStatusBarHidden(false, with: .slide)
         
         UIView.animate(withDuration: kSmallAnimationDuration, animations: {
             self.alpha = 0
@@ -211,8 +217,6 @@ class TMView: UIView {
     func startAction() {
         // 点击以后开始计时
         if self.currentStatusRunning == false {
-            self.statusButton.setImage(Icons.stop.iconImage(), for: .normal)
-            self.statusButton.changeStatus(color: Colors.swipeRedBackgroundColor)
             self.countLabel.isHighlighted = false
             self.statusLabel.text = ""
             if self.startType == .Init {
@@ -220,13 +224,13 @@ class TMView: UIView {
                 self.startType = .Start
             } else {
                 self.countLabel.start()
+                self.circleView.resume()
             }
         } else {
             self.countLabel.isHighlighted = true
-            self.statusButton.setImage(Icons.play.iconImage(), for: .normal)
-            self.statusButton.changeStatus(color: Colors.swipeBlueBackgroundColor)
             self.statusLabel.text = Localized("timeMethodPause")
             self.countLabel.pause()
+            self.circleView.pause()
         }
         
         self.currentStatusRunning = !self.currentStatusRunning
@@ -306,12 +310,18 @@ extension TMView: MZTimerLabelDelegate {
         }
         self.titleLabel.text = item.name
         #if debug
-            self.countLabel.setCountDownTime(5)
+            let countTime = TimeInterval(5)
         #else
-            self.countLabel.setCountDownTime(TimeInterval(item.interval * 60))
+            let countTime = TimeInterval(item.interval * 60)
         #endif
+        
+        self.countLabel.setCountDownTime(countTime)
+        
         if start {
             self.countLabel.start()
+            self.circleView.setCircleDuration(duration: countTime)
+            self.circleView
+                .start(completed: Int(countTime), created: Int(countTime), reset: true)
         } else {
             return
         }

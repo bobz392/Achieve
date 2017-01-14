@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +23,15 @@
                 <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="tgz-Ks-aSc">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hga-gD-gqx" customClass="CircleProgressView" customModule="Accomplish" customModuleProvider="target">
+                            <rect key="frame" x="35" y="148" width="305" height="305"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Hga-gD-gqx" secondAttribute="height" multiplier="1:1" id="XLg-jx-7wW"/>
+                            </constraints>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bv-ew-ZdX" customClass="MZTimerLabel">
-                            <rect key="frame" x="0.0" y="209" width="375" height="49"/>
+                            <rect key="frame" x="60" y="275.5" width="255" height="49"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="41"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -41,38 +49,34 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoJ-8p-3rU">
-                            <rect key="frame" x="187.5" y="266" width="0.0" height="0.0"/>
+                            <rect key="frame" x="187.5" y="332.5" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.80023035340000004" green="0.9466013673" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lc-Fa-Po6" customClass="TouchButton" customModule="Accomplish" customModuleProvider="target">
-                            <rect key="frame" x="92" y="592" width="60" height="60"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="qrG-cI-GcN"/>
-                                <constraint firstAttribute="height" constant="60" id="zah-dq-Xfp"/>
-                            </constraints>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSQ-qs-4m6" customClass="TouchButton" customModule="Accomplish" customModuleProvider="target">
-                            <rect key="frame" x="223" y="592" width="60" height="60"/>
+                            <rect key="frame" x="157.5" y="582" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="GJP-wf-ARk"/>
+                                <constraint firstAttribute="width" constant="60" id="ioP-MD-KyF"/>
+                            </constraints>
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="8bv-ew-ZdX" firstAttribute="centerY" secondItem="tgz-Ks-aSc" secondAttribute="centerY" multiplier="0.7" id="2Xs-88-gev"/>
-                        <constraint firstAttribute="trailing" secondItem="8bv-ew-ZdX" secondAttribute="trailing" id="9dW-y8-UAH"/>
+                        <constraint firstItem="8bv-ew-ZdX" firstAttribute="centerY" secondItem="tgz-Ks-aSc" secondAttribute="centerY" multiplier="0.9" id="2Xs-88-gev"/>
+                        <constraint firstItem="8bv-ew-ZdX" firstAttribute="leading" secondItem="Hga-gD-gqx" secondAttribute="leading" constant="25" id="4NP-Wj-S75"/>
                         <constraint firstItem="gPw-4t-MBG" firstAttribute="centerX" secondItem="oYU-pW-Pf2" secondAttribute="centerX" id="9ww-i6-Vqo"/>
                         <constraint firstItem="FoJ-8p-3rU" firstAttribute="top" secondItem="8bv-ew-ZdX" secondAttribute="bottom" constant="8" id="BNR-1O-YXC"/>
-                        <constraint firstAttribute="bottom" secondItem="0lc-Fa-Po6" secondAttribute="bottom" constant="15" id="DJA-F3-VeH"/>
                         <constraint firstItem="oYU-pW-Pf2" firstAttribute="centerX" secondItem="tgz-Ks-aSc" secondAttribute="centerX" id="DQZ-Qp-GLG"/>
+                        <constraint firstItem="Hga-gD-gqx" firstAttribute="leading" secondItem="tgz-Ks-aSc" secondAttribute="leading" constant="35" id="Gp7-nC-BJN"/>
                         <constraint firstItem="oYU-pW-Pf2" firstAttribute="top" secondItem="tgz-Ks-aSc" secondAttribute="top" constant="60" id="ITc-3l-Rhy"/>
-                        <constraint firstItem="zSQ-qs-4m6" firstAttribute="centerX" secondItem="tgz-Ks-aSc" secondAttribute="centerX" multiplier="1.35" id="Igo-Vg-e1P"/>
-                        <constraint firstItem="0lc-Fa-Po6" firstAttribute="centerX" secondItem="tgz-Ks-aSc" secondAttribute="centerX" multiplier="0.65" id="JKL-D8-TO0"/>
+                        <constraint firstItem="zSQ-qs-4m6" firstAttribute="centerX" secondItem="tgz-Ks-aSc" secondAttribute="centerX" id="Igo-Vg-e1P"/>
+                        <constraint firstAttribute="bottom" secondItem="zSQ-qs-4m6" secondAttribute="bottom" constant="25" id="MeT-Mk-O4X"/>
+                        <constraint firstAttribute="trailing" secondItem="Hga-gD-gqx" secondAttribute="trailing" constant="35" id="Q2Z-aX-g20"/>
+                        <constraint firstItem="Hga-gD-gqx" firstAttribute="centerY" secondItem="8bv-ew-ZdX" secondAttribute="centerY" id="VGZ-Gv-72X"/>
+                        <constraint firstItem="8bv-ew-ZdX" firstAttribute="trailing" secondItem="Hga-gD-gqx" secondAttribute="trailing" constant="-25" id="YSI-oN-W3u"/>
                         <constraint firstItem="gPw-4t-MBG" firstAttribute="top" secondItem="oYU-pW-Pf2" secondAttribute="bottom" constant="10" id="f5S-fx-wMS"/>
-                        <constraint firstItem="zSQ-qs-4m6" firstAttribute="width" secondItem="0lc-Fa-Po6" secondAttribute="width" id="hRR-IC-2id"/>
                         <constraint firstItem="FoJ-8p-3rU" firstAttribute="centerX" secondItem="oYU-pW-Pf2" secondAttribute="centerX" id="kbd-6Y-yG0"/>
-                        <constraint firstItem="zSQ-qs-4m6" firstAttribute="height" secondItem="0lc-Fa-Po6" secondAttribute="height" id="lxI-pB-IBt"/>
-                        <constraint firstItem="zSQ-qs-4m6" firstAttribute="bottom" secondItem="0lc-Fa-Po6" secondAttribute="bottom" id="t0u-s1-Vgf"/>
-                        <constraint firstItem="8bv-ew-ZdX" firstAttribute="leading" secondItem="tgz-Ks-aSc" secondAttribute="leading" id="wtJ-SR-V3X"/>
                     </constraints>
                 </view>
             </subviews>
@@ -89,16 +93,16 @@
             </constraints>
             <connections>
                 <outlet property="blurImageView" destination="EbV-mC-hDH" id="dx8-jv-oxn"/>
-                <outlet property="buttonHeightConstraint" destination="zah-dq-Xfp" id="xqd-VN-0Xe"/>
-                <outlet property="buttonWidthConstraint" destination="qrG-cI-GcN" id="866-IQ-YQS"/>
+                <outlet property="buttonHeightConstraint" destination="GJP-wf-ARk" id="fWE-OD-Zyx"/>
+                <outlet property="buttonWidthConstraint" destination="ioP-MD-KyF" id="086-Kk-ba8"/>
                 <outlet property="cancelTMButton" destination="zSQ-qs-4m6" id="IVK-UO-f3D"/>
+                <outlet property="circleView" destination="Hga-gD-gqx" id="3cM-Ei-bzH"/>
                 <outlet property="countLabel" destination="8bv-ew-ZdX" id="Yle-bE-bsl"/>
                 <outlet property="loopLabel" destination="FoJ-8p-3rU" id="K2D-Rw-f64"/>
-                <outlet property="statusButton" destination="0lc-Fa-Po6" id="v5S-gU-8hn"/>
                 <outlet property="statusLabel" destination="gPw-4t-MBG" id="uCD-5F-vIn"/>
                 <outlet property="titleLabel" destination="oYU-pW-Pf2" id="NSW-ca-rVR"/>
             </connections>
-            <point key="canvasLocation" x="-233" y="-217"/>
+            <point key="canvasLocation" x="-233.5" y="-217.5"/>
         </view>
     </objects>
 </document>

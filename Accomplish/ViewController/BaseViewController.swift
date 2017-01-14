@@ -230,3 +230,21 @@ enum ControllerTitleStyle {
     case center
     case left
 }
+
+class HitTestWindow: UIWindow {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = UIView()
+        view.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        view.layer.cornerRadius = 15
+        view.backgroundColor = Colors.swipeBlueBackgroundColor
+        view.center = point
+        self.addSubview(view)
+        UIView.animate(withDuration: 0.6, animations: {
+            view.alpha = 0
+        }) { (finish) in
+            view.removeFromSuperview()
+        }
+
+        return super.hitTest(point, with: event)
+    }
+}

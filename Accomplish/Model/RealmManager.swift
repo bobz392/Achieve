@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
-    //    let currentRealmVersion = 2
+    static let version: UInt64 = 3
     
     typealias RealmBlock = () -> Void
     internal let realm = try! Realm()
@@ -20,16 +20,17 @@ class RealmManager {
     static func configMainRealm() {
         
         let config = Realm.Configuration(
-            schemaVersion: 3,
+            schemaVersion: version,
             migrationBlock: { (igration, oldSchemaVersion) in
-                if (oldSchemaVersion < 3) { }
+                if (oldSchemaVersion < version) { }
         })
         
         Realm.Configuration.defaultConfiguration = config
     }
     
     static func threadRealm() -> Realm {
-        return try! Realm()
+        let config = Realm.Configuration(schemaVersion: version)
+        return try! Realm(configuration: config)
     }
     
     func writeObject(_ object: Object) {

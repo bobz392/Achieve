@@ -16,6 +16,10 @@ final class CircleProgressView: UIView {
     let circleButton = UIButton(type: UIButtonType.custom)
     let precentLabel = UICountingLabel()
     let scheduleLabel = UILabel()
+    let pLabel = UILabel()
+    
+    private var duration = kCalendarProgressAnimationDuration
+    private var precentLableEnable = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,16 +50,32 @@ final class CircleProgressView: UIView {
         return circleShapeLayer.inAnimation
     }
     
-    func start(completed: Int, created: Int) {
+    func setCircleDuration(duration: TimeInterval) {
+        self.duration = duration
+    }
+    
+    func setPrecentLableEnable(enabel: Bool) {
+        self.precentLableEnable = enabel
+        self.precentLabel.isHidden = !enabel
+        self.pLabel.isHidden = !enabel
+    }
+    
+    func start(completed: Int, created: Int, reset: Bool = false) {
         let percent: CGFloat
         if completed > 0 && created >= completed {
             percent = CGFloat(completed) / CGFloat(created)
         } else {
             percent = 0
         }
-        self.circleShapeLayer.startAnimation(Double(percent))
-        let labelPercent = CGFloat(percent * 100.0)
-        self.precentLabel.countFromCurrentValue(to: labelPercent, withDuration: kCalendarProgressAnimationDuration)
+        
+        self.circleShapeLayer.animationDuration = self.duration
+        self.circleShapeLayer
+            .startAnimation(Double(percent), reset: reset)
+        
+        if self.precentLableEnable {
+            let labelPercent = CGFloat(percent * 100.0)
+            self.precentLabel.countFromCurrentValue(to: labelPercent, withDuration: self.duration)
+        }
     }
     
     func setup() {
@@ -80,7 +100,7 @@ final class CircleProgressView: UIView {
         self.addSubview(self.precentLabel)
         self.precentLabel.textColor = Colors.mainTextColor
         self.precentLabel.numberOfLines = 1
-        self.precentLabel.animationDuration = kCalendarProgressAnimationDuration
+        
         self.precentLabel.font = UIFont(name: "Courier New", size: DeviceSzie.isSmallDevice() ? 40 : 60)
         self.precentLabel.method = .easeInOut
         self.precentLabel.format = "%d"
@@ -97,7 +117,6 @@ final class CircleProgressView: UIView {
             make.centerY.equalToSuperview().offset(DeviceSzie.isSmallDevice() ? 25 : 45)
         }
         
-        let pLabel = UILabel()
         pLabel.font = UIFont.systemFont(ofSize: DeviceSzie.isSmallDevice() ? 14 : 20, weight: UIFontWeightLight)
         pLabel.textColor = Colors.mainTextColor
         pLabel.text = "%"
@@ -124,6 +143,19 @@ final class CircleProgressView: UIView {
             self.circleButton.backgroundColor = Colors.cellCardColor
         }
     }
+    
+    func pause() {
+        self.circleShapeLayer.speed = 0
+        self.circleShapeLayer.timeOffset = self.circleShapeLayer.convertTime(CACurrentMediaTime(), from: nil)
+    }
+    
+    func resume() {
+        self.circleShapeLayer.speed = 1
+        self.circleShapeLayer.timeOffset = 0
+        self.circleShapeLayer.beginTime = 0
+        self.circleShapeLayer.beginTime =
+            self.circleShapeLayer.convertTime(CACurrentMediaTime(), from: nil) - self.circleShapeLayer.timeOffset
+    }
 }
 
 
@@ -133,6 +165,7 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
     fileprivate let circleLineWidth: CGFloat = 2
     
     var inAnimation = false
+    var animationDuration: TimeInterval = kCalendarProgressAnimationDuration
     
     override init() {
         super.init()
@@ -150,10 +183,12 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
         super.layoutSublayers()
     }
     
-    func startAnimation(_ percent: Double) {
+    func startAnimation(_ percent: Double, reset: Bool) {
         let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        pathAnimation.duration = kCalendarProgressAnimationDuration
-//        pathAnimation.fromValue = self.percent
+        pathAnimation.duration = self.animationDuration
+        if reset {
+            pathAnimation.fromValue = 0
+        }
         pathAnimation.toValue = percent
         pathAnimation.delegate = self
         pathAnimation.fillMode = kCAFillModeForwards

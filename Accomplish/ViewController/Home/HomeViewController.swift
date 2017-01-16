@@ -38,15 +38,16 @@
         self.addNotification()
         self.initTimer()
         
-        self.icloudManager.asyncFromCloudIfNeeded()
-        
-        if appDefault.readBool(kUserDefaultBuildInTMKey) != true {
-            BuildInTimeMethodCreator().pomodoroCreator()
-            appDefault.write(kUserDefaultBuildInTMKey, value: true)
-        }
 //        TestManager().addAppStoreData()
         
         dispatch_delay(0.5) { [unowned self] in
+            if appDefault.readBool(kUserDefaultBuildInTMKey) != true {
+                self.icloudManager.asyncFromCloudIfNeeded()
+                BuildInTimeMethodCreator().pomodoroCreator()
+                BuildInTaskCreator().create()
+                appDefault.write(kUserDefaultBuildInTMKey, value: true)
+            }
+            
             self.checkTimeMethodRunning()
         }
     }

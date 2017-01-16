@@ -36,6 +36,16 @@ class ReadLaterViewController: BaseViewController {
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         self.createTitleLabel(titleText: Localized("readLaterTitle"), style: .center)
         self.configReadLaterTableView(bar: bar)
+        if let emptyView = EmptyView.loadNib(self) {
+            self.view.addSubview(emptyView)
+            emptyView.snp.makeConstraints({ (make) in
+                make.left.equalToSuperview()
+                make.right.equalToSuperview()
+                make.top.equalTo(self.readLaterTableView)
+                make.bottom.equalToSuperview()
+            })
+            emptyView.isHidden = !readLaters.isEmpty
+        }
     }
 
 }

@@ -38,7 +38,7 @@
                                     <rect key="frame" x="10" y="13.5" width="345" height="17"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="SUK-VC-62L"/>
                                     </connections>

@@ -108,6 +108,7 @@
 		C74A896E1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A896F1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A89701D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
+		C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator {.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator {.swift */; };
 		C75F85821E053F6D0057D76C /* 00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C75F855A1E053F6D0057D76C /* 00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap */; };
 		C75F85831E053F6D0057D76C /* 00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C75F855B1E053F6D0057D76C /* 00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap */; };
 		C75F85841E053F6D0057D76C /* 035FA449-7E65-35CF-9F2E-76FE3795A161.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = C75F855C1E053F6D0057D76C /* 035FA449-7E65-35CF-9F2E-76FE3795A161.bcsymbolmap */; };
@@ -512,6 +513,7 @@
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C74A896D1D9636F3008E15CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator {.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildInTaskCreator {.swift"; sourceTree = "<group>"; };
 		C75F855A1E053F6D0057D76C /* 00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "00554C91-A679-3325-AEB8-FC07EE54FC41.bcsymbolmap"; sourceTree = "<group>"; };
 		C75F855B1E053F6D0057D76C /* 00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "00756241-7F84-3D25-8403-DE283D84CD4A.bcsymbolmap"; sourceTree = "<group>"; };
 		C75F855C1E053F6D0057D76C /* 035FA449-7E65-35CF-9F2E-76FE3795A161.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "035FA449-7E65-35CF-9F2E-76FE3795A161.bcsymbolmap"; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 			children = (
 				C70BF6251D79C58B006B0C1D /* SecondTimer.swift */,
 				C73B442B1E0969D600DDE093 /* TaskListManager.swift */,
+				C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator {.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -2173,6 +2176,7 @@
 				C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */,
 				C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */,
 				C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */,
+				C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator {.swift in Sources */,
 				C73B447C1E0C494200DDE093 /* TaskPickerView.swift in Sources */,
 				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,
 				C73B44391E0A523100DDE093 /* EmptyDataView.swift in Sources */,

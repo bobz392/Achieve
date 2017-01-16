@@ -8,14 +8,10 @@
 
 import Foundation
 
-let kUserDefaultFullScreenKey = "com.current.screen.size"
-
 let kUserDefaultWeekStartKey = "com.date.start"
 // 是否关闭推迟到今天
 let kUserDefaultCloseDueTodayKey = "com.due.today"
 let kUserDefaultCloseSoundKey = "com.close.finish.sound"
-// 当前选中的主题色
-let kUserDefaultBackgroundKey = "com.background.color"
 let kUserDefaultWatchDateHasNewKey = "com.watch.date.is.new"
 
 let kUserDefaultCurrentTagUUIDKey = "com.current.tag"
@@ -27,6 +23,8 @@ let kUserDefaultMoveUnfinishTaskKey = "com.check.unfinish.task"
 let kUserDefaultSynciCloudKey = "com.sync.cloud.data"
 // 是否创建内置的工作法
 let kUserDefaultBuildInTMKey = "com.build.in.time.method"
+// 是否创建Build in task
+let kUserDefaultBuildInTaskKey = "com.build.in.task"
 // 工作法的中断保存信息，例如进行情况和 time manager 的 uuid
 let kUserDefaultTMDetailsKey = "com.tm.manager"
 let kUserDefaultTMUUIDKey = "com.tm.uuid"

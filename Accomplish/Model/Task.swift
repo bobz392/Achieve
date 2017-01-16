@@ -57,6 +57,7 @@ enum TaskType {
     case custom
     case system
     case subtask
+    case guild
     
     func type() -> Int {
         switch self {
@@ -66,6 +67,8 @@ enum TaskType {
             return 1
         case .subtask:
             return 3
+        case .guild:
+            return 4
         }
     }
 }

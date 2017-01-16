@@ -52,7 +52,7 @@
                                 <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="justified" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3BC-4a-wUV">
                                     <rect key="frame" x="12" y="0.0" width="328" height="44"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="Gh7-5d-0eE"/>
                                     </connections>

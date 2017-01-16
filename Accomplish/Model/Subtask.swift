@@ -15,4 +15,11 @@ class Subtask: Object {
     dynamic var rootUUID = ""
     dynamic var createdDate: NSDate?
     dynamic var finishedDate: NSDate?
+
+    func createDefaultSubtask(todo: String, rootTaskUUID: String, createDate: NSDate = NSDate()) {
+        self.rootUUID = rootTaskUUID
+        self.createdDate = createDate
+        self.taskToDo = todo
+        self.uuid = createDate.createTaskUUID()
+    }
 }

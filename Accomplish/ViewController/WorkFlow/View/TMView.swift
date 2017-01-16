@@ -37,6 +37,7 @@ class TMView: UIView {
     fileprivate var groupRepeatTimes = 0
     
     fileprivate var currentStatusRunning = false
+    fileprivate var foucustime: Int = 0
     
     var startType = StartTimeStatuType.Init
     var task: Task!
@@ -281,6 +282,7 @@ extension TMView: MZTimerLabelDelegate {
         
         self.soundManager.systemDing()
         self.nextStatus()
+        self.foucustime += Int(countTime)
     }
     
     fileprivate func nextStatus(_ start: Bool = true) {
@@ -316,11 +318,11 @@ extension TMView: MZTimerLabelDelegate {
             self.loopLabel.text = "\(self.methodRepeatTimes) " + method.timeMethodAliase
         }
         self.titleLabel.text = item.name
-        #if debug
-            let countTime = TimeInterval(5)
-        #else
+//        #if debug
+//            let countTime = TimeInterval(5)
+//        #else
             let countTime = TimeInterval(item.interval * 60)
-        #endif
+//        #endif
         
         self.countLabel.setCountDownTime(countTime)
         
@@ -338,6 +340,7 @@ extension TMView: MZTimerLabelDelegate {
         // 如果选择此工作法，那么使用次数 + 1
         RealmManager.shared.updateObject { [unowned self] in
             self.method.useTimes += 1
+            self.task.foucustime += self.foucustime
         }
         
         self.countLabel.pause()

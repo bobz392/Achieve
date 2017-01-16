@@ -99,7 +99,6 @@ struct RepeaterManager {
         newTask.tagUUID = task.tagUUID
         newTask.taskNote = task.taskNote
         newTask.taskType = task.taskType
-        newTask.trigger = nil
         
         let shareManager = RealmManager.shared
         let subtasks = shareManager.querySubtask(task.uuid)

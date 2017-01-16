@@ -86,8 +86,8 @@ class Task: Object {
     dynamic var estimateDate: NSDate?
     dynamic var postponeTimes: Int = 0
     dynamic var tagUUID: String?
+    dynamic var foucustime: Int = 0
     
-    dynamic var trigger: Trigger?
     dynamic var repeaterUUID: String?
     dynamic var subTaskCount: Int = 0
     

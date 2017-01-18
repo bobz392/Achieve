@@ -3,24 +3,24 @@
 "show"="TONEN";
 "hide"="VERBERGEN";
 "newTask"="Nieuwe taak";
-"emptyTask"="Niet meer taken, Geniet van de dag of daag een nieuwe taak";
+"emptyTask"="Geen nieuwe taken";
 "emptyTagTask"="Nooit meer taken op Tag: %@";
 "detailIncomplete"="Gisteren onvoltooide taken uitgesteld tot vandaag";
 "asyncing"="Vernieuwing";
-"icloud"="Login iCloud-account om uw gegevens te synchroniseren";
+"icloud"="Log in iCloud-account om uw gegevens te synchroniseren";
 
-"noPermission"="No toegangsrechten";
-"abPermission"="We hebben geen toestemming om toegang te krijgen tot het adresboek, dan kunt u deze toestemming te verlenen door middel van \"Settings > Privacy > Contacts\"";
+"noPermission"="Geen toegangsrechten";
+"abPermission"="Wij hebben geen toestemming om toegang te krijgen tot het adresboek hebben,U kunt deze toestemming te verlenen door middel van \"Settings > Privacy > Contacts\"";
 "needABPermission"="Toestemming nodig om toegang te krijgen tot het adresboek";
 "loading"="Laden";
 
-"rescheduling"="Task detail";
-"taskReminding"="Task herinnering";
-"finishTask"="Finish taak";
+"rescheduling"="Taak detail";
+"taskReminding"="Taak herinnering";
+"finishTask"="Afwerking taak";
 "cancel"="Annuleer";
 "delete"="Verwijderen";
-"deleteTask"="Delete taak";
-"deleteReminder"="Delete herinnering";
+"deleteTask"="taak verwijderen";
+"deleteReminder"="verwijderen herinnering";
 "permit"="Toestaan";
 "reject"="Weigeren";
 "add"="Toevoegen";
@@ -44,8 +44,8 @@
 "priority1"="Normal";
 "priority0"="Laag";
 
-"builtInTask"="Built-in Task";
-"callAction"="Call";
+"builtInTask"="Ingebouwde Task";
+"callAction"="Telefoontje";
 "sendMessageAction"="Bericht te sturen naar";
 "faceTimeAction"="FaceTime naar";
 "mailAction"="E-mail verzenden naar";
@@ -53,9 +53,9 @@
 
 "addPhoneCall"="Maak een telefoontje taak";
 "addMessage"="Bericht maken taak";
-"addFaceTime"="Create FaceTime taak";
-"addMail"="Create mail taak";
-"addSubtask"="Create taak subtaak";
+"addFaceTime"="Maak FaceTime taak";
+"addMail"="Maak mail taak";
+"addSubtask"="Maak De taak van een subtaak";
 "addCustomScheme"="Maak aangepaste launcher taak";
 "taskTitle"="Vul uw taak naam";
 "subtaskInfo"="Vul uw deeltaken, subtaken worden gescheiden in te voeren";
@@ -111,9 +111,8 @@
 "extra"="Extra";
 
 // calendar
-"enter"="enter";
-"schedule"="Schedule";
-"noSchedule"="No Schedule";
+"schedule"="Plannen";
+"noSchedule"="Nr plannen";
 "notCompleted"="Niet compleet";
 "notComoletedYet"="nog niet ingevuld";
 "monthly"="Maandoverzicht";

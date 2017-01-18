@@ -3,7 +3,7 @@
 "show"="MOSTRARE";
 "hide"="NASCONDERE";
 "newTask"="Nuovo compito";
-"emptyTask"="Non ci sono più attività, godersi la giornata o la sfida di una nuova attività";
+"emptyTask"="Non ci sono nuovi compiti";
 "emptyTagTask"="Non ci sono più attività in tag: %@";
 "detailIncomplete"="Ieri compiti non finiti rinviata a oggi";
 "asyncing"="In aggiornamento";
@@ -111,7 +111,6 @@
 "extra"="Extra";
 
 // calendar
-"enter"="Enter";
 "schedule"="Programma";
 "noSchedule"="Nessuna pianificazione";
 "notCompleted"="non completato";

@@ -3,7 +3,7 @@
 "show"="显示";
 "hide"="隐藏";
 "newTask"="新任务";
-"emptyTask"="没有新任务，放松一下或者挑战一个新任务";
+"emptyTask"="没有新任务";
 "emptyTagTask"="没有新任务在标签：%@";
 "detailIncomplete"="把昨天未完成的任务移到今天";
 "asyncing"="同步中";
@@ -111,7 +111,6 @@
 "extra"="附加";
 
 // calendar
-"enter"="进入";
 "schedule"="日程";
 "noSchedule"="没有日程";
 "notCompleted"="没有完成";

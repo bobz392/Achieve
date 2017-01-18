@@ -3,7 +3,7 @@
 "show"="SHOW";
 "hide"="VERSTECKEN";
 "newTask"="Neue Aufgabe";
-"emptyTask"="Keine weiteren Aufgaben, Genießenden Tag oder eine neue Aufgabe in Frage stellen";
+"emptyTask"="Keine neuen Aufgaben";
 "emptyTagTask"="Keine weiteren Aufgaben in Tag: %@";
 "detailIncomplete"="Gestern unerledigten Aufgaben auf heute verschoben";
 "asyncing"="Aktualisierung";
@@ -111,7 +111,6 @@
 "extra"="Extra";
 
 // calendar
-"enter"="Geben Sie";
 "schedule"="Zeitplan";
 "noSchedule"="Kein Zeitplan";
 "notCompleted"="nicht vollständig";

@@ -275,7 +275,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.createdLabel.count(from: 0, to: CGFloat(created))
         self.completedLabel.count(from: 0, to: CGFloat(completed))
         self.circleView.scheduleLabel.text =
-            created > 0 ? Localized("enter") + Localized("schedule") : Localized("noSchedule")
+            created > 0 ? Localized("schedule") : Localized("noSchedule")
     }
     
 }

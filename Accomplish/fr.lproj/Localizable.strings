@@ -3,7 +3,7 @@
 "show"="VOIR L’ÉTABLISSEMENT";
 "hide"="MASQUER";
 "newTask"="Nouvelles tâches";
-"emptyTask"="Aucune tâche plus, profiter de la journée ou contester une nouvelle tâche";
+"emptyTask"="Aucune nouvelle tâche";
 "emptyTagTask"="Pas plus de tâches dans la balise: %@";
 "detailIncomplete"="Hier les tâches inachevées reportés à aujourd'hui";
 "asyncing"="Mise à jour";
@@ -111,7 +111,6 @@
 "extra"="Supplémentaire";
 
 // calendar
-"enter"="Enter";
 "schedule"="Programme";
 "noSchedule"="Horaire";
 "notCompleted"="pas achevé";

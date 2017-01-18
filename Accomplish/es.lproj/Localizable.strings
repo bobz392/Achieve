@@ -3,7 +3,7 @@
 "show"="ESPECTÁCULO";
 "hide"="ESCONDER";
 "newTask"="Nueva tarea";
-"emptyTask"="No hay más tareas, disfrutar del día o desafían una nueva tarea";
+"emptyTask"="No hay nuevas tareas";
 "emptyTagTask"="No hay más tareas en la etiqueta: %@";
 "detailIncomplete"="Ayer tareas pendientes pospuestas hasta hoy";
 "asyncing"="Actualización";
@@ -111,7 +111,6 @@
 "extra"="Extra";
 
 // calendar
-"enter"="Enter";
 "schedule"="Programar";
 "noSchedule"="Sin programación";
 "notCompleted"="sin completar";

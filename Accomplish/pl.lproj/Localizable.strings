@@ -3,7 +3,7 @@
 "show"="SHOW";
 "hide"="HIDE";
 "newTask"="New Task";
-"emptyTask"="No more tasks, Enjoy the day or challenge a new task";
+"emptyTask"="No New Tasks";
 "emptyTagTask"="No more tasks in Tag: %@";
 "detailIncomplete"="Yesterday unfinished tasks postponed to today";
 "asyncing"="Updating";
@@ -111,7 +111,6 @@
 "extra"="Extra";
 
 // calendar
-"enter"="Enter ";
 "schedule"="Schedule";
 "noSchedule"="No Schedule";
 "notCompleted"="not completed";

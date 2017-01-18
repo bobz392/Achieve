@@ -3,7 +3,7 @@
 "show"="보여 주다";
 "hide"="숨는 장소";
 "newTask"="새 작업";
-"emptyTask"="더 이상 작업은 하루를 즐기거나 새로운 작업에 도전";
+"emptyTask"="새로운 작업 없음";
 "emptyTagTask"="태그에서 더 이상 작업하지 %@ 의";
 "detailIncomplete"="어제 미완성 작업은 오늘로 연기";
 "asyncing"="업데이트";
@@ -111,7 +111,6 @@
 "extra"="특별한";
 
 // calendar
-"enter"="입력";
 "schedule"="시간표";
 "noSchedule"="어떤 일정 없습니다";
 "notCompleted"="완료되지";

@@ -3,7 +3,7 @@
 "show"="ディスプレイ";
 "hide"="非表示";
 "newTask"="新しいタスク";
-"emptyTask"="新しいタスクはありません，リラックス";
+"emptyTask"="新しいタスクがあるありません";
 "emptyTagTask"="新しいタスクはありませんこのタグで：%@";
 "detailIncomplete"="今日完了昨日した未完のタスク";
 "asyncing"="同期式データ";
@@ -110,7 +110,6 @@
 "extra"="追加の設定";
 
 // calendar
-"enter"="入る";
 "schedule"="スケジュール";
 "noSchedule"="スケジュールなし";
 "completedAt"="終了 ";

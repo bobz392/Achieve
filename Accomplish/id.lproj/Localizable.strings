@@ -3,7 +3,7 @@
 "show"="MENUNJUKKAN";
 "hide"="MENYEMBUNYIKAN";
 "newTask"="Tugas Baru";
-"emptyTask"="Tidak ada tugas yang lebih, Nikmati hari atau menantang tugas baru";
+"emptyTask"="Tidak ada tugas baru";
 "emptyTagTask"="Tidak ada lagi tugas di tuga: %@";
 "detailIncomplete"="Kemarin tugas yang belum selesai ditunda untuk hari ini";
 "asyncing"="Memperbarui";
@@ -111,7 +111,6 @@
 "extra"="Tambahan";
 
 // calendar
-"enter"="masuk";
 "schedule"="Susunan acara";
 "noSchedule"="Tidak ada Jadwal";
 "notCompleted"="tidak selesai";

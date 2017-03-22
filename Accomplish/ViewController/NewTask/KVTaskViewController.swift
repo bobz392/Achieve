@@ -80,7 +80,7 @@ class KVTaskViewController: BaseViewController {
         
         paparView.addSubview(self.nameTextField)
         self.nameTextField.backgroundColor = Colors.cellCardColor
-        self.nameTextField.font = UIFont.systemFont(ofSize: 16)
+        self.nameTextField.font = appFont(size: 16)
         self.nameTextField.textColor = Colors.mainTextColor
         self.nameTextField.delegate = self
         self.nameTextField.snp.makeConstraints { (make) in
@@ -102,7 +102,7 @@ class KVTaskViewController: BaseViewController {
         
         paparView.addSubview(self.contentTextView)
         self.contentTextView.backgroundColor = Colors.cellCardColor
-        self.contentTextView.font = UIFont.systemFont(ofSize: 14)
+        self.contentTextView.font = appFont(size: 14)
         self.contentTextView.delegate = self
         self.contentTextView.tintColor = Colors.mainTextColor
         self.contentTextView.textColor = Colors.mainTextColor
@@ -114,7 +114,7 @@ class KVTaskViewController: BaseViewController {
         }
         
         self.view.addSubview(self.contentTextPlaceHolderLabel)
-        self.contentTextPlaceHolderLabel.font = UIFont.systemFont(ofSize: 14)
+        self.contentTextPlaceHolderLabel.font = appFont(size: 14)
         self.contentTextPlaceHolderLabel.textColor = Colors.placeHolderTextColor
         self.contentTextPlaceHolderLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.nameTextField)

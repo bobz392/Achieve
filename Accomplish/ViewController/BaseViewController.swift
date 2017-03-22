@@ -127,7 +127,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let titleLabel = UILabel()
         titleLabel.textColor = Colors.mainTextColor
-        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.font = appFont(size: 16)
         titleLabel.text = titleText
         bar.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in

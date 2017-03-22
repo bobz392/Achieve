@@ -63,7 +63,7 @@ class SubtaskTableViewCell: BaseTableViewCell {
             let attrPlacehold =
                 NSAttributedString(string: Localized("detailAddSubtask"), attributes: [
                     NSForegroundColorAttributeName: Colors.secondaryTextColor,
-                    NSFontAttributeName: UIFont.systemFont(ofSize: 15)
+                    NSFontAttributeName: appFont(size: 15)
                     ]
             )
             

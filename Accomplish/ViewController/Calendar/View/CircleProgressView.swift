@@ -111,13 +111,13 @@ final class CircleProgressView: UIView {
         
         self.addSubview(self.scheduleLabel)
         self.scheduleLabel.textColor = Colors.secondaryTextColor
-        self.scheduleLabel.font = UIFont.systemFont(ofSize: DeviceSzie.isSmallDevice() ? 14 : 18)
+        self.scheduleLabel.font = appFont(size: DeviceSzie.isSmallDevice() ? 14 : 18)
         self.scheduleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(DeviceSzie.isSmallDevice() ? 25 : 45)
         }
         
-        pLabel.font = UIFont.systemFont(ofSize: DeviceSzie.isSmallDevice() ? 14 : 20, weight: UIFontWeightLight)
+        pLabel.font = appFont(size: DeviceSzie.isSmallDevice() ? 14 : 20, weight: UIFontWeightLight)
         pLabel.textColor = Colors.mainTextColor
         pLabel.text = "%"
         self.addSubview(pLabel)

@@ -80,7 +80,7 @@ class NoteViewController: BaseViewController {
         
         let titleLable = UILabel()
         titleLable.text = self.task.realTaskToDo()
-        titleLable.font = UIFont.systemFont(ofSize: 17)
+        titleLable.font = appFont(size: 17)
         titleLable.textAlignment = .center
         titleLable.textColor = Colors.mainTextColor
         bar.addSubview(titleLable)
@@ -90,7 +90,7 @@ class NoteViewController: BaseViewController {
             make.width.equalTo(180)
         }
         
-        noteTextView.font = UIFont.systemFont(ofSize: 16)
+        noteTextView.font = appFont(size: 16)
         noteTextView.textColor = Colors.mainTextColor
         noteTextView.tintColor = Colors.mainTextColor
         noteTextView.text = self.task.taskNote

@@ -171,8 +171,13 @@ class CloudKitManager: NSObject {
                     }
                     
                     dispatch_async_main {
-                        RealmManager.shared.writeObjects(tasks)
+                        if tasks.count > 0 {
+                            RealmManager.shared.writeObjects(tasks)
+                        } else {
+                            BuildInTaskCreator().create()
+                        }
                     }
+                    
                     self.asyncSubtask(db: privateDB)
                 }
             }

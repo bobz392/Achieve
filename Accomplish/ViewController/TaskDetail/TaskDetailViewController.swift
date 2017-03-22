@@ -99,7 +99,7 @@ class TaskDetailViewController: BaseViewController {
         
         bar.addSubview(taskToDoTextView)
         taskToDoTextView.maxHeight = 160
-        taskToDoTextView.font = UIFont.systemFont(ofSize: 18)
+        taskToDoTextView.font = appFont(size: 18)
         taskToDoTextView.text = self.task.realTaskToDo()
         taskToDoTextView.textColor = Colors.mainTextColor
         taskToDoTextView.clearView()
@@ -114,7 +114,7 @@ class TaskDetailViewController: BaseViewController {
             make.top.equalToSuperview().offset(23)
         }
         
-        dateLabel.font = UIFont.systemFont(ofSize: 12)
+        dateLabel.font = appFont(size: 12)
         dateLabel.textColor = Colors.secondaryTextColor
         dateLabel.text = self.task.createdDate?.getDateString()
         dateLabel.textAlignment = .right

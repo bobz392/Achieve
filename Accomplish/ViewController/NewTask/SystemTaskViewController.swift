@@ -37,7 +37,7 @@ class SystemTaskViewController: BaseViewController {
         
         let titleLabel = UILabel()
         titleLabel.textColor = Colors.mainTextColor
-        titleLabel.font = UIFont.systemFont(ofSize: 17)
+        titleLabel.font = appFont(size: 17)
         titleLabel.text = Localized("builtInTask")
         bar.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in

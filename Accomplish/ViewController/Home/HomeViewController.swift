@@ -32,24 +32,22 @@
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDefault = AppUserDefault()
         self.configMainUI()
-        self.taskListManager.datasource = self
-        self.addNotification()
-        self.initTimer()
-        
-//        TestManager().addAppStoreData()
         
         dispatch_delay(0.5) { [unowned self] in
+            let appDefault = AppUserDefault()
             if appDefault.readBool(kUserDefaultBuildInTMKey) != true {
                 self.icloudManager.asyncFromCloudIfNeeded()
                 BuildInTimeMethodCreator().pomodoroCreator()
-                BuildInTaskCreator().create()
                 appDefault.write(kUserDefaultBuildInTMKey, value: true)
             }
             
             self.checkTimeMethodRunning()
         }
+        
+        self.taskListManager.datasource = self
+        self.addNotification()
+        self.initTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +83,7 @@
         
         let bar = self.createCustomBar(height: kBarHeight)
         let menuButton = self.congfigMenuButton()
+        self.createTitleLabel(titleText: Localized("home"))
         
         let searchButton = UIButton(type: .custom)
         searchButton.buttonWithIcon(icon: Icons.search.iconString())

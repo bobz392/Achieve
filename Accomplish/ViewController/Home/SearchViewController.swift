@@ -67,7 +67,7 @@ class SearchViewController: BaseViewController {
         leftButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         bar.addSubview(self.searchTextField)
-        self.searchTextField.font = UIFont.systemFont(ofSize: 14)
+        self.searchTextField.font = appFont(size: 14)
         self.searchTextField.textColor = Colors.mainTextColor
         self.searchTextField.clearButtonMode = .whileEditing
         self.searchTextField.tintColor = Colors.mainTextColor
@@ -83,7 +83,7 @@ class SearchViewController: BaseViewController {
         
         self.configTableView(bar: bar)
         
-        self.hintLabel.font = UIFont.systemFont(ofSize: 14)
+        self.hintLabel.font = appFont(size: 14)
         self.hintLabel.textColor = Colors.mainIconColor
         self.view.addSubview(self.hintLabel)
         self.hintLabel.isHidden = true

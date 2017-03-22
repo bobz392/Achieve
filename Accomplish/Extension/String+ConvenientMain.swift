@@ -54,7 +54,7 @@ extension String {
 extension String {
     func addStrikethrough(fontSize: CGFloat = 16) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: [
-            NSFontAttributeName: UIFont.systemFont(ofSize: fontSize),
+            NSFontAttributeName: appFont(size: fontSize),
             NSForegroundColorAttributeName: Colors.secondaryTextColor,
             NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
             NSStrikethroughColorAttributeName: Colors.secondaryTextColor,
@@ -65,7 +65,7 @@ extension String {
         return NSAttributedString(string: self, attributes: [
             NSForegroundColorAttributeName: color,
             NSBaselineOffsetAttributeName: 0,
-            NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)
+            NSFontAttributeName: appFont(size: fontSize)
             ]
         )
     }

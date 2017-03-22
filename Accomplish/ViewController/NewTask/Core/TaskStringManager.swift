@@ -39,14 +39,6 @@ struct TaskManager {
             return nil
         }
     }
-    
-//    private func createNormalText(text: String, colors: Colors)
-//        -> NSMutableAttributedString {
-//            let attachment = NSMutableAttributedString(string: text)
-//            attachment.yy_font = UIFont.systemFontOfSize(kTaskTitleFontSize)
-//            attachment.yy_color = colors.mainTextColor
-//            return attachment
-//    }
-    
+
 }
 

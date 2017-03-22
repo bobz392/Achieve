@@ -27,7 +27,7 @@ class AboutViewController: BaseViewController {
         backButton.addTarget(self, action: #selector(self.backAction), for: .touchUpInside)
         
         let appLabel = UILabel()
-        appLabel.font = UIFont(name: "Chalkduster", size: 45)
+        appLabel.font = appFont(size: 45)
         appLabel.textColor = Colors.mainIconColor
         appLabel.text = "Achieve"
         appLabel.textAlignment = .center
@@ -43,7 +43,7 @@ class AboutViewController: BaseViewController {
         contentLabel.numberOfLines = 0
         contentLabel.textColor = Colors.mainIconColor
         contentLabel.textAlignment = .center
-        contentLabel.font = UIFont(name: "Chalkduster", size: 14)
+        contentLabel.font = appFont(size: 14)
         self.view.addSubview(contentLabel)
         contentLabel.snp.makeConstraints { (make) in
             make.top.equalTo(appLabel.snp.bottom).offset(20)
@@ -61,7 +61,7 @@ class AboutViewController: BaseViewController {
         let versionLabel = UILabel()
         versionLabel.textColor = Colors.mainIconColor
         versionLabel.textAlignment = .center
-        versionLabel.font = UIFont.systemFont(ofSize: 12)
+        versionLabel.font = appFont(size: 12)
         versionLabel.text = Localized("version") + " \(appVersion.version)" + " (\(appVersion.build))"
         self.view.addSubview(versionLabel)
         versionLabel.snp.makeConstraints { (make) in

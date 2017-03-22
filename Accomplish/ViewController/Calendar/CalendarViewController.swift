@@ -102,6 +102,7 @@ class CalendarViewController: BaseViewController {
         self.cardView.backgroundColor = Colors.cellCardColor
         let bar = self.createCustomBar(height: kBarHeight)
         self.view.sendSubview(toBack: bar)
+        self.createTitleLabel(titleText: Localized("calendar"))
         let menuButton = self.congfigMenuButton()
         
         bar.addSubview(self.dateButton)
@@ -171,7 +172,6 @@ class CalendarViewController: BaseViewController {
             label.textColor = Colors.mainIconColor
             if startDay == DaysOfWeek.monday.rawValue {
                 label.text = Localized("day\(label.tag)")
-//                label.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)
             } else if startDay == DaysOfWeek.saturday.rawValue {
                 if label.tag < 3 {
                     label.text = Localized("day\(label.tag + 5)")

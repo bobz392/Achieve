@@ -165,7 +165,7 @@ extension AddressBookViewController: UITableViewDelegate, UITableViewDataSource 
         let margin: CGFloat = 16
         let titleLabel = UILabel(frame: CGRect(x: margin, y: 0, width: view.bounds.width - margin, height: view.bounds.height))
         titleLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.font = appFont(size: 12)
         titleLabel.textColor = Colors.secondaryTextColor
         titleLabel.text = indexes[section]
         view.addSubview(titleLabel)

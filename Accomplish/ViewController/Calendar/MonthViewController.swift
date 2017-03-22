@@ -55,7 +55,7 @@ class MonthViewController: BaseViewController, ChartViewDelegate {
         self.fetchMonthlyTasks()
         self.initTableView(chartView: self.chartView)
         
-        self.emptyDataLabel.font = UIFont.systemFont(ofSize: 16)
+        self.emptyDataLabel.font = appFont(size: 16)
         self.emptyDataLabel.textColor = Colors.mainTextColor
         self.emptyDataLabel.text = Localized("noMonthlyData")
         self.view.addSubview(self.emptyDataLabel)

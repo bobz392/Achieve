@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C70449A41D73E69700507849 /* LayerTransitioningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */; };
+		C7051F651E82EE060096D672 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7051F641E82EE050096D672 /* Font.swift */; };
+		C7051F661E82F8270096D672 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7051F641E82EE050096D672 /* Font.swift */; };
+		C7051F681E82F82A0096D672 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7051F641E82EE050096D672 /* Font.swift */; };
+		C7051F691E82F82B0096D672 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7051F641E82EE050096D672 /* Font.swift */; };
 		C70612541D8D21DB00E37CE6 /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB41D7BF1820056623D /* MMWormhole.m */; };
 		C70612551D8D21DB00E37CE6 /* MMWormholeCoordinatedFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB61D7BF1820056623D /* MMWormholeCoordinatedFileTransiting.m */; };
 		C70612561D8D21DB00E37CE6 /* MMWormholeFileTransiting.m in Sources */ = {isa = PBXBuildFile; fileRef = C7821EB81D7BF1820056623D /* MMWormholeFileTransiting.m */; };
@@ -420,6 +424,7 @@
 
 /* Begin PBXFileReference section */
 		C70449A31D73E69700507849 /* LayerTransitioningAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerTransitioningAnimation.swift; sourceTree = "<group>"; };
+		C7051F641E82EE050096D672 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		C70612531D8D21C400E37CE6 /* AccomplishWatch-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AccomplishWatch-Bridging-Header.h"; sourceTree = "<group>"; };
 		C706125B1D8D258F00E37CE6 /* TaskRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowType.swift; sourceTree = "<group>"; };
 		C70BF6141D77DDE3006B0C1D /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
@@ -1462,6 +1467,7 @@
 				C78ED8481D7A767300031B4D /* String+ConvenientMain.swift */,
 				C79805711D7CDB8D0011DE19 /* UIColor+Convenient.swift */,
 				C79807381D8507F20011DE19 /* UIView+Icon.swift */,
+				C7051F641E82EE050096D672 /* Font.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2117,6 +2123,7 @@
 				C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */,
 				C71F215F1E080E2700A04351 /* TaskTableHeaderView.swift in Sources */,
 				C798072F1D83DB3F0011DE19 /* HUD.swift in Sources */,
+				C7051F651E82EE060096D672 /* Font.swift in Sources */,
 				C79806E51D8006580011DE19 /* CheckInManager.swift in Sources */,
 				C73B444B1E0C41DA00DDE093 /* GrowingTextView.swift in Sources */,
 				C771924F1D6CEE6800437560 /* NewTaskViewController.swift in Sources */,
@@ -2271,6 +2278,7 @@
 				C73B44421E0C1AC700DDE093 /* Icons.swift in Sources */,
 				C74A896F1D9636F4008E15CA /* Logger.swift in Sources */,
 				C78ED8A51D7A80FF00031B4D /* String+Convenient.swift in Sources */,
+				C7051F661E82F8270096D672 /* Font.swift in Sources */,
 				C78ED89B1D7A800D00031B4D /* DTConstants.m in Sources */,
 				C7821ECD1D7BF18E0056623D /* MMWormholeSessionContextTransiting.m in Sources */,
 				C7821ECF1D7BF18E0056623D /* MMWormholeSessionMessageTransiting.m in Sources */,
@@ -2293,6 +2301,7 @@
 				C7CAF0AA1D9C45E20046D756 /* GroupUserDefault.swift in Sources */,
 				C7CAF0AB1D9C45FF0046D756 /* Logger.swift in Sources */,
 				C7CAF0AE1D9C464E0046D756 /* GroupTasks.swift in Sources */,
+				C7051F681E82F82A0096D672 /* Font.swift in Sources */,
 				C7CAF09C1D9C3FE80046D756 /* MessagesViewController.swift in Sources */,
 				C7CAF0B11D9C46980046D756 /* CommonCode.swift in Sources */,
 				C7CAF0B71D9C50850046D756 /* MessageTableViewCell.swift in Sources */,
@@ -2349,6 +2358,7 @@
 				C7EFB32B1DF8D17B0094B1E0 /* GroupTasks.swift in Sources */,
 				C7EFB3331DFA00B60094B1E0 /* DTTimePeriod.m in Sources */,
 				C7EFB3291DF8CCB60094B1E0 /* GroupUserDefault.swift in Sources */,
+				C7051F691E82F82B0096D672 /* Font.swift in Sources */,
 				C7EFB3301DFA00A70094B1E0 /* DTConstants.m in Sources */,
 				C72AB4F41DFB3FBF00EA0A24 /* ShareColors.swift in Sources */,
 				C7EFB3371DFA00B60094B1E0 /* NSDate+DateTools.m in Sources */,

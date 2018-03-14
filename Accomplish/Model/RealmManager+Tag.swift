@@ -29,6 +29,6 @@ extension RealmManager {
     
     func allTags() -> Results<Tag> {
         return realm.objects(Tag.self)
-            .sorted(byProperty: "createdAt")
+            .sorted(byKeyPath: "createdAt")
     }
 }

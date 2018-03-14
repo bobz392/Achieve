@@ -13,7 +13,7 @@ import RealmSwift
 extension RealmManager {
     func queryCheckIn(first: Bool = true) -> CheckIn? {
         return realm.objects(CheckIn.self)
-            .sorted(byProperty: "checkInDate", ascending: first)
+            .sorted(byKeyPath: "checkInDate", ascending: first)
             .first
     }
     
@@ -39,7 +39,7 @@ extension RealmManager {
 //        let month = NSDate().formattedDate(withFormat: ChartQueryDateFormat)!
         let checkIns = realm.objects(CheckIn.self)
             .filter("formatedDate BEGINSWITH '\(format)'")
-            .sorted(byProperty: "checkInDate", ascending: true)
+            .sorted(byKeyPath: "checkInDate", ascending: true)
         return checkIns
     }
     

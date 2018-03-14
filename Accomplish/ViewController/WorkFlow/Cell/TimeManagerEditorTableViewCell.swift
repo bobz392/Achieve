@@ -198,7 +198,7 @@ extension TimeManagerEditorTableViewCell: UITableViewDelegate, UITableViewDataSo
             else { return true}
         
         RealmManager.shared.updateObject { [unowned self] in
-            methodGroup.items.remove(objectAtIndex: indexPath.row)
+            methodGroup.items.remove(at: indexPath.row)
             self.itemsTableView.deleteRows(at: [indexPath], with: .none)
             let reloadIndex = IndexPath(row: self.groupIndex, section: 0)
             self.methodTableView?.reloadRows(at: [reloadIndex], with: .automatic)

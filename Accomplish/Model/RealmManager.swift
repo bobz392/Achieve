@@ -80,7 +80,7 @@ class RealmManager {
         let tasks = realm
             .objects(Task.self)
             .filter("\(queryFormatted) AND \(queryStatues) \(queryWithTag)")
-            .sorted(byProperty: "createdDate", ascending: true)
+            .sorted(byKeyPath: "createdDate", ascending: true)
         
         return tasks
     }
@@ -110,7 +110,7 @@ class RealmManager {
     func queryTaskList(_ date: NSDate) -> Results<Task> {
         return realm.objects(Task.self)
             .filter("createdFormattedDate = '\(date.createdFormatedDateString())'")
-            .sorted(byProperty: "createdDate")
+            .sorted(byKeyPath: "createdDate")
     }
     
     func querySubtask(_ rootUUID: String, sorted: Bool = true) -> Results<Subtask> {
@@ -118,7 +118,7 @@ class RealmManager {
             .filter("rootUUID = '\(rootUUID)'")
         
         if sorted {
-            return subtasks.sorted(byProperty: "createdDate")
+            return subtasks.sorted(byKeyPath: "createdDate")
         } else {
             return subtasks
         }
@@ -203,7 +203,7 @@ class RealmManager {
     func searchTasks(queryString: String) -> Results<Task> {
         let tasks = realm.objects(Task.self)
             .filter("taskToDo CONTAINS '\(queryString)'")
-            .sorted(byProperty: "createdDate", ascending: false)
+            .sorted(byKeyPath: "createdDate", ascending: false)
         
         return tasks
     }

@@ -35,12 +35,12 @@ extension String {
     var isRealEmpty: Bool {
         get {
             let trimString = self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
-            return trimString.characters.count <= 0
+            return trimString.count <= 0
         }
     }
 
     func length() -> Int {
-        return self.characters.count
+        return self.count
     }
     
     func trim() -> String {
@@ -52,8 +52,8 @@ extension String {
 extension String {
     subscript (r: Range<Int>) -> String {
         get {
-            let startIndex = self.characters.index(self.startIndex, offsetBy: r.lowerBound)
-            let endIndex = self.characters.index(self.startIndex, offsetBy: r.upperBound)
+            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.index(self.startIndex, offsetBy: r.upperBound)
             
             return self[Range(startIndex ..< endIndex)]
         }
@@ -61,16 +61,16 @@ extension String {
     
     subscript (r: NSRange) -> String {
         get {
-            let startIndex = self.characters.index(self.startIndex, offsetBy: r.location)
-            let endIndex = self.characters.index(self.startIndex, offsetBy: r.length + r.location)
+            let startIndex = self.index(self.startIndex, offsetBy: r.location)
+            let endIndex = self.index(self.startIndex, offsetBy: r.length + r.location)
             return self[Range(startIndex ..< endIndex)]
         }
     }
     
     subscript (p: Int) -> String {
         get {
-            let startIndex = self.characters.index(self.startIndex, offsetBy: p)
-            let endIndex = self.characters.index(self.startIndex, offsetBy: p + 1)
+            let startIndex = self.index(self.startIndex, offsetBy: p)
+            let endIndex = self.index(self.startIndex, offsetBy: p + 1)
             
             return self[Range(startIndex ..< endIndex)]
         }

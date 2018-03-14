@@ -64,7 +64,7 @@ class TaskListManager {
      */
     func generatRealmToken() {
         let ws = self
-        self.preceedToken = preceedTasks.addNotificationBlock({ (changes: RealmCollectionChange) in
+        self.preceedToken = preceedTasks.observe({ (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
                 ws.datasource?.initial(status: .preceed)
@@ -82,7 +82,7 @@ class TaskListManager {
             }
         })
         
-        self.completedToken = completedTasks.addNotificationBlock({ (changes: RealmCollectionChange) in
+        self.completedToken = completedTasks.observe({ (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
                 ws.datasource?.initial(status: .completed)
@@ -102,8 +102,8 @@ class TaskListManager {
     }
     
     deinit {
-        self.preceedToken?.stop()
-        self.completedToken?.stop()
+        self.preceedToken?.invalidate()
+        self.completedToken?.invalidate()
     }
     
     /**

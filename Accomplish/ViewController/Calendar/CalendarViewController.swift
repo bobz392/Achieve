@@ -140,10 +140,13 @@ class CalendarViewController: BaseViewController {
             maker.bottom.equalTo(self.cardView).offset(-5)
             maker.right.equalTo(self.cardView).offset(-5)
         }
-        self.calendarView.cellInset = CGPoint(x: 0, y: 0)
-        self.calendarView.registerCellViewXib(file: "CalendarCell")
-        self.calendarView.dataSource = self
-        self.calendarView.delegate = self
+        
+//        self.calendarView.cellInset = CGPoint(x: 0, y: 0)
+        self.calendarView.calendarDelegate = self
+        self.calendarView.calendarDataSource = self
+        self.calendarView.scrollDirection = .horizontal
+        self.calendarView.register(CalendarCell.nib,
+                                   forCellWithReuseIdentifier: "CalendarCell")
         self.calendarView.clearView()
         self.calendarView.alpha = 0
         
@@ -190,7 +193,8 @@ class CalendarViewController: BaseViewController {
     
     // MARK: - actions
     func enterSchedule() {
-        guard let checkDate = self.calendarView.selectedDates.first else { return }
+        guard let checkDate = self.calendarView
+            .selectedDates.first else { return }
         let scheduleVC = ScheduleViewController(checkInDate: checkDate as NSDate)
         self.navigationController?.pushViewController(scheduleVC, animated: true)
     }
@@ -202,7 +206,8 @@ class CalendarViewController: BaseViewController {
     }
     
     func monthAction() {
-        guard let date = self.calendarView.visibleDates().monthDates.first else { return }
+        guard let date = self.calendarView.visibleDates()
+            .monthDates.first?.date else { return }
         let nd = date as NSDate
         let monthVC = MonthViewController(queryFormat: nd.formattedDate(withFormat: ChartQueryDateFormat))
         self.navigationController?.pushViewController(monthVC, animated: true)
@@ -211,8 +216,21 @@ class CalendarViewController: BaseViewController {
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     
-    public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        let endDate = self.firstDate.addingMonths(10)!
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        let c = calendarView.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath)
+        guard let cell = c as? CalendarCell else { return c }
+        let createCount = self.checkInManager.taskCount(date: date).created
+        cell.setupCellBeforeDisplay(cellState, date: date,
+                                    hasTask: createCount > 0)
+        return cell
+    }
+    
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        let endDate = Date()
         let startDate = self.firstDate as Date
         let aCalendar = Calendar.current
         
@@ -223,30 +241,24 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         return params
     }
     
+//    public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+//    }
     
-    func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
-        guard let cell = cell as? CalendarCell else { return }
-        
-        let createCount = self.checkInManager.taskCount(date: date).created
-        
-        cell.setupCellBeforeDisplay(cellState, date: date,
-                                    hasTask: createCount > 0)
-    }
-    
-    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
         self.showInfoWhenNeed(date)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let cell = cell as? CalendarCell else { return }
         cell.cellSelectionChanged(cellState, date: date)
     }
-    
+
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-        guard let startDate = visibleDates.monthDates.first else { return }
-        
+        guard let startDate = visibleDates.monthDates.first?
+            .date else { return }
+
         let nsStartDate = startDate as NSDate
         let inMonth = nsStartDate.month() <= NSDate().month() || nsStartDate.year() < NSDate().year()
         self.monthButton.isEnabled = inMonth
@@ -262,7 +274,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         self.dateButton.setTitle(newTitle, for: .normal)
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, canSelectDate date: Date, cell: JTAppleDayCellView, cellState: CellState) -> Bool {
+    func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
         return !cellState.isSelected && !circleView.isInAnimation()
     }
     

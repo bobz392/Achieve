@@ -9,10 +9,16 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarCell: JTAppleDayCellView {
+class CalendarCell: JTAppleCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var hasTaskView: UIView!
+    
+    public static var nib: UINib {
+        get {
+            return UINib.init(nibName: "CalendarCell", bundle: nil)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

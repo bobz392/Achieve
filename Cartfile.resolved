@@ -1,7 +1,0 @@
-github "SVProgressHUD/SVProgressHUD" "2.1.2"
-github "SnapKit/SnapKit" "3.2.0"
-github "cezheng/Fuzi" "1.0.1"
-github "danielgindi/Charts" "v3.0.2"
-github "onevcat/Kingfisher" "3.6.2"
-github "patchthecode/JTAppleCalendar" "6.1.6"
-github "realm/realm-cocoa" "v2.6.0"

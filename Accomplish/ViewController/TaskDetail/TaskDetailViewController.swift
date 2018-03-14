@@ -87,7 +87,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     deinit {
-        subtasksToken?.stop()
+        subtasksToken?.invalidate()
     }
     
     override func configMainUI() {
@@ -205,7 +205,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     fileprivate func realmNoticationToken() {
-        self.subtasksToken = subtasks?.addNotificationBlock({ [unowned self] (changes: RealmCollectionChange) in
+        self.subtasksToken = subtasks?.observe({ [unowned self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial(_):
                 self.detailTableView.reloadData()

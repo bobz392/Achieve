@@ -62,7 +62,8 @@ class AboutViewController: BaseViewController {
         versionLabel.textColor = Colors.mainIconColor
         versionLabel.textAlignment = .center
         versionLabel.font = appFont(size: 12)
-        versionLabel.text = Localized("version") + " \(appVersion.version)" + " (\(appVersion.build))"
+        Localized("version") 
+        versionLabel.text = Localized("version") + " \(appVersion.version) (\(appVersion.build))"
         self.view.addSubview(versionLabel)
         versionLabel.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-20)

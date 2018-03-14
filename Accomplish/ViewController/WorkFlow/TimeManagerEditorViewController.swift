@@ -105,7 +105,7 @@ extension TimeManagerEditorViewController: UITableViewDelegate, UITableViewDataS
     
     fileprivate func deleteTimeMethodGroup(indexPath: IndexPath) {
         RealmManager.shared.updateObject {
-            self.timeMethod.groups.remove(objectAtIndex: indexPath.row)
+            self.timeMethod.groups.remove(at: indexPath.row)
         }
         
         self.methodTableView.reloadSections(IndexSet(integer: 0), with: .automatic)

@@ -144,6 +144,7 @@ class CalendarViewController: BaseViewController {
 //        self.calendarView.cellInset = CGPoint(x: 0, y: 0)
         self.calendarView.calendarDelegate = self
         self.calendarView.calendarDataSource = self
+        self.calendarView.isPagingEnabled = true
         self.calendarView.scrollDirection = .horizontal
         self.calendarView.register(CalendarCell.nib,
                                    forCellWithReuseIdentifier: "CalendarCell")

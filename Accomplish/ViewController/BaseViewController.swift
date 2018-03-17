@@ -47,11 +47,13 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
      */
     @discardableResult
     func createCustomBar(height: CGFloat? = nil, withBottomLine: Bool = false) -> UIView {
+        
+        let top: CGFloat = UIDevice.current.isX() ? 20 : 0
         let bar = UIView()
         bar.backgroundColor = Colors.mainBackgroundColor
         self.view.addSubview(bar)
         bar.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(top)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             if let h = height {
@@ -230,3 +232,14 @@ enum ControllerTitleStyle {
     case center
     case left
 }
+
+extension UIDevice {
+    public func isX() -> Bool {
+        if UIScreen.main.bounds.height == 812 {
+            return true
+        }
+        
+        return false
+    }
+}
+

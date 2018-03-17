@@ -125,6 +125,10 @@ class CalendarViewController: BaseViewController {
         
         self.monthButton.backgroundColor = Colors.cellCardColor
         self.monthButton.setTitleColor(Colors.linkButtonTextColor, for: .normal)
+        
+        self.cardView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(bar.snp.bottom).offset(5)
+        }
     }
     
     fileprivate func initializeControl() {

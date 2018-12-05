@@ -87,7 +87,7 @@ class MenuButton: UIButton {
     }
     
     func setups(){
-        for layer  in  [topLayer, midLayer, bottomLayer] {
+        for layer in  [topLayer, midLayer, bottomLayer] {
             layer.masksToBounds = true
             layer.actions = [
                 "strokeStart": NSNull(),
@@ -105,8 +105,8 @@ class MenuButton: UIButton {
             let toValue = isShow ? 0.3 + Double(idx) * 0.2 : 1.0
             anim.toValue = toValue
             anim.duration = animateDuration
-            anim.fillMode = kCAFillModeBackwards
-            anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            anim.fillMode = CAMediaTimingFillMode.backwards
+            anim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             anim.beginTime = CACurrentMediaTime() + Double(idx) * animateDelay
             layer.applyAnimation(anim)
         }
@@ -122,7 +122,7 @@ class MenuButton: UIButton {
             layer.bounds = bounds!
             layer.strokeColor = self.strokeColor.cgColor
             layer.lineWidth = thickness
-            layer.lineCap = lineCapRound ? kCALineCapRound : kCALineCapSquare
+            layer.lineCap = lineCapRound ? .round : .square
         }
         self.setNeedsLayout()
     }

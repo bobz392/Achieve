@@ -13,7 +13,7 @@ let kCalendarProgressAnimationDuration: TimeInterval = 0.75
 final class CircleProgressView: UIView {
     
     let circleShapeLayer = CircleShapeLayer()
-    let circleButton = UIButton(type: UIButtonType.custom)
+    let circleButton = UIButton(type: .custom)
     let precentLabel = UICountingLabel()
     let scheduleLabel = UILabel()
     let pLabel = UILabel()
@@ -117,7 +117,8 @@ final class CircleProgressView: UIView {
             make.centerY.equalToSuperview().offset(DeviceSzie.isSmallDevice() ? 25 : 45)
         }
         
-        pLabel.font = appFont(size: DeviceSzie.isSmallDevice() ? 14 : 20, weight: UIFontWeightLight)
+        pLabel.font = appFont(size: DeviceSzie.isSmallDevice() ? 14 : 20,
+                              weight: .light)
         pLabel.textColor = Colors.mainTextColor
         pLabel.text = "%"
         self.addSubview(pLabel)
@@ -132,13 +133,13 @@ final class CircleProgressView: UIView {
         self.circleButton.layer.cornerRadius = self.circleButton.frame.width * 0.5
     }
 
-    func buttonAnimationStartAction(_ btn: UIButton) {
+    @objc func buttonAnimationStartAction(_ btn: UIButton) {
         UIView.animate(withDuration: kNormalAnimationDuration) { 
             self.circleButton.backgroundColor = Colors.cellCardSelectedColor
         }
     }
     
-    func buttonAnimationEndAction(_ btn: UIButton) {
+   @objc func buttonAnimationEndAction(_ btn: UIButton) {
         UIView.animate(withDuration: kNormalAnimationDuration) {
             self.circleButton.backgroundColor = Colors.cellCardColor
         }
@@ -191,9 +192,9 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
         }
         pathAnimation.toValue = percent
         pathAnimation.delegate = self
-        pathAnimation.fillMode = kCAFillModeForwards
+        pathAnimation.fillMode = .forwards
         pathAnimation.isRemovedOnCompletion = false
-        pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pathAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         
         self.progressLayer.add(pathAnimation, forKey: nil)
         self.inAnimation = true
@@ -220,8 +221,8 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
         self.progressLayer.fillColor = UIColor.clear.cgColor
         self.progressLayer.strokeColor = Colors.cellLabelSelectedTextColor.cgColor
         self.progressLayer.lineWidth = circleLineWidth
-        self.progressLayer.lineCap = kCALineCapButt//kCALineCapRound
-        self.progressLayer.lineJoin = kCALineJoinRound
+        self.progressLayer.lineCap = .butt//kCALineCapRound
+        self.progressLayer.lineJoin = .round
         self.progressLayer.strokeEnd = 0
         
         self.addSublayer(progressLayer)
@@ -231,6 +232,10 @@ internal final class CircleShapeLayer: CAShapeLayer, CAAnimationDelegate {
         let positionY = self.frame.height * 0.5
         let positionX = self.frame.width * 0.5
         let center = CGPoint(x: positionX, y: positionY)
-        return UIBezierPath(arcCenter: center, radius: positionX, startAngle: CGFloat(-M_PI * 0.5), endAngle: CGFloat(1.5 * M_PI), clockwise: true).cgPath
+        return UIBezierPath(arcCenter: center,
+                            radius: positionX,
+                            startAngle: CGFloat(-.pi * 0.5),
+                            endAngle: CGFloat(1.5 * .pi),
+                            clockwise: true).cgPath
     }
 }

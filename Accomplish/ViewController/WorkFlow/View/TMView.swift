@@ -96,19 +96,19 @@ class TMView: UIView {
         
         view.method = method
         view.task = task
-        view.baseVC = target as! BaseViewController
+        view.baseVC = target as? BaseViewController
         
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.saveTimeManager),
-                         name: NSNotification.Name.UIApplicationDidEnterBackground,
+                         name: UIApplication.didEnterBackgroundNotification,
                          object: nil)
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.saveTimeManager),
-                         name: NSNotification.Name.UIApplicationWillTerminate,
+                         name: UIApplication.willTerminateNotification,
                          object: nil)
         NotificationCenter.default
             .addObserver(view, selector: #selector(view.clearTimeManagerUserDefault),
-                         name: NSNotification.Name.UIApplicationDidBecomeActive,
+                         name: UIApplication.didBecomeActiveNotification,
                          object: nil)
         
         if let groupUserDefault = GroupUserDefault() {
@@ -118,7 +118,7 @@ class TMView: UIView {
         return view
     }
     
-    func blockGecognizer() {
+    @objc func blockGecognizer() {
         //do nothing
     }
     
@@ -143,7 +143,7 @@ class TMView: UIView {
     /**
      保存当前的信息，因为app即将进入后台，并且暂停当前count
      */
-    func saveTimeManager() {
+    @objc func saveTimeManager() {
         if self.currentStatusRunning == true {
             self.startAction()
         }
@@ -158,7 +158,7 @@ class TMView: UIView {
     /**
      恢复之前保存的信息，此时仅仅用于当app没有彻底退出还在后台的时候
      */
-    func clearTimeManagerUserDefault() {
+    @objc func clearTimeManagerUserDefault() {
         let appUserDefault = AppUserDefault()
         appUserDefault.remove(kUserDefaultTMDetailsKey)
         appUserDefault.remove(kUserDefaultTMUUIDKey)
@@ -222,7 +222,7 @@ class TMView: UIView {
         }
     }
     
-    func startAction() {
+    @objc func startAction() {
         // 点击以后开始计时
         if self.currentStatusRunning == false {
             self.countLabel.isHighlighted = false
@@ -252,7 +252,7 @@ class TMView: UIView {
     /**
      弹出退出的选择 action sheet
      */
-    func cancelAction() {
+    @objc func cancelAction() {
         let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: Localized("cancelTimeManager"), style: .default, handler: { [unowned self] (action) -> Void in

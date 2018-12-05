@@ -74,25 +74,25 @@ enum TaskType {
 }
 
 class Task: Object {
-    dynamic var uuid = ""
-    dynamic var taskToDo = ""
-    dynamic var taskNote = ""
+    @objc dynamic var uuid = ""
+    @objc dynamic var taskToDo = ""
+    @objc dynamic var taskNote = ""
     
-    dynamic var status = TaskStatus.preceed.status()
-    dynamic var taskType = TaskType.custom.type()
-    dynamic var priority = TaskPriority.normal.priority()
+    @objc dynamic var status = TaskStatus.preceed.status()
+    @objc dynamic var taskType = TaskType.custom.type()
+    @objc dynamic var priority = TaskPriority.normal.priority()
     // for query
-    dynamic var createdFormattedDate: String = ""
-    dynamic var createdDate: NSDate?
-    dynamic var notifyDate: NSDate?
-    dynamic var finishedDate: NSDate?
-    dynamic var estimateDate: NSDate?
-    dynamic var postponeTimes: Int = 0
-    dynamic var tagUUID: String?
-    dynamic var foucustime: Int = 0
+    @objc dynamic var createdFormattedDate: String = ""
+    @objc dynamic var createdDate: NSDate?
+    @objc dynamic var notifyDate: NSDate?
+    @objc dynamic var finishedDate: NSDate?
+    @objc dynamic var estimateDate: NSDate?
+    @objc dynamic var postponeTimes: Int = 0
+    @objc dynamic var tagUUID: String?
+    @objc dynamic var foucustime: Int = 0
     
-    dynamic var repeaterUUID: String?
-    dynamic var subTaskCount: Int = 0
+    @objc dynamic var repeaterUUID: String?
+    @objc dynamic var subTaskCount: Int = 0
     
     override class func primaryKey() -> String? {
         return "uuid"

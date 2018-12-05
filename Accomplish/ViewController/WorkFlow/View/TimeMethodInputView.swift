@@ -65,7 +65,7 @@ class TimeMethodInputView: UIView {
         return view
     }
     
-    func blockGecognizer() {
+    @objc func blockGecognizer() {
         //do nothing
     }
     
@@ -115,7 +115,7 @@ class TimeMethodInputView: UIView {
     }
 
     
-    func moveIn() {
+    @objc func moveIn() {
         guard let view = self.moveInView else { fatalError("not set move in view yet")}
         // 进来的时候先隐藏
         let image = view.convertViewToImage()
@@ -142,7 +142,7 @@ class TimeMethodInputView: UIView {
         }, completion: nil)
     }
     
-    func moveOut() {
+    @objc func moveOut() {
         self.cardHolderViewTopConstraint.constant = -self.viewHeight
         self.leftButton.isEnabled = true
         self.finishBlock?()
@@ -160,7 +160,7 @@ class TimeMethodInputView: UIView {
         }
     }
     
-    func saveAction() {
+    @objc func saveAction() {
         guard let first = self.firstTextField.text else {
             HUD.shared.error(Localized("please") + (self.firstTextField.placeholder ?? ""))
             return

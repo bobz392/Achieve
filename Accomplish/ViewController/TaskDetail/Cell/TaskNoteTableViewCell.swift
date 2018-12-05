@@ -48,7 +48,7 @@ class TaskNoteTableViewCell: BaseTableViewCell {
     }
     
     func configCell(_ task: Task) {
-        if task.taskNote.characters.count > 0 {
+        if task.taskNote.count > 0 {
             self.noteLabel.isHighlighted = true
             self.noteLabel.text = task.taskNote
         } else {

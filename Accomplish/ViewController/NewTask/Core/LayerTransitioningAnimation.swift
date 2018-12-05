@@ -45,7 +45,7 @@ final class LayerTransitioningAnimation: UIPercentDrivenInteractiveTransition, U
                 fromView.alpha = 0
                 }, completion: nil)
             
-            UIView.animate(withDuration: self.animationDuration * 0.7, delay: self.animationDuration * 0.3, options: UIViewAnimationOptions(), animations: {
+            UIView.animate(withDuration: self.animationDuration * 0.7, delay: self.animationDuration * 0.3, options: UIView.AnimationOptions(), animations: {
                 toView.center = centerPoint
                 
                 }, completion: { (finish) in

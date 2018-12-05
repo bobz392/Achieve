@@ -101,7 +101,7 @@ class CalendarViewController: BaseViewController {
         
         self.cardView.backgroundColor = Colors.cellCardColor
         let bar = self.createCustomBar(height: kBarHeight)
-        self.view.sendSubview(toBack: bar)
+        self.view.sendSubviewToBack(bar)
         self.createTitleLabel(titleText: Localized("calendar"))
         let menuButton = self.congfigMenuButton()
         
@@ -115,7 +115,9 @@ class CalendarViewController: BaseViewController {
         self.dateButton.addTarget(self, action: #selector(self.returnTodayAction), for: .touchUpInside)
         self.circleViewTopConstraint.constant = DeviceSzie.isSmallDevice() ? 40 : 50
         self.circleViewBottomConstraint.constant = DeviceSzie.isSmallDevice() ? 5 : 20
-        self.circleView.circleButton.addTarget(self, action:  #selector(self.enterSchedule), for: .touchUpInside)
+        self.circleView.circleButton
+            .addTarget(self, action:  #selector(self.enterSchedule),
+                       for: .touchUpInside)
         self.configWeekView()
         
         self.createdLabel.textColor = Colors.mainTextColor
@@ -197,20 +199,20 @@ class CalendarViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func enterSchedule() {
+    @objc func enterSchedule() {
         guard let checkDate = self.calendarView
             .selectedDates.first else { return }
         let scheduleVC = ScheduleViewController(checkInDate: checkDate as NSDate)
         self.navigationController?.pushViewController(scheduleVC, animated: true)
     }
     
-    func returnTodayAction() {
+    @objc func returnTodayAction() {
         let now = Date()
         self.calendarView.selectDates([now])
         self.calendarView.scrollToDate(now, triggerScrollToDateDelegate: true, animateScroll: true, preferredScrollPosition: nil, completionHandler: nil)
     }
     
-    func monthAction() {
+    @objc func monthAction() {
         guard let date = self.calendarView.visibleDates()
             .monthDates.first?.date else { return }
         let nd = date as NSDate

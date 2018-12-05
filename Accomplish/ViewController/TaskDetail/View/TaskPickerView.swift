@@ -45,7 +45,7 @@ class TaskPickerView: UIView {
         self.pickerView.isHidden = true
     }
     
-    func close() {
+    @objc func close() {
         self.viewShow = false
     }
     
@@ -98,7 +98,7 @@ class TaskPickerView: UIView {
             
         case .notify:
             guard let createDate = task.createdDate else { break }
-            self.datePicker.date = (task.estimateDate as? Date) ?? now
+            self.datePicker.date = (task.estimateDate as Date?) ?? now
             self.datePicker.isHidden = false
             self.datePicker.datePickerMode = .time
             

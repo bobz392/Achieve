@@ -80,7 +80,7 @@ class TaskDateTableViewCell: BaseTableViewCell {
             !highlighted ? Colors.mainIconColor : Colors.swipeRedBackgroundColor
     }
 
-    func clearAction(_ btn: UIButton) {
+    @objc func clearAction(_ btn: UIButton) {
         guard let task = self.task else { return }
         
         switch self.detailType {

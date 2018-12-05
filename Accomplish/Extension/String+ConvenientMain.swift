@@ -12,14 +12,14 @@ import Foundation
 extension String {
     var MD5String: String {
         let digest = NSMutableData(length: Int(CC_MD5_DIGEST_LENGTH))!
-        let digestPointer = unsafeBitCast(digest.mutableBytes, to: UnsafeMutablePointer<UInt8>.self)
+        let digestPointer = digest.mutableBytes.assumingMemoryBound(to: UInt8.self)
         
         if let data = data(using: String.Encoding.utf8) {
             CC_MD5((data as NSData).bytes, CC_LONG(CC_MD5_DIGEST_LENGTH), digestPointer)
         }
         
         var result = ""
-        let start = unsafeBitCast(digest.bytes, to: UnsafePointer<UInt8>.self)
+        let start = digest.bytes.assumingMemoryBound(to: UInt8.self)
         let buffer = UnsafeBufferPointer(start: start, count: Int(CC_MD5_DIGEST_LENGTH))
         for i in buffer {
             result += NSString(format: "%02x", i) as String
@@ -31,22 +31,9 @@ extension String {
 
 // Range
 extension String {
-    func subRange(_ start: Int, end: Int) -> Range<Index> {
-        let startIndex = self.characters.index(self.startIndex, offsetBy: start)
-        let endIndex = self.characters.index(self.startIndex, offsetBy: end)
-        return Range(startIndex ..< endIndex)
-    }
     
     func index(_ position: Int) -> Index {
-        return self.characters.index(self.startIndex, offsetBy: position)
-    }
-    
-    mutating func replace(_ range: NSRange, replacement: String) {
-        let startIndex = self.characters.index(self.startIndex, offsetBy: range.location)
-        let endIndex = self.characters.index(self.startIndex, offsetBy: range.location + range.length)
-        let newRange = Range(startIndex ..< endIndex)
-        replaceSubrange(newRange, with: replacement)
-        
+        return self.index(self.startIndex, offsetBy: position)
     }
 }
 
@@ -54,18 +41,18 @@ extension String {
 extension String {
     func addStrikethrough(fontSize: CGFloat = 16) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: [
-            NSFontAttributeName: appFont(size: fontSize),
-            NSForegroundColorAttributeName: Colors.secondaryTextColor,
-            NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
-            NSStrikethroughColorAttributeName: Colors.secondaryTextColor,
+            NSAttributedString.Key.font: appFont(size: fontSize),
+            NSAttributedString.Key.foregroundColor: Colors.secondaryTextColor,
+            NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+            NSAttributedString.Key.strikethroughColor: Colors.secondaryTextColor,
             ])
     }
     
     func fixTextFieldBugString(fontSize: CGFloat, color: UIColor) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: [
-            NSForegroundColorAttributeName: color,
-            NSBaselineOffsetAttributeName: 0,
-            NSFontAttributeName: appFont(size: fontSize)
+            NSAttributedString.Key.foregroundColor: color,
+            NSAttributedString.Key.baselineOffset: 0,
+            NSAttributedString.Key.font: appFont(size: fontSize)
             ]
         )
     }

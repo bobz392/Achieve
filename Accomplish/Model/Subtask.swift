@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 
 class Subtask: Object {
-    dynamic var uuid = ""
-    dynamic var taskToDo = ""
-    dynamic var rootUUID = ""
-    dynamic var createdDate: NSDate?
-    dynamic var finishedDate: NSDate?
+    @objc dynamic var uuid = ""
+    @objc dynamic var taskToDo = ""
+    @objc dynamic var rootUUID = ""
+    @objc dynamic var createdDate: NSDate?
+    @objc dynamic var finishedDate: NSDate?
 
     func createDefaultSubtask(todo: String, rootTaskUUID: String, createDate: NSDate = NSDate()) {
         self.rootUUID = rootTaskUUID

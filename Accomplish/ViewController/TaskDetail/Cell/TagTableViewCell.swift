@@ -71,7 +71,7 @@ class TagTableViewCell: MGSwipeTableCell {
         self.cellSelected = selected
         self.currentLabel.isHidden = !selected
         self.tagLabel.font =
-            selected ? appFont(size: 14, weight: UIFontWeightBold) : appFont(size: 14)
+            selected ? appFont(size: 14, weight: .bold) : appFont(size: 14)
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

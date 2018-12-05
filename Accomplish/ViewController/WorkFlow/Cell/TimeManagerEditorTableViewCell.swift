@@ -78,11 +78,11 @@ class TimeManagerEditorTableViewCell: BaseTableViewCell {
         self.itemsTableView.allowsSelection = canChange
     }
     
-    func deleteGroupAction() {
+    @objc func deleteGroupAction() {
         self.deleteBlock?()
     }
     
-    func groupRepeatAction() {
+    @objc func groupRepeatAction() {
         guard let inputView = self.timeMethodInputView,
             let methodGroup = self.methodTime?.groups[self.groupIndex] else { return }
         

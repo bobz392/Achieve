@@ -560,7 +560,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
         let content = UNMutableNotificationContent()
         content.title = Localized("taskReminding")
         content.body = task.realTaskToDo()
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         content.categoryIdentifier = kNotificationCategory
         let info = [kNotifyUserInfoKey: task.uuid]
         content.userInfo = info

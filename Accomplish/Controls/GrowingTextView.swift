@@ -36,7 +36,7 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
     
-    fileprivate weak var heightConstraint: NSLayoutConstraint?
+    fileprivate var heightConstraint: NSLayoutConstraint?
     
     // Initialize
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
@@ -54,8 +54,8 @@ import UIKit
         
         self.contentMode = .redraw
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextView.textDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidEndEditing), name: UITextView.textDidEndEditingNotification, object: self)
     }
     
     // Remove notification observer when deinit
@@ -73,7 +73,13 @@ import UIKit
         }
         
         if (heightConstraint == nil) {
-            heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height)
+            heightConstraint = NSLayoutConstraint(item: self,
+                                                  attribute: .height,
+                                                  relatedBy: .equal,
+                                                  toItem: nil,
+                                                  attribute: .notAnAttribute,
+                                                  multiplier: 1.0,
+                                                  constant: height)
             addConstraint(heightConstraint!)
         }
         
@@ -101,11 +107,11 @@ import UIKit
                               height: frame.size.height)
             
             var attributes = [
-                NSForegroundColorAttributeName: placeHolderColor,
-                NSParagraphStyleAttributeName: paragraphStyle
+                NSAttributedString.Key.foregroundColor: placeHolderColor,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle
             ]
             if let font = font {
-                attributes[NSFontAttributeName] = font
+                attributes[NSAttributedString.Key.font] = font
             }
             
             placeHolder.draw(in: rect, withAttributes: attributes)
@@ -113,7 +119,7 @@ import UIKit
     }
     
     // Trim white space and new line characters when end editing.
-    func textDidEndEditing(notification: Notification) {
+    @objc func textDidEndEditing(notification: Notification) {
         if let notificationObject = notification.object as? GrowingTextView {
             if notificationObject === self {
                 if trimWhiteSpaceWhenEndEditing {
@@ -125,13 +131,13 @@ import UIKit
     }
     
     // Limit the length of text
-    func textDidChange(notification: Notification) {
+    @objc func textDidChange(notification: Notification) {
         if let notificationObject = notification.object as? GrowingTextView {
             if notificationObject === self {
-                if maxLength > 0 && text.characters.count > maxLength {
+                if maxLength > 0 && text.count > maxLength {
                     
                     let endIndex = text.index(text.startIndex, offsetBy: maxLength)
-                    text = text.substring(to: endIndex)
+                    text = String(text.substring(to: endIndex))
                     undoManager?.removeAllActions()
                 }
                 setNeedsDisplay()

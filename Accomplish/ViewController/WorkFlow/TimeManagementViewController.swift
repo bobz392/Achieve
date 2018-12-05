@@ -83,7 +83,7 @@ class TimeManagementViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func newMethodAction() {
+    @objc func newMethodAction() {
         self.timeMethodInputView.setTitles(first: Localized("methodName"), second: Localized("aliase"))
             .setPlaceHolders(first: Localized("enterMethodName"), second: Localized("enterMethodAliase"))
             .setSaveBlock(saveBlock: { [unowned self] (name, aliase) in

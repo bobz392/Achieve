@@ -118,7 +118,7 @@
 		C74A896E1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A896F1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A89701D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
-		C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator {.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator {.swift */; };
+		C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator.swift */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
 		C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */; };
@@ -492,7 +492,9 @@
 		C74A89401D94109E008E15CA /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C74A896B1D949A6B008E15CA /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C74A896D1D9636F3008E15CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator {.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildInTaskCreator {.swift"; sourceTree = "<group>"; };
+		C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInTaskCreator.swift; sourceTree = "<group>"; };
+		C75B5C2621B76E30008B6E53 /* AchieveWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AchieveWatch.entitlements; sourceTree = "<group>"; };
+		C75B5C2721B77FB7008B6E53 /* AchieveWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AchieveWatch Extension.entitlements"; sourceTree = "<group>"; };
 		C7614F5C1E2176D600D86FD4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		C7614F5D1E2176D600D86FD4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Interface.strings; sourceTree = "<group>"; };
 		C7614F5E1E2176D600D86FD4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -846,7 +848,7 @@
 			children = (
 				C70BF6251D79C58B006B0C1D /* SecondTimer.swift */,
 				C73B442B1E0969D600DDE093 /* TaskListManager.swift */,
-				C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator {.swift */,
+				C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1411,6 +1413,7 @@
 		C7E1B0451D8C7A9600554B11 /* AchieveWatch */ = {
 			isa = PBXGroup;
 			children = (
+				C75B5C2621B76E30008B6E53 /* AchieveWatch.entitlements */,
 				C7E1B0461D8C7A9600554B11 /* Interface.storyboard */,
 				C7E1B04B1D8C7A9600554B11 /* Info.plist */,
 				C7B74DB41D8D9277002EE15E /* WatchAssets.xcassets */,
@@ -1421,6 +1424,7 @@
 		C7E1B0541D8C7A9600554B11 /* AchieveWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C75B5C2721B77FB7008B6E53 /* AchieveWatch Extension.entitlements */,
 				C7E2D9561D8F05000080D283 /* WatchConstants.swift */,
 				C7CAF0661D9B0C310046D756 /* DetailRowType.swift */,
 				C706125B1D8D258F00E37CE6 /* TaskRowType.swift */,
@@ -1470,13 +1474,12 @@
 				C7EFB2A31DEFE1FE0094B1E0 /* Set the build number to the count of Git commits */,
 				C7860E391D6C23FF000281FA /* Sources */,
 				C7860E3A1D6C23FF000281FA /* Frameworks */,
-				C7105EAC1D6C7AD60096A1A3 /* Embed App Extensions */,
 				C7860E3B1D6C23FF000281FA /* Resources */,
 				C7E1B06A1D8C7A9600554B11 /* Embed Watch Content */,
 				C79807181D82B8E60011DE19 /* Frabic Run Script */,
 				C7EFB2A41DEFE2260094B1E0 /* Set the build number to "DEVELOPMENT" */,
+				C7105EAC1D6C7AD60096A1A3 /* Embed App Extensions */,
 				0D2EEBE682C5C11D1D8C6FCD /* [CP] Embed Pods Frameworks */,
-				B54CA62C94D610E84D932EB1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1501,7 +1504,6 @@
 				C78ED8751D7A7D3100031B4D /* Frameworks */,
 				C78ED8761D7A7D3100031B4D /* Resources */,
 				C7EFB2A71DEFE2BB0094B1E0 /* # Set the build number to "DEVELOPMENT" */,
-				C1BCFB588180493335E35E0F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1522,7 +1524,6 @@
 				C7CAF0941D9C3FE80046D756 /* Frameworks */,
 				C7CAF0951D9C3FE80046D756 /* Resources */,
 				C7EFB2AD1DEFE3380094B1E0 /* Set the build number to "DEVELOPMENT" */,
-				2C4E6380DDEFFAD098FED107 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1543,7 +1544,6 @@
 				C7E1B0681D8C7A9600554B11 /* Embed App Extensions */,
 				C7EFB2A81DEFE2E20094B1E0 /* Set the build number to "DEVELOPMENT" */,
 				315ADA11473311E8C5B7BABD /* Frameworks */,
-				853B20AF4E646AF4B93CEC0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1565,8 +1565,6 @@
 				C7E1B04D1D8C7A9600554B11 /* Frameworks */,
 				C7E1B04E1D8C7A9600554B11 /* Resources */,
 				C7EFB2AB1DEFE3050094B1E0 /* Run Set the build number to "DEVELOPMENT" */,
-				F3DACD81489E6F48721C933A /* [CP] Embed Pods Frameworks */,
-				2D04BB229E5115E576032B37 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1587,7 +1585,6 @@
 				C7EFB3091DF3924E0094B1E0 /* Frameworks */,
 				C7EFB30A1DF3924E0094B1E0 /* Resources */,
 				C7EFB31C1DF5136C0094B1E0 /* Set the build number to "DEVELOPMENT" */,
-				749E978C7AE2D3C52D8FED1C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1605,12 +1602,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = zhoubo;
 				TargetAttributes = {
 					C7860E3C1D6C23FF000281FA = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = M396DA7L3B;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1899,36 +1895,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2C4E6380DDEFFAD098FED107 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AchieveMessage/Pods-AchieveMessage-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2D04BB229E5115E576032B37 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AchieveWatch Extension/Pods-AchieveWatch Extension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4CDB64F31D2DF11940A422BD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1965,36 +1931,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		749E978C7AE2D3C52D8FED1C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AchieveShare/Pods-AchieveShare-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		853B20AF4E646AF4B93CEC0A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AchieveWatch/Pods-AchieveWatch-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		93A38D5D347BBC033EB1A567 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2011,36 +1947,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B54CA62C94D610E84D932EB1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Accomplish/Pods-Accomplish-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C1BCFB588180493335E35E0F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AchieveToday/Pods-AchieveToday-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C79807181D82B8E60011DE19 /* Frabic Run Script */ = {
@@ -2243,21 +2149,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3DACD81489E6F48721C933A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AchieveWatch Extension/Pods-AchieveWatch Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2335,7 +2226,7 @@
 				C78ED84B1D7A76B300031B4D /* MianCommonCode.swift in Sources */,
 				C7B5792B1DAACEDC003B6D92 /* MonthViewController.swift in Sources */,
 				C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */,
-				C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator {.swift in Sources */,
+				C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator.swift in Sources */,
 				C73B447C1E0C494200DDE093 /* TaskPickerView.swift in Sources */,
 				C798056E1D7CD8C90011DE19 /* CalendarCell.swift in Sources */,
 				C73B44391E0A523100DDE093 /* EmptyDataView.swift in Sources */,
@@ -2702,14 +2593,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2752,14 +2651,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2795,6 +2702,7 @@
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
@@ -2814,9 +2722,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.achieve;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2808d7ed-7705-4b8d-bb60-85acb7076aa0";
-				PROVISIONING_PROFILE_SPECIFIER = "AchieveApp-Dev";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Accomplish/Accomplish-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2832,6 +2740,7 @@
 				CODE_SIGN_ENTITLEMENTS = Accomplish/Accomplish.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = KJUZN22ZS5;
 				ENABLE_BITCODE = NO;
@@ -2851,7 +2760,7 @@
 				PROVISIONING_PROFILE = "62c7f06c-bf59-4ba0-b1f9-8a3c5657815e";
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveApp-Pro";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Accomplish/Accomplish-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2877,7 +2786,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveToday-Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveToday/AchieveToday-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
 			};
 			name = Debug;
@@ -2901,7 +2810,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveToday-Pro";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveToday/AchieveToday-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				VALID_ARCHS = "arm64 armv7 armv7s armv8";
 			};
 			name = Release;
@@ -2928,7 +2837,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveMessage-Dev";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2954,7 +2863,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveMessage-Pro";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -2980,7 +2889,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -3009,7 +2918,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -3035,7 +2944,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveWatch Extension/AccomplishWatch-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -3062,7 +2971,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveWatch Extension/AccomplishWatch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -3088,7 +2997,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveShare/AchieveShare-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3112,7 +3021,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "AchieveShare-Pro";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/AchieveShare/AchieveShare-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

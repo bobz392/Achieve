@@ -22,18 +22,18 @@ class ShareViewController: SLComposeServiceViewController {
         if self.contentType == .URL {
             return true
         } else if self.contentType == .PlainText {
-            return self.textView.text.characters.count > 0
+            return self.textView.text.count > 0
         } else {
             guard let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
-                let provider = extensionItem.attachments?.first as? NSItemProvider,
-                let dataType = provider.registeredTypeIdentifiers.first as? String else {
+                let provider = extensionItem.attachments?.first,
+                let dataType = provider.registeredTypeIdentifiers.first else {
                     self.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
                     return false
             }
             
             if dataType == String(kUTTypePlainText) {
                 self.contentType = .PlainText
-                return self.textView.text.characters.count > 0
+                return self.textView.text.count > 0
             } else if dataType == String(kUTTypeURL) {
                 self.contentType = .URL
                 return true
@@ -49,8 +49,8 @@ class ShareViewController: SLComposeServiceViewController {
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         
         guard let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
-            let provider = extensionItem.attachments?.first as? NSItemProvider,
-            let dataType = provider.registeredTypeIdentifiers.first as? String,
+            let provider = extensionItem.attachments?.first,
+            let dataType = provider.registeredTypeIdentifiers.first,
             let userDefault = GroupUserDefault() else {
                 return self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         }
@@ -59,7 +59,7 @@ class ShareViewController: SLComposeServiceViewController {
         
         provider.loadItem(forTypeIdentifier: dataType, options: nil, completionHandler: { [unowned self] (text, error) in
             debugPrint("================")
-            debugPrint("item type \(dataType), text = \(text)")
+            debugPrint("item type \(dataType), text = \(String(describing: text))")
             debugPrint("================")
             var content = ""
             
@@ -76,11 +76,11 @@ class ShareViewController: SLComposeServiceViewController {
                 return
             }
             
-            print("self.childViewControllers = \(self.childViewControllers)")
-            if let first = self.childViewControllers.first,
+            print("self.childViewControllers = \(self.children)")
+            if let first = self.children.first,
                 let window = self.view.window,
                 let finishView = FinishView.loadNib(self) {
-                first.removeFromParentViewController()
+                first.removeFromParent()
                 
                 dispatch_async_main {
                     finishView.addToWindow(window: window, finishBlock: { [unowned self] in

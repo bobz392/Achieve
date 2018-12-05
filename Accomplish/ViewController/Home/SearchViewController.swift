@@ -188,13 +188,14 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        var text = textField.text
-        text?.replace(range, replacement: string)
-        guard let realString = text else {
+        guard let stringRange = Range.init(range, in: string),
+            var text = textField.text else {
             return true
         }
         
-        guard realString.length() > 0 else {
+        text.replaceSubrange(stringRange, with: string)
+        
+        guard text.count > 0 else {
             self.searchResult.removeAll()
             self.searchTableView.reloadData()
             self.hintLabel.isHidden = true
@@ -203,10 +204,10 @@ extension SearchViewController: UITextFieldDelegate {
         
         self.hintLabel.text = Localized("searchNoResult")
         self.hintLabel.isHidden = true
-        self.searchString = realString
+        self.searchString = text
         
         if !self.searchInProgress {
-            self.queryResult(queryString: realString)
+            self.queryResult(queryString: text)
         }
         return true
     }

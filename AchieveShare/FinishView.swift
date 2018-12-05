@@ -41,7 +41,7 @@ class FinishView: UIView {
             weakSelf.shadowView.alpha = 0.8
         })
         
-        let options: UIViewAnimationOptions = [.beginFromCurrentState, .layoutSubviews]
+        let options: UIView.AnimationOptions = [.beginFromCurrentState, .layoutSubviews]
         
         UIView.animate(withDuration: 0.25, delay: 0.14, options: options, animations: {
             weakSelf.contentView.transform = CGAffineTransform(scaleX: 1, y: 1)

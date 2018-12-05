@@ -15,9 +15,9 @@ import CoreSpotlight
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    weak var drawer: MMDrawerController? = nil
+    var drawer: MMDrawerController? = nil
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         RealmManager.configMainRealm()
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.backgroundRefreshStatus != .available {
             // to do
         } else {
-            application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+            application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         }
         
         if #available(iOS 9.0, *) {
@@ -225,7 +225,8 @@ extension AppDelegate {
 // MARK: - handoff delegate
 extension AppDelegate {
     
-    @objc(application:continueUserActivity:restorationHandler:) func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if #available(iOS 9.0, *) {
             if userActivity.activityType == CSSearchableItemActionType,
                 let uuid = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
@@ -235,6 +236,7 @@ extension AppDelegate {
         
         return true
     }
+    
     func application(_ application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
         return false
     }

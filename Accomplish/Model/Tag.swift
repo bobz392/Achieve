@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Tag: Object {
-    dynamic var tagUUID: String = ""
-    dynamic var name: String = ""
-    dynamic var createdAt: NSDate? = nil
+    @objc dynamic var tagUUID: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var createdAt: NSDate? = nil
 }

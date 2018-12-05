@@ -48,7 +48,7 @@ class MessageTableViewCell: UITableViewCell {
         self.layoutMargins = UIEdgeInsets.zero
     }
     
-    func sendAction() {
+    @objc func sendAction() {
         guard let title = self.taskTitleLabel.text,
             let date = self.taskDateLabel.text else {
                 return

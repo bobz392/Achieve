@@ -14,7 +14,7 @@ extension NSAttributedString {
         let mu = NSMutableAttributedString(attributedString: self)
         let range = NSString(string: self.string).range(of: search)
         
-        mu.addAttributes([NSBackgroundColorAttributeName: Colors.searchBackgroundColor], range: range)
+        mu.addAttributes([NSAttributedString.Key.backgroundColor: Colors.searchBackgroundColor], range: range)
         
         return mu
     }

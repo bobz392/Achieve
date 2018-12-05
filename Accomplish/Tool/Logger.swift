@@ -15,16 +15,18 @@ struct Logger {
     static func log(_ log: Any, function: String = #function,
                     file: String = #file, line: Int = #line) {
         #if debug
-            queue.sync {
-                print("\n")
-                print("╔═══════════════════════════════════════════════════════════")
-                print("║", function, line)
-                print("║", file)
-                print("╟───────────────────────────────────────────────────────────")
-                print("║ \(log)")
-                print("╚═══════════════════════════════════════════════════════════")
-                print("\n")
-            }
+        
+        queue.async(group: nil, qos: DispatchQoS.utility, flags: DispatchWorkItemFlags.barrier) {
+            print("\n")
+            print("╔═══════════════════════════════════════════════════════════")
+            print("║", function, line)
+            print("║", file)
+            print("╟───────────────────────────────────────────────────────────")
+            print("║ \(log)")
+            print("╚═══════════════════════════════════════════════════════════")
+            print("\n")
+        }
+        
         #endif
     }
 }

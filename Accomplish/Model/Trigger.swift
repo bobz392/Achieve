@@ -10,8 +10,8 @@ import Foundation
 import RealmSwift
 
 class Trigger: Object {
-    dynamic var triggerTo: String = ""
-    dynamic var condition: Int = 0
+    @objc dynamic var triggerTo: String = ""
+    @objc dynamic var condition: Int = 0
 }
 
 enum TriggerCondition: Int {

@@ -209,7 +209,6 @@ extension TaskListManager {
                     let linkAction = #selector(self.headerSwitchTagAction)
                     header.linkButton.addTarget(self, action: linkAction, for: .touchUpInside)
                 }
-                
                 return headerView
             }
         } else {

@@ -199,7 +199,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     }
     
     // MARK: - actions
-    func systemAction() {
+    @objc func systemAction() {
         guard let actionContent = self.systemActionContent else { return }
         if actionContent.type == .customScheme {
             guard let url =
@@ -214,7 +214,7 @@ class TaskTableViewCell: MGSwipeTableCell {
     /**
      标记任务完成或者取消完成
      */
-    func markTaskAction(_ btn: UIButton) {
+    @objc func markTaskAction(_ btn: UIButton) {
         guard let task = self.task else { return }
         
         if task.taskStatus() == .completed {

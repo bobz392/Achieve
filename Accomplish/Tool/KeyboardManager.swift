@@ -21,13 +21,13 @@ final class KeyboardManager {
         
     init() {
         NotificationCenter.default.addObserver(
-            forName: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil,
+            forName: UIResponder.keyboardWillChangeFrameNotification, object: nil,
             queue: OperationQueue.main) { notification in
                 self.handleKeyboardShow(notification)
         }
         
         NotificationCenter.default.addObserver(
-            forName: NSNotification.Name.UIKeyboardWillHide, object: nil,
+            forName: UIResponder.keyboardWillHideNotification, object: nil,
             queue: OperationQueue.main) { notification in
                 self.handleKeyboardHide(notification)
         }
@@ -50,8 +50,8 @@ final class KeyboardManager {
     
     fileprivate func handleKeyboardShow(_ notification: Notification) {
         if let userInfo = (notification as NSNotification).userInfo,
-            let frameValue = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let durationValue = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+            let frameValue = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let durationValue = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
             Logger.log("change frame height to \(frameValue.height)")
             if frameValue.height > 0 {
                 KeyboardManager.keyboardHeight = frameValue.height

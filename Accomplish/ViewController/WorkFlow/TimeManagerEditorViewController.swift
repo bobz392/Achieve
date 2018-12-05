@@ -71,7 +71,7 @@ class TimeManagerEditorViewController: BaseViewController {
     
     // MARK: - actions
     
-    func addGroupAction() {
+    @objc func addGroupAction() {
         RealmManager.shared.updateObject { [unowned self] in
             let group = TimeMethodGroup()
             group.addDefaultGroupAndItem()

@@ -28,9 +28,8 @@ final class SecondTimer {
     
     func start() {
         let interval = Double(fetchSecondInterval)
-        timer.scheduleRepeating(deadline: DispatchTime.now(),
-                                interval: interval,
-                                leeway: DispatchTimeInterval.seconds(60))
+        timer.schedule(deadline: .now(), repeating: interval,
+                       leeway: .seconds(60))
         
         timer.setEventHandler { () -> Void in
             dispatch_async_main({ () -> Void in

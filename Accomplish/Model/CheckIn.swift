@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 
 class CheckIn: Object {
-    dynamic var checkInDate: NSDate?
-    dynamic var formatedDate: String = ""
+    @objc dynamic var checkInDate: NSDate?
+    @objc dynamic var formatedDate: String = ""
     
-    dynamic var createdCount: Int = 0
-    dynamic var completedCount: Int = 0
+    @objc dynamic var createdCount: Int = 0
+    @objc  dynamic var completedCount: Int = 0
     
-    dynamic var asynced: Bool = false
+    @objc dynamic var asynced: Bool = false
 }

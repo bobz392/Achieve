@@ -101,7 +101,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
             fatalError("you don't created a bar now")
         }
         
-        let menuButton = MenuButton()
+        let menuButton = MenuButton(frame: .zero)
         bar.addSubview(menuButton)
         menuButton.snp.makeConstraints { (make) in
             make.width.equalTo(kBarIconSize)
@@ -169,15 +169,15 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         return newTaskButton
     }
     
-    func openMenuAction() {
+    @objc func openMenuAction() {
         appDelegate?.drawer?.open(.left, animated: true, completion: nil)
     }
     
-    func backAction() {
+    @objc func backAction() {
         let _ = self.navigationController?.popViewController(animated: true)
     }
     
-    func dismissAction() {
+    @objc func dismissAction() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -215,14 +215,12 @@ extension BaseViewController: UIViewControllerPreviewingDelegate {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
-        if #available(iOS 9.0, *) {
-            switch traitCollection.forceTouchCapability {
-            case .available:
-                guard let block = self.sourceViewBlock else { return }
-                self.registerForPreviewing(with: self, sourceView: block())
-            default:
-                return
-            }
+        switch traitCollection.forceTouchCapability {
+        case .available:
+            guard let block = self.sourceViewBlock else { return }
+            self.registerForPreviewing(with: self, sourceView: block())
+        default:
+            return
         }
     }
 

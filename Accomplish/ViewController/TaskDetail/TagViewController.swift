@@ -88,13 +88,13 @@ class TagViewController: BaseViewController {
         let newTagButton = self.createPlusButton()
         newTagButton.addTarget(self, action: #selector(self.newTagAction), for: .touchUpInside)
         
-        self.view.bringSubview(toFront: self.newTagShadowView)
+        self.view.bringSubviewToFront(self.newTagShadowView)
         self.newTagTextField.placeholder = Localized("newTag")
         self.holderView.layer.cornerRadius = 4
     }
     
     // MARK: - actions
-    func newTagAction() {
+    @objc func newTagAction() {
         self.newTagShadowView.isHidden = false
         
         UIView.animate(withDuration: kNormalAnimationDuration) { [unowned self] in
@@ -103,7 +103,7 @@ class TagViewController: BaseViewController {
         self.newTagTextField.becomeFirstResponder()
         
         self.textFieldHolderTopConstraint.constant = 20
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: UIViewAnimationOptions(), animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: UIView.AnimationOptions(), animations: { [unowned self] in
             self.view.layoutIfNeeded()
         }) { [unowned self] (finish) in
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.closeNewTagAction))
@@ -111,7 +111,7 @@ class TagViewController: BaseViewController {
         }
     }
     
-    func closeNewTagAction() {
+    @objc func closeNewTagAction() {
         self.textFieldHolderTopConstraint.constant = -44
         self.newTagTextField.text = nil
         self.newTagTextField.resignFirstResponder()
@@ -119,7 +119,7 @@ class TagViewController: BaseViewController {
             self.newTagShadowView.removeGestureRecognizer(tap)
         }
         
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { [unowned self] in
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: kNormalAnimationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIView.AnimationOptions(), animations: { [unowned self] in
             self.view.layoutIfNeeded()
             self.realShadowView.alpha = 0
         }) { [unowned self] (finish) in
@@ -159,6 +159,10 @@ extension TagViewController: UITableViewDelegate, UITableViewDataSource, MGSwipe
         let view = UIView()
         view.clearView()
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

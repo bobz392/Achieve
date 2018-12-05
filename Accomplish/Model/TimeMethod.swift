@@ -10,18 +10,18 @@ import Foundation
 import RealmSwift
 
 class TimeMethod: Object {
-    dynamic var uuid: String = NSDate().createTimeManagerUUID()
-    dynamic var name: String = ""
-    dynamic var useTimes: Int = 0
-    dynamic var repeatTimes: Int = 0
-    dynamic var timeMethodAliase: String = Localized("defaultAliase")
+    @objc dynamic var uuid: String = NSDate().createTimeManagerUUID()
+    @objc dynamic var name: String = ""
+    @objc dynamic var useTimes: Int = 0
+    @objc dynamic var repeatTimes: Int = 0
+    @objc dynamic var timeMethodAliase: String = Localized("defaultAliase")
     
     let groups = List<TimeMethodGroup>()
 }
 
 class TimeMethodGroup: Object {
     let items = List<TimeMethodItem>()
-    dynamic var repeatTimes: Int = 1
+    @objc dynamic var repeatTimes: Int = 1
     
     func addDefaultGroupAndItem() {
         let item = TimeMethodItem()
@@ -32,6 +32,6 @@ class TimeMethodGroup: Object {
 }
 
 class TimeMethodItem: Object {
-    dynamic var name: String = ""
-    dynamic var interval: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var interval: Int = 0
 }

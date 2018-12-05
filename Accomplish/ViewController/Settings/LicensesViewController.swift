@@ -29,7 +29,7 @@ class LicensesViewController: BaseViewController {
         
         let textView = UITextView()
         self.view.addSubview(textView)
-        textView.font = appFont(size: 14, weight: UIFontWeightLight)
+        textView.font = appFont(size: 14, weight: .light)
         textView.textColor = Colors.mainTextColor
         textView.backgroundColor = Colors.mainBackgroundColor
         textView.snp.makeConstraints { (make) in

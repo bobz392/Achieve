@@ -7,13 +7,13 @@ target 'Accomplish' do
   use_frameworks!
 
   # Pods for Accomplish
-  pod 'SnapKit',    '~> 3.2.0'
+  pod 'SnapKit'
   pod 'RealmSwift'
-  pod 'Kingfisher', '~> 4.0'
-  pod 'Charts', '<= 3.0.3'
-  pod 'JTAppleCalendar', '~> 7.0'
+  pod 'Kingfisher'
+  pod 'Charts'
+  pod 'JTAppleCalendar'
   pod 'SVProgressHUD'
-  pod 'Fuzi', '~> 1.0.0'
+  pod 'Fuzi'
 
 end
 

@@ -75,7 +75,7 @@ class CloudKitManager: NSObject {
             }
             
             todayCheckIn = checkIn
-            let recordId = CKRecordID(recordName: checkIn.formatedDate)
+            let recordId = CKRecord.ID(recordName: checkIn.formatedDate)
             let checkInRecord = CKRecord(recordType: "CheckIn", recordID: recordId)
             
             checkInRecord["formatedDate"] = NSString(string: checkIn.formatedDate)
@@ -89,7 +89,7 @@ class CloudKitManager: NSObject {
         
         let tasks = RealmManager.shared.queryTaskList(date)
         let taskRecords = tasks.map { (task) -> CKRecord in
-            let recordId = CKRecordID(recordName: task.uuid)
+            let recordId = CKRecord.ID(recordName: task.uuid)
             let record = CKRecord(recordType: "Task", recordID: recordId)
             record["createdDate"] = task.createdDate
             record["estimateDate"] = task.estimateDate
@@ -108,7 +108,7 @@ class CloudKitManager: NSObject {
             if task.subTaskCount > 0 {
                 let subtasks = RealmManager.shared.querySubtask(task.uuid)
                 let subRecords = subtasks.map({ (subtask) -> CKRecord in
-                    let recordId = CKRecordID(recordName: subtask.uuid)
+                    let recordId = CKRecord.ID(recordName: subtask.uuid)
                     let record = CKRecord(recordType: "SubTask", recordID: recordId)
                     record["rootUUID"] = NSString(string: subtask.rootUUID)
                     record["taskToDo"] = NSString(string: subtask.taskToDo)

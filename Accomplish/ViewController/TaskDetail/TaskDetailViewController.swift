@@ -171,7 +171,7 @@ class TaskDetailViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func clearAction(_ btn: UIButton) {
+    @objc func clearAction(_ btn: UIButton) {
         let index = IndexPath(row: btn.tag, section: 0)
         detailTableView.reloadRows(at: [index], with: .automatic)
     }
@@ -434,7 +434,7 @@ extension TaskDetailViewController {
         return IndexPath(row: index, section: 0)
     }
     
-    func cancelDatePickerAction() {
+    @objc func cancelDatePickerAction() {
         guard let datePicker = self.taskPickerView else { return }
         showDatePickerView(show: false)
         guard let indexPath =
@@ -442,7 +442,7 @@ extension TaskDetailViewController {
         self.detailTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
-    func setDatePickerAction() {
+    @objc func setDatePickerAction() {
         guard let taskPickerView = self.taskPickerView else { return }
         let weakSelf = self
         switch taskPickerView.getCurrentIcon() {
@@ -510,13 +510,13 @@ extension TaskDetailViewController {
                 self.taskPickerView?.snp.updateConstraints({ (make) in
                     make.top.equalTo(self.view.snp.bottom)
                 })
-                UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions.allowAnimatedContent, animations: { [unowned self] in
+                UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIView.AnimationOptions.allowAnimatedContent, animations: { [unowned self] in
                     self.view.layoutIfNeeded()
                 }) { [unowned self] (finish) in
                     self.taskPickerView?.snp.updateConstraints({ (make) in
                         make.top.equalTo(self.view.snp.bottom).offset(-TaskPickerView.height)
                     })
-                    UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
+                    UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIView.AnimationOptions(), animations: {
                         self.view.layoutIfNeeded()
                     }) { (finish) in }
                 }
@@ -527,7 +527,7 @@ extension TaskDetailViewController {
         self.taskPickerView?.snp.updateConstraints({ (make) in
             make.top.equalTo(self.view.snp.bottom).offset(show ? -TaskPickerView.height : 0)
         })
-        UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {  [unowned self] in
+        UIView.animate(withDuration: kSmallAnimationDuration, delay: 0, options: UIView.AnimationOptions(), animations: {  [unowned self] in
             self.view.layoutIfNeeded()
         }) { (finish) in }
     }

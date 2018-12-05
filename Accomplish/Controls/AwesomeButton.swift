@@ -24,13 +24,13 @@ class AwesomeButton: UIButton {
         super.init(coder: aDecoder)
     }
     
-    func buttonAnimationStartAction(_ btn: UIButton) {
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: UIViewAnimationOptions(), animations: {
+    @objc func buttonAnimationStartAction(_ btn: UIButton) {
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: UIView.AnimationOptions(), animations: {
             btn.transform = btn.transform.scaledBy(x: 0.8, y: 0.8)
         }) { (finish) in }
     }
     
-    func buttonAnimationEndAction(_ btn: UIButton) {
+    @objc func buttonAnimationEndAction(_ btn: UIButton) {
         UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: .layoutSubviews, animations: {
             btn.transform = CGAffineTransform(scaleX: 1, y: 1)
         }) { (finish) in }

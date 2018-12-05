@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 class ReadLater: Object {
-    dynamic var uuid: String = ""
-    dynamic var name: String = ""
-    dynamic var link: String = ""
-    dynamic var createdAt: NSDate? = nil
-    dynamic var cacheed: Bool = false
-    dynamic var previewImageLink: String?
+    @objc dynamic var uuid: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var link: String = ""
+    @objc dynamic var createdAt: NSDate? = nil
+    @objc dynamic var cacheed: Bool = false
+    @objc dynamic var previewImageLink: String?
 }

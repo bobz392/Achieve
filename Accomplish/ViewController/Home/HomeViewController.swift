@@ -122,8 +122,9 @@
      - 最后就是 new day 处理
      */
     fileprivate func addNotification() {
+        
         NotificationCenter.default.addObserver(
-            forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil,
+            forName: UIApplication.didBecomeActiveNotification, object: nil,
             queue: OperationQueue.main) { [unowned self] notification in
                 self.taskListManager.handelTodayExtensionFinish()
                 self.checkNewDay()
@@ -131,10 +132,10 @@
         }
         
         NotificationCenter.default.addObserver(
-            forName: NSNotification.Name.UIApplicationDidEnterBackground, object: nil,
+            forName: UIApplication.didEnterBackgroundNotification, object: nil,
             queue: OperationQueue.main) { [unowned self] notification in
                 self.timer?.suspend()
-                self.newTaskVC?.removeFromParentViewController()
+                self.newTaskVC?.removeFromParent()
         }
     }
     
@@ -283,7 +284,7 @@
         self.animationNavgationTo(vc: CalendarViewController())
     }
     
-    func searchAction() {
+    @objc func searchAction() {
         self.animationNavgationTo(vc: SearchViewController())
     }
     
@@ -306,10 +307,10 @@
     /**
      在新建任务之前先把滑动开的 cell 关闭
      */
-    func newTaskAction() {
+    @objc func newTaskAction() {
         let newTaskVC = NewTaskViewController()
-        self.addChildViewController(newTaskVC)
-        newTaskVC.didMove(toParentViewController: self)
+        self.addChild(newTaskVC)
+        newTaskVC.didMove(toParent: self)
         
         self.newTaskVC = newTaskVC
     }

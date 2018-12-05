@@ -90,7 +90,7 @@ class ScheduleViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func extportAction() {
+    @objc func extportAction() {
         let report = ReportGenerator().generateReport(taskList: self.taskList)
         let activeViewController =
             UIActivityViewController(activityItems: [report], applicationActivities: nil)
@@ -99,7 +99,7 @@ class ScheduleViewController: BaseViewController {
             
         }
         
-        let activeBlock: UIActivityViewControllerCompletionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error:Swift.Error?) -> Swift.Void in
+        let activeBlock: UIActivityViewController.CompletionWithItemsHandler = { (activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error:Swift.Error?) -> Swift.Void in
             Logger.log("returnedItems = \(returnedItems)")
             Logger.log("activityType = \(activityType?.rawValue)")
             Logger.log("completed = \(completed)")
@@ -143,7 +143,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.reuseId) as! ScheduleTableViewCell
             cell.config(self.taskList[indexPath.row])
-            let height = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            let height = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
             self.cellHeightCache[indexPath.row] = height
             return height
         }

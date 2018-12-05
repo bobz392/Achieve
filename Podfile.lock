@@ -1,0 +1,48 @@
+PODS:
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
+  - Fuzi (2.1.0)
+  - JTAppleCalendar (7.1.6)
+  - Kingfisher (4.10.1)
+  - Realm (3.12.0):
+    - Realm/Headers (= 3.12.0)
+  - Realm/Headers (3.12.0)
+  - RealmSwift (3.12.0):
+    - Realm (= 3.12.0)
+  - SnapKit (4.2.0)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - Charts
+  - Fuzi
+  - JTAppleCalendar (~> 7.0)
+  - Kingfisher
+  - RealmSwift
+  - SnapKit
+  - SVProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Charts
+    - Fuzi
+    - JTAppleCalendar
+    - Kingfisher
+    - Realm
+    - RealmSwift
+    - SnapKit
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  Fuzi: 8c57344debff6d3a0c76a9e0f549152defdaaa48
+  JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
+  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 98e172b1a8433e26f3511214e7260b58195bc4b1
+
+COCOAPODS: 1.5.3

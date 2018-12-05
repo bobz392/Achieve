@@ -26,19 +26,19 @@ class TouchButton: UIButton {
         self.layer.cornerRadius = self.frame.width * 0.5
     }
     
-    func buttonAnimationStartAction(_ btn: UIButton) {
+    @objc func buttonAnimationStartAction(_ btn: UIButton) {
         UIView.animate(withDuration: kNormalAnimationDuration) {
             self.backgroundColor = Colors.cellCardSelectedColor
         }
     }
     
-    func buttonAnimationEndAction(_ btn: UIButton) {
+    @objc func buttonAnimationEndAction(_ btn: UIButton) {
         UIView.animate(withDuration: kNormalAnimationDuration) {
             self.backgroundColor = Colors.cellCardColor
         }
     }
     
-    func changeStatus(color: UIColor) {
+    @objc func changeStatus(color: UIColor) {
         UIView.animate(withDuration: kNormalLongAnimationDuration) {
             self.tintColor = color
         }

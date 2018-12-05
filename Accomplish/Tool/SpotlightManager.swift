@@ -33,7 +33,7 @@ struct SpotlightManager {
         attributes.title = task.realTaskToDo()
         attributes.identifier = task.uuid
         if let image = UIImage(named: "AppIcon"),
-            let data = UIImagePNGRepresentation(image){
+            let data = image.pngData() {
             attributes.thumbnailData = data
         }
         return CSSearchableItem(uniqueIdentifier: task.uuid, domainIdentifier: "achieve.today.task", attributeSet: attributes)

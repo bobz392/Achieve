@@ -50,29 +50,29 @@ extension String {
 
 // Subscript
 extension String {
-    subscript (r: Range<Int>) -> String {
+    subscript (r: Range<Int>) -> Substring {
         get {
-            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
-            let endIndex = self.index(self.startIndex, offsetBy: r.upperBound)
+            let startIndex = index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = index(self.startIndex, offsetBy: r.upperBound)
             
-            return self[Range(startIndex ..< endIndex)]
+            return self[startIndex ..< endIndex]
         }
     }
     
-    subscript (r: NSRange) -> String {
+    subscript (r: NSRange) -> Substring {
         get {
             let startIndex = self.index(self.startIndex, offsetBy: r.location)
             let endIndex = self.index(self.startIndex, offsetBy: r.length + r.location)
-            return self[Range(startIndex ..< endIndex)]
+            return self[startIndex ..< endIndex]
         }
     }
     
-    subscript (p: Int) -> String {
+    subscript (p: Int) -> Substring {
         get {
             let startIndex = self.index(self.startIndex, offsetBy: p)
             let endIndex = self.index(self.startIndex, offsetBy: p + 1)
             
-            return self[Range(startIndex ..< endIndex)]
+            return self[startIndex ..< endIndex]
         }
     }
     
@@ -112,7 +112,7 @@ extension String {
      */
     var ASCIIString: String? {
         if let data = data(using: String.Encoding.ascii, allowLossyConversion: true) {
-            return NSString(data: data, encoding: String.Encoding.ascii.rawValue) as? String
+            return NSString(data: data, encoding: String.Encoding.ascii.rawValue) as String?
         } else {
             return nil
         }

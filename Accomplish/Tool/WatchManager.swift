@@ -24,7 +24,7 @@ class WatchManager: NSObject, WCSessionDelegate {
     
     fileprivate func activateSession() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             session.activate()
             

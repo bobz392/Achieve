@@ -30,9 +30,9 @@ open class DynamicBlurView: UIView {
         func mode() -> String {
             switch self {
             case .tracking:
-                return RunLoopMode.UITrackingRunLoopMode.rawValue
+                return RunLoop.Mode.tracking.rawValue
             case .common:
-                return RunLoopMode.commonModes.rawValue
+                return RunLoop.Mode.common.rawValue
             case .none:
                 return ""
             }
@@ -230,7 +230,7 @@ open class DynamicBlurView: UIView {
     private func linkForDisplay() {
         displayLink?.invalidate()
         displayLink = UIScreen.main.displayLink(withTarget: self, selector: DisplayLinkSelector)
-        displayLink?.add(to: RunLoop.main, forMode: RunLoopMode(rawValue: dynamicMode.mode()))
+        displayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode(rawValue: dynamicMode.mode()))
     }
     
     private func setCaptureImage(_ image: UIImage, radius: CGFloat) {
@@ -322,7 +322,7 @@ open class DynamicBlurView: UIView {
         }
     }
     
-    func displayDidRefresh(_ displayLink: CADisplayLink) {
+    @objc func displayDidRefresh(_ displayLink: CADisplayLink) {
         display(blurLayer)
     }
 }

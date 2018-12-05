@@ -62,7 +62,6 @@ class AboutViewController: BaseViewController {
         versionLabel.textColor = Colors.mainIconColor
         versionLabel.textAlignment = .center
         versionLabel.font = appFont(size: 12)
-        Localized("version") 
         versionLabel.text = Localized("version") + " \(appVersion.version) (\(appVersion.build))"
         self.view.addSubview(versionLabel)
         versionLabel.snp.makeConstraints { (make) in
@@ -78,7 +77,7 @@ class AboutViewController: BaseViewController {
     }
     
     // MARK: - actions
-    func licensesAction() {
+    @objc func licensesAction() {
         let licensesVC = LicensesViewController()
         self.navigationController?.pushViewController(licensesVC, animated: true)
     }

@@ -134,10 +134,10 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             attrText.append(
                 NSAttributedString(string: type.ationNameWithType(), attributes:[
-                    NSForegroundColorAttributeName: Colors.mainTextColor
+                    NSAttributedString.Key.foregroundColor: Colors.mainTextColor
                     ]))
             let nameAttrText = NSAttributedString(string: name, attributes: [
-                NSForegroundColorAttributeName: Colors.cellLabelSelectedTextColor
+                NSAttributedString.Key.foregroundColor: Colors.cellLabelSelectedTextColor
                 ])
             task.taskType = TaskType.system.type()
             attrText.append(nameAttrText)
@@ -149,11 +149,11 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             attrText.append(
                 NSAttributedString(string: name, attributes:[
-                    NSForegroundColorAttributeName: Colors.mainTextColor
+                    NSAttributedString.Key.foregroundColor: Colors.mainTextColor
                     ]))
             let subtaskCountString =
                 NSAttributedString(string: Localized("subtaskCount"), attributes: [
-                    NSForegroundColorAttributeName: Colors.secondaryTextColor
+                    NSAttributedString.Key.foregroundColor: Colors.secondaryTextColor
                     ])
             
             attrText.append(subtaskCountString)
@@ -167,7 +167,7 @@ extension SystemTaskViewController: TaskActionDataDelegate {
             
             attrText.append(
                 NSAttributedString(string: name, attributes:[
-                    NSForegroundColorAttributeName: Colors.cellLabelSelectedTextColor
+                    NSAttributedString.Key.foregroundColor: Colors.cellLabelSelectedTextColor
                     ]))
             
             newTaskDelegate?.toDoForSystemTask(text: attrText, task: task)

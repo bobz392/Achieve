@@ -33,11 +33,11 @@ class InterfaceController: WKInterfaceController {
         self.titleLabel.setTextColor(WatchColors().titleColor)
         
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             session.activate()
             
-            debugPrint("WCSession.default().isReachable = \(WCSession.default().isReachable)")
+            debugPrint("WCSession.default().isReachable = \(WCSession.default.isReachable)")
             
             if (session.isReachable == true) {
                 self.queryTaskFromApp(session: session)
@@ -51,7 +51,7 @@ class InterfaceController: WKInterfaceController {
     }
     
     override func handleAction(withIdentifier identifier: String?, for localNotification: UILocalNotification) {
-        Logger.log("withIdentifier = \(identifier), localNotification = \(localNotification)")
+        Logger.log("withIdentifier = \(String(describing: identifier)), localNotification = \(localNotification)")
         guard let uuid = localNotification.userInfo?[kNotifyUserInfoKey] as? String else {
             return
         }
@@ -121,7 +121,7 @@ class InterfaceController: WKInterfaceController {
 
 extension InterfaceController: WatchTaskRowDelegate {
     func setTaskFinish(uuid: String) {
-        let session = WCSession.default()
+        let session = WCSession.default
         
         if session.isReachable {
             session.sendMessage([kWatchSetTaskFinishKey: uuid], replyHandler: { (reply) in
@@ -155,7 +155,7 @@ extension InterfaceController: WCSessionDelegate {
     
     @available(watchOSApplicationExtension 2.2, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        debugPrint("activationDidCompleteWith error = \(error)")
+        debugPrint("activationDidCompleteWith error = \(String(describing: error))")
         debugPrint("activationState = \(activationState.rawValue)")
     }
     

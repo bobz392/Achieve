@@ -62,8 +62,8 @@ class SubtaskTableViewCell: BaseTableViewCell {
         } else {
             let attrPlacehold =
                 NSAttributedString(string: Localized("detailAddSubtask"), attributes: [
-                    NSForegroundColorAttributeName: Colors.secondaryTextColor,
-                    NSFontAttributeName: appFont(size: 15)
+                    NSAttributedString.Key.foregroundColor: Colors.secondaryTextColor,
+                    NSAttributedString.Key.font: appFont(size: 15)
                     ]
             )
             
@@ -76,12 +76,12 @@ class SubtaskTableViewCell: BaseTableViewCell {
         self.iconButton.addTarget(self, action: #selector(self.subtaskChecked), for: .touchUpInside)
     }
     
-    func deleteSubtask() {
+    @objc func deleteSubtask() {
         guard let subtask = self.subtask else { return }
         RealmManager.shared.deleteObject(subtask)
     }
     
-    func subtaskChecked() {
+    @objc func subtaskChecked() {
         guard let subtask = self.subtask else { return }
         
         RealmManager.shared.updateObject {
@@ -106,7 +106,7 @@ extension SubtaskTableViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let task = self.task,
             let text = textField.text {
-            if text.characters.count > 0 {
+            if text.count > 0 {
                 if let subtask = self.subtask {
                     RealmManager.shared.updateObject({
                         subtask.taskToDo = text

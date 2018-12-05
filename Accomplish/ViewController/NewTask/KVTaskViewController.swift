@@ -132,7 +132,7 @@ class KVTaskViewController: BaseViewController {
     }
     
     // MARK: - action
-    func saveAction() {
+    @objc func saveAction() {
         guard let name = self.nameTextField.text,
             let content = self.contentTextView.text,
             !name.isRealEmpty,
@@ -152,7 +152,7 @@ class KVTaskViewController: BaseViewController {
 
 extension KVTaskViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        self.contentTextPlaceHolderLabel.isHidden = range.location + text.characters.count > 0
+        self.contentTextPlaceHolderLabel.isHidden = range.location + text.count > 0
         return true
     }
 }

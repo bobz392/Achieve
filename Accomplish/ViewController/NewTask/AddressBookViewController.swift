@@ -187,7 +187,7 @@ extension AddressBookViewController {
         for (i, person) in people.enumerated() {
             let personNameInLatin = person.name.uppercaseStrippedLatinFullName
             Logger.log("=====> \(i+1) \(personNameInLatin)")
-            guard let firstChar = personNameInLatin.characters.first else {
+            guard let firstChar = personNameInLatin.first else {
                 continue
             }
             

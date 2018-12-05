@@ -38,15 +38,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         if #available(iOS 10.0, *) {
             self.infoLabel.textColor = mainTextColor
             self.allButton.tintColor = cloudColor
-            self.allButton.setTitleColor(mainTextColor, for: UIControlState())
+            self.allButton.setTitleColor(mainTextColor, for: .normal)
         } else {
             self.infoLabel.textColor = cloudColor
             self.allButton.tintColor = secondaryTextColor
             
-            self.allButton.setTitleColor(cloudColor, for: UIControlState())
+            self.allButton.setTitleColor(cloudColor, for: .normal)
         }
         
-        self.allButton.setTitle(Localized("allTask"), for: UIControlState())
+        self.allButton.setTitle(Localized("allTask"), for: .normal)
         self.allButton.addTarget(self, action: #selector(self.enterApp), for: .touchUpInside)
         self.allButton.clipsToBounds = true
         self.allButton.layer.cornerRadius = 4
@@ -127,7 +127,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
-    func enterApp() {
+    @objc func enterApp() {
         
         guard let url = URL(string: UrlType.home.absoluteString()) else { return }
         self.extensionContext?.open(url, completionHandler: nil)
@@ -202,7 +202,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func checkTask(_ btn: UIButton) {
+    @objc func checkTask(_ btn: UIButton) {
         guard let group = GroupUserDefault() else {
             return
         }

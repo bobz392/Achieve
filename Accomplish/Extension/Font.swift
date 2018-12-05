@@ -16,7 +16,7 @@ extension UILabel {
     }
 }
 
-func appFont(size: CGFloat, weight: CGFloat = UIFontWeightRegular) -> UIFont {
+func appFont(size: CGFloat, weight: UIFont.Weight = .regular) -> UIFont {
     if currentPreferrenLang()?.hasPrefix("en") == true,
         let font = UIFont(name: "Avenir Next", size: size) {
         return font

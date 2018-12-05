@@ -133,7 +133,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             self.cardViewTopConstraint.constant =
                 (self.view.frame.height - KeyboardManager.keyboardHeight - self.cardViewHeight) * 0.5
             
-            UIView.animate(withDuration: kNormalLongAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { [unowned self] in
+            UIView.animate(withDuration: kNormalLongAnimationDuration, delay: kKeyboardAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIView.AnimationOptions(), animations: { [unowned self] in
                 self.view.layoutIfNeeded()
             }) { [unowned self] (finish) in
                 self.toolViewBottomConstraint.constant = KeyboardManager.keyboardHeight
@@ -146,12 +146,12 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
-    func cancelAction() {
-        self.removeFromParentViewController()
+    @objc func cancelAction() {
+        self.removeFromParent()
     }
     
-    func saveAction() {
-        if task.taskToDo.characters.count > 0 {
+    @objc func saveAction() {
+        if task.taskToDo.count > 0 {
             self.saveNewTask(task.taskToDo)
             return
         } else {
@@ -167,7 +167,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         self.titleTextField.resignFirstResponder()
     }
     
-    func scheduleAction() {
+    @objc func scheduleAction() {
         KeyboardManager.sharedManager.closeNotification()
         self.titleTextField.resignFirstResponder()
         
@@ -178,12 +178,12 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
             (self.view.frame.height - self.datePickerHeight - self.cardViewHeight) * 0.5
         self.toolViewBottomConstraint.constant = self.datePickerHeight
         
-        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: UIView.AnimationOptions(), animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
     
-    func cancelScheduleAction() {
+    @objc func cancelScheduleAction() {
         self.clockButton.tintColor = Colors.secondaryTextColor
         self.task.createdDate = nil
         
@@ -202,7 +202,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
                 (self.view.frame.height - self.cardViewHeight) * 0.5
             self.toolViewBottomConstraint.constant = 0
             
-            UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: UIViewAnimationOptions(), animations: {
+            UIView.animate(withDuration: kNormalAnimationDuration, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.dateToolView.isHidden = true
                 self.view.layoutIfNeeded()
                 }, completion: { (finish) -> Void in
@@ -211,14 +211,14 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
-    func saveScheduleAction() {
+    @objc func saveScheduleAction() {
         let selectedDate = self.datePicker.date as NSDate
         self.task.createdDate = selectedDate
         
         self.closeDatePicker()
     }
     
-    func systemAction() {
+    @objc func systemAction() {
         let systemVC = SystemTaskViewController()
         let nav = UINavigationController(rootViewController: systemVC)
         nav.isNavigationBarHidden = true
@@ -228,7 +228,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: - logic
     func saveNewTask(_ taskToDo: String) {
-        guard taskToDo.characters.count > 0 else {
+        guard taskToDo.count > 0 else {
             return
         }
         let priority = self.prioritySlideSegmental.selectedSegmentIndex
@@ -254,8 +254,9 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         let now = NSDate()
         self.task.createdDate = now
         
-        let tasks = subTasks.enumerated().flatMap({ (index: Int, sub: String) -> Subtask? in
-            guard sub.characters.count > 0 else { return nil }
+        let tasks = subTasks.enumerated()
+            .compactMap({ (index: Int, sub: String) -> Subtask? in
+            guard sub.count > 0 else { return nil }
             let subtask = Subtask()
             subtask.rootUUID = task.uuid
             let createdDate = (now as NSDate).addingSeconds(index) as NSDate
@@ -278,10 +279,10 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
         return true
     }
     
-    func dissmiss(_ tap: UITapGestureRecognizer) {
+    @objc func dissmiss(_ tap: UITapGestureRecognizer) {
         if (!self.cardView.frame.contains(tap.location(in: self.view))
             && !self.toolView.frame.contains(tap.location(in: self.view))) {
-            self.removeFromParentViewController()
+            self.removeFromParent()
         }
     }
     
@@ -292,7 +293,7 @@ class NewTaskViewController: BaseViewController, UITextFieldDelegate {
 // MARK: - parent view controller
 extension NewTaskViewController {
     
-    override func willMove(toParentViewController parent: UIViewController?) {
+    override func willMove(toParent parent: UIViewController?) {
         guard let p = parent else {
             return
         }
@@ -311,10 +312,10 @@ extension NewTaskViewController {
         self.configMainUI()
         self.initializeControl()
         
-        super.willMove(toParentViewController: parent)
+        super.willMove(toParent: parent)
     }
     
-    override func didMove(toParentViewController parent: UIViewController?) {
+    override func didMove(toParent parent: UIViewController?) {
         guard let _ = parent else {
             return
         }
@@ -330,10 +331,10 @@ extension NewTaskViewController {
                 self.titleTextField.becomeFirstResponder()
         })
         
-        super.didMove(toParentViewController: parent)
+        super.didMove(toParent: parent)
     }
     
-    override func removeFromParentViewController() {
+    override func removeFromParent() {
         self.titleTextField.resignFirstResponder()
         self.toolView.isHidden = true
         UIView.animate(withDuration: kNormalAnimationDuration, animations: { [unowned self] in

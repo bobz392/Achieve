@@ -40,7 +40,7 @@ class TaskTableHeaderView: UIView {
         self.titleLabel.text = newTitle
     }
 
-    func additionAction() {
+    @objc func additionAction() {
         self.block?(self.additionButton)
     }
     

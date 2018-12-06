@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 import CoreSpotlight
 
 @UIApplicationMain
@@ -40,12 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         HUD.shared.config()
         
-        Fabric.with([Crashlytics.self])
-        #if debug
-            Crashlytics.sharedInstance().debugMode = true
+        let config = BuglyConfig()
+        #if DEBUG
+        config.debugMode = true
         #else
-            Crashlytics.sharedInstance().debugMode = false
+        config.debugMode = false
         #endif
+        Bugly.start(withAppId: "bac1ece87a", config: config)
         
         return true
     }

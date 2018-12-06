@@ -19,4 +19,6 @@
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
 
+#import <Bugly/Bugly.h>
+
 #endif /* Accomplish_Bridging_Header_h */

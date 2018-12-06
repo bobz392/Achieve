@@ -1,4 +1,5 @@
 PODS:
+  - Bugly (2.5.0)
   - Charts (3.2.1):
     - Charts/Core (= 3.2.1)
   - Charts/Core (3.2.1)
@@ -14,9 +15,10 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - Bugly
   - Charts
   - Fuzi
-  - JTAppleCalendar (~> 7.0)
+  - JTAppleCalendar
   - Kingfisher
   - RealmSwift
   - SnapKit
@@ -24,6 +26,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Bugly
     - Charts
     - Fuzi
     - JTAppleCalendar
@@ -34,6 +37,7 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   Fuzi: 8c57344debff6d3a0c76a9e0f549152defdaaa48
   JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
@@ -43,6 +47,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 98e172b1a8433e26f3511214e7260b58195bc4b1
+PODFILE CHECKSUM: 4da91c96b4f9db5a9bd0bcc6625402c5b89aba74
 
 COCOAPODS: 1.5.3

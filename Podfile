@@ -14,6 +14,8 @@ target 'Accomplish' do
   pod 'JTAppleCalendar'
   pod 'SVProgressHUD'
   pod 'Fuzi'
+  
+  pod 'Bugly'
 
 end
 

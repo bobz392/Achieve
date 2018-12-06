@@ -111,7 +111,6 @@
 		C74751BF1DC97FE100831DB1 /* TimeMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74751BD1DC97FE100831DB1 /* TimeMethodTableViewCell.xib */; };
 		C74751C11DC9884100831DB1 /* RealmManager+TimeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751C01DC9884100831DB1 /* RealmManager+TimeMethod.swift */; };
 		C74751C41DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74751C31DC98B5C00831DB1 /* BuildInTimeMethodCreator.swift */; };
-		C7499A181E049FCC002CBFBA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79807191D82B97E0011DE19 /* Fabric.framework */; };
 		C74A893A1D93F972008E15CA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89381D93F972008E15CA /* SearchViewController.swift */; };
 		C74A89411D94109E008E15CA /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A89401D94109E008E15CA /* BaseTableViewCell.swift */; };
 		C74A896C1D949A6B008E15CA /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896B1D949A6B008E15CA /* CloudKitManager.swift */; };
@@ -119,6 +118,10 @@
 		C74A896F1D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74A89701D9636F4008E15CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A896D1D9636F3008E15CA /* Logger.swift */; };
 		C74FF9C81E2CC3C700D5CC9E /* BuildInTaskCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator.swift */; };
+		C75B5C2C21B7F6AC008B6E53 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C75B5C2B21B7F6AC008B6E53 /* SystemConfiguration.framework */; };
+		C75B5C2E21B7F6C0008B6E53 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C75B5C2D21B7F6C0008B6E53 /* libc++.tbd */; };
+		C75B5C2F21B7F6C7008B6E53 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194AF1D6FF26700437560 /* libz.tbd */; };
+		C75B5C3021B7F6CF008B6E53 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C77194B21D6FF28300437560 /* Security.framework */; };
 		C769A6431D885AB700E68871 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6411D885AB700E68871 /* AboutViewController.swift */; };
 		C769A6471D8862D800E68871 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C769A6451D8862D800E68871 /* LicensesViewController.swift */; };
 		C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */; };
@@ -222,7 +225,6 @@
 		C79806FF1D819D510011DE19 /* QuickActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */; };
 		C79807011D81A14C0011DE19 /* UrlSchemeDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */; };
 		C79807161D8298380011DE19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807141D8298380011DE19 /* SettingsViewController.swift */; };
-		C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C798071A1D82B97E0011DE19 /* Crashlytics.framework */; };
 		C798071E1D82C0C70011DE19 /* Acknowledgements in Resources */ = {isa = PBXBuildFile; fileRef = C798071D1D82C0C70011DE19 /* Acknowledgements */; };
 		C79807221D82D0D50011DE19 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */; };
 		C79807231D82D0D50011DE19 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */; };
@@ -495,6 +497,8 @@
 		C74FF9C71E2CC3C700D5CC9E /* BuildInTaskCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInTaskCreator.swift; sourceTree = "<group>"; };
 		C75B5C2621B76E30008B6E53 /* AchieveWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AchieveWatch.entitlements; sourceTree = "<group>"; };
 		C75B5C2721B77FB7008B6E53 /* AchieveWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AchieveWatch Extension.entitlements"; sourceTree = "<group>"; };
+		C75B5C2B21B7F6AC008B6E53 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C75B5C2D21B7F6C0008B6E53 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		C7614F5C1E2176D600D86FD4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		C7614F5D1E2176D600D86FD4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Interface.strings; sourceTree = "<group>"; };
 		C7614F5E1E2176D600D86FD4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -697,8 +701,6 @@
 		C79806FE1D819D510011DE19 /* QuickActionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionDispatcher.swift; sourceTree = "<group>"; };
 		C79807001D81A14C0011DE19 /* UrlSchemeDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSchemeDispatcher.swift; sourceTree = "<group>"; };
 		C79807141D8298380011DE19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		C79807191D82B97E0011DE19 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		C798071A1D82B97E0011DE19 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C798071D1D82C0C70011DE19 /* Acknowledgements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Acknowledgements; sourceTree = "<group>"; };
 		C79807201D82D0D50011DE19 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		C79807211D82D0D50011DE19 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -778,11 +780,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75B5C3021B7F6CF008B6E53 /* Security.framework in Frameworks */,
+				C75B5C2F21B7F6C7008B6E53 /* libz.tbd in Frameworks */,
+				C75B5C2E21B7F6C0008B6E53 /* libc++.tbd in Frameworks */,
+				C75B5C2C21B7F6AC008B6E53 /* SystemConfiguration.framework in Frameworks */,
 				C78C4E581DFC97FC000C289D /* libxml2.tbd in Frameworks */,
 				C77194B91D6FF3E600437560 /* libicucore.tbd in Frameworks */,
 				C76AA4571DB50BBC009FCFD1 /* CloudKit.framework in Frameworks */,
-				C7499A181E049FCC002CBFBA /* Fabric.framework in Frameworks */,
-				C798071C1D82B97E0011DE19 /* Crashlytics.framework in Frameworks */,
 				9DB12986FC279EF06E9B037C /* Pods_Accomplish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -856,6 +860,8 @@
 		C7105E9C1D6C7AD60096A1A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C75B5C2D21B7F6C0008B6E53 /* libc++.tbd */,
+				C75B5C2B21B7F6AC008B6E53 /* SystemConfiguration.framework */,
 				C78C4E571DFC97FC000C289D /* libxml2.tbd */,
 				C76AA4561DB50BBC009FCFD1 /* CloudKit.framework */,
 				C77194BA1D6FF62E00437560 /* AddressBookUI.framework */,
@@ -1226,8 +1232,6 @@
 		C7860E341D6C23FF000281FA = {
 			isa = PBXGroup;
 			children = (
-				C79807191D82B97E0011DE19 /* Fabric.framework */,
-				C798071A1D82B97E0011DE19 /* Crashlytics.framework */,
 				C7860E3F1D6C23FF000281FA /* Accomplish */,
 				C78ED87A1D7A7D3100031B4D /* AchieveToday */,
 				C7E1B0451D8C7A9600554B11 /* AchieveWatch */,
@@ -1476,7 +1480,6 @@
 				C7860E3A1D6C23FF000281FA /* Frameworks */,
 				C7860E3B1D6C23FF000281FA /* Resources */,
 				C7E1B06A1D8C7A9600554B11 /* Embed Watch Content */,
-				C79807181D82B8E60011DE19 /* Frabic Run Script */,
 				C7EFB2A41DEFE2260094B1E0 /* Set the build number to "DEVELOPMENT" */,
 				C7105EAC1D6C7AD60096A1A3 /* Embed App Extensions */,
 				0D2EEBE682C5C11D1D8C6FCD /* [CP] Embed Pods Frameworks */,
@@ -1949,20 +1952,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C79807181D82B8E60011DE19 /* Frabic Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Frabic Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run dbb82aa26921283c58449d2ccd9afe794a5615b6 53753c1f64bf224be62638ead72468d7e6d4afebce1e12593014125d29f9727f";
-		};
 		C7EFB2A31DEFE1FE0094B1E0 /* Set the build number to the count of Git commits */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1989,7 +1978,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Set the build number to \"DEVELOPMENT\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion DEVELOPMENT\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+			shellScript = "# Set the build number to \"DEVELOPMENT\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion DEVELOPMENT\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 		C7EFB2A51DEFE2AA0094B1E0 /* Set the build number to the count of Git commits */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2710,7 +2699,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = Accomplish/Info.plist;
@@ -2747,7 +2735,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = Accomplish/Info.plist;
